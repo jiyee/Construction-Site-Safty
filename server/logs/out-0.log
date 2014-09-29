@@ -27,3 +27,1045 @@
 2014-09-30: Express server listening on port 3000
 2014-09-30: [0mGET /favicon.ico [33m404 [0m48.411 ms - 1417[0m
 2014-09-30: connect to css server.
+2014-09-30: [0mPOST /user/signup [31m500 [0m22.595 ms - 2258[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mPOST /user/signup [31m500 [0m47.673 ms - 2258[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: [0mPOST /user/signup [31m500 [0m48.117 ms - 2258[0m
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: { '0': 'username',
+  '1': 'name',
+  '2': 'password',
+  '3': 'email',
+  '4': 'terl',
+  '5': 'mobile',
+  '6': '123123123',
+  '7': true,
+  '8': null,
+  '9': null,
+  '10': null,
+  '11': null,
+  '12': null,
+  '13': null,
+  '14': null,
+  '15': [Function] }
+2014-09-30: [0mPOST /user/signup [31m500 [0m50.449 ms - 1466[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: { '0': 'name',
+  '1': '',
+  '2': 'username',
+  '3': 'password',
+  '4': 'email',
+  '5': 'terl',
+  '6': 'mobile',
+  '7': '123123123',
+  '8': true,
+  '9': null,
+  '10': null,
+  '11': null,
+  '12': null,
+  '13': null,
+  '14': null,
+  '15': null,
+  '16': [Function] }
+2014-09-30: [0mPOST /user/signup [32m200 [0m19.146 ms - 51[0m
+2014-09-30: /user/signup => new and save.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: /user/signup => new and save.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: /user/signup => new and save.
+2014-09-30: [0mPOST /user/signup [32m200 [0m24.801 ms - 51[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: /user/signup => new and save.
+2014-09-30: [0mPOST /user/signup [32m200 [0m22.169 ms - 51[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mPOST /role/add?bustCache=0.8250316535122693 [31m500 [0m51.265 ms - 1525[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mPOST /role/add?bustCache=0.668197242775932 [31m500 [0m45.570 ms - 1526[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: error:  { [CastError: Cast to ObjectId failed for value "" at path "departments"]
+  message: 'Cast to ObjectId failed for value "" at path "departments"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: [""],
+  path: 'departments' }
+2014-09-30: /role/add => new and save.
+2014-09-30: [0mPOST /role/add?bustCache=0.7346174293197691 [31m500 [0m51.989 ms - 1618[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: error:  { [CastError: Cast to ObjectId failed for value "" at path "departments"]
+  message: 'Cast to ObjectId failed for value "" at path "departments"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: [""],
+  path: 'departments' }
+2014-09-30: /role/add => new and save.
+2014-09-30: [0mPOST /role/add?bustCache=0.60303342808038 [31m500 [0m51.720 ms - 1618[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: /role/add => new and save.
+2014-09-30: [0mPOST /role/add?bustCache=0.3234805117826909 [32m200 [0m25.623 ms - 51[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/?bustCache=0.33956203423440456 [32m200 [0m14.070 ms - 199[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mPOST /user/signup?bustCache=0.7606172643136233 [31m500 [0m45.715 ms - 1472[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: /user/signup => new and save.
+2014-09-30: [0mPOST /user/signup?bustCache=0.09240642213262618 [32m200 [0m21.530 ms - 51[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.052165296860039234 [32m200 [0m23.262 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.24530850676819682 [32m200 [0m3.443 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.5993589034769684 [32m200 [0m1.695 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.9905060038436204 [32m200 [0m1.244 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.4598510235082358 [32m200 [0m1.721 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.9118010047823191 [32m200 [0m1.585 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.24752758163958788 [32m200 [0m2.598 ms - 411[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.0559431912843138 [32m- [0m- ms - -[0m
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.23727221135050058 [32m200 [0m17.056 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.4476919218432158 [32m200 [0m3.275 ms - 411[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.47916636848822236 [32m200 [0m22.998 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.7514358849730343 [32m200 [0m2.831 ms - 411[0m
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.14286098256707191 [32m200 [0m18.294 ms - 411[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.04264680249616504 [32m200 [0m2.707 ms - 411[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.16669436637312174 [31m500 [0m47.528 ms - 1456[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users?bustCache=0.7238578335382044 [32m200 [0m22.756 ms - 544[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET / [32m200 [0m38.661 ms - 183[0m
+2014-09-30: [0mGET /stylesheets/style.css [32m200 [0m21.007 ms - 87[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: [0mGET / [32m200 [0m34.097 ms - 219[0m
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /stylesheets/style.css [32m200 [0m15.835 ms - 87[0m
+2014-09-30: [0mGET / [36m304 [0m2.498 ms - -[0m
+2014-09-30: [0mGET /stylesheets/style.css [36m304 [0m1.042 ms - -[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /roles [32m200 [0m16.785 ms - 199[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a [33m404 [0m37.452 ms - 1402[0m
+2014-09-30: [0mGET /stylesheets/style.css [32m200 [0m15.284 ms - 87[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users [32m200 [0m19.400 ms - 544[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [32m200 [0m25.937 ms - 544[0m
+2014-09-30: { [CastError: Cast to ObjectId failed for value "54298f4391b38f6f1176b07a2" at path "role"]
+  message: 'Cast to ObjectId failed for value "54298f4391b38f6f1176b07a2" at path "role"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '54298f4391b38f6f1176b07a2',
+  path: 'role' }
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a2/users/ [31m500 [0m37.125 ms - 1611[0m
+2014-09-30: [0mGET /stylesheets/style.css [32m200 [0m16.325 ms - 87[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b09a/users/ [32m200 [0m12.055 ms - 40[0m
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m22.005 ms - -[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [32m- [0m- ms - -[0m
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [32m200 [0m26.448 ms - 544[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [32m200 [0m2.415 ms - 544[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m2.845 ms - -[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m2.354 ms - -[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m3.863 ms - -[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m2.705 ms - -[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m3.058 ms - -[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [32m- [0m- ms - -[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [32m- [0m- ms - -[0m
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [32m200 [0m36.131 ms - 544[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m2.491 ms - -[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: { [CastError: Cast to ObjectId failed for value "54298f4391b38f6f1176b072a" at path "role"]
+  message: 'Cast to ObjectId failed for value "54298f4391b38f6f1176b072a" at path "role"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '54298f4391b38f6f1176b072a',
+  path: 'role' }
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b072a/users/ [31m500 [0m55.144 ms - 1611[0m
+2014-09-30: [0mGET /stylesheets/style.css [32m200 [0m19.910 ms - 87[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: { [CastError: Cast to ObjectId failed for value "54298f4391b38f6f1176b072a" at path "role"]
+  message: 'Cast to ObjectId failed for value "54298f4391b38f6f1176b072a" at path "role"',
+  name: 'CastError',
+  type: 'ObjectId',
+  value: '54298f4391b38f6f1176b072a',
+  path: 'role' }
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b072a/users/ [31m500 [0m43.029 ms - 1611[0m
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /stylesheets/style.css [32m200 [0m17.044 ms - 87[0m
+2014-09-30: Express server listening on port 3000
+2014-09-30: Express server listening on port 3000
+2014-09-30: connect to css server.
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m26.388 ms - -[0m
+2014-09-30: [0mGET /role/54298f4391b38f6f1176b07a/users/ [36m304 [0m3.628 ms - -[0m
+2014-09-30: connect to css server.

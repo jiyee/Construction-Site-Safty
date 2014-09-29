@@ -4,13 +4,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var user = require('./routes/user');
+var routes = require('./routes');
+var settings = require('./settings');
 
 var app = express();
 var server;
-
-var models = require('./models');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,8 +21,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/user', user);
+app.use(routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,6 +33,7 @@ app.use(function(req, res, next) {
 // error handlers
 
 // development error handler
+app.set('env', 'development');
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
