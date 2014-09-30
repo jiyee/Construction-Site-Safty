@@ -13,6 +13,7 @@ router.get('/', function (req, res) {
 //     res.send({a: 1});
 // });
 
+router.get('/users', user.find);
 router.post('/user/signup', user.signup);
 
 router.get('/roles', role.find);

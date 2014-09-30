@@ -1,6 +1,17 @@
 var User = require('../models/').User;
 
 /**
+ * 查找所有用户
+ * Callback:
+ * - err, 数据库异常
+ * - user, 用户
+ * @param  {Function} callback 回调函数
+ */
+exports.find = function (callback) {
+    User.find({}, callback);
+}
+
+/**
  * 根据用户姓名, 查找用户
  * Callback:
  * - err, 数据库异常

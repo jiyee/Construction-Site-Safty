@@ -2,6 +2,21 @@ var validator = require('validator');
 var eventproxy = require('eventproxy');
 var User = require('../proxy/').User;
 
+exports.find = function (req, res, next) {
+    User.find(function (err, users) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'users': users
+        });
+    })
+}
+
 exports.findByRoleId = function (req, res, next) {
     var role_id = validator.trim(req.params.role_id);
 
