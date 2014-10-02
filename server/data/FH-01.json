@@ -1,0 +1,550 @@
+//临边与个体防护防护专项安全检查表 
+
+//新增字段 result ：合格或者不合格一栏；relation_num ：对应的编号；relation_check ：对应考核项内容
+
+{
+    "table_id": "",
+    "table_name": "临边与个体防护防护专项安全检查表",
+    "project_name": "",
+    "project_section": "",
+    "name" :"安全检查",
+    "items": [{
+        "index": "A",
+        "level": 1,
+        "name": "桥边防护",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "A1",
+            "level": 2,
+            "name": "一般要求",
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "桥面施工前，梁面两侧应设置防护栏杆，并挂安全网",
+                "score": "",
+                "status": "",
+                "comments": ""            
+            },{
+                "index": "2",
+                "level": 3,
+                "name": "无条件防护情况下，应采用钢索作悬挂安全带和行走扶手用。",
+                "score": "",
+                "status": "",
+                "comments": ""               
+            }],
+            "result": [true ,false],//合格或者不合格
+            "relation_num":"SGXCTY-B-B1-(1)", //对应“平安工地”考核编号
+            "relation_check": "未按要求设置防护栏杆、安全网或其它安全防护设施的，发现一处扣1分。"
+        }, {
+            "index": "A2",
+            "level": 2,
+            "name": "材料",
+            "score":  "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "横杆和立柱均采用φ48的管材，或采用φ20以上的圆钢做立柱，φ16以上的圆钢做横杆",
+                "score": "",
+                "status": "",
+                "comments": ""                      
+            }],
+            "result":[true ,false],
+            "relation_num":"",
+            "relation_check":"",
+        },{
+            "index": "A3",
+            "level": 2,
+            "name": "设置",
+            "score":  "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "立柱底部固定，满足强度要求，立柱与横杆相连应牢固",
+                "score": "",
+                "status": "",
+                "comments": ""                      
+            }],
+            "result":[true ,false],
+            "relation_num":"SGXCTY-B-B1-(2)",
+            "relation_check":"防护栏杆不牢固，发现一处扣1分。"
+        },{
+            "index": "A4",
+            "level": 2,
+            "name": "标志",
+            "score":  "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "长距离临边防护警示标志设置距离不大于50米",
+                "score": "",
+                "status": "",
+                "comments": ""                      
+            }],
+            "result":[true ,false],
+            "relation_num":"",
+            "relation_check":""
+        }]
+    },{
+        "index": "B",
+        "level": 1,
+        "name": "高墩防护",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": "",
+        "score": "",
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "B1",
+            "level": 2,
+            "name": "一般要求",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "平台临边应设置防护栏、安全网。",
+                "score": "",
+                "status": "",
+                "comments": ""            
+            },{
+                "index": "2",
+                "level": 3,
+                "name": "防护栏杆高度为1.2m，立杆间距不得大于3m，横杆与上下件之间距离不得大于60cm。",
+                "score": "",
+                "status": "",
+                "comments": ""               
+            },{
+                "index": "3",
+                "level": 3,
+                "name": "立杆和扶杆宜采用钢管制作，并涂防锈漆、红白相间的安全色。",
+                "score": "",
+                "status": "",
+                "comments": ""  
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B1-(1)",
+            "relation_check":"未按要求设置防护栏杆、安全网或其它安全防护设施的，发现一处扣1分。"
+        }, {
+            "index": "B2",
+            "level": 2,
+            "name": "爬梯",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "5米以下带防护笼的直爬梯",
+                "score": "",
+                "status": "",
+                "comments": ""            
+            },{
+                "index": "2",
+                "level": 3,
+                "name": "5~40设“之”字型人行斜梯",
+                "score": "",
+                "status": "",
+                "comments": ""               
+            },{
+                "index": "3",
+                "level": 3,
+                "name": "40米以上，设设附着型电梯",
+                "score": "",
+                "status": "",
+                "comments": ""  
+            }],
+            "result":[true,false],
+            "relation_num":"",
+            "relation_check":""
+        }, {
+            "index": "B3",
+            "level": 2,
+            "name": "周边防护",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "高墩施工时，10米范围内，设警戒区，有专人监护，超过20米时，宜设避雷设施",
+                "score": "",
+                "status": "",
+                "comments": ""                      
+            }],
+            "result":[true,false],
+            "relation_num":"",
+            "relation_check":""
+        }]
+    },{
+        "index": "C",
+        "level": 1,
+        "name": "洞口防护",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": "",
+        "score": "",
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "C1",
+            "level": 2,
+            "name": "预留洞口",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "短边小于50cm，一般加设竹、木板进行遮盖，并能固定",
+                "score": "",
+                "status": "",
+                "comments": ""            
+            },{
+                "index": "2",
+                "level": 3,
+                "name": "短边长在50cm~150cm，设置临边防护栏，洞口加盖",
+                "score": "",
+                "status": "",
+                "comments": ""               
+            },{
+                "index": "3",
+                "level": 3,
+                "name": "短变长大于150cm，四周设临边防护，洞口下设安全平网",
+                "score": "",
+                "status": "",
+                "comments": ""  
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B1-(1)",
+            "relation_check":"未按要求设置防护栏杆、安全网或其它安全防护设施的，发现一处扣1分。"
+        },{
+            "index": "C2",
+            "level": 2,
+            "name": "桩孔口防护",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+           "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "钻孔桩孔口，区域宜采用彩钢板，泥浆池宜采用隔离栅进行封闭；",
+                "score": "",
+                "status": "",
+                "comments": ""            
+            },{
+                "index": "2",
+                "level": 3,
+                "name": "人工挖孔桩孔口护壁应高出地面30cm，其上应设置活动式半圆形护栏。",
+                "score": "",
+                "status": "",
+                "comments": ""               
+            },{
+                "index": "3",
+                "level": 3,
+                "name": "挖孔暂停时，孔口应设置罩盖及标识标牌，罩盖须牢固可靠",
+                "score": "",
+                "status": "",
+                "comments": ""  
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B1-(1)",
+            "relation_check":"未按要求设置防护栏杆、安全网或其它安全防护设施的，发现一处扣1分。"
+        }]
+    },{
+        "index": "D",
+        "level": 1,
+        "name": "深基坑防护",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": "",
+        "score": "",
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "D1",
+            "level": 2,
+            "name": "一般要求",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "超过2米的基坑开挖，基坑周边0.5米外设临边防护栏杆",
+                "score": "",
+                "status": "",
+                "comments": ""            
+             },{
+                "index": "2",
+                "level": 3,
+                "name": "超过5米的基坑开挖，必须有专项支护设计，经专家论证后实施；",
+                "score": "",
+                "status": "",
+                "comments": ""          
+            },{
+                "index": "3",
+                "level": 3,
+                "name": "须设置上下基坑的安全通道",
+                "score": "",
+                "status": "",
+                "comments": ""        
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B1-(1)",
+            "relation_check":"未按要求设置防护栏杆、安全网或其它安全防护设施的，发现一处扣1分。"
+        }, {
+           "index": "D2",
+            "level": 2,
+            "name": "设置要求",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "基坑边缘应设置安全护栏和警示标识防护栏杆高度为1.2m，立杆间距不得大于3.0m，横杆与上下件之间距离不得大于60cm。立杆和扶杆宜采用钢管制作，并涂防锈漆、红白相间的安全色。",
+                "score": "",
+                "status": "",
+                "comments": ""     
+            }],
+            "result":[true,false],
+            "relation_num":"",
+            "relation_check":""
+        },{
+            "index": "D3",
+            "level": 2,
+            "name": "标志",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "夜间增设警示红灯",
+                "score": "",
+                "status": "",
+                "comments": ""     
+            }],
+            "result":[true,false],
+            "relation_num":"",
+            "relation_check":""
+
+        }]
+    },{
+        "index": "E",
+        "level": 1,
+        "name": "水上作业防护",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": "",
+        "score": "",
+        "status": 0,
+        "comments": "",
+        "items":[{
+            "index": "E1",
+            "level": 2,
+            "name": "一般要求",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "大型水上作业平台周边设置临边防护和安全网",
+                "score": "",
+                "status": "",
+                "comments": ""     
+            },{
+                "index": "2",
+                "level": 3,
+                "name": "栏杆下设不低于18CM的挡脚板",
+                "score": "",
+                "status": "",
+                "comments": ""     
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B1-(1)",
+            "relation_check":"未按要求设置防护栏杆、安全网或其它安全防护设施的，发现一处扣1分。"
+        },{
+            "index": "E2",
+            "level": 2,
+            "name": "材料",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "横杆和立柱均采用φ48的管材",
+                "score": "",
+                "status": "",
+                "comments": ""      
+            }],
+            "result":[true,false],
+            "relation_num":"",
+            "relation_check":""
+        },{
+            "index": "E3",
+            "level": 2,
+            "name": "固定",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "穿过立柱预留孔固定",
+                "score": "",
+                "status": "",
+                "comments": ""      
+            },{
+                "index": "2",
+                "level": 3,
+                "name": "与预埋6mm*80mm*100mm的钢板两边焊接",
+                "score": "",
+                "status": "",
+                "comments": ""   
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B1-(2)",
+            "relation_check":"防护栏杆不牢固，发现一处扣1分。"
+        },{
+            "index": "E4",
+            "level": 2,
+            "name": "救生用品",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "每隔50米设救生圈、救生衣等水上安全防护用品",
+                "score": "",
+                "status": "",
+                "comments": ""      
+            }],
+            "result":[true,false],
+            "relation_num":"",
+            "relation_check":""
+        }]
+    },{
+       "index": "F",
+        "level": 1,
+        "name": "水上作业防护",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": "",
+        "score": "",
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "F1",
+            "level": 2,
+            "name": "一般要求",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "进入施工现场须除正确佩戴安全帽外，根据作业部位和工种要求还需使用相应的使用安全防护用品",
+                "score": "",
+                "status": "",
+                "comments": ""
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B4-(1)",
+            "relation_check":"未按照规定配置和使用个体防护用品，发现一处扣1分。"
+        },{
+            "index": "F2",
+            "level": 2,
+            "name": "",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "2m以上悬空作业须使用安全带，安全带应遵循“高挂低用”的原则，严禁“低挂高用”。",
+                "score": "",
+                "status": "",
+                "comments": ""
+            }],
+            "result":[true,false],
+            "relation_num":"",
+            "relation_check":""
+        },{
+            "index": "F3",
+            "level": 2,
+            "name": "",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "防护用品须具有产品合格证书，并定期进行检查检验。严禁使用不合格的防护用品。",
+                "score": "",
+                "status": "",
+                "comments": ""
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B4-(2)",
+            "relation_check":""
+        },{
+            "index": "F3",
+            "level": 2,
+            "name": "",
+            "total": "",
+            "score": "",
+            "status": 0,
+            "comments": "",
+            "items":[{
+                "index": "1",
+                "level": 3,
+                "name": "防护用品须具有产品合格证书，并定期进行检查检验。严禁使用不合格的防护用品。安全帽、安全带有生产许可证、“LA”等永久性标志",
+                "score": "",
+                "status": "",
+                "comments": ""
+            }],
+            "result":[true,false],
+            "relation_num":"SGXCTY-B-B4-(2)",
+            "relation_check":"防护用品无产品合格证，发现一次扣1分。"
+        }]
+    }] 
+}
+
+    
