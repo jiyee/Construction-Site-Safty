@@ -1,0 +1,1046 @@
+{
+    "table_id": "",
+    "table_name": "施工单位基础管理考核评价表（100分）",
+    "project_name": "",
+    "project_section": "",
+    "review_id": "",
+    "review_unit": "",
+    "review_staff": "",
+    "review_date": "",
+    "review_type": "",
+    "review_status": 0,
+    "under_review_unit_id": "",
+    "review_due_score": "",
+    "review_calc_score": "",
+    "review_final_score": "",
+    "items": [{
+        "index": "A",
+        "level": 1,
+        "name": "安全生产条件",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 24,
+        "score": 24,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "A1",
+            "level": 2,
+            "name": "安全生产条件",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "安全生产许可证失效，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "A2",
+            "level": 2,
+            "name": "从业人员资格条件",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "每发现一例未持有效证书或证书与对应岗位人员身份不相符，扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "未按比例配备专职安全管理人员。发现少一人扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "每发现一例特种作业人员未持有效证书，扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "特种作业人员持证人在岗情况不明，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "A3",
+            "level": 2,
+            "name": "从业人员保险",
+            "total": 4,
+            "score": 4,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立人员台账，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "人员台账不完善，扣2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未办理意外伤害保险，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "意外伤害保险未覆盖全员或不连续，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "A4",
+            "level": 2,
+            "name": "安全组织机构",
+            "total": 4,
+            "score": 4,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立专职安全管理机构，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "安全组织机构框图未悬挂，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "安全岗位职责和责任人不明确，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未逐级签订责任书，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "责任书签订不规范，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "A5",
+            "level": 2,
+            "name": "机械设备管理",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立机械设备台账，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "机械设备台账不全，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "特种设备档案不规范，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "安装拆除由不具备资质条¬¬件的单位承担，发现一台扣2分。",
+                "range": [0, 2, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "未经论证和验收，发现一台扣2分。",
+                "range": [0, 2, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "特种设备未经检验合格投入使用，每发现一台扣2分。",
+                "range": [0, 2, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "无日常检查、维修保养记录，每发现一台扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "日常检查、维修保养记录不全面，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "A6",
+            "level": 2,
+            "name": "施工作业手续",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未办理，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "B",
+        "level": 1,
+        "name": "安全生产管理制度",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 34,
+        "score": 34,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "B1",
+            "level": 2,
+            "name": "安全生产例会制度",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立安全例会制度，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "未按时召开例会，记录不完整，签字不全，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "会议要求落实无痕迹资料，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "B2",
+            "level": 2,
+            "name": "安全教育培训制度",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "安全教育培训制度",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "教育培训计划不合理，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未按计划对相关人员进行教育培训，或教育培训不到位，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "培训时间、内容，参加培训人员记录不清晰，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "B3",
+            "level": 2,
+            "name": "安全生产费用管理制度",
+            "total": 4,
+            "score": 4,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立安全生产费用管理制度和使用计划，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "费用使用计划未经监理单位审查，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "计划未按季度（或月）落实，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "台账不清晰、费用明细不清晰、记录不全面，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "挪用安全生产费用，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "B4",
+            "level": 2,
+            "name": "危险品安全管理制度",
+            "total": 4,
+            "score": 4,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立危险品管理办法，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "人员未持证上岗，发现一人扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未按制度落实危险品管理措施，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "危险品进出库台账不全、不连续，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "危险品不严格执行退库程序，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "爆破作业相关审批、备案、登记手续不全，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "爆破作业设计、施工文件未规定编制，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "B5",
+            "level": 2,
+            "name": "消防安全责任制度",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未制定消防责任制度，扣4分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "未绘制消防设施布设图，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "消防职责或责任人不明确，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "管理台账不全，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "B6",
+            "level": 2,
+            "name": "安全检查制度",
+            "total": 6,
+            "score": 6,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立安全检查制度，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "安全检查制度针对性不强，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未制定项目负责人带班制度，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未制定隐患排查方案，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "未按规定的频率开展隐患排查，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "未对隐患进行分析，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "未对重大安全隐患挂牌督办，发现一次扣2分。",
+                "range": [0, 2, 4, 6],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "定期、日常、防汛防台等专项安全检查时间、责任人、检查内容、实施要求不明确，扣2-3分。",
+                "range": [0, 2, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "9",
+                "level": 3,
+                "name": "检查记录不真实、不闭合，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "B7",
+            "level": 2,
+            "name": "安全奖罚考核制度",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立奖罚制度，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "奖罚制度执行不到位，记录不清晰，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "B8",
+            "level": 2,
+            "name": "生产安全事故调查处理及报告制度",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立制度，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "制度不符合相关规定，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "发生事故后，未按规定实施事故报告，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "事故处理未落实“四不放过”，扣1-4分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "C",
+        "level": 1,
+        "name": "安全生产管理制度",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 30,
+        "score": 30,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "C1",
+            "level": 2,
+            "name": "专项施工方案",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "危险性较大工程专项施工方案不全，少一项扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "专项施工方案未报批或未经评审，发现一份扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "超过一定规模的危险性较大工程专项施工方案不按规定组织专家评审的，发现一份扣4分。",
+                "range": [0, 4, 8],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "C2",
+            "level": 2,
+            "name": "施工组织设计",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "安全教育培训制度",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "施工组织设计中安全技术措施内容不全，操作性不强，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "施工组织设计审批手续不完善，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "C3",
+            "level": 2,
+            "name": "安全技术交底",
+            "total": 4,
+            "score": 4,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未建立安全技术交底制度，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "安全技术交底资料不全，内容无针对性，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未建立交底台账，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "记录不真实，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "未逐级交底，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "C4",
+            "level": 2,
+            "name": "风险预控",
+            "total": 6,
+            "score": 6,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "重大风险源未制定安全管理方案，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "方案中未明确责任人或预控措施针对性不强，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "风险源识别不全或预控措施操作性不强，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未按规定开展桥隧施工安全风险评估，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "重大风险源未对作业人员进行书面告知，发现一项扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "未按规定开展地质灾害评估，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "C5",
+            "level": 2,
+            "name": "临时用电方案",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未制定临时用电方案，扣4分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "方案中用电设备清单、负荷计算、用电工程图纸等不完整，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未标注用电平面布置图，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "无电工巡视维修保养记录或记录不连续，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "C6",
+            "level": 2,
+            "name": "应急预案及预演",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未制定专项应急预案，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "专项应急预案不全，发现一项扣1分。",
+                "range": [0, 1, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "应急预案操作性不强，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未开展培训及演练，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "演练后未总结，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "无兼职的应急队伍，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "应急救援物资配备不足或台账不清晰，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "D",
+        "level": 1,
+        "name": "档案管理",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 2,
+        "score": 2,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "D1",
+            "level": 2,
+            "name": "安全档案资料",
+            "total": 2,
+            "score": 2,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "形成的各类档案不完整、无效，发现一处扣1分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "E",
+        "level": 1,
+        "name": "政府主管部门安全专项工作",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 10,
+        "score": 10,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "E1",
+            "level": 2,
+            "name": "政府主管部门安全专项工作落实情况",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未制定安全专项工作方案或计划，发现一次扣4分。",
+                "range": [0, 4, 8],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "安全专项工作落实不到位，发现一次扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未制定“平安工地”建设方案，扣5-6分。",
+                "range": [0, 5, 6],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "“平安工地”建设要求未落实到一线工人，扣3-5分。",
+                "range": [0, 3, 4, 5],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }, {
+            "index": "E2",
+            "level": 2,
+            "name": "考核评价",
+            "total": 2,
+            "score": 2,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "自我考核评价走过场或不及时，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "考核评价资料欠真实、准确，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": 0, 
+                "comments": ""
+            }]
+        }]
+    }]
+}
