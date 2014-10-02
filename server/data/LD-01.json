@@ -1,301 +1,199 @@
 {
-    "table_id": "",
-    "table_name": "办公、生活区域临时用电专项安全检查表",
-    "project_name": "",
-    "project_section": "",
-    "name" :"安全检查",
+    "id": "LD-01",
+    "name": "办公、生活区域临时用电专项安全检查表",
+    "type": "安全检查",
+
     "items": [{
         "index": "A",
-        "level": 1,
         "name": "施工准备",
-        "content": "",
-        "method": "",
-        "rule": "",
-        "status": 0,
-        "comments": "",
         "items": [{
             "index": "A1",
-            "level": 2,
             "name": "一般要求",
-            "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "临时用电方案须由电气工程技术人员组织编制，施工单位技术负责人审核，监理工程师审批后方可实施",
-                "score": "",
-                "status": "",
+                "status": "UNCHECK",
                 "comments": "",
-                "result":[true ,false],
-                "relation_num":"SGJC-C-C5-(1)",
-                "relation_check":"未制定临时用电方案，扣4分。",        
-            },{
+                "range": [0, 1],
+                "score": null,
+                "link": "SGJC-C-C5-1"
+            }, {
                 "index": "2",
-                "level": 3,
                 "name": "临时用电方案中的电设备清单、负荷计算、用电工程图纸等完整",
-                "score": "",
-                "status": "",
+                "status": "UNCHECK",
                 "comments": "",
-                "result":[true ,false],
-                "relation_num":"SGJC-B-B5-(2)",
-                "relation_check":"方案中用电设备清单、负荷计算、用电工程图纸等不完整，扣1-3分。"         
-            },{
+                "range": [0, 1],
+                "score": null,
+                "link": "SGJC-B-B5-2"
+            }, {
                 "index": "3",
-                "level": 3,
                 "name": "绘制临时供电平面和系统图、安全用电技术措施和电气防火措施。",
-                "score": "",
-                "status": "",
+                "status": "UNCHECK",
                 "comments": "",
-                "result":[true ,false],
-                "relation_num":"SGJC-C-C5-(3)",
-                "relation_check":"未标注用电平面布置图，扣2分。"       
-            },{
+                "range": [0, 1],
+                "score": null,
+                "link": "SGJC-C-C5-3"
+            }, {
                 "index": "4",
-                "level": 3,
                 "name": "按方案执行",
-                "score": "",
-                "status": "",
+                "status": "UNCHECK",
                 "comments": "",
-                "result":[true ,false],
-                "relation_num":"SGXCTY-A-A3-(1)",
-                "relation_check":"现场临时用电未按临时用电方案布设，扣2-4分。"    
+                "range": [0, 1],
+                "score": null,
+                "link": "SGXCTY-A-A3-1"
             }]
-        },{
+        }, {
             "index": "A2",
-            "level": 2,
             "name": "操作人员",
-            "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "施工现场的电工应持有上岗证。",
-                "score": "",
-                "status": "",
+                "status": "UNCHECK",
                 "comments": "",
-                "result":[true ,false],
-                "relation_num":"",
-                "relation_check":"",        
+                "range": [0, 1],
+                "score": null,
+                "link": ""
             }]
         }]
-    },{
+    }, {
         "index": "B",
-        "level": 1,
         "name": "布线",
-        "content": "",
-        "method": "",
-        "rule": "",
-        "total": "",
-        "score": "",
-        "status": 0,
-        "comments": "",
         "items": [{
             "index": "B1",
-            "level": 2,
             "name": "材料",
-            "total": "",
-            "score": "",
-            "status": 0,
             "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "遵守“三相五线”制及禁止使用花线等用电规范。",
-                "score": "",
-                "status": "",
-                "comments": "" ,
-                "result":[true ,false],
-                "relation_num":"",
-                "relation_check":""                      
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": ""
             }]
-        },{
+        }, {
             "index": "B2",
-            "level": 2,
             "name": "铺设",
-            "total": "",
-            "score": "",
-            "status": 0,
             "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "通道线缆应架空，不能架空的应做好防碾压措施。",
-                "score": "",
-                "status": "",
-                "comments": "" ,
-                "result":[true ,false],
-                "relation_num":"",
-                "relation_check":""            
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": ""
             }]
-        },{
-             "index": "B3",
-            "level": 2,
+        }, {
+            "index": "B3",
             "name": "线路",
-            "total": "",
-            "score": "",
-            "status": 0,
             "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "进户线的室外端应采用绝缘子固定，过墙应穿管保护，距地面不得小于2.5m，并应采取防雨措施。",
-                "score": "",
-                "status": "",
-                "comments": "" ,
-                "result":[true ,false],
-                "relation_num":"SGXCTY-A-A3-(3)",
-                "relation_check":"电线架空和入地埋设不规范，发现一处扣1分。"            
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": "SGXCTY-A-A3-3"
             }]
         }]
-    },{
+    }, {
         "index": "C",
-        "level": 1,
         "name": "开关箱",
-        "content": "",
-        "method": "",
-        "rule": "",
-        "total": "",
-        "score": "",
-        "status": 0,
-        "comments": "",
         "items": [{
             "index": "C1",
-            "level": 2,
             "name": "安装",
-            "total": "",
-            "score": "",
-            "status": 0,
-            "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "开关箱是否符合安全要求，有无安装漏电开关。",
-                "score": "",
-                "status": "",
-                "comments": "" ,
-                "result":[true ,false],
-                "relation_num":"",
-                "relation_check":""           
-            }],
-        },{
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": ""
+            }]
+        }, {
             "index": "C2",
-            "level": 2,
             "name": "插座",
-            "total": "",
-            "score": "",
-            "status": 0,
-            "comments": "",
-           "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
-                "name": "应 设置在 人员 活动不 轻易 触碰 得到的位置。",
-                "score": "",
-                "status": "",
-                "comments": "",   
-                "result":[true ,false],
-                "relation_num":"SGXCTY-A-A3-(5)",
-                "relation_check":"场内照明及安全电压使用不满足要求，发现一处扣1分。"           
+                "name": "应设置在人员活动不轻易触碰得到的位置。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": ""
             }]
         }]
-    },{
+    }, {
         "index": "D",
-        "level": 1,
         "name": "电器、灯具",
-        "content": "",
-        "method": "",
-        "rule": "",
-        "total": "",
-        "score": "",
-        "status": 0,
-        "comments": "",
         "items": [{
             "index": "D1",
-            "level": 2,
+            "name": "照明电压",
+            "items": [{
+                "index": "1",
+                "name": "电压一般不超过 36v。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": "SGXCTY-A-A3-5"
+            }]
+        }, {
+            "index": "D2",
             "name": "接线",
-            "total": "",
-            "score": "",
-            "status": 0,
-            "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "宿舍内接线应整齐有序，严禁乱拉乱接现象。",
-                "score": "",
-                "status": "",
-                "comments": "" ,
-                "result":[true ,false],
-                "relation_num":"SGXCTY-A-A3-(5)",
-                "relation_check":"场内照明及安全电压使用不满足要求，发现一处扣1分。"
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": ""
             }]
-        }]   
-    }, {
-           "index": "D2",
-            "level": 2,
+        }, {
+            "index": "D3",
             "name": "大功率设备",
-            "total": "",
-            "score": "",
-            "status": 0,
-            "comments": "",
-            "items":[{
+            "items": [{
                 "index": "1",
-                "level": 3,
                 "name": "不得使用如“热得快”、电磁炉等大功率电器。",
-                "score": "",
-                "status": "",
+                "status": "UNCHECK",
                 "comments": "",
-                "result":[true ,false],
-                "relation_num":"SGXCTY-A-A3-(5)",
-                "relation_check":"场内照明及安全电压使用不满足要求，发现一处扣1分。"   
-        }]
-    },{
-        "index": "E",
-        "level": 1,
-        "name": "高压电",
-        "content": "",
-        "method": "",
-        "rule": "",
-        "total": "",
-        "score": "",
-        "status": 0,
-        "comments": "",
-        "items":[{
-            "index": "E1",
-            "level": 2,
-            "name": "标识标牌",
-            "total": "",
-            "score": "",
-            "status": 0,
-            "comments": "",
-            "items":[{
-                "index": "1",
-                "level": 3,
-                "name": "设有围栏、警示标识标牌。",
-                "score": "",
-                "status": "",
-                "comments": "",
-                "result":[true ,false],
-                "relation_num":"SGXCTY-A-A3-(6)",
-                "relation_check":"标识不完善，发现一处扣1分。"   
-
-        },{
-            "index": "E2",
-            "level": 2,
-            "name": "防护",
-            "total": "",
-            "score": "",
-            "status": 0,
-            "comments": "",
-            "items":[{
-                "index": "1",
-                "level": 3,
-                "name": "周围严禁堆放油类制品、杂物等易燃易爆品",
-                "score": "",
-                "status": "",
-                "comments": "" ,
-                "result":[true ,false],
-                "relation_num":"",
-                "relation_check":"" 
+                "range": [0, 1],
+                "score": null,
+                "link": ""
             }]
         }]
-    }] 
-}
+    }, {
+        "index": "E",
+        "name": "高压电",
+        "items": [{
+            "index": "E1",
+            "name": "标识标牌",
+            "items": [{
+                "index": "1",
+                "name": "设有围栏、警示标识标牌。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": "SGXCTY-A-A3-6"
 
-    
+            }]
+        }, {
+            "index": "E2",
+            "name": "防护",
+            "items": [{
+                "index": "1",
+                "name": "周围严禁堆放油类制品、杂物等易燃易爆品",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [0, 1],
+                "score": null,
+                "link": ""
+            }]
+        }]
+    }]
+}
