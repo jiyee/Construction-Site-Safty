@@ -8,6 +8,7 @@ exports.newAndSave = function (name, desc, departments, callback) {
   var role = new Role();
 
   role.name = name;
+  role.desc = desc;
   role.departments = departments;
 
   role.save(callback);

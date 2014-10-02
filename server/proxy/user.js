@@ -44,11 +44,23 @@ exports.findById = function (id, callback) {
  * Callback:
  * - err, 数据库异常
  * - users, 用户
- * @param  {String}   id       角色ID
+ * @param  {String}   roleId       角色ID
  * @param  {Function} callback 回调函数
  */
 exports.findByRoleId = function (roleId, callback) {
     User.find({role: roleId}).populate('role').exec(callback);
+}
+
+/**
+ * 根据部门ID, 查找用户
+ * Callback:
+ * - err, 数据库异常
+ * - users, 用户
+ * @param  {String}   departmentId  部门ID
+ * @param  {Function} callback 回调函数
+ */
+exports.findByDepartmentId = function (departmentId, callback) {
+    User.find({department: departmentId}).populate('department').exec(callback);
 }
 
 exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, department, project, section, branch, place, team, callback) {
@@ -64,13 +76,13 @@ exports.newAndSave = function (name, title, username, password, email, tel, mobi
 
   user.active = active || false;
 
-  user.role = role;
-  user.department = department;
-  user.project = project;
-  user.section = section;
-  user.branch = branch;
-  user.place = place;
-  user.team = team;
+  user.role = role || null;
+  user.department = department || null;
+  user.project = project || null;
+  user.section = section || null;
+  user.branch = branch || null;
+  user.place = place || null;
+  user.team = team || null;
 
   user.save(callback);
 };

@@ -1,9 +1,9 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var Role = require('../proxy/').Role;
+var Department = require('../proxy/').Department;
 
 exports.find = function(req, res, next) {
-    return Role.find(function(err, roles) {
+    return Department.find(function(err, departments) {
         if (err) {
             console.log(err);
             return next(err);
@@ -12,7 +12,7 @@ exports.find = function(req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'roles': roles
+            'departments': departments
         });
     });
 }
@@ -20,13 +20,8 @@ exports.find = function(req, res, next) {
 exports.create = function(req, res, next) {
     var name = validator.trim(req.body.name);
     var desc = validator.trim(req.body.desc);
-    var departments = validator.trim(req.body.departments);
 
-    if (departments.length === 0) {
-        departments = [];
-    }
-
-    Role.newAndSave(name, desc, departments, function(err) {
+    Department.newAndSave(name, desc, function(err) {
         if (err) {
             console.log('error: ', err);
             return next(err);
@@ -39,5 +34,5 @@ exports.create = function(req, res, next) {
         });
     });
 
-    console.log("/role/add => new and save.");
+    console.log("/department/add => new and save.");
 }

@@ -14,7 +14,41 @@ exports.find = function (req, res, next) {
             'code': 0,
             'users': users
         });
-    })
+    });
+}
+
+exports.findById = function (req, res, next) {
+    var user_id = validator.trim(req.params.user_id);
+
+    User.findById(user_id, function (err, user) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'user': user
+        });
+    });
+}
+
+exports.findByName = function (req, res, next) {
+    var user_name = validator.trim(req.params.user_name);
+
+    User.findByName(user_name, function (err, user) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'user': user
+        });
+    });
 }
 
 exports.findByRoleId = function (req, res, next) {
@@ -30,11 +64,28 @@ exports.findByRoleId = function (req, res, next) {
             'status': 'success',
             'code': 0,
             'users': users
-        })
-    })
+        });
+    });
 }
 
-exports.signup = function(req, res, next) {
+exports.findByDepartmentId = function (req, res, next) {
+    var department_id = validator.trim(req.params.department_id);
+
+    User.findByDepartmentId(department_id, function (err, users) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'users': users
+        });
+    });
+}
+
+exports.create = function(req, res, next) {
     var name = validator.trim(req.body.name);
     var title = validator.trim(req.body.title);
     var username = validator.trim(req.body.username).toLowerCase();
@@ -45,8 +96,9 @@ exports.signup = function(req, res, next) {
     var avatar_url = validator.trim(req.body.avatar_url).toLowerCase();
 
     var role = validator.trim(req.body.role);
+    var department = validator.trim(req.body.department);
 
-    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role, null, null, null, null, null, null, function(err, user) {
+    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role, department, null, null, null, null, null, function(err, user) {
         if (err) {
             console.log('error: ', err);
             return next(err);
