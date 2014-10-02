@@ -1,0 +1,817 @@
+{
+    "table_id": "",
+    "table_name": "施工单位施工现场考核评价表（公路部分）（100分）",
+    "project_name": "",
+    "project_section": "",
+    "review_id": "",
+    "review_unit": "",
+    "review_staff": "",
+    "review_date": "",
+    "review_status": 0,
+    "under_review_unit": "",
+    "review_due_score": "",
+    "review_calc_score": "",
+    "review_final_score": "",
+    "items": [{
+        "index": "A",
+        "level": 1,
+        "name": "桥梁工程",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 40,
+        "score": 40,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "A1",
+            "level": 2,
+            "name": "基础施工",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "扩大基础、挖孔桩或钻孔桩未严格按方案实施，扣4-6分。",
+                "range": [0, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "在城市、村镇等人口密集区域未设置警戒设施或警示灯，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "扩大基础、挖孔桩或钻孔桩施工未严格悬挂设置安全告知牌的，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "A2",
+            "level": 2,
+            "name": "墩台",
+            "total": 16,
+            "score": 16,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "高墩台施工未严格按专项施工方案组织实施扣4-8分。",
+                "range": [0, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "脚手架及作业平台搭设不能保证作业安全空间，发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未按规定设置人员上下通道，发现一处扣6分。",
+                "range": [0, 6, 12, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未按规定安装附着式电梯，扣8分。",
+                "range": [0, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "出入口未设置防护措施，扣3分。",
+                "range": [0, 3],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "发现使用起重设备载人，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "模板螺栓连接不规范，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "人员违规作业，发现一次扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "A3",
+            "level": 2,
+            "name": "桥梁上部结构施工",
+            "total": 16,
+            "score": 16,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按方案组织施工，扣4-8分。",
+                "range": [0, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "梁板吊装就位后，未及时进行稳固，发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未按要求对挂篮进行静载试验，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未按要求设置安全防护栏杆或安全网，发现一处，扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "人员违规作业，发现一次，扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "架桥机平衡配重、限位及支垫不稳固，发现一处，扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "吊装使用的钢丝绳磨损、断丝超标，发现一处，扣3分。",
+                "range": [0, 3, 6, 9, 12, 15, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "起重设备基础、轨道固定等不符合要求，发现一处，扣3分。",
+                "range": [0, 3, 6, 9, 12, 15, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "9",
+                "level": 3,
+                "name": "上跨桥梁无防坠措施，扣2-3分。",
+                "range": [0, 2, 3],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "10",
+                "level": 3,
+                "name": "桥面铺装施工前，梁板体间及中央隔离带间隙无安全防坠设施，每处扣1-2分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "B",
+        "level": 1,
+        "name": "隧道工程",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 44,
+        "score": 44,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "B1",
+            "level": 2,
+            "name": "施工基本要求及开挖",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "门禁和值班登记制度执行不严格，扣4-8分。",
+                "range": [0, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "洞口施工与方案不符，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "洞口工程排水系统不完善，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "洞口开挖发现掏底或上下重叠开挖、不稳定，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "各类施工作业台架、台车防坠设施不足，发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "隧道内堆放易燃易爆物品，发现一处扣4-6分。",
+                "range": [0, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "施工现场未悬挂风险源辨识牌，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "警示标志数量不足，发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "9",
+                "level": 3,
+                "name": "未按方案组织开挖，扣4-6分。",
+                "range": [0, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "10",
+                "level": 3,
+                "name": "断面尺寸不满足设计要求，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "11",
+                "level": 3,
+                "name": "台阶法施工台阶长度超过隧道开挖宽度的1.5倍，发现一次扣1分.",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "12",
+                "level": 3,
+                "name": "钢架下沉或变形，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "13",
+                "level": 3,
+                "name": "开挖进尺控制不严，发现一次扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "14",
+                "level": 3,
+                "name": "相邻钢架未用钢筋连接，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "15",
+                "level": 3,
+                "name": "未按设计要求施工锁脚锚杆，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "16",
+                "level": 3,
+                "name": "双侧壁导坑法施工距离不满足要求，扣2-3分。",
+                "range": [0, 2, 3],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "17",
+                "level": 3,
+                "name": "未按方案组织爆破，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "18",
+                "level": 3,
+                "name": "停放在接近车辆运行界限处的施工设备与机械，其外缘未设置警示灯，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "19",
+                "level": 3,
+                "name": "各类施工作业台车未设置固定的警示灯，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "20",
+                "level": 3,
+                "name": "运输车辆人料混载，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "21",
+                "level": 3,
+                "name": "运装大体积或超长料具时，无专人指挥，专车运输，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B2",
+            "level": 2,
+            "name": "初期支护及二衬",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "初期支护和二衬施工与方案不符，扣6-8分。",
+                "range": [0, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "方案中未明确仰拱与掌子面、二衬与掌子面的距离，扣6分.",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "仰拱与掌子面、二衬与掌子面的距离未严格按要求控制，扣4-6分。",
+                "range": [0, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "钢架拱脚基础不牢固，发现一处扣1-2分。",
+                "range": [0, 1, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "相邻钢架之间纵向钢筋连接不规范，发现一处扣1-2分。",
+                "range": [0, 1, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B3",
+            "level": 2,
+            "name": "监控量测，超前地质预报",
+            "total": 6,
+            "score": 6,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按监控量测及超前地质预报专项施工方案实施的，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "长大隧道和不良地质隧道未进行超前地质预报，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "监控量测资料不齐全，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "量测数据分析不准确，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "签字不齐全，发现一处，扣0.5分。",
+                "range": [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "监控量测及超前地质预报监控点数量不满足方案要求，发现一次扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "没有对掌子面稳定性巡视检查记录，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "巡视检查记录不完善，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B4",
+            "level": 2,
+            "name": "逃生通道",
+            "total": 4,
+            "score": 4,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按要求设置逃生通道，扣4分。",
+                "range": [0, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "逃生通道不合理，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B5",
+            "level": 2,
+            "name": "通风防尘照明、排水及消防、应急管理",
+            "total": 4,
+            "score": 4,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未对有毒有害气体进行监测，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "未按要求通风，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "隧道照明不充足，使用油灯、电石灯、汽灯等有火焰的灯火照明，应急照明不符合要求，发现一处扣2分。",
+                "range": [0, 2, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "积水较严重，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "消防器材不足，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "未设置应急箱，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "电缆布设不规范，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "高压线、动力线、照明线安装敷设不符合规范要求，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B6",
+            "level": 2,
+            "name": "瓦斯隧道",
+            "total": 6,
+            "score": 6,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未编制专项施工方案，且方案未经专家评审的，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "瓦斯隧道施工与专项方案不符，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "瓦斯隧道施工未按要求使用具有防爆性能的机械设备，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未进行瓦斯浓度检测，扣4分。",
+                "range": [0, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "掌子面瓦斯浓度超标时施工，扣6分，责今立即停工整改。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "施工现场消防设备不齐备，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B7",
+            "level": 2,
+            "name": "信息管理",
+            "total": 2,
+            "score": 2,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按要求配备信息管理系统，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "监控视频、通讯和定位信息失效，发现一处扣0.5分。",
+                "range": [0, 0.5, 1, 1.5, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "C",
+        "level": 1,
+        "name": "边坡工程",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 8,
+        "score": 8,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "C1",
+            "level": 2,
+            "name": "边坡工程",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按要求设置风险源告知牌，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "未按要求设置安全防护措施，发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "排水不完善，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "路基土石方爆破作业与方案不符，扣3-5分。",
+                "range": [0, 3, 4, 5],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "D",
+        "level": 1,
+        "name": "路面工程",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 8,
+        "score": 8,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "D1",
+            "level": 2,
+            "name": "路面施工",
+            "total": 2,
+            "score": 2,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "施工区域交通封闭管理不严，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "发现用施工车辆违规载人，扣4分。",
+                "range": [0, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "路面摊铺机、压实机械反光装置不符合要求，违规作业，每发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "摊铺施工期无专职安全员的，发现一次扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }]
+    }]
+}

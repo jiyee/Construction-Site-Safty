@@ -1,0 +1,691 @@
+{
+    "table_id": "",
+    "table_name": "施工单位施工现场考核评价表（通用部分）（100分）",
+    "project_name": "",
+    "project_section": "",
+    "review_id": "",
+    "review_unit": "",
+    "review_staff": "",
+    "review_date": "",
+    "review_status": 0,
+    "under_review_unit": "",
+    "review_due_score": "",
+    "review_calc_score": "",
+    "review_final_score": "",
+    "items": [{
+        "index": "A",
+        "level": 1,
+        "name": "施工现场布设",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 24,
+        "score": 24,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "A1",
+            "level": 2,
+            "name": "施工驻地",
+            "total": 6,
+            "score": 6,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "安办公生活区设置在风险区域，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "生产、生活区设置不合理，未按规定封闭设置，安排专人值班，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "生活区内存放易燃易爆危险品，扣4分。",
+                "range": [0, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "1",
+                "level": 3,
+                "name": "装配式房屋无材料合格证或验收证明，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "生产、生活区布置不满足防火防爆要求，扣4分.",
+                "range": [0, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "A2",
+            "level": 2,
+            "name": "拌和站、预制场、钢筋加工场、仓库",
+            "total": 6,
+            "score": 6,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "区域划分不合理，标识不明显，扣2-3分。",
+                "range": [0, 2, 3],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "设置在危险区域，扣3分。",
+                "range": [0, 3],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "场地硬化、排水系统不符合要求，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未封闭管理，未设置警示警告标志标牌，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "梁板堆放层数不符合规范要求、无防倾覆措施，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "立式水泥存储罐基座不牢固、无防倾覆措施，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "防雨棚不稳固，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "张拉作业没有安全防护措施，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "9",
+                "level": 3,
+                "name": "违章检修搅拌设备，发现一次扣4分。",
+                "range": [0, 4, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "10",
+                "level": 3,
+                "name": "灭火器、消防锹、消防桶等消防设施配备不足，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "A3",
+            "level": 2,
+            "name": "临时用电",
+            "total": 6,
+            "score": 6,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "现场临时用电未按临时用电方案布设，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "“三级配电、两级保护”，和“一机、一闸、一漏、一箱”，发现一处不规范扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "电线架空和入地埋设不规范，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "电箱固定、上锁、防雨等措施不规范，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "场内照明及安全电压使用不满足要求，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "标识不完善，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "A4",
+            "level": 2,
+            "name": "消防安全",
+            "total": 6,
+            "score": 6,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "施工现场消防设施配备不足，维护不及时，扣3-5分。",
+                "range": [0, 3, 4, 5],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "消防通道不满足要求，扣3分。",
+                "range": [0, 3],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "未悬挂责任铭牌，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "A5",
+            "level": 2,
+            "name": "施工便道便桥",
+            "total": 6,
+            "score": 6,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "便桥未专项设计或未经验收即投入使用，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "便道排水设施不到位，通行能力弱，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "便桥未设限速、限载标志，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "施工便道的急弯、陡坡及高路堤等危险地段未设置防撞设施，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "便桥桥面未设置防滑设施，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "临时码头栈桥临水端未设置靠船的靠帮和系缆设施，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "B",
+        "level": 1,
+        "name": "安全防护",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 26,
+        "score": 26,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "B1",
+            "level": 2,
+            "name": "防护栏杆、安全网及其它防打击、防坠落措施",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按要求设置防护栏杆、安全网或其它安全防护设施的，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "防护栏杆不牢固，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "安全通道未搭设或搭设不规范，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "改扩建工程半幅施工区与行车道之间无隔离设施，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B2",
+            "level": 2,
+            "name": "文明施工、安全警示标志、标牌",
+            "total": 8,
+            "score": 8,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按要求设置文明施工、安全警示标志、标牌及操作规程、设备标识牌的，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "跨线施工道路未设置限高、限宽、减速、防撞、警示标志及反光或警告灯等安全设施，每发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B3",
+            "level": 2,
+            "name": "避雷设备",
+            "total": 5,
+            "score": 5,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按要求设置避雷设备的，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "B4",
+            "level": 2,
+            "name": "个体防护",
+            "total": 5,
+            "score": 5,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按照规定配置和使用个体防护用品，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "防护用品无产品合格证，发现一次扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "C",
+        "level": 1,
+        "name": "施工作业",
+        "content": "",
+        "method": "",
+        "rule": "",
+        "total": 44,
+        "score": 44,
+        "status": 0,
+        "comments": "",
+        "items": [{
+            "index": "C1",
+            "level": 2,
+            "name": "高处作业",
+            "total": 10,
+            "score": 10,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "高处作业未按要求设置人员上下通道，发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "作业平台搭设不牢固，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "作业平台有翘头板，发现一处扣1分.",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "未按要求挂置安全网，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "C2",
+            "level": 2,
+            "name": "支架、脚手架",
+            "total": 12,
+            "score": 12,
+            "status": 0,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "未按方案搭设和拆除支架脚手架，扣4-8分。",
+                "range": [0, 4, 5, 6, 7, 8],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "基础处理不符合方案要求，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "排水设施不完善，扣2分。",
+                "range": [0, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "对支架和脚手架的材料抽检数量不足，或材料无出厂合格证明，或抽检质量不合格，每发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "承重支架搭设未制定专项施工方案，扣4-6分。",
+                "range": [0, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "对承重支架和脚手架未组织验收，发现一处扣4分。",
+                "range": [0, 4, 8, 12],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "未挂牌公示和公告，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "承重支架使用前未进行预压，或预压不符合要求，发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "9",
+                "level": 3,
+                "name": "未按要求设置缆风绳或固定措施，每处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "10",
+                "level": 3,
+                "name": "缆风绳搭设不规范，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "C3",
+            "level": 2,
+            "name": "模板",
+            "total": 6,
+            "score": 6,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "大型模板搭设、拆除未制定专项施工方案，或方案未经审批，每发现一处扣2分。",
+                "range": [0, 2, 4, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "模板制作、存放、防倾覆、使用、拆除不符合方案要求，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "大型模板使用前未组织验收，扣6分。",
+                "range": [0, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "大型模板验收程序不规范，扣3-6分。",
+                "range": [0, 3, 4, 5, 6],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }, {
+            "index": "C4",
+            "level": 2,
+            "name": "特种设备",
+            "total": 10,
+            "score": 10,
+            "comments": "",
+            "items": [{
+                "index": "1",
+                "level": 3,
+                "name": "铭牌未按要求悬挂，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "2",
+                "level": 3,
+                "name": "操作人员无证，发现一人扣2分。",
+                "range": [0, 2, 4, 6, 8, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "3",
+                "level": 3,
+                "name": "垂直升降设备、塔吊基础及附着装置不稳定牢固，每处扣5分。",
+                "range": [0, 5, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "4",
+                "level": 3,
+                "name": "轨道式起重机无有效限位及保险装置，电缆拖地行走，发现一次扣2分。",
+                "range": [0, 2, 4, 6, 8, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "5",
+                "level": 3,
+                "name": "起重设备违章操作、停机，发现一次扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "6",
+                "level": 3,
+                "name": "特种设备未报验即投入使用，扣10分。",
+                "range": [0, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "7",
+                "level": 3,
+                "name": "使用过程中起重臂下严禁站人，发现一次扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "8",
+                "level": 3,
+                "name": "施工电梯未设置电梯笼门和围护门，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }, {
+                "index": "9",
+                "level": 3,
+                "name": "机械设备外漏传动部位未设置安全防护罩和安全检修保护装置，扣1分。",
+                "range": [0, 1],
+                "score": 0,
+                "status": 0,
+                "comments": ""
+            }]
+        }]
+    }]
+}
