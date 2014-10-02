@@ -13,7 +13,7 @@ mongoose.connect("mongodb://localhost/" + settings.db, function (err) {
 // include models
 require('./user');
 require('./role');
-require('./department');
+require('./unit');
 require('./project');
 require('./section');
 require('./branch');
@@ -23,7 +23,7 @@ require('./team');
 // retrieve models
 exports.User = mongoose.model('User');
 exports.Role = mongoose.model('Role');
-exports.Department = mongoose.model('Department');
+exports.Unit = mongoose.model('Unit');
 exports.Project = mongoose.model('Project');
 exports.Section = mongoose.model('Section');
 exports.Branch = mongoose.model('Branch');

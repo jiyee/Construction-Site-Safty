@@ -17,7 +17,7 @@ var ProjectSchema = new Schema({
     update_at: { type: Date, default: Date.now},
 
     // Which Model to use during population.
-    departments: [{ type: Schema.Types.ObjectId, ref: 'Department'}], // 涵盖的部门
+    units: [{ type: Schema.Types.ObjectId, ref: 'Unit'}], // 涵盖的部门
     sections: [{ type: Schema.Types.ObjectId, ref: 'Section'}], // 涵盖的标段
     branches: [{ type: Schema.Types.ObjectId, ref: 'Branch'}], // 涵盖的分部
     places: [{ type: Schema.Types.ObjectId, ref: 'Place'}], // 涵盖的工区

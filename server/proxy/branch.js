@@ -40,7 +40,7 @@ exports.findByRoleId = function (roleId, callback) {
     User.find({role: roleId}).populate('role').exec(callback);
 }
 
-exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, department, project, section, branch, place, team, callback) {
+exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, unit, project, section, branch, place, team, callback) {
   var user = new User();
 
   user.name = name;
@@ -54,7 +54,7 @@ exports.newAndSave = function (name, title, username, password, email, tel, mobi
   user.active = active || false;
 
   user.role = role;
-  user.department = department;
+  user.unit = unit;
   user.project = project;
   user.section = section;
   user.branch = branch;

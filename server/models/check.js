@@ -16,10 +16,10 @@ var CheckSchema = new Schema({
     place: { type: Schema.Types.ObjectId, ref: 'Place' }, // 检查工区
     team: { type: Schema.Types.ObjectId, ref: 'Team' }, // 检查班组, 对应具体责任人, 以上均可能为空
 
-    checker_department: { type: Schema.Types.ObjectId, ref: 'Department' }, // 检查单位
-    constructor_department: { type: Schema.Types.ObjectId, ref: 'Department' }, // 建设单位
-    supervisor_department: { type: Schema.Types.ObjectId, ref: 'Department' }, // 监理单位
-    builder_department: { type: Schema.Types.ObjectId, ref: 'Department' }, // 施工单位
+    checker_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 检查单位
+    constructor_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 建设单位
+    supervisor_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 监理单位
+    builder_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 施工单位
 
     table: { type: Schema.Types.ObjectId, ref: 'Table'}, // 检查表单
     index: { type: String }, // 检查编号

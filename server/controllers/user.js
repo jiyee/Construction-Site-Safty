@@ -68,10 +68,10 @@ exports.findByRoleId = function (req, res, next) {
     });
 }
 
-exports.findByDepartmentId = function (req, res, next) {
-    var department_id = validator.trim(req.params.department_id);
+exports.findByUnitId = function (req, res, next) {
+    var unit_id = validator.trim(req.params.unit_id);
 
-    User.findByDepartmentId(department_id, function (err, users) {
+    User.findByUnitId(unit_id, function (err, users) {
         if (err) {
             console.log(err);
             return next(err);
@@ -96,9 +96,9 @@ exports.create = function(req, res, next) {
     var avatar_url = validator.trim(req.body.avatar_url).toLowerCase();
 
     var role = validator.trim(req.body.role);
-    var department = validator.trim(req.body.department);
+    var unit = validator.trim(req.body.unit);
 
-    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role, department, null, null, null, null, null, function(err, user) {
+    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role, unit, null, null, null, null, null, function(err, user) {
         if (err) {
             console.log('error: ', err);
             return next(err);

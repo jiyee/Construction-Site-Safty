@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var role = require('./controllers/role');
 var user = require('./controllers/user');
-var department = require('./controllers/department');
+var unit = require('./controllers/unit');
 
 router.get('/', function (req, res) {
     res.render('index', {
@@ -21,8 +21,8 @@ router.get('/role/:role_id/users', user.findByRoleId);
 router.post('/role/create', role.create);
 
 // 部门接口
-router.get('/departments', department.find);
-router.get('/department/:department_id/users', user.findByDepartmentId);
-router.post('/department/create', department.create);
+router.get('/units', unit.find);
+router.get('/unit/:unit_id/users', user.findByUnitId);
+router.post('/unit/create', unit.create);
 
 module.exports = router;

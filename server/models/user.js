@@ -23,7 +23,7 @@ var UserSchema = new Schema({
 
     // Which Model to use during population.
     role: { type: Schema.Types.ObjectId, ref: 'Role'}, // 角色引用
-    department: { type: Schema.Types.ObjectId, ref: 'Department'}, // 部门
+    unit: { type: Schema.Types.ObjectId, ref: 'Unit'}, // 部门
     project: { type: Schema.Types.ObjectId, ref: 'Project'}, // 项目
     section: { type: Schema.Types.ObjectId, ref: 'Section'}, // 标段
     branch: { type: Schema.Types.ObjectId, ref: 'Branch'}, // 分部

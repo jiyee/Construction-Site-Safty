@@ -56,14 +56,14 @@ exports.findByRoleId = function (roleId, callback) {
  * Callback:
  * - err, 数据库异常
  * - users, 用户
- * @param  {String}   departmentId  部门ID
+ * @param  {String}   unitId  部门ID
  * @param  {Function} callback 回调函数
  */
-exports.findByDepartmentId = function (departmentId, callback) {
-    User.find({department: departmentId}).populate('department').exec(callback);
+exports.findByUnitId = function (unitId, callback) {
+    User.find({unit: unitId}).populate('unit').exec(callback);
 }
 
-exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, department, project, section, branch, place, team, callback) {
+exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, unit, project, section, branch, place, team, callback) {
   var user = new User();
 
   user.name = name;
@@ -77,7 +77,7 @@ exports.newAndSave = function (name, title, username, password, email, tel, mobi
   user.active = active || false;
 
   user.role = role || null;
-  user.department = department || null;
+  user.unit = unit || null;
   user.project = project || null;
   user.section = section || null;
   user.branch = branch || null;

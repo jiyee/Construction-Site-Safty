@@ -20,13 +20,13 @@ exports.find = function(req, res, next) {
 exports.create = function(req, res, next) {
     var name = validator.trim(req.body.name);
     var desc = validator.trim(req.body.desc);
-    var departments = validator.trim(req.body.departments);
+    var units = validator.trim(req.body.units);
 
-    if (departments.length === 0) {
-        departments = [];
+    if (units.length === 0) {
+        units = [];
     }
 
-    Role.newAndSave(name, desc, departments, function(err) {
+    Role.newAndSave(name, desc, units, function(err) {
         if (err) {
             console.log('error: ', err);
             return next(err);

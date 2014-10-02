@@ -1,9 +1,9 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var Department = require('../proxy/').Department;
+var Unit = require('../proxy/').Unit;
 
 exports.find = function(req, res, next) {
-    return Department.find(function(err, departments) {
+    return Unit.find(function(err, units) {
         if (err) {
             console.log(err);
             return next(err);
@@ -12,7 +12,7 @@ exports.find = function(req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'departments': departments
+            'units': units
         });
     });
 }
@@ -21,7 +21,7 @@ exports.create = function(req, res, next) {
     var name = validator.trim(req.body.name);
     var desc = validator.trim(req.body.desc);
 
-    Department.newAndSave(name, desc, function(err) {
+    Unit.newAndSave(name, desc, function(err) {
         if (err) {
             console.log('error: ', err);
             return next(err);
@@ -34,5 +34,5 @@ exports.create = function(req, res, next) {
         });
     });
 
-    console.log("/department/add => new and save.");
+    console.log("/unit/add => new and save.");
 }

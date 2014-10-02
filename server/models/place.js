@@ -16,7 +16,7 @@ var PlaceSchema = new Schema({
     update_at: { type: Date, default: Date.now},
 
     // Which Model to use during population.
-    // departments: [{ type: Schema.Types.ObjectId, ref: 'Department'}], // 涵盖的部门
+    // units: [{ type: Schema.Types.ObjectId, ref: 'Unit'}], // 涵盖的部门
     project: { type: Schema.Types.ObjectId, ref: 'Project'}, // 项目
     branch: { type: Schema.Types.ObjectId, ref: 'Branch'}, // 分部
     teams: [{ type: Schema.Types.ObjectId, ref: 'Team'}] // 涵盖的班组
