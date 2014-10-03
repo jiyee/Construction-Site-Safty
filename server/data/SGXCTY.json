@@ -167,6 +167,7 @@
             "name": "临时用电",
             "total": 6,
             "score": 6,
+            "status": 0,
             "comments": "",
             "items": [{
                 "index": "1",
@@ -223,6 +224,7 @@
             "name": "消防安全",
             "total": 6,
             "score": 6,
+            "status": 0,
             "comments": "",
             "items": [{
                 "index": "1",
@@ -390,6 +392,7 @@
             "name": "避雷设备",
             "total": 5,
             "score": 5,
+            "status": 0,
             "comments": "",
             "items": [{
                 "index": "1",
@@ -406,6 +409,7 @@
             "name": "个体防护",
             "total": 5,
             "score": 5,
+            "status": 0,
             "comments": "",
             "items": [{
                 "index": "1",
@@ -612,6 +616,7 @@
             "name": "特种设备",
             "total": 10,
             "score": 10,
+            "status": 0,
             "comments": "",
             "items": [{
                 "index": "1",
