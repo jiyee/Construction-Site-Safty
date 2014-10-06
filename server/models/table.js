@@ -5,15 +5,18 @@
  * @since 2014-10-03
  */
 
-var moongooes = require('moongooes'),
-    Schema = moongooes.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
 var TableSchema = new Schema({
 
-    id: { type: String }, // 表单编号
+    uuid: { type: String }, // 表单索引号
+    file: { type: String }, // 表单文件名
     name: { type: String }, // 表单名称
     type: { type: String }, // 表单类型
     
     items: [{ type: Schema.Types.Mixed }] // 检查项目
 
 });
+
+mongoose.model('Table', TableSchema);

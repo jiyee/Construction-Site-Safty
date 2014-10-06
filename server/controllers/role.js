@@ -39,5 +39,5 @@ exports.create = function(req, res, next) {
         });
     });
 
-    console.log("/role/add => new and save.");
+    console.log("/role/create => new and save.");
 }

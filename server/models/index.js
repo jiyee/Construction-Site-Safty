@@ -19,6 +19,7 @@ require('./section');
 require('./branch');
 require('./place');
 require('./team');
+require('./table');
 
 // retrieve models
 exports.User = mongoose.model('User');
@@ -29,3 +30,4 @@ exports.Section = mongoose.model('Section');
 exports.Branch = mongoose.model('Branch');
 exports.Place = mongoose.model('Place');
 exports.Team = mongoose.model('Team');
+exports.Table = mongoose.model('Table');

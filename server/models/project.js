@@ -1,6 +1,6 @@
 /**
  * @name 项目文档
- * @description 记录项目基本信息，及其涵盖的标段、分部、工区
+ * @description 记录项目基本信息，及其涵盖的标段、分部、工区、班组
  * @author jiyee.sheng@gmail.com
  * @since 2014-09-29
  */

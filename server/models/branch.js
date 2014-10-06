@@ -18,6 +18,7 @@ var BranchSchema = new Schema({
     // Which Model to use during population.
     // units: [{ type: Schema.Types.ObjectId, ref: 'Unit'}], // 涵盖的部门
     project: { type: Schema.Types.ObjectId, ref: 'Project'}, // 项目
+    section: { type: Schema.Types.ObjectId, ref: 'Section'}, // 标段
     branch: { type: Schema.Types.ObjectId, ref: 'Branch'}, // 分部
     places: [{ type: Schema.Types.ObjectId, ref: 'Place'}], // 涵盖的工区
     teams: [{ type: Schema.Types.ObjectId, ref: 'Team'}] // 涵盖的班组

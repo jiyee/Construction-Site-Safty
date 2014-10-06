@@ -34,5 +34,5 @@ exports.create = function(req, res, next) {
         });
     });
 
-    console.log("/unit/add => new and save.");
+    console.log("/unit/create => new and save.");
 }
