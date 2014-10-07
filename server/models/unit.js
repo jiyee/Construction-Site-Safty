@@ -9,11 +9,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UnitSchema = new Schema({
-    name: { type: String},
-    desc: { type: String},
+    name: { type: String },
+    description: { type: String },
+    type: { type: String },
 
-    create_at: { type: Date, default: Date.now},
-    update_at: { type: Date, default: Date.now}
+    create_at: { type: Date, default: Date.now },
+    update_at: { type: Date, default: Date.now }
 
 });
 

@@ -3,21 +3,59 @@ var eventproxy = require('eventproxy');
 var Table = require('../proxy/').Table;
 var Check = require('../proxy/').Check;
 
-exports.create = function(req, res, next) {
-    var file = validator.trim(req.body.file);
-    var project_id = '';
-    var section_id = '';
-    var branch_id = '';
-    var place_id = '';
+exports.find = function(req, res, next) {
+    return Check.find(function(err, checks) {
+        if (err) {
+            return next(err);
+        }
 
-    if (!project_id || !section_id || !branch_id || !place_id || !file) {
-        console.log('empty params: ', project_id, section_id, branch_id, place_id, file);
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'checks': checks
+        });
+    });
+};
+
+exports.findById = function(req, res, next) {
+    var check_id = validator.trim(req.params.check_id);
+
+    return Check.findById(check_id, function(err, check) {
+        if (err) {
+            console.log(err);
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'check': check
+        });
+    });
+};
+
+exports.create = function(req, res, next) {
+    var project_id = validator.trim(req.body.project_id);
+    var section_id = validator.trim(req.body.section_id);
+    var branch_id = validator.trim(req.body.branch_id);
+    var place_id = validator.trim(req.body.place_id);
+    var target = validator.trim(req.body.target);
+    var file = validator.trim(req.body.file);
+
+    if (!project_id || !file) {
         return next({
-            message: 'empty params.'
+            message: 'no project_id or file'
         });
     }
 
-    Check.newAndSave(project_id, section_id, branch_id, place_id, file, function(err) {
+    Table.newAndSave(file, function (err, table) {
+      if (err || !table._id) {
+        return next(err || {
+          message: 'no table_id'
+        });
+      }
+
+      Check.newAndSave(project_id, section_id, branch_id, place_id, target, table._id, function (err, check) {
         if (err) {
             console.log('error: ', err);
             return next(err);
@@ -28,7 +66,8 @@ exports.create = function(req, res, next) {
             'code': 0,
             'check': check
         });
-    });
+      });
 
-    console.log("/check/create => new and save.");
+      console.log("/check/create => new and save.");
+    });
 };

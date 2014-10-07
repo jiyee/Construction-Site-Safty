@@ -5,8 +5,8 @@
  * @since 2014-10-03
  */
 
-var moongooes = require('moongooes'),
-    Schema = moongooes.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
 var CheckSchema = new Schema({
     

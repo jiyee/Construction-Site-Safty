@@ -9,19 +9,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ProjectSchema = new Schema({
-    name: { type: String},
-    desc: { type: String},
-    province: { type: String},
+    name: { type: String }, // 项目名称
+    description: { type: String }, // 项目描述
+    province: { type: String }, // 省份
 
-    create_at: { type: Date, default: Date.now},
-    update_at: { type: Date, default: Date.now},
+    create_at: { type: Date, default: Date.now }, // 创建条目时间
+    update_at: { type: Date, default: Date.now }, // 最近更新时间
 
     // Which Model to use during population.
-    units: [{ type: Schema.Types.ObjectId, ref: 'Unit'}], // 涵盖的部门
-    sections: [{ type: Schema.Types.ObjectId, ref: 'Section'}], // 涵盖的标段
-    branches: [{ type: Schema.Types.ObjectId, ref: 'Branch'}], // 涵盖的分部
-    places: [{ type: Schema.Types.ObjectId, ref: 'Place'}], // 涵盖的工区
-    teams: [{ type: Schema.Types.ObjectId, ref: 'Team'}] // 涵盖的班组
+    units: [{ type: Schema.Types.ObjectId, ref: 'Unit' }], // 对应单位，包括建设单位、施工单位、监理单位
+
+    // Which Model to use during population.
+    parts: [{ type: Schema.Types.ObjectId, ref: 'Part' }] // 涵盖的项目结构, 可能有的是标段（土建、监理）、分部、工区、班组
+
 });
 
 // define model.

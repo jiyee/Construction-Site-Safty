@@ -4,11 +4,16 @@ exports.find = function (callback) {
     Unit.find({}, callback);
 };
 
-exports.newAndSave = function (name, desc, callback) {
+exports.findById = function (id, callback) {
+    Unit.findOne({_id: id}, callback);
+};
+
+exports.newAndSave = function (name, description, type, callback) {
     var unit = new Unit();
 
     unit.name = name;
-    unit.desc = desc;
+    unit.description = description;
+    unit.type = type;
 
     unit.save(callback);
 };

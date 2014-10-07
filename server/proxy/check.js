@@ -9,22 +9,20 @@ exports.find = function (callback) {
 };
 
 exports.findById = function (id, callback) {
-    Check.findOne({_id: id}, callback);
+    Check.findOne({_id: id}).populate('project').populate('section').populate('table').exec(callback);
 };
 
-exports.newAndSave = function (project_id, section_id, branch_id, place_id, target, file, callback) {
+exports.newAndSave = function (project_id, section_id, branch_id, place_id, target, table_id, callback) {
   var check = new Check();
 
-  check.project = project_id;
-  check.section = section_id;
-  check.branch = branch_id;
-  check.place = place_id;
+  check.project = project_id || null;
+  check.section = section_id || null;
+  check.branch = branch_id || null;
+  check.place = place_id || null;
 
   check.target = target;
 
-  Check.newAndSave(file, function (table_id) {
-    check.table = table_id;
-    check.save(callback);
-  });
+  check.table = table_id || null;
+  check.save(callback);
 
 };
