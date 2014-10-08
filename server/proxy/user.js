@@ -28,6 +28,22 @@ exports.findByName = function (name, callback) {
 };
 
 /**
+ * 根据用户名, 查找用户
+ * Callback:
+ * - err, 数据库异常
+ * - user, 用户
+ * @param  {String}   username 用户名 
+ * @param  {Function} callback 回调函数
+ */
+exports.findByUserName = function (username, callback) {
+    if (username.length === 0) {
+        return callback(null, []);
+    }
+
+    User.findOne({username: username}).populate('role unit').exec(callback);
+};
+
+/**
  * 根据用户ID, 查找用户
  * Callback:
  * - err, 数据库异常

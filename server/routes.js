@@ -17,9 +17,14 @@ router.get('/', function (req, res) {
 // NOTICE:
 // 列表添加用insert，移除用remove，元素创建用create，删除用delete
 
+// 权限接口
+router.post('/login', user.login);
+router.get('/auth', user.auth);
+
 // 用户接口
 router.get('/users', user.find);
 router.get('/user/:user_id', user.findById);
+router.get('/user/:user_id/checks', check.findByUserId);
 router.post('/user/create', user.create);
 
 // 角色接口

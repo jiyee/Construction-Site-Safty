@@ -1,5 +1,6 @@
 var express = require('express');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -22,7 +23,15 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({secret: 'css'}));
+app.use(session({
+    secret: 'css',
+    key: 'sid',
+    store: new MongoStore({
+        db: 'sessions'
+    }),
+    resave: true,
+    saveUninitialized: true,
+}));
 
 app.use(routes);
 

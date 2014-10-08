@@ -30,6 +30,13 @@ var CheckSchema = new Schema({
     check_target: { type: String }, // 检查对象, 手工填写
     check_result: { type: String }, // 检查结果, 存在隐患, 自动生成
 
+    // 处理流程
+    process_active: { type: Boolean, default: true }, // 流程是否激活
+    process_status: { type: String, enum: ['START', 'FORWARD', 'BACKWARD', 'END'] }, // 流程状态
+    process_current_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 当前处理人员
+    process_previous_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 上级处理人员
+    process_flow_users: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 流程处理人员
+
     // 整改
     rectification_criterion: { type: String }, // 整改要求, 手工填写
     rectification_result: { type: String }, // 整改情况

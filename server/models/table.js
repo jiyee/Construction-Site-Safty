@@ -22,12 +22,4 @@ var TableSchema = new Schema({
 
 });
 
-// TableSchema.pre('save', function (next) {
-//     if (this.update_at) {
-//         this.update_at = Date.now;
-//     }
-
-//     next();
-// });
-
 mongoose.model('Table', TableSchema);

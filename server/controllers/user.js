@@ -81,6 +81,49 @@ exports.findByUnitId = function (req, res, next) {
     });
 };
 
+exports.auth = function (req, res, next) {
+    res.send(req.session.user);
+};
+
+exports.login = function (req, res, next) {
+    var username = validator.trim(req.body.username).toLowerCase();   
+    var password = validator.trim(req.body.password);
+
+    var ep = new eventproxy();
+    ep.on('error', function (msg) {
+        res.send({
+            code: 105,
+            message: msg || '登录失败'
+        });
+    });
+
+    if (!username || !password) {
+        ep.emit('error', '信息不完整');
+        return;
+    }
+
+    User.findByUserName(username, function (err, user) {
+        if (err) {
+            ep.emit('error');
+            return;
+        }
+
+        if (!user) {
+            ep.emit('error', '用户不存在');
+            return;
+        }
+
+        // 设置session
+        req.session.user = user;
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'user': user
+        });
+    });
+};
+
 exports.create = function(req, res, next) {
     var name = validator.trim(req.body.name);
     var title = validator.trim(req.body.title);
