@@ -9,26 +9,21 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    name: { type: String},
-    title: { type: String},
-    username: { type: String},
-    password: { type: String},
-    email: { type: String},
-    tel: { type: String}, 
-    mobile: { type: String},
-    avatar_url: { type: String},
+    name: { type: String },
+    title: { type: String },
+    username: { type: String },
+    password: { type: String },
+    email: { type: String },
+    tel: { type: String }, // 座机
+    mobile: { type: String }, // 手机号码
+    avatar_url: { type: String }, // 头像url
 
-    create_at: { type: Date, default: Date.now},
-    update_at: { type: Date, default: Date.now},
+    create_at: { type: Date, default: Date.now },
+    update_at: { type: Date, default: Date.now },
 
     // Which Model to use during population.
-    role: { type: Schema.Types.ObjectId, ref: 'Role'}, // 角色引用
-    unit: { type: Schema.Types.ObjectId, ref: 'Unit'}, // 部门
-    project: { type: Schema.Types.ObjectId, ref: 'Project'}, // 项目
-    section: { type: Schema.Types.ObjectId, ref: 'Section'}, // 标段
-    branch: { type: Schema.Types.ObjectId, ref: 'Branch'}, // 分部
-    place: { type: Schema.Types.ObjectId, ref: 'Place'}, // 工区
-    team: { type: Schema.Types.ObjectId, ref: 'Team'}// 班组
+    role: { type: Schema.Types.ObjectId, ref: 'Role' }, // 角色引用
+    unit: { type: Schema.Types.ObjectId, ref: 'Unit' }  // 部门
 });
 
 // define model.

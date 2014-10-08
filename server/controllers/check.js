@@ -22,7 +22,6 @@ exports.findById = function(req, res, next) {
 
     return Check.findById(check_id, function(err, check) {
         if (err) {
-            console.log(err);
             return next(err);
         }
 
@@ -34,40 +33,69 @@ exports.findById = function(req, res, next) {
     });
 };
 
+exports.delete = function (req, res, next) {
+    var check_id = validator.trim(req.params.check_id);
+
+    return Check.findById(check_id, function(err, check) {
+        if (err) {
+            return next(err);
+        }
+
+        if (check.table && check.table._id) {
+            Table.delete(check.table._id, function (err, table) {
+                if (err) {
+                    return next(err);
+                }
+            });
+        }
+
+        check.remove();
+
+        res.send({
+            'status': 'success',
+            'code': 0
+        });
+    });
+};
+
 exports.create = function(req, res, next) {
     var project_id = validator.trim(req.body.project_id);
-    var section_id = validator.trim(req.body.section_id);
-    var branch_id = validator.trim(req.body.branch_id);
-    var place_id = validator.trim(req.body.place_id);
-    var target = validator.trim(req.body.target);
+    var part_id = validator.trim(req.body.part_id);
     var file = validator.trim(req.body.file);
+    var check_target = validator.trim(req.body.check_target);
+    var check_user_id = req.session.user ? req.session.user._id : null;
 
-    if (!project_id || !file) {
+    if (!project_id || !part_id || !file) {
         return next({
-            message: 'no project_id or file'
+            code: 101,
+            message: '缺少参数'
         });
     }
 
     Table.newAndSave(file, function (err, table) {
-      if (err || !table._id) {
-        return next(err || {
-          message: 'no table_id'
-        });
-      }
-
-      Check.newAndSave(project_id, section_id, branch_id, place_id, target, table._id, function (err, check) {
         if (err) {
-            console.log('error: ', err);
             return next(err);
         }
 
-        res.send({
-            'status': 'success',
-            'code': 0,
-            'check': check
-        });
-      });
+        if (!table) {
+            return next({
+                code: 102,
+                message: '对象不存在'
+            });
+        }
 
-      console.log("/check/create => new and save.");
+        Check.newAndSave(project_id, part_id, table._id, check_target, check_user_id, function(err, check) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'status': 'success',
+                'code': 0,
+                'check': check
+            });
+        });
+
+        console.log("/check/create => new and save.");
     });
 };

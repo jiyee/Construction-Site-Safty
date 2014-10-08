@@ -9,6 +9,15 @@ exports.findById = function (id, callback) {
     Table.findOne({_id: id}, callback);
 };
 
+exports.delete = function (id, callback) {
+    Table.remove({_id: id}, callback);
+};
+
+/**
+ * 创建检查表
+ * @param  {String}   file     
+ * @param  {Function} callback 
+ */
 exports.newAndSave = function (file, callback) {
   var table = new Table();
 

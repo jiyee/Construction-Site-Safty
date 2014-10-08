@@ -8,8 +8,8 @@ var User = require('../models/').User;
  * @param  {Function} callback 回调函数
  */
 exports.find = function (callback) {
-    User.find({}, callback);
-}
+    User.find({}).populate('role unit').exec(callback);
+};
 
 /**
  * 根据用户姓名, 查找用户
@@ -24,8 +24,8 @@ exports.findByName = function (name, callback) {
         return callback(null, []);
     }
 
-    User.findOne({name: name}, callback);
-}
+    User.findOne({name: name}).populate('role unit').exec(callback);
+};
 
 /**
  * 根据用户ID, 查找用户
@@ -36,8 +36,8 @@ exports.findByName = function (name, callback) {
  * @param  {Function} callback 回调函数
  */
 exports.findById = function (id, callback) {
-    User.findOne({_id: id}, callback);
-}
+    User.findOne({_id: id}).populate('role unit').exec(callback);
+};
 
 /**
  * 根据角色ID, 查找用户
@@ -48,8 +48,8 @@ exports.findById = function (id, callback) {
  * @param  {Function} callback 回调函数
  */
 exports.findByRoleId = function (roleId, callback) {
-    User.find({role: roleId}).populate('role').exec(callback);
-}
+    User.find({role: roleId}).populate('role unit').exec(callback);
+};
 
 /**
  * 根据部门ID, 查找用户
@@ -60,29 +60,39 @@ exports.findByRoleId = function (roleId, callback) {
  * @param  {Function} callback 回调函数
  */
 exports.findByUnitId = function (unitId, callback) {
-    User.find({unit: unitId}).populate('unit').exec(callback);
-}
+    User.find({unit: unitId}).populate('role unit').exec(callback);
+};
 
-exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, unit, project, section, branch, place, team, callback) {
-  var user = new User();
+/**
+ * 创建新用户
+ * @param  {String}   name       
+ * @param  {String}   title      
+ * @param  {String}   username   
+ * @param  {String}   password   
+ * @param  {String}   email      
+ * @param  {String}   tel        
+ * @param  {String}   mobile     
+ * @param  {String}   avatar_url 
+ * @param  {Boolean}   active     
+ * @param  {ObjectId}   role       
+ * @param  {ObjectId}   unit       
+ * @param  {Function} callback   
+ */
+exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, unit, callback) {
+    var user = new User();
 
-  user.name = name;
-  user.username = username;
-  user.password = password;
-  user.email = email;
-  user.tel = tel;
-  user.mobile = mobile;
-  user.avatar_url = avatar_url;
+    user.name = name;
+    user.username = username;
+    user.password = password;
+    user.email = email;
+    user.tel = tel;
+    user.mobile = mobile;
+    user.avatar_url = avatar_url;
 
-  user.active = active || false;
+    user.active = active || false;
 
-  user.role = role || null;
-  user.unit = unit || null;
-  user.project = project || null;
-  user.section = section || null;
-  user.branch = branch || null;
-  user.place = place || null;
-  user.team = team || null;
+    user.role = role || null;
+    user.unit = unit || null;
 
-  user.save(callback);
+    user.save(callback);
 };

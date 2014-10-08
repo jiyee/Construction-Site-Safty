@@ -5,7 +5,6 @@ var Unit = require('../proxy/').Unit;
 exports.find = function(req, res, next) {
     return Unit.find(function(err, units) {
         if (err) {
-            console.log(err);
             return next(err);
         }
 

@@ -9,9 +9,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UnitSchema = new Schema({
+
     name: { type: String },
     description: { type: String },
-    type: { type: String },
+    type: { type: String }, // 部门类型，包括指挥部、建设单位、施工单位、监理单位
 
     create_at: { type: Date, default: Date.now },
     update_at: { type: Date, default: Date.now }

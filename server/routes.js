@@ -53,10 +53,13 @@ router.post('/part/:part_id/part/remove', part.remove_part);
 router.get('/tables', table.find);
 router.get('/table/:table_id', table.findById);
 router.post('/table/create', table.create);
+router.post('/table/:table_id/delete', table.delete);
+router.post('/table/:table_id/update', table.update);
 
 // 安全检查接口
 router.get('/checks', check.find);
 router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
+router.post('/check/:check_id/delete', check.delete);
 
 module.exports = router;

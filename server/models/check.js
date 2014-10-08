@@ -9,33 +9,34 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var CheckSchema = new Schema({
+ 
+    uuid: { type: String }, // 检查编号, 自动生成
     
     project: { type: Schema.Types.ObjectId, ref: 'Project' }, // 检查项目
-    section: { type: Schema.Types.ObjectId, ref: 'Section' }, // 检查标段
-    branch: { type: Schema.Types.ObjectId, ref: 'Branch' }, // 检查分部
-    place: { type: Schema.Types.ObjectId, ref: 'Place' }, // 检查工区
-    team: { type: Schema.Types.ObjectId, ref: 'Team' }, // 检查班组, 对应具体责任人, 以上均可能为空
+    part: { type: Schema.Types.ObjectId, ref: 'Part' }, // 检查项目组成，可以是任何级别，但只记录最小级别
 
-    checker_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 检查人员
-    checker_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 检查单位
+    // supervision_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 监理人员，在part里已经包括
+    // construction_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 施工单位，在part里已经包括
 
-    supervisor_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 监理人员
-    constructor_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 建设单位
-    supervisor_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 监理单位
-    builder_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 施工单位
+    // 检查表
+    table: { type: Schema.Types.ObjectId, ref: 'Table' }, // 检查表, 一次检查对应具体表
 
-    table: { type: Schema.Types.ObjectId, ref: 'Table' }, // 检查表单, 一次检查对应一个表单
+    create_at: { type: Date, default: Date.now }, // 创建条目时间
+    update_at: { type: Date, default: Date.now }, // 最近更新时间
 
-    index: { type: String }, // 检查编号, 自动生成
-    date: { type: Date, default: Date.now }, // 检查日期, 当前日期
-    target: { type: String }, // 检查对象, 手工填写
+    // 检查
+    check_date: { type: Date, default: Date.now }, // 检查日期
+    check_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 检查人员
+    check_target: { type: String }, // 检查对象, 手工填写
+    check_result: { type: String }, // 检查结果, 存在隐患, 自动生成
 
-    result: { type: String }, // 检查结果, 存在隐患, 自动生成
-    criterion: { type: String }, // 整改要求, 手工填写
-
-    rectification: { type: String }, // 整改情况
+    // 整改
+    rectification_criterion: { type: String }, // 整改要求, 手工填写
+    rectification_result: { type: String }, // 整改情况
     rectification_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 整改责任人
-    review: { type: String }, // 复查意见
+
+    // 复查
+    review_result: { type: String }, // 复查意见
     review_user: { type: Schema.Types.ObjectId, ref: 'User' } // 复查人员
 
 });
