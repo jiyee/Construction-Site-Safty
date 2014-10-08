@@ -58,7 +58,6 @@
     }, {
         "index": "B",
         "name": "高墩防护",
-
         "items": [{
             "index": "B1",
             "name": "一般要求",
@@ -225,7 +224,7 @@
         }]
     }, {
         "index": "F",
-        "name": "水上作业防护",
+        "name": "个体防护",
         "items": [{
             "index": "F1",
             "name": "一般要求",
@@ -237,30 +236,22 @@
                 "range": [0, 1],
                 "score": null,
                 "link": "SGXCTY-B-B4-1"
-            }]
-        }, {
-            "index": "F2",
-            "name": "",
-            "items": [{
-                "index": "1",
+            }, {
+                "index": "2",
                 "name": "2m以上悬空作业须使用安全带，安全带应遵循“高挂低用”的原则，严禁“低挂高用”。",
                 "status": "UNCHECK",
                 "comments": "",
                 "range": [0, 1],
                 "score": null,
                 "link": ""
-            }]
-        }, {
-            "index": "F3",
-            "name": "",
-            "items": [{
-                "index": "1",
+            }, {
+                "index": "3",
                 "name": "防护用品须具有产品合格证书，并定期进行检查检验。严禁使用不合格的防护用品。",
                 "status": "UNCHECK",
                 "comments": "",
                 "range": [0, 1],
                 "score": null,
-                "link": ""
+                "link": "SGXCTY-B-B4-2"
             }]
         }]
     }]
