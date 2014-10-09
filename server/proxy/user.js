@@ -106,7 +106,7 @@ exports.findByUnitId = function (partId, callback) {
  * @param  {ObjectId}   unit       
  * @param  {Function} callback   
  */
-exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, unit, part, callback) {
+exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, roleId, unitId, partId, callback) {
     var user = new User();
 
     user.name = name;
@@ -119,9 +119,9 @@ exports.newAndSave = function (name, title, username, password, email, tel, mobi
 
     user.active = active || false;
 
-    user.role = role || null;
-    user.unit = unit || null;
-    user.part = part || null;
+    user.role = roleId || null;
+    user.unit = unitId || null;
+    user.part = partId || null;
 
     user.save(callback);
 };

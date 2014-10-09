@@ -7,6 +7,7 @@ var project = require('./controllers/project');
 var part = require('./controllers/part');
 var table = require('./controllers/table');
 var check = require('./controllers/check');
+var setup = require('./controllers/setup');
 
 router.get('/', function (req, res) {
     res.render('index', {
@@ -75,5 +76,8 @@ router.post('/check/:check_id/backward', check.backward);
 router.post('/check/:check_id/revert', check.revert);
 router.post('/check/:check_id/restore', check.restore);
 router.post('/check/:check_id/end', check.end);
+
+// 数据库测试接口
+router.get('/setup', setup.mongo);
 
 module.exports = router;

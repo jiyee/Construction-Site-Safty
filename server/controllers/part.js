@@ -215,25 +215,25 @@ exports.update = function (req, res, next) {
         }
     });
 
-    Project.findById(part_id, function (err, project) {
+    Part.findById(part_id, function (err, part) {
         if (err) {
             return next(err);
         }
 
-        if (!project) {
+        if (!part) {
             return next({
                 code: 102,
                 message: '对象不存在'
             });
         }
 
-        _.extend(project, update);
-        project.save();
+        _.extend(part, update);
+        part.save();
 
         res.send({
             'status': 'success',
             'code': 0,
-            'project': project
+            'part': part
         });
     }, true);
 

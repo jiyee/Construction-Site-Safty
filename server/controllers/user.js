@@ -82,9 +82,9 @@ exports.findByUnitId = function (req, res, next) {
 };
 
 exports.findByPartId = function (req, res, next) {
-    var part_id = validator.trim(req.params.part_id);
+    var unit_id = validator.trim(req.params.unit_id);
 
-    User.findByPartId(part_id, function (err, users) {
+    User.findByUnitId(unit_id, function (err, users) {
         if (err) {
             return next(err);
         }
@@ -150,11 +150,11 @@ exports.create = function(req, res, next) {
     var mobile = validator.trim(req.body.mobile);
     var avatar_url = validator.trim(req.body.avatar_url).toLowerCase();
 
-    var role = validator.trim(req.body.role);
-    var unit = validator.trim(req.body.unit);
-    var part = validator.trim(req.body.part);
+    var role_id = validator.trim(req.body.role_id);
+    var unit_id = validator.trim(req.body.unit_id);
+    var part_id = validator.trim(req.body.part_id);
 
-    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role, unit, part, function(err, user) {
+    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role_id, unit_id, part_id, function(err, user) {
         if (err) {
             return next(err);
         }
