@@ -81,6 +81,22 @@ exports.findByUnitId = function (req, res, next) {
     });
 };
 
+exports.findByPartId = function (req, res, next) {
+    var part_id = validator.trim(req.params.part_id);
+
+    User.findByPartId(part_id, function (err, users) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'users': users
+        });
+    });
+};
+
 exports.auth = function (req, res, next) {
     res.send(req.session.user);
 };
@@ -136,8 +152,9 @@ exports.create = function(req, res, next) {
 
     var role = validator.trim(req.body.role);
     var unit = validator.trim(req.body.unit);
+    var part = validator.trim(req.body.part);
 
-    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role, unit, function(err, user) {
+    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role, unit, part, function(err, user) {
         if (err) {
             return next(err);
         }

@@ -22,8 +22,9 @@ var UserSchema = new Schema({
     update_at: { type: Date, default: Date.now },
 
     // Which Model to use during population.
-    role: { type: Schema.Types.ObjectId, ref: 'Role' }, // 角色引用
-    unit: { type: Schema.Types.ObjectId, ref: 'Unit' }  // 部门
+    role: { type: Schema.Types.ObjectId, ref: 'Role' }, // 角色
+    unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 部门
+    part: { type: Schema.Types.ObjectId, ref: 'Part' }  // 隶属项目组成，标段、分部、工区、班组，其中之一
 });
 
 // define model.

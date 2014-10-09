@@ -8,7 +8,7 @@ var User = require('../models/').User;
  * @param  {Function} callback 回调函数
  */
 exports.find = function (callback) {
-    User.find({}).populate('role unit').exec(callback);
+    User.find({}).populate('role unit part').exec(callback);
 };
 
 /**
@@ -24,7 +24,7 @@ exports.findByName = function (name, callback) {
         return callback(null, []);
     }
 
-    User.findOne({name: name}).populate('role unit').exec(callback);
+    User.findOne({name: name}).populate('role unit part').exec(callback);
 };
 
 /**
@@ -40,7 +40,7 @@ exports.findByUserName = function (username, callback) {
         return callback(null, []);
     }
 
-    User.findOne({username: username}).populate('role unit').exec(callback);
+    User.findOne({username: username}).populate('role unit part').exec(callback);
 };
 
 /**
@@ -52,7 +52,7 @@ exports.findByUserName = function (username, callback) {
  * @param  {Function} callback 回调函数
  */
 exports.findById = function (id, callback) {
-    User.findOne({_id: id}).populate('role unit').exec(callback);
+    User.findOne({_id: id}).populate('role unit part').exec(callback);
 };
 
 /**
@@ -64,7 +64,7 @@ exports.findById = function (id, callback) {
  * @param  {Function} callback 回调函数
  */
 exports.findByRoleId = function (roleId, callback) {
-    User.find({role: roleId}).populate('role unit').exec(callback);
+    User.find({role: roleId}).populate('role unit part').exec(callback);
 };
 
 /**
@@ -76,7 +76,19 @@ exports.findByRoleId = function (roleId, callback) {
  * @param  {Function} callback 回调函数
  */
 exports.findByUnitId = function (unitId, callback) {
-    User.find({unit: unitId}).populate('role unit').exec(callback);
+    User.find({unit: unitId}).populate('role unit part').exec(callback);
+};
+
+/**
+ * 根据项目组成ID, 查找用户
+ * Callback:
+ * - err, 数据库异常
+ * - users, 用户
+ * @param  {String}   partId  项目组成ID
+ * @param  {Function} callback 回调函数
+ */
+exports.findByUnitId = function (partId, callback) {
+    User.find({part: partId}).populate('role unit part').exec(callback);
 };
 
 /**
@@ -94,7 +106,7 @@ exports.findByUnitId = function (unitId, callback) {
  * @param  {ObjectId}   unit       
  * @param  {Function} callback   
  */
-exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, unit, callback) {
+exports.newAndSave = function (name, title, username, password, email, tel, mobile, avatar_url, active, role, unit, part, callback) {
     var user = new User();
 
     user.name = name;
@@ -109,6 +121,7 @@ exports.newAndSave = function (name, title, username, password, email, tel, mobi
 
     user.role = role || null;
     user.unit = unit || null;
+    user.part = part || null;
 
     user.save(callback);
 };
