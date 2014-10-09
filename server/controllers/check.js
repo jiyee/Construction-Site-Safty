@@ -1,7 +1,10 @@
+var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var Table = require('../proxy/').Table;
 var Check = require('../proxy/').Check;
+var User = require('../proxy/').User;
+var Unit = require('../proxy/').Unit;
 
 exports.find = function (req, res, next) {
     return Check.find(function(err, checks) {
@@ -56,7 +59,7 @@ exports.findByUserId = function (req, res, next) {
     });
 };
 
-exports.findBySessionUserId = function (req, res, next) {
+exports.findBySessionUser = function (req, res, next) {
     if (!req.session.user) {
         return next({
             code: 105,
@@ -79,6 +82,7 @@ exports.findBySessionUserId = function (req, res, next) {
     });
 };
 
+// 逐级向下指派，捕获状态
 exports.forward = function (req, res, next) {
     var check_id = validator.trim(req.params.check_id);
     var next_user_id = validator.trim(req.body.next_user_id);
@@ -97,35 +101,59 @@ exports.forward = function (req, res, next) {
         });
     }
 
-    return Check.findById(check_id, function(err, check) {
+    // TODO 异步处理事件化，避免回调嵌套
+    User.findById(next_user_id, function (err, user) {
         if (err) {
             return next(err);
         }
 
-        if (check.process_active === false || 
-            check.process_status === 'END') {
-            return next({
-                code: 104,
-                message: '状态错误'
+        var unit_id = user.unit._id;
+        Part.findByUnitId(unit_id, function (err, part) {
+            if (err) {
+                return next(err);
+            }
+
+            if (part && part.is_leaf === true) {
+                return next({
+                    code: 104,
+                    message: '状态错误'
+                });
+            }
+
+            Check.findById(check_id, function(err, check) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (check.process_active === false || 
+                    check.process_status === 'END') {
+                    return next({
+                        code: 104,
+                        message: '状态错误'
+                    });
+                }
+
+                check.process_active = true;
+                check.process_status = 'FORWARD';
+
+                var last_user_id = check.process_current_user;
+                check.process_previous_user = last_user_id;
+                check.process_current_user = next_user_id;
+                check.process_flow_users.push(last_user_id);
+                check.process_history_users.push(last_user_id);
+
+                check.save();
+
+                res.send({
+                    'status': 'success',
+                    'code': 0
+                });
             });
-        }
-
-        check.process_active = true;
-        check.process_status = 'FORWARD';
-        var last_user_id = check.process_current_user;
-        check.process_previous_user = last_user_id;
-        check.process_current_user = next_user_id;
-        check.process_flow_users.push(last_user_id);
-
-        check.save();
-
-        res.send({
-            'status': 'success',
-            'code': 0
         });
     });
 };
 
+// 逐级向上审核，冒泡状态
 exports.backward = function (req, res, next) {
     var check_id = validator.trim(req.params.check_id);
 
@@ -158,10 +186,111 @@ exports.backward = function (req, res, next) {
 
         check.process_active = true;
         check.process_status = 'BACKWARD';
-        var last_user_id = check.process_previous_user;
-        check.process_previous_user = check.process_current_user;
-        check.process_current_user = last_user_id;
+
+        var last_user_id = check.process_current_user;
+        check.process_current_user = check.process_flow_users.pop();
+        check.process_previous_user = last_user_id;
+        // 采用A/B/C -> A/B -> A -> []
+        // check.process_flow_users.push(last_user_id);
+        check.process_history_users.push(last_user_id);
+
+        check.save();
+
+        res.send({
+            'status': 'success',
+            'code': 0
+        });
+    });
+};
+
+// 流程打回，处于暂停状态
+exports.revert = function (req, res, next) {
+    var check_id = validator.trim(req.params.check_id);
+
+    if (!req.session.user) {
+        return next({
+            code: 105,
+            message: '用户未登录'
+        });
+    }
+
+    if (!check_id) {
+        return next({
+            code: 101,
+            message: '缺少参数'
+        });
+    }
+
+    return Check.findById(check_id, function(err, check) {
+        if (err) {
+            return next(err);
+        }
+
+        if (check.process_active === false || 
+            check.process_status === 'END') {
+            return next({
+                code: 104,
+                message: '状态错误'
+            });
+        }
+
+        check.process_active = true;
+        check.process_status = 'REVERT';
+
+        var last_user_id = check.process_current_user;
+        check.process_current_user = check.process_previous_user;
+        check.process_previous_user = last_user_id;
+        check.process_flow_users.pop();
+        check.process_history_users.push(last_user_id);
+
+        check.save();
+
+        res.send({
+            'status': 'success',
+            'code': 0
+        });
+    });
+};
+
+// 流程恢复, 继续执行
+exports.restore = function (req, res, next) {
+    var check_id = validator.trim(req.params.check_id);
+
+    if (!req.session.user) {
+        return next({
+            code: 105,
+            message: '用户未登录'
+        });
+    }
+
+    if (!check_id) {
+        return next({
+            code: 101,
+            message: '缺少参数'
+        });
+    }
+
+    return Check.findById(check_id, function(err, check) {
+        if (err) {
+            return next(err);
+        }
+
+        if (check.process_active === false || 
+            check.process_status === 'END') {
+            return next({
+                code: 104,
+                message: '状态错误'
+            });
+        }
+
+        check.process_active = true;
+        check.process_status = 'FORWARD';
+
+        var last_user_id = check.process_current_user;
+        check.process_current_user = check.process_previous_user;
+        check.process_previous_user = last_user_id;
         check.process_flow_users.push(last_user_id);
+        check.process_history_users.push(last_user_id);
 
         check.save();
 
@@ -182,10 +311,12 @@ exports.end = function (req, res, next) {
 
         check.process_active = false;
         check.process_status = 'END';
+
         var last_user_id = check.process_current_user;
         check.process_current_user = null;
         check.process_previous_user = null;
         check.process_flow_users.push(last_user_id);
+        check.process_history_users.push(last_user_id);
 
         check.save();
 

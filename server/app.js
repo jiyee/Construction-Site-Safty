@@ -30,7 +30,7 @@ app.use(session({
         db: 'sessions'
     }),
     resave: true,
-    saveUninitialized: true,
+    // saveUninitialized: true
 }));
 
 app.use(routes);

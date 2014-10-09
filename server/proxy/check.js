@@ -44,6 +44,7 @@ exports.newAndSave = function (project_id, part_id, table_id, check_target, chec
     check.process_current_user = check_user_id || null; 
     check.process_previous_user = null;
     check.process_flow_users = [];
+    check.process_history_users = [];
 
     check.save(callback);
   

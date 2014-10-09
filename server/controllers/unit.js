@@ -16,6 +16,22 @@ exports.find = function(req, res, next) {
     });
 };
 
+exports.findById = function (req, res, next) {
+    var unit_id = validator.trim(req.params.unit_id);
+
+    Unit.findById(unit_id, function (err, unit) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'unit': unit
+        });
+    });
+};
+
 exports.create = function(req, res, next) {
     var name = validator.trim(req.body.name);
     var description = validator.trim(req.body.description);

@@ -10,10 +10,6 @@ exports.findById = function (id, callback, not_populate) {
         Part.findOne({_id: id}).exec(callback);
     } else {
         Part.findOne({_id: id}).populate('parts').exec(function (err, root) {
-            if (err) {
-                return next(err);
-            }
-
             var __total = 0;
             var __done = 0;
             var deepPopulate = function (err, part) {
@@ -39,6 +35,10 @@ exports.findById = function (id, callback, not_populate) {
             deepPopulate(err, root); 
         });
     }
+};
+
+exports.findByUnitId = function (unit_id, callback) {
+    Part.find({ units: unit_id }, callback);
 };
 
 exports.newAndSave = function (name, description, abbr, type, is_leaf, callback) {

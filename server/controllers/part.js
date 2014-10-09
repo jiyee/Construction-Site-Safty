@@ -39,10 +39,34 @@ exports.findById = function(req, res, next) {
     });
 };
 
-exports.list_parts = function (req, res, next) {
-    var part_id = validator.trim(req.params.part_id);
+exports.findByUnitId = function (req, res, next) {
+    var unit_id = validator.trim(req.params.unit_id);
 
-    if (!part_id) {
+    if (!unit_id) {
+        return next({
+            code: 101,
+            message: '缺少参数'
+        });
+    }
+
+    Part.findByUnitId(unit_id, function(err, part) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'part': part
+        });
+    });
+};
+
+exports.list_array = function (req, res, next) {
+    var part_id = validator.trim(req.params.part_id);
+    var fields = validator.trim(req.params.fields);
+
+    if (!fields) {
         return next({
             code: 101,
             message: '缺少参数'
@@ -61,32 +85,38 @@ exports.list_parts = function (req, res, next) {
             });
         }
 
-        res.send({
+        var ret = {
             'status': 'success',
-            'code': 0,
-            'parts': part.parts
-        });
+            'code': 0
+        };
+
+        ret[fields] = part[fields];
+        res.send(ret);
     });
 };
 
-exports.insert_part = function (req, res, next) {
+exports.push_array = function (req, res, next) {
     var root_id = validator.trim(req.params.part_id);
-    var part_id = validator.trim(req.body.part_id);
+    var field = validator.trim(req.params.field);
+    var field_id = validator.trim(req.body[field + '_id']);
 
-    if (!root_id || !part_id) {
+    if (!root_id || !field || !field_id) {
         return next({
             code: 101,
             message: '缺少参数'
         });
     }
 
+    var model_name = field.substr(0, 1).toUpperCase() + field.substr(1);
+    var Model = require('../proxy')[model_name];
+
     // 添加时保证part对象存在，移除时忽略
-    Part.findById(part_id, function (err, part) {
+    Model.findById(field_id, function (err, item) {
         if (err) {
             return next(err);
         }
 
-        if (!part) {
+        if (!item) {
             return next({
                 code: 102,
                 message: '对象不存在'
@@ -105,26 +135,31 @@ exports.insert_part = function (req, res, next) {
                 });
             }
 
-            if (part.parts.indexOf(part_id) === -1) {
-                part.parts.push(part_id);
+            var fields = field + 's';
+            part[fields] = part[fields]  || [];
+            if (part[fields].indexOf(field_id) === -1) {
+                part[fields].push(field_id);
                 part.save();
             }
 
-            res.send({
+            var ret = {
                 'status': 'success',
-                'code': 0,
-                'parts': part.parts
-            });
+                'code': 0
+            };
+
+            ret[fields] = part[fields];
+            res.send(ret);
         }, true);
 
     });
 };
 
-exports.remove_part = function (req, res, next) {
+exports.slice_array = function (req, res, next) {
     var root_id = validator.trim(req.params.part_id);
-    var part_id = validator.trim(req.body.part_id);
+    var field = validator.trim(req.params.field);
+    var field_id = validator.trim(req.body[field + '_id']);
 
-    if (!root_id || !part_id) {
+    if (!root_id || !field || !field_id) {
         return next({
             code: 101,
             message: '缺少参数'
@@ -143,17 +178,21 @@ exports.remove_part = function (req, res, next) {
             });
         }
 
-        var index = part.parts.indexOf(part_id);
+        var fields = field + 's';
+        part[fields] = part[fields]  || [];
+        var index = part[fields].indexOf(field_id);
         if (index > -1) {
-            part.parts.splice(index, 1);
+            part[fields].splice(index, 1);
             part.save();
         }
 
-        res.send({
+        var ret = {
             'status': 'success',
-            'code': 0,
-            'parts': part.parts
-        });
+            'code': 0
+        };
+
+        ret[fields] = part[fields];
+        res.send(ret);
     }, true);
 };
 

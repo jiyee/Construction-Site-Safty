@@ -35,7 +35,8 @@ var CheckSchema = new Schema({
     process_status: { type: String, enum: ['START', 'FORWARD', 'BACKWARD', 'END'] }, // 流程状态
     process_current_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 当前处理人员
     process_previous_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 上级处理人员
-    process_flow_users: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 流程处理人员
+    process_flow_users: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 层级处理人员，记录正常流程中处理顺序
+    process_history_users: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 历次处理人员，记录过程中所有处理情况，包括revert情况
 
     // 整改
     rectification_criterion: { type: String }, // 整改要求, 手工填写

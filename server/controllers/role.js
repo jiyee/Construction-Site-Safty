@@ -16,6 +16,22 @@ exports.find = function(req, res, next) {
     });
 };
 
+exports.findById = function (req, res, next) {
+    var role_id = validator.trim(req.params.role_id);
+
+    Role.findById(role_id, function (err, role) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'role': role
+        });
+    });
+};
+
 exports.create = function(req, res, next) {
     var name = validator.trim(req.body.name);
     var desc = validator.trim(req.body.desc);

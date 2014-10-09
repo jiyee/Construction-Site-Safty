@@ -29,12 +29,15 @@ router.post('/user/create', user.create);
 
 // 角色接口
 router.get('/roles', role.find);
+router.get('/role/:role_id', role.findById);
 router.get('/role/:role_id/users', user.findByRoleId);
 router.post('/role/create', role.create);
 
 // 部门接口
 router.get('/units', unit.find);
+router.get('/unit/:unit_id', unit.findById);
 router.get('/unit/:unit_id/users', user.findByUnitId);
+router.get('/unit/:unit_id/parts', part.findByUnitId);
 router.post('/unit/create', unit.create);
 
 // 项目接口
@@ -50,9 +53,9 @@ router.post('/project/:project_id/:field/remove', project.slice_array);
 router.get('/parts', part.find);
 router.post('/part/create', part.create);
 router.get('/part/:part_id', part.findById);
-router.get('/part/:part_id/parts', part.list_parts);
-router.post('/part/:part_id/part/insert', part.insert_part);
-router.post('/part/:part_id/part/remove', part.remove_part);
+router.get('/part/:part_id/:fields', part.list_array);
+router.post('/part/:part_id/:field/insert', part.push_array);
+router.post('/part/:part_id/:field/remove', part.slice_array);
 
 // 安全检查表接口
 router.get('/tables', table.find);
@@ -62,9 +65,15 @@ router.post('/table/:table_id/delete', table.delete);
 router.post('/table/:table_id/update', table.update);
 
 // 安全检查接口
-router.get('/checks', check.find);
+router.get('/checks', check.findBySessionUser);
+router.get('/checks/all', check.find);
 router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
 router.post('/check/:check_id/delete', check.delete);
+router.post('/check/:check_id/forward', check.forward);
+router.post('/check/:check_id/backward', check.backward);
+router.post('/check/:check_id/revert', check.revert);
+router.post('/check/:check_id/restore', check.restore);
+router.post('/check/:check_id/end', check.end);
 
 module.exports = router;
