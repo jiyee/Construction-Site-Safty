@@ -82,9 +82,9 @@ exports.findByUnitId = function (req, res, next) {
 };
 
 exports.findByPartId = function (req, res, next) {
-    var unit_id = validator.trim(req.params.unit_id);
+    var part_id = validator.trim(req.params.part_id);
 
-    User.findByUnitId(unit_id, function (err, users) {
+    User.findByPartId(part_id, function (err, users) {
         if (err) {
             return next(err);
         }
@@ -98,7 +98,36 @@ exports.findByPartId = function (req, res, next) {
 };
 
 exports.auth = function (req, res, next) {
-    res.send(req.session.user);
+    if (!req.session.user) {
+        return next({
+            code: 105,
+            message: '用户未登录'
+        });
+    }
+
+    res.send({
+        code: 0,
+        status: 'success',
+        user: req.session.user
+    });
+};
+
+exports.logout = function (req, res, next) {
+    if (!req.session.user) {
+        return next({
+            code: 0,
+            status: 'success',
+            message: '用户未登录'
+        });
+    }
+
+    req.session.user = null;
+
+    res.send({
+        code: 0,
+        status: 'success',
+        message: '退出成功'
+    });
 };
 
 exports.login = function (req, res, next) {

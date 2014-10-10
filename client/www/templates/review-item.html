@@ -1,0 +1,28 @@
+<ion-view title="review-item">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="saveAndReturn(data)">返回</button>
+        <h1 class="title">{{data.name}} ({{data.total}}分)</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="card" ng-repeat="item in data.items" ng-class="{2: 'status-fail', 1: 'status-pass', 0: 'status-null'}[item.status]">
+            <div class="item item-text-wrap" >
+                {{item.index}}. {{item.name}}
+            </div>
+
+            <div class="item item-text-wrap">
+                <label for="{{score}}" ng-repeat="score in item.range" style="padding-right: 16px; font-size: 16px; line-height: 2em;">
+                    <input type="radio" name="group-{{item.index}}" value="{{score}}" style="width: 16px; height: 16px;" ng-model="item.score" ng-click="changeScore(item, score)"> {{score}}分
+                </label>
+            </div>
+
+            <div class="item item-input-inset row" ng-show="item.status > 1">
+                <label class="item-input col col-75" style="padding: 2px 0 0px 15px">
+                    <input type="text" ng-model="item.comments" placeholder="填写备注">
+                </label>
+                <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)" ng-hide="item.image">拍照存档</button>
+                <img src="{{item.image}}" ng-show="item.image" class="col col-25">
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

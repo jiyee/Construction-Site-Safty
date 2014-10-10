@@ -10,6 +10,17 @@ exports.findById = function (id, callback, not_populate) {
         Part.findOne({_id: id}).exec(callback);
     } else {
         Part.findOne({_id: id}).populate('parts').exec(function (err, root) {
+            if (err) {
+                return next(err);
+            }
+
+            if (!root) {
+                return next({
+                    code: 102,
+                    message: '对象不存在'
+                });
+            }
+
             var __total = 0;
             var __done = 0;
             var deepPopulate = function (err, part) {

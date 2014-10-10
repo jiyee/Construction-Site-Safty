@@ -29,9 +29,21 @@ app.use(session({
     store: new MongoStore({
         db: 'sessions'
     }),
-    resave: true,
+    cookie : {
+        httpOnly : false,
+    }
+    // resave: true,
     // saveUninitialized: true
 }));
+
+// CORS
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://10.171.40.8:8100");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 app.use(routes);
 
@@ -44,26 +56,16 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-// development error handler
-app.set('env', 'development');
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
 // production error handler
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
+    res.status(200);
+    res.send({
+        code: err.code,
         message: err.message,
-        error: {}
+        error: err
     });
 });
+
 
 app.set('port', process.env.PORT || 3000);
 server = app.listen(app.get('port'), function() {

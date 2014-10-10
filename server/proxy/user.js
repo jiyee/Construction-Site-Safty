@@ -87,7 +87,7 @@ exports.findByUnitId = function (unitId, callback) {
  * @param  {String}   partId  项目组成ID
  * @param  {Function} callback 回调函数
  */
-exports.findByUnitId = function (partId, callback) {
+exports.findByPartId = function (partId, callback) {
     User.find({part: partId}).populate('role unit part').exec(callback);
 };
 

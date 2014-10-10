@@ -20,6 +20,7 @@ router.get('/', function (req, res) {
 
 // 权限接口
 router.post('/login', user.login);
+router.post('/logout', user.logout);
 router.get('/auth', user.auth);
 
 // 用户接口
@@ -54,6 +55,7 @@ router.post('/project/:project_id/:field/remove', project.slice_array);
 router.get('/parts', part.find);
 router.post('/part/create', part.create);
 router.get('/part/:part_id', part.findById);
+router.get('/part/:part_id/users', user.findByPartId);
 router.get('/part/:part_id/:fields', part.list_array);
 router.post('/part/:part_id/:field/insert', part.push_array);
 router.post('/part/:part_id/:field/remove', part.slice_array);

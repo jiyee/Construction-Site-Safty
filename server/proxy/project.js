@@ -15,6 +15,13 @@ exports.findById = function (id, callback, not_populate) {
                 return next(err);
             }
 
+            if (!root) {
+                return next({
+                    code: 102,
+                    message: '对象不存在'
+                });
+            }
+
             var __total = 0;
             var __done = 0;
             var deepPopulate = function (err, part) {
