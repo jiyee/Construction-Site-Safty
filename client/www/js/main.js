@@ -14,7 +14,7 @@ app.run(function($ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http://10.171.40.8:3000',
+    'baseUrl': 'http://192.168.43.127:3000',
     'project': '监利至江陵高速公路'
 })
 

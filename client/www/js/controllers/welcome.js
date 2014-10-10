@@ -1,5 +1,6 @@
 app.controller('WelcomeCtrl', function($scope, $ionicPopup, settings) {
     $scope.data = {};
+    $scope.data.server = settings.baseUrl;
 
     $scope.setServerAddr = function() {
         var popup = $ionicPopup.show({

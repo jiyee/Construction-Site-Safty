@@ -36,9 +36,19 @@ app.use(session({
     // saveUninitialized: true
 }));
 
+var os = require('os');
+var ipAddr;
+for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
+    if (os.networkInterfaces().en0[i].family == 'IPv4') {
+        ipAddr = os.networkInterfaces().en0[i].address;
+    }
+}
+
+console.log('listen on ' + "http://" + ipAddr + ":8100");
+
 // CORS
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://10.171.40.8:8100");
+    res.header("Access-Control-Allow-Origin", "http://" + ipAddr + ":8100");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
     res.header('Access-Control-Allow-Credentials', true);
