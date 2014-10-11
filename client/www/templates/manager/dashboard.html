@@ -19,7 +19,7 @@
 
         <div class="list last-review">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>待办事项</div>
-            <div class="item item-icon-right" ng-repeat="item in data.checks"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.table.name}}</div>
+            <div class="item item-icon-right" ng-repeat="item in data.checks" ng-click="toCheck(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.table.name}}</div>
         </div>
 
     </ion-content>
@@ -27,7 +27,7 @@
     <ion-footer-bar class="bar-positive">
         <div class="row" style="padding-top: 0; padding-bottom: 0;">
             <button class="button col">标准查询</button>
-            <button class="button col" ng-click="toCheck()">监督检查</button>
+            <button class="button col" ng-click="toTarget()">监督检查</button>
             <button class="button col">考核评价</button>
         </div>
     </ion-footer-bar>

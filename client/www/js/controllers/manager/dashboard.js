@@ -24,9 +24,16 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         $scope.data.checks = checks;
     });
 
-    $scope.toCheck = function () {
+    $scope.toTarget = function () {
+        $state.go('^.target', {
+            userId: $scope.current.user._id
+        });
+    };
+
+    $scope.toCheck = function (item) {
         $state.go('^.check', {
-            userId: $scope.current.user._id 
+            userId: $scope.current.user._id,
+            checkId: item._id
         });
     };
 

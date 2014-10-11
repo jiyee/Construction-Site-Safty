@@ -36,15 +36,17 @@ app.use(session({
     // saveUninitialized: true
 }));
 
-var os = require('os');
-var ipAddr;
-for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
-    if (os.networkInterfaces().en0[i].family == 'IPv4') {
-        ipAddr = os.networkInterfaces().en0[i].address;
-    }
-}
+// var os = require('os');
+// var ipAddr;
+// for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
+//     if (os.networkInterfaces().en0[i].family == 'IPv4') {
+//         ipAddr = os.networkInterfaces().en0[i].address;
+//     }
+// }
 
-console.log('listen on ' + "http://" + ipAddr + ":8100");
+var ipAddr = 'localhost';
+
+console.log('allow origin: ' + "http://" + ipAddr + ":8100");
 
 // CORS
 app.use(function(req, res, next) {

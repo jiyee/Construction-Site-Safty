@@ -70,18 +70,17 @@ exports.update = function (req, res, next) {
 
                     _.each(list3, function (item3) {
                         if (/[0-9]+/.test(item3.index)) {
-                            if (['UNCHECK', 'CHECKED', 'SUSPEND'].indexOf(item3.status) === -1) {
+                            if (['UNCHECK', 'PASS', 'FAIL'].indexOf(item3.status) === -1) {
                                 valid = false;
                             }
 
                             if (item3.status === 'UNCHECK' &&
-                                item3.score !== null) {
+                                item3.score != null) {
                                 valid = false;
                             }
 
-                            if (item3.status === 'CHECKED' &&
-                                (item3.score !== 0 &&
-                                item3.score !== 1)) {
+                            if ((item3.status === 'PASS' && item3.score != 0) ||
+                                (item3.status === 'FAIL' && item3.score != 1)) {
                                 valid = false;
                             }
                         } else {

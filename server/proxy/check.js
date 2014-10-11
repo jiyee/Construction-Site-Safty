@@ -9,11 +9,11 @@ exports.find = function (callback) {
 };
 
 exports.findById = function (id, callback) {
-    Check.findOne({_id: id}).populate('project').populate('part').populate('table').exec(callback);
+    Check.findOne({_id: id}).populate('project part table check_user process_current_user process_previous_user process_flow_users process_history_users rectification_user review_user').exec(callback);
 };
 
 exports.findByProcessCurrentUserId = function (user_id, callback) {
-    Check.find({process_current_user: user_id}).populate('project').populate('part').populate('table').exec(callback);
+    Check.find({process_current_user: user_id}).populate('project part table').exec(callback);
 };
 
 /**

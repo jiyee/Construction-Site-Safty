@@ -14,7 +14,7 @@ app.run(function($ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http://192.168.43.127:3000',
+    'baseUrl': 'http://localhost:3000',
     'project': '监利至江陵高速公路'
 })
 
@@ -65,11 +65,29 @@ app.run(function($ionicPlatform) {
         }
     })
 
-    // 监督检查 
+    // 创建监督检查，选择检查对象
+    .state('manager.target', {
+        url: '/dashboard/:userId/target',
+        templateUrl: 'templates/manager/target.html',
+        controller: 'ManagerTargetCtrl',
+        resolve: {
+        }
+    })
+
+    // 监督检查详情 
     .state('manager.check', {
-        url: '/dashboard/:userId/check',
+        url: '/dashboard/:userId/check/:checkId',
         templateUrl: 'templates/manager/check.html',
         controller: 'ManagerCheckCtrl',
+        resolve: {
+        }
+    })
+
+    // 下达整改通知书 
+    .state('manager.startup', {
+        url: '/dashboard/:userId/check/:checkId/startup',
+        templateUrl: 'templates/manager/startup.html',
+        controller: 'ManagerStartUpCtrl',
         resolve: {
         }
     })
@@ -81,7 +99,7 @@ app.run(function($ionicPlatform) {
         controller: 'ManagerTableCtrl',
     })
 
-    // 考核列表页
+    // 考核单项页
     .state('manager.review', {
         url: "/dashboard/:userId/table/:tableId/:itemId/:subItemId",
         templateUrl: "templates/manager/review.html",
@@ -143,7 +161,7 @@ app.run(function($ionicPlatform) {
     // });
 
     // 设置默认路由
-    $urlRouterProvider.otherwise('welcome');
+    // $urlRouterProvider.otherwise('welcome');
 
     // 设置image url白名单，否则AngularJS解析URL错误
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);

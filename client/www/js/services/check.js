@@ -55,6 +55,26 @@ app.factory('CheckService', function($http, $q, settings) {
                 });
 
             return deferred.promise;
+        },
+        forward: function(checkId, nextUserId, rectificationCriterion) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/check/' + checkId + '/forward', {
+                    next_user_id: nextUserId,
+                    rectification_criterion: rectificationCriterion  
+                })
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve(data.check);
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
     };
 });

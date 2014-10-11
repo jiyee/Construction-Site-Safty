@@ -1,7 +1,12 @@
-app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, PartService, UserService, CheckService, AuthService) {
+app.controller('ManagerStartUpCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, PartService, UserService, CheckService, AuthService) {
     $scope.data = {};
     $scope.data.userId = $stateParams.userId;
     $scope.data.checkId = $stateParams.checkId;
+    $scope.data.users = [];
+
+    UserService.find().then(function (users) {
+        $scope.data.users = $scope.data.users.concat(users);
+    });
 
     $scope.current = $rootScope.current;
 
@@ -47,17 +52,14 @@ app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $statePa
         });
     };
 
-    $scope.toTable = function() {
-        $state.go('^.table', {
-            userId: $scope.data.userId,
-            tableId: $scope.data.check.table._id
-        });
-    };
-
-    $scope.toStartUp = function() {
-        $state.go('^.startup', {
-            userId: $scope.data.userId,
-            checkId: $scope.data.check._id
+    $scope.submit = function() {
+        CheckService.forward($scope.data.checkId, $scope.data.nextUserId, $scope.data.check.rectification_criterion).then(function(check) {
+            alert("下达完毕");
+            $state.go('^.dashboard', {
+                userId: $scope.data.userId
+            });
+        }, function(err) {
+            alert(err); 
         });
     };
 

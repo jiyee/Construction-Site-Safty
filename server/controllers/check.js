@@ -5,6 +5,7 @@ var Table = require('../proxy/').Table;
 var Check = require('../proxy/').Check;
 var User = require('../proxy/').User;
 var Unit = require('../proxy/').Unit;
+var Part = require('../proxy/').Part;
 
 exports.find = function (req, res, next) {
     return Check.find(function(err, checks) {
@@ -86,6 +87,7 @@ exports.findBySessionUser = function (req, res, next) {
 exports.forward = function (req, res, next) {
     var check_id = validator.trim(req.params.check_id);
     var next_user_id = validator.trim(req.body.next_user_id);
+    var rectification_criterion = validator.trim(req.body.rectification_criterion);
 
     if (!req.session.user) {
         return next({
@@ -141,12 +143,14 @@ exports.forward = function (req, res, next) {
                 check.process_current_user = next_user_id;
                 check.process_flow_users.push(last_user_id);
                 check.process_history_users.push(last_user_id);
+                check.rectification_criterion = rectification_criterion;
 
                 check.save();
 
                 res.send({
                     'status': 'success',
-                    'code': 0
+                    'code': 0,
+                    'check': check
                 });
             });
         });
@@ -198,7 +202,8 @@ exports.backward = function (req, res, next) {
 
         res.send({
             'status': 'success',
-            'code': 0
+            'code': 0,
+            'check': check
         });
     });
 };
@@ -247,7 +252,8 @@ exports.revert = function (req, res, next) {
 
         res.send({
             'status': 'success',
-            'code': 0
+            'code': 0,
+            'check': check
         });
     });
 };
@@ -296,7 +302,8 @@ exports.restore = function (req, res, next) {
 
         res.send({
             'status': 'success',
-            'code': 0
+            'code': 0,
+            'check': check
         });
     });
 };

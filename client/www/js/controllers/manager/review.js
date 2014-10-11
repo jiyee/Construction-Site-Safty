@@ -22,13 +22,12 @@ app.controller('ManagerReviewCtrl', function($scope, $stateParams, $state, Table
 
     $scope.changeScore = function(item, score) {
         if (score > 0) {
-            item.status = 2;
+            item.status = 'FAIL';
         } else if (score === 0) {
-            item.status = 1;
+            item.status = 'PASS';
         } else {
             item.status = 'UNCHECK';
         }
-
         // $scope.$apply();
     };
 
@@ -49,7 +48,10 @@ app.controller('ManagerReviewCtrl', function($scope, $stateParams, $state, Table
 
     $scope.saveAndReturn = function() {
         TableService.update($scope.data.tableId, $scope.data.table).then(function(table) {
-            console.log(table);
+            $state.go('^.table', {
+                userId: $scope.data.userId,
+                tableId: $scope.data.tableId
+            });
         }, function(err) {
             alert(err);
         });
