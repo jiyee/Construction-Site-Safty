@@ -1,11 +1,12 @@
 var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
+var utils = require('../utils');
 var Project = require('../proxy/').Project;
 var Part = require('../proxy/').Part;
 
-exports.find = function(req, res, next) {
-    Project.find(function(err, projects) {
+exports.findAll = function(req, res, next) {
+    Project.findAll(function(err, projects) {
         if (err) {
             return next(err);
         }
@@ -22,10 +23,7 @@ exports.findById = function(req, res, next) {
     var project_id = validator.trim(req.params.project_id);
 
     if (!project_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     Project.findById(project_id, function(err, project) {
@@ -46,10 +44,7 @@ exports.list_array = function (req, res, next) {
     var fields = validator.trim(req.params.fields);
 
     if (!project_id || !fields) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     Project.findById(project_id, function (err, project) {
@@ -58,10 +53,7 @@ exports.list_array = function (req, res, next) {
         }
 
         if (!project) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         var ret = {
@@ -80,10 +72,7 @@ exports.push_array = function (req, res, next) {
     var field_id = validator.trim(req.body[field + '_id']);
 
     if (!project_id || !field || !field_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     var model_name = field.substr(0, 1).toUpperCase() + field.substr(1);
@@ -96,10 +85,7 @@ exports.push_array = function (req, res, next) {
         }
 
         if (!item) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         Project.findById(project_id, function (err, project) {
@@ -108,10 +94,7 @@ exports.push_array = function (req, res, next) {
             }
 
             if (!project) {
-                return next({
-                    code: 102,
-                    message: '对象不存在'
-                });
+                return next(util.getError(102));
             }
 
             var fields = field + 's';
@@ -137,10 +120,7 @@ exports.slice_array = function (req, res, next) {
     var field_id = validator.trim(req.body[field + '_id']);
 
     if (!project_id || !field || !field_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     Project.findById(project_id, function (err, project) {
@@ -149,10 +129,7 @@ exports.slice_array = function (req, res, next) {
         }
 
         if (!project) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         var fields = field + 's';
@@ -176,10 +153,7 @@ exports.update = function (req, res, next) {
     var project_id = validator.trim(req.params.project_id);
 
     if (!project_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     var fields = ['name', 'description', 'type'];
@@ -197,10 +171,7 @@ exports.update = function (req, res, next) {
         }
 
         if (!project) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         _.extend(project, update);
@@ -221,8 +192,7 @@ exports.create = function (req, res, next) {
     var province = validator.trim(req.body.province);
 
     // 重复插入判断
-
-    Project.newAndSave(name, description, province, function(err) {
+    Project.newAndSave(name, description, province, function(err, project) {
         if (err) {
             return next(err);
         }
@@ -230,9 +200,7 @@ exports.create = function (req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'name': name
+            'project': project
         });
     });
-
-    console.log("/project/create => new and save.");
 };

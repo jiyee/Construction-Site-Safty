@@ -1,8 +1,9 @@
 var _ = require('lodash');
+var utils = require('../utils');
 var Project = require('../models/').Project;
 var Part = require('../models/').Part;
 
-exports.find = function (callback) {
+exports.findAll = function (callback) {
     Project.find({}, callback);
 };
 
@@ -10,16 +11,13 @@ exports.findById = function (id, callback, not_populate) {
     if (not_populate) {
         Project.findOne({_id: id}).exec(callback);
     } else {
-        Project.findOne({_id: id}).populate('units').populate('parts').exec(function (err, root) {
+        Project.findOne({_id: id}).populate('units parts').exec(function (err, root) {
             if (err) {
                 return next(err);
             }
 
             if (!root) {
-                return next({
-                    code: 102,
-                    message: '对象不存在'
-                });
+                return next(util.getError(102));
             }
 
             var __total = 0;
@@ -32,7 +30,7 @@ exports.findById = function (id, callback, not_populate) {
 
                     _.each(parent, function (child) {
                         Part.populate(child, {
-                            path: 'parts'
+                            path: 'children'
                         }, deepPopulate);
                     });
                 } else {

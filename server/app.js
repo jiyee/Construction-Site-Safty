@@ -36,15 +36,13 @@ app.use(session({
     // saveUninitialized: true
 }));
 
-// var os = require('os');
-// var ipAddr;
-// for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
-//     if (os.networkInterfaces().en0[i].family == 'IPv4') {
-//         ipAddr = os.networkInterfaces().en0[i].address;
-//     }
-// }
-
-var ipAddr = 'localhost';
+var os = require('os');
+var ipAddr;
+for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
+    if (os.networkInterfaces().en0[i].family == 'IPv4') {
+        ipAddr = os.networkInterfaces().en0[i].address;
+    }
+}
 
 console.log('allow origin: ' + "http://" + ipAddr + ":8100");
 

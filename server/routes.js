@@ -43,7 +43,7 @@ router.get('/unit/:unit_id/parts', part.findByUnitId);
 router.post('/unit/create', unit.create);
 
 // 项目接口
-router.get('/projects', project.find);
+router.get('/projects', project.findAll);
 router.post('/project/create', project.create);
 router.post('/project/:project_id/update', project.update);
 router.get('/project/:project_id', project.findById);
@@ -52,7 +52,7 @@ router.post('/project/:project_id/:field/insert', project.push_array);
 router.post('/project/:project_id/:field/remove', project.slice_array);
 
 // 项目组成接口
-router.get('/parts', part.find);
+router.get('/parts', part.findAll);
 router.post('/part/create', part.create);
 router.get('/part/:part_id', part.findById);
 router.get('/part/:part_id/users', user.findByPartId);
@@ -69,7 +69,7 @@ router.post('/table/:table_id/update', table.update);
 
 // 安全检查接口
 router.get('/checks', check.findBySessionUser);
-router.get('/checks/all', check.find);
+router.get('/checks/all', check.findAll);
 router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
 router.post('/check/:check_id/delete', check.delete);

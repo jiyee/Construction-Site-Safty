@@ -1,20 +1,20 @@
 var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
+var utils = require('../utils');
 var Table = require('../proxy/').Table;
 var Check = require('../proxy/').Check;
 var User = require('../proxy/').User;
 var Unit = require('../proxy/').Unit;
 var Part = require('../proxy/').Part;
 
-exports.find = function (req, res, next) {
-    return Check.find(function(err, checks) {
+exports.findAll = function (req, res, next) {
+    return Check.findAll(function(err, checks) {
         if (err) {
             return next(err);
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
             'checks': checks
         });
@@ -30,7 +30,6 @@ exports.findById = function (req, res, next) {
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
             'check': check
         });
@@ -41,10 +40,7 @@ exports.findByUserId = function (req, res, next) {
     var user_id = validator.trim(req.params.user_id);
 
     if (!user_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(utils.getError(101));
     }
 
     return Check.findByProcessCurrentUserId(user_id, function (err, checks) {
@@ -53,7 +49,6 @@ exports.findByUserId = function (req, res, next) {
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
             'checks': checks
         });
@@ -62,10 +57,7 @@ exports.findByUserId = function (req, res, next) {
 
 exports.findBySessionUser = function (req, res, next) {
     if (!req.session.user) {
-        return next({
-            code: 105,
-            message: '用户未登录'
-        });
+        return next(utils.getError(105));
     }
 
     var user_id = req.session.user._id;
@@ -76,7 +68,6 @@ exports.findBySessionUser = function (req, res, next) {
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
             'checks': checks
         });
@@ -90,17 +81,11 @@ exports.forward = function (req, res, next) {
     var rectification_criterion = validator.trim(req.body.rectification_criterion);
 
     if (!req.session.user) {
-        return next({
-            code: 105,
-            message: '用户未登录'
-        });
+        return next(utils.getError(105));
     }
 
     if (!check_id || !next_user_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(utils.getError(101));
     }
 
     // TODO 异步处理事件化，避免回调嵌套
@@ -116,10 +101,7 @@ exports.forward = function (req, res, next) {
             }
 
             if (part && part.is_leaf === true) {
-                return next({
-                    code: 104,
-                    message: '状态错误'
-                });
+                return next(utils.getError(104));
             }
 
             Check.findById(check_id, function(err, check) {
@@ -129,10 +111,7 @@ exports.forward = function (req, res, next) {
 
                 if (check.process_active === false || 
                     check.process_status === 'END') {
-                    return next({
-                        code: 104,
-                        message: '状态错误'
-                    });
+                    return next(utils.getError(104));
                 }
 
                 check.process_active = true;
@@ -148,7 +127,6 @@ exports.forward = function (req, res, next) {
                 check.save();
 
                 res.send({
-                    'status': 'success',
                     'code': 0,
                     'check': check
                 });
@@ -162,17 +140,11 @@ exports.backward = function (req, res, next) {
     var check_id = validator.trim(req.params.check_id);
 
     if (!req.session.user) {
-        return next({
-            code: 105,
-            message: '用户未登录'
-        });
+        return next(utils.getError(105));
     }
 
     if (!check_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(utils.getError(101));
     }
 
     return Check.findById(check_id, function(err, check) {
@@ -182,10 +154,7 @@ exports.backward = function (req, res, next) {
 
         if (check.process_active === false || 
             check.process_status === 'END') {
-            return next({
-                code: 104,
-                message: '状态错误'
-            });
+            return next(utils.getError(104));
         }
 
         check.process_active = true;
@@ -201,7 +170,6 @@ exports.backward = function (req, res, next) {
         check.save();
 
         res.send({
-            'status': 'success',
             'code': 0,
             'check': check
         });
@@ -213,17 +181,11 @@ exports.revert = function (req, res, next) {
     var check_id = validator.trim(req.params.check_id);
 
     if (!req.session.user) {
-        return next({
-            code: 105,
-            message: '用户未登录'
-        });
+        return next(utils.getError(105));
     }
 
     if (!check_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(utils.getError(101));
     }
 
     return Check.findById(check_id, function(err, check) {
@@ -233,10 +195,7 @@ exports.revert = function (req, res, next) {
 
         if (check.process_active === false || 
             check.process_status === 'END') {
-            return next({
-                code: 104,
-                message: '状态错误'
-            });
+            return next(utils.getError(104));
         }
 
         check.process_active = true;
@@ -251,7 +210,6 @@ exports.revert = function (req, res, next) {
         check.save();
 
         res.send({
-            'status': 'success',
             'code': 0,
             'check': check
         });
@@ -263,17 +221,11 @@ exports.restore = function (req, res, next) {
     var check_id = validator.trim(req.params.check_id);
 
     if (!req.session.user) {
-        return next({
-            code: 105,
-            message: '用户未登录'
-        });
+        return next(utils.getError(105));
     }
 
     if (!check_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(utils.getError(101));
     }
 
     return Check.findById(check_id, function(err, check) {
@@ -283,10 +235,7 @@ exports.restore = function (req, res, next) {
 
         if (check.process_active === false || 
             check.process_status === 'END') {
-            return next({
-                code: 104,
-                message: '状态错误'
-            });
+            return next(utils.getError(104));
         }
 
         check.process_active = true;
@@ -301,7 +250,6 @@ exports.restore = function (req, res, next) {
         check.save();
 
         res.send({
-            'status': 'success',
             'code': 0,
             'check': check
         });
@@ -328,7 +276,6 @@ exports.end = function (req, res, next) {
         check.save();
 
         res.send({
-            'status': 'success',
             'code': 0
         });
     }); 
@@ -353,7 +300,6 @@ exports.delete = function (req, res, next) {
         check.remove();
 
         res.send({
-            'status': 'success',
             'code': 0
         });
     });
@@ -366,17 +312,11 @@ exports.create = function (req, res, next) {
     var check_target = validator.trim(req.body.check_target);
 
     if (!req.session.user) {
-        return next({
-            code: 105,
-            message: '用户未登录'
-        });
+        return next(utils.getError(105));
     }
 
     if (!project_id || !part_id || !file) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(utils.getError(101));
     }
 
     Table.newAndSave(file, function (err, table) {
@@ -385,10 +325,7 @@ exports.create = function (req, res, next) {
         }
 
         if (!table) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(utils.getError(102));
         }
 
         Check.newAndSave(project_id, part_id, table._id, check_target, req.session.user._id, function(err, check) {
@@ -397,7 +334,6 @@ exports.create = function (req, res, next) {
             }
 
             res.send({
-                'status': 'success',
                 'code': 0,
                 'check': check
             });

@@ -4,8 +4,8 @@ var Table = require('../models/').Table;
 var Unit = require('../models/').Unit;
 var User = require('../models/').User;
 
-exports.find = function (callback) {
-    Check.find({}).populate('project').populate('part').populate('table').exec(callback);
+exports.findAll = function (callback) {
+    Check.find({}).populate('project part table').exec(callback);
 };
 
 exports.findById = function (id, callback) {

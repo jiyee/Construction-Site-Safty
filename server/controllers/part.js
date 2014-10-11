@@ -1,15 +1,15 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var Part = require('../proxy/').Part;
+var utils = require('../utils');
 
-exports.find = function(req, res, next) {
-    return Part.find(function(err, parts) {
+exports.findAll = function(req, res, next) {
+    return Part.findAll(function(err, parts) {
         if (err) {
             return next(err);
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
             'parts': parts
         });
@@ -20,10 +20,7 @@ exports.findById = function(req, res, next) {
     var part_id = validator.trim(req.params.part_id);
 
     if (!part_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     Part.findById(part_id, function(err, part) {
@@ -32,7 +29,6 @@ exports.findById = function(req, res, next) {
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
             'part': part
         });
@@ -43,21 +39,17 @@ exports.findByUnitId = function (req, res, next) {
     var unit_id = validator.trim(req.params.unit_id);
 
     if (!unit_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
-    Part.findByUnitId(unit_id, function(err, part) {
+    Part.findByUnitId(unit_id, function(err, parts) {
         if (err) {
             return next(err);
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
-            'part': part
+            'parts': parts
         });
     });
 };
@@ -67,10 +59,7 @@ exports.list_array = function (req, res, next) {
     var fields = validator.trim(req.params.fields);
 
     if (!fields) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     Part.findById(part_id, function (err, part) {
@@ -79,14 +68,10 @@ exports.list_array = function (req, res, next) {
         }
 
         if (!part) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         var ret = {
-            'status': 'success',
             'code': 0
         };
 
@@ -101,10 +86,7 @@ exports.push_array = function (req, res, next) {
     var field_id = validator.trim(req.body[field + '_id']);
 
     if (!root_id || !field || !field_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     var model_name = field.substr(0, 1).toUpperCase() + field.substr(1);
@@ -117,10 +99,7 @@ exports.push_array = function (req, res, next) {
         }
 
         if (!item) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         Part.findById(root_id, function (err, part) {
@@ -129,10 +108,7 @@ exports.push_array = function (req, res, next) {
             }
 
             if (!part) {
-                return next({
-                    code: 102,
-                    message: '对象不存在'
-                });
+                return next(util.getError(102));
             }
 
             var fields = field + 's';
@@ -143,7 +119,6 @@ exports.push_array = function (req, res, next) {
             }
 
             var ret = {
-                'status': 'success',
                 'code': 0
             };
 
@@ -160,10 +135,7 @@ exports.slice_array = function (req, res, next) {
     var field_id = validator.trim(req.body[field + '_id']);
 
     if (!root_id || !field || !field_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     Part.findById(root_id, function (err, part) {
@@ -172,10 +144,7 @@ exports.slice_array = function (req, res, next) {
         }
 
         if (!part) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         var fields = field + 's';
@@ -187,7 +156,6 @@ exports.slice_array = function (req, res, next) {
         }
 
         var ret = {
-            'status': 'success',
             'code': 0
         };
 
@@ -200,10 +168,7 @@ exports.update = function (req, res, next) {
     var part_id = validator.trim(req.params.part_id);
 
     if (!part_id) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
+        return next(util.getError(101));
     }
 
     var fields = ['name', 'description', 'type'];
@@ -221,17 +186,13 @@ exports.update = function (req, res, next) {
         }
 
         if (!part) {
-            return next({
-                code: 102,
-                message: '对象不存在'
-            });
+            return next(util.getError(102));
         }
 
         _.extend(part, update);
         part.save();
 
         res.send({
-            'status': 'success',
             'code': 0,
             'part': part
         });
@@ -246,17 +207,14 @@ exports.create = function(req, res, next) {
     var type = validator.trim(req.body.type);
     var is_leaf = validator.trim(req.body.is_leaf);
 
-    Part.newAndSave(name, description, abbr, type, is_leaf, function(err) {
+    Part.newAndSave(name, description, abbr, type, is_leaf, function(err, part) {
         if (err) {
             return next(err);
         }
 
         res.send({
-            'status': 'success',
             'code': 0,
-            'name': name
+            'part': part
         });
     });
-
-    console.log("/part/create => new and save.");
 };

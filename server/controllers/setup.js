@@ -113,7 +113,7 @@ exports.mongo = function (req, res, next) {
                         part.units.push(u2._id);
                         part.units.push(u4._id);
 
-                        part.parts.push(p2._id);
+                        part.children.push(p2._id);
                         part.save();
                         console.log("Save Part1");
                         ep.emit('part1', part);
@@ -123,7 +123,7 @@ exports.mongo = function (req, res, next) {
                     part.units.push(u2._id);
                     part.units.push(u4._id);
 
-                    part.parts.push(p3._id);
+                    part.children.push(p3._id);
                     part.save();
                     console.log("Save Part2");
                     ep.emit('part2', part);
@@ -133,8 +133,8 @@ exports.mongo = function (req, res, next) {
                 part.units.push(u2._id);
                 part.units.push(u4._id);
 
-                part.parts.push(p4._id);
-                part.parts.push(p5._id);
+                part.children.push(p4._id);
+                part.children.push(p5._id);
                 part.save();
                 console.log("Save Part3");
                 ep.emit('part3', part);

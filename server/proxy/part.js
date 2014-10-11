@@ -1,37 +1,39 @@
 var _ = require('lodash');
 var Part = require('../models/').Part;
+var utils = require('../utils');
 
-exports.find = function (callback) {
+exports.findAll = function (callback) {
     Part.find({}, callback);
+};
+
+exports.findByUnitId = function (unit_id, callback) {
+    Part.find({ units: unit_id }, callback);
 };
 
 exports.findById = function (id, callback, not_populate) {
     if (not_populate) {
         Part.findOne({_id: id}).exec(callback);
     } else {
-        Part.findOne({_id: id}).populate('parts').exec(function (err, root) {
+        Part.findOne({_id: id}).populate('children').exec(function (err, root) {
             if (err) {
                 return next(err);
             }
 
             if (!root) {
-                return next({
-                    code: 102,
-                    message: '对象不存在'
-                });
+                return next(utils.getError(102));
             }
 
             var __total = 0;
             var __done = 0;
             var deepPopulate = function (err, part) {
-                var parent = part.parts;
+                var parent = part.children;
                 if (parent && parent.length > 0) {
                     __total += parent.length;
                     __done += 1;
 
                     _.each(parent, function (child) {
                         Part.populate(child, {
-                            path: 'parts'
+                            path: 'children'
                         }, deepPopulate);
                     });
                 } else {
@@ -43,13 +45,10 @@ exports.findById = function (id, callback, not_populate) {
                 }
             };
 
+            // 遍历子节点，深度populated
             deepPopulate(err, root); 
         });
     }
-};
-
-exports.findByUnitId = function (unit_id, callback) {
-    Part.find({ units: unit_id }, callback);
 };
 
 exports.newAndSave = function (name, description, abbr, type, is_leaf, callback) {
