@@ -1,0 +1,217 @@
+{
+    "file": "ZYGL-LJ-03",
+    "name": "路基工程机械专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备工作",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "一般规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机械作业设专人指挥；机械放置平台保持稳定，作业前要先发出信号；严禁人员进入机械旋转范围。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "场地条件",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "大型机械进场前应查清所通过道路、桥梁的净宽和承载力是否足够，否则应拓宽和加固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "作业前要查明施工场地、暗设置物、地下敷设管道、地下坑道等的地点、走向，并采用明显记号表示；严禁在离电缆1m距离以内作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "高压线",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "安全距离",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机械不得靠近架空输电线路，并与架空线保持安全距离，如220kV架空线沿垂直、水平均应保持最少6m距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "行驶安全",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "会车要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "会车时轻车让重车；通过窄路、十字路口、交通繁忙地段及转弯时，应注意来往行人及车辆。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "重车行驶",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "前后两车间距应大于5m，下坡时不小于10m，并严禁车上乘人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "车道维护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "车道应有专人维修，悬崖陡壁处应设防护拦杆。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "边坡、边沟",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "作业要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机械在边坡、边沟作业时，应与边缘保持必要的安全距离，使轮胎（履带）压在坚实的地面上。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "操作规程",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "遵守情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挖掘机、推土机、平地机、装载机、自卸汽车、压路机等工程机械均应遵守安全操作规程，杜绝违章。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "特殊情况处理",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "处理方法",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "遇到土体不稳定有坍塌危险、出现恶劣天气、地面涌水冒泥、工作面净空不足等状况时暂停施工。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

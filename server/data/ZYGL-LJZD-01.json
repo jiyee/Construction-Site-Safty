@@ -1,0 +1,337 @@
+{
+    "file": "ZYGL-LJZD-01",
+    "name": "驻地建设专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "驻地建设标准检查",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "场地选址",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "不能选在发生塌方、泥石流、水淹等地质灾害区域及高压电线下面（与高压水平距离不小于8m），避开取土、弃土场地，离集中爆破区500m以外；要在通风、干燥的位置，防止雨水、污水流入。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A1-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "驻地建设的形式和选择",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "租用民房或自建低层房",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "自建活动板房",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "规划布局",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "生产、生活区设置合理",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A1-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "厨房、锅炉房、变电室、发电机房与生活区、办公区之间的距离不小于15m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "文明建设检查",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "项目经理部办公区、生活区的场地及道路情况驻地区域四周好排水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应作硬化处理，整平、无坑洼和凹凸不平，雨季不积水。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "设置排水沟或下水道，排水畅通，在驻地大门口处应设置洗车系统。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "污水处理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "污水排放方案需报总监办批准；设置多级沉淀，通过沉淀过滤，达到排放标准；厕所污水通过集中独立管道进入化粪，封闭处理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "垃圾处理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "生活区和办公区各设置垃圾堆积池，将各种垃圾集中存放；垃圾处理池采用砖砌结构，容积不得小于4m*3m*1.5m，并定期处置垃圾。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全消防检查",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "消防制度的建设",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "制度防火安全措施及管理制度，各区域明确安全防火责任人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "安全消防的配置",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在办公和生活、要在中心地点设手动（或电动）消防水泵一台及不小于20立方米的消防水池；每栋用房均应配备6～8个灭火器，设置一个2立方米的消防水池。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A1-5"
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "消防通道",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "驻地应设有消防通道，其宽度不得小于3.5米。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A1-5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "现场作业的防火安全",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "防火的设置",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在不同场所合理配置种类合适的灭火器材。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A1-5"
+                        },
+                        {
+                            "index": "2",
+                            "name": "严格管理易燃，易爆物品，设置专门仓库存放。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-A-A1-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "施工现场动明火作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "电焊、气割、熬炼沥青作业时，必须执行三级动火审核手续，并落实动火监护和防火措施。按施工区域，层次划分动火级别，动火必须具有“二证一器一监护”，即“焊工证、动火证、灭火器、监护人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "现场防火的制度建设",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "建立防火组织、义务消防和防火档案，明确项目负责人、管理人员及操作岗位的防火安全职责。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "办公区域和施工作业现场安全主要标牌检查",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "工程宣告类型",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "工程简介及开竣工日期和监督电话；相关参建单位名称及工程项目负责人姓名；施工平面图（施工总平面布置图、消防布置图）。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-B-B2-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "安全告知类",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "重大危险源公示牌；十项安全技术措施、十项安全纪律，防火须知、相应人员安全岗位职责等标牌；安全生产计数牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

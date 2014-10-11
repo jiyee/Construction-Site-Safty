@@ -1,0 +1,205 @@
+{
+    "file": "ZYGL-QLSD-04",
+    "name": "隧道施工二衬台车及作业平台专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "二衬台车",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "台车",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "二衬台车有产品合格证，且经过受力验算。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "二衬台车使用前应检查各处焊点无脱焊、受力部位不发生变形。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "台车设置人行爬梯，各用电设备有效地接地保护，电机旋转部位有防护罩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "千斤顶",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业前，检查液压系统及千斤顶完好有效，安装到位。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "台车安全标识",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "台车防撞",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在工作台车两侧防护栏杆外侧配挂全反光材料制作的一组“禁止停留、注意安全、当心机械伤人、当心坠落、当心落物”安全警示牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "二衬台车应设置4kg灭火器2组",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B5-(5"
+                        },
+                        {
+                            "index": "3",
+                            "name": "工作台车和衬砌台车应设置单独固定的警示灯，台车上内轮廓应设置连串式彩灯，并粘贴反光膜。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B1-(18"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "台车平台防护",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "防护栏杆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安全防护栏高度为1.2m，立杆间距不得大于1.5m，横杆与上下件之间距离不得大于60cm",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(5"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "平台底板",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "平台底部铺木板，且探头板伸出宽度不超过15cm，木板铺设密实，并在台车底部挂安全密网。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "二衬台车轨道",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "轨道支垫",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "台车轨道支垫枕木的间距不大于50cm，且台车行走时要有专人指挥。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "台车固定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "台车轨道处有夹轨器或三角楔固定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

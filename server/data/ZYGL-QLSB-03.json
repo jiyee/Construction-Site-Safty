@@ -1,0 +1,223 @@
+{
+    "file": "ZYGL-QLSB-03",
+    "name": "现浇箱梁预应力张拉压浆施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工方案",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "审批手续",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，总监办批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工准备工作",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "项目技术负责人按施组设计对部门管理人员进行技术交底、分管安全的负责人向作业人员进行安全交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "油泵、千斤顶",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "设备检验",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应有出场合格证，按期标定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "施工现场",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "专业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "油泵操作手有无佩戴护目镜、临边张拉操作人员是否挂安全带。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "张拉平台",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "张拉平台应稳固、护栏应符合要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "手拉葫芦",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "手拉葫芦吊点应牢固、保险钩应扣上。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "张拉千斤顶",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "张拉千斤顶是否漏油、油泵是否正常、油管连接点是否牢固、压力表是否正常有效。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D5",
+                    "name": "张拉",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "张拉钢丝、钢绞线和精轧螺纹钢时，应检查、试验锚具、夹具、连接器安装是否符合要求，设置警戒区、挡板和警示标志。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "压浆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "压浆口附近操作人员有无佩戴护目镜，吊装压浆水泥采用吊篮时、下方不得站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "其他",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "各项安全防护措施",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "是否符合要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

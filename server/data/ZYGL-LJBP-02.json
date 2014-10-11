@@ -1,0 +1,226 @@
+{
+    "file": "ZYGL-LJBP-02",
+    "name": "高边坡锚喷支护施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "锚喷支护专项方案；边坡沉降监测方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，经监理工程师批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "技术交底",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "项目部应对作业人员进行安全技术交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "排水方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，经监理工程师批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "边坡支护",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "锚杆施作",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施作锚杆时，钻机应固定牢固，禁止一人单独进行操作。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "喷射混凝土",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "喷射混凝土时，作业人员应佩戴防护口罩、安全帽等防护用品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "采取综合防尘措施降低粉尘浓度，宜采用湿喷混凝土。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "不得在喷头和注浆管前方站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "输料管应放直，作业人员应握紧喷头，喷头不得正对有人的方向。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "适当减少锚喷操作人员连续作业时间",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "防、排水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应落实方案中的防、排水措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "降水量较大时，应配备两路电源。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "监控量测",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "量测点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "监测点的布置应满足监控要求",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "监测的内容、时间间隔、次数应符合施工进程及设计要求",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

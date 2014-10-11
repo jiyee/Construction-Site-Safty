@@ -1,0 +1,300 @@
+{
+    "file": "TY-MB-06",
+    "name": "挂篮砼浇筑专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "挂篮砼浇筑准备工作",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工专项方案审查通过，并经监理工程师审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-1　"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员进行安全培训和技术交底，有专人统一协调指挥。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "安全防护及通道",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "临边安全围护、作业通道及上落楼梯是否正常。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "夜间照明",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "夜间照明设施使用要满足施工的需要。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "挂篮砼浇筑前及过程检查",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "挂篮构件、模板",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "各联接螺栓、插销、节点不得有松动",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "各部位焊接牢固，无裂缝、脱焊。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "模板、支架要牢固可靠，外侧模下方反力梁要全部受力，手拉葫芦不得有全部放松。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "底篮位置符合设计要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "各杆件吊带相对位置符合方案要求，前、后吊带是否已全部预紧，吊带销是否全部受力。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "主、次纵梁反顶系统",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "主纵梁尾部反顶系统要完全支顶在箱梁底部。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "主纵梁尾部反顶轮要降落在指定位置。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "次纵梁反顶千斤顶设置是满足符合要求，千斤顶不得处于“自动”工作状态。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "锚固系统",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "吊带连接板不得张开、开口销要符合要求，并安装保险销。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "后锚扁担梁型号要符合要求，后锚要设置双螺帽，后锚预埋精轧螺纹钢位置、数量要正确。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "主桁后锚锚固数量满足方案要求、主桁后锚锚固连接器要做好标记、标记要正确。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "水平止推系统要安装牢固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "前支点处钢枕要满足要求，轨道与枕木间要做到支垫密实，轨道锚固数量是否足够。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "6",
+                            "name": "滚轮箱预埋孔位置是否准确。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "其它情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "浇筑过程有专人对挂篮稳定情况进行检查，临时用电使用规范。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

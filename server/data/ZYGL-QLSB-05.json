@@ -1,0 +1,233 @@
+{
+    "file": "ZYGL-QLSB-05",
+    "name": "防撞栏施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备阶段",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "专项方案通过监理、业主单位审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "特种作业人员必须持证上岗，相关作业人员要进行安全技术交底，并设立安全责任人警示牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工阶段",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在桥梁边缘设置栏杆，挂安全网。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-4"
+                        },
+                        {
+                            "index": "2",
+                            "name": "在施工路段设置必要的标志、路栏及防护设施，夜间施工必须悬挂警示灯，并保证所有标志、路栏及防护设施齐全有效。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "作业平台要满铺脚手板及固定，周围要设置1.2m高栏杆。施工现场人员佩戴安全防护用品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-4"
+                        },
+                        {
+                            "index": "4",
+                            "name": "桥梁防撞护栏外侧模板安装、拆除时，应使用作业吊篮，并进行固定。吊篮底应满铺，四周张挂密目式安全网。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-4"
+                        },
+                        {
+                            "index": "5",
+                            "name": "作业点区域要围闭，要设置明显的警示标志。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "电气",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "配电箱内配备符合要求，必须有漏电保护器和过载保护器。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "模板吊装小车卷扬机电源接线是否满足要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "模板安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "模板吊装小车主梁、斜撑等焊接牢固，小车卷扬机制动灵敏有效，机钢丝绳、锁卡无破损。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "模板吊装使用卡环，且卡环、钢丝绳满足起重要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "模板吊装小车行走车轮稳固、运行平稳，配重满足施工荷载要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "模板安装牢靠，对拉螺栓满足设计要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "模板吊装小车人员作业平台结构坚固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

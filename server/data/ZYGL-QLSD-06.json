@@ -1,0 +1,571 @@
+{
+    "file": "ZYGL-QLSD-06",
+    "name": "隧道施工支护与开挖作业专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "一般规定",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "一般规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "对于IV级、V级、VI级围岩隧道的施工，严禁采用全断面法开挖",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "当同一隧道两个工作面接近8倍循环进尺时，服从统一协调指挥",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "仰拱开挖",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "仰拱开挖",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "仰拱距开挖面距离不得大于30m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "一次开挖时，长度不应超过6m，并及时回填，开挖后应立即施作初期支护，封闭成环",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "采用分部法开挖的，临时支护应根据监控量测结果逐段拆除，每段拆除长度不得大于2m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "管棚、锚杆施工",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "管棚、锚杆钻孔",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钻孔时钻杆不弯曲。要求搭设平台或使用机械钻孔。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "钻孔时作业人员是否用胸部、腹部紧贴风钻手柄，作业人员戴绝缘手套，穿绝缘鞋。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "风钻继续使用二小时后是否加油，并检查保养。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "管棚、锚杆安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "管棚导管、锚钎长度、直径、间距、角度是符合设计，管棚导管、锚杆安装搭设平台。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "掌子面开挖",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "台阶法开挖施工",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "台阶长度不宜超过隧道开挖宽度的1.5倍",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(11)"
+                        },
+                        {
+                            "index": "2",
+                            "name": "台阶下部开挖后，须及时喷射混凝土进行封闭；当设有钢架时，须及时安装下部钢架并喷射混凝土，严禁拱脚长时间悬空。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "环形开挖留核心土法施工",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "开挖进尺宜为0.5—1m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(13)"
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挖后应及时施工喷锚支护、安设钢架支撑，相邻钢架须用钢筋连接",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(14)"
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应按设计要求施工锁脚锚杆",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(15)"
+                        }
+                    ]
+                },
+                {
+                    "index": "D5",
+                    "name": "中隔壁法、交叉中隔壁法施工",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "同层左、右两侧沿纵向应错开10-15m的距离，同侧上、下层开挖工作面相距应保持3-5m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D6",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "中隔壁及临时支撑应在仰拱施工完成后逐段拆除",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D7",
+                    "name": "双侧壁导坑法施工",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "导坑宽度不应大于0.3倍隧道宽度",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D8",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "侧壁导坑开挖应超前中槽部位10～15m。导坑与中间土体同时施工时，导坑应超前30～50m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(16)"
+                        }
+                    ]
+                },
+                {
+                    "index": "D9",
+                    "name": "装（卸）渣与运输",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运输车辆严禁人料混载",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "运装大体积或超长料具时，应有专人指挥，专车运输。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B1-(20)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "喷射混凝土施工",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "喷射效果",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "喷射混凝土应覆盖钢筋网2cm以上，厚度符合设计，无“肋”骨现象，初喷砼每段不应超过6m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "喷混凝土表面无裂缝、脱落、露筋、渗漏水等。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "作业时防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员戴防护镜、防水衣、防水裤、防护面罩、防护口罩等；喷枪严禁对人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "喷头与受喷面宜垂直，距离在60-120cm为宜。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "二次衬砌",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "钢拱架支护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "初喷混凝土后，再安装钢搭架。拱架安装垂直，支垫到底，连接处高强螺栓及螺母齐全，搭架立杆间距符合设计，不变形。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B2-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "F2",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "对于IV级、V级、VI级围岩隧道的施工，二次衬砌的施工时间须在围岩和锚喷支护变形基本稳定后及时进行，且距离开挖面不得大于100m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B2-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "钢筋安装",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员搬运钢筋动作一致，钢筋绑扎要牢固",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B2-5"
+                        }
+                    ]
+                },
+                {
+                    "index": "G2",
+                    "name": "人员防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钢筋焊接作业人员穿好绝缘手套、绝缘鞋、安全帽。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "H",
+            "name": "乙炔、氧气瓶使用",
+            "items": [
+                {
+                    "index": "H1",
+                    "name": "使用",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "气割作业时，乙炔瓶与氧气瓶保持5m以上安全距离，与其他明火保持10m以上安全距离，作业点",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "与易燃易燃易爆物品的距离不小于10m，气瓶不倒地使用。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "I",
+            "name": "防水板安装",
+            "items": [
+                {
+                    "index": "I1",
+                    "name": "防火",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "防水板施工时，台车作业平台及地面设置灭火器。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "现场作业人员禁止抽烟点火，严禁烟火。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

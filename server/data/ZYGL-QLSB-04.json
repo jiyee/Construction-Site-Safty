@@ -1,0 +1,222 @@
+{
+    "file": "ZYGL-QLSB-04",
+    "name": "桥面铺装专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备阶段",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "专项方案通过监理、业主单位审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "特殊工种作业人员必须持证上岗，组织相关作业人员进行安全技术交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工阶段",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "电气",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "夜间施工配备足够照明设备，严禁乱拉电线。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "施工机具安全装置灵敏可靠，防护罩完好无损。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "定期对线路进行检查、维修、保养。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "桥头设栅栏，非施工人员和车辆严禁入内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "桥面铺装属高空作业，施工现场人员佩戴相应安全防护用品，临边的安全防护应采取足够的安全防护措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-4"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "现场设置的照明灯具、护栏、围栏、警告标志经常维护，在有危险地点悬挂安全警示牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-4"
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "施工人员上下的临时扶梯，应搭设牢固；扶梯净宽度宜不小于1.3。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "施工现场的布置符合防火、防汛、防爆、防雷电等安全要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "其它",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "起重设备使用前必须进行安全性能检测，严格按照操作规程使用。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "砼运送和振捣、表面收浆抹面过程中，严禁操作人员直接站在模板上口，必要时可以搭设安全操作平台。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "焊接桥面两侧防撞栏钢筋时，电焊工应在桥面内侧蹲稳牢操作。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "泵送砼堵管，拆卸管道处理时，操作人员严禁面对管道，以免砼突然喷射伤人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

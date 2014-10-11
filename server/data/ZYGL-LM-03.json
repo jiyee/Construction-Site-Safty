@@ -1,0 +1,253 @@
+{
+    "file": "ZYGL-LM-03",
+    "name": "水泥混凝土路面施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "自卸汽车",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "卸料要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在车停稳后方准顶升车厢卸料；车厢未放下时操作人员不得上车清除残料。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "人工摊铺",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "模板拆卸",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "装卸钢模时应逐片轻抬轻放，不得随意抛掷；拆下的木模应及时起钉。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "安全用电",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "电动振捣器严禁用电缆拖拉或吊挂，在检修或作业间断时要断开电源。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "轨模式摊铺机",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "安全距离",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "摊铺时，布料机与振平机之间应保持5～8m的安全距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "滑模式摊铺机",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "停放要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机器停放在通车道路上时，周围必须设置明显的安全标志；夜间用红灯示警。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-D-D1-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "真空吸水",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "作业要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁操作人员在吸垫上行走或将物件置压在吸垫上。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "抹平机",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "叶片、螺栓",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "使用时确保叶片光洁平整，联接螺栓紧固不松动，在无负荷状态下起动。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "F2",
+                    "name": "安全用电",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "电缆要确保不打结，不砸压。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "切缝机",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "冷却要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "切缝前先打开冷却水，冷却水中断时应停止切缝。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "G2",
+                    "name": "刀片保护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "停止切缝时应先将刀片提离板面。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "H",
+            "name": "薄膜养护",
+            "items": [
+                {
+                    "index": "H1",
+                    "name": "劳动防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "喷洒溶剂时，作业人员应站在上风，并穿戴安全防护用品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

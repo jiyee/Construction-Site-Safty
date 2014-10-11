@@ -1,0 +1,350 @@
+{
+    "file": "ZYGL-QLLC-06",
+    "name": "沉入桩施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "人工桩专项施工方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，经监理工程师批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工现场",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "作业环境",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工现场应保持清洁平整。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "作业平台",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "水上打桩采用的固定平台，须搭设牢固，底座与平台应连接牢靠。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-3"
+                        },
+                        {
+                            "index": "2",
+                            "name": "在水上采用浮式沉桩机锤击沉桩时，桩架与船体必须连接牢固，对其稳定性应进行验算和检验。施工中，应防止浮船晃动或偏载。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A1-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "打桩机",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在高压线下两侧安装打桩机械，应根据电压，保证打桩机与高压线最近距离大于安全距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "打桩机顶部上方2m内不准有任何架空障碍物。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        {
+                            "index": "3",
+                            "name": "桩帽应与桩连接牢固，桩垫破碎时，应及时更换。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "轨道铺设要平顺、轨距要准确、钢轨要钉牢。轨道端部应设止轮器。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "移位",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "打桩机移位时，禁止将桩锤悬起，必须将锤头稳放在销子上后，方准移位。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "远距离移位时，要事先拆除管路与电线。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "维修保养",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应定期派专人进行检查、维护，并形成记录。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "锤头",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "降落锤头，不准猛然骤落。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "在起吊沉桩或桩锤时，严禁工作人员直接在吊钩下或在桩架龙门口处停留或作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "检查维修桩锤，必须将桩锤放落在地面或平台上，用销子或卡子固定于桩架上。严禁在桩锤悬挂状态下进行维修。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C5",
+                    "name": "拆装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "桩架长度半径（并加一定安全系数）内不准拆装作业以外的人员进去。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "在起落机架时，要专人指挥，并禁止任何人在机架底下穿行或停留。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "沉桩",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "高压射水辅助沉桩",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "沉桩压力应符合方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "应放松牵引钢丝绳，使锤具紧压桩头，随射水徐徐下沉。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "桩身就位前不得通水。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "高压水泵的开启和压力表的控制均应设专人负责看管。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "要严格掌握射水方向。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "6",
+                            "name": "高处作业人员的安全带严禁系在被沉的桩上或龙门口上。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

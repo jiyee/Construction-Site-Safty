@@ -1,0 +1,211 @@
+{
+    "file": "TY-ZC-04",
+    "name": "脚手架施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "一般要求",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审批",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "支架工程应编制专项施工方案，经项目技术负责人审核报监理工程师批准后实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "技术、安全交底",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "脚手架搭设、拆除作业前须向作业人员进行施工技术交底，作业人员应持证上岗。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "材料要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "对钢管、扣件、脚手板等材料进场检查验收合格后方可使用。脚手架基础施工应严格按照批准的方案实施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "验收",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "搭设完成后，应组织对脚手架进行验收，满足要求后方可投入使用。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-6"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "搭设",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "搭设",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "脚手架应当设置锁力杆或扫地杆（扫地杆离地面不应大于30厘米）。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "脚手架高度在10～15m时应设置一组（4～6根）缆风绳，增高10m再加设一组，缆风绳的地锚应牢固。超过20m的脚手架，每4m应设置连墙件。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C2-9"
+                        },
+                        {
+                            "index": "3",
+                            "name": "脚手板宜采用5cm厚的木板，并须满铺、绑牢，无探头板。有坡度的脚手板，须设置防滑木条，坡度较长时应设置过渡平台，减少坡长。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "拆除",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "拆除",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "周围应设置护栏或警戒标志，并应从上而下地拆除，不得上下双层作业。拆除的脚手杆、板应用人工传递或吊机吊送，严禁随意抛掷。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "安全防护",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "警示与围护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "脚手架搭设和拆除时，应设置安全警戒线和警示牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-7"
+                        },
+                        {
+                            "index": "2",
+                            "name": "脚手架应设置防护栏、上下通道，脚手架外侧设密目安全网，内侧设防坠落安全网。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "个人安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安全三宝。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

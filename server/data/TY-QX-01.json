@@ -1,0 +1,556 @@
+{
+    "file": "TY-QX-01",
+    "name": "不利气候环境专项施工安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "冬季施工",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "一般规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工组织设计中应明确冬季施工安全技术措施，做好冬季施工安全技术交底",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "落实防滑、防冻、防火、防中毒、防坍塌等措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "脚手架、作业平台应铺设防滑条、防滑垫等防滑设施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "施工便道、便桥、临时码头、作业船舶等应铺设防滑材料。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "应备好保温用的厚毡毯、塑料薄膜、防雨帆布、保温棉等材料",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "应在施工便道陡坡、急弯路段和施工作业场所设置醒目的防滑警示牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "避免线路打火引发火灾。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "雪后应立即对所有用电设备、线路进行全面检查，对使用的临时支架和临边防护设施进行检查",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "高温季节施工",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "一般规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工组织设计中应明确高温施工安全技术措施和应急措施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "要保证及时供应符合卫生要求的茶水、清凉含盐饮料、绿豆汤等，及时给职工发放防暑降温的急救药品和劳动保护用品",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "保持清洁卫生，做好文明施工",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "雨季施工",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "一般规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工组织设计中应明确雨季施工安全技术措施和应急措施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "应与气象、防汛等部门建立防汛联动机制，及时掌握气象、水文等信息。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "需做好防洪防汛的单位，应编制相应的应急预案，并经相关部门批准",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "储备必要的抗洪抢险物资",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "对机电设备的电闸箱严格按照规范要求安装接地保护装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "应在施工便道陡坡、急弯路段设置醒目的防滑警示牌，并设置必要的防滑措施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "当达到汛情预警值条件时，立即启动应急救援预案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "雨季前应做好傍山施工现场边缘的危石处理",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "雨季施工期间，应疏通施工现场排水系统",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "大雨后作业，应当检查塔吊的基础、龙门吊轨道基础",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "大风、大雾气候施工",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "一般规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工组织设计中应明确大风大雾天气施工安全技术措施和应急措施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "应与气象部门建立联动机制，及时掌握气象信息",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "大风预警时，龙门吊、架桥机应增设、加固缆风绳",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "未浇筑混凝土部分的骨架和模板超过8m时，应设置缆风绳。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "大雾天气应在施工重点防撞作业点、重要交叉路口、门洞式通道等适当增设爆闪灯。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "大风、大雾天气时，禁止水上施工、起重吊装、支架搭设拆除、露天高处等作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "夜间施工",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "一般规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工组织设计中应明确夜间施工安全技术措施和应急措施，并做好夜间施工安全技术交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "所有施工车辆、小型机具以及各防护装置均要粘贴反光标牌或反光膜。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "现场作业点采用高架灯（日光色镝灯）作为主要照明设施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "作业人员须在巡视或工作过程中穿戴反光背心、佩备手电筒",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "应在施工重点防撞作业点、重要交叉路口、门洞式通道等应适当增设爆闪灯、诱导标识。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E3",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "。夜间施工过程中，严格落实人员点名制度。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "严禁无关人员及车辆进行施工现场随意穿行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "雷雨、大风等恶劣天气严禁夜间施工作业。同一作业区应避免夜间交叉施工",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

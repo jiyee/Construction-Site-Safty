@@ -1,0 +1,210 @@
+{
+    "file": "ZYGL-QLDT-02",
+    "name": "水上作业专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备阶段",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "专项方案、各项水上作业的安全管理体系、应急救援体系通过监理、业主单位审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "组织相关作业人员进行安全技术交底",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "前期相关手续",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "开工前应报告当地海事或港航监督部门备案，进行水上施工时要取得《水上水下施工作业许可证》。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "作业过程",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "水上作业人员必须穿好救生衣，同时凡进行舷边等防护不严密等水上作业行为时，作业人员必须穿戴好救生防护用品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "水上平台、船舶等临边应安装合乎要求的护栏，孔洞全面覆盖。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "配备应急救生圈、安全绳及应急救生船只。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "作业船舶",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "各类作业船舶船况、证书、人员配备等情况符合相关安全管理规定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "船舶要满足现场作业抗风、抗浪等安全性能。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "进出施工作业区，穿越航道的施工船舶应当主动避让沿规定航路行驶的船舶。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "船舶作业过程中严禁超载。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "根配备动力足够的拖轮在现场值守，以保证对可能发生的水上紧急事件及时处理、救援。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "6",
+                            "name": "施工作业船舶应按船舶信号要求，正确显示信号灯、信号旗；夜间还应妥善遮蔽有碍航行安全的照明灯光。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "7",
+                            "name": "施工作业过程中应及时清除遗留在施工区水域的碍航物，严禁随意倾倒废弃物。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

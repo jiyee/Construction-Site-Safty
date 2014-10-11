@@ -1,0 +1,295 @@
+{
+    "file": "ZYGL-QLLC-03",
+    "name": "人工挖孔桩专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "人工桩专项施工方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，经监理工程师批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员须持有相应的上岗证。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "项目部须对作业人员进行技术交底、分管安全的负责人向作业人员进行安全交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "应急储备",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应有排水的水泵等各种应急物资。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "通讯设备",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "现场作业人员应配备联络通讯工具。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "孔口防护",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "护壁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "第一节护壁要高于孔口300mm。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "周边防护、封盖",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "井口周围应设1.2m以上防护栏杆，并且围密目安全网。应设置警示标识标牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "孔口周围2m范围内不得弃渣，不得存放机械设备等杂物。暂停挖孔时候，孔口应封盖。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "开挖",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "吊篮、安全带",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工人员上下井应采用专业厂家生产的吊篮，吊篮应有防坠装置，井口操作人员应系安全带。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "护壁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "强度、厚度不得低于设计要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "通风",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "孔深10m以上时，应进行恒定送风，送风量应大于25L/S，使用风镐时应加送风量。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "气体检测",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "下井前应使用毒气检测仪对孔内空气氧含量和有毒有害气体进行检测，并形成记录。井内作业人员不得超过2个。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "钢筋笼",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "起吊",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钢筋笼的起吊应设有专人指挥；捆绑点应牢固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "混凝土",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "灌注",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "孔口作业人员应佩戴安全带。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "砼车",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "砼车应停留在稳定地基。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

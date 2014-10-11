@@ -1,0 +1,337 @@
+{
+    "file": "TY-ZY-01",
+    "name": "高处作业施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "基本要求",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "作业人员安全教育和持证上岗",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工方案已报批。必须按要求向作业人员进行逐级安全交底，作业人员须持有相关的上岗证（电焊工证、架工证等）。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "现场施工环境",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "施工区域地面情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "高空作业区地面必须划出禁区，拉设警戒线或进行围蔽，并挂设“闲人免进”、“禁止通行”等警示牌，在高压线下作业必须有足够的安全距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "夜间作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "夜间作业，要设置足够的照明设施，保证灯光照明强度及覆盖范围。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "脚手架",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业平台脚手板应铺满且固定牢固，不应有翘头板",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C1-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "临边及洞口作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "临边和井口须设置防护栏网，并挂置安全网。盖板、栅门等，护栏须有足够刚度，搭设要牢固，高度不低于1.2m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C1-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "B5",
+                    "name": "上下专用通道。",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "高处作业必须设置人员上下专用通道。5米以下应设置防护梯。5米以上应设置“之”字形人行斜梯。40米以上宜安装附着式电梯。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C1-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全行为",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "作业人员状况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "是否体格合格，未满18岁，凡患有高血压、心脏病、癫痫病、精神病及酒后和其它不适于高空作业的人员，禁止登高作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "安全防护用品佩带",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员须佩带安全防护用品，悬空或临边作业须安全带或安全绳，严禁赤脚或穿拖鞋进入现场。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "人员上下通讯联络",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "所有作业人员须经专用爬梯或电梯上下，严禁用运送材料的吊笼运送人员。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "上下联络应设置联络信号或通讯装置，并有专人负责。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "是否存在上下同时垂直作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "高空作业时不得而上下同时垂直作业，如确实需要，须采取隔离封闭措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "材料和设备",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "材料和设备料堆放",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "材料和设备料堆放要整齐、平稳，容易坠落的材料、工具应撤离或采取措施加固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "防护用品",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "所有安全带（绳绳）使用前须检查合格。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "脚手架、爬梯、脚手板材料",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "脚手架、爬梯搭设所用材料须用正规厂家材料，并有出厂合格证，型号、规格符合方案要求，杆件材须完好，脚手板须有足够的刚度。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "标准梯笼",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "基础应平整硬化；使用前，进行“双挂牌”验收",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D5",
+                    "name": "登高车",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "确保基础平整压实，登高作业不得超过两人",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "其它",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "临时用电、电焊及气割等作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "临时用电、电焊及气割等作业应符合规范和其它规定要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

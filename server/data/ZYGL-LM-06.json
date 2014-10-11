@@ -1,0 +1,283 @@
+{
+    "file": "ZYGL-LM-06",
+    "name": "路面施工交通专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工区",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "封闭情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工区段应封闭，严禁非施工车辆入内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-D-D1-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "施工车辆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工车辆按要求进行管理，严禁违规载人",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-D-D1-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "劳动保护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业时，施工人员应身着黄色反光背心。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "运输安全",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "交通标志",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运料车途经的村道、便道应设交通指示、警告标志牌；交叉路口设置导向牌，危险地段有警示标志，交通繁忙的路口设警示标志，并派专人指挥和管理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "夜间照明",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "路口及基准桩附近应设置警示、反光标志，灯光明亮，无任何阴暗角落，照明设专人管理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "交通恢复",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "沥青路面",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "沥青路面温度冷却后方可恢复交通。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "卸料、交通导流",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "管理人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "卸料车卸料和交通导流要设有专人负责指挥和管理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "摊铺作业",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "卸料、换档",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运料车向摊铺机卸料时要设专人指挥，保证它们协调动作、同步行进，防止互撞；换档在摊铺机完全停止时进行，严禁强行挂档和在坡道上换档或空档滑行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "驾驶台",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业时无关人员不得在驾驶台上逗留。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "车辆",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "行驶要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "进入现场后车速不超过20Km/h，摊铺机前后100m内限速5Km/h；驾驶员不得擅离岗位；驾驶力求平稳，不得紧急转弯。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "边通车、边施工的路段",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "施工区划分",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工区根据《公路养护技术规范》要求，设置预告区、上游过渡区、缓冲区、作业区、下游过渡区、终止区共6个基本区划，并按规定制作、布置安全设施、标志标牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "G2",
+                    "name": "安全设施、标志牌",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "按照《道路交通标志和标线》、《公路养护安全作业规程》等执行；其中限速标志按当地交警部门确定的实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "G3",
+                    "name": "交通协管",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "设专职交通协管员维护交通秩序，必要时请交警协调；设专职安全员负责监督施工安全，并维护交通安全设施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

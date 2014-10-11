@@ -1,0 +1,163 @@
+{
+    "file": "ZYGL-QLSB-06",
+    "name": "跨线施工安全专项检查",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "一般规定",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位应编制跨越道路专项施工方案，报监理和建设单位审查批准",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "管理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "建设单位组织联系道路主管部门、公安机关交通管理部门协商办理施工或封锁道路的相关手续。，对未中断交通的施工作业道路，施工单位应当协助当地公安机关交通管理部门做好交通安全监督检查，维护道路交通秩序",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "交底",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业前须向作业人员进行安全技术交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全防护",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "标志",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "按要求设置施工标志、路栏、锥形交通路标，夜间施工警告灯光信号等安全设施，行车道前方应设置限位门架，支架支墩应设置防撞墩加以保护",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-B-B1-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "半幅施工区与行车道之间设置隔离设施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-B-B1-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "防护棚",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "防护棚应进行稳定计算",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "防护棚长度应各超出跨线桥梁两侧不小于3m，防护棚顶板宜采用不小于5cm的木板封盖严密，防护棚顶部四周应设置不低于80cm高的围挡",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "安全管理要点",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "通车路段应加强日常安全巡视检查，及时对防护设施进行管理和维护",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

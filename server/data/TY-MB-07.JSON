@@ -1,0 +1,338 @@
+{
+    "file": "TY-MB-07",
+    "name": "挂篮拆移专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "挂篮拆移前备工作",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挂篮拆移专项方案通过审查并经监理工程师审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-1　"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员要进行安全培训和技术交底，熟练掌握挂篮拆移的各个步骤和程序。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "沟通协调",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "与相关部门沟通协调，做好交通疏导和封航等工作。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "拆移设备",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "配合拆移的各种设备要到位，并确保正常使用，卷扬机的钢丝绳、制动刹车符合安全使用要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A5",
+                    "name": "其它准备工作",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "做好桥面预留孔、预埋槽检查、全防护设施及天气情况等。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "挂篮拆移",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "脱模",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "脱模前要吊稳，要保证滑轮组安装。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "外侧模要与底篮连接牢固，并采取支撑措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "卷扬机及吊点布置",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "检查各吊点位置要与方案相符。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "每个卷扬机要有足够数量的滑轮组，并进行调试。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "使用的各型号钢丝绳要与方案相符，并保持完好",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "钢丝绳与滑轮组的连接要稳固，钢丝绳捆绑处需用麻袋等包裹。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "底篮下放和拆除",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "每台卷扬机的操作须有专人负责，并有统一的指挥。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "下放过程中各吊点要保持同步。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "下放速度要符合方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "下放过程中底篮下方人员必须撤离正下方。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "下放前平驳须抛锚就位准确，并进行适当支垫。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "横梁及主桁架等拆移",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挂篮回移前检查轨道要锚固好，回移须同步进行，回移到位须锚固稳定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "横梁拆除前主桁两侧要拉住，并且受理相同。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "横梁割除作业时顺序要正确，应先边后中，作业人员要挂好安全带，远离横梁下落位置。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "主桁架拆除时汽车吊须吊住主桁架，用手拉葫芦固定须对称，防止钢丝绳和穿销拆除时晃动过大。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B5",
+                    "name": "其它方面",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挂篮拆除时如果使用塔吊或汽车吊等设备配合使用，须符合吊装作业的有关规定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

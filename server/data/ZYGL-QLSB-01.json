@@ -1,0 +1,262 @@
+{
+    "file": "ZYGL-QLSB-01",
+    "name": "预制梁安装专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备阶段",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "需编制安全专项施工方案时，应经项目技术负责人审核报监理工程师批准后严格实施。分项工程施工前，应进行技术交底专项方案",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "组织相关作业人员进行安全技术交底和安全教育，特殊工种作业人员必须持证上岗。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "施工现场人员佩戴相应安全防护用品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工阶段",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "提梁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "提梁机必须通过国家质量监督检验机构的认证，在取得安全准用证后方可使用。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-5"
+                        },
+                        {
+                            "index": "2",
+                            "name": "提梁前要检查模板上所有与梁体相连的螺栓、通风孔钢棒等材料是否与梁体脱离，确认脱离后应签字认可方可起吊。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-5"
+                        },
+                        {
+                            "index": "3",
+                            "name": "起吊用螺杆要垂直插入吊孔，合理调整螺杆的长度。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-5"
+                        },
+                        {
+                            "index": "4",
+                            "name": "梁体离开外模30—50cm时应停止起吊，检查提梁机和梁体的安全状态，确认安全后方可提升、位移。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-5"
+                        },
+                        {
+                            "index": "5",
+                            "name": "梁体移动时下方严禁站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "6",
+                            "name": "梁体到位后要调整梁体位置，确保梁体落在已安置好的橡胶支座上。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "运梁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运梁车使用前须经过国家质量技术监督机构的认证，取得安全准用证后方可投入使用。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "运梁通道必须经过硬化处理，路基能满足运梁车重载时的承重能力。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "运梁通道中线应用醒目的色彩标识，以便车辆正常运行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "运梁车行驶过程中，严禁其他车辆在通道上行驶，运梁车前后必须有专人指挥车辆。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "梁体进入架桥机下方空挡处，应调整好角度减速慢行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "架梁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "架桥机使用前必须经过国家质量技术监督机构的认证，取得安全准用证后方可投入使用。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "梁板起吊横移就位后，应横向连接固定，加设支撑、垫木，确保构件稳定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A3-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "中央分隔带及湿接缝宜用防坠落安全平网，路线交叉处应增设密目式安全网；桥梁两侧临边应设安全护栏（护栏要求），并张挂密目式安全网。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-4"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

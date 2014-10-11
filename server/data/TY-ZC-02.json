@@ -1,0 +1,275 @@
+{
+  "file": "TY-ZC-02",
+  "name": "承重支架(满堂支架、贝雷支架)搭设施工专项安全检查表",
+  "type": "安全检查",
+  "items": [
+    {
+      "index": "A",
+      "name": "施工准备",
+      "items": [
+        {
+          "index": "A1",
+          "name": "方案审批",
+          "items": [
+            {
+              "index": "1",
+              "name": "支架工程应编制专项施工方案，经项目技术负责人审核报监理工程师批准后实施。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": "SGXCTY-C-C2-5"
+            }
+          ]
+        },
+        {
+          "index": "A2",
+          "name": "技术、安全交底",
+          "items": [
+            {
+              "index": "1",
+              "name": "支架搭设作业前须向作业人员进行施工技术交底，作业人员应持证上岗。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        },
+        {
+          "index": "A3",
+          "name": "钢管、扣件、托座原材料检验",
+          "items": [
+            {
+              "index": "1",
+              "name": "有合格证、检验证明，无裂纹、结疤和变形，锈蚀深度小于0.5mm。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": "SGXCTY-C-C2-4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": "B",
+      "name": "支架搭设",
+      "items": [
+        {
+          "index": "B1",
+          "name": "垫板",
+          "items": [
+            {
+              "index": "1",
+              "name": "木垫板宽度宜20～30cm，厚度≥5cm，可采用槽钢，垫板不得悬空。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        },
+        {
+          "index": "B2",
+          "name": "扫地杆",
+          "items": [
+            {
+              "index": "1",
+              "name": "离底座不大于20cm。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        },
+        {
+          "index": "B3",
+          "name": "立杆",
+          "items": [
+            {
+              "index": "1",
+              "name": "间距符合施工方案，相邻钢管接头错开50cm，垂直度偏差±H/200。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        },
+        {
+          "index": "B4",
+          "name": "水平杆",
+          "items": [
+            {
+              "index": "1",
+              "name": "间距符合施工方案，水平度偏差±L/200。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        },
+        {
+          "index": "B5",
+          "name": "底托、顶托",
+          "items": [
+            {
+              "index": "1",
+              "name": "螺杆伸出长度≤1/3螺杆长度，不得倾斜，顶托上承重梁不得偏心。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        },
+        {
+          "index": "B6",
+          "name": "剪刀撑",
+          "items": [
+            {
+              "index": "1",
+              "name": "下到底，上到顶，与水平夹角45～60°，搭接长度≥1m，搭接扣件≥2个，端部扣件离杆端≥100mm。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        },
+        {
+          "index": "B7",
+          "name": "扣件力矩",
+          "items": [
+            {
+              "index": "1",
+              "name": "紧固力矩40~60N.m。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": "C",
+      "name": "安全防护",
+      "items": [
+        {
+          "index": "C1",
+          "name": "防护网设置",
+          "items": [
+            {
+              "index": "1",
+              "name": "支架外侧满挂安全网，立网的下口与立杆牢固扎结、固定点间距≤500mm，栏杆高度≥1.2m，挡脚板高度≥180mm。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": "D",
+      "name": "支架预压",
+      "items": [
+        {
+          "index": "D1",
+          "name": "荷载",
+          "items": [
+            {
+              "index": "1",
+              "name": "满足设计或施工方案要求，每跨预压，预压材料应均匀摆放。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": "SGXCTY-C-C2-8"
+            }
+          ]
+        },
+        {
+          "index": "D2",
+          "name": "监控",
+          "items": [
+            {
+              "index": "1",
+              "name": "做好预压过程的观测，形成报告。",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "score": null,
+              "link": ""
+            },
+            {
+              "index": "2",
+              "name": "",
+              "status": "UNCHECK",
+              "comments": "",
+              "range": [
+                0,
+                1
+              ],
+              "core": null,
+              "link": ""
+            }
+          ]
+        }
+      ]
+    }

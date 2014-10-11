@@ -1,0 +1,424 @@
+{
+    "file": "ZYGL-LJBHZ-01",
+    "name": "拌和场专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审批",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "1、预制场应有专项方案并经审批。2、特种设备需检验检测合格才能使用。3、特种作业人员持证上岗。4、安全技术交底工作到位。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "文明施工",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "易燃、易爆物品单独隔离存放，专人看守，消防及防雷设施齐全；场地须进行硬化处理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-(3"
+                        },
+                        {
+                            "index": "2",
+                            "name": "现场按要求设置固定的“五牌一图”；按规定在作业区域设置防护设施和警示标志；",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-B-B2-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "场地布置",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁在泥石流区、爆破区、滑坡体、洪水位下等危险区域设置拌和站，避开取土、弃土场地，无法回避时，应当进行必要的论证，制定相应的措施，编制应急预案并进行演练",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "拌合站宜采用封闭式管理，材料堆放区、拌和区、作业区应规范设置。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-A-A2-(4"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "沥青储料罐区域应采用隔离设施封闭，并设置明显的安全警示标识。隔离设施宜采用隔离栅。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "(6)沥青拌和站柴油、燃气、沥青、木质纤维素等材料堆须进行区分，堆放要满足防火要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "(7)沥青拌和楼导油设施应与车行通道保持安全距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工过程",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "机械设备",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "1、严格执行操作规程和相关安全规定，按规定对机械设备定期检查并做好设备使用维护和保养记录。2、机械设备防碰撞装置齐全有效。3、严禁对运转中的机械设备进行维修、保养和调整作业。4、拌和楼和沥青罐体有稳固的爬梯。5、从事沥青、粉料作业人员应做好个人防护。6、沥青罐体抽送沥青的防护措施到位。7、搅拌筒检修应设专人监护、切断电源、设检修警示标志。8、料斗检修须挂保险挂钩（销），传动部位应设防护罩。9、严格执行动火审批手续。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "故障处理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业过程中，在贮料区内和提升斗下，严禁人员进入；当提升斗被障碍物卡死时，不得强行起拉，不得起吊重物，在拉料过程中，不得进行回转操作。拌和机满载搅拌时不得停机。当发生故障或停电时，应立即切断电源，锁好开关箱，将搅拌筒内的混凝土清除干净，然后排除故障或等待电源恢复。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "施工用电",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "1、采用TN-S接零保护系统（三相五线制），三级配电二级保护、做到“一机、一闸、一漏、一箱、一锁”，现场用电须规范。2、设备维修需切断电源、设置“禁止合闸，有人工作”警示牌并有专人监控。3、自备发动机与外电线路联锁、并列运行发电机应设短路保护和过载保护装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "材料堆放",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "1、罐体基础无下沉开裂现象，防倾倒措施到位。2、粗、细骨料存放分隔墙隔开，堆放高度不易过高，隔墙应牢固。3、原材料堆放区防雨设施齐全、稳固。4、外加剂操作人员须佩戴防护用品，不得吸烟。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "拌合楼",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "基础",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "基础是否按设计图纸要求施工，场地是否经过硬化。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-(6"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "储料罐",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "是否有安装技术交底及防风措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "电气系统防雷系统等",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "是否符合设计要求，安装是否合格。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "传动、通道",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "防护、围栏、防坠措施情况。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C5",
+                    "name": "栏杆、爬梯",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "高度、强度是否符合要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C6",
+                    "name": "排水系统",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "排水系统是否顺畅有效。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C7",
+                    "name": "消防",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "水泥砼、水稳拌和站各配备磷酸铵盐干粉（ABC）4kg灭火器1组，共2个",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-(10"
+                        },
+                        {
+                            "index": "2",
+                            "name": "沥青罐区、导热油炉、油料存储区各配置手推式磷酸铵盐干粉（ABC）35kg灭火器2个，手提式磷酸铵盐干粉（ABC）4kg灭火器4个，并设置消防沙、消防铣，并留有消防车道。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-A-A2-(10"
+                        }
+                    ]
+                },
+                {
+                    "index": "C8",
+                    "name": "围蔽",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "周边围蔽情况（包括生活区及料场）。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-(7"
+                        }
+                    ]
+                },
+                {
+                    "index": "C9",
+                    "name": "交通安全",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "防冲撞设施是否有效。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C10",
+                    "name": "检修",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "检修人员进入搅拌筒内，应先切断电源，锁好开关箱，悬挂禁止合闸标牌，并由专人监护；清理上料坑时，料斗采用链条挂扣牢固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-(9"
+                        }
+                    ]
+                },
+                {
+                    "index": "C11",
+                    "name": "方案审批",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "拌合楼安装前是够有制定方案并审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

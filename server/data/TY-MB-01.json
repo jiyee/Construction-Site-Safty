@@ -1,0 +1,482 @@
+{
+    "file": "TY-MB-01",
+    "name": "滑模施工专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "基本要求",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "安全技术",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爬模、翻模等大型模板工程应编制专项施工方案，经项目技术负责人审核报监理工程师批准后实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-1　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "模板安装、拆除作业前须向作业人员进行施工技术交底",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "　"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "材料要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应具有足够的刚度和强度，须经专业厂家生产，具有出厂合格证书，",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "并按规定进行进场验收，合格后方可投入使用",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGJC-A-A5-5"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "档案管理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "建立健全机械设备管理制度，落实安全操作规程，建立设备管理台帐，",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGJC-A-A5-1"
+                        },
+                        {
+                            "index": "2",
+                            "name": "　",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "（2）机械设备台账不全，扣1-2分。"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "　",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "维护保养",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "做好使用、检查、维修、保养等记录",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGJC-A-A5-7"
+                        },
+                        {
+                            "index": "2",
+                            "name": "　",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "（8）日常检查、维修保养记录不全面，扣1-2分。"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "组装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "大型模板应进行预组装，预组装工作应在组装平台或经平整处理的地面上进行，并按要求逐块检查。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "模板吊安前，应对模板和吊点进行检查。吊安时，应有专人指挥。模板安装就位后，须立即进行支撑和固定，支撑和固定未完成前，严禁升降或移动吊钩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        {
+                            "index": "3",
+                            "name": "模板安装时，应边就位、边校正和插置连接件、边安设支承件或临时支撑固定，防止模板倾覆。当采用吊机安装模板时，模板须固定可靠后方可脱钩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        {
+                            "index": "4",
+                            "name": "模板组装完毕，经检验合格后方可浇筑混凝土",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C3-3"
+                        },
+                        {
+                            "index": "5",
+                            "name": "",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "（4）大型模板验收程序不规范，扣3-6分"
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "设置用于施工的作业平台，平台临边应设置防护栏、安全网，并设置明显的安全警示标志。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-2　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "每层操作平台必须设爬梯",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A2-3"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "每作业层面应设置不少于2组4kg的灭火器。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "　"
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "爬模架体提升时，应另设保险装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "　"
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "墩底应设置供施工人员行走的安全通道",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-A-A2-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全作业",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "移模",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爬模须在混凝土达到规定的强度后方可提升",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "大模板穿墙螺栓均未松动",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "每个爬模须挂两个倒链（或一个千斤顶）提升",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "保险绳须栓牢，并经检查无误",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "拆除爬架附墙螺栓前，倒链应全部调整到工作状态，然后才能拆除附墙螺栓",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "浇筑混凝土",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "混凝土浇筑，不得用大罐漏斗直接灌入，不得冲击模板",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "震捣时，不得震动支撑杆、钢筋及模板，提升模板时不得进行震捣。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "爬模施工过程中，液压设备应由专人操作",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "模板爬升时，作业人员不得站在爬升的模板或爬架上",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "拆除",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "拆除作业须在白天进行，宜采用分段整体拆除",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "模板拆除应均衡对称，拆除的部件及操作平台上的一切物品，均不得从高处向下抛掷",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C3-2　"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "拆除前应设置警戒区，警戒线到建筑物的安全距离不小于10m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "异常情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "当有六级及六级以上大风和雾、雨、雪天时应停止模板安装与拆除作业，雨、雪后作业应有防滑措施，并及时扫除积雪。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,329 @@
+{
+    "file": "TY-JXSB-04",
+    "name": "吊装工程（缆索起重机）专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "基本要求",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "安全技术",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "须编制安全专项施工方案，经监理工程师批准后方可实施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "吊装前，应向施工作业人员进行安全技术交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "　"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "管理要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机械设备应具有出厂合格证书",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "须委托具有相应资质的检验检测机构进行验收，验收合格，方可使用",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGJC-A-A5-5"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "在所在地技术监督管理部门进行备案",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C4-6"
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "操作人员取得相应资质后方可上岗",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C4-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "档案管理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "进场后，应建立“一机一档”管理档案",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGJC-A-A5-1"
+                        },
+                        {
+                            "index": "2",
+                            "name": "　",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "（2）机械设备台账不全，扣1-2分"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "　",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "（3）特种设备档案不规范，发现一处扣1分。"
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "拆装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "拆、装前，编制拆、装作业方案，并经相关部门审批，同时还应向全体作业人员进行技术交底",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "　"
+                        },
+                        {
+                            "index": "2",
+                            "name": "起重机的拆、装须由取得行政主管部门频发的拆、装资质证书的专业队伍进行，并应有技术和安全人员在场监护",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGJC-A-A5-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "A5",
+                    "name": "编号管理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "现场悬挂安全操作规程、机械设备标识牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C4-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A6",
+                    "name": "维护保养",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "有日常检查维修保养制度，并有效执行",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGJC-A-A5-8"
+                        },
+                        {
+                            "index": "2",
+                            "name": "　",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "无日常检查、维修保养记录，每发现一台扣1分。"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工前后要求",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "基础",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "塔架基础和地锚应选址得当，并进行相关受力计算",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C4-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "塔架前后及侧向必须设置缆风索",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C4-8"
+                        },
+                        {
+                            "index": "2",
+                            "name": "安装时，周围5米设置隔离带",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "　"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "设置垂直起吊和水平运输限位装置，对最大索力进行控制",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-C-C4-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "试吊",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "最大试吊荷载应为设计吊重120%",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "　"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全作业",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "使用中",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "下方及侧向20米内不得有非工作人员同行，或机械交叉作业",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C4-7"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

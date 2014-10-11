@@ -1,0 +1,277 @@
+{
+    "file": "ZYGL-QLLC-05",
+    "name": "钻孔灌注桩专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "钻孔桩专项施工方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，经监理工程师批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员须持有相应的上岗证。项目技术负责人对作业人员进行技术交底，分管安全的负责人对作业人员进行安全教育交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "钻机",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钻机设备应经检验合格进入施工现场作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "安装钻孔机前，应检查地下埋设物。钻机安设应平稳、牢固，钻架应加设斜撑。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "通讯设备",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "现场作业人员应配备使用正常的联络工具。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工区域",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "防护及警示",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工区域应设警戒线，并设置警示标识标牌。泥浆池应加设围栏，应设立警示标识标牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "严禁直接或间接向河道内排放泥浆。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "冲孔冲孔",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "观测点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应对周边房屋等结构物设置观测点，并记录沉降数据。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "机械设备",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "各机械设备施工方应派人定期检查、维修，并形成记录。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "钻头",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钻机停钻，钻头应提出孔外。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "卷扬机和钢丝绳",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "卷扬机和钢丝绳不得存在损伤、断丝等情况，断丝超过5%时，必须更换。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "钢筋笼",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "起吊",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钢筋笼起吊应设专人指挥；捆绑点应牢固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "混凝土",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "灌注",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "孔口作业人员应佩戴安全带。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "砼车",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "砼车应停留在稳定地基。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

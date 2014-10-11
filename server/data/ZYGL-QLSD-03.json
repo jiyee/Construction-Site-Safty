@@ -1,0 +1,247 @@
+{
+    "file": "ZYGL-QLSD-03",
+    "name": "隧道施工洞口作业专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "边坡仰坡开挖",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "开挖前",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "编制专项施工方案，并经监理工程师批复。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "边、仰坡以上的山坡松动危石应在开工前清除干净。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "边、仰坡上方不存在危石、不稳定土体或树木等隐患。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "开挖",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "开挖施工过程中，按批复的方案执行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "洞口的路基及边、仰坡自上而下开挖，一次将土石方工程做完，开挖人员不得上下重叠作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B1-4"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "洞口支护排水",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "支护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "端墙处的土石方开挖后，对松动岩层支护及时。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "已防护完成的边、仰坡无裂纹、无掉块。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "排水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "边、仰坡上方设置排水沟。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "高处作业防护",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "端墙",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "起拱线以上的端墙施工时是布设安全网。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "砌体",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "砌体工程脚手架、工作平台搭设牢固、设置扶手和栏杆，且不妨碍车辆通行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "喷砼打锚",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "喷混凝土、打锚杆作业要求搭设脚手架作业平台。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "起重机",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "吊装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "吊装物料前，起重机支腿要用大枕木支垫平稳牢靠。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "特种作业人员持证上岗。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "吊装时，吊机下禁止车辆和行人通行，并有专人指挥。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

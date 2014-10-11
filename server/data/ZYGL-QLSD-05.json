@@ -1,0 +1,349 @@
+{
+    "file": "ZYGL-QLSD-05",
+    "name": "隧道施工通风与除尘专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "通风系统",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "系统安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "隧道掘进150m以上，隧道施工须采用管道通风设施进行通风",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "当隧道开挖长度超过2000m时，设排风系统。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "新鲜空气",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业面人均宜得到新鲜空气3立方米/分钟。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "风管风机",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "直径功率",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "风管直径和功率符合设计。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "通风系统的使用情况",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "风机",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "送风口距撑子面距离宜在20m之内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "风管",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "风管无严重弯曲和破损现象。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "掌子面通风情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "送风式通风管的送风口距掌子面不宜大于15m，排风式风管吸风管距开挖面不宜大于5m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B5-(2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "掌子面的风量足够。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "瓦斯隧道瓦斯防治",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "检测",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "要求按频率检测瓦斯浓度，并保留检测记录。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B5-(1"
+                        },
+                        {
+                            "index": "2",
+                            "name": "瓦斯浓度控制在规定的范围内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "瓦斯防治",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "使用排风管将掌子面的瓦斯排到洞外。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "当瓦斯浓度达到停工要求时，必须停工、撤离人员。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B6-(5"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "低瓦斯隧道应配备便携式瓦检仪",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B6-4"
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "高瓦斯地段尚应配置高浓度瓦检仪和瓦斯自动检测报警断电装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B6-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "消防",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "洞外须设置消防水池和消防用沙，配置灭火器。水池中应有不小于200m3储水量，并保持一定的水压。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B6-6"
+                        },
+                        {
+                            "index": "2",
+                            "name": "电气设备与作业机械须使用防爆防溅型",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B6-3"
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "输电线路须采用防爆型电缆",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "隧道通风应采用压入式防爆型通风机通风，距掌子面距离应小于5m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "通信线路在隧道洞口处装设熔断器和避雷装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "6",
+                            "name": "通信线路在隧道洞口处装设熔断器和避雷装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "洞内照明电压不得超过110V，手提作业灯为12～24V。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

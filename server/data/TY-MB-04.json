@@ -1,0 +1,505 @@
+{
+    "file": "TY-MB-04",
+    "name": "挂篮整体专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "挂篮制作方案及受力构件检测",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "挂篮制作方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挂篮制作方案须经上级法人单位审查后报监理工程师审查，审查通过后方可实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C3-1　"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "关键受力构件",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "材料、焊缝要做超声波探伤。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "关键受力螺栓、角座、吊带",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "要进行受力试验。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "主桁架",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "是否做整体对拉试验。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A5",
+                    "name": "吊杆、锚杆、吊带、螺杆、连接器",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "是否符合要求、有无通电、焊接、风割等现象。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A6",
+                    "name": "静载试验",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挂篮拼装后是否进行静载试验。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "行走系统",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "前支点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "前支点处钢枕是否支垫密实、平整。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "支垫",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "轨道与枕木支垫要密实。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "枕木间距",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "枕木间距是否符合要求、是否采用井字形垫法。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "轨道安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "轨道中心线轨道中心线是否与设计位置相符，轨道是否水平、是否在同一标高线，锚固是否符合设计要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B5",
+                    "name": "油泵、油缸",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "油泵、油缸运行是否正常。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B6",
+                    "name": "限位卡",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "轨道前端有无安装限位卡。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "承重系统",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "主桁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "主桁与轨道中心线是否对中。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "后锚",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "后锚锚固数量是否足够、位置是否准确、连接器标记是否正确。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "连接销",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "各连接销是否打紧、是否上好保险销。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "上横梁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "前后上横梁安全通道、施工平台是否满足规范要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C5",
+                    "name": "吊带",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "吊带有无变形、损伤现象、吊带连接板有无张开等现象。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C6",
+                    "name": "扁担梁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "后锚扁担梁规格是否符合设计。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "底篮系统",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "底板平台",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "装修底板平台是否满足施工安全要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "安全过道",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "底篮安全过道、安全护栏是否满足要求",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "底篮与纵梁连接销",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "底篮与纵梁连接销是否打紧、是否穿保险销。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "滚轮箱滑动梁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "滚轮箱滑动梁有无安装限位卡。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "模板系统",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "内外模板",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "外模、内模有无变形现象。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "对拉螺杆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "对拉螺杆有无按照设计要求间距布置、规格是否符合设计。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E3",
+                    "name": "反力梁",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "外侧模下方的反力梁是否按照设计规格尺寸、有无加肋。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E4",
+                    "name": "重梁与吊杆连接",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "翼板承重梁与吊杆连接是否牢固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

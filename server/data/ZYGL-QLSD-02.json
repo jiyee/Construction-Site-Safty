@@ -1,0 +1,193 @@
+{
+    "file": "ZYGL-QLSD-02",
+    "name": "隧道施工材料、车辆及机械专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "材料管理",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "堆放防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "材料不能堆放在隧道内道路中间，堆放前后须设置交通反光锥或警示灯。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-(18"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "车辆机械管理",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "维护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "各种车辆、机械应定期进行维修保养和检查。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "使用",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "各种机械的旋转部分必须加装防护罩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "不使用无牌无证、报废车辆及机械",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "隧道内停放的车辆及机械设备前后，并设置交通反光锥或警示灯，且禁止停放在道路中间。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "轨道旁的材料距钢轨外缘≮50cm，高度≯1m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "5",
+                            "name": "出渣时，运输车辆高度不超过车顶面40cm，宽度不超过车宽，严禁超载。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "6",
+                            "name": "轨枕间距≯70cm，在道岔处应铺满长轨枕。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "无轨运输",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "单车道净宽不小于车宽加2m，并设置错车道，双车道净宽不小于2倍车宽加2.5m，会车视距宜为40m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "运输车辆前后两车至少保持20m距离。会车时车速不超过5km/h。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "3",
+                            "name": "行车速度，在施工作业地段和错车时应不大于10km/h，成洞地段不宜大于20km/h。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        ,
+                        {
+                            "index": "4",
+                            "name": "使用汽油的车辆、机械严禁进入瓦斯隧道。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

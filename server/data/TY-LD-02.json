@@ -1,0 +1,343 @@
+{
+    "file": "TY-LD-02",
+    "name": "施工现场临时用电专项安全检查表",
+    "type": "安全检查",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "一般要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "临时用电方案须由电气工程技术人员组织编制，施工单位技术负责人审核，监理工程师审批后方可实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGJC-C-C5-1"
+                        },
+                        {
+                            "index": "2",
+                            "name": "临时用电方案中的电设备清单、负荷计算、用电工程图纸等完整",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGJC-C-C5-2"
+                        },
+                        {
+                            "index": "3",
+                            "name": "绘制临时供电平面和系统图、安全用电技术措施和电气防火措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGJC-C-C5-3"
+                        },
+                        {
+                            "index": "4",
+                            "name": "按照方案执行",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-A-A3-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "操作人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工现场的电工应持有上岗证。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "布线",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "材料",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "遵守“三相五线”制及禁止使用花线等用电规范。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "铺设",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "通道线缆应架空，架空高度不得小于6-7m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A3-3"
+                        },
+                        {
+                            "index": "2",
+                            "name": "电缆直接埋地敷设的深度不应小于0.7米",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "线路",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "线路有无残缺，应用绝缘材料进行包裹。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "配电箱",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安装应端正牢固；安装、维修或拆除临时用电工程，应由持证的电工完成.",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A3-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "场所",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应装设在干燥通风及常温的场所。应有固定、上锁、防雨等措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "接地体",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "垂直接地体禁止采用螺纹钢，应采用角钢、钢管或光面圆钢。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "记录",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "电路、配电箱、开关箱",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "建立经常性巡视、定期检测制度和特殊气候后的复查制度，建立安全技术档案，保留真实电工巡视维修保养记录",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGJC-C-C5-4"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "开关箱",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "配电",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "开关箱应由分配电箱配电，应设一机一闸一漏。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A3-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "配电箱、开关箱应装设端正、牢固，",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCTY-A-A3-4"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "高压电",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "标识标牌",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "设有围栏，是否有警示标识标牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A3-6"
+                        }
+                    ]
+                },
+                {
+                    "index": "F2",
+                    "name": "防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "周围严禁堆放油类制品、杂物等易燃易爆品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "场内照明与安全电压",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "场内照明与安全电压",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "(1)一般场所应为220V。(2)行灯电压不得大于36V。(3)高温、有导电粉尘、狭窄场所以及隧道作业地段，不得大于36V。(4)潮湿和易触及照明线路场所，不得大于24V。(5)特别潮湿场所、导电良好的地面、锅炉或金属容器内，不得大于12V。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A3-5"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
