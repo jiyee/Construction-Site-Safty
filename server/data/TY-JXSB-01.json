@@ -2,469 +2,366 @@
     "file": "TY-JXSB-01",
     "name": "吊装工程（塔吊）专项安全检查表",
     "type": "安全检查",
-    "items": [
-        {
-            "index": "A",
-            "name": "基本要求",
-            "items": [
-                {
-                    "index": "A1",
-                    "name": "安全技术",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "须编制安全专项施工方案，经监理工程师批准后方可实施",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "　"
-                        },
-                        {
-                            "index": "2",
-                            "name": "吊装前，应向施工作业人员进行安全技术交底。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "　"
-                        }
-                    ]
-                },
-                {
-                    "index": "A2",
-                    "name": "管理要求",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "机械设备应具有出厂合格证书",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "　"
-                        },
-                        {
-                            "index": "2",
-                            "name": "须委托具有相应资质的检验检测机构进行验收，验收合格，方可使用",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGJC-A-A5-5"
-                        },
-                        ,
-                        {
-                            "index": "3",
-                            "name": "在所在地技术监督管理部门进行备案",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGXCTY-C-C4-6"
-                        },
-                        ,
-                        {
-                            "index": "4",
-                            "name": "操作人员取得相应资质后方可上岗",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGXCTY-C-C4-2"
-                        }
-                    ]
-                },
-                {
-                    "index": "A3",
-                    "name": "档案管理",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "进场后，应建立“一机一档”管理档案",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "SGJC-A-A5-1"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（2）机械设备台账不全，扣1-2分"
-                        },
-                        ,
-                        {
-                            "index": "3",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（3）特种设备档案不规范，发现一处扣1分。"
-                        }
-                    ]
-                },
-                {
-                    "index": "A4",
-                    "name": "拆装",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "拆、装前，编制拆、装作业方案，并经相关部门审批，同时还应向全体作业人员进行技术交底",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "　"
-                        },
-                        {
-                            "index": "2",
-                            "name": "起重机的拆、装须由取得行政主管部门频发的拆、装资质证书的专业队伍进行，并应有技术和安全人员在场监护",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGJC-A-A5-4"
-                        }
-                    ]
-                },
-                {
-                    "index": "A5",
-                    "name": "编号管理",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "现场悬挂安全操作规程、机械设备标识牌",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "SGXCTY-C-C4-1"
-                        }
-                    ]
-                },
-                {
-                    "index": "A6",
-                    "name": "维护保养",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "有日常检查维修保养制度，并有效执行",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "SGJC-A-A5-8"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "无日常检查、维修保养记录，每发现一台扣1分。"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "index": "B",
-            "name": "施工前后要求",
-            "items": [
-                {
-                    "index": "B1",
-                    "name": "基础",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "基础混凝土强度等级应不低于C35，表面平整度允许偏差1/1000，",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "SGXCTY-C-C4-3"
-                        },
-                        {
-                            "index": "2",
-                            "name": "混凝土基础周围应修筑边坡和排水设施，并与基坑（槽）保持一定安全距离",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "　"
-                        },
-                        {
-                            "index": "3",
-                            "name": "塔吊基础应经验收合格后，方可进行后续安装工作。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "　"
-                        }
-                    ]
-                },
-                {
-                    "index": "B2",
-                    "name": "安全防护",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "吊装时作业区域应设置明显的警示牌，必要时拉起安全警戒线。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "　"
-                        },
-                        {
-                            "index": "2",
-                            "name": "操作室内应配置1kg灭火器1个。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "　"
-                        },
-                        ,
-                        {
-                            "index": "3",
-                            "name": "塔吊每6个塔吊标准节设置一道专用附着装置，附着装置的距离或角度应进行受力计算。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "　"
-                        },
-                        ,
-                        {
-                            "index": "4",
-                            "name": "机械设备外漏传动部位设置安全防护罩和安全检修保护装置",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGXCTY-C-C4-9"
-                        },
-                        ,
-                        {
-                            "index": "5",
-                            "name": "力矩限制器、重量限制器、起升限位、制动器等工作正常",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGXCTY-C-C4-4"
-                        }
-                    ]
-                },
-                {
-                    "index": "B3",
-                    "name": "试吊",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "吊装作业前须严格检查起重设备各部件的可靠性和安全性，并进行试吊，做好试吊记录。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "　"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "index": "C",
-            "name": "安全作业",
-            "items": [
-                {
-                    "index": "C1",
-                    "name": "作业前",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "塔吊作业前，应检查塔吊基础设施和现场施工环境，检查各制动系统是否灵活可靠。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "　"
-                        }
-                    ]
-                },
-                {
-                    "index": "C2",
-                    "name": "使用中",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "吊装作业应指派专人（持证司索工）统一指挥，吊装作业人员须持证上岗",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "SGXCTY-C-C4-5"
-                        },
-                        {
-                            "index": "2",
-                            "name": "使用过程中起重臂下严禁站人",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGXCTY-C-C4-7"
-                        },
-                        ,
-                        {
-                            "index": "3",
-                            "name": "起重臂与起吊物须与高低压架空输电线路保持安全距离。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGXCTY-C-C4-5"
-                        }
-                    ]
-                },
-                {
-                    "index": "C3",
-                    "name": "作业后",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "双班、多班作业时，须做好交接，填写交接记录。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "　"
-                        }
-                    ]
-                },
-                {
-                    "index": "C4",
-                    "name": "异常情况",
-                    "items": [
-                        {
-                            "index": "1",
-                            "name": "六级以上强风不吊。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "score": null,
-                            "link": "SGXCTY-C-C4-5"
-                        },
-                        {
-                            "index": "2",
-                            "name": "起重机在停工、休息或中途停电时，应放松抱闸，将重物放下至地面，松钩，不得使重物悬在空中。",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "SGXCTY-C-C4-5"
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+    "items": [{
+        "index": "A",
+        "name": "基本要求",
+        "items": [{
+            "index": "A1",
+            "name": "安全技术",
+            "items": [{
+                "index": "1",
+                "name": "须编制安全专项施工方案，经监理工程师批准后方可实施",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }, {
+                "index": "2",
+                "name": "吊装前，应向施工作业人员进行安全技术交底。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }]
+        }, {
+            "index": "A2",
+            "name": "管理要求",
+            "items": [{
+                "index": "1",
+                "name": "机械设备应具有出厂合格证书",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }, {
+                "index": "2",
+                "name": "须委托具有相应资质的检验检测机构进行验收，验收合格，方可使用",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGJC-A-A5-5"
+            }, {
+                "index": "3",
+                "name": "在所在地技术监督管理部门进行备案",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-6"
+            }, {
+                "index": "4",
+                "name": "操作人员取得相应资质后方可上岗",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-2"
+            }]
+        }, {
+            "index": "A3",
+            "name": "档案管理",
+            "items": [{
+                "index": "1",
+                "name": "进场后，应建立“一机一档”管理档案",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGJC-A-A5-1, SGJC-A-A5-2, SGJC-A-A5-3"
+            }]
+        }, {
+            "index": "A4",
+            "name": "拆装",
+            "items": [{
+                "index": "1",
+                "name": "拆、装前，编制拆、装作业方案，并经相关部门审批，同时还应向全体作业人员进行技术交底",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }, {
+                "index": "2",
+                "name": "起重机的拆、装须由取得行政主管部门频发的拆、装资质证书的专业队伍进行，并应有技术和安全人员在场监护",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGJC-A-A5-4"
+            }]
+        }, {
+            "index": "A5",
+            "name": "编号管理",
+            "items": [{
+                "index": "1",
+                "name": "现场悬挂安全操作规程、机械设备标识牌",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-1"
+            }]
+        }, {
+            "index": "A6",
+            "name": "维护保养",
+            "items": [{
+                "index": "1",
+                "name": "有日常检查维修保养制度，并有效执行",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGJC-A-A5-8, SGJC-A-A5-7"
+            }]
+        }]
+    }, {
+        "index": "B",
+        "name": "施工前后要求",
+        "items": [{
+            "index": "B1",
+            "name": "基础",
+            "items": [{
+                "index": "1",
+                "name": "基础混凝土强度等级应不低于C35，表面平整度允许偏差1/1000",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-3"
+            }, {
+                "index": "2",
+                "name": "混凝土基础周围应修筑边坡和排水设施，并与基坑（槽）保持一定安全距离",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }, {
+                "index": "3",
+                "name": "塔吊基础应经验收合格后，方可进行后续安装工作。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }]
+        }, {
+            "index": "B2",
+            "name": "安全防护",
+            "items": [{
+                "index": "1",
+                "name": "吊装时作业区域应设置明显的警示牌，必要时拉起安全警戒线。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }, {
+                "index": "2",
+                "name": "操作室内应配置1kg灭火器1个。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }, {
+                "index": "3",
+                "name": "塔吊每6个塔吊标准节设置一道专用附着装置，附着装置的距离或角度应进行受力计算。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }, {
+                "index": "4",
+                "name": "机械设备外漏传动部位设置安全防护罩和安全检修保护装置",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-9"
+            }, {
+                "index": "5",
+                "name": "力矩限制器、重量限制器、起升限位、制动器等工作正常",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-4"
+            }]
+        }, {
+            "index": "B3",
+            "name": "试吊",
+            "items": [{
+                "index": "1",
+                "name": "吊装作业前须严格检查起重设备各部件的可靠性和安全性，并进行试吊，做好试吊记录。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }]
+        }]
+    }, {
+        "index": "C",
+        "name": "安全作业",
+        "items": [{
+            "index": "C1",
+            "name": "作业前",
+            "items": [{
+                "index": "1",
+                "name": "塔吊作业前，应检查塔吊基础设施和现场施工环境，检查各制动系统是否灵活可靠。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }]
+        }, {
+            "index": "C2",
+            "name": "使用中",
+            "items": [{
+                "index": "1",
+                "name": "吊装作业应指派专人（持证司索工）统一指挥，吊装作业人员须持证上岗",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-5"
+            }, {
+                "index": "2",
+                "name": "使用过程中起重臂下严禁站人",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-7"
+            }, {
+                "index": "3",
+                "name": "起重臂与起吊物须与高低压架空输电线路保持安全距离。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-5"
+            }]
+        }, {
+            "index": "C3",
+            "name": "作业后",
+            "items": [{
+                "index": "1",
+                "name": "双班、多班作业时，须做好交接，填写交接记录。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": ""
+            }]
+        }, {
+            "index": "C4",
+            "name": "异常情况",
+            "items": [{
+                "index": "1",
+                "name": "六级以上强风不吊。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-5"
+            }, {
+                "index": "2",
+                "name": "起重机在停工、休息或中途停电时，应放松抱闸，将重物放下至地面，松钩，不得使重物悬在空中。",
+                "status": "UNCHECK",
+                "comments": "",
+                "range": [
+                    0,
+                    1
+                ],
+                "score": null,
+                "link": "SGXCTY-C-C4-5"
+            }]
+        }]
+    }]
 }
