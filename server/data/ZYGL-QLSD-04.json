@@ -32,7 +32,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": ""
                         },
                         {
@@ -44,7 +44,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": ""
                         }
                     ]
@@ -98,7 +98,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": "SGXCGL-B-B5-5"
                         },
                         {
@@ -110,7 +110,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": "SGXCGL-B-B1-18"
                         }
                     ]

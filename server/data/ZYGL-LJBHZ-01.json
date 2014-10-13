@@ -50,7 +50,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": "SGXCTY-B-B2-1"
                         }
                     ]
@@ -80,7 +80,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": "SGXCTY-A-A2-4"
                         },
                         {
@@ -92,7 +92,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": ""
                         },
                         {
@@ -104,7 +104,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": ""
                         },
                         {
@@ -116,7 +116,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": ""
                         }
                     ]
@@ -338,7 +338,7 @@
                                 0,
                                 1
                             ],
-                            "core": null,
+                            "score": null,
                             "link": "SGXCTY-A-A2-10"
                         }
                     ]

@@ -251,7 +251,7 @@
 				"status": "UNCHECK",
 				"comments": "",
 				"range": [0, 1],
-				"core": null,
+				"score": null,
 				"link": ""
 			},
 			{
@@ -260,7 +260,7 @@
 				"status": "UNCHECK",
 				"comments": "",
 				"range": [0, 1],
-				"core": null,
+				"score": null,
 				"link": "SGXCTY-B-B4-2"
 			}]
 		},
