@@ -1,9 +1,10 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var User = require('../proxy/').User;
+var UserModel = require('../models/').UserModel;
 
-exports.find = function (req, res, next) {
-    User.find(function (err, users) {
+exports.findAll = function (req, res, next) {
+    var options = {};
+    UserModel.findBy(options, function(err, users) {
         if (err) {
             return next(err);
         }
@@ -18,8 +19,14 @@ exports.find = function (req, res, next) {
 
 exports.findById = function (req, res, next) {
     var user_id = validator.trim(req.params.user_id);
+    var options = {
+        findOne: true,
+        conditions: {   
+            _id: user_id
+        }
+    };
 
-    User.findById(user_id, function (err, user) {
+    UserModel.findBy(options, function (err, user) {
         if (err) {
             return next(err);
         }
@@ -34,8 +41,14 @@ exports.findById = function (req, res, next) {
 
 exports.findByName = function (req, res, next) {
     var user_name = validator.trim(req.params.user_name);
+    var options = {
+        findOne: true,
+        conditions: {   
+            name: user_name
+        }
+    };
 
-    User.findByName(user_name, function (err, user) {
+    UserModel.findBy(options, function (err, user) {
         if (err) {
             return next(err);
         }
@@ -50,10 +63,14 @@ exports.findByName = function (req, res, next) {
 
 exports.findByRoleId = function (req, res, next) {
     var role_id = validator.trim(req.params.role_id);
+    var options = {
+        conditions: {   
+            role: role_id
+        }
+    };
 
-    User.findByRoleId(role_id, function (err, users) {
+    UserModel.findBy(options, function (err, users) {
         if (err) {
-            console.log(err);
             return next(err);
         }
 
@@ -67,8 +84,13 @@ exports.findByRoleId = function (req, res, next) {
 
 exports.findByUnitId = function (req, res, next) {
     var unit_id = validator.trim(req.params.unit_id);
+    var options = {
+        conditions: {   
+            unit: unit_id
+        }
+    };
 
-    User.findByUnitId(unit_id, function (err, users) {
+    UserModel.findBy(options, function (err, users) {
         if (err) {
             return next(err);
         }
@@ -81,10 +103,15 @@ exports.findByUnitId = function (req, res, next) {
     });
 };
 
-exports.findByPartId = function (req, res, next) {
-    var part_id = validator.trim(req.params.part_id);
+exports.findBySegmentId = function (req, res, next) {
+    var segment_id = validator.trim(req.params.segment_id);
+    var options = {
+        conditions: {   
+            segment: segment_id
+        }
+    };
 
-    User.findByPartId(part_id, function (err, users) {
+    UserModel.findBy(options, function (err, users) {
         if (err) {
             return next(err);
         }
@@ -147,7 +174,14 @@ exports.login = function (req, res, next) {
         return;
     }
 
-    User.findByUserName(username, function (err, user) {
+    var options = {
+        findOne: true,
+        conditions: {   
+            username: username
+        }
+    };
+
+    UserModel.findBy(options, function (err, user) {
         if (err) {
             ep.emit('error');
             return;
@@ -170,20 +204,8 @@ exports.login = function (req, res, next) {
 };
 
 exports.create = function(req, res, next) {
-    var name = validator.trim(req.body.name);
-    var title = validator.trim(req.body.title);
-    var username = validator.trim(req.body.username).toLowerCase();
-    var password = validator.trim(req.body.password);
-    var email = validator.trim(req.body.email).toLowerCase();
-    var tel = validator.trim(req.body.tel);
-    var mobile = validator.trim(req.body.mobile);
-    var avatar_url = validator.trim(req.body.avatar_url).toLowerCase();
-
-    var role_id = validator.trim(req.body.role_id);
-    var unit_id = validator.trim(req.body.unit_id);
-    var part_id = validator.trim(req.body.part_id);
-
-    User.newAndSave(name, title, username, password, email, tel, mobile, avatar_url, true, role_id, unit_id, part_id, function(err, user) {
+    var user = new UserModel(req.body);
+    user.save(function(err, user) {
         if (err) {
             return next(err);
         }
@@ -194,6 +216,4 @@ exports.create = function(req, res, next) {
             'user': user
         });
     });
-
-    console.log("/user/create => new and save.");
 };

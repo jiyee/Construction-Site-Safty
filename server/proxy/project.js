@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var utils = require('../utils');
 var Project = require('../models/').Project;
-var Part = require('../models/').Part;
+var SegmentModel = require('../models/').SegmentModel;
 
 exports.findAll = function (callback) {
     Project.find({}, callback);
@@ -11,7 +11,7 @@ exports.findById = function (id, callback, not_populate) {
     if (not_populate) {
         Project.findOne({_id: id}).exec(callback);
     } else {
-        Project.findOne({_id: id}).populate('units parts').exec(function (err, root) {
+        Project.findOne({_id: id}).populate('units segments').exec(function (err, root) {
             if (err) {
                 return next(err);
             }
@@ -22,15 +22,14 @@ exports.findById = function (id, callback, not_populate) {
 
             var __total = 0;
             var __done = 0;
-            var deepPopulate = function (err, part) {
-                var parent = part.parts;
-                if (parent && parent.length > 0) {
-                    __total += parent.length;
+            var deepPopulate = function (err, parent) {
+                if (parent.segments && parent.segments.length > 0) {
+                    __total += parent.segments.length;
                     __done += 1;
 
-                    _.each(parent, function (child) {
-                        Part.populate(child, {
-                            path: 'children'
+                    _.each(parent.segments, function (child) {
+                        SegmentModel.populate(child, {
+                            path: 'segments'
                         }, deepPopulate);
                     });
                 } else {

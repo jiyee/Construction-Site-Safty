@@ -15,15 +15,15 @@ require('./user');
 require('./role');
 require('./unit');
 require('./project');
-require('./part');
+require('./segment');
 require('./table');
 require('./check');
 
 // retrieve models
-exports.User = mongoose.model('User');
-exports.Role = mongoose.model('Role');
-exports.Unit = mongoose.model('Unit');
-exports.Project = mongoose.model('Project');
-exports.Part = mongoose.model('Part');
-exports.Table = mongoose.model('Table');
-exports.Check = mongoose.model('Check');
+exports.UserModel = mongoose.model('User');
+exports.RoleModel = mongoose.model('Role');
+exports.UnitModel = mongoose.model('Unit');
+exports.ProjectModel = mongoose.model('Project');
+exports.SegmentModel = mongoose.model('Segment');
+exports.TableModel = mongoose.model('Table');
+exports.CheckModel = mongoose.model('Check');

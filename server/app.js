@@ -18,7 +18,9 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,8 +31,8 @@ app.use(session({
     store: new MongoStore({
         db: 'sessions'
     }),
-    cookie : {
-        httpOnly : false,
+    cookie: {
+        httpOnly: false,
     }
     // resave: true,
     // saveUninitialized: true
@@ -43,8 +45,6 @@ for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
         ipAddr = os.networkInterfaces().en0[i].address;
     }
 }
-
-console.log('allow origin: ' + "http://" + ipAddr + ":8100");
 
 // CORS
 app.use(function(req, res, next) {
@@ -79,7 +79,7 @@ app.use(function(err, req, res, next) {
 
 app.set('port', process.env.PORT || 3000);
 server = app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + server.address().port);
+    console.log('Express server listening on http://' + ipAddr + ':' + server.address().port);
 });
 
 module.exports = app;

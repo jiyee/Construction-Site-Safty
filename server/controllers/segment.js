@@ -2,12 +2,11 @@ var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var utils = require('../utils');
-var ProjectModel = require('../models/').ProjectModel;
 var SegmentModel = require('../models/').SegmentModel;
 
 exports.findAll = function(req, res, next) {
     var options = {};
-    ProjectModel.findBy(options, function(err, projects) {
+    SegmentModel.findBy(options, function(err, segments) {
         if (err) {
             return next(err);
         }
@@ -15,34 +14,28 @@ exports.findAll = function(req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'projects': projects
+            'segments': segments
         });
     });
 };
 
 exports.findById = function(req, res, next) {
-    var project_id = validator.trim(req.params.project_id);
-
-    if (!project_id) {
-        return next(util.getError(101));
-    }
-
+    var segment_id = validator.trim(req.params.segment_id);
     var options = {
         findOne: true,
         conditions: {   
-            _id: project_id
+            _id: segment_id
         }
     };
 
-    ProjectModel.findBy(options, function (err, project) {
+    SegmentModel.findBy(options, function (err, segment) {
         if (err) {
             return next(err);
         }
-
+        
         var __total = 0;
         var __done = 0;
         var deepPopulate = function(err, parent) {
-            console.log(__done, parent);
             if (parent.segments && parent.segments.length > 0) {
                 __total += parent.segments.length;
                 __done += 1;
@@ -59,34 +52,55 @@ exports.findById = function(req, res, next) {
                     res.send({
                         'status': 'success',
                         'code': 0,
-                        'project': project
+                        'segment': segment
                     });
                 }
             }
         };
 
         // 遍历子节点，深度populated
-        deepPopulate(err, project);
+        deepPopulate(err, segment);
+    });
+};
+
+exports.findByUnitId = function (req, res, next) {
+    var unit_id = validator.trim(req.params.unit_id);
+    var options = {
+        conditions: {   
+            units: unit_id
+        }
+    };
+
+    SegmentModel.findBy(options, function (err, segments) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'segments': segments
+        });
     });
 };
 
 exports.list_array = function (req, res, next) {
-    var project_id = validator.trim(req.params.project_id);
+    var segment_id = validator.trim(req.params.segment_id);
     var fields = validator.trim(req.params.fields);
 
-    if (!project_id || !fields) {
-        return next(util.getError(101));
+    if (!fields) {
+        return next(utils.getError(101));
     }
 
     var options = {
         findOne: true,
-        conditions: {
-            _id: project_id
+        conditions: {   
+            _id: segment_id
         },
         select: fields
     };
 
-    ProjectModel.findBy(options, function (err, list) {
+    SegmentModel.findBy(options, function (err, list) {
         if (err) {
             return next(err);
         }
@@ -102,12 +116,12 @@ exports.list_array = function (req, res, next) {
 };
 
 exports.push_array = function (req, res, next) {
-    var project_id = validator.trim(req.params.project_id);
+    var segment_id = validator.trim(req.params.segment_id);
     var field = validator.trim(req.params.field);
     var field_id = validator.trim(req.body[field + '_id']);
 
-    if (!project_id || !field || !field_id) {
-        return next(util.getError(101));
+    if (!segment_id || !field || !field_id) {
+        return next(utils.getError(101));
     }
 
     var model_name = field.substr(0, 1).toUpperCase() + field.substr(1);
@@ -130,21 +144,21 @@ exports.push_array = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        options.conditions._id = project_id;
-        ProjectModel.findBy(options, function (err, project) {
+        options.conditions._id = segment_id;
+        SegmentModel.findBy(options, function (err, segment) {
             if (err) {
                 return next(err);
             }
 
-            if (!project) {
+            if (!segment) {
                 return next(utils.getError(102));
             }
 
             var fields = field + 's';
-            project[fields] = project[fields]  || [];
-            if (!~project[fields].indexOf(field_id)) {
-                project[fields].push(field_id);
-                project.save();
+            segment[fields] = segment[fields]  || [];
+            if (!~segment[fields].indexOf(field_id)) {
+                segment[fields].push(field_id);
+                segment.save();
             }
 
             var ret = {
@@ -152,7 +166,7 @@ exports.push_array = function (req, res, next) {
                 'status': 'success'
             };
 
-            ret[fields] = project[fields];
+            ret[fields] = segment[fields];
             res.send(ret);
         });
 
@@ -160,36 +174,36 @@ exports.push_array = function (req, res, next) {
 };
 
 exports.slice_array = function (req, res, next) {
-    var project_id = validator.trim(req.params.project_id);
+    var root_id = validator.trim(req.params.segment_id);
     var field = validator.trim(req.params.field);
     var field_id = validator.trim(req.body[field + '_id']);
 
-    if (!project_id || !field || !field_id) {
-        return next(util.getError(101));
+    if (!root_id || !field || !field_id) {
+        return next(utils.getError(101));
     }
 
     var options = {
         findOne: true,
-        conditions: {
-            _id: project_id
+        conditions: {   
+            _id: root_id
         }
     };
 
-    ProjectModel.findBy(options, function (err, project) {
+    SegmentModel.findBy(options, function (err, segment) {
         if (err) {
             return next(err);
         }
 
-        if (!project) {
+        if (!segment) {
             return next(utils.getError(102));
         }
 
         var fields = field + 's';
-        project[fields] = project[fields]  || [];
-        var index = project[fields].indexOf(field_id);
+        segment[fields] = segment[fields]  || [];
+        var index = segment[fields].indexOf(field_id);
         if (!!~index) {
-            project[fields].splice(index, 1);
-            project.save();
+            segment[fields].splice(index, 1);
+            segment.save();
         }
 
         var ret = {
@@ -197,16 +211,16 @@ exports.slice_array = function (req, res, next) {
             'status': 'success'
         };
 
-        ret[fields] = project[fields];
+        ret[fields] = segment[fields];
         res.send(ret);
     });
 };
 
 exports.update = function (req, res, next) {
-    var project_id = validator.trim(req.params.project_id);
+    var segment_id = validator.trim(req.params.segment_id);
 
-    if (!project_id) {
-        return next(util.getError(101));
+    if (!segment_id) {
+        return next(utils.getError(101));
     }
 
     var fields = ['name', 'description', 'type'];
@@ -219,9 +233,9 @@ exports.update = function (req, res, next) {
     });
 
     var conditions = {
-        _id: project_id
+        _id: segment_id
     };
-    ProjectModel.findOneAndUpdate(conditions, update, function (err, project) {
+    SegmentModel.findOneAndUpdate(conditions, update, function (err, segment) {
         if (err) {
             return next(err);
         }
@@ -229,14 +243,15 @@ exports.update = function (req, res, next) {
         res.send({
             'code': 0,
             'status': 'success',
-            'project': project
+            'segment': segment
         });
     });
+
 };
 
-exports.create = function (req, res, next) {
-    var project = new ProjectModel(req.body);
-    project.save(function(err, project) {
+exports.create = function(req, res, next) {
+    var segment = new SegmentModel(req.body);
+    segment.save(function(err, segment) {
         if (err) {
             return next(err);
         }
@@ -244,7 +259,7 @@ exports.create = function (req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'project': project
+            'segment': segment
         });
     });
 };

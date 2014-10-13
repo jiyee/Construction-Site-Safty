@@ -4,7 +4,7 @@ var role = require('./controllers/role');
 var user = require('./controllers/user');
 var unit = require('./controllers/unit');
 var project = require('./controllers/project');
-var part = require('./controllers/part');
+var segment = require('./controllers/segment');
 var table = require('./controllers/table');
 var check = require('./controllers/check');
 var setup = require('./controllers/setup');
@@ -24,22 +24,22 @@ router.post('/logout', user.logout);
 router.get('/auth', user.auth);
 
 // 用户接口
-router.get('/users', user.find);
+router.get('/users', user.findAll);
 router.get('/user/:user_id', user.findById);
-router.get('/user/:user_id/checks', check.findByUserId);
+router.get('/user/:user_id/checks', check.findByProcessCurrentUserId);
 router.post('/user/create', user.create);
 
 // 角色接口
-router.get('/roles', role.find);
+router.get('/roles', role.findAll);
 router.get('/role/:role_id', role.findById);
 router.get('/role/:role_id/users', user.findByRoleId);
 router.post('/role/create', role.create);
 
 // 部门接口
-router.get('/units', unit.find);
+router.get('/units', unit.findAll);
 router.get('/unit/:unit_id', unit.findById);
 router.get('/unit/:unit_id/users', user.findByUnitId);
-router.get('/unit/:unit_id/parts', part.findByUnitId);
+router.get('/unit/:unit_id/segments', segment.findByUnitId);
 router.post('/unit/create', unit.create);
 
 // 项目接口
@@ -52,16 +52,16 @@ router.post('/project/:project_id/:field/insert', project.push_array);
 router.post('/project/:project_id/:field/remove', project.slice_array);
 
 // 项目组成接口
-router.get('/parts', part.findAll);
-router.post('/part/create', part.create);
-router.get('/part/:part_id', part.findById);
-router.get('/part/:part_id/users', user.findByPartId);
-router.get('/part/:part_id/:fields', part.list_array);
-router.post('/part/:part_id/:field/insert', part.push_array);
-router.post('/part/:part_id/:field/remove', part.slice_array);
+router.get('/segments', segment.findAll);
+router.post('/segment/create', segment.create);
+router.get('/segment/:segment_id', segment.findById);
+router.get('/segment/:segment_id/users', user.findBySegmentId);
+router.get('/segment/:segment_id/:fields', segment.list_array);
+router.post('/segment/:segment_id/:field/insert', segment.push_array);
+router.post('/segment/:segment_id/:field/remove', segment.slice_array);
 
 // 安全检查表接口
-router.get('/tables', table.find);
+router.get('/tables', table.findAll);
 router.get('/table/:table_id', table.findById);
 router.post('/table/create', table.create);
 router.post('/table/:table_id/delete', table.delete);

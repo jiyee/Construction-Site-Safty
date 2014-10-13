@@ -5,7 +5,7 @@
  */
 
 // 项目组成类型
-exports.PART_TYPES = ['项目', '标段', '分部', '工区', '班组'];
+exports.SEGMENT_TYPES = ['项目', '标段', '分部', '工区', '班组'];
 
 // 单位类型
 exports.UNIT_TYPES = ['指挥部', '建设单位', '监理单位', '施工单位'];
@@ -18,3 +18,7 @@ exports.ERROR_CODES = {
     104: '流程状态错误',
     105: '用户未登录'
 };
+
+exports.AUTHORITY_TYPES = ['安全检查', '考核评价'];
+
+exports.STATUS_TYPES = ['UNCHECK', 'PASS', 'FAIL'];

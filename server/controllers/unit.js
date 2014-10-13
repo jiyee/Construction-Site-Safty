@@ -1,9 +1,10 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var Unit = require('../proxy/').Unit;
+var UnitModel = require('../models/').UnitModel;
 
-exports.find = function(req, res, next) {
-    return Unit.find(function(err, units) {
+exports.findAll = function(req, res, next) {
+    var options = {};
+    UnitModel.findBy(options, function(err, units) {
         if (err) {
             return next(err);
         }
@@ -18,8 +19,14 @@ exports.find = function(req, res, next) {
 
 exports.findById = function (req, res, next) {
     var unit_id = validator.trim(req.params.unit_id);
+    var options = {
+        findOne: true,
+        conditions: {   
+            _id: unit_id
+        }
+    };
 
-    Unit.findById(unit_id, function (err, unit) {
+    UnitModel.findBy(options, function (err, unit) {
         if (err) {
             return next(err);
         }
@@ -33,18 +40,8 @@ exports.findById = function (req, res, next) {
 };
 
 exports.create = function(req, res, next) {
-    var name = validator.trim(req.body.name);
-    var description = validator.trim(req.body.description);
-    var type = validator.trim(req.body.type);
-
-    if (!name) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
-    }
-
-    Unit.newAndSave(name, description, type, function(err) {
+    var unit = new UnitModel(req.body);
+    unit.save(function(err, unit) {
         if (err) {
             return next(err);
         }
@@ -52,9 +49,7 @@ exports.create = function(req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'name': name
+            'unit': unit
         });
     });
-
-    console.log("/unit/create => new and save.");
 };

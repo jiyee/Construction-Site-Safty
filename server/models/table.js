@@ -10,16 +10,35 @@ var mongoose = require('mongoose'),
 
 var TableSchema = new Schema({
 
-    uuid: { type: String }, // 表单索引号
-    file: { type: String }, // 表单文件名
-    name: { type: String }, // 表单名称
+    uuid: { type: String, required: '{PATH}不能为空' }, // 表单索引号
+    file: { type: String, required: '{PATH}不能为空' }, // 表单文件名
+    name: { type: String, required: '{PATH}不能为空' }, // 表单名称
     type: { type: String }, // 表单类型
 
-    create_at: { type: Date, default: Date.now }, // 创建条目时间
-    update_at: { type: Date, default: Date.now }, // 最近更新时间
+    createAt: { type: Date, default: Date.now }, // 创建条目时间
+    updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
     items: [{ type: Schema.Types.Mixed }] // 检查项目
 
 });
+
+TableSchema.statics = {
+    findBy: function (options, callback) {
+        var conditions = options.conditions || {};
+        var findOne = options.findOne || false;
+        var query;
+
+        if (findOne) {
+            query = this.findOne(conditions);
+        } else {
+            query = this.find(conditions);
+        }
+
+        query.sort({
+                createAt: -1
+            })
+            .exec(callback);
+    }
+};
 
 mongoose.model('Table', TableSchema);

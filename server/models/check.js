@@ -10,19 +10,20 @@ var mongoose = require('mongoose'),
 
 var CheckSchema = new Schema({
  
-    uuid: { type: String }, // 检查编号, 自动生成
+    uuid: { type: String, required: '{PATH}不能为空' }, // 检查编号, 自动生成
     
     project: { type: Schema.Types.ObjectId, ref: 'Project' }, // 检查项目
-    part: { type: Schema.Types.ObjectId, ref: 'Part' }, // 检查项目组成，可以是任何级别，但只记录最小级别
+    segment: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 检查项目组成，可以是任何级别，但只记录最小级别
 
-    // supervision_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 监理人员，在part里已经包括
-    // construction_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 施工单位，在part里已经包括
+    // supervision_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 监理人员，在segment里已经包括
+    // construction_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 施工单位，在segment里已经包括
 
     // 检查表
+    file: { type: String, required: '{PATH}不能为空' }, // 表单文件名
     table: { type: Schema.Types.ObjectId, ref: 'Table' }, // 检查表, 一次检查对应具体表
 
-    create_at: { type: Date, default: Date.now }, // 创建条目时间
-    update_at: { type: Date, default: Date.now }, // 最近更新时间
+    createAt: { type: Date, default: Date.now }, // 创建条目时间
+    updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
     // 检查
     check_date: { type: Date, default: Date.now }, // 检查日期
@@ -48,5 +49,67 @@ var CheckSchema = new Schema({
     review_user: { type: Schema.Types.ObjectId, ref: 'User' } // 复查人员
 
 });
+
+CheckSchema.pre('save', function (next) {
+    var TableModel = require('./models').TableModel;
+
+    if (!this.table && this.file) {
+        var table = new TableModel();
+        var proto = require('../data/' + file + '.json');
+        _.extend(table, proto);
+
+        table.uuid = Date.now();
+        table.save(function (err, table) {
+            if (err) {
+                return next(err);
+            }
+
+            next();
+        });
+    }
+
+    next();
+});
+
+CheckSchema.pre('remove', function (next) {
+    var TableModel = require('./models').TableModel;
+
+    if (this.table) {
+        TableModel.findOneAndRemove({_id: this.table}, function(err) {
+            if (err) {
+                return next(err);
+            }
+
+            next();
+        });
+    }
+
+    next();
+});
+
+CheckSchema.statics = {
+    findBy: function (options, callback) {
+        var conditions = options.conditions || {};
+        var findOne = options.findOne || false;
+        var select = options.select || '';
+        var query;
+
+        if (findOne) {
+            query = this.findOne(conditions);
+        } else {
+            query = this.find(conditions);
+        }
+
+        if (select) {
+            query.select(select);
+        }
+
+        query.populate('project segment table check_user process_current_user process_previous_user process_flow_users process_history_users rectification_user review_user')
+            .sort({
+                createAt: -1
+            })
+            .exec(callback);
+    }
+};
 
 mongoose.model('Check', CheckSchema);

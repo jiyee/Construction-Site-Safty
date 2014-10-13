@@ -1,20 +1,20 @@
 var _ = require('lodash');
-var Part = require('../models/').Part;
+var SegmentModel = require('../models/').SegmentModel;
 var utils = require('../utils');
 
 exports.findAll = function (callback) {
-    Part.find({}, callback);
+    SegmentModel.find({}, callback);
 };
 
 exports.findByUnitId = function (unit_id, callback) {
-    Part.find({ units: unit_id }, callback);
+    SegmentModel.find({ units: unit_id }, callback);
 };
 
 exports.findById = function (id, callback, not_populate) {
     if (not_populate) {
-        Part.findOne({_id: id}).exec(callback);
+        SegmentModel.findOne({_id: id}).exec(callback);
     } else {
-        Part.findOne({_id: id}).populate('children').exec(function (err, root) {
+        SegmentModel.findOne({_id: id}).populate('segments').exec(function (err, root) {
             if (err) {
                 return next(err);
             }
@@ -25,15 +25,14 @@ exports.findById = function (id, callback, not_populate) {
 
             var __total = 0;
             var __done = 0;
-            var deepPopulate = function (err, part) {
-                var parent = part.children;
-                if (parent && parent.length > 0) {
-                    __total += parent.length;
+            var deepPopulate = function (err, parent) {
+                if (parent.segments && parent.segments.length > 0) {
+                    __total += parent.segments.length;
                     __done += 1;
 
-                    _.each(parent, function (child) {
-                        Part.populate(child, {
-                            path: 'children'
+                    _.each(parent.segments, function (child) {
+                        SegmentModel.populate(child, {
+                            path: 'segments'
                         }, deepPopulate);
                     });
                 } else {
@@ -52,14 +51,14 @@ exports.findById = function (id, callback, not_populate) {
 };
 
 exports.newAndSave = function (name, description, abbr, type, is_leaf, callback) {
-    var part = new Part();
+    var segment = new SegmentModel();
 
-    part.name = name;
-    part.description = description;
-    part.abbr = abbr;
+    segment.name = name;
+    segment.description = description;
+    segment.abbr = abbr;
 
-    part.type = type;
-    part.is_leaf = is_leaf || false;
+    segment.type = type;
+    segment.is_leaf = is_leaf || false;
 
-    part.save(callback);
+    segment.save(callback);
 };

@@ -1,9 +1,10 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var Role = require('../proxy/').Role;
+var RoleModel = require('../models/').RoleModel;
 
-exports.find = function(req, res, next) {
-    return Role.find(function(err, roles) {
+exports.findAll = function(req, res, next) {
+    var options = {};
+    RoleModel.findBy(options, function(err, roles) {
         if (err) {
             return next(err);
         }
@@ -18,8 +19,14 @@ exports.find = function(req, res, next) {
 
 exports.findById = function (req, res, next) {
     var role_id = validator.trim(req.params.role_id);
+    var options = {
+        findOne: true,
+        conditions: {   
+            _id: role_id
+        }
+    };
 
-    Role.findById(role_id, function (err, role) {
+    RoleModel.findBy(options, function (err, roles) {
         if (err) {
             return next(err);
         }
@@ -27,24 +34,22 @@ exports.findById = function (req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'role': role
+            'roles': roles
         });
     });
 };
 
 exports.create = function(req, res, next) {
-    var name = validator.trim(req.body.name);
-    var desc = validator.trim(req.body.desc);
-    var units = validator.trim(req.body.units);
 
     // units数组采用|符号分割
-    if (validator.isNull(units)) {
-        units = [];
+    if (validator.isNull(req.body.units)) {
+        req.body.units = [];
     } else {
-        units = units.split('|');
+        req.body.units = req.body.units.split('|');
     }
 
-    Role.newAndSave(name, desc, units, function(err, role) {
+    var role = new RoleModel(req.body);
+    role.save(function(err, role) {
         if (err) {
             return next(err);
         }
@@ -55,6 +60,4 @@ exports.create = function(req, res, next) {
             'role': role
         });
     });
-
-    console.log("/role/create => new and save.");
 };

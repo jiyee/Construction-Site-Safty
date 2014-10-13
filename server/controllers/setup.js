@@ -1,21 +1,14 @@
 var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var Project = require('../proxy/').Project;
-var Part = require('../proxy/').Part;
-var Check = require('../proxy/').Check;
-var Table = require('../proxy/').Table;
-var Role = require('../proxy/').Role;
-var Unit = require('../proxy/').Unit;
-var User = require('../proxy/').User;
 
-var ProjectModel = require('../models/').Project;
-var PartModel = require('../models/').Part;
-var CheckModel = require('../models/').Check;
-var TableModel = require('../models/').Table;
-var RoleModel = require('../models/').Role;
-var UnitModel = require('../models/').Unit;
-var UserModel = require('../models/').User;
+var ProjectModel = require('../models/').ProjectModel;
+var SegmentModel = require('../models/').SegmentModel;
+var CheckModel = require('../models/').CheckModel;
+var TableModel = require('../models/').TableModel;
+var RoleModel = require('../models/').RoleModel;
+var UnitModel = require('../models/').UnitModel;
+var UserModel = require('../models/').UserModel;
 
 exports.mongo = function (req, res, next) {
     var ep = new eventproxy();
@@ -23,7 +16,7 @@ exports.mongo = function (req, res, next) {
     ProjectModel.remove({}, function (err) {
         ep.emit('r1');
     });
-    PartModel.remove({}, function (err) {
+    SegmentModel.remove({}, function (err) {
         ep.emit('r2');
     });
     CheckModel.remove({}, function (err) {
@@ -75,143 +68,258 @@ exports.mongo = function (req, res, next) {
         name: '一线人员'
     };
 
-    var part1 = {
+    var segment1 = {
         name: '第1标段',
         type: '标段'
     };
-    var part2 = {
+    var segment2 = {
         name: '第1分部',
         type: '分部',
         is_leaf: false
     };
-    var part3 = {
+    var segment3 = {
         name: '第1工区',
         type: '工区',
         is_leaf: false
     };
-    var part4 = {
+    var segment4 = {
         name: '第1班组',
         type: '班组',
         is_leaf: true
     };
-    var part5 = {
+    var segment5 = {
         name: '第2班组',
         type: '班组',
         is_leaf: true
     };
 
+    var user1 = {
+        name: '用户1',
+        username: 'user1',
+        password: 'pwd1'
+    };
+    var user2 = {
+        name: '用户2',
+        username: 'user2',
+        password: 'pwd2'
+    };
+    var user3 = {
+        name: '用户3',
+        username: 'user3',
+        password: 'pwd3'
+    };
+    var user4 = {
+        name: '用户4',
+        username: 'user4',
+        password: 'pwd4'
+    };
+    var user5 = {
+        name: '用户5',
+        username: 'user5',
+        password: 'pwd5'
+    };
+    var user6 = {
+        name: '用户6',
+        username: 'user6',
+        password: 'pwd6'
+    };
+    var user7 = {
+        name: '用户7',
+        username: 'user7',
+        password: 'pwd7'
+    };
+
+    var project1 = {
+        name: "监利至江陵高速公路",
+        province: "湖北省"
+    };
+
     ep.all('unit1', 'unit2', 'unit3', 'unit4', 'unit5', function (u1, u2, u3, u4, u5) {
-        Role.newAndSave(role2.name, "", [u1._id, u2._id, u3._id, u4._id, u5._id], function (err, role) {
+        var r2 = new RoleModel();
+        r2.name = role2.name;
+        r2.units = [u1._id, u2._id, u3._id, u4._id, u5._id];
+        r2.save(function(err, role) {
             console.log("Save Role");
             ep.emit('role', role);
         });
 
-        ep.all('part4', 'part5', function (p4, p5) {
-            ep.all('part3', function (p3) {
-                ep.all('part2', function (p2) {
-                    Part.newAndSave(part1.name, "", "", part1.type, part1.is_leaf, function (err, part) {
-                        part.units.push(u2._id);
-                        part.units.push(u4._id);
+        ep.all('segment4', 'segment5', function (p4, p5) {
+            ep.all('segment3', function (p3) {
+                ep.all('segment2', function (p2) {
+                    var p1 = new SegmentModel(segment1);
+                    p1.save(function (err, segment) {
+                        segment.units.push(u2._id);
+                        segment.units.push(u4._id);
 
-                        part.children.push(p2._id);
-                        part.save();
-                        console.log("Save Part1");
-                        ep.emit('part1', part);
+                        segment.segments.push(p2._id);
+                        segment.save();
+                        console.log("Save Segment1");
+                        ep.emit('segment1', segment);
                     });
                 });
-                Part.newAndSave(part2.name, "", "", part2.type, part2.is_leaf, function (err, part) {
-                    part.units.push(u2._id);
-                    part.units.push(u4._id);
+                var p2 = new SegmentModel(segment2);
+                p2.save(function (err, segment) {
+                    segment.units.push(u2._id);
+                    segment.units.push(u4._id);
 
-                    part.children.push(p3._id);
-                    part.save();
-                    console.log("Save Part2");
-                    ep.emit('part2', part);
+                    segment.segments.push(p3._id);
+                    segment.save();
+                    console.log("Save Segment2");
+                    ep.emit('segment2', segment);
                 }); 
             });
-            Part.newAndSave(part3.name, "", "", part3.type, part3.is_leaf, function (err, part) {
-                part.units.push(u2._id);
-                part.units.push(u4._id);
+            var p3 = new SegmentModel(segment3);
+            p3.save(function (err, segment) {
+                segment.units.push(u2._id);
+                segment.units.push(u4._id);
 
-                part.children.push(p4._id);
-                part.children.push(p5._id);
-                part.save();
-                console.log("Save Part3");
-                ep.emit('part3', part);
+                segment.segments.push(p4._id);
+                segment.segments.push(p5._id);
+                segment.save();
+                console.log("Save Segment3");
+                ep.emit('segment3', segment);
             });
         });
-        Part.newAndSave(part4.name, "", "", part4.type, part4.is_leaf, function (err, part) {
-            part.units.push(u2._id);
-            part.units.push(u4._id);
-            part.save();
-            console.log("Save Part4");
-            ep.emit('part4', part);
+        var p4 = new SegmentModel(segment4);
+        p4.save(function (err, segment) {
+            segment.units.push(u2._id);
+            segment.units.push(u4._id);
+            segment.save();
+            console.log("Save Segment4");
+            ep.emit('segment4', segment);
         });
-        Part.newAndSave(part5.name, "", "", part5.type, part5.is_leaf, function (err, part) {
-            part.units.push(u2._id);
-            part.units.push(u4._id);
-            part.save();
-            console.log("Save Part5");
-            ep.emit('part5', part);
+        var p5 = new SegmentModel(segment5);
+        p5.save(function (err, segment) {
+            segment.units.push(u2._id);
+            segment.units.push(u4._id);
+            segment.save();
+            console.log("Save Segment5");
+            ep.emit('segment5', segment);
         });
     });
 
-    Unit.newAndSave(unit1.name, "", unit1.type, function (err, unit) { 
+    var u1 = new UnitModel(unit1);
+    u1.save(function(err, unit) {
         console.log("Save Unit1");
         ep.emit('unit1', unit);
     });
-    Unit.newAndSave(unit2.name, "", unit2.type, function (err, unit) { 
+    var u2 = new UnitModel(unit2);
+    u2.save(function(err, unit) {
         console.log("Save Unit2");
         ep.emit('unit2', unit);
     });
-    Unit.newAndSave(unit3.name, "", unit3.type, function (err, unit) { 
+    var u3 = new UnitModel(unit3);
+    u3.save(function(err, unit) {
         console.log("Save Unit3");
         ep.emit('unit3', unit);
     });
-    Unit.newAndSave(unit4.name, "", unit4.type, function (err, unit) { 
+    var u4 = new UnitModel(unit4);
+    u4.save(function(err, unit) {
         console.log("Save Unit4");
         ep.emit('unit4', unit);
     });
-    Unit.newAndSave(unit5.name, "", unit5.type, function (err, unit) { 
+    var u5 = new UnitModel(unit5);
+    u5.save(function(err, unit) {
         console.log("Save Unit5");
         ep.emit('unit5', unit);
     });
 
-    ep.all('role', 'unit1', 'unit2', 'unit3', 'unit4', 'unit5', 'part1', 'part2', 'part3', 'part4', 'part5', function (r, u1, u2, u3, u4, u5, p1, p2, p3, p4, p5) {
-        User.newAndSave('用户1', "", "user1", "password", "email", "tel", "mobile", "avatar_url", true, r._id, u1._id, null, function(err, user) {
-            console.log("Save User1");
-        });
-        User.newAndSave('用户2', "", "user2", "password", "email", "tel", "mobile", "avatar_url", true, r._id, u2._id, p1._id, function(err, user) {
-            console.log("Save User2");
-        });
-        User.newAndSave('用户3', "", "user3", "password", "email", "tel", "mobile", "avatar_url", true, r._id, u4._id, p1._id, function(err, user) {
-            console.log("Save User3");
-        });
-        User.newAndSave('用户4', "", "user4", "password", "email", "tel", "mobile", "avatar_url", true, r._id, u4._id, p2._id, function(err, user) {
-            console.log("Save User4");
-        });
-        User.newAndSave('用户5', "", "user5", "password", "email", "tel", "mobile", "avatar_url", true, r._id, u4._id, p3._id, function(err, user) {
-            console.log("Save User5");
-        });
-        User.newAndSave('用户6', "", "user6", "password", "email", "tel", "mobile", "avatar_url", true, r._id, u4._id, p4._id, function(err, user) {
-            console.log("Save User6");
-        });
-        User.newAndSave('用户7', "", "user7", "password", "email", "tel", "mobile", "avatar_url", true, r._id, u4._id, p5._id, function(err, user) {
-            console.log("Save User7");
+    ep.all('role', 'unit1', 'unit2', 'unit3', 'unit4', 'unit5', 'segment1', 'segment2', 'segment3', 'segment4', 'segment5', function (r, u1, u2, u3, u4, u5, p1, p2, p3, p4, p5) {
+
+        var s1 = new UserModel(user1);
+        s1.role = r._id;
+        s1.unit = u1._id;
+        // s1.segment = p1._id;
+        s1.save(function(err, user) {
+            console.log("Save user1");
+            ep.emit('user1', user);
         });
 
-        Project.newAndSave("监利至江陵高速公路", "", "湖北省", function (err, project) {
+        var s2 = new UserModel(user2);
+        s2.role = r._id;
+        s2.unit = u2._id;
+        s2.segment = p1._id;
+        s2.save(function(err, user) {
+            console.log("Save user2");
+            ep.emit('user2', user);
+        });
+
+        var s3 = new UserModel(user3);
+        s3.role = r._id;
+        s3.unit = u4._id;
+        s3.segment = p1._id;
+        s3.save(function(err, user) {
+            console.log("Save user3");
+            ep.emit('user3', user);
+        });
+
+        var s4 = new UserModel(user4);
+        s4.role = r._id;
+        s4.unit = u4._id;
+        s4.segment = p2._id;
+        s4.save(function(err, user) {
+            console.log("Save user4");
+            ep.emit('user4', user);
+        });
+
+        var s5 = new UserModel(user5);
+        s5.role = r._id;
+        s5.unit = u4._id;
+        s5.segment = p3._id;
+        s5.save(function(err, user) {
+            console.log("Save user5");
+            ep.emit('user5', user);
+        });
+
+        var s6 = new UserModel(user6);
+        s6.role = r._id;
+        s6.unit = u4._id;
+        s6.segment = p4._id;
+        s6.save(function(err, user) {
+            console.log("Save user6");
+            ep.emit('user6', user);
+        });
+
+        var s7 = new UserModel(user7);
+        s7.role = r._id;
+        s7.unit = u4._id;
+        s7.segment = p5._id;
+        s7.save(function(err, user) {
+            console.log("Save user7");
+            ep.emit('user7', user);
+        });
+
+        var project = new ProjectModel(project1);
+        project.save(function (err, project) {
             project.units.push(u1._id);
             project.units.push(u2._id);
             project.units.push(u3._id);
             project.units.push(u4._id);
             project.units.push(u5._id);
 
-            project.parts.push(p1._id);
+            project.segments.push(p1._id);
 
             project.save();
 
             console.log("Save Project");
+            ep.emit('project1', project);
+
+            p1.project = p2.project = p3.project = p4.project = p5.project = project._id;
+            p1.parent = null;
+            p2.parent = p1._id;
+            p3.parent = p2._id;
+            p4.parent = p3._id;
+            p5.parent = p3._id;
+            p1.save();
+            p2.save();
+            p3.save();
+            p4.save();
+            p5.save();
+        });
+
+        next({
+            code: 0,
+            message: "success"
         });
     });
 

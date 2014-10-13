@@ -1,10 +1,12 @@
 var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var Table = require('../proxy/').Table;
+var constants = require('../constants');
+var TableModel = require('../models/').TableModel;
 
-exports.find = function (req, res, next) {
-    return Table.find(function(err, tables) {
+exports.findAll = function (req, res, next) {
+    var options = {};
+    TableModel.findBy(options, function(err, tables) {
         if (err) {
             return next(err);
         }
@@ -19,8 +21,14 @@ exports.find = function (req, res, next) {
 
 exports.findById = function (req, res, next) {
     var table_id = validator.trim(req.params.table_id);
+    var options = {
+        findOne: true,
+        conditions: {   
+            _id: table_id
+        }
+    };
 
-    return Table.findById(table_id, function(err, table) {
+    TableModel.findBy(options, function (err, table) {
         if (err) {
             return next(err);
         }
@@ -45,7 +53,14 @@ exports.update = function (req, res, next) {
     }
 
     // 检查table数据格式正确性
-    table = JSON.parse(table);
+    try {
+        table = JSON.parse(table);
+    } catch (ex) {
+        return next({
+            code: 103,
+            message: ex
+        });
+    }
 
     if (!table ||
         !table.items ||
@@ -70,7 +85,7 @@ exports.update = function (req, res, next) {
 
                     _.each(list3, function (item3) {
                         if (/[0-9]+/.test(item3.index)) {
-                            if (['UNCHECK', 'PASS', 'FAIL'].indexOf(item3.status) === -1) {
+                            if (constants.STATUS_TYPES.indexOf(item3.status) === -1) {
                                 valid = false;
                             }
 
@@ -103,7 +118,14 @@ exports.update = function (req, res, next) {
         });
     }
 
-    return Table.findById(table_id, function(err, root) {
+    var options = {
+        findOne: true,
+        conditions: {   
+            _id: table_id
+        }
+    };
+
+    TableModel.findBy(options, function(err, root) {
         if (err) {
             return next(err);
         }
@@ -170,32 +192,11 @@ exports.update = function (req, res, next) {
 
 exports.delete = function (req, res, next) {
     var table_id = validator.trim(req.params.table_id);
+    var conditions = {   
+        _id: table_id
+    };
 
-    return Table.findById(table_id, function(err, table) {
-        if (err) {
-            return next(err);
-        }
-
-        table.remove();
-
-        res.send({
-            'status': 'success',
-            'code': 0
-        });
-    });
-};
-
-exports.create = function (req, res, next) {
-    var file = validator.trim(req.body.file);
-
-    if (!file || /^[-_a-zA-Z0-9]+$/.test(file)) {
-        return next({
-            code: 101,
-            message: '缺少参数'
-        });
-    }
-
-    Table.newAndSave(file, function(err) {
+    TableModel.findOneAndRemove(conditions, function (err, table) {
         if (err) {
             return next(err);
         }
@@ -203,9 +204,34 @@ exports.create = function (req, res, next) {
         res.send({
             'status': 'success',
             'code': 0,
-            'file': file
+            'table': table
         });
     });
+};
 
-    console.log("/table/create => new and save.");
+exports.create = function (req, res, next) {
+    var file = validator.trim(req.body.file);
+    if (!file || /^[-_a-zA-Z0-9]+$/.test(file)) {
+        return next({
+            code: 101,
+            message: '缺少参数'
+        });
+    }
+
+    var table = new TableModel();
+    var proto = require('../data/' + file + '.json');
+    _.extend(table, proto);
+
+    table.uuid = Date.now(); // TODO 替换更好的随机算法
+    table.save(function(err, table) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({
+            'status': 'success',
+            'code': 0,
+            'table': table
+        });
+    });
 };
