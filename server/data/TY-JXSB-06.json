@@ -65,7 +65,7 @@
                             "core": null,
                             "link": "SGJC-A-A5-5"
                         },
-                        ,
+                        
                         {
                             "index": "3",
                             "name": "在所在地技术监督管理部门进行备案",
@@ -78,7 +78,7 @@
                             "core": null,
                             "link": "SGXCTY-C-C4-6"
                         },
-                        ,
+                       
                         {
                             "index": "4",
                             "name": "操作人员取得相应资质后方可上岗",
@@ -107,32 +107,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGJC-A-A5-1"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（2）机械设备台账不全，扣1-2分"
-                        },
-                        ,
-                        {
-                            "index": "3",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（3）特种设备档案不规范，发现一处扣1分。"
+                            "link": "SGJC-A-A5-1,SGJC-A-A5-2,SGJC-A-A5-3"
                         }
                     ]
                 },
@@ -198,19 +173,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGJC-A-A5-8"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "无日常检查、维修保养记录，每发现一台扣1分。"
+                            "link": "SGJC-A-A5-8,SGJC-A-A5-7"
                         }
                     ]
                 }
@@ -266,7 +229,6 @@
                             "core": null,
                             "link": "　"
                         },
-                        ,
                         {
                             "index": "3",
                             "name": "架桥机须安装轨道两头的档块和限位开关，配备行走塞铁保护装置",

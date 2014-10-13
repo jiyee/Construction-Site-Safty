@@ -39,7 +39,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCTY-A-A2-(3"
+                            "link": "SGXCTY-A-A2-3"
                         },
                         {
                             "index": "2",
@@ -81,9 +81,8 @@
                                 1
                             ],
                             "core": null,
-                            "link": "SGXCTY-A-A2-(4"
+                            "link": "SGXCTY-A-A2-4"
                         },
-                        ,
                         {
                             "index": "3",
                             "name": "沥青储料罐区域应采用隔离设施封闭，并设置明显的安全警示标识。隔离设施宜采用隔离栅。",
@@ -96,7 +95,6 @@
                             "core": null,
                             "link": ""
                         },
-                        ,
                         {
                             "index": "4",
                             "name": "(6)沥青拌和站柴油、燃气、沥青、木质纤维素等材料堆须进行区分，堆放要满足防火要求。",
@@ -109,7 +107,6 @@
                             "core": null,
                             "link": ""
                         },
-                        ,
                         {
                             "index": "5",
                             "name": "(7)沥青拌和楼导油设施应与车行通道保持安全距离。",
@@ -222,7 +219,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCTY-A-A2-(6"
+                            "link": "SGXCTY-A-A2-6"
                         }
                     ]
                 },
@@ -330,7 +327,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCTY-A-A2-(10"
+                            "link": "SGXCTY-A-A2-10"
                         },
                         {
                             "index": "2",
@@ -342,7 +339,7 @@
                                 1
                             ],
                             "core": null,
-                            "link": "SGXCTY-A-A2-(10"
+                            "link": "SGXCTY-A-A2-10"
                         }
                     ]
                 },
@@ -360,7 +357,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCTY-A-A2-(7"
+                            "link": "SGXCTY-A-A2-7"
                         }
                     ]
                 },
@@ -396,7 +393,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCTY-A-A2-(9"
+                            "link": "SGXCTY-A-A2-9"
                         }
                     ]
                 },

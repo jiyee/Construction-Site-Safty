@@ -57,7 +57,7 @@
                                 1
                             ],
                             "core": null,
-                            "link": "SGXCGL-B-B1-(19)"
+                            "link": "SGXCGL-B-B1-19"
                         },
                         {
                             "index": "3",
@@ -123,7 +123,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCGL-B-B1-(1"
+                            "link": "SGXCGL-B-B1-1"
                         }
                     ]
                 },
@@ -141,7 +141,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCGL-B-B1-(8"
+                            "link": "SGXCGL-B-B1-8"
                         }
                     ]
                 },
@@ -159,7 +159,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCGL-B-B1-(7"
+                            "link": "SGXCGL-B-B1-7"
                         }
                     ]
                 }
@@ -183,7 +183,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCGL-B-B5-(3"
+                            "link": "SGXCGL-B-B5-3"
                         }
                     ]
                 },
@@ -219,7 +219,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCGL-B-B5-(7"
+                            "link": "SGXCGL-B-B5-7"
                         },
                         {
                             "index": "2",
@@ -231,9 +231,8 @@
                                 1
                             ],
                             "core": null,
-                            "link": "SGXCGL-B-B5-(8"
+                            "link": "SGXCGL-B-B5-8"
                         },
-                        ,
                         {
                             "index": "3",
                             "name": "变电站应采用井下高压配电装置或相同电压等级的油开关柜，禁止使用跌落式熔断器。",
@@ -268,7 +267,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCGL-B-B4-(1"
+                            "link": "SGXCGL-B-B4-1"
                         },
                         {
                             "index": "2",
@@ -280,7 +279,7 @@
                                 1
                             ],
                             "core": null,
-                            "link": "SGXCGL-B-B4-(2"
+                            "link": "SGXCGL-B-B4-2"
                         }
                     ]
                 },
@@ -298,7 +297,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGXCGL-B-B5-(6"
+                            "link": "SGXCGL-B-B5-6"
                         },
                         {
                             "index": "2",
@@ -313,138 +312,140 @@
                             "link": ""
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "信息管理",
+            "items": [
                 {
-                    "index": "F",
+                    "index": "F1",
                     "name": "信息管理",
                     "items": [
                         {
-                            "index": "F1",
-                            "name": "信息管理",
-                            "items": [
-                                {
-                                    "index": "1",
-                                    "name": "1km以上长大隧道须设置隧道人员电子管理系统，并有人员定位功能。",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "score": null,
-                                    "link": "SGXCGL-B-B7-(1"
-                                },
-                                {
-                                    "index": "2",
-                                    "name": "2km以上长大隧道须设置隧道视频监控系统",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "core": null,
-                                    "link": "SGXCGL-B-B7-(1"
-                                },
-                                {
-                                    "index": "3",
-                                    "name": "隧道开挖超过100m后，隧道内外需安装通讯设备保证洞内外通讯畅通",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "core": null,
-                                    "link": "SGXCGL-B-B7-(2"
-                                }
-                            ]
+                            "index": "1",
+                            "name": "1km以上长大隧道须设置隧道人员电子管理系统，并有人员定位功能。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B7-1"
+                        },
+                        {
+                            "index": "2",
+                            "name": "2km以上长大隧道须设置隧道视频监控系统",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B7-1"
+                        },
+                        {
+                            "index": "3",
+                            "name": "隧道开挖超过100m后，隧道内外需安装通讯设备保证洞内外通讯畅通",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B7-2"
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "安全设施",
+            "items": [
                 {
-                    "index": "G",
+                    "index": "G1",
                     "name": "安全设施",
                     "items": [
                         {
-                            "index": "G1",
-                            "name": "安全设施",
-                            "items": [
-                                {
-                                    "index": "1",
-                                    "name": "仰拱施工地段前后须设置警示锥形桶",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "score": null,
-                                    "link": ""
-                                },
-                                {
-                                    "index": "2",
-                                    "name": "在洞口、成洞地段设置15km限速牌",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "core": null,
-                                    "link": ""
-                                },
-                                {
-                                    "index": "3",
-                                    "name": "在未成洞地段等设置5km限速牌",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "core": null,
-                                    "link": ""
-                                }
-                            ]
+                            "index": "1",
+                            "name": "仰拱施工地段前后须设置警示锥形桶",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "在洞口、成洞地段设置15km限速牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "在未成洞地段等设置5km限速牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": ""
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "index": "H",
+            "name": "排水设施",
+            "items": [
                 {
-                    "index": "H",
+                    "index": "H1",
                     "name": "排水设施",
                     "items": [
                         {
-                            "index": "H1",
-                            "name": "排水设施",
-                            "items": [
-                                {
-                                    "index": "1",
-                                    "name": "集水井、检查井等孔口应采用覆盖防护，并设置警示标志",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "score": null,
-                                    "link": ""
-                                },
-                                {
-                                    "index": "2",
-                                    "name": "离隧道20～30m处设置沉淀池一个，排水沉淀池周边应设置安全护栏，张挂密目式安全立网，并设置警示标志。",
-                                    "status": "UNCHECK",
-                                    "comments": "",
-                                    "range": [
-                                        0,
-                                        1
-                                    ],
-                                    "core": null,
-                                    "link": "SGXCGL-B-B5-(4"
-                                }
-                            ]
+                            "index": "1",
+                            "name": "集水井、检查井等孔口应采用覆盖防护，并设置警示标志",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "离隧道20～30m处设置沉淀池一个，排水沉淀池周边应设置安全护栏，张挂密目式安全立网，并设置警示标志。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "core": null,
+                            "link": "SGXCGL-B-B5-4"
                         }
                     ]
                 }
             ]
         }
+    ]
+}

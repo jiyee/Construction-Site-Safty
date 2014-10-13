@@ -81,32 +81,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGJC-A-A5-1"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（2）机械设备台账不全，扣1-2分。"
-                        },
-                        ,
-                        {
-                            "index": "3",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": ""
+                            "link": "SGJC-A-A5-1,SGJC-A-A5-2"
                         }
                     ]
                 },
@@ -124,19 +99,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGJC-A-A5-7"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（8）日常检查、维修保养记录不全面，扣1-2分。"
+                            "link": "SGJC-A-A5-7,SGJC-A-A5-8"
                         }
                     ]
                 }
@@ -196,19 +159,7 @@
                                 1
                             ],
                             "core": null,
-                            "link": "SGXCTY-C-C3-3"
-                        },
-                        {
-                            "index": "5",
-                            "name": "",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（4）大型模板验收程序不规范，扣3-6分"
+                            "link": "SGXCTY-C-C3-3,SGXCTY-C-C3-4"
                         }
                     ]
                 },
@@ -240,7 +191,6 @@
                             "core": null,
                             "link": "SGXCGL-A-A2-3"
                         },
-                        ,
                         {
                             "index": "3",
                             "name": "每作业层面应设置不少于2组4kg的灭火器。",
@@ -253,7 +203,6 @@
                             "core": null,
                             "link": "　"
                         },
-                        ,
                         {
                             "index": "4",
                             "name": "爬模架体提升时，应另设保险装置",
@@ -266,7 +215,6 @@
                             "core": null,
                             "link": "　"
                         },
-                        ,
                         {
                             "index": "5",
                             "name": "墩底应设置供施工人员行走的安全通道",
@@ -380,8 +328,7 @@
                             ],
                             "core": null,
                             "link": ""
-                        },
-                        ,
+                        },                       
                         {
                             "index": "3",
                             "name": "爬模施工过程中，液压设备应由专人操作",
@@ -393,8 +340,7 @@
                             ],
                             "core": null,
                             "link": ""
-                        },
-                        ,
+                        },                      
                         {
                             "index": "4",
                             "name": "模板爬升时，作业人员不得站在爬升的模板或爬架上",
@@ -437,7 +383,6 @@
                             "core": null,
                             "link": "SGXCTY-C-C3-2　"
                         },
-                        ,
                         {
                             "index": "3",
                             "name": "拆除前应设置警戒区，警戒线到建筑物的安全距离不小于10m。",
