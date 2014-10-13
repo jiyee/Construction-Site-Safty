@@ -65,7 +65,6 @@
                             "core": null,
                             "link": "SGJC-A-A5-5"
                         },
-                        ,
                         {
                             "index": "3",
                             "name": "在所在地技术监督管理部门进行备案",
@@ -78,7 +77,6 @@
                             "core": null,
                             "link": "SGXCTY-C-C4-6"
                         },
-                        ,
                         {
                             "index": "4",
                             "name": "操作人员取得相应资质后方可上岗",
@@ -107,32 +105,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGJC-A-A5-1"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（2）机械设备台账不全，扣1-2分"
-                        },
-                        ,
-                        {
-                            "index": "3",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "（3）特种设备档案不规范，发现一处扣1分。"
+                            "link": "SGJC-A-A5-1,SGJC-A-A5-2,SGJC-A-A5-3"
                         }
                     ]
                 },
@@ -198,19 +171,7 @@
                                 1
                             ],
                             "score": null,
-                            "link": "SGJC-A-A5-8"
-                        },
-                        {
-                            "index": "2",
-                            "name": "　",
-                            "status": "UNCHECK",
-                            "comments": "",
-                            "range": [
-                                0,
-                                1
-                            ],
-                            "core": null,
-                            "link": "无日常检查、维修保养记录，每发现一台扣1分。"
+                            "link": "SGJC-A-A5-8,SGJC-A-A5-7"
                         }
                     ]
                 }
@@ -266,7 +227,6 @@
                             "core": null,
                             "link": "SGXCTY-C-C4-8"
                         },
-                        ,
                         {
                             "index": "3",
                             "name": "接地电阻不应大于4Ω。",
@@ -279,7 +239,6 @@
                             "core": null,
                             "link": "　"
                         },
-                        ,
                         {
                             "index": "4",
                             "name": "使用电缆的龙门吊，应设有电缆卷筒，配电箱应设置在轨道中部。用滑线供电的龙门吊，应在滑线两端标有鲜明的颜色，滑线应设置防护栏杆",
@@ -292,7 +251,6 @@
                             "core": null,
                             "link": "SGXCTY-C-C4-4"
                         },
-                        ,
                         {
                             "index": "5",
                             "name": "配置2kg灭火器1个",
@@ -305,7 +263,6 @@
                             "core": null,
                             "link": "　"
                         },
-                        ,
                         {
                             "index": "6",
                             "name": "龙门吊应安装夹轨器、铁楔、警报器、警示灯等装置",
