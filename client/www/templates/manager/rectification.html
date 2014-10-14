@@ -1,0 +1,52 @@
+<ion-view title="rectification">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">施工安全隐患整改提交</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="list card">
+            <div class="item text-center">
+                <h2>施工安全隐患整改提交</h2>
+                <p>编号：{{data.check.uuid}}</p>
+            </div>
+
+            <div class="item item-body padding">
+                <div class="row">
+                    <div class="col">检查对象：{{data.check.check_target}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">检查人：{{data.check.check_user.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">检查单位：{{data.check.check_user.unit.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">施工标段或工区：{{data.check.segment.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">存在隐患：</div>
+                </div>
+                <div class="col assertive" ng-repeat="item in data.rectifications">
+                    {{$index + 1}}. {{item.name}}
+                </div>
+
+                <div class="row">
+                    <div class="col">整改要求：</div>
+                </div>
+                <div class="col">{{data.check.rectification_criterion}}</div>
+
+                <div class="row">
+                    <div class="col">整改情况：</div>
+                </div>
+                <div class="row">
+                    <textarea ng-model="data.check.rectification_result" rows="5" style="border: 1px solid #eee;"></textarea>
+                </div>
+            </div>
+
+            <button class="button button-block button-positive" ng-click="submit()">
+                提 交 
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,4 +1,4 @@
-<ion-view title="check">
+<ion-view title="startup">
     <ion-header-bar align-title="center" class="bar-calm">
         <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">施工安全隐患整改通知书</h1>
@@ -19,7 +19,7 @@
                     <div class="col">检查人：{{data.check.check_user.name}}</div>
                 </div>
                 <div class="row">
-                    <div class="col">检查单位：{{data.check.check_user.unit}}</div>
+                    <div class="col">检查单位：{{data.check.check_user.unit.name}}</div>
                 </div>
                 <div class="row">
                     <div class="col">施工标段或工区：{{data.check.segment.name}}</div>

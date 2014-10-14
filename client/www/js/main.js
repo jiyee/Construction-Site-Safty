@@ -14,7 +14,7 @@ app.run(function($ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http:/192.168.1.63:3000',
+    'baseUrl': 'http://10.171.40.8:3000',
     'project': '监利至江陵高速公路'
 })
 
@@ -92,6 +92,15 @@ app.run(function($ionicPlatform) {
         }
     })
 
+    // 整改提交 
+    .state('manager.rectification', {
+        url: '/dashboard/:userId/check/:checkId/rectification',
+        templateUrl: 'templates/manager/rectification.html',
+        controller: 'ManagerRectificationCtrl',
+        resolve: {
+        }
+    })
+
     // 考核列表页
     .state('manager.table', {
         url: "/dashboard/:userId/table/:tableId",
@@ -111,7 +120,7 @@ app.run(function($ionicPlatform) {
         url: "/contact/:userId",
         templateUrl: "templates/contact.html",
         controller: 'ContactCtrl',
-    })
+    });
 
     // // 考核列表页
     // .state('review', {

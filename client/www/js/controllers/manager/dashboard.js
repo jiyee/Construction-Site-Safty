@@ -15,6 +15,13 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     if (!$scope.current) {
         $scope.current = {};
         UserService.findById($scope.data.userId).then(function(user) {
+            // 未找到注册用户，强制登出
+            if (!user) {
+                AuthService.logout().then(function () {
+                    $state.go('welcome');
+                });
+            }
+
             $scope.current.user = user;
             $scope.current.segment = user.segment;
         });

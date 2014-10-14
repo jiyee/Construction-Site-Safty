@@ -52,25 +52,6 @@ var CheckSchema = new Schema({
 });
 
 CheckSchema.pre('save', function (next) {
-    var TableModel = require('../models').TableModel;
-
-    if (!this.table && this.file) {
-        var table = new TableModel();
-        var proto = require('../data/' + this.file + '.json');
-        _.extend(table, proto);
-        var that = this;
-
-        table.uuid = Date.now();
-        table.save(function (err, table) {
-            if (err) {
-                return next(err);
-            }
-
-            that.table = table._id;
-
-            next();
-        });
-    }
 
     next();
 });

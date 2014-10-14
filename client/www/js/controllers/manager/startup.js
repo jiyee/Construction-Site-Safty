@@ -43,6 +43,8 @@ app.controller('ManagerStartUpCtrl', function($scope, $rootScope, $state, $state
             });
         });
 
+        console.log(check);
+
         $scope.data.rectifications = rectifications;
     });
 

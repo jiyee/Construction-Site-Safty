@@ -5,6 +5,7 @@ var utils = require('../utils');
 var TableModel = require('../models/').TableModel;
 var CheckModel = require('../models/').CheckModel;
 var UserModel = require('../models/').UserModel;
+var UnitModel = require('../models/').UnitModel;
 var SegmentModel = require('../models/').SegmentModel;
 
 exports.findAll = function (req, res, next) {
@@ -41,10 +42,19 @@ exports.findById = function (req, res, next) {
             return next(err);
         }
 
-        res.send({
-            'code': 0,
-            'status': 'success',
-            'check': check
+        var ep = new eventproxy();
+        ep.all('check_user.unit', function() {
+            res.send({
+                'code': 0,
+                'status': 'success',
+                'check': check
+            });
+        });
+
+        UnitModel.populate(check.check_user, {
+            path: 'unit'
+        }, function (err, user) {
+            ep.emit('check_user.unit');
         });
     });
 };
@@ -136,7 +146,12 @@ exports.forward = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        options.conditions.units = user.unit._id;
+        options = {
+            findOne: true,
+            conditions: {   
+                units: user.unit._id
+            }
+        };
         SegmentModel.findBy(options, function (err, segment) {
             if (err) {
                 return next(err);
@@ -150,7 +165,12 @@ exports.forward = function (req, res, next) {
                 return next(utils.getError(104));
             }
 
-            options.conditions._id = check_id;
+            options = {
+                findOne: true,
+                conditions: {   
+                    _id: check_id
+                }
+            };
             CheckModel.findBy(options, function(err, check) {
                 if (err) {
                     return next(err);

@@ -1,4 +1,4 @@
-app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, ProjectService, SegmentService, UserService, CheckService, AuthService) {
+app.controller('ManagerRectificationCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService) {
     $scope.data = {};
     $scope.data.userId = $stateParams.userId;
     $scope.data.checkId = $stateParams.checkId;
@@ -42,33 +42,13 @@ app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $statePa
     });
 
     $scope.toBack = function() {
-        $state.go('^.dashboard', {
-            userId: $scope.data.userId
-        });
-    };
-
-    $scope.toTable = function() {
-        $state.go('^.table', {
+        $state.go('^.check', {
             userId: $scope.data.userId,
-            tableId: $scope.data.check.table._id
+            checkId: $scope.data.checkId
         });
     };
 
-    $scope.toStartUp = function() {
-        $state.go('^.startup', {
-            userId: $scope.data.userId,
-            checkId: $scope.data.check._id
-        });
-    };
-
-    $scope.toRectification = function () {
-        $state.go('^.rectification', {
-            userId: $scope.data.userId,
-            checkId: $scope.data.check._id
-        });
-    };
-
-    $scope.backward = function() {
+    $scope.submit = function() {
         CheckService.backward($scope.data.checkId, $scope.data.check.rectification_result).then(function(check) {
             alert("整改提交完毕");
             $state.go('^.dashboard', {
@@ -78,36 +58,5 @@ app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $statePa
             alert(err); 
         });
     };
-
-    $scope.end = function () {
-        var confirmPopup = $ionicPopup.confirm({
-            title: '整改验收',
-            template: '安全整改验收是否通过？',
-            buttons: [{
-                text: '不通过',
-                type: 'button-default'
-            }, {
-                text: '通过',
-                type: 'button-positive',
-                onTap: function(e) {
-                    return true;
-                }
-            }]
-        });
-
-        confirmPopup.then(function(res) {
-            if (res) {
-                CheckService.end($scope.data.checkId).then(function(check) {
-                    alert('处理完毕');
-                    $state.go('^.dashboard', {
-                        userId: $scope.data.userId
-                    });
-                }, function (err) {
-                    alert(err)
-                });
-            }
-        });
-    };
-
 
 });

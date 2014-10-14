@@ -90,12 +90,12 @@ exports.update = function (req, res, next) {
                             }
 
                             if (item3.status === 'UNCHECK' &&
-                                item3.score != null) {
+                                parseInt(item3.score, 10) >= 0) {
                                 valid = false;
                             }
 
-                            if ((item3.status === 'PASS' && item3.score != 0) ||
-                                (item3.status === 'FAIL' && item3.score != 1)) {
+                            if ((item3.status === 'PASS' && parseInt(item3.score, 10) !== 0) ||
+                                (item3.status === 'FAIL' && parseInt(item3.score, 10) !== 1)) {
                                 valid = false;
                             }
                         } else {

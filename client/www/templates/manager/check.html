@@ -8,15 +8,24 @@
         <div class="list card">
             <div class="item text-center">
                 <h2>检查编号：{{data.check.uuid}}</h2>
-                <p>检查日期：{{data.check.check_date}}</p>
+                <p>检查日期：{{data.check.check_date | date: 'yyyy年MM月dd日'}}</p>
             </div>
 
             <div class="item item-body padding">
+                <div class="row">
+                    <div class="col">检查类型：{{data.check.table.type}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">检查项目：{{data.check.table.name}}</div>
+                </div>
                 <div class="row">
                     <div class="col">检查对象：{{data.check.check_target}}</div>
                 </div>
                 <div class="row">
                     <div class="col">检查人：{{data.check.check_user.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">检查单位：{{data.check.check_user.unit.name}}</div>
                 </div>
                 <div class="row">
                     <div class="col">当前处理人：{{data.check.process_current_user.name}}</div>
@@ -41,17 +50,25 @@
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#" ng-click="toTable()" ng-show="data.check.check_user._id == data.userId">
+                <a class="tab-item" href="#" ng-click="toTable()" ng-show="data.check.check_user._id == data.userId && !data.check.process_status">
                     <i class="icon ion-compose"></i>
                     打分
                 </a>
-                <a class="tab-item" href="#" ng-click="toStartUp()" ng-hide="current.segment.is_leaf == true">
+                <a class="tab-item" href="#" ng-click="toStartUp()" ng-hide="current.segment.is_leaf == true || data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
                     <i class="icon ion-paper-airplane"></i>
                     下达
                 </a>
-                <a class="tab-item" href="#" ng-hide="current.segment.is_leaf == false">
+                <a class="tab-item" href="#" ng-click="toRectification()" ng-hide="current.segment.is_leaf == false || data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
                     <i class="icon ion-paper-airplane"></i>
                     整改
+                </a>
+                <a class="tab-item" href="#" ng-click="backward()" ng-show="data.check.check_user._id != data.userId && data.check.process_status == 'BACKWARD'">
+                    <i class="icon ion-paper-airplane"></i>
+                    提交 
+                </a>
+                <a class="tab-item" href="#" ng-click="end()" ng-show="data.check.check_user._id == data.userId && data.check.process_status == 'BACKWARD'">
+                    <i class="icon ion-paper-airplane"></i>
+                    验收
                 </a>
             </div>
 

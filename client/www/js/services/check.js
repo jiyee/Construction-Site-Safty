@@ -75,6 +75,43 @@ app.factory('CheckService', function($http, $q, settings) {
                 });
 
             return deferred.promise;
+        },
+        backward: function (checkId, rectificationResult) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/check/' + checkId + '/backward', {
+                    rectification_result: rectificationResult  
+                })
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve(data.check);
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        end: function (checkId) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/check/' + checkId + '/end', {
+                })
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve(data.check);
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
     };
 });

@@ -42,7 +42,6 @@ exports.findById = function(req, res, next) {
         var __total = 0;
         var __done = 0;
         var deepPopulate = function(err, parent) {
-            console.log(__done, parent);
             if (parent.segments && parent.segments.length > 0) {
                 __total += parent.segments.length;
                 __done += 1;

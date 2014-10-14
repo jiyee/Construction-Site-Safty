@@ -54,12 +54,11 @@ app.controller('ManagerTargetCtrl', function($scope, $rootScope, $state, $stateP
 
     $scope.newCheck = function () {
         CheckService.create({
-            project_id: $scope.data.project._id,
-            segment_id: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
+            project: $scope.data.project._id,
+            segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             file: $scope.data.file,
             check_target: $scope.data.check_target
         }).then(function(check) {
-            console.log(JSON.stringify(check));
             $state.go('^.table', {
                 userId: $scope.data.userId,
                 tableId: check.table
