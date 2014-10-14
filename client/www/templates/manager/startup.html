@@ -22,7 +22,7 @@
                     <div class="col">检查单位：{{data.check.check_user.unit}}</div>
                 </div>
                 <div class="row">
-                    <div class="col">施工标段或工区：{{data.check.part.name}}</div>
+                    <div class="col">施工标段或工区：{{data.check.segment.name}}</div>
                 </div>
                 <div class="row">
                     <div class="col">现场负责人：
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <button class="button button-block button-positive" ng-click="submit()" ng-hide="current.part.is_leaf">
+            <button class="button button-block button-positive" ng-click="submit()" ng-hide="current.segment.is_leaf">
                 下 达
             </button>
         </div>

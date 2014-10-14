@@ -1,11 +1,11 @@
-app.factory('PartService', function($http, $q, settings) {
+app.factory('SegmentService', function($http, $q, settings) {
     return {
         find: function() {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/parts')
+            $http.get(settings.baseUrl + '/segments/all')
                 .success(function(data) {
-                    deferred.resolve(data.parts);
+                    deferred.resolve(data.segments);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -13,12 +13,12 @@ app.factory('PartService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        findById: function(partId) {
+        findById: function(segmentId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/part/' + partId)
+            $http.get(settings.baseUrl + '/segment/' + segmentId)
                 .success(function(data) {
-                    deferred.resolve(data.part);
+                    deferred.resolve(data.segment);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -29,9 +29,9 @@ app.factory('PartService', function($http, $q, settings) {
         findByProjectId: function(projectId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/project/' + projectId + '/parts')
+            $http.get(settings.baseUrl + '/project/' + projectId + '/segments')
                 .success(function(data) {
-                    deferred.resolve(data.parts);
+                    deferred.resolve(data.segments);
                 })
                 .error(function(err) {
                     deferred.reject(err);

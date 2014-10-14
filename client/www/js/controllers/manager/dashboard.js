@@ -2,10 +2,10 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     $scope.data = {};
     $scope.data.userId = $stateParams.userId;
     
-    $scope.$watch('current.part', function() {
-        if ($scope.current.part) {
-            UserService.findByPartId($scope.current.part._id).then(function (users) {
-                $scope.data.partUsers = users;
+    $scope.$watch('current.segment', function() {
+        if ($scope.current.segment) {
+            UserService.findBySegmentId($scope.current.segment._id).then(function (users) {
+                $scope.data.segmentUsers = users;
             });
         }
     });
@@ -16,7 +16,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         $scope.current = {};
         UserService.findById($scope.data.userId).then(function(user) {
             $scope.current.user = user;
-            $scope.current.part = user.part;
+            $scope.current.segment = user.segment;
         });
     }
 

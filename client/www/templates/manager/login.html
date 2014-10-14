@@ -5,7 +5,7 @@
     </ion-header-bar>
 
     <ion-content padding="true">
-    	<div ng-hide="project && part">		
+    	<div ng-hide="project && segment">		
 	        <div>
 	        	<label class="item item-input item-select">
 	                <span class="input-label">
@@ -27,18 +27,18 @@
 	        </div>
 
 			<div class="list padding">
-			    <div class="item item-complex" ng-repeat="part in data.parts" style="padding-left: {{part.level * 10}}px;">
-			    	<div class="item-content item-icon-right" ng-click="changePart(part)">
-				        <span ng-if="part.level > 0">┗</span> {{part.name}}
+			    <div class="item item-complex" ng-repeat="segment in data.segments" style="padding-left: {{segment.level * 10}}px;">
+			    	<div class="item-content item-icon-right" ng-click="changeSegment(segment)">
+				        <span ng-if="segment.level > 0">┗</span> {{segment.name}}
 			        	<i class="icon ion-ios7-person-outline"></i>
 			    	</div>
 			    </div>
 			</div>
     	</div>
 
-		<div ng-show="project && part">		
+		<div ng-show="project && segment">		
 			<h2>{{project.name}}</h2>
-			<h2 ng-click="resetPart()"><i class="icon ion-ios7-undo-outline"></i> {{part.name}}</h2>
+			<h2 ng-click="resetSegment()"><i class="icon ion-ios7-undo-outline"></i> {{segment.name}}</h2>
 
 	        <div class="list list-inset">
 	            <label class="item item-input item-select">

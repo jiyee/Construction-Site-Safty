@@ -3,7 +3,7 @@ app.factory('UserService', function($http, $q, settings) {
         find: function() {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/users')
+            $http.get(settings.baseUrl + '/users/all')
                 .success(function(data) {
                     deferred.resolve(data.users);
                 })
@@ -26,10 +26,10 @@ app.factory('UserService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        findByPartId: function(partId) {
+        findBySegmentId: function(segmentId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/part/' + partId + '/users')
+            $http.get(settings.baseUrl + '/segment/' + segmentId + '/users')
                 .success(function(data) {
                     deferred.resolve(data.users);
                 })

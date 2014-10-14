@@ -24,7 +24,7 @@
                 <div class="input-label">
                     合同段：
                 </div>
-                <select ng-model="section" ng-options="item as item.name for item in data.parts | filter: {type: '标段'}" ng-change="changeSection(section)">
+                <select ng-model="section" ng-options="item as item.name for item in data.segments | filter: {type: '标段'}" ng-change="changeSection(section)">
                     <option value="" selected>--- 请选择合同段 ---</option>
                 </select>
             </label>
@@ -33,7 +33,7 @@
                 <div class="input-label">
                     分部：
                 </div>
-                <select ng-model="branch" ng-options="item as item.name for item in data.parts | filter: {type: '分部'}" ng-change="changeBranch(branch)">
+                <select ng-model="branch" ng-options="item as item.name for item in data.segments | filter: {type: '分部'}" ng-change="changeBranch(branch)">
                     <option value="" selected>--- 请选择分部 ---</option>
                 </select>
             </label>
@@ -42,7 +42,7 @@
                 <div class="input-label">
                     工区：
                 </div>
-                <select ng-model="place" ng-options="item as item.name for item in data.parts | filter: {type: '工区'}" ng-change="changePlace(place)">
+                <select ng-model="place" ng-options="item as item.name for item in data.segments | filter: {type: '工区'}" ng-change="changePlace(place)">
                     <option value="" selected>--- 请选择工区 ---</option>
                 </select>
             </label>

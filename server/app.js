@@ -70,7 +70,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     res.status(200);
     res.send({
-        code: err.code,
+        code: err.code || 100,
         message: err.message,
         error: err
     });

@@ -1,6 +1,6 @@
 <ion-view>
     <ion-header-bar align-title="center" class="bar-calm">
-        <h1 class="title">{{current.part.name}} [{{current.user.name}}]</h1>
+        <h1 class="title">{{current.segment.name}} [{{current.user.name}}]</h1>
         <button class="button icon ion-log-out" ng-click="logout()"></button>
     </ion-header-bar>
 
@@ -10,7 +10,7 @@
 
             <div class="item item-complex">
                 <div class="row">
-                    <div class="col col-20" ng-repeat="item in data.partUsers">
+                    <div class="col col-20" ng-repeat="item in data.segmentUsers">
                         <a href="#/contact/{{item._id}}"><i class="user-online"></i>{{item.name}}</a>
                     </div>
                 </div>

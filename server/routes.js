@@ -9,7 +9,7 @@ var table = require('./controllers/table');
 var check = require('./controllers/check');
 var setup = require('./controllers/setup');
 
-router.get('/', function (req, res) {
+router.get('/', function(req, res) {
     res.render('index', {
         title: '平安工地'
     });
@@ -24,26 +24,26 @@ router.post('/logout', user.logout);
 router.get('/auth', user.auth);
 
 // 用户接口
-router.get('/users', user.findAll);
+router.get('/users/all', user.findAll);
 router.get('/user/:user_id', user.findById);
 router.get('/user/:user_id/checks', check.findByProcessCurrentUserId);
 router.post('/user/create', user.create);
 
 // 角色接口
-router.get('/roles', role.findAll);
+router.get('/roles/all', role.findAll);
 router.get('/role/:role_id', role.findById);
 router.get('/role/:role_id/users', user.findByRoleId);
 router.post('/role/create', role.create);
 
 // 部门接口
-router.get('/units', unit.findAll);
+router.get('/units/all', unit.findAll);
 router.get('/unit/:unit_id', unit.findById);
 router.get('/unit/:unit_id/users', user.findByUnitId);
 router.get('/unit/:unit_id/segments', segment.findByUnitId);
 router.post('/unit/create', unit.create);
 
 // 项目接口
-router.get('/projects', project.findAll);
+router.get('/projects/all', project.findAll);
 router.post('/project/create', project.create);
 router.post('/project/:project_id/update', project.update);
 router.get('/project/:project_id', project.findById);
@@ -52,7 +52,7 @@ router.post('/project/:project_id/:field/insert', project.push_array);
 router.post('/project/:project_id/:field/remove', project.slice_array);
 
 // 项目组成接口
-router.get('/segments', segment.findAll);
+router.get('/segments/all', segment.findAll);
 router.post('/segment/create', segment.create);
 router.get('/segment/:segment_id', segment.findById);
 router.get('/segment/:segment_id/users', user.findBySegmentId);
@@ -61,7 +61,7 @@ router.post('/segment/:segment_id/:field/insert', segment.push_array);
 router.post('/segment/:segment_id/:field/remove', segment.slice_array);
 
 // 安全检查表接口
-router.get('/tables', table.findAll);
+router.get('/tables/all', table.findAll);
 router.get('/table/:table_id', table.findById);
 router.post('/table/create', table.create);
 router.post('/table/:table_id/delete', table.delete);

@@ -5,6 +5,7 @@
  * @since 2014-10-03
  */
 
+var _ = require('lodash');
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
@@ -51,18 +52,21 @@ var CheckSchema = new Schema({
 });
 
 CheckSchema.pre('save', function (next) {
-    var TableModel = require('./models').TableModel;
+    var TableModel = require('../models').TableModel;
 
     if (!this.table && this.file) {
         var table = new TableModel();
-        var proto = require('../data/' + file + '.json');
+        var proto = require('../data/' + this.file + '.json');
         _.extend(table, proto);
+        var that = this;
 
         table.uuid = Date.now();
         table.save(function (err, table) {
             if (err) {
                 return next(err);
             }
+
+            that.table = table._id;
 
             next();
         });
@@ -72,7 +76,7 @@ CheckSchema.pre('save', function (next) {
 });
 
 CheckSchema.pre('remove', function (next) {
-    var TableModel = require('./models').TableModel;
+    var TableModel = require('../models').TableModel;
 
     if (this.table) {
         TableModel.findOneAndRemove({_id: this.table}, function(err) {

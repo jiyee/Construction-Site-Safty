@@ -1,12 +1,12 @@
-app.controller('ManagerTargetCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, PartService, UserService, CheckService, AuthService) {
+app.controller('ManagerTargetCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService) {
     $scope.data = {};
     $scope.data.userId = $stateParams.userId;
-    $scope.data.parts = [];
+    $scope.data.segments = [];
 
     $scope.$watch('current.project', function() {
         if ($scope.current.project) {
-            PartService.findByProjectId($scope.current.project._id).then(function (parts) {
-                $scope.data.parts = $scope.data.parts.concat(parts);
+            SegmentService.findByProjectId($scope.current.project._id).then(function (segments) {
+                $scope.data.segments = $scope.data.segments.concat(segments);
             });
         }
     });
@@ -17,7 +17,7 @@ app.controller('ManagerTargetCtrl', function($scope, $rootScope, $state, $stateP
         $scope.current = {};
         UserService.findById($scope.data.userId).then(function(user) {
             $scope.current.user = user;
-            $scope.current.part = user.part;
+            $scope.current.segment = user.segment;
         });
 
         // TODO 这里因为数据结构设计问题，暂时写死
@@ -25,14 +25,17 @@ app.controller('ManagerTargetCtrl', function($scope, $rootScope, $state, $stateP
             $scope.current.project = project[0];
             $scope.data.project = project[0];
         });
+    } else {
+        $scope.data.project = $scope.current.project;
     }
+
 
     $scope.changeSection = function (section) {
         if (!section) return;
 
         $scope.data.section = section;
-        PartService.findById(section._id).then(function (part) {
-            $scope.data.parts = $scope.data.parts.concat(part.parts);
+        SegmentService.findById(section._id).then(function (segment) {
+            $scope.data.segments = $scope.data.segments.concat(segment.segments);
         });
     };
 
@@ -40,8 +43,8 @@ app.controller('ManagerTargetCtrl', function($scope, $rootScope, $state, $stateP
         if (!branch) return;
 
         $scope.data.branch = branch;
-        PartService.findById(branch._id).then(function (part) {
-            $scope.data.parts = $scope.data.parts.concat(part.parts);
+        SegmentService.findById(branch._id).then(function (segment) {
+            $scope.data.segments = $scope.data.segments.concat(segment.segments);
         });
     };
 
@@ -52,10 +55,11 @@ app.controller('ManagerTargetCtrl', function($scope, $rootScope, $state, $stateP
     $scope.newCheck = function () {
         CheckService.create({
             project_id: $scope.data.project._id,
-            part_id: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
+            segment_id: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             file: $scope.data.file,
             check_target: $scope.data.check_target
         }).then(function(check) {
+            console.log(JSON.stringify(check));
             $state.go('^.table', {
                 userId: $scope.data.userId,
                 tableId: check.table

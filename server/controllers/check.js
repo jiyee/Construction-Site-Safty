@@ -426,18 +426,42 @@ exports.create = function (req, res, next) {
         return next(utils.getError(105));
     }
 
-    var check = new CheckModel(req.body);
-    check.check_user = req.session.user._id;
+    if (!req.body.file) {
+        return next(utils.getError(102));
+    }
 
-    check.save(function(err, check) {
+    var ep = new eventproxy();
+    ep.on('table.save', function (table) {
+        var check = new CheckModel(req.body);
+        check.check_user = req.session.user._id;
+        check.process_current_user = req.session.user._id;
+        check.uuid = Date.now(); 
+        check.table = table._id;
+
+        check.save(function(err, check) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'status': 'success',
+                'code': 0,
+                'check': check
+            });
+        });
+    });
+
+    // 创建检查表
+    var table = new TableModel();
+    var proto = require('../data/' + req.body.file + '.json');
+    _.extend(table, proto);
+    table.uuid = Date.now();
+    table.save(function (err, table) {
         if (err) {
             return next(err);
         }
 
-        res.send({
-            'status': 'success',
-            'code': 0,
-            'check': check
-        });
+        ep.emit('table.save', table);
     });
+    
 };

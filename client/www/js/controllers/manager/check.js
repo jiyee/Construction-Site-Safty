@@ -1,4 +1,4 @@
-app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, PartService, UserService, CheckService, AuthService) {
+app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService) {
     $scope.data = {};
     $scope.data.userId = $stateParams.userId;
     $scope.data.checkId = $stateParams.checkId;
@@ -9,7 +9,7 @@ app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $statePa
         $scope.current = {};
         UserService.findById($scope.data.userId).then(function(user) {
             $scope.current.user = user;
-            $scope.current.part = user.part;
+            $scope.current.segment = user.segment;
         });
 
         // TODO 这里因为数据结构设计问题，暂时写死

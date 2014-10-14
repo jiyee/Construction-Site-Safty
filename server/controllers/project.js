@@ -86,18 +86,40 @@ exports.list_array = function (req, res, next) {
         select: fields
     };
 
-    ProjectModel.findBy(options, function (err, list) {
+    ProjectModel.findBy(options, function (err, project) {
         if (err) {
             return next(err);
         }
 
-        var ret = {
-           'code': 0,
-           'status': 'success'
+        var __total = 0;
+        var __done = 0;
+        var deepPopulate = function(err, parent) {
+            if (parent[fields] && parent[fields].length > 0) {
+                __total += parent[fields].length;
+                __done += 1;
+
+                _.each(parent[fields], function(child) {
+                    SegmentModel.populate(child, {
+                        path: fields
+                    }, deepPopulate);
+                });
+            } else {
+                __done += 1;
+
+                if (__done > __total) {
+                    var ret = {
+                        'status': 'success',
+                        'code': 0
+                    };
+
+                    ret[fields] = project[fields];
+                    res.send(ret);
+                }
+            }
         };
 
-        ret[fields] = list;
-        res.send(ret);
+        // 遍历子节点，深度populated
+        deepPopulate(err, project);
     });
 };
 

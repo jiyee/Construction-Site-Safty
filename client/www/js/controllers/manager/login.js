@@ -1,4 +1,4 @@
-app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, PartService, UserService, AuthService) {
+app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UserService, AuthService) {
     $scope.data = {};
     $scope.data.projects = projects;
 
@@ -11,9 +11,9 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
     $scope.changeProject = function (project) {
         $scope.project = project;
 
-        PartService.findByProjectId(project._id).then(function(parts) {
+        SegmentService.findByProjectId(project._id).then(function(segments) {
             var tree = [];
-            var root = angular.copy(parts);
+            var roots = angular.copy(segments);
 
             function deepLoop(root, level) {
                 tree.push({
@@ -21,32 +21,32 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
                     _id: root._id,
                     name: root.name
                 });
-                if (root.parts) {
+                if (root.segments) {
                     level += 1;
-                    angular.forEach(root.parts, function(part) {
-                        deepLoop(part, level);
+                    angular.forEach(root.segments, function(child) {
+                        deepLoop(child, level);
                     });
                 }
             }
 
-            angular.forEach(root, function (part) {
-                deepLoop(part, 0);
+            angular.forEach(roots, function (child) {
+                deepLoop(child, 0);
             });
 
-            $scope.data.parts = tree;
+            $scope.data.segments = tree;
         });
     };
 
-    $scope.changePart = function (part) {
-        $scope.part = part;
+    $scope.changeSegment = function (segment) {
+        $scope.segment = segment;
 
-        UserService.findByPartId(part._id).then(function(users) {
+        UserService.findBySegmentId(segment._id).then(function(users) {
             $scope.data.users = users;
         });
     };
 
-    $scope.resetPart = function () {
-        $scope.part = null;
+    $scope.resetSegment = function () {
+        $scope.segment = null;
     };
 
     $scope.login = function () {
@@ -55,7 +55,7 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
             // 保存到$rootScopre, 并非特别好的方式
             $rootScope.current = {};
             $rootScope.current.project = $scope.project;
-            $rootScope.current.part = $scope.part;
+            $rootScope.current.segment = $scope.segment;
             $rootScope.current.user = user;
 
             $state.go("^.dashboard", {
