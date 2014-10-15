@@ -1,23 +1,8 @@
-app.controller('ManagerRectificationCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService) {
+app.controller('CheckRectificationCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, resolveUser) {
     $scope.data = {};
-    $scope.data.userId = $stateParams.userId;
+    $scope.data.user = resolveUser;
+    $scope.data.check = {};
     $scope.data.checkId = $stateParams.checkId;
-
-    $scope.current = $rootScope.current;
-
-    if (!$scope.current) {
-        $scope.current = {};
-        UserService.findById($scope.data.userId).then(function(user) {
-            $scope.current.user = user;
-            $scope.current.segment = user.segment;
-        });
-
-        // TODO 这里因为数据结构设计问题，暂时写死
-        ProjectService.find().then(function(project) {
-            $scope.current.project = project[0];
-            $scope.data.project = project[0];
-        });
-    }
 
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
@@ -42,17 +27,21 @@ app.controller('ManagerRectificationCtrl', function($scope, $rootScope, $state, 
     });
 
     $scope.toBack = function() {
-        $state.go('^.check', {
-            userId: $scope.data.userId,
+        $state.go('^.detail', {
             checkId: $scope.data.checkId
         });
     };
 
-    $scope.submit = function() {
+    $scope.toBackward = function() {
+        if (!$scope.data.check.rectification_result) {
+            alert('请填写整改情况');
+            return;
+        }
+
         CheckService.backward($scope.data.checkId, $scope.data.check.rectification_result).then(function(check) {
             alert("整改提交完毕");
-            $state.go('^.dashboard', {
-                userId: $scope.data.userId
+            $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+                userId: $scope.data.user._id
             });
         }, function(err) {
             alert(err); 

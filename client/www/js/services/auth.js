@@ -1,4 +1,10 @@
-app.factory('AuthService', function($http, $q, settings) {
+app.factory('AuthService', function($http, $q, $window, settings) {
+    var user;
+
+    if ($window.sessionStorage["user"]) {
+        user = JSON.parse($window.sessionStorage["user"]);
+    }
+
     return {
         login: function(username, password) {
             var deferred = $q.defer();
@@ -11,6 +17,8 @@ app.factory('AuthService', function($http, $q, settings) {
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
+                        user = data.user;
+                        $window.sessionStorage["user"] = JSON.stringify(data.user);
                         deferred.resolve(data.user);
                     }
                 })
@@ -28,6 +36,8 @@ app.factory('AuthService', function($http, $q, settings) {
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
+                        user = data.user;
+                        $window.sessionStorage["user"] = JSON.stringify(data.user);
                         deferred.resolve(data.user);
                     }
                 })
@@ -45,7 +55,9 @@ app.factory('AuthService', function($http, $q, settings) {
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
-                        deferred.resolve(data);
+                        user = null;
+                        $window.sessionStorage["user"] = null;
+                        deferred.resolve(data.user);
                     }
                 })
                 .error(function(err) {
@@ -53,6 +65,10 @@ app.factory('AuthService', function($http, $q, settings) {
                 });
 
             return deferred.promise;
+        },
+        getUser: function () {
+            console.log('session user', user);
+            return user;
         }
     };
 });

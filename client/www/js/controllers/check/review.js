@@ -1,9 +1,18 @@
-app.controller('ManagerReviewCtrl', function($scope, $stateParams, $state, TableService) {
+app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, settings, TableService, AuthService, resolveUser) {
     $scope.data = {};
-    $scope.data.userId = $stateParams.userId;
+    $scope.data.user = resolveUser;
+    $scope.data.table = {};
     $scope.data.tableId = $stateParams.tableId;
     $scope.data.itemId = $stateParams.itemId;
     $scope.data.subItemId = $stateParams.subItemId;
+
+    // 用户登录状态异常控制
+    if (!$scope.data.user) {
+        alert('用户登录状态异常');
+        AuthService.logout().then(function () {
+            $state.go('welcome');
+        });
+    }
 
     TableService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
@@ -28,7 +37,6 @@ app.controller('ManagerReviewCtrl', function($scope, $stateParams, $state, Table
         } else {
             item.status = 'UNCHECK';
         }
-        // $scope.$apply();
     };
 
     $scope.takePhoto = function(item) {
@@ -49,7 +57,6 @@ app.controller('ManagerReviewCtrl', function($scope, $stateParams, $state, Table
     $scope.saveAndReturn = function() {
         TableService.update($scope.data.tableId, $scope.data.table).then(function(table) {
             $state.go('^.table', {
-                userId: $scope.data.userId,
                 tableId: $scope.data.tableId
             });
         }, function(err) {

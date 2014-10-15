@@ -1,31 +1,15 @@
-app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, ProjectService, SegmentService, UserService, CheckService, AuthService) {
+app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, resolveUser) {
     $scope.data = {};
-    $scope.data.userId = $stateParams.userId;
+    $scope.data.check = {};
+    $scope.data.user = resolveUser;
     $scope.data.checkId = $stateParams.checkId;
-
-    $scope.current = $rootScope.current;
-
-    if (!$scope.current) {
-        $scope.current = {};
-        UserService.findById($scope.data.userId).then(function(user) {
-            $scope.current.user = user;
-            $scope.current.segment = user.segment;
-        });
-
-        // TODO 这里因为数据结构设计问题，暂时写死
-        ProjectService.find().then(function(project) {
-            $scope.current.project = project[0];
-            $scope.data.project = project[0];
-        });
-    }
 
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
 
-        var table = check.table,
-            rectifications = [];
+        var rectifications = [];
 
-        angular.forEach(table.items, function(level1) {
+        angular.forEach(check.table.items, function(level1) {
             angular.forEach(level1.items, function(level2) {
                 angular.forEach(level2.items, function(level3) {
                     if (level3.status && level3.score > 0) {
@@ -42,28 +26,25 @@ app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $statePa
     });
 
     $scope.toBack = function() {
-        $state.go('^.dashboard', {
-            userId: $scope.data.userId
+        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            userId: $scope.data.user._id
         });
     };
 
     $scope.toTable = function() {
         $state.go('^.table', {
-            userId: $scope.data.userId,
             tableId: $scope.data.check.table._id
         });
     };
 
-    $scope.toStartUp = function() {
-        $state.go('^.startup', {
-            userId: $scope.data.userId,
+    $scope.toCriterion = function() {
+        $state.go('^.criterion', {
             checkId: $scope.data.check._id
         });
     };
 
     $scope.toRectification = function () {
         $state.go('^.rectification', {
-            userId: $scope.data.userId,
             checkId: $scope.data.check._id
         });
     };
@@ -71,8 +52,8 @@ app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $statePa
     $scope.backward = function() {
         CheckService.backward($scope.data.checkId, $scope.data.check.rectification_result).then(function(check) {
             alert("整改提交完毕");
-            $state.go('^.dashboard', {
-                userId: $scope.data.userId
+            $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+                userId: $scope.data.user._id
             });
         }, function(err) {
             alert(err); 
@@ -98,12 +79,12 @@ app.controller('ManagerCheckCtrl', function($scope, $rootScope, $state, $statePa
         confirmPopup.then(function(res) {
             if (res) {
                 CheckService.end($scope.data.checkId).then(function(check) {
-                    alert('处理完毕');
-                    $state.go('^.dashboard', {
-                        userId: $scope.data.userId
+                    alert('整改验收完毕，本次安全检查结束。');
+                    $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+                        userId: $scope.data.user._id
                     });
                 }, function (err) {
-                    alert(err)
+                    alert(err);
                 });
             }
         });

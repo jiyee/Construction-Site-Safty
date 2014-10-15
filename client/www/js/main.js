@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic']);
 
 // 加载ionic和cordova
-app.run(function($ionicPlatform) {
+app.run(function($rootScope, $ionicPlatform) {
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -10,12 +10,29 @@ app.run(function($ionicPlatform) {
             StatusBar.hide();
         }
     });
+
+    $rootScope.$on("$stateChangeSuccess", function (event, current, previous, eventObj) {
+        console.log('stateChangeSuccess', current, previous, eventObj);
+    });
+
+    $rootScope.$on("$stateChangeError", function (event, current, previous, eventObj) {
+        console.log('stateChangeError', current, previous, eventObj);
+    });
+
+    $rootScope.$on('$stateChangeStart', function (event, current, previous, eventObj) {
+        console.log('stateChangeStart', current, previous, eventObj);
+    });
 })
 
 // 注册全局变量
 .constant('settings', {
     'baseUrl': 'http://10.171.40.8:3000',
-    'project': '监利至江陵高速公路'
+    'project': '监利至江陵高速公路',
+    'roles': {
+        '行业主管': 'admin',
+        '安全管理': 'manager',
+        '一线员工': 'normal'
+    }
 })
 
 .config(['$httpProvider',function ($httpProvider) {
@@ -23,7 +40,13 @@ app.run(function($ionicPlatform) {
  }]) 
 
 // 注册路由
-.config(function($stateProvider, $urlRouterProvider, $compileProvider) {
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
+
+    // $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
+
+    // 设置默认路由
+    $urlRouterProvider.otherwise('welcome');
 
     // 条件路由
     $stateProvider
@@ -32,7 +55,12 @@ app.run(function($ionicPlatform) {
     .state('welcome', {
         url: '/welcome',
         templateUrl: 'templates/welcome.html',
-        controller: 'WelcomeCtrl'
+        controller: 'WelcomeCtrl',
+        resolve: {
+            user: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
     })
 
     // 安全管理抽象页，用于数据共享
@@ -62,57 +90,64 @@ app.run(function($ionicPlatform) {
         templateUrl: 'templates/manager/dashboard.html',
         controller: 'ManagerDashboardCtrl',
         resolve: {
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
         }
     })
 
-    // 创建监督检查，选择检查对象
-    .state('manager.target', {
-        url: '/dashboard/:userId/target',
-        templateUrl: 'templates/manager/target.html',
-        controller: 'ManagerTargetCtrl',
+    // 安全检查抽象页，用于数据共享
+    .state('check', {
+        url: '/check',
+        abstract: true,
+        template: "<ui-view></ui-view>",
         resolve: {
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
         }
+    })
+
+    // 创建监督检查
+    .state('check.create', {
+        url: '/create',
+        templateUrl: 'templates/check/create.html',
+        controller: 'CheckCreateCtrl'
     })
 
     // 监督检查详情 
-    .state('manager.check', {
-        url: '/dashboard/:userId/check/:checkId',
-        templateUrl: 'templates/manager/check.html',
-        controller: 'ManagerCheckCtrl',
-        resolve: {
-        }
-    })
-
-    // 下达整改通知书 
-    .state('manager.startup', {
-        url: '/dashboard/:userId/check/:checkId/startup',
-        templateUrl: 'templates/manager/startup.html',
-        controller: 'ManagerStartUpCtrl',
-        resolve: {
-        }
-    })
-
-    // 整改提交 
-    .state('manager.rectification', {
-        url: '/dashboard/:userId/check/:checkId/rectification',
-        templateUrl: 'templates/manager/rectification.html',
-        controller: 'ManagerRectificationCtrl',
-        resolve: {
-        }
+    .state('check.detail', {
+        url: '/:checkId',
+        templateUrl: 'templates/check/detail.html',
+        controller: 'CheckDetailCtrl'
     })
 
     // 考核列表页
-    .state('manager.table', {
-        url: "/dashboard/:userId/table/:tableId",
-        templateUrl: "templates/manager/table.html",
-        controller: 'ManagerTableCtrl',
+    .state('check.table', {
+        url: "/table/:tableId",
+        templateUrl: "templates/check/table.html",
+        controller: 'CheckTableCtrl'
     })
 
     // 考核单项页
-    .state('manager.review', {
-        url: "/dashboard/:userId/table/:tableId/:itemId/:subItemId",
-        templateUrl: "templates/manager/review.html",
-        controller: 'ManagerReviewCtrl',
+    .state('check.review', {
+        url: "/table/:tableId/:itemId/:subItemId",
+        templateUrl: "templates/check/review.html",
+        controller: 'CheckReviewCtrl'
+    })
+
+    // 下达整改通知书 
+    .state('check.criterion', {
+        url: '/:checkId/criterion',
+        templateUrl: 'templates/check/criterion.html',
+        controller: 'CheckCriterionCtrl'
+    })
+
+    // 整改提交 
+    .state('check.rectification', {
+        url: '/:checkId/rectification',
+        templateUrl: 'templates/check/rectification.html',
+        controller: 'CheckRectificationCtrl'
     })
 
     // 用户联系方式
@@ -168,9 +203,6 @@ app.run(function($ionicPlatform) {
     //     templateUrl: 'templates/builder/dash.html',
     //     controller: 'BuilderDashCtrl'
     // });
-
-    // 设置默认路由
-    // $urlRouterProvider.otherwise('welcome');
 
     // 设置image url白名单，否则AngularJS解析URL错误
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);

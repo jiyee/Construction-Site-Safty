@@ -1,6 +1,7 @@
-app.controller('ManagerStartUpCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService) {
+app.controller('CheckCriterionCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, resolveUser) {
     $scope.data = {};
-    $scope.data.userId = $stateParams.userId;
+    $scope.data.user = resolveUser;
+    $scope.data.check = {};
     $scope.data.checkId = $stateParams.checkId;
     $scope.data.users = [];
 
@@ -8,29 +9,12 @@ app.controller('ManagerStartUpCtrl', function($scope, $rootScope, $state, $state
         $scope.data.users = $scope.data.users.concat(users);
     });
 
-    $scope.current = $rootScope.current;
-
-    if (!$scope.current) {
-        $scope.current = {};
-        UserService.findById($scope.data.userId).then(function(user) {
-            $scope.current.user = user;
-            $scope.current.segment = user.segment;
-        });
-
-        // TODO 这里因为数据结构设计问题，暂时写死
-        ProjectService.find().then(function(project) {
-            $scope.current.project = project[0];
-            $scope.data.project = project[0];
-        });
-    }
-
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
 
-        var table = check.table,
-            rectifications = [];
+        var rectifications = [];
 
-        angular.forEach(table.items, function(level1) {
+        angular.forEach(check.table.items, function(level1) {
             angular.forEach(level1.items, function(level2) {
                 angular.forEach(level2.items, function(level3) {
                     if (level3.status && level3.score > 0) {
@@ -43,22 +27,30 @@ app.controller('ManagerStartUpCtrl', function($scope, $rootScope, $state, $state
             });
         });
 
-        console.log(check);
-
         $scope.data.rectifications = rectifications;
     });
 
     $scope.toBack = function() {
-        $state.go('^.dashboard', {
-            userId: $scope.data.userId
+        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            userId: $scope.data.user._id
         });
     };
 
-    $scope.submit = function() {
+    $scope.toForward = function() {
+        if (!$scope.data.nextUserId) {
+            alert('请选择整改责任人');
+            return;
+        }
+
+        if (!$scope.data.check.rectification_criterion) {
+            alert('请填写整改要求');
+            return;
+        }
+
         CheckService.forward($scope.data.checkId, $scope.data.nextUserId, $scope.data.check.rectification_criterion).then(function(check) {
             alert("下达完毕");
-            $state.go('^.dashboard', {
-                userId: $scope.data.userId
+            $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+                userId: $scope.data.user._id
             });
         }, function(err) {
             alert(err); 

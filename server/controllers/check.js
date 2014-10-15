@@ -188,12 +188,15 @@ exports.forward = function (req, res, next) {
                 check.process_active = true;
                 check.process_status = 'FORWARD';
 
+                if (rectification_criterion) {
+                    check.rectification_criterion = rectification_criterion;
+                }
+
                 var last_user_id = check.process_current_user;
                 check.process_previous_user = last_user_id;
                 check.process_current_user = next_user_id;
                 check.process_flow_users.push(last_user_id);
                 check.process_history_users.push(last_user_id);
-                check.rectification_criterion = rectification_criterion;
 
                 check.save(function(err, check) {
                     if (err) {
@@ -214,6 +217,7 @@ exports.forward = function (req, res, next) {
 // 逐级向上审核，冒泡状态
 exports.backward = function (req, res, next) {
     var check_id = validator.trim(req.params.check_id);
+    var rectification_result = validator.trim(req.body.rectification_result);
 
     if (!req.session.user) {
         return next(utils.getError(105));
@@ -246,6 +250,10 @@ exports.backward = function (req, res, next) {
 
         check.process_active = true;
         check.process_status = 'BACKWARD';
+
+        if (rectification_result) {
+            check.rectification_result = rectification_result;
+        }
 
         var last_user_id = check.process_current_user;
         check.process_current_user = check.process_flow_users.pop();
