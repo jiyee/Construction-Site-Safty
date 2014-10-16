@@ -146,10 +146,18 @@ exports.findByDateInterval = function (req, res, next) {
         }
 
         var ep = new eventproxy();
+        var lge_segment_checks = [];
+
+        ep.all('check_user', 'segment_tree', function () {
+            res.send({
+                'code': 0,
+                'status': 'success',
+                'checks': lge_segment_checks
+            });
+        });
 
         // TODO 优化成循环模式
         ep.after('segment.parent.parent', checks.length, function () {
-            var lge_segment_checks = [];
             _.each(checks, function (check) {
                 if (check.segment._id == segment_id) {
                     lge_segment_checks.push(check);
@@ -166,11 +174,7 @@ exports.findByDateInterval = function (req, res, next) {
                 }
             });
 
-            res.send({
-                'code': 0,
-                'status': 'success',
-                'checks': lge_segment_checks
-            });
+            ep.emit('segment_tree');
         });
 
         ep.after('segment.parent', checks.length, function () {
@@ -199,7 +203,16 @@ exports.findByDateInterval = function (req, res, next) {
             }, function (err, segment) {
                 ep.emit('segment.parent');
             });
+
+            UnitModel.populate(check.check_user, {
+                path: 'unit'
+            }, function (err, check_user) {
+                ep.emit('check_user');
+            });
         });
+
+        
+
     });
 };
 

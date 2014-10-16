@@ -26,7 +26,7 @@ app.run(function($rootScope, $ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http://10.171.40.8:3000',
+    'baseUrl': 'http://' + '192.168.1.63' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',
@@ -176,9 +176,16 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationListCtrl'
     })
 
+    // 日常安全检查汇总页
+    .state('evaluation.summary', {
+        url: '/:evaluationId',
+        templateUrl: 'templates/evaluation/summary.html',
+        controller: 'EvaluationSummaryCtrl'
+    })
+
     // 创建建设单位选择页
     .state('evaluation.detail', {
-        url: '/:evaluation_id',
+        url: '/:evaluationId',
         templateUrl: 'templates/evaluation/detail.html',
         controller: 'EvaluationDetailCtrl'
     })

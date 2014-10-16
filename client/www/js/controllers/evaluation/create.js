@@ -89,16 +89,15 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         }
 
         EvaluationService.create({
-           project: $scope.data.user.segment.project,
-           segment: ($scope.data.branch || $scope.data.section)['_id'],
-           unit: $scope.data.unit._id
+            project: $scope.data.user.segment.project,
+            segment: ($scope.data.branch || $scope.data.section)['_id'],
+            unit: $scope.data.unit._id
         }).then(function(evaluation) {
-           console.log(evaluation);
-           // $state.go('^.table', {
-           // tableId: check.table
-           // });
+            $state.go('^.summary', {
+                evaluation_id: evaluation._id
+            });
         }, function(err) {
-           alert(err);
+            alert(err);
         });
     };
     

@@ -112,6 +112,19 @@ app.factory('CheckService', function($http, $q, settings) {
                 });
 
             return deferred.promise;
-        }
+        },
+        list: function(projectId, segmentId, startDate, endDate) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/checks/list/' + projectId + '/' + segmentId + '/' + startDate + '/' + endDate)
+                .success(function(data) {
+                    deferred.resolve(data.checks);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
     };
 });
