@@ -1,11 +1,11 @@
-app.factory('SegmentService', function($http, $q, settings) {
+app.factory('UnitService', function($http, $q, settings) {
     return {
         find: function() {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/segments/all')
+            $http.get(settings.baseUrl + '/units/all')
                 .success(function(data) {
-                    deferred.resolve(data.segments);
+                    deferred.resolve(data.units);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -13,12 +13,12 @@ app.factory('SegmentService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        findById: function(segmentId) {
+        findById: function(unitId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/segment/' + segmentId)
+            $http.get(settings.baseUrl + '/unit/' + unitId)
                 .success(function(data) {
-                    deferred.resolve(data.segment);
+                    deferred.resolve(data.unit);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -29,9 +29,9 @@ app.factory('SegmentService', function($http, $q, settings) {
         findByProjectId: function(projectId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/project/' + projectId + '/segments')
+            $http.get(settings.baseUrl + '/project/' + projectId + '/units')
                 .success(function(data) {
-                    deferred.resolve(data.segments);
+                    deferred.resolve(data.units);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -39,12 +39,12 @@ app.factory('SegmentService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        findByUnitId: function(unitId) {
+        findBySegmentId: function(segmentId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/unit/' + unitId + '/segments')
+            $http.get(settings.baseUrl + '/segment/' + segmentId + '/units')
                 .success(function(data) {
-                    deferred.resolve(data.segments);
+                    deferred.resolve(data.units);
                 })
                 .error(function(err) {
                     deferred.reject(err);

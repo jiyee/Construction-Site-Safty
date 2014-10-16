@@ -77,6 +77,10 @@ exports.list_array = function (req, res, next) {
         return next(util.getError(101));
     }
 
+    var field = fields.substr(0, fields.length - 1);
+    var model_name = field.substr(0, 1).toUpperCase() + field.substr(1) + 'Model';
+    var refModel = require('../models')[model_name];
+
     var options = {
         findOne: true,
         conditions: {
@@ -98,7 +102,7 @@ exports.list_array = function (req, res, next) {
                 __done += 1;
 
                 _.each(parent[fields], function(child) {
-                    SegmentModel.populate(child, {
+                    refModel.populate(child, {
                         path: fields
                     }, deepPopulate);
                 });
@@ -131,7 +135,7 @@ exports.push_array = function (req, res, next) {
         return next(util.getError(101));
     }
 
-    var model_name = field.substr(0, 1).toUpperCase() + field.substr(1);
+    var model_name = field.substr(0, 1).toUpperCase() + field.substr(1) + 'Model';
     var refModel = require('../models')[model_name];
 
     var options = {

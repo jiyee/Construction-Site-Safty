@@ -18,6 +18,7 @@ require('./project');
 require('./segment');
 require('./table');
 require('./check');
+require('./evaluation');
 
 // retrieve models
 exports.UserModel = mongoose.model('User');
@@ -27,3 +28,4 @@ exports.ProjectModel = mongoose.model('Project');
 exports.SegmentModel = mongoose.model('Segment');
 exports.TableModel = mongoose.model('Table');
 exports.CheckModel = mongoose.model('Check');
+exports.EvaluationModel = mongoose.model('Evaluation');

@@ -155,7 +155,40 @@ app.run(function($rootScope, $ionicPlatform) {
         url: "/contact/:userId",
         templateUrl: "templates/contact.html",
         controller: 'ContactCtrl',
-    });
+    })
+
+    // 考核评价抽象页，用于数据共享
+    .state('evaluation', {
+        url: '/evaluation',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
+
+    // 创建建设单位选择页
+    .state('evaluation.list', {
+        url: '/list',
+        templateUrl: 'templates/evaluation/list.html',
+        controller: 'EvaluationListCtrl'
+    })
+
+    // 创建建设单位选择页
+    .state('evaluation.detail', {
+        url: '/:evaluation_id',
+        templateUrl: 'templates/evaluation/detail.html',
+        controller: 'EvaluationDetailCtrl'
+    })
+
+    // 创建建设单位选择页
+    .state('evaluation.create', {
+        url: '/create',
+        templateUrl: 'templates/evaluation/create.html',
+        controller: 'EvaluationCreateCtrl'
+    })
 
     // // 考核列表页
     // .state('review', {

@@ -51,6 +51,10 @@ var CheckSchema = new Schema({
 
 });
 
+CheckSchema.set('toJSON', {
+    virtuals: true
+});
+
 CheckSchema.pre('save', function (next) {
 
     next();
@@ -70,6 +74,42 @@ CheckSchema.pre('remove', function (next) {
     }
 
     next();
+});
+
+CheckSchema.virtual('rectifications').get(function () {
+    var rectifications = [];
+    if (this.table) {
+        _.each(this.table.items, function(level1) {
+            _.each(level1.items, function(level2) {
+                _.each(level2.items, function(level3) {
+                    if (level3.status != 'UNCHECK' && level3.score > 0) {
+                        level3._id = [level1.index, level2.index, level3.index].join('-');
+                        rectifications.push(level3);
+                    }
+                });
+            });
+        });
+    }
+
+    return rectifications;
+});
+
+CheckSchema.virtual('checked').get(function () {
+    var checked = [];
+    if (this.table) {
+        _.each(this.table.items, function(level1) {
+            _.each(level1.items, function(level2) {
+                _.each(level2.items, function(level3) {
+                    if (level3.status != 'UNCHECK') {
+                        level3._id = [level1.index, level2.index, level3.index].join('-');
+                        checked.push(level3);
+                    }
+                });
+            });
+        });
+    }
+
+    return checked;
 });
 
 CheckSchema.statics = {

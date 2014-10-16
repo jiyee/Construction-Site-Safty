@@ -1,11 +1,11 @@
-app.factory('SegmentService', function($http, $q, settings) {
+app.factory('EvaluationService', function($http, $q, settings) {
     return {
         find: function() {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/segments/all')
+            $http.get(settings.baseUrl + '/evaluations')
                 .success(function(data) {
-                    deferred.resolve(data.segments);
+                    deferred.resolve(data.evaluations);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -13,12 +13,12 @@ app.factory('SegmentService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        findById: function(segmentId) {
+        findById: function(evaluationId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/segment/' + segmentId)
+            $http.get(settings.baseUrl + '/evaluation/' + evaluationId)
                 .success(function(data) {
-                    deferred.resolve(data.segment);
+                    deferred.resolve(data.evaluation);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -26,12 +26,12 @@ app.factory('SegmentService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        findByProjectId: function(projectId) {
+        findByUserId: function(userId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/project/' + projectId + '/segments')
+            $http.get(settings.baseUrl + '/user/' + userId + '/evaluations')
                 .success(function(data) {
-                    deferred.resolve(data.segments);
+                    deferred.resolve(data.evaluations);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -39,12 +39,16 @@ app.factory('SegmentService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        findByUnitId: function(unitId) {
+        create: function(form) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/unit/' + unitId + '/segments')
+            $http.post(settings.baseUrl + '/evaluation/create', form)
                 .success(function(data) {
-                    deferred.resolve(data.segments);
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve(data.evaluation);
+                    }
                 })
                 .error(function(err) {
                     deferred.reject(err);

@@ -31,6 +31,12 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         });
     };
 
+    $scope.toEvaluationList = function (item) {
+        $state.go('evaluation.list', {
+
+        });
+    };
+
     $scope.logout = function () {
         AuthService.logout().then(function () {
             $state.go('welcome');

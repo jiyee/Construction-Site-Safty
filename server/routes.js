@@ -7,6 +7,7 @@ var project = require('./controllers/project');
 var segment = require('./controllers/segment');
 var table = require('./controllers/table');
 var check = require('./controllers/check');
+var evaluation = require('./controllers/evaluation');
 var setup = require('./controllers/setup');
 
 router.get('/', function(req, res) {
@@ -27,6 +28,7 @@ router.get('/auth', user.auth);
 router.get('/users/all', user.findAll);
 router.get('/user/:user_id', user.findById);
 router.get('/user/:user_id/checks', check.findByProcessCurrentUserId);
+router.get('/user/:user_id/evaluations', evaluation.findByUserId);
 router.post('/user/create', user.create);
 
 // 角色接口
@@ -70,6 +72,7 @@ router.post('/table/:table_id/update', table.update);
 // 安全检查接口
 router.get('/checks', check.findBySessionUser);
 router.get('/checks/all', check.findAll);
+router.get('/checks/list/:project_id/:segment_id/:start_date/:end_date', check.findByDateInterval);
 router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
 router.post('/check/:check_id/delete', check.delete);
@@ -78,6 +81,13 @@ router.post('/check/:check_id/backward', check.backward);
 router.post('/check/:check_id/revert', check.revert);
 router.post('/check/:check_id/restore', check.restore);
 router.post('/check/:check_id/end', check.end);
+
+// 考核评价接口
+router.get('/evaluations', evaluation.findBySessionUser);
+router.get('/evaluations/all', evaluation.findAll);
+router.get('/evaluation/:evaluation_id', evaluation.findById);
+router.post('/evaluation/create', evaluation.create);
+
 
 // 数据库测试接口
 router.get('/setup', setup.mongo);

@@ -7,22 +7,22 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
 
-        var rectifications = [];
+        // var rectifications = [];
 
-        angular.forEach(check.table.items, function(level1) {
-            angular.forEach(level1.items, function(level2) {
-                angular.forEach(level2.items, function(level3) {
-                    if (level3.status && level3.score > 0) {
-                        rectifications.push({
-                            name: level3.name,
-                            image_url: level3.image_url
-                        });
-                    }
-                });
-            });
-        });
+        // angular.forEach(check.table.items, function(level1) {
+        //     angular.forEach(level1.items, function(level2) {
+        //         angular.forEach(level2.items, function(level3) {
+        //             if (level3.status && level3.score > 0) {
+        //                 rectifications.push({
+        //                     name: level3.name,
+        //                     image_url: level3.image_url
+        //                 });
+        //             }
+        //         });
+        //     });
+        // });
 
-        $scope.data.rectifications = rectifications;
+        // $scope.data.rectifications = rectifications;
     });
 
     $scope.toBack = function() {

@@ -42,6 +42,10 @@ exports.findById = function (req, res, next) {
             return next(err);
         }
 
+        if (!check) {
+            return next(utils.getError(102));
+        }
+
         var ep = new eventproxy();
         ep.all('check_user.unit', function() {
             res.send({
@@ -111,6 +115,90 @@ exports.findBySessionUser = function (req, res, next) {
             'code': 0,
             'status': 'success',
             'checks': checks
+        });
+    });
+};
+
+exports.findByDateInterval = function (req, res, next) {
+    var project_id = validator.trim(req.params.project_id);
+    var segment_id = validator.trim(req.params.segment_id);
+    var start_date = validator.trim(req.params.start_date);
+    var end_date = validator.trim(req.params.end_date);
+
+    if (!project_id || !segment_id || !start_date || !end_date) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        conditions: {
+            project: project_id,
+            check_date: {
+                $gte: new Date(start_date),
+                $lt: new Date(end_date)
+            }
+        },
+        select: 'table segment check_user check_date'
+    };
+
+    CheckModel.findBy(options, function (err, checks) {
+        if (err) {
+            return next(err);
+        }
+
+        var ep = new eventproxy();
+
+        // TODO 优化成循环模式
+        ep.after('segment.parent.parent', checks.length, function () {
+            var lge_segment_checks = [];
+            _.each(checks, function (check) {
+                if (check.segment._id == segment_id) {
+                    lge_segment_checks.push(check);
+                }
+
+                var parent = check.segment.parent;
+                while (parent) {
+                    if (parent._id == segment_id) {
+                        lge_segment_checks.push(check);
+                        break;
+                    } else {
+                        parent = parent.parent;
+                    }
+                }
+            });
+
+            res.send({
+                'code': 0,
+                'status': 'success',
+                'checks': lge_segment_checks
+            });
+        });
+
+        ep.after('segment.parent', checks.length, function () {
+            _.each(checks, function (check) {
+                if (!check.segment.parent) {
+                    ep.emit('segment.parent.parent');
+                    return;
+                }
+
+                SegmentModel.populate(check.segment.parent, {
+                    path: 'parent'
+                }, function (err, segment) {
+                    ep.emit('segment.parent.parent');
+                });
+            });
+        });
+
+        _.each(checks, function (check) {
+            if (!check.segment.parent) {
+                ep.emit('segment.parent');
+                return;
+            }
+
+            SegmentModel.populate(check.segment, {
+                path: 'parent'
+            }, function (err, segment) {
+                ep.emit('segment.parent');
+            });
         });
     });
 };
@@ -459,7 +547,7 @@ exports.create = function (req, res, next) {
     }
 
     var ep = new eventproxy();
-    ep.on('table.save', function (table) {
+    ep.on('table', function (table) {
         var check = new CheckModel(req.body);
         check.check_user = req.session.user._id;
         check.process_current_user = req.session.user._id;
@@ -489,7 +577,7 @@ exports.create = function (req, res, next) {
             return next(err);
         }
 
-        ep.emit('table.save', table);
+        ep.emit('table', table);
     });
     
 };

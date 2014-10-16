@@ -146,7 +146,7 @@ exports.push_array = function (req, res, next) {
         return next(utils.getError(101));
     }
 
-    var model_name = field.substr(0, 1).toUpperCase() + field.substr(1);
+    var model_name = field.substr(0, 1).toUpperCase() + field.substr(1) + 'Model';
     var refModel = require('../models')[model_name];
 
     var options = {
