@@ -94,7 +94,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
             unit: $scope.data.unit._id
         }).then(function(evaluation) {
             $state.go('^.summary', {
-                evaluation_id: evaluation._id
+                evaluationId: evaluation._id
             });
         }, function(err) {
             alert(err);

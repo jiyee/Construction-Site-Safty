@@ -176,18 +176,25 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationListCtrl'
     })
 
-    // 日常安全检查汇总页
-    .state('evaluation.summary', {
-        url: '/:evaluationId',
-        templateUrl: 'templates/evaluation/summary.html',
-        controller: 'EvaluationSummaryCtrl'
-    })
-
     // 创建建设单位选择页
     .state('evaluation.detail', {
         url: '/:evaluationId',
         templateUrl: 'templates/evaluation/detail.html',
         controller: 'EvaluationDetailCtrl'
+    })
+
+    // 日常安全检查汇总页
+    .state('evaluation.summary', {
+        url: '/:evaluationId/summary',
+        templateUrl: 'templates/evaluation/summary.html',
+        controller: 'EvaluationSummaryCtrl'
+    })
+
+    // 考核评价推荐内容 
+    .state('evaluation.generate', {
+        url: '/:evaluationId/generate',
+        templateUrl: 'templates/evaluation/generate.html',
+        controller: 'EvaluationGenerateCtrl'
     })
 
     // 创建建设单位选择页

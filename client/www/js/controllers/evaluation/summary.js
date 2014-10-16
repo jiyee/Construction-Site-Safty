@@ -49,7 +49,7 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
 
     $scope.toGenerate = function () {
         $state.go('^.generate', {
-            evaluation_id: $scope.data.evaluation._id
+            evaluationId: $scope.data.evaluation._id
         });
     };
 
