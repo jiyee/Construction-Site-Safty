@@ -73,7 +73,8 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
 
                 if (!level3) return;
 
-                level2.is_checked = true;
+                level2.is_checked = true; // 标识是否已检查过
+                level2.is_selected = true; // 标识是否选中
                 level3.is_checked = true;
                 level3.checked = level3.checked || [];
                 level3.checked.push(item);
@@ -112,6 +113,12 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
                                     level3.score = level3.range[level3.range.length - 1];
                                 }
 
+                                if (level3.score === 0) {
+                                    level3.status = 'PASS';
+                                } else {
+                                    level3.status = 'FAIL';
+                                }
+
                                 // console.log(last_pass, pass, fail);
                                 // console.log(level3.range);
                                 // console.log(level3.score);
@@ -121,8 +128,8 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
                 });
             });
 
-            // console.log(checked);
-            // console.log($scope.data.evaluation.tables);
+            console.log(checked);
+            console.log($scope.data.evaluation.tables);
         });
     });
 
@@ -140,16 +147,27 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
         return found;
     } 
 
+    $scope.onlySelected = false;
+    $scope.toggleSelected = function() {
+        $scope.onlySelected = !$scope.onlySelected;
+    };
+
     $scope.toBack = function () {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });
     };
 
-    $scope.toDetail = function (item) {
-        $state.go('^.detail', {
-            evaluation_id: item._id 
+    $scope.toTable = function () {
+        EvaluationService.update($scope.data.evaluation._id, $scope.data.evaluation).then(function(table) {
+            alert('确认成功');
+            $state.go('^.table', {
+                evaluation_id: $scope.data.evaluation._id 
+            });
+        }, function(err) {
+            alert(err);
         });
+        
     };
 
 });

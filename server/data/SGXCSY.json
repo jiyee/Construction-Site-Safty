@@ -13,6 +13,7 @@
                 "name": "船舶证书不符合要求，发现一艘船扣4分。",
                 "range": [0, 4, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -20,6 +21,7 @@
                 "name": "持证船员不符合要求，少一人扣1分。",
                 "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -27,6 +29,7 @@
                 "name": "施工船舶不按规定航区或水域作业，擅自扩大水上安全作业区的，发现一次扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -34,6 +37,7 @@
                 "name": "船舶存在超载或严重偏载现象，发现一次扣5分。",
                 "range": [0, 5, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -41,6 +45,7 @@
                 "name": "船舶违章作业，发现一次扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -48,6 +53,7 @@
                 "name": "对预警及应急救援预案未定期进行演练，扣1分。",
                 "range": [0, 1],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -55,6 +61,7 @@
                 "name": "交通船未持证运营，发现一艘扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -62,6 +69,7 @@
                 "name": "交通船未配备通讯、消防、救生、防污等相关设施、设备，每缺一项扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -69,6 +77,7 @@
                 "name": "交通船超载，发现一次扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -76,6 +85,7 @@
                 "name": "船舶证书不符合要求，发现一艘船扣4分。",
                 "range": [0, 1],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -83,6 +93,7 @@
                 "name": "夜间施工照明和信号不符合要求，扣2分。",
                 "range": [0, 2],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -90,6 +101,7 @@
                 "name": "未签订租用船舶《安全管理协议》，扣2分。",
                 "range": [0, 2],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -101,6 +113,7 @@
                 "name": "在船舶进出航道、抛锚区和锚缆摆动区布设电缆线，发现一次扣5分。",
                 "range": [0, 5, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -108,6 +121,7 @@
                 "name": "施工电缆防水处理不符合要求，发现一处扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -123,6 +137,7 @@
                 "name": "未按要求设置安全警示标志，发现一处扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -130,6 +145,7 @@
                 "name": "未对沉桩设备、安全装置进行检查，扣5分。",
                 "range": [0, 5],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -137,6 +153,7 @@
                 "name": "水上沉桩未进行水下探查，扣5分。",
                 "range": [0, 5],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -144,6 +161,7 @@
                 "name": "水下障碍物清除不规范，扣2分。",
                 "range": [0, 2],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -151,6 +169,7 @@
                 "name": "削坡不规范，扣2分。",
                 "range": [0, 2],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -158,6 +177,7 @@
                 "name": "使用的吊桩绳扣、滑车、索具等未经计算，扣5-8分。",
                 "range": [0, 5, 6, 7, 8],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -165,6 +185,7 @@
                 "name": "未按要求设置安全护栏或盖板，发现一处扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -176,6 +197,7 @@
                 "name": "沉箱浮运前未进行漂浮试验或试验不符合规范要求，扣4-8分。",
                 "range": [0, 4, 5, 6, 7, 8],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -183,6 +205,7 @@
                 "name": "沉箱拖运过程中，沉箱顶部未设置航行标志，扣3分。",
                 "range": [0, 3],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -190,6 +213,7 @@
                 "name": "未按要求对气囊额定工作压力、牵引设施、移运通道等进行试验或检查，扣5分。",
                 "range": [0, 5],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -197,6 +221,7 @@
                 "name": "未按要求划定作业区或布设警戒线，扣3分。",
                 "range": [0, 3],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -208,6 +233,7 @@
                 "name": "作业平台搭设与方案不符，扣6分。",
                 "range": [0, 6],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -215,6 +241,7 @@
                 "name": "对作业平台检查维护不及时，扣3分。",
                 "range": [0, 3],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -222,6 +249,7 @@
                 "name": "平台搭设不稳固，未配备救生圈，作业空间不足，扣3分。",
                 "range": [0, 3],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -229,6 +257,7 @@
                 "name": "水上人行临时通道不牢固，扣1-3分。",
                 "range": [0, 1, 2, 3],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -236,6 +265,7 @@
                 "name": "潜水员无证上岗，扣5分。",
                 "range": [0, 5],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -243,6 +273,7 @@
                 "name": "潜水作业时无专人指挥，扣5分。",
                 "range": [0, 5],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -250,6 +281,7 @@
                 "name": "无水上水下作业许可证，扣2分。",
                 "range": [0, 2],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -257,6 +289,7 @@
                 "name": "水下安装、电焊、切割、爆破时，未执行安全操作规程，扣2分。",
                 "range": [0, 2],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -264,6 +297,7 @@
                 "name": "施工船的牵牛缆、摆动缆活动范围内无安全标志或无人值守，扣2分。",
                 "range": [0, 2],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -275,6 +309,7 @@
                 "name": "水上构件吊装与专项方案不符，扣5-10分。",
                 "range": [0, 5, 6, 7, 8, 9, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -282,6 +317,7 @@
                 "name": "吊装使用的钢丝绳磨损、断丝超标，发现一处扣3分。",
                 "range": [0, 3, 6, 9, 12, 15],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -289,6 +325,7 @@
                 "name": "起重设备基础、轨道固定等不符合要求，发现一处扣3分。",
                 "range": [0, 3, 6, 9, 12, 15],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -296,6 +333,7 @@
                 "name": "保险、限位等装置不齐全或失效，发现一处扣3分。",
                 "range": [0, 3, 6, 9, 12, 15],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -303,6 +341,7 @@
                 "name": "构件吊装就位后未及时进行稳固，发现一处扣1分。",
                 "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -310,6 +349,7 @@
                 "name": "无试验计算记录，扣3分。",
                 "range": [0, 3],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -325,6 +365,7 @@
                 "name": "未按要求临时存放炸药和雷管，扣15分。",
                 "range": [0, 15],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -332,6 +373,7 @@
                 "name": "未按要求进行工序检查，未设置警戒线，发现一次扣10-15分。",
                 "range": [0, 10, 11, 12, 13, 14, 15],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -343,6 +385,7 @@
                 "name": "拖航过程中，未对施工机械进行封固，扣4分。",
                 "range": [0, 4],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -350,6 +393,7 @@
                 "name": "铺排船上起重设备吊装等施工无专人指挥，扣5分。",
                 "range": [0, 5],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -357,6 +401,7 @@
                 "name": "沉排、铺排不符合规程要求，扣4-6分。",
                 "range": [0, 4, 5, 6],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -364,6 +409,7 @@
                 "name": "砂袋或砂枕沉放前，未按要求进行有关设备检查，扣4-6分。",
                 "range": [0, 4, 5, 6],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]
@@ -375,6 +421,7 @@
                 "name": "放射源测量装置检定不符合要求，扣10分。",
                 "range": [0, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }, {
@@ -382,6 +429,7 @@
                 "name": "使用记录不符合要求，发现一处扣2分。",
                 "range": [0, 2, 4, 6, 8, 10],
                 "score": null,
+                "status": "UNCHECK",
                 "comments": "",
                 "is_static": false
             }]

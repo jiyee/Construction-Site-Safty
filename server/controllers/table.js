@@ -85,7 +85,7 @@ exports.update = function (req, res, next) {
 
                     _.each(list3, function (item3) {
                         if (/[0-9]+/.test(item3.index)) {
-                            if (constants.STATUS_TYPES.indexOf(item3.status) === -1) {
+                            if (!~constants.STATUS_TYPES.indexOf(item3.status)) {
                                 valid = false;
                             }
 
@@ -151,7 +151,8 @@ exports.update = function (req, res, next) {
                     ret[key] = {
                         status: item3.status,
                         score: item3.score,
-                        comments: item3.comments
+                        comments: item3.comments,
+                        image_url: item3.image_url
                     };
                 });
             });

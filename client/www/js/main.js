@@ -177,6 +177,13 @@ app.run(function($rootScope, $ionicPlatform) {
     })
 
     // 创建建设单位选择页
+    .state('evaluation.create', {
+        url: '/create',
+        templateUrl: 'templates/evaluation/create.html',
+        controller: 'EvaluationCreateCtrl'
+    })
+
+    // 创建建设单位选择页
     .state('evaluation.detail', {
         url: '/:evaluationId',
         templateUrl: 'templates/evaluation/detail.html',
@@ -197,12 +204,6 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationGenerateCtrl'
     })
 
-    // 创建建设单位选择页
-    .state('evaluation.create', {
-        url: '/create',
-        templateUrl: 'templates/evaluation/create.html',
-        controller: 'EvaluationCreateCtrl'
-    })
 
     // // 考核列表页
     // .state('review', {

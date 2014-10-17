@@ -87,6 +87,7 @@ router.get('/evaluations', evaluation.findBySessionUser);
 router.get('/evaluations/all', evaluation.findAll);
 router.get('/evaluation/:evaluation_id', evaluation.findById);
 router.post('/evaluation/create', evaluation.create);
+router.post('/evaluation/:evaluation_id/update', evaluation.update);
 
 
 // 数据库测试接口
