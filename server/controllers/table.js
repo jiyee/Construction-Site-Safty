@@ -72,6 +72,7 @@ exports.update = function (req, res, next) {
     } 
 
     var valid = true;
+    var message = '';
     var list1 = table.items,
         list2,
         list3;
@@ -86,27 +87,33 @@ exports.update = function (req, res, next) {
                     _.each(list3, function (item3) {
                         if (/[0-9]+/.test(item3.index)) {
                             if (!~constants.STATUS_TYPES.indexOf(item3.status)) {
+                                message = '状态错误' + item3.status;
                                 valid = false;
                             }
 
                             if (item3.status === 'UNCHECK' &&
-                                parseInt(item3.score, 10) >= 0) {
+                                (parseInt(item3.score, 10) >= 0 && !isNaN(parseInt(item3.score, 10)))) {
+                                message = '状态与得分不一致' + item3.status + '/' + item3.score;
                                 valid = false;
                             }
 
                             if ((item3.status === 'PASS' && parseInt(item3.score, 10) !== 0) ||
-                                (item3.status === 'FAIL' && parseInt(item3.score, 10) !== 1)) {
+                                (item3.status === 'FAIL' && parseInt(item3.score, 10) === 0)) {
+                                message = '状态与得分不一致' + item3.status + '/' + item3.score;
                                 valid = false;
                             }
                         } else {
+                            message = '标识错误' + item3.index;
                             valid = false;
                         }
                     });
                 } else {
+                    message = '标识错误' + item2.index;
                     valid = false;
                 }
             });
         } else {
+            message = '标识错误' + item1.index;
             valid = false;
         }
     });
@@ -114,7 +121,7 @@ exports.update = function (req, res, next) {
     if (!valid) {
         return next({
             code: 103,
-            message: "数据验证错误"  
+            message: "数据验证错误" + message 
         });
     }
 

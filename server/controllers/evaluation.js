@@ -180,64 +180,65 @@ exports.update = function (req, res, next) {
 
         // 错误时性能消耗严重
         // BUG 存在返回JSON字符串最后'}'替换成了'H'
-        var valid = true,
-            err = "";
-        var list1 = table.items,
-            list2,
-            list3;
-        _.each(list1, function (item1) {
-            if (/[A-Z]+/.test(item1.index)) {
-                list2 = item1.items;
+        // 移到table阶段检查数据合法性
+        // var valid = true,
+        //     err = "";
+        // var list1 = table.items,
+        //     list2,
+        //     list3;
+        // _.each(list1, function (item1) {
+        //     if (/[A-Z]+/.test(item1.index)) {
+        //         list2 = item1.items;
 
-                _.each(list2, function (item2) {
-                    if (/[A-Z]+[0-9]+/.test(item2.index)) {
-                        list3 = item2.items;
+        //         _.each(list2, function (item2) {
+        //             if (/[A-Z]+[0-9]+/.test(item2.index)) {
+        //                 list3 = item2.items;
 
-                        _.each(list3, function (item3) {
-                            if (/[0-9]+/.test(item3.index)) {
-                                if (!~constants.STATUS_TYPES.indexOf(item3.status)) {
-                                    err = "状态错误" + item3.status;
-                                    valid = false;
-                                    return;
-                                }
+        //                 _.each(list3, function (item3) {
+        //                     if (/[0-9]+/.test(item3.index)) {
+        //                         if (!~constants.STATUS_TYPES.indexOf(item3.status)) {
+        //                             err = "状态错误" + item3.status;
+        //                             valid = false;
+        //                             return;
+        //                         }
 
-                                if (item3.status === 'UNCHECK' && item3.score != null) {
-                                    err = "得分错误" + item3.score;
-                                    valid = false;
-                                    return;
-                                }
+        //                         if (item3.status === 'UNCHECK' && item3.score != null) {
+        //                             err = "得分错误" + item3.score;
+        //                             valid = false;
+        //                             return;
+        //                         }
 
-                                if ((item3.status === 'PASS' && item3.score != '0') ||
-                                    (item3.status === 'FAIL' && item3.score == '0')) {
-                                    err = "得分错误" + item3.score;
-                                    valid = false;
-                                    return;
-                                }
-                            } else {
-                                err = "索引错误" + item3.index;
-                                valid = false;
-                                return;
-                            }
-                        });
-                    } else {
-                        err = "索引错误" + item2.index;
-                        valid = false;
-                        return;
-                    }
-                });
-            } else {
-                err = "索引错误" + item1.index;
-                valid = false;
-                return;
-            }
-        });
+        //                         if ((item3.status === 'PASS' && item3.score != '0') ||
+        //                             (item3.status === 'FAIL' && item3.score == '0')) {
+        //                             err = "得分错误" + item3.score;
+        //                             valid = false;
+        //                             return;
+        //                         }
+        //                     } else {
+        //                         err = "索引错误" + item3.index;
+        //                         valid = false;
+        //                         return;
+        //                     }
+        //                 });
+        //             } else {
+        //                 err = "索引错误" + item2.index;
+        //                 valid = false;
+        //                 return;
+        //             }
+        //         });
+        //     } else {
+        //         err = "索引错误" + item1.index;
+        //         valid = false;
+        //         return;
+        //     }
+        // });
 
-        if (!valid) {
-            return next({
-                code: 103,
-                message: err
-            });
-        }
+        // if (!valid) {
+        //     return next({
+        //         code: 103,
+        //         message: err
+        //     });
+        // }
 
         TableModel.findBy(options, function(err, root) {
 

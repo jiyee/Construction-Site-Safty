@@ -162,7 +162,7 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
         EvaluationService.update($scope.data.evaluation._id, $scope.data.evaluation).then(function(table) {
             alert('确认成功');
             $state.go('^.table', {
-                evaluation_id: $scope.data.evaluation._id 
+                evaluationId: $scope.data.evaluation._id 
             });
         }, function(err) {
             alert(err);

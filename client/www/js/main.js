@@ -204,53 +204,19 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationGenerateCtrl'
     })
 
+    // 考核评价表单 
+    .state('evaluation.table', {
+        url: '/:evaluationId/table',
+        templateUrl: 'templates/evaluation/table.html',
+        controller: 'EvaluationTableCtrl'
+    })
 
-    // // 考核列表页
-    // .state('review', {
-    //     url: "/review/:reviewId",
-    //     templateUrl: "templates/review.html",
-    //     controller: 'ReviewCtrl',
-    // })
-
-    // // 考核卡片页
-    // .state('review/item', {
-    //     url: "/review/:itemId/:subItemId",
-    //     templateUrl: "templates/review-item.html",
-    //     controller: 'ReviewCardCtrl',
-    // })
-
-    // // 自评得分
-    // .state('score', {
-    //     url: "/score/:reviewId",
-    //     templateUrl: "templates/score.html",
-    //     controller: 'ScoreCtrl',
-    // })
-
-    // // 报送
-    // .state('report', {
-    //     url: "/report/:reviewId",
-    //     templateUrl: "templates/report.html",
-    //     controller: 'ReportCtrl',
-    // })
-
-    // // 施工单位抽象页，用于数据共享
-    // .state('builder', {
-    //     url: '/builder',
-    //     abstract: true,
-    //     template: "<ui-view></ui-view>",
-    //     resolve: {
-    //         userData: function(UserMgrService) {
-    //             return UserMgrService.getUserData();
-    //         }
-    //     }
-    // })
-
-    // // 施工单位首页
-    // .state('builder.dash', {
-    //     url: '/dash',
-    //     templateUrl: 'templates/builder/dash.html',
-    //     controller: 'BuilderDashCtrl'
-    // });
+    // 考核评价单项页
+    .state('evaluation.review', {
+        url: "/evaluation/:evaluationId/:tableId/:itemId/:subItemId",
+        templateUrl: "templates/evaluation/review.html",
+        controller: 'EvaluationReviewCtrl'
+    });
 
     // 设置image url白名单，否则AngularJS解析URL错误
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);

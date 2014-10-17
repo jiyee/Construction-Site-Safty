@@ -16,7 +16,7 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
 
     $scope.toDetail = function (item) {
         $state.go('^.detail', {
-            evaluation_id: item._id 
+            evaluationId: item._id 
         });
     };
 

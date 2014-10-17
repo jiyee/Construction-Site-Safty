@@ -10,10 +10,10 @@
                 <i class="icon ion-chevron-right" style="font-size: 16px; -webkit-transform: rotate({{ifHideSubItems[item.index]|rotate}});"></i>
                 {{item.index}}. {{item.name}}
             </ion-item>
-            <ion-item ng-hide="ifHideSubItems[item.index] == true" ng-repeat="subitem in item.items" class="item-icon-right item sub-item-{{item.index}}" ng-click="review($index, item, subitem)" ng-repeat-end>
+            <ion-item ng-hide="ifHideSubItems[item.index] == true" ng-repeat="level2 in item.items" class="item-icon-right item sub-item-{{item.index}}" ng-click="review($index, item, level2)" ng-repeat-end>
                 <i class="icon ion-chevron-right" style="font-size: 16px;"></i>
-                {{subitem.index}}. {{subitem.name}}
-                <i class="ion-checkmark balanced" style="font-size: 16px;" ng-show="subitem.status"></i>
+                {{level2.index}}. {{level2.name}}
+                <i class="ion-checkmark balanced" style="font-size: 16px;" ng-show="level2.status && level2.status != 'UNCHECK'"></i>
             </ion-item>
         </ion-list>
     </ion-content>
