@@ -46,6 +46,8 @@ for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
     }
 }
 
+// var ipAddr = '127.0.0.1';
+
 // CORS
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://" + ipAddr + ":8100");

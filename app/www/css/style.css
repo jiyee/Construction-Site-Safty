@@ -1,0 +1,87 @@
+.button-50 {
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 65% !important;
+}
+
+.tab-item {
+    font-weight: bold;
+}
+
+.user-status .item-icon-left, .last-review .item-icon-left {
+    padding-left: 40px;
+}
+
+.user-status .item .icon, .last-review .item .icon {
+    font-size: 22px;
+}
+
+.user-status .item-complex {
+    padding: 3px 5px 0px 5px;
+}
+
+.user-status .item .row {
+    padding: 0;
+    font-size: 13px;
+}
+
+.user-status .item .row a {
+    text-decoration: none;
+    color: #333;
+}
+
+.user-online {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url("../img/user-online.png");
+    background-size: 32px 32px;
+}
+
+.user-offline {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url("../img/user-offline.png");
+    background-size: 32px 32px;
+}
+
+.last-review .item h3 {
+    margin: 0;
+}
+
+.contact-name, .contact-tel, .contact-mobile {
+    font-size: 1.2em;
+}
+
+.contact-tel a, .contact-mobile a {
+    text-decoration: none;
+    color: #333;
+}
+
+.status-pass {
+    border: 1px solid rgba(102, 204, 51, 1.0);
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.status-fail {
+    border: 1px solid rgba(239, 78, 58, 1.0);
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.status-uncheck {
+    /*border: 1px solid #dddddd;*/
+    /*border-radius: 5px;*/
+}
+
+h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 18px;
+}

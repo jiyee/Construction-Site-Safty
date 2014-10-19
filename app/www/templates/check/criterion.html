@@ -1,0 +1,72 @@
+<ion-view title="criterion">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">施工安全隐患整改通知书</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="list card">
+            <div class="item text-center">
+                <h2>施工安全隐患整改通知书</h2>
+                <p>编号：{{data.check.uuid}}</p>
+                <p>检查日期：{{data.check.check_date | date: 'yyyy年MM月dd日'}}</p>
+            </div>
+
+            <div class="item item-body padding">
+                <div class="row">
+                    <div class="col">检查对象：{{data.check.check_target}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">检查人：{{data.check.check_user.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">检查单位：{{data.check.check_user.unit.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">施工标段或工区：{{data.check.segment.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">现场负责人：
+                    </div>
+                    <div class="col">
+                        <input type="text" placeholder="填写现场负责人" style="width: 100%; border: 1px solid #eee;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">监理负责人：
+                    </div>
+                    <div class="col">
+                        <input type="text" placeholder="填写监理负责人" style="width: 100%; border: 1px solid #eee;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">整改责任人
+                    </div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 48px 5px 16px; border: 1px solid #eee;" ng-model="data.nextUserId" ng-options="item._id as item.name for item in data.users">
+                            <option value="" selected>请选择用户</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">存在隐患：</div>
+                </div>
+                <div class="col assertive" ng-repeat="item in data.check.rectifications">
+                    {{$index + 1}}. {{item.name}}
+                </div>
+
+                <div class="row">
+                    <div class="col">整改要求：</div>
+                </div>
+                <div class="row">
+                    <textarea ng-model="data.check.rectification_criterion" rows="5" style="border: 1px solid #eee;"></textarea>
+                </div>
+            </div>
+
+            <button class="button button-block button-positive" ng-click="toForward()" ng-hide="data.user.segment.is_leaf">
+                下 达
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

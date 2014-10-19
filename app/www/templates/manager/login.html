@@ -1,0 +1,62 @@
+<ion-view title="login">
+    <ion-header-bar align-title="center" class="bar-light">
+        <a ui-sref="welcome" class="button">返回</a>
+        <h1 class="title">平安工地</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div ng-hide="project && segment">
+            <div>
+                <label class="item item-input item-select">
+                    <span class="input-label">
+                        省份：
+                    </span>
+                    <select>
+                        <!-- <option value="" selected>--- 请选择省份 ---</option> -->
+                        <option value="湖北省" selected>湖北省</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">
+                        项目：
+                    </span>
+                    <select ng-model="project" ng-options="item as item.name for item in data.projects" ng-change="changeProject(project)">
+                        <option value="" selected>--- 请选择项目 ---</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="list padding">
+                <div class="item item-complex" ng-repeat="segment in data.segments" style="padding-left: {{segment.level * 10}}px;">
+                    <div class="item-content item-icon-right" ng-click="changeSegment(segment)">
+                        <span ng-if="segment.level > 0">┗</span>{{segment.name}}
+                        <i class="icon ion-ios7-person-outline"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="project && segment">
+            <h2>{{project.name}}</h2>
+            <h2 ng-click="resetSegment()"><i class="icon ion-ios7-undo-outline"></i> {{segment.name}}</h2>
+
+            <div class="list list-inset">
+                <label class="item item-input item-select">
+                    <span class="input-label">用户名：</span>
+                    <!-- <input type="text" placeholder="请输入用户名"> -->
+                    <select ng-model="data.username" ng-options="item.username as item.name for item in data.users">
+                        <option value="" selected>--- 请选择用户 ---</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">密码：</span>
+                    <input type="password" ng-model="data.password" placeholder="请输入密码">
+                </label>
+            </div>
+
+            <button class="button button-block button-positive" ng-click="login()">
+                登 陆
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

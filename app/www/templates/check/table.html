@@ -1,0 +1,20 @@
+<ion-view title="table">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">{{data.table.name}}</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <ion-list>
+            <ion-item ng-repeat-start="item in data.table.items" class="item-icon-right item" style="background-color: #eee; font-weight: bold;" ng-click="toggle($index, item)">
+                <i class="icon ion-chevron-right" style="font-size: 16px; -webkit-transform: rotate({{ifHideSubItems[item.index]|rotate}});"></i>
+                {{item.index}}. {{item.name}}
+            </ion-item>
+            <ion-item ng-hide="ifHideSubItems[item.index] == true" ng-repeat="level2 in item.items" class="item-icon-right item sub-item-{{item.index}}" ng-click="review($index, item, level2)" ng-repeat-end>
+                <i class="icon ion-chevron-right" style="font-size: 16px;"></i>
+                {{level2.index}}. {{level2.name}}
+                <i class="ion-checkmark balanced" style="font-size: 16px;" ng-show="level2.status && level2.status != 'UNCHECK'"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
