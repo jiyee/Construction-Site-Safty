@@ -14,7 +14,24 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
 
     EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
-        console.log(evaluation);
+
+        // 标识考核历史记录
+        _.each($scope.data.evaluation.tables, function (table) {
+            _.each(table.items, function (level1) {
+                _.each(level1.items, function (level2) {
+                    level2.pass = level2.fail = level2.uncheck = 0;
+                    _.each(level2.items, function (level3) {
+                        if (level3.status === 'FAIL') {
+                            level2.fail += 1;
+                        } else if (level3.status === 'PASS') {
+                            level2.pass += 1;
+                        } else if (level3.status === 'UNCHECK') {
+                            level2.uncheck += 1;
+                        }
+                    });
+                });
+            });
+        });
     });
 
     $scope.ifHideLevel2 = {};

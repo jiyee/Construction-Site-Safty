@@ -16,6 +16,23 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
 
     TableService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
+
+        // 标识考核历史记录
+        _.each($scope.data.table.items, function (level1) {
+            _.each(level1.items, function (level2) {
+                level2.pass = level2.fail = level2.uncheck = 0;
+                _.each(level2.items, function (level3) {
+                    if (level3.status === 'FAIL') {
+                        level2.fail += 1;
+                    } else if (level3.status === 'PASS') {
+                        level2.pass += 1;
+                    } else if (level3.status === 'UNCHECK') {
+                        level2.uncheck += 1;
+                    }
+                });
+            });
+        });
+
     });
 
     $scope.toggle = function(index, item) {

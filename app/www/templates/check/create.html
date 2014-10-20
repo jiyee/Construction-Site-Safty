@@ -12,11 +12,8 @@
                 <div class="input-label">
                     现场检查用表：
                 </div>
-                <select ng-model="data.file">
+                <select ng-model="data.file" ng-options="item.file as (item.index + ' ' + item.name) group by item.group for item in data.files">
                     <option value="" selected>--- 请选择表格 ---</option>
-                    <option value="LD-01">临电检查与考核</option>
-                    <option value="FH-01">防护检查与考核</option>
-                    <option value="XF-01">消防检查与考核</option>
                 </select>
             </label>
 
@@ -35,15 +32,6 @@
                 </div>
                 <select ng-model="branch" ng-options="item as item.name for item in data.segments | filter: {type: '分部'}" ng-change="changeBranch(branch)">
                     <option value="" selected>--- 请选择分部 ---</option>
-                </select>
-            </label>
-
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    工区：
-                </div>
-                <select ng-model="place" ng-options="item as item.name for item in data.segments | filter: {type: '工区'}" ng-change="changePlace(place)">
-                    <option value="" selected>--- 请选择工区 ---</option>
                 </select>
             </label>
 

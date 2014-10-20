@@ -1,7 +1,9 @@
-app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, resolveUser) {
+app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, files, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.segments = [];
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.files = files;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -11,7 +13,7 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
         });
     }
 
-    SegmentService.findByProjectId($scope.data.user.segment.project).then(function (segments) {
+    SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
         $scope.data.segments = $scope.data.segments.concat(segments);
     });
 
@@ -28,18 +30,11 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
         if (!branch) return;
 
         $scope.data.branch = branch;
-        SegmentService.findById(branch._id).then(function (segment) {
-            $scope.data.segments = $scope.data.segments.concat(segment.segments);
-        });
-    };
-
-    $scope.changePlace = function (place) {
-        $scope.data.place = place;
     };
 
     $scope.newCheck = function () {
         CheckService.create({
-            project: $scope.data.user.segment.project,
+            project: $scope.data.projectId,
             segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             file: $scope.data.file,
             check_target: $scope.data.check_target

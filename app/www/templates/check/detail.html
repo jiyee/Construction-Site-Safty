@@ -54,11 +54,11 @@
                     <i class="icon ion-compose"></i>
                     打分
                 </a>
-                <a class="tab-item" href="#" ng-click="toCriterion()" ng-hide="data.user.segment.is_leaf == true || data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
+                <a class="tab-item" href="#" ng-click="toCriterion()" ng-hide="data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
                     <i class="icon ion-paper-airplane"></i>
                     下达
                 </a>
-                <a class="tab-item" href="#" ng-click="toRectification()" ng-hide="data.user.segment.is_leaf == false || data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
+                <a class="tab-item" href="#" ng-click="toRectification()" ng-hide="data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
                     <i class="icon ion-paper-airplane"></i>
                     整改
                 </a>

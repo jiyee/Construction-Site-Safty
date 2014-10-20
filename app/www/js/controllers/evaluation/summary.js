@@ -39,8 +39,6 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
         });
     });
 
-
-
     $scope.toBack = function () {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id

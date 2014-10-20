@@ -38,6 +38,19 @@ app.factory('UserService', function($http, $q, settings) {
                 });
 
             return deferred.promise;
+        },
+        findByUnitId: function(unitId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/unit/' + unitId + '/users')
+                .success(function(data) {
+                    deferred.resolve(data.users);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
     };
 });

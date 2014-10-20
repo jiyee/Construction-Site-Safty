@@ -26,7 +26,7 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http://' + '10.171.40.8' + ':3000',
+    'baseUrl': 'http://' + '127.0.0.1' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',
@@ -1740,7 +1740,7 @@ app.controller('ManagerDashboardCtrl', ["$scope", "$rootScope", "$state", "$stat
         });
     };
 }]);
-app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "projects", "ProjectService", "SegmentService", "UserService", "AuthService", function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UserService, AuthService) {
+app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "projects", "ProjectService", "SegmentService", "UnitService", "UserService", "AuthService", function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UnitService, UserService, AuthService) {
     $scope.data = {};
     $scope.data.projects = projects;
 
@@ -1753,30 +1753,56 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
     $scope.changeProject = function (project) {
         $scope.project = project;
 
-        SegmentService.findByProjectId(project._id).then(function(segments) {
-            var tree = [];
-            var roots = angular.copy(segments);
+        // SegmentService.findByProjectId(project._id).then(function(segments) {
+        //     var tree = [];
+        //     var roots = angular.copy(segments);
 
-            function deepLoop(root, level) {
-                tree.push({
-                    level: level,
-                    _id: root._id,
-                    name: root.name
-                });
-                if (root.segments) {
-                    level += 1;
-                    angular.forEach(root.segments, function(child) {
-                        deepLoop(child, level);
-                    });
-                }
-            }
+        //     function deepLoop(root, level) {
+        //         tree.push({
+        //             level: level,
+        //             _id: root._id,
+        //             name: root.name
+        //         });
+        //         if (root.segments) {
+        //             level += 1;
+        //             angular.forEach(root.segments, function(child) {
+        //                 deepLoop(child, level);
+        //             });
+        //         }
+        //     }
 
-            angular.forEach(roots, function (child) {
-                deepLoop(child, 0);
-            });
+        //     angular.forEach(roots, function (child) {
+        //         deepLoop(child, 0);
+        //     });
 
-            $scope.data.segments = tree;
+        //     $scope.data.segments = tree;
+        // });
+
+        UnitService.findByProjectId(project._id).then(function (units) {
+            console.log(units); 
+
+            $scope.data.units = units;
         });
+    };
+
+    $scope.changeUnit = function (unit) {
+        if (unit.type === '施工单位') {
+
+        } else {
+
+        }
+    };
+
+    $scope.filterUnitConstructor = function (unit, index) {
+        return unit.type === '建设单位';
+    };
+
+    $scope.filterUnitSupervisor = function (unit, index) {
+        return unit.type === '监理单位';
+    };
+
+    $scope.filterUnitBuilder = function (unit, index) {
+        return unit.type === '施工单位';
     };
 
     $scope.changeSegment = function (segment) {

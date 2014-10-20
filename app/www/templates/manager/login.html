@@ -5,14 +5,13 @@
     </ion-header-bar>
 
     <ion-content padding="true">
-        <div ng-hide="project && segment">
+        <div ng-hide="project || data.users">
             <div>
                 <label class="item item-input item-select">
                     <span class="input-label">
                         省份：
                     </span>
                     <select>
-                        <!-- <option value="" selected>--- 请选择省份 ---</option> -->
                         <option value="湖北省" selected>湖北省</option>
                     </select>
                 </label>
@@ -25,7 +24,47 @@
                     </select>
                 </label>
             </div>
+        </div>
 
+        <div ng-show="project" ng-hide="unit">
+            <div class="padding" ng-show="data.units">
+                <span class="input-label">
+                    建设单位：
+                </span>
+                <div class="item item-complex" ng-repeat="unit in data.units | filter: filterUnitConstructor">
+                    <div class="item-content item-icon-right" ng-click="changeUnit(unit)">
+                        {{unit.name}}
+                        <i class="icon ion-ios7-arrow-forward"></i>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="padding" ng-show="data.units">
+                <span class="input-label">
+                    监理单位：
+                </span>
+                <div class="item item-complex" ng-repeat="unit in data.units | filter: filterUnitSupervisor">
+                    <div class="item-content item-icon-right" ng-click="changeUnit(unit)">
+                        {{unit.name}}
+                        <i class="icon ion-ios7-arrow-forward"></i>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="padding" ng-show="data.units">
+                <span class="input-label">
+                    施工单位：
+                </span>
+                <div class="item item-complex" ng-repeat="unit in data.units | filter: filterUnitBuilder">
+                    <div class="item-content item-icon-right" ng-click="changeUnit(unit)">
+                        {{unit.name}}
+                        <i class="icon ion-ios7-arrow-forward"></i>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="project && unit && unit.type === '施工单位'" ng-hide="segment || unit.type !== '施工单位'">
             <div class="list padding">
                 <div class="item item-complex" ng-repeat="segment in data.segments" style="padding-left: {{segment.level * 10}}px;">
                     <div class="item-content item-icon-right" ng-click="changeSegment(segment)">
@@ -36,14 +75,12 @@
             </div>
         </div>
 
-        <div ng-show="project && segment">
+        <div ng-show="project && data.users">
             <h2>{{project.name}}</h2>
-            <h2 ng-click="resetSegment()"><i class="icon ion-ios7-undo-outline"></i> {{segment.name}}</h2>
 
             <div class="list list-inset">
                 <label class="item item-input item-select">
                     <span class="input-label">用户名：</span>
-                    <!-- <input type="text" placeholder="请输入用户名"> -->
                     <select ng-model="data.username" ng-options="item.username as item.name for item in data.users">
                         <option value="" selected>--- 请选择用户 ---</option>
                     </select>

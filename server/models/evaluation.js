@@ -19,6 +19,8 @@ var EvaluationSchema = new Schema({
 
     status: { type: String, enum: ['START', 'END'] }, // 考核状态
 
+    wbs: { type: String }, // 分部、分享工程WBS分解阶段
+
     // 考核表
     tables: [{ type: Schema.Types.ObjectId, ref: 'Table' }], // 考核表，一次考核评价直接创建4张表 
 

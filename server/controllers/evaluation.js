@@ -351,6 +351,15 @@ exports.create = function (req, res, next) {
             });
         });
 
+        var wbs = req.body.wbs;
+        if (wbs) {
+           var wbs_list = require('../data/wbs.json'); 
+           var wbs_item = _.first(wbs_list, {"name": wbs});
+           var wbs_files = wbs_item.files;
+
+           // TODO 同步link
+        }
+
         // 创建检查表
         _.each(files, function (file) {
             var table = new TableModel();

@@ -1,5 +1,10 @@
-app.factory('AuthService', function($http, $q, $window, settings) {
-    var user;
+app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
+    var project, user;
+
+    if ($window.sessionStorage["project"]) {
+        project = JSON.parse($window.sessionStorage["project"]);
+        $rootScope._project = project;
+    }
 
     if ($window.sessionStorage["user"]) {
         user = JSON.parse($window.sessionStorage["user"]);
@@ -18,6 +23,7 @@ app.factory('AuthService', function($http, $q, $window, settings) {
                         deferred.reject(data.message);
                     } else {
                         user = data.user;
+                        $window.sessionStorage["project"] = JSON.stringify($rootScope._project);
                         $window.sessionStorage["user"] = JSON.stringify(data.user);
                         deferred.resolve(data.user);
                     }
@@ -56,6 +62,7 @@ app.factory('AuthService', function($http, $q, $window, settings) {
                         deferred.reject(data.message);
                     } else {
                         user = null;
+                        $window.sessionStorage["project"] = null;
                         $window.sessionStorage["user"] = null;
                         deferred.resolve(data.user);
                     }

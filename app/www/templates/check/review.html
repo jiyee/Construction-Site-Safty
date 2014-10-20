@@ -15,15 +15,15 @@
                     <input type="radio" name="group-{{item.index}}" value="{{score}}" style="width: 16px; height: 16px;" ng-model="item.score" ng-click="changeScore(item, score)"> {{-score}}分
                 </label> -->
                 <label class="col col-33 text-center">
-                    <input type="radio" name="radio-{{item.index}}" value="0" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, 0)">合格
+                    <input type="radio" name="group-{{item.index}}" value="0" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, 0)">合格
                 </label>
 
                 <label class="col col-33 text-center">
-                    <input type="radio" name="radio-{{item.index}}" value="1" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, 1)">不合格
+                    <input type="radio" name="group-{{item.index}}" value="1" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, 1)">不合格
                 </label>
 
                 <label class="col col-33 text-center">
-                    <input type="radio" name="radio-{{item.index}}" value="" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, null)">待定
+                    <input type="radio" name="group-{{item.index}}" value="" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, null)">待定
                 </label>
             </div>
 

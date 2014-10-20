@@ -26,7 +26,7 @@ app.run(function($rootScope, $ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http://' + '192.168.1.63' + ':3000',
+    'baseUrl': 'http://' + '10.171.40.8' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',

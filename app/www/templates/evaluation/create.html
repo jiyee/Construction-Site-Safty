@@ -41,6 +41,14 @@
                 <option value="" selected>请选择合同段</option>
             </select>
         </label>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                工程进展：
+            </div>
+            <select ng-model="data.wbs" ng-options="item.name as (item.name) group by item.group for item in wbs">
+                <option value="" selected>请选择分部、分项工程</option>
+            </select>
+        </label>
 
         <button class="button button-block button-positive" ng-click="toCreate()">
             开始考核 

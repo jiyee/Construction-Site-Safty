@@ -1,4 +1,5 @@
-app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
+app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, wbs, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
+    $scope.wbs = wbs;
     $scope.data = {};
     $scope.data.user = resolveUser;
 
@@ -88,10 +89,16 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
             return;
         }
 
+        if (!$scope.data.wbs) {
+            alert('请选择工程进展');
+            return;
+        }
+
         EvaluationService.create({
             project: $scope.data.user.segment.project,
             segment: ($scope.data.branch || $scope.data.section)['_id'],
-            unit: $scope.data.unit._id
+            unit: $scope.data.unit._id,
+            wbs: $scope.data.wbs
         }).then(function(evaluation) {
             $state.go('^.summary', {
                 evaluationId: evaluation._id
