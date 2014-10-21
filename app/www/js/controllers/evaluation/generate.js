@@ -12,7 +12,7 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
-            end_data.setDate(end_date.getDate() + 2);
+            end_date.setDate(end_date.getDate() + 2);
 
             start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
             end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');

@@ -250,25 +250,26 @@ exports.update = function (req, res, next) {
                 dest1 = root.items,
                 dest2,
                 dest3,
-                key,
+                key2,
+                key3,
                 ret = {};
 
             // 提取出所有item3条目
+            // TODO 这里的key取值可能是有问题的
             _.each(src1, function(item1) {
                 src2 = item1.items;
-                key = item1.index;
                 _.each(src2, function(item2) {
                     src3 = item2.items;
-                    key += "-" + item2.index;
+                    key2 = [item1.index, item2.index].join('-');
 
-                    ret[key] = {
+                    ret[key2] = {
                         is_checked: item2.is_checked,
                         is_selected: item2.is_selected,
                     };
                     _.each(src3, function(item3) {
-                        key += "-" + item3.index;
+                        key3 = [item1.index, item2.index, item3.index].join('-');
 
-                        ret[key] = {
+                        ret[key3] = {
                             status: item3.status,
                             score: item3.score,
                             comments: item3.comments,
@@ -283,16 +284,15 @@ exports.update = function (req, res, next) {
             // 逐条复制给root
             _.each(dest1, function(item1) {
                 dest2 = item1.items;
-                key = item1.index;
                 _.each(dest2, function(item2) {
                     dest3 = item2.items;
-                    key += "-" + item2.index;
+                    key2 = [item1.index, item2.index].join('-');
 
-                    _.extend(item2, ret[key]);
+                    _.extend(item2, ret[key2]);
                     _.each(dest3, function(item3) {
-                        key += "-" + item3.index;
+                        key3 = [item1.index, item2.index, item3.index].join('-');
 
-                        _.extend(item3, ret[key]);
+                        _.extend(item3, ret[key3]);
                     });
                 });
             });
@@ -351,29 +351,66 @@ exports.create = function (req, res, next) {
             });
         });
 
+        ep.on('links', function (links) {
+            console.log(links);
+
+            // 创建检查表
+            _.each(files, function (file) {
+                var table = new TableModel();
+                var proto = require('../data/' + file + '.json');
+                _.extend(table, proto);
+                table.uuid = Date.now();
+
+                _.each(table.items, function(item1) {
+                    _.each(item1.items, function(item2) {
+                        _.each(item2.items, function(item3) {
+                            var key = [file, item1.index, item2.index, item3.index].join('-');                            
+                            if (!!~links.indexOf(key)) {
+                                item2.is_selected = true;
+                            }
+                        });
+                    });
+                });
+
+                table.save(function (err, table) {
+                    if (err) {
+                        return next(err);
+                    }
+
+                    ep.emit('table', table);
+                });
+            });
+        });
+
         var wbs = req.body.wbs;
         if (wbs) {
            var wbs_list = require('../data/wbs.json'); 
-           var wbs_item = _.first(wbs_list, {"name": wbs});
+           var wbs_item = _.find(wbs_list, {"name": wbs});
            var wbs_files = wbs_item.files;
 
-           // TODO 同步link
+           var links = [];
+           _.each(wbs_files, function (file) {
+                var table = require('../data/' + file + '.json');
+
+                _.each(table.items, function(item1) {
+                    _.each(item1.items, function(item2) {
+                        _.each(item2.items, function(item3) {
+                            if (item3.link) {
+                                links = links.concat(item3.link.split(','));
+                            }
+                        });
+                    });
+                });
+           });
+
+           links = _.uniq(_.map(links, function (link) {
+                return link.trim();
+           }));
+
+           ep.emit('links', links);
         }
 
-        // 创建检查表
-        _.each(files, function (file) {
-            var table = new TableModel();
-            var proto = require('../data/' + file + '.json');
-            _.extend(table, proto);
-            table.uuid = Date.now();
-            table.save(function (err, table) {
-                if (err) {
-                    return next(err);
-                }
-
-                ep.emit('table', table);
-            });
-        });
+        
     });
 
 }; 
