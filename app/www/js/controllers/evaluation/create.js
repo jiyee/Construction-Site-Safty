@@ -2,6 +2,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     $scope.wbs = wbs;
     $scope.data = {};
     $scope.data.user = resolveUser;
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -11,11 +12,9 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         });
     }
 
-    if ($scope.data.user.segment) {
-        ProjectService.findById($scope.data.user.segment.project).then(function (project) {
-            $scope.data.project = project;
-        });
-    }
+    ProjectService.findById($scope.data.projectId).then(function (project) {
+        $scope.data.project = project;
+    });
 
     $scope.$watch('data.project', function() {
         if (!$scope.data.project) return;
@@ -95,7 +94,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         }
 
         EvaluationService.create({
-            project: $scope.data.user.segment.project,
+            project: $scope.data.projectId,
             segment: ($scope.data.branch || $scope.data.section)['_id'],
             unit: $scope.data.unit._id,
             wbs: $scope.data.wbs

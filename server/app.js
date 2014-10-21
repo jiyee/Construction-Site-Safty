@@ -32,21 +32,19 @@ app.use(session({
         db: 'sessions'
     }),
     cookie: {
-        httpOnly: false,
+        httpOnly: false
     }
-    // resave: true,
-    // saveUninitialized: true
 }));
 
-var os = require('os');
-var ipAddr;
-for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
-    if (os.networkInterfaces().en0[i].family == 'IPv4') {
-        ipAddr = os.networkInterfaces().en0[i].address;
-    }
-}
+// var os = require('os');
+// var ipAddr;
+// for (var i = 0; i < os.networkInterfaces().en0.length; i++) {
+//     if (os.networkInterfaces().en0[i].family == 'IPv4') {
+//         ipAddr = os.networkInterfaces().en0[i].address;
+//     }
+// }
 
-var ipAddr = '127.0.0.1';
+var ipAddr = '121.40.202.109';
 
 // CORS
 app.use(function(req, res, next) {

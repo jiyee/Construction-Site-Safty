@@ -26,7 +26,7 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http://' + '127.0.0.1' + ':3000',
+    'baseUrl': 'http://' + '121.40.202.109' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',
@@ -293,8 +293,13 @@ app.filter('score', function() {
         }
     };
 });
-app.factory('AuthService', ["$http", "$q", "$window", "settings", function($http, $q, $window, settings) {
-    var user;
+app.factory('AuthService', ["$rootScope", "$http", "$q", "$window", "settings", function($rootScope, $http, $q, $window, settings) {
+    var project, user;
+
+    if ($window.sessionStorage["project"]) {
+        project = JSON.parse($window.sessionStorage["project"]);
+        $rootScope._project = project;
+    }
 
     if ($window.sessionStorage["user"]) {
         user = JSON.parse($window.sessionStorage["user"]);
@@ -313,6 +318,7 @@ app.factory('AuthService', ["$http", "$q", "$window", "settings", function($http
                         deferred.reject(data.message);
                     } else {
                         user = data.user;
+                        $window.sessionStorage["project"] = JSON.stringify($rootScope._project);
                         $window.sessionStorage["user"] = JSON.stringify(data.user);
                         deferred.resolve(data.user);
                     }
@@ -351,6 +357,7 @@ app.factory('AuthService', ["$http", "$q", "$window", "settings", function($http
                         deferred.reject(data.message);
                     } else {
                         user = null;
+                        $window.sessionStorage["project"] = null;
                         $window.sessionStorage["user"] = null;
                         deferred.resolve(data.user);
                     }
@@ -578,6 +585,348 @@ app.factory('EvaluationService', ["$http", "$q", "settings", function($http, $q,
         }
     };
 }]);
+app.constant('files', [{
+    "index": "1.1.1.1",
+    "file": "TY-LD-01",
+    "name": "办公、生活区域临时用电专项安全检查表",
+    "group": "1. 防电"
+}, {
+    "index": "1.2.1.1",
+    "file": "TY-LD-02",
+    "name": "施工现场临时用电专项安全检查表",
+    "group": "1. 防电"
+}, {
+    "index": "2.1.1.1",
+    "file": "TY-XF-01",
+    "name": "消防安全检查表",
+    "group": "2. 防火"
+}, {
+    "index": "3.1.1.1",
+    "file": "TY-FH-01",
+    "name": "临边与个体防护防护专项安全检查表",
+    "group": "3. 安全防护"
+}, {
+    "index": "4.1.1.1",
+    "file": "TY-ZC-01",
+    "name": "承重支架(满堂支架、贝雷支架)基础专项施工安全检查表",
+    "group": "4. 支撑体系"
+}, {
+    "index": "4.1.1.2",
+    "file": "TY-ZC-02",
+    "name": "承重支架(满堂支架、贝雷支架)搭设施工专项安全检查表",
+    "group": "4. 支撑体系"
+}, {
+    "index": "4.1.1.3",
+    "file": "TY-ZC-03",
+    "name": "承重支架(满堂支架、贝雷支架)拆除施工专项安全检查表",
+    "group": "4. 支撑体系"
+}, {
+    "index": "4.1.1.4",
+    "file": "TY-ZC-04",
+    "name": "脚手架施工专项安全检查表",
+    "group": "4. 支撑体系"
+}, {
+    "index": "5.1.1.1",
+    "file": "TY-JXSB-01",
+    "name": "吊装工程（塔吊）专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.1.1.2",
+    "file": "TY-JXSB-02",
+    "name": "吊装工程（汽车吊）专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.1.1.3",
+    "file": "TY-JXSB-03",
+    "name": "吊装工程（龙门吊）专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.1.1.4",
+    "file": "TY-JXSB-04",
+    "name": "吊装工程（缆索起重机）专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.1.1.5",
+    "file": "TY-JXSB-05",
+    "name": "吊装工程（电梯）专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.1.1.6",
+    "file": "TY-JXSB-06",
+    "name": "吊装工程（架桥机）专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.2.1.1",
+    "file": "TY-MB-01",
+    "name": "滑模施工专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.2.1.2",
+    "file": "TY-MB-02",
+    "name": "翻模施工专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.2.1.3",
+    "file": "TY-MB-03",
+    "name": "移动模架专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.2.1.4",
+    "file": "TY-MB-04",
+    "name": "挂篮整体专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.2.1.5",
+    "file": "TY-MB-05",
+    "name": "挂篮移篮专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.2.1.6",
+    "file": "TY-MB-06",
+    "name": "挂篮砼浇筑专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "5.2.1.7",
+    "file": "TY-MB-07",
+    "name": "挂篮拆移专项安全检查表",
+    "group": "5. 机械设备"
+}, {
+    "index": "6.1.1.1",
+    "file": "TY-ZY-01",
+    "name": "高处作业施工专项安全检查表",
+    "group": "6. 施工作业"
+}, {
+    "index": "6.1.1.2",
+    "file": "TY-ZY-02",
+    "name": "深基坑现场作业专项安全检查表",
+    "group": "6. 施工作业"
+}, {
+    "index": "6.1.1.3",
+    "file": "TY-ZY-03",
+    "name": "隧道爆破作业专项安全检查表",
+    "group": "6. 施工作业"
+}, {
+    "index": "6.1.1.4",
+    "file": "TY-ZY-04",
+    "name": "人工挖孔桩爆破作业专项安全检查表",
+    "group": "6. 施工作业"
+}, {
+    "index": "6.1.1.5",
+    "file": "TY-ZY-05",
+    "name": "高边坡爆破作业专项安全检查表",
+    "group": "6. 施工作业"
+}, {
+    "index": "6.1.1.6",
+    "file": "TY-ZY-06",
+    "name": "炸药库安全专项检查表",
+    "group": "6. 施工作业"
+}, {
+    "index": "7.1.1.1",
+    "file": "TY-QX-01",
+    "name": "不利气候环境专项施工安全检查表",
+    "group": "7. 不利气象"
+}, {
+    "index": "8.1.1.1",
+    "file": "ZYGL-QLLC-01",
+    "name": "水上钢便桥、平台施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.1.2",
+    "file": "ZYGL-QLLC-02",
+    "name": "明挖基础施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.1.3",
+    "file": "ZYGL-QLLC-03",
+    "name": "人工挖孔桩专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.1.4",
+    "file": "ZYGL-QLLC-04",
+    "name": "水上作业钻孔灌注桩专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.1.5",
+    "file": "ZYGL-QLLC-05",
+    "name": "钻孔灌注桩专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.1.6",
+    "file": "ZYGL-QLLC-06",
+    "name": "沉入桩施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.1.7",
+    "file": "ZYGL-QLLC-07",
+    "name": "水中围堰施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.2.1",
+    "file": "ZYGL-QLDT-01",
+    "name": "墩柱、台帽施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.2.2",
+    "file": "ZYGL-QLDT-02",
+    "name": "水上作业专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.3.1",
+    "file": "ZYGL-QLSB-01",
+    "name": "预制梁安装专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.3.2",
+    "file": "ZYGL-QLSB-02",
+    "name": "现浇箱梁混凝土浇筑施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.3.3",
+    "file": "ZYGL-QLSB-03",
+    "name": "现浇箱梁预应力张拉压浆施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.3.4",
+    "file": "ZYGL-QLSB-04",
+    "name": "桥面铺装专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.3.5",
+    "file": "ZYGL-QLSB-05",
+    "name": "防撞栏施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.1.3.6",
+    "file": "ZYGL-QLSB-06",
+    "name": "跨线施工安全专项检查",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.2.1.1",
+    "file": "ZYGL-QLSD-01",
+    "name": "隧道施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.2.1.2",
+    "file": "ZYGL-QLSD-02",
+    "name": "隧道施工材料、车辆及机械专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.2.1.3",
+    "file": "ZYGL-QLSD-03",
+    "name": "隧道施工洞口作业专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.2.1.4",
+    "file": "ZYGL-QLSD-04",
+    "name": "隧道施工二衬台车及作业平台专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.2.1.5",
+    "file": "ZYGL-QLSD-05",
+    "name": "隧道施工通风与除尘专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.2.1.6",
+    "file": "ZYGL-QLSD-06",
+    "name": "隧道施工支护与开挖作业专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.1",
+    "file": "ZYGL-LJBP-01",
+    "name": "高边坡施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.2",
+    "file": "ZYGL-LJBP-02",
+    "name": "高边坡锚喷支护施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.3",
+    "file": "ZYGL-LJBP-03",
+    "name": "高边坡预应力锚索施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.4",
+    "file": "ZYGL-LJ-01",
+    "name": "路基土方工程专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.5",
+    "file": "ZYGL-LJ-02",
+    "name": "路基石方工程专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.6",
+    "file": "ZYGL-LJ-03",
+    "name": "路基工程机械专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.7",
+    "file": "ZYGL-LJ-04",
+    "name": "路基防护工程专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.8",
+    "file": "ZYGL-LJ-05",
+    "name": "软基处理专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.9",
+    "file": "ZYGL-LM-01",
+    "name": "路面基层施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.1",
+    "file": "0",
+    "name": "ZYGL-LM-02 沥青路面施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.1",
+    "file": "1",
+    "name": "ZYGL-LM-03 水泥混凝土路面施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.1",
+    "file": "2",
+    "name": "ZYGL-LM-04 机械碾压专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.1",
+    "file": "3",
+    "name": "ZYGL-LM-05 旧路面凿除施工专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "8.3.1.1",
+    "file": "4",
+    "name": "ZYGL-LM-06 路面施工交通专项安全检查表",
+    "group": "8. 公路专项施工作业安全"
+}, {
+    "index": "9.1.1.1",
+    "file": "ZYGL-LJZD-01",
+    "name": "驻地建设专项安全检查表",
+    "group": "9. 临建"
+}, {
+    "index": "9.2.1.1",
+    "file": "ZYGL-LJBHZ-01",
+    "name": "拌和场专项安全检查表",
+    "group": "9. 临建"
+}, {
+    "index": "9.3.1.1",
+    "file": "ZYGL-LJYZC-01",
+    "name": "预制场专项安全检查表",
+    "group": "9. 临建"
+}, {
+    "index": "9.4.1.1",
+    "file": "ZYGL-LJGJJG-01",
+    "name": "钢筋加工场专项安全检查表",
+    "group": "9. 临建"
+}, {
+    "index": "9.5.1.1",
+    "file": "ZYGL-LJCK-01",
+    "name": "仓库专项安全检查表",
+    "group": "9. 临建"
+}]);
+
 app.factory('ProjectService', ["$http", "$q", "settings", function($http, $q, settings) {
     return {
         find: function() {
@@ -804,14 +1153,119 @@ app.factory('UserService', ["$http", "$q", "settings", function($http, $q, setti
                 });
 
             return deferred.promise;
+        },
+        findByUnitId: function(unitId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/unit/' + unitId + '/users')
+                .success(function(data) {
+                    deferred.resolve(data.users);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
     };
 }]);
 
-app.controller('CheckCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "CheckService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, resolveUser) {
+app.constant('wbs', [{
+    "name": "软土地基",
+    "group": "路基土石方工程",
+    "files": ["ZYGL-LJ-05", "ZYGL-LJ-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "土石方路基",
+    "group": "路基土石方工程",
+    "files": ["ZYGL-LJ-01", "ZYGL-LJ-02", "ZYGL-LJBP-01", "TY-ZY-05", "ZYGL-LJ-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "其他支护",
+    "group": "砌筑防护工程",
+    "files": ["ZYGL-LJ-04", "ZYGL-LJ-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "喷锚支护",
+    "group": "砌筑防护工程",
+    "files": ["ZYGL-LJBP-02", "ZYGL-LJ-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "预应力锚索",
+    "group": "砌筑防护工程",
+    "files": ["ZYGL-LJBP-03", "ZYGL-LJ-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "基层",
+    "group": "路面工程",
+    "files": ["ZYGL-LJ-01", "ZYGL-LJ-06", "ZYGL-LJ-04", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "面层",
+    "group": "路面工程",
+    "files": ["ZYGL-LJ-02", "ZYGL-LJ-03", "ZYGL-LJ-05", "ZYGL-LJ-06", "ZYGL-LJ-04", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "扩大基础",
+    "group": "基础及下部构造",
+    "files": ["ZYGL-QLLC-02", "TY-ZY-02", "ZYGL-QLLC-01", "ZYGL-QLLC-07", "ZYGL-QLDT-02", "TY-JXSB-05", "TY-JXSB-04", "TY-JXSB-01", "TY-MB-01", "TY-MB-02", "TY-MB-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "桩基",
+    "group": "基础及下部构造",
+    "files": ["ZYGL-QLLC-03", "TY-ZY-04", "ZYGL-QLLC-04", "ZYGL-QLLC-05", "ZYGL-QLLC-06", "ZYGL-QLLC-01", "ZYGL-QLLC-07", "ZYGL-QLDT-02", "TY-JXSB-05", "TY-JXSB-04", "TY-JXSB-01", "TY-MB-01", "TY-MB-02", "TY-MB-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "墩柱、台帽",
+    "group": "基础及下部构造",
+    "files": ["ZYGL-QLDT-01", "ZYGL-QLLC-01", "ZYGL-QLLC-07", "ZYGL-QLDT-02", "TY-JXSB-05", "TY-JXSB-04", "TY-JXSB-01", "TY-MB-01", "TY-MB-02", "TY-MB-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "梁的安装",
+    "group": "上部构造预制与安装",
+    "files": ["ZYGL-QLSB-01", "TY-JXSB-06", "TY-JXSB-01", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "预应力张拉",
+    "group": "上部构造现场浇筑",
+    "files": ["ZYGL-QLSB-02", "TY-ZC-01", "TY-ZC-02", "TY-ZC-03", "TY-JXSB-01", "TY-MB-04", "TY-MB-05", "TY-MB-06", "TY-MB-07", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "浇筑",
+    "group": "上部构造现场浇筑",
+    "files": ["ZYGL-QLSB-03", "TY-ZC-01", "TY-ZC-02", "TY-ZC-03", "TY-JXSB-01", "TY-MB-04", "TY-MB-05", "TY-MB-06", "TY-MB-07", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "桥面铺装",
+    "group": "总体、桥面系及附属",
+    "files": ["ZYGL-QLSB-04", "ZYGL-QLSB-06", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "栏杆安装",
+    "group": "总体、桥面系及附属",
+    "files": ["ZYGL-QLSB-05", "ZYGL-QLSB-06", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "洞口工程",
+    "group": "洞口工程",
+    "files": ["ZYGL-QLSD-03", "ZYGL-QLSD-01", "ZYGL-QLSD-02", "ZYGL-QLSD-05", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "洞身开挖与衬砌",
+    "group": "洞身开挖与衬砌",
+    "files": ["ZYGL-QLSD-04", "ZYGL-QLSD-06", "ZYGL-QLSD-01", "ZYGL-QLSD-02", "ZYGL-QLSD-05", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "驻地",
+    "group": "驻地",
+    "files": ["ZYGL-LJZD-01", "TY-LD-01", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "拌和场",
+    "group": "拌和场",
+    "files": ["ZYGL-LJBHZ-01", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "预制场",
+    "group": "预制场",
+    "files": ["ZYGL-LJYZC-01", "TY-JXSB-03", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "钢筋加工场",
+    "group": "钢筋加工场",
+    "files": ["ZYGL-LJGJJG-01", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}, {
+    "name": "仓库",
+    "group": "仓库",
+    "files": ["TY-ZY-06", "ZYGL-LJCK-01", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
+}]);
+
+app.controller('CheckCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "CheckService", "AuthService", "files", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, files, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.segments = [];
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.files = files;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -821,7 +1275,7 @@ app.controller('CheckCreateCtrl', ["$scope", "$rootScope", "$state", "$statePara
         });
     }
 
-    SegmentService.findByProjectId($scope.data.user.segment.project).then(function (segments) {
+    SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
         $scope.data.segments = $scope.data.segments.concat(segments);
     });
 
@@ -838,18 +1292,11 @@ app.controller('CheckCreateCtrl', ["$scope", "$rootScope", "$state", "$statePara
         if (!branch) return;
 
         $scope.data.branch = branch;
-        SegmentService.findById(branch._id).then(function (segment) {
-            $scope.data.segments = $scope.data.segments.concat(segment.segments);
-        });
-    };
-
-    $scope.changePlace = function (place) {
-        $scope.data.place = place;
     };
 
     $scope.newCheck = function () {
         CheckService.create({
-            project: $scope.data.user.segment.project,
+            project: $scope.data.projectId,
             segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             file: $scope.data.file,
             check_target: $scope.data.check_target
@@ -1157,6 +1604,23 @@ app.controller('CheckTableCtrl', ["$scope", "$stateParams", "$state", "settings"
 
     TableService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
+
+        // 标识考核历史记录
+        _.each($scope.data.table.items, function (level1) {
+            _.each(level1.items, function (level2) {
+                level2.pass = level2.fail = level2.uncheck = 0;
+                _.each(level2.items, function (level3) {
+                    if (level3.status === 'FAIL') {
+                        level2.fail += 1;
+                    } else if (level3.status === 'PASS') {
+                        level2.pass += 1;
+                    } else if (level3.status === 'UNCHECK') {
+                        level2.uncheck += 1;
+                    }
+                });
+            });
+        });
+
     });
 
     $scope.toggle = function(index, item) {
@@ -1182,9 +1646,11 @@ app.controller('CheckTableCtrl', ["$scope", "$stateParams", "$state", "settings"
     };
 }]);
 
-app.controller('EvaluationCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "UnitService", "CheckService", "EvaluationService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
+app.controller('EvaluationCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "wbs", "ProjectService", "SegmentService", "UserService", "UnitService", "CheckService", "EvaluationService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, wbs, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
+    $scope.wbs = wbs;
     $scope.data = {};
     $scope.data.user = resolveUser;
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -1194,11 +1660,9 @@ app.controller('EvaluationCreateCtrl', ["$scope", "$rootScope", "$state", "$stat
         });
     }
 
-    if ($scope.data.user.segment) {
-        ProjectService.findById($scope.data.user.segment.project).then(function (project) {
-            $scope.data.project = project;
-        });
-    }
+    ProjectService.findById($scope.data.projectId).then(function (project) {
+        $scope.data.project = project;
+    });
 
     $scope.$watch('data.project', function() {
         if (!$scope.data.project) return;
@@ -1272,10 +1736,16 @@ app.controller('EvaluationCreateCtrl', ["$scope", "$rootScope", "$state", "$stat
             return;
         }
 
+        if (!$scope.data.wbs) {
+            alert('请选择工程进展');
+            return;
+        }
+
         EvaluationService.create({
-            project: $scope.data.user.segment.project,
+            project: $scope.data.projectId,
             segment: ($scope.data.branch || $scope.data.section)['_id'],
-            unit: $scope.data.unit._id
+            unit: $scope.data.unit._id,
+            wbs: $scope.data.wbs
         }).then(function(evaluation) {
             $state.go('^.summary', {
                 evaluationId: evaluation._id
@@ -1328,9 +1798,10 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
+            end_date.setDate(end_date.getDate() + 2);
 
             start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
-            end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate() + 1].join('-');
+            end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');
 
         var current_unit = $scope.data.user.unit,
             checked = [],
@@ -1627,8 +2098,6 @@ app.controller('EvaluationSummaryCtrl', ["$scope", "$rootScope", "$state", "$sta
         });
     });
 
-
-
     $scope.toBack = function () {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id
@@ -1658,7 +2127,24 @@ app.controller('EvaluationTableCtrl', ["$scope", "$stateParams", "$state", "sett
 
     EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
-        console.log(evaluation);
+
+        // 标识考核历史记录
+        _.each($scope.data.evaluation.tables, function (table) {
+            _.each(table.items, function (level1) {
+                _.each(level1.items, function (level2) {
+                    level2.pass = level2.fail = level2.uncheck = 0;
+                    _.each(level2.items, function (level3) {
+                        if (level3.status === 'FAIL') {
+                            level2.fail += 1;
+                        } else if (level3.status === 'PASS') {
+                            level2.pass += 1;
+                        } else if (level3.status === 'UNCHECK') {
+                            level2.uncheck += 1;
+                        }
+                    });
+                });
+            });
+        });
     });
 
     $scope.ifHideLevel2 = {};
@@ -1698,6 +2184,7 @@ app.controller('EvaluationTableCtrl', ["$scope", "$stateParams", "$state", "sett
 app.controller('ManagerDashboardCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "UserService", "CheckService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, UserService, CheckService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
+    $scope.data.group = {};
 
     // 用户登录状态异常控制
     if (!$scope.data.user || $stateParams.userId !== $scope.data.user._id) {
@@ -1713,9 +2200,17 @@ app.controller('ManagerDashboardCtrl', ["$scope", "$rootScope", "$state", "$stat
     });
 
     // 加载用户所属组织的所有用户，供用户在线状态展示
-    UserService.findBySegmentId($scope.data.user.segment._id).then(function (users) {
-        $scope.data.segmentUsers = users;
-    });
+    if ($scope.data.user.segment) {
+        $scope.data.group = $scope.data.user.segment;
+        UserService.findBySegmentId($scope.data.user.segment._id).then(function (users) {
+            $scope.data.groupUsers = users;
+        });
+    } else if ($scope.data.user.unit) {
+        $scope.data.group = $scope.data.user.unit;
+        UserService.findByUnitId($scope.data.user.unit._id).then(function (users) {
+            $scope.data.groupUsers = users;
+        });
+    }
 
     $scope.toCheckCreate = function () {
         $state.go('check.create', {
@@ -1753,30 +2248,32 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
     $scope.changeProject = function (project) {
         $scope.project = project;
 
-        // SegmentService.findByProjectId(project._id).then(function(segments) {
-        //     var tree = [];
-        //     var roots = angular.copy(segments);
+        SegmentService.findByProjectId(project._id).then(function(segments) {
+            var tree = [];
+            var roots = angular.copy(segments);
 
-        //     function deepLoop(root, level) {
-        //         tree.push({
-        //             level: level,
-        //             _id: root._id,
-        //             name: root.name
-        //         });
-        //         if (root.segments) {
-        //             level += 1;
-        //             angular.forEach(root.segments, function(child) {
-        //                 deepLoop(child, level);
-        //             });
-        //         }
-        //     }
+            function deepLoop(root, level) {
+                tree.push({
+                    level: level,
+                    _id: root._id,
+                    name: root.name
+                });
 
-        //     angular.forEach(roots, function (child) {
-        //         deepLoop(child, 0);
-        //     });
+                // 只列出标段和分部
+                if (root.segments && root.type === '标段') {
+                    level += 1;
+                    angular.forEach(root.segments, function(child) {
+                        deepLoop(child, level);
+                    });
+                }
+            }
 
-        //     $scope.data.segments = tree;
-        // });
+            angular.forEach(roots, function (child) {
+                deepLoop(child, 0);
+            });
+
+            $scope.data.segments = tree;
+        });
 
         UnitService.findByProjectId(project._id).then(function (units) {
             console.log(units); 
@@ -1786,10 +2283,12 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
     };
 
     $scope.changeUnit = function (unit) {
-        if (unit.type === '施工单位') {
+        $scope.unit = unit;
 
-        } else {
-
+        if ($scope.unit.type !== '施工单位') {
+            UserService.findByUnitId($scope.unit._id).then(function(users) {
+                $scope.data.users = users;
+            });
         }
     };
 
@@ -1809,23 +2308,27 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
         $scope.segment = segment;
 
         UserService.findBySegmentId(segment._id).then(function(users) {
-            $scope.data.users = users;
+            $scope.data.users = _.filter(users, function (user) {
+                return user.unit.type === '施工单位';
+            });
         });
     };
 
-    $scope.resetSegment = function () {
-        $scope.segment = null;
-    };
-
     $scope.login = function () {
+        if (!$scope.data.username) {
+            alert('请选择用户');
+            return;
+        }
+
+        if (!$scope.data.password) {
+            alert('请输入密码');
+            return;
+        }
+
+        // 保存到$rootScopre, 并非特别好的方式
+        $rootScope._project = $scope.project;
+
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
-
-            // 保存到$rootScopre, 并非特别好的方式
-            $rootScope.current = {};
-            $rootScope.current.project = $scope.project;
-            $rootScope.current.segment = $scope.segment;
-            $rootScope.current.user = user;
-
             $state.go("^.dashboard", {
                 userId: user._id,
             });
