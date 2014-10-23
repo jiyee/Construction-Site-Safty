@@ -31,8 +31,8 @@
                 <label class="item-input col col-75" style="padding: 2px 0 0px 15px">
                     <input type="text" ng-model="item.comments" placeholder="填写备注">
                 </label>
-                <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)" ng-hide="item.image">拍照存档</button>
-                <img ng-src="{{item.image_url}}" ng-show="item.image" class="col col-25">
+                <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)" ng-hide="item.image_url">拍照存档</button>
+                <img ng-src="{{item.image_url}}" ng-show="item.image_url" class="col col-25">
             </div>
         </div>
     </ion-content>

@@ -28,7 +28,7 @@
                     <div class="col">存在隐患：</div>
                 </div>
                 <div class="col assertive" ng-repeat="item in data.check.rectifications">
-                    {{$index + 1}}. {{item.name}}
+                    {{$index + 1}}. {{item.comments}}
                     <div>
                         <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64">
                     </div>

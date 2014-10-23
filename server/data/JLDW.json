@@ -1,0 +1,462 @@
+{
+    "file": "JLDW",
+    "name": "监理单位考核评价表（140分）",
+    "type": "考核评价",
+    "items": [{
+        "index": "A",
+        "name": "责任落实",
+        "items": [{
+            "index": "A1",
+            "name": "岗位职责",
+            "items": [{
+                "index": "1",
+                "name": "无岗位职责，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "岗位职责缺项，发现一项扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "责任针对性不强，扣2-3分。",
+                "range": [0, 2, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "未逐级签订安全生产责任书，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "A2",
+            "name": "规章制度",
+            "items": [{
+                "index": "1",
+                "name": "制度少一项，扣2分。",
+                "range": [0, 2, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "制度针对性不强、可操作性差，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "A3",
+            "name": "安全监理规（计）划",
+            "items": [{
+                "index": "1",
+                "name": "未见行文，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "安全监理规（计）划和细则针对性不强，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "未办理意外伤害保险，扣4分。",
+                "range": [0, 4],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "意外伤害保险未覆盖全员或不连续，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "B",
+        "name": "审查审批",
+        "items": [{
+            "index": "B1",
+            "name": "施工组织设计",
+            "items": [{
+                "index": "1",
+                "name": "未审查施工组织设计，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "未认真或未及时审查，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "未按施工组织设计中的保证措施进行落实，每项措施扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "B2",
+            "name": "专项施工方案",
+            "items": [{
+                "index": "1",
+                "name": "未及时对施工单位上报的专项施工方案进行审查审批，扣5-8分。",
+                "range": [0, 5, 6, 7, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "经审批的专项施工方案不符合有关要求，扣5-8分。",
+                "range": [0, 5, 6, 7, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "危险性较大工程专项施工方案未经审查同意，工程已实施，且监理未纠正，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "未严格监督实施，扣2-6分。",
+                "range": [0, 2, 3, 4, 5, 6],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "B3",
+            "name": "风险预控",
+            "items": [{
+                "index": "1",
+                "name": "未督促施工单位申报和进行审查，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "不认真或不及时审查，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "未对演练进行检查、督促，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "风险评估监理职责履行不到位，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "B4",
+            "name": "安全生产费用",
+            "items": [{
+                "index": "1",
+                "name": "未审查，扣10分。",
+                "range": [0, 10],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "不认真或不及时审查，扣4-6分。",
+                "range": [0, 4, 5, 6],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "未建立安全费用使用监理台账、或台账不清，扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "C",
+        "name": "安全检查与督促整改",
+        "items": [{
+            "index": "C1",
+            "name": "安全检查",
+            "items": [{
+                "index": "1",
+                "name": "对所列内容，未全面认真及时进行检查，每发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "对检查发现的问题没有监理措施，复查结果等，每发现一处扣2分。",
+                "range": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "检查工作台账不清晰，可追溯性差，扣3分。",
+                "range": [0, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "发现重大隐患未发监理指令，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "5",
+                "name": "对施工单位重大隐患的检查和复查未附影像资料，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "6",
+                "name": "监理隐患排查走过场，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "7",
+                "name": "指令、通知记录不闭合，发现一份扣3分。",
+                "range": [0, 3, 6, 9, 12, 15, 18, 20],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "8",
+                "name": "未对专项施工方案实施情况进行分析评价，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "C2",
+            "name": "考核评价",
+            "items": [{
+                "index": "1",
+                "name": "自我考核评价走过场或不及时，扣5-10分。",
+                "range": [0, 5, 6, 7, 8, 9, 10],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "对施工单位的考核评价走过场或不及时，扣2-5分。",
+                "range": [0, 2, 3, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "考核评价资料欠真实、准确，扣3-5分。",
+                "range": [0, 3, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "D",
+        "name": "监理人员管理",
+        "items": [{
+            "index": "D1",
+            "name": "持证上岗",
+            "items": [{
+                "index": "1",
+                "name": "安全监理人员不满足合同文件要求，每人扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "未提供监理名册，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "未提供监理人员上岗及离岗记录（如考勤表等），扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "安全监理工程师未持安全监理培训证，发现一人扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "D2",
+            "name": "监理人员内部培训教育",
+            "items": [{
+                "index": "1",
+                "name": "未组织培训教育，扣5分。",
+                "range": [0, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "未制定培训教育计划或培训教育计划可行性不强，扣1-3分。",
+                "range": [0, 1, 2, 3],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "未按培训教育计划组织培训，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "未进行考核，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }, {
+            "index": "D3",
+            "name": "安全监理日志",
+            "items": [{
+                "index": "1",
+                "name": "安全监理日志不连续、签字不全或未经总监（驻地监理工程师）定期审查，发现一处（次）扣1分。",
+                "range": [0, 1, 2, 3, 4, 5],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "E",
+        "name": "政府主管部门安全专项工作",
+        "items": [{
+            "index": "E1",
+            "name": "政府主管部门安全专项工作落实情况",
+            "items": [{
+                "index": "1",
+                "name": "未按规定落实政府主管部门布置的安全专项工作，发现一次扣2分。",
+                "range": [0, 2, 4, 6, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "未制定安全专项工作方案或计划，发现一次扣4分。",
+                "range": [0, 4, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "安全专项工作落实不到位，发现一次扣2-4分。",
+                "range": [0, 2, 3, 4],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "4",
+                "name": "未制定“平安工地”建设方案，扣8分，",
+                "range": [0, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "5",
+                "name": "“平安工地”建设要求未落实到所有监理人员，扣3-5分。",
+                "range": [0, 3, 4, 5],
+            }]
+        }]
+    }, {
+        "index": "F",
+        "name": "档案管理",
+        "items": [{
+            "index": "F1",
+            "name": "安全档案资料",
+            "items": [{
+                "index": "1",
+                "name": "安全档案资料不真实，发现一份扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "2",
+                "name": "台账不全、不明晰，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }, {
+                "index": "3",
+                "name": "资料不齐全，扣1-2分。",
+                "range": [0, 1, 2],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }]
+    }, {
+        "index": "G",
+        "name": "监理工作效能",
+        "items": [{
+            "index": "G1",
+            "name": "所监理施工单位的考核评价惰况",
+            "items": [{
+                "index": "1",
+                "name": "各施工合同段考核评价得分平均值×0.4即为监理工作效能得分。",
+                "range": [0, 40],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": ""
+            }]
+        }]
+    }]
+}

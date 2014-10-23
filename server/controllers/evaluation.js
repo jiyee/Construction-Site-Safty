@@ -275,7 +275,7 @@ exports.update = function (req, res, next) {
                             comments: item3.comments,
                             image_url: item3.image_url,
                             is_checked: item3.is_checked,
-                            checked: item3.checked
+                            checked_items: item3.checked_items
                         };
                     });
                 });

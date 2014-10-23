@@ -12,21 +12,22 @@ app.run(function($rootScope, $ionicPlatform) {
     });
 
     $rootScope.$on("$stateChangeSuccess", function (event, current, previous, eventObj) {
-        console.log('stateChangeSuccess', current, previous, eventObj);
+        // console.log('stateChangeSuccess', current, previous, eventObj);
     });
 
     $rootScope.$on("$stateChangeError", function (event, current, previous, eventObj) {
-        console.log('stateChangeError', current, previous, eventObj);
+        // console.log('stateChangeError', current, previous, eventObj);
     });
 
     $rootScope.$on('$stateChangeStart', function (event, current, previous, eventObj) {
-        console.log('stateChangeStart', current, previous, eventObj);
+        // console.log('stateChangeStart', current, previous, eventObj);
     });
 })
 
 // 注册全局变量
+// 121.40.202.109
 .constant('settings', {
-    'baseUrl': 'http://' + '121.40.202.109' + ':3000',
+    'baseUrl': 'http://' + '10.171.40.8' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',

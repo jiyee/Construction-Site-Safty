@@ -15,6 +15,9 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
     EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
 
+        $scope.data.checked_items = [];
+        $scope.data.score = 0;
+
         // 标识考核历史记录
         _.each($scope.data.evaluation.tables, function (table) {
             _.each(table.items, function (level1) {
@@ -22,6 +25,9 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
                     level2.pass = level2.fail = level2.uncheck = 0;
                     _.each(level2.items, function (level3) {
                         if (level3.status === 'FAIL') {
+                            level3.full_index = [table.file, level1.index, level2.index, level3.index].join('-');
+                            $scope.data.checked_items.push(level3);
+                            $scope.data.score += parseInt(level3.score, 10);
                             level2.fail += 1;
                         } else if (level3.status === 'PASS') {
                             level2.pass += 1;

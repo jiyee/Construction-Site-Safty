@@ -12,21 +12,21 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
-            end_date.setDate(end_date.getDate() + 2);
+            end_date.setDate(end_date.getDate() + 1);
 
             start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
             end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');
 
         var current_unit = $scope.data.user.unit,
-            checked = [],
+            checked_items = [],
             reLink = /(SGJC|SGXCTY|SGXCGL|SGXCSY)-([A-Z])-([A-Z][0-9]+)-([0-9])+/,
             matches = null;
         CheckService.list(project, segment, start_date, end_date).then(function (checks) {
             $scope.data.checks = checks;
 
             angular.forEach(checks, function (check) {
-                if (check.checked && check.check_user.unit._id === current_unit._id) {
-                    angular.forEach(check.checked, function (item) {
+                if (check.checked_items && check.check_user.unit._id === current_unit._id) {
+                    angular.forEach(check.checked_items, function (item) {
                         if (item.status !== 'UNCHECK' && item.link !== '') {
                             matches = item.link.match(reLink);
 
@@ -38,14 +38,14 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
 
                             item.check_date = check.check_date;
 
-                            checked.push(item);
+                            checked_items.push(item);
                         }
                     });
                 }
             });
 
             var table, level1, level2, level3;
-            angular.forEach(checked, function (item) {
+            angular.forEach(checked_items, function (item) {
                 table = find($scope.data.evaluation.tables, {
                     key: 'file',
                     value: item.link.file
@@ -77,10 +77,52 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
                 level2.is_checked = true; // 标识是否已检查过
                 level2.is_selected = true; // 标识是否选中
                 level3.is_checked = true;
-                level3.checked = level3.checked || [];
-                level3.checked.push(item);
+                level3.checked_items = level3.checked_items || [];
+                level3.checked_items.push(item);
             });
 
+            // console.log(checked_items);
+        });
+    });
+
+    function find(collections, condition) {
+        if (collections.length === 0) return;
+
+        var found;
+        angular.forEach(collections, function(item) {
+            if (item[condition.key] === condition.value) {
+                found = item;
+                return found;
+            }
+        });
+
+        return found;
+    } 
+
+    $scope.toggleLinkScore = function(linkScore) {
+        toggleLinkScore(linkScore);
+    };
+
+    $scope.toBack = function () {
+        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            userId: $scope.data.user._id
+        });
+    };
+
+    $scope.toTable = function () {
+        EvaluationService.update($scope.data.evaluation._id, $scope.data.evaluation).then(function(table) {
+            alert('确认成功');
+            $state.go('^.table', {
+                evaluationId: $scope.data.evaluation._id 
+            });
+        }, function(err) {
+            alert(err);
+        });
+        
+    };
+
+    function toggleLinkScore (bool) {
+        if (bool) {
             angular.forEach($scope.data.evaluation.tables, function (table) {
                 angular.forEach(table.items, function(level1) {
                     angular.forEach(level1.items, function(level2) {
@@ -89,18 +131,18 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
                                 fail = 0, 
                                 last_pass = true;
 
-                            if (level3.is_checked && level3.checked) {
-                                level3.checked.sort(function compareDate(a, b) {
+                            if (level3.is_checked && level3.checked_items) {
+                                level3.checked_items.sort(function compareDate(a, b) {
                                     return a.check_date - b.check_date;
                                 });
 
-                                if (level3.checked[0]['score'] === '0') { // 最近一次合格
+                                if (level3.checked_items[0]['score'] === '0') { // 最近一次合格
                                     last_pass = true;
-                                } else if (level3.checked[0]['score'] === '1') { // 最近一次不合格
+                                } else if (level3.checked_items[0]['score'] === '1') { // 最近一次不合格
                                     last_pass = false;
                                 }
 
-                                angular.forEach(level3.checked, function (item) {
+                                angular.forEach(level3.checked_items, function (item) {
                                     if (item.score === '0') {
                                         pass += 1;
                                     } else if (item.score === '1') {
@@ -128,47 +170,17 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
                     });
                 });
             });
-
-            console.log(checked);
-            console.log($scope.data.evaluation.tables);
-        });
-    });
-
-    function find(collections, condition) {
-        if (collections.length === 0) return;
-
-        var found;
-        angular.forEach(collections, function(item) {
-            if (item[condition.key] === condition.value) {
-                found = item;
-                return found;
-            }
-        });
-
-        return found;
-    } 
-
-    $scope.onlySelected = false;
-    $scope.toggleSelected = function() {
-        $scope.onlySelected = !$scope.onlySelected;
-    };
-
-    $scope.toBack = function () {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
-            userId: $scope.data.user._id
-        });
-    };
-
-    $scope.toTable = function () {
-        EvaluationService.update($scope.data.evaluation._id, $scope.data.evaluation).then(function(table) {
-            alert('确认成功');
-            $state.go('^.table', {
-                evaluationId: $scope.data.evaluation._id 
+        } else {
+            angular.forEach($scope.data.evaluation.tables, function (table) {
+                angular.forEach(table.items, function(level1) {
+                    angular.forEach(level1.items, function(level2) {
+                        angular.forEach(level2.items, function(level3) {
+                            level3.status = 'UNCHECK';
+                            level3.score = null;
+                        });
+                    });
+                });
             });
-        }, function(err) {
-            alert(err);
-        });
-        
-    };
-
+        }
+    }
 });

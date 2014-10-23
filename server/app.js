@@ -44,7 +44,8 @@ app.use(session({
 //     }
 // }
 
-var ipAddr = '121.40.202.109';
+var ipAddr = '10.171.40.8';
+// var ipAddr = '121.40.202.109';
 
 // CORS
 app.use(function(req, res, next) {

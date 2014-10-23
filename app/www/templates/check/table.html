@@ -5,6 +5,19 @@
     </ion-header-bar>
 
     <ion-content padding="true">
+        <table>
+            <tr>
+                <td>
+                    当前得分：{{-data.score}}分，扣分项如下：
+                </td>
+            </tr>
+            <tr ng-repeat="item in data.checked_items">
+                <td>
+                    {{item.full_index}}. {{item.comments}} {{-item.score}}分
+                </td>
+            </tr>
+        </table>
+
         <ion-list>
             <ion-item ng-repeat-start="item in data.table.items" class="item-icon-right item" style="background-color: #eee; font-weight: bold;" ng-click="toggle($index, item)">
                 <i class="icon ion-chevron-right" style="font-size: 16px; -webkit-transform: rotate({{ifHideSubItems[item.index]|rotate}});"></i>

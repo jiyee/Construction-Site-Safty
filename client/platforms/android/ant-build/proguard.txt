@@ -1,6 +1,0 @@
-# view AndroidManifest.xml #generated:6
--keep class com.ionicframework.client391222.ConstructionSiteSafty { <init>(...); }
-
-# view AndroidManifest.xml #generated:12
--keep class com.wezka.nativecamera.CameraActivity { <init>(...); }
-

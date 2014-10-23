@@ -94,22 +94,22 @@ CheckSchema.virtual('rectifications').get(function () {
     return rectifications;
 });
 
-CheckSchema.virtual('checked').get(function () {
-    var checked = [];
+CheckSchema.virtual('checked_items').get(function () {
+    var checked_items = [];
     if (this.table) {
         _.each(this.table.items, function(level1) {
             _.each(level1.items, function(level2) {
                 _.each(level2.items, function(level3) {
                     if (level3.status != 'UNCHECK') {
                         level3._id = [level1.index, level2.index, level3.index].join('-');
-                        checked.push(level3);
+                        checked_items.push(level3);
                     }
                 });
             });
         });
     }
 
-    return checked;
+    return checked_items;
 });
 
 CheckSchema.statics = {

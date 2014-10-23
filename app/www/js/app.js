@@ -25,8 +25,9 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
 }])
 
 // 注册全局变量
+// 121.40.202.109
 .constant('settings', {
-    'baseUrl': 'http://' + '121.40.202.109' + ':3000',
+    'baseUrl': 'http://' + '10.171.40.8' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',
@@ -1867,56 +1868,8 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
                 level3.checked.push(item);
             });
 
-            angular.forEach($scope.data.evaluation.tables, function (table) {
-                angular.forEach(table.items, function(level1) {
-                    angular.forEach(level1.items, function(level2) {
-                        angular.forEach(level2.items, function(level3) {
-                            var pass = 0,
-                                fail = 0, 
-                                last_pass = true;
-
-                            if (level3.is_checked && level3.checked) {
-                                level3.checked.sort(function compareDate(a, b) {
-                                    return a.check_date - b.check_date;
-                                });
-
-                                if (level3.checked[0]['score'] === '0') { // 最近一次合格
-                                    last_pass = true;
-                                } else if (level3.checked[0]['score'] === '1') { // 最近一次不合格
-                                    last_pass = false;
-                                }
-
-                                angular.forEach(level3.checked, function (item) {
-                                    if (item.score === '0') {
-                                        pass += 1;
-                                    } else if (item.score === '1') {
-                                        fail += 1;
-                                    }
-                                });
-
-                                if (last_pass) {
-                                    level3.score = Math.floor(level3.range[level3.range.length - 1] * pass / (pass + fail));
-                                } else {
-                                    level3.score = level3.range[level3.range.length - 1];
-                                }
-
-                                if (level3.score === 0) {
-                                    level3.status = 'PASS';
-                                } else {
-                                    level3.status = 'FAIL';
-                                }
-
-                                // console.log(last_pass, pass, fail);
-                                // console.log(level3.range);
-                                // console.log(level3.score);
-                            }
-                        });
-                    });
-                });
-            });
-
-            console.log(checked);
-            console.log($scope.data.evaluation.tables);
+            // console.log(checked);
+            // console.log($scope.data.evaluation.tables);
         });
     });
 
@@ -1934,9 +1887,8 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
         return found;
     } 
 
-    $scope.onlySelected = false;
-    $scope.toggleSelected = function() {
-        $scope.onlySelected = !$scope.onlySelected;
+    $scope.toggleLinkScore = function(linkScore) {
+        console.log(linkScore);
     };
 
     $scope.toBack = function () {

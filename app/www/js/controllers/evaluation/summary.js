@@ -12,6 +12,7 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
+            end_date.setDate(end_date.getDate() + 1);
 
             start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
             end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');
@@ -26,8 +27,8 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
                 '政府部门': 0
             };
             angular.forEach(checks, function (check) {
-                if (check.checked) {
-                    angular.forEach(check.checked, function (item) {
+                if (check.checked_items) {
+                    angular.forEach(check.checked_items, function (item) {
                         if (item.status === 'FAIL') {
                             scores[check.check_user.unit.type] += parseInt(item.score, 10);
                         }
