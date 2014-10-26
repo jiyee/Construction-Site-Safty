@@ -83,7 +83,7 @@ CheckSchema.virtual('rectifications').get(function () {
             _.each(level1.items, function(level2) {
                 _.each(level2.items, function(level3) {
                     if (level3.status != 'UNCHECK' && level3.score > 0) {
-                        level3._id = [level1.index, level2.index, level3.index].join('-');
+                        level3.full_index = [level1.index, level2.index, level3.index].join('-');
                         rectifications.push(level3);
                     }
                 });
@@ -101,7 +101,7 @@ CheckSchema.virtual('checked_items').get(function () {
             _.each(level1.items, function(level2) {
                 _.each(level2.items, function(level3) {
                     if (level3.status != 'UNCHECK') {
-                        level3._id = [level1.index, level2.index, level3.index].join('-');
+                        level3.full_index = [level1.index, level2.index, level3.index].join('-');
                         checked_items.push(level3);
                     }
                 });

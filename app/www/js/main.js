@@ -217,7 +217,33 @@ app.run(function($rootScope, $ionicPlatform) {
         url: "/evaluation/:evaluationId/:tableId/:itemId/:subItemId",
         templateUrl: "templates/evaluation/review.html",
         controller: 'EvaluationReviewCtrl'
-    });
+    })
+
+    // 行业主管抽象页，用于数据共享
+    .state('administrator', {
+        url: '/administrator',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+        }
+    })
+
+    // 行业主管主面板
+    .state('administrator.dashboard', {
+        url: '/dashboard/:userId',
+        templateUrl: 'templates/administrator/dashboard.html',
+        controller: 'AdministratorDashboardCtrl',
+        resolve: {
+            resolveUser: function (AuthService) {
+                return {
+                    _id: 0,
+                    name: '测试用户'
+                };
+                // return AuthService.getUser();
+            }
+        }
+    })
+    ;
 
     // 设置image url白名单，否则AngularJS解析URL错误
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);

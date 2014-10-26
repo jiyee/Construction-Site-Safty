@@ -12,15 +12,15 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
     });
 
     $rootScope.$on("$stateChangeSuccess", function (event, current, previous, eventObj) {
-        console.log('stateChangeSuccess', current, previous, eventObj);
+        // console.log('stateChangeSuccess', current, previous, eventObj);
     });
 
     $rootScope.$on("$stateChangeError", function (event, current, previous, eventObj) {
-        console.log('stateChangeError', current, previous, eventObj);
+        // console.log('stateChangeError', current, previous, eventObj);
     });
 
     $rootScope.$on('$stateChangeStart', function (event, current, previous, eventObj) {
-        console.log('stateChangeStart', current, previous, eventObj);
+        // console.log('stateChangeStart', current, previous, eventObj);
     });
 }])
 
@@ -217,7 +217,33 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         url: "/evaluation/:evaluationId/:tableId/:itemId/:subItemId",
         templateUrl: "templates/evaluation/review.html",
         controller: 'EvaluationReviewCtrl'
-    });
+    })
+
+    // 行业主管抽象页，用于数据共享
+    .state('administrator', {
+        url: '/administrator',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+        }
+    })
+
+    // 行业主管主面板
+    .state('administrator.dashboard', {
+        url: '/dashboard/:userId',
+        templateUrl: 'templates/administrator/dashboard.html',
+        controller: 'AdministratorDashboardCtrl',
+        resolve: {
+            resolveUser: ["AuthService", function (AuthService) {
+                return {
+                    _id: 0,
+                    name: '测试用户'
+                };
+                // return AuthService.getUser();
+            }]
+        }
+    })
+    ;
 
     // 设置image url白名单，否则AngularJS解析URL错误
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);
@@ -1261,6 +1287,76 @@ app.constant('wbs', [{
     "files": ["TY-ZY-06", "ZYGL-LJCK-01", "TY-ZY-03", "TY-LD-02", "TY-QX-01", "TY-XF-01", "TY-FH-01", "TY-ZC-04", "TY-JXSB-02", "TY-ZY-01"]
 }]);
 
+app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "UserService", "CheckService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, UserService, CheckService, AuthService, resolveUser) {
+    $scope.data = {};
+    $scope.data.user = resolveUser;
+
+    var extent = ol.proj.transform([111.56067, 30.50430, 111.24344, 30.29702],
+        'EPSG:4326', 'EPSG:900913');
+    var center = ol.proj.transform([111.40068, 30.39583],
+        'EPSG:4326', 'EPSG:900913');
+
+    var mousePositionControl = new ol.control.MousePosition({
+        coordinateFormat: ol.coordinate.createStringXY(10),
+        projection: 'EPSG:4326',
+        className: 'ol-mouse-position',
+        target: document.getElementById('mouse-position'),
+        undefinedHTML: '&nbsp;'
+    });
+
+    var elMap = document.getElementById("map");
+    var topBannerHeight = 44;
+    elMap.style.height = (window.innerHeight - topBannerHeight) + 'px';
+
+    var map = new ol.Map({
+        controls: ol.control.defaults({
+            attributionOptions: ({
+                collapsible: false
+            })
+        }).extend([mousePositionControl]),
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    tileUrlFunction: function(coordinate) {
+                        if (coordinate == null) {
+                            return "";
+                        }
+
+                        var z = coordinate[0];
+                        var x = coordinate[1];
+                        var y = coordinate[2];
+                        // var y = (1 << z) - coordinate[2] - 1;
+
+                        return 'data/' + 'tianditu/' + 'satellite/' + z + '/' + x + '/' + y + '.jpg';
+                    },
+                    extent: extent,
+                    minZoom: 10,
+                    maxZoom: 20,
+                    wrapx: false
+                })
+            }),
+            new ol.layer.Tile({
+                source: new ol.source.TileWMS({
+                    url: 'http://hz.jiyee.org:8080/geoserver/wms',
+                    params: {
+                        'LAYERS': 'css:YZGS'
+                    },
+                    serverType: 'geoserver'
+                })
+            })
+        ],
+        renderer: 'canvas',
+        target: 'map',
+        view: new ol.View({
+            projection: 'EPSG:900913',
+            center: center,
+            zoom: 12
+        })
+    });
+
+    // map.getView().fitExtent(extent, map.getSize());
+}]);
+
 app.controller('CheckCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "CheckService", "AuthService", "files", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, files, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
@@ -1384,23 +1480,7 @@ app.controller('CheckDetailCtrl', ["$scope", "$rootScope", "$state", "$statePara
 
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
-
-        // var rectifications = [];
-
-        // angular.forEach(check.table.items, function(level1) {
-        //     angular.forEach(level1.items, function(level2) {
-        //         angular.forEach(level2.items, function(level3) {
-        //             if (level3.status && level3.score > 0) {
-        //                 rectifications.push({
-        //                     name: level3.name,
-        //                     image_url: level3.image_url
-        //                 });
-        //             }
-        //         });
-        //     });
-        // });
-
-        // $scope.data.rectifications = rectifications;
+        console.log($scope.data.check.rectifications);
     });
 
     $scope.toBack = function() {
@@ -1606,12 +1686,18 @@ app.controller('CheckTableCtrl', ["$scope", "$stateParams", "$state", "settings"
     TableService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
+        $scope.data.checked_items = [];
+        $scope.data.score = 0;
+
         // 标识考核历史记录
         _.each($scope.data.table.items, function (level1) {
             _.each(level1.items, function (level2) {
                 level2.pass = level2.fail = level2.uncheck = 0;
                 _.each(level2.items, function (level3) {
                     if (level3.status === 'FAIL') {
+                        level3.full_index = [level1.index, level2.index, level3.index].join('-');
+                        $scope.data.checked_items.push(level3);
+                        $scope.data.score += parseInt(level3.score, 10);
                         level2.fail += 1;
                     } else if (level3.status === 'PASS') {
                         level2.pass += 1;
@@ -1799,21 +1885,21 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
-            end_date.setDate(end_date.getDate() + 2);
+            end_date.setDate(end_date.getDate() + 1);
 
             start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
             end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');
 
         var current_unit = $scope.data.user.unit,
-            checked = [],
+            checked_items = [],
             reLink = /(SGJC|SGXCTY|SGXCGL|SGXCSY)-([A-Z])-([A-Z][0-9]+)-([0-9])+/,
             matches = null;
         CheckService.list(project, segment, start_date, end_date).then(function (checks) {
             $scope.data.checks = checks;
 
             angular.forEach(checks, function (check) {
-                if (check.checked && check.check_user.unit._id === current_unit._id) {
-                    angular.forEach(check.checked, function (item) {
+                if (check.checked_items && check.check_user.unit._id === current_unit._id) {
+                    angular.forEach(check.checked_items, function (item) {
                         if (item.status !== 'UNCHECK' && item.link !== '') {
                             matches = item.link.match(reLink);
 
@@ -1825,14 +1911,14 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
 
                             item.check_date = check.check_date;
 
-                            checked.push(item);
+                            checked_items.push(item);
                         }
                     });
                 }
             });
 
             var table, level1, level2, level3;
-            angular.forEach(checked, function (item) {
+            angular.forEach(checked_items, function (item) {
                 table = find($scope.data.evaluation.tables, {
                     key: 'file',
                     value: item.link.file
@@ -1864,12 +1950,11 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
                 level2.is_checked = true; // 标识是否已检查过
                 level2.is_selected = true; // 标识是否选中
                 level3.is_checked = true;
-                level3.checked = level3.checked || [];
-                level3.checked.push(item);
+                level3.checked_items = level3.checked_items || [];
+                level3.checked_items.push(item);
             });
 
-            // console.log(checked);
-            // console.log($scope.data.evaluation.tables);
+            // console.log(checked_items);
         });
     });
 
@@ -1888,7 +1973,7 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
     } 
 
     $scope.toggleLinkScore = function(linkScore) {
-        console.log(linkScore);
+        toggleLinkScore(linkScore);
     };
 
     $scope.toBack = function () {
@@ -1909,6 +1994,68 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
         
     };
 
+    function toggleLinkScore (bool) {
+        if (bool) {
+            angular.forEach($scope.data.evaluation.tables, function (table) {
+                angular.forEach(table.items, function(level1) {
+                    angular.forEach(level1.items, function(level2) {
+                        angular.forEach(level2.items, function(level3) {
+                            var pass = 0,
+                                fail = 0, 
+                                last_pass = true;
+
+                            if (level3.is_checked && level3.checked_items) {
+                                level3.checked_items.sort(function compareDate(a, b) {
+                                    return a.check_date - b.check_date;
+                                });
+
+                                if (level3.checked_items[0]['score'] === '0') { // 最近一次合格
+                                    last_pass = true;
+                                } else if (level3.checked_items[0]['score'] === '1') { // 最近一次不合格
+                                    last_pass = false;
+                                }
+
+                                angular.forEach(level3.checked_items, function (item) {
+                                    if (item.score === '0') {
+                                        pass += 1;
+                                    } else if (item.score === '1') {
+                                        fail += 1;
+                                    }
+                                });
+
+                                if (last_pass) {
+                                    level3.score = Math.floor(level3.range[level3.range.length - 1] * pass / (pass + fail));
+                                } else {
+                                    level3.score = level3.range[level3.range.length - 1];
+                                }
+
+                                if (level3.score === 0) {
+                                    level3.status = 'PASS';
+                                } else {
+                                    level3.status = 'FAIL';
+                                }
+
+                                // console.log(last_pass, pass, fail);
+                                // console.log(level3.range);
+                                // console.log(level3.score);
+                            }
+                        });
+                    });
+                });
+            });
+        } else {
+            angular.forEach($scope.data.evaluation.tables, function (table) {
+                angular.forEach(table.items, function(level1) {
+                    angular.forEach(level1.items, function(level2) {
+                        angular.forEach(level2.items, function(level3) {
+                            level3.status = 'UNCHECK';
+                            level3.score = null;
+                        });
+                    });
+                });
+            });
+        }
+    }
 }]);
 app.controller('EvaluationListCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "UnitService", "CheckService", "EvaluationService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
     $scope.data = {};
@@ -2023,6 +2170,7 @@ app.controller('EvaluationSummaryCtrl', ["$scope", "$rootScope", "$state", "$sta
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
+            end_date.setDate(end_date.getDate() + 1);
 
             start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
             end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');
@@ -2037,8 +2185,8 @@ app.controller('EvaluationSummaryCtrl', ["$scope", "$rootScope", "$state", "$sta
                 '政府部门': 0
             };
             angular.forEach(checks, function (check) {
-                if (check.checked) {
-                    angular.forEach(check.checked, function (item) {
+                if (check.checked_items) {
+                    angular.forEach(check.checked_items, function (item) {
                         if (item.status === 'FAIL') {
                             scores[check.check_user.unit.type] += parseInt(item.score, 10);
                         }
@@ -2080,6 +2228,9 @@ app.controller('EvaluationTableCtrl', ["$scope", "$stateParams", "$state", "sett
     EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
 
+        $scope.data.checked_items = [];
+        $scope.data.score = 0;
+
         // 标识考核历史记录
         _.each($scope.data.evaluation.tables, function (table) {
             _.each(table.items, function (level1) {
@@ -2087,6 +2238,9 @@ app.controller('EvaluationTableCtrl', ["$scope", "$stateParams", "$state", "sett
                     level2.pass = level2.fail = level2.uncheck = 0;
                     _.each(level2.items, function (level3) {
                         if (level3.status === 'FAIL') {
+                            level3.full_index = [table.file, level1.index, level2.index, level3.index].join('-');
+                            $scope.data.checked_items.push(level3);
+                            $scope.data.score += parseInt(level3.score, 10);
                             level2.fail += 1;
                         } else if (level3.status === 'PASS') {
                             level2.pass += 1;

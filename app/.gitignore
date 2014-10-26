@@ -7,3 +7,4 @@ plugins/
 hooks/
 
 .tags*
+www/data/
