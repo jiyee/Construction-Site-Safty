@@ -26,7 +26,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+//  gulp.watch(paths.sass, ['sass']);
 });
 
 gulp.task('js', function() {
@@ -40,5 +40,5 @@ gulp.task('js', function() {
 });
 
 gulp.task('watch', ['js'], function() {
-    gulp.watch('www/js/**/*.js', ['js']);
+//    gulp.watch('www/js/**/*.js', ['js']);
 });
