@@ -27,9 +27,11 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         }).extend([mousePositionControl]),
         layers: [
             new ol.layer.Tile({
+                // crossOrigin: 'anonymous',
+                // url: '//{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 source: new ol.source.XYZ({
                     tileUrlFunction: function(coordinate) {
-                        if (coordinate == null) {
+                        if (coordinate === undefined) {
                             return "";
                         }
 
@@ -41,14 +43,14 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                     },
                     extent: extent,
                     minZoom: 10,
-                    maxZoom: 20,
+                    maxZoom: 16,
                     wrapx: false
                 })
             }),
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
                     tileUrlFunction: function(coordinate) {
-                        if (coordinate == null) {
+                        if (coordinate === undefined) {
                             return "";
                         }
 
@@ -60,7 +62,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                     },
                     extent: extent,
                     minZoom: 10,
-                    maxZoom: 20,
+                    maxZoom: 16,
                     wrapx: false
                 })
             }),
@@ -76,6 +78,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         ],
         renderer: 'canvas',
         target: 'map',
+        logo: false,
         view: new ol.View({
             projection: 'EPSG:900913',
             center: center,
