@@ -23,7 +23,7 @@ exports.findById = function(req, res, next) {
     var segment_id = validator.trim(req.params.segment_id);
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: segment_id
         }
     };
@@ -32,7 +32,7 @@ exports.findById = function(req, res, next) {
         if (err) {
             return next(err);
         }
-        
+
         var __total = 0;
         var __done = 0;
         var deepPopulate = function(err, parent) {
@@ -66,7 +66,7 @@ exports.findById = function(req, res, next) {
 exports.findByUnitId = function (req, res, next) {
     var unit_id = validator.trim(req.params.unit_id);
     var options = {
-        conditions: {   
+        conditions: {
             units: unit_id
         }
     };
@@ -94,7 +94,7 @@ exports.list_array = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: segment_id
         },
         select: fields
@@ -151,7 +151,7 @@ exports.push_array = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: field_id
         }
     };
@@ -206,7 +206,7 @@ exports.slice_array = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: root_id
         }
     };

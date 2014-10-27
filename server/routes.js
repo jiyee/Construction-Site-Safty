@@ -8,6 +8,7 @@ var segment = require('./controllers/segment');
 var table = require('./controllers/table');
 var check = require('./controllers/check');
 var evaluation = require('./controllers/evaluation');
+var capture = require('./controllers/capture');
 var setup = require('./controllers/setup');
 
 router.get('/', function(req, res) {
@@ -29,6 +30,7 @@ router.get('/users/all', user.findAll);
 router.get('/user/:user_id', user.findById);
 router.get('/user/:user_id/checks', check.findByProcessCurrentUserId);
 router.get('/user/:user_id/evaluations', evaluation.findByUserId);
+router.get('/user/:user_id/captures', capture.findByUserId);
 router.post('/user/create', user.create);
 
 // 角色接口
@@ -89,6 +91,10 @@ router.get('/evaluation/:evaluation_id', evaluation.findById);
 router.post('/evaluation/create', evaluation.create);
 router.post('/evaluation/:evaluation_id/update', evaluation.update);
 
+// 角色接口
+router.get('/captures/all', capture.findAll);
+router.get('/capture/:capture_id', capture.findById);
+router.post('/capture/create', capture.create);
 
 // 数据库测试接口
 router.get('/setup', setup.mongo);

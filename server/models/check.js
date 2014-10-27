@@ -10,9 +10,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var CheckSchema = new Schema({
- 
+
     uuid: { type: String, required: '{PATH}不能为空' }, // 检查编号, 自动生成
-    
+
     project: { type: Schema.Types.ObjectId, ref: 'Project' }, // 检查项目
     segment: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 检查项目组成，可以是任何级别，但只记录最小级别
 

@@ -21,7 +21,7 @@ exports.findById = function (req, res, next) {
     var unit_id = validator.trim(req.params.unit_id);
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: unit_id
         }
     };

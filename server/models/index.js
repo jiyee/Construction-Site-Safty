@@ -19,6 +19,7 @@ require('./segment');
 require('./table');
 require('./check');
 require('./evaluation');
+require('./capture');
 
 // retrieve models
 exports.UserModel = mongoose.model('User');
@@ -29,3 +30,4 @@ exports.SegmentModel = mongoose.model('Segment');
 exports.TableModel = mongoose.model('Table');
 exports.CheckModel = mongoose.model('Check');
 exports.EvaluationModel = mongoose.model('Evaluation');
+exports.CaptureModel = mongoose.model('Capture');

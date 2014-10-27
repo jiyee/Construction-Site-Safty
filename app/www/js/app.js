@@ -38,7 +38,7 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
 
 .config(['$httpProvider',function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
- }]) 
+ }])
 
 // 注册路由
 .config(["$stateProvider", "$urlRouterProvider", "$compileProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
@@ -116,7 +116,7 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         controller: 'CheckCreateCtrl'
     })
 
-    // 监督检查详情 
+    // 监督检查详情
     .state('check.detail', {
         url: '/:checkId',
         templateUrl: 'templates/check/detail.html',
@@ -137,14 +137,14 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         controller: 'CheckReviewCtrl'
     })
 
-    // 下达整改通知书 
+    // 下达整改通知书
     .state('check.criterion', {
         url: '/:checkId/criterion',
         templateUrl: 'templates/check/criterion.html',
         controller: 'CheckCriterionCtrl'
     })
 
-    // 整改提交 
+    // 整改提交
     .state('check.rectification', {
         url: '/:checkId/rectification',
         templateUrl: 'templates/check/rectification.html',
@@ -198,14 +198,14 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         controller: 'EvaluationSummaryCtrl'
     })
 
-    // 考核评价推荐内容 
+    // 考核评价推荐内容
     .state('evaluation.generate', {
         url: '/:evaluationId/generate',
         templateUrl: 'templates/evaluation/generate.html',
         controller: 'EvaluationGenerateCtrl'
     })
 
-    // 考核评价表单 
+    // 考核评价表单
     .state('evaluation.table', {
         url: '/:evaluationId/table',
         templateUrl: 'templates/evaluation/table.html',
@@ -228,6 +228,18 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         }
     })
 
+    // 用户登录
+    .state('administrator.login', {
+        url: '/login',
+        templateUrl: 'templates/administrator/login.html',
+        controller: 'AdministratorLoginCtrl',
+        resolve: {
+            projects: ["ProjectService", function (ProjectService) {
+                return ProjectService.find();
+            }]
+        }
+    })
+
     // 行业主管主面板
     .state('administrator.dashboard', {
         url: '/dashboard/:userId',
@@ -242,6 +254,36 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
                 // return AuthService.getUser();
             }]
         }
+    })
+
+    // 抽查监督抽象页，用于数据共享
+    .state('capture', {
+        url: '/capture',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+            resolveUser: ["AuthService", function (AuthService) {
+                return {
+                    _id: 0,
+                    name: '测试用户'
+                };
+                // return AuthService.getUser();
+            }]
+        }
+    })
+
+    // 创建监督
+    .state('capture.create', {
+        url: '/create',
+        templateUrl: 'templates/capture/create.html',
+        controller: 'CaptureCreateCtrl'
+    })
+
+    // 监督检查
+    .state('capture.list', {
+        url: '/:captureId',
+        templateUrl: 'templates/capture/list.html',
+        controller: 'CaptureListCtrl'
     })
     ;
 
@@ -398,6 +440,66 @@ app.factory('AuthService', ["$rootScope", "$http", "$q", "$window", "settings", 
         getUser: function () {
             console.log('session user', user);
             return user;
+        }
+    };
+}]);
+app.factory('CaptureService', ["$http", "$q", "settings", function($http, $q, settings) {
+    return {
+        find: function() {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/captures/all')
+                .success(function(data) {
+                    deferred.resolve(data.captures);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        findById: function(captureId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/capture/' + captureId)
+                .success(function(data) {
+                    deferred.resolve(data.capture);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        findByUserId: function(userId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/user/' + userId + '/captures')
+                .success(function(data) {
+                    deferred.resolve(data.captures);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        create: function(form) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/capture/create', form)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve(data.capture);
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
     };
 }]);
@@ -1291,53 +1393,102 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
     $scope.data = {};
     $scope.data.user = resolveUser;
 
-    var extent = ol.proj.transform([111.56067, 30.50430, 111.24344, 30.29702],
-        'EPSG:4326', 'EPSG:900913');
-    var center = ol.proj.transform([111.40068, 30.39583],
-        'EPSG:4326', 'EPSG:900913');
+    // var extent = ol.proj.transform([111.56067, 30.50430, 111.24344, 30.29702],
+    //     'EPSG:4326', 'EPSG:900913');
+    // var center = ol.proj.transform([111.40068, 30.39583],
+    //     'EPSG:4326', 'EPSG:900913');
 
-    var mousePositionControl = new ol.control.MousePosition({
-        coordinateFormat: ol.coordinate.createStringXY(10),
-        projection: 'EPSG:4326',
-        className: 'ol-mouse-position',
-        target: document.getElementById('mouse-position'),
-        undefinedHTML: '&nbsp;'
-    });
+    $scope.map = {
+        center: {
+            latitude: 30.39583,
+            longitude: 111.40068
+        },
+        extent: [111.56067, 30.50430, 111.24344, 30.29702],
+        zoom: 12,
+    };
+
+    var extent = ol.proj.transform($scope.map.extent,
+        'EPSG:4326', 'EPSG:900913');
+    var center = ol.proj.transform([$scope.map.center.longitude, $scope.map.center.latitude],
+        'EPSG:4326', 'EPSG:900913');
 
     var elMap = document.getElementById("map");
-    var topBannerHeight = 44;
-    elMap.style.height = (window.innerHeight - topBannerHeight) + 'px';
+    var headerHeight = 44;
+    var footerHeight = 0;
+    elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
+
+    var view = new ol.View({
+        projection: 'EPSG:900913',
+        center: center,
+        minZoom: 10,
+        maxZoom: 16,
+        zoom: 12
+    });
+
+    var server = "http://121.40.202.109:8080/";
 
     var map = new ol.Map({
-        controls: ol.control.defaults({
-            attributionOptions: ({
-                collapsible: false
-            })
-        }).extend([mousePositionControl]),
         layers: [
             new ol.layer.Tile({
+                // crossOrigin: 'anonymous',
+                // url: '//{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 source: new ol.source.XYZ({
                     tileUrlFunction: function(coordinate) {
-                        if (coordinate == null) {
+                        if (coordinate === undefined) {
                             return "";
                         }
 
                         var z = coordinate[0];
                         var x = coordinate[1];
                         var y = coordinate[2];
-                        // var y = (1 << z) - coordinate[2] - 1;
 
-                        return 'data/' + 'tianditu/' + 'satellite/' + z + '/' + x + '/' + y + '.jpg';
+                        return 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
                     },
                     extent: extent,
                     minZoom: 10,
-                    maxZoom: 20,
+                    maxZoom: 16,
                     wrapx: false
                 })
             }),
             new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    tileUrlFunction: function(coordinate) {
+                        if (coordinate === undefined) {
+                            return "";
+                        }
+
+                        var z = coordinate[0];
+                        var x = coordinate[1];
+                        var y = coordinate[2];
+
+                        return 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
+                    },
+                    extent: extent,
+                    minZoom: 10,
+                    maxZoom: 16,
+                    wrapx: false
+                })
+            }),
+            // new ol.layer.Vector({
+            //     source: new ol.source.KML({
+            //         projection: 'EPSG:4326',
+            //         url: 'data/geojson/yzgs.kml'
+            //     }),
+            //     style: function(feature, resolution) {
+            //         var style = new ol.style.Style({
+            //             stroke: new ol.style.Stroke({
+            //                 color: 'blue',
+            //                 width: 4
+            //             }),
+            //             text: ""
+            //         });
+            //         return [style];
+            //     }
+            // }),
+
+            new ol.layer.Tile({
                 source: new ol.source.TileWMS({
-                    url: 'http://hz.jiyee.org:8080/geoserver/wms',
+                    url: 'http://121.40.202.109:8080/geoserver/wms',
                     params: {
                         'LAYERS': 'css:YZGS'
                     },
@@ -1345,16 +1496,151 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
                 })
             })
         ],
-        renderer: 'canvas',
+        // renderer: 'canvas',
+        renderer: 'dom', // Android手机性能不行，只能采用DOM方式渲染
         target: 'map',
-        view: new ol.View({
-            projection: 'EPSG:900913',
-            center: center,
-            zoom: 12
-        })
+        logo: false,
+        view: view
     });
 
+    var geolocation = new ol.Geolocation({
+        projection: view.getProjection()
+    });
+
+    // update the HTML page when the position changes.
+    geolocation.on('change', function() {
+        console.log(geolocation.getPosition());
+    });
+
+    // handle geolocation error.
+    geolocation.on('error', function(error) {
+        console.log(error);
+    });
+
+    var accuracyFeature = new ol.Feature();
+    accuracyFeature.bindTo('geometry', geolocation, 'accuracyGeometry');
+
+    var positionFeature = new ol.Feature();
+    positionFeature.bindTo('geometry', geolocation, 'position')
+        .transform(function() {}, function(coordinates) {
+            return coordinates ? new ol.geom.Point(coordinates) : null;
+        });
+
+    var featuresOverlay = new ol.FeatureOverlay({
+        map: map,
+        features: [accuracyFeature, positionFeature]
+    });
+
+    geolocation.setTracking(true);
+
+    $scope.toCapture = function () {
+        $state.go('capture.create', {
+        });
+    };
+
+    $scope.toCaptureList = function () {
+        $state.go('capture.list', {
+        });
+    };
+
+    $scope.toEvaluationList = function () {
+        $state.go('evaluation.list', {
+        });
+    };
+
+    $scope.logout = function () {
+        AuthService.logout().then(function () {
+            $state.go('welcome');
+        }, function (err) {
+            alert(err);
+            $state.go('welcome');
+        });
+    };
+
     // map.getView().fitExtent(extent, map.getSize());
+}]);
+
+app.controller('AdminitratorLoginCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "projects", "ProjectService", "SegmentService", "UnitService", "UserService", "AuthService", function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UnitService, UserService, AuthService) {
+    $scope.data = {};
+    $scope.data.projects = projects;
+
+    $scope.changeProject = function (project) {
+        $scope.project = project;
+    };
+
+    $scope.login = function () {
+        if (!$scope.data.username) {
+            alert('请选择用户');
+            return;
+        }
+
+        if (!$scope.data.password) {
+            alert('请输入密码');
+            return;
+        }
+
+        // 保存到$rootScopre, 并非特别好的方式
+        $rootScope._project = $scope.project;
+
+        AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
+            $state.go("^.dashboard", {
+                userId: user._id,
+            });
+        }, function (err) {
+            alert(err);
+        });
+    };
+
+}]);
+app.controller('CaptureCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "CaptureService", "AuthService", "files", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, files, resolveUser) {
+    $scope.data = {};
+    $scope.data.user = resolveUser;
+    // $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.images = [];
+
+    // 用户登录状态异常控制
+    if (!$scope.data.user) {
+        alert('用户登录状态异常');
+        AuthService.logout().then(function () {
+            $state.go('welcome');
+        });
+    }
+
+    $scope.capture = function () {
+        function onSuccess(imageURI) {
+            $scope.data.images.push(imageURI);
+            $scope.$apply();
+        }
+
+        function onFail(message) {}
+
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 75,
+            destinationType: Camera.DestinationType.FILE_URI,
+            saveToPhotoAlbum: true
+        });
+    };
+
+    $scope.save = function () {
+        CaptureService.create({
+            name: $scope.data.name,
+            description: $scope.data.description,
+            user: $scope.data.user._id,
+            // project: $scope.data.projectId,
+            images: $scope.data.images.join("|"),
+            px: $scope.data.px,
+            py: $scope.data.py
+        }).then(function(check) {
+        }, function (err) {
+            alert(err);
+        });
+    };
+
+    $scope.toBack = function () {
+        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            userId: $scope.data.user._id
+        });
+    };
 }]);
 
 app.controller('CheckCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "CheckService", "AuthService", "files", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, files, resolveUser) {

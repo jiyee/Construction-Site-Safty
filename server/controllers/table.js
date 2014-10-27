@@ -23,7 +23,7 @@ exports.findById = function (req, res, next) {
     var table_id = validator.trim(req.params.table_id);
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: table_id
         }
     };
@@ -69,7 +69,7 @@ exports.update = function (req, res, next) {
             code: 103,
             message: '数据错误'
         });
-    } 
+    }
 
     var valid = true;
     var message = '';
@@ -121,13 +121,13 @@ exports.update = function (req, res, next) {
     if (!valid) {
         return next({
             code: 103,
-            message: "数据验证错误" + message 
+            message: "数据验证错误" + message
         });
     }
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: table_id
         }
     };
@@ -200,7 +200,7 @@ exports.update = function (req, res, next) {
 
 exports.delete = function (req, res, next) {
     var table_id = validator.trim(req.params.table_id);
-    var conditions = {   
+    var conditions = {
         _id: table_id
     };
 

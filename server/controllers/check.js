@@ -32,7 +32,7 @@ exports.findById = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: check_id
         }
     };
@@ -71,7 +71,7 @@ exports.findByProcessCurrentUserId = function (req, res, next) {
     }
 
     var options = {
-        conditions: {   
+        conditions: {
             process_current_user: user_id
         }
     };
@@ -101,7 +101,7 @@ exports.findBySessionUser = function (req, res, next) {
     }
 
     var options = {
-        conditions: {   
+        conditions: {
             process_current_user: user_id
         }
     };
@@ -211,7 +211,7 @@ exports.findByDateInterval = function (req, res, next) {
             });
         });
 
-        
+
 
     });
 };
@@ -232,7 +232,7 @@ exports.forward = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: next_user_id
         }
     };
@@ -249,7 +249,7 @@ exports.forward = function (req, res, next) {
 
         options = {
             findOne: true,
-            conditions: {   
+            conditions: {
                 units: user.unit._id
             }
         };
@@ -268,7 +268,7 @@ exports.forward = function (req, res, next) {
 
             options = {
                 findOne: true,
-                conditions: {   
+                conditions: {
                     _id: check_id
                 }
             };
@@ -281,7 +281,7 @@ exports.forward = function (req, res, next) {
                     return next(utils.getError(102));
                 }
 
-                if (check.process_active === false || 
+                if (check.process_active === false ||
                     check.process_status === 'END') {
                     return next(utils.getError(104));
                 }
@@ -330,7 +330,7 @@ exports.backward = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: check_id
         }
     };
@@ -344,7 +344,7 @@ exports.backward = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        if (check.process_active === false || 
+        if (check.process_active === false ||
             check.process_status === 'END') {
             return next(utils.getError(104));
         }
@@ -391,7 +391,7 @@ exports.revert = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: check_id
         }
     };
@@ -405,7 +405,7 @@ exports.revert = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        if (check.process_active === false || 
+        if (check.process_active === false ||
             check.process_status === 'END') {
             return next(utils.getError(104));
         }
@@ -447,7 +447,7 @@ exports.restore = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: check_id
         }
     };
@@ -461,7 +461,7 @@ exports.restore = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        if (check.process_active === false || 
+        if (check.process_active === false ||
             check.process_status === 'END') {
             return next(utils.getError(104));
         }
@@ -494,7 +494,7 @@ exports.end = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: check_id
         }
     };
@@ -528,7 +528,7 @@ exports.end = function (req, res, next) {
                 'check': check
             });
         });
-    }); 
+    });
 };
 
 exports.delete = function (req, res, next) {
@@ -564,7 +564,7 @@ exports.create = function (req, res, next) {
         var check = new CheckModel(req.body);
         check.check_user = req.session.user._id;
         check.process_current_user = req.session.user._id;
-        check.uuid = Date.now(); 
+        check.uuid = Date.now();
         check.table = table._id;
 
         check.save(function(err, check) {
@@ -592,5 +592,5 @@ exports.create = function (req, res, next) {
 
         ep.emit('table', table);
     });
-    
+
 };

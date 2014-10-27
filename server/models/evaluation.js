@@ -10,9 +10,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var EvaluationSchema = new Schema({
- 
+
     uuid: { type: String, required: '{PATH}不能为空' }, // 考核编号, 自动生成
-    
+
     project: { type: Schema.Types.ObjectId, ref: 'Project', required: '{PATH}不能为空' }, // 考核项目
     segment: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 考核项目组成，只能是标段或者分部
     unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 考核单位
@@ -22,12 +22,12 @@ var EvaluationSchema = new Schema({
     wbs: { type: String }, // 分部、分享工程WBS分解阶段
 
     // 考核表
-    tables: [{ type: Schema.Types.ObjectId, ref: 'Table' }], // 考核表，一次考核评价直接创建4张表 
+    tables: [{ type: Schema.Types.ObjectId, ref: 'Table' }], // 考核表，一次考核评价直接创建4张表
 
     createAt: { type: Date, default: Date.now }, // 创建条目时间
     updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
-    // 考核信息 
+    // 考核信息
     evaluation_date: { type: Date, default: Date.now }, // 考核日期
     evaluation_date_before: { type: Date }, // 上次考核日期
     evaluation_users: [{ type: Schema.Types.ObjectId, ref: 'User' }] // 考核人员，允许多人同时考核

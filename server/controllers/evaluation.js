@@ -31,7 +31,7 @@ exports.findById = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: evaluation_id
         }
     };
@@ -40,7 +40,7 @@ exports.findById = function (req, res, next) {
         if (err) {
             return next(err);
         }
-        
+
         res.send({
             'code': 0,
             'status': 'success',
@@ -57,7 +57,7 @@ exports.findByUserId = function (req, res, next) {
     }
 
     var options = {
-        conditions: {   
+        conditions: {
             evaluation_users: user_id
         }
     };
@@ -87,7 +87,7 @@ exports.findBySessionUser = function (req, res, next) {
     }
 
     var options = {
-        conditions: {   
+        conditions: {
             evaluation_users: user_id
         }
     };
@@ -113,7 +113,7 @@ exports.findByProjectId = function (req, res, next) {
     }
 
     var options = {
-        conditions: {   
+        conditions: {
             project: project_id
         }
     };
@@ -173,7 +173,7 @@ exports.update = function (req, res, next) {
     _.each(evaluation.tables, function (table) {
         var options = {
             findOne: true,
-            conditions: {   
+            conditions: {
                 _id: table._id
             }
         };
@@ -322,11 +322,11 @@ exports.create = function (req, res, next) {
 
     var options = {
         conditions: {
-            unit: req.session.user.unit._id 
+            unit: req.session.user.unit._id
         }
     };
     UserModel.findBy(options, function (err, users) {
-        ep.emit('users', users);  
+        ep.emit('users', users);
     });
 
     ep.on('users', function (users) {
@@ -335,7 +335,7 @@ exports.create = function (req, res, next) {
         ep.after('table', files.length, function (tables) {
             var evaluation = new EvaluationModel(req.body);
             evaluation.evaluation_users = _.pluck(users, '_id');
-            evaluation.uuid = Date.now(); 
+            evaluation.uuid = Date.now();
             evaluation.tables = _.pluck(tables, '_id');
 
             evaluation.save(function(err, evaluation) {
@@ -364,7 +364,7 @@ exports.create = function (req, res, next) {
                 _.each(table.items, function(item1) {
                     _.each(item1.items, function(item2) {
                         _.each(item2.items, function(item3) {
-                            var key = [file, item1.index, item2.index, item3.index].join('-');                            
+                            var key = [file, item1.index, item2.index, item3.index].join('-');
                             if (!!~links.indexOf(key)) {
                                 item2.is_selected = true;
                             }
@@ -384,7 +384,7 @@ exports.create = function (req, res, next) {
 
         var wbs = req.body.wbs;
         if (wbs) {
-           var wbs_list = require('../data/wbs.json'); 
+           var wbs_list = require('../data/wbs.json');
            var wbs_item = _.find(wbs_list, {"name": wbs});
            var wbs_files = wbs_item.files;
 
@@ -410,7 +410,7 @@ exports.create = function (req, res, next) {
            ep.emit('links', links);
         }
 
-        
+
     });
 
-}; 
+};

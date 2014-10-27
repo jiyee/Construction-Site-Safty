@@ -38,7 +38,7 @@ app.run(function($rootScope, $ionicPlatform) {
 
 .config(['$httpProvider',function ($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
- }]) 
+ }])
 
 // 注册路由
 .config(function($stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
@@ -116,7 +116,7 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'CheckCreateCtrl'
     })
 
-    // 监督检查详情 
+    // 监督检查详情
     .state('check.detail', {
         url: '/:checkId',
         templateUrl: 'templates/check/detail.html',
@@ -137,14 +137,14 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'CheckReviewCtrl'
     })
 
-    // 下达整改通知书 
+    // 下达整改通知书
     .state('check.criterion', {
         url: '/:checkId/criterion',
         templateUrl: 'templates/check/criterion.html',
         controller: 'CheckCriterionCtrl'
     })
 
-    // 整改提交 
+    // 整改提交
     .state('check.rectification', {
         url: '/:checkId/rectification',
         templateUrl: 'templates/check/rectification.html',
@@ -198,14 +198,14 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationSummaryCtrl'
     })
 
-    // 考核评价推荐内容 
+    // 考核评价推荐内容
     .state('evaluation.generate', {
         url: '/:evaluationId/generate',
         templateUrl: 'templates/evaluation/generate.html',
         controller: 'EvaluationGenerateCtrl'
     })
 
-    // 考核评价表单 
+    // 考核评价表单
     .state('evaluation.table', {
         url: '/:evaluationId/table',
         templateUrl: 'templates/evaluation/table.html',
@@ -228,6 +228,18 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
+    // 用户登录
+    .state('administrator.login', {
+        url: '/login',
+        templateUrl: 'templates/administrator/login.html',
+        controller: 'AdministratorLoginCtrl',
+        resolve: {
+            projects: function (ProjectService) {
+                return ProjectService.find();
+            }
+        }
+    })
+
     // 行业主管主面板
     .state('administrator.dashboard', {
         url: '/dashboard/:userId',
@@ -242,6 +254,36 @@ app.run(function($rootScope, $ionicPlatform) {
                 // return AuthService.getUser();
             }
         }
+    })
+
+    // 抽查监督抽象页，用于数据共享
+    .state('capture', {
+        url: '/capture',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+            resolveUser: function (AuthService) {
+                return {
+                    _id: 0,
+                    name: '测试用户'
+                };
+                // return AuthService.getUser();
+            }
+        }
+    })
+
+    // 创建监督
+    .state('capture.create', {
+        url: '/create',
+        templateUrl: 'templates/capture/create.html',
+        controller: 'CaptureCreateCtrl'
+    })
+
+    // 监督检查
+    .state('capture.list', {
+        url: '/:captureId',
+        templateUrl: 'templates/capture/list.html',
+        controller: 'CaptureListCtrl'
     })
     ;
 

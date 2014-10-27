@@ -21,7 +21,7 @@ exports.findById = function (req, res, next) {
     var role_id = validator.trim(req.params.role_id);
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: role_id
         }
     };

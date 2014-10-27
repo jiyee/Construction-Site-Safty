@@ -21,7 +21,7 @@ exports.findById = function (req, res, next) {
     var user_id = validator.trim(req.params.user_id);
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: user_id
         }
     };
@@ -43,7 +43,7 @@ exports.findByName = function (req, res, next) {
     var user_name = validator.trim(req.params.user_name);
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             name: user_name
         }
     };
@@ -64,7 +64,7 @@ exports.findByName = function (req, res, next) {
 exports.findByRoleId = function (req, res, next) {
     var role_id = validator.trim(req.params.role_id);
     var options = {
-        conditions: {   
+        conditions: {
             role: role_id
         }
     };
@@ -85,7 +85,7 @@ exports.findByRoleId = function (req, res, next) {
 exports.findByUnitId = function (req, res, next) {
     var unit_id = validator.trim(req.params.unit_id);
     var options = {
-        conditions: {   
+        conditions: {
             unit: unit_id
         }
     };
@@ -106,7 +106,7 @@ exports.findByUnitId = function (req, res, next) {
 exports.findBySegmentId = function (req, res, next) {
     var segment_id = validator.trim(req.params.segment_id);
     var options = {
-        conditions: {   
+        conditions: {
             segment: segment_id
         }
     };
@@ -158,7 +158,7 @@ exports.logout = function (req, res, next) {
 };
 
 exports.login = function (req, res, next) {
-    var username = validator.trim(req.body.username).toLowerCase();   
+    var username = validator.trim(req.body.username).toLowerCase();
     var password = validator.trim(req.body.password);
 
     var ep = new eventproxy();
@@ -176,7 +176,7 @@ exports.login = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             username: username
         }
     };
