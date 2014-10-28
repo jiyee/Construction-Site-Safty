@@ -25,7 +25,7 @@
         </label>
         <label class="item item-input item-select">
             <span class="input-label">
-                合同段：     
+                合同段：
             </span>
             <span ng-show="data.section">{{data.section.name}}</span>
             <select ng-model="section" ng-options="item as item.name for item in data.sections" ng-change="changeSection(section)" ng-hide="data.section">
@@ -34,7 +34,7 @@
         </label>
 <!--         <label class="item item-input item-select">
             <span class="input-label">
-                分部：     
+                分部：
             </span>
             <span ng-show="data.branch">{{data.branch.name}}</span>
             <select ng-model="branch" ng-options="item as item.name for item in data.branches" ng-change="changeBranch(branch)" ng-hide="data.branch">
@@ -51,7 +51,7 @@
         </label>
 
         <button class="button button-block button-positive" ng-click="toCreate()">
-            开始考核 
+            开始考核
         </button>
     </ion-content>
 </ion-view>

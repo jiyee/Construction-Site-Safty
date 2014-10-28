@@ -282,6 +282,58 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/capture/list.html',
         controller: 'CaptureListCtrl'
     })
+
+    // 离线
+    .state('offline', {
+        url: '/offline',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+
+        }
+    })
+
+    // 离线首页
+    .state('offline.dashboard', {
+        url: '/',
+        templateUrl: 'templates/offline/dashboard.html',
+        controller: 'OfflineDashboardCtrl'
+    })
+
+    // 监督抽查
+    .state('offline.capture', {
+        url: '/capture/:captureId',
+        templateUrl: 'templates/offline/capture.html',
+        controller: 'OfflineCaptureCtrl'
+    })
+
+    // 安全检查
+    .state('offline.check', {
+        url: '/check/:checkId',
+        templateUrl: 'templates/offline/check.html',
+        controller: 'OfflineCheckCtrl'
+    })
+
+    // 考核评价
+    .state('offline.evaluation', {
+        url: '/evaluation/:evaluationId',
+        templateUrl: 'templates/offline/evaluation.html',
+        controller: 'OfflineEvaluationCtrl'
+    })
+
+    // 考核表单
+    .state('offline.table', {
+        url: '/table/:tableId',
+        templateUrl: 'templates/offline/table.html',
+        controller: 'OfflineTableCtrl'
+    })
+
+    // 考核单项
+    .state('offline.review', {
+        url: '/review/:tableId/:itemId/:subItemId',
+        templateUrl: 'templates/offline/review.html',
+        controller: 'OfflineReviewCtrl'
+    })
     ;
 
     // 设置image url白名单，否则AngularJS解析URL错误

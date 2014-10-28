@@ -2,7 +2,7 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.segments = [];
-    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._data_.project._id;
     $scope.data.files = files;
 
     // 用户登录状态异常控制

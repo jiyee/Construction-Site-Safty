@@ -352,7 +352,6 @@ exports.create = function (req, res, next) {
         });
 
         ep.on('links', function (links) {
-            console.log(links);
 
             // 创建检查表
             _.each(files, function (file) {

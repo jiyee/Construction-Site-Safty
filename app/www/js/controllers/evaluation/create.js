@@ -2,7 +2,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     $scope.wbs = wbs;
     $scope.data = {};
     $scope.data.user = resolveUser;
-    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._data_.project._id;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {

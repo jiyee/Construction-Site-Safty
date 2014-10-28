@@ -1,30 +1,20 @@
-app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings, TableService, AuthService, resolveUser) {
+app.controller('OfflineTableCtrl', function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
     $scope.data = {};
-    $scope.data.user = resolveUser;
-    $scope.data.table = {};
     $scope.data.tableId = $stateParams.tableId;
-
-    // 用户登录状态异常控制
-    if (!$scope.data.user) {
-        alert('用户登录状态异常');
-        AuthService.logout().then(function () {
-            $state.go('welcome');
-        });
-    }
 
     $scope.ifHideSubItems = {};
 
-    TableService.findById($scope.data.tableId).then(function(table) {
+    OfflineService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
         $scope.data.checked_items = [];
         $scope.data.score = 0;
 
         // 标识考核历史记录
-        _.each($scope.data.table.items, function (level1) {
-            _.each(level1.items, function (level2) {
+        _.each($scope.data.table.items, function(level1) {
+            _.each(level1.items, function(level2) {
                 level2.pass = level2.fail = level2.uncheck = 0;
-                _.each(level2.items, function (level3) {
+                _.each(level2.items, function(level3) {
                     if (level3.status === 'FAIL') {
                         level3.full_index = [level1.index, level2.index, level3.index].join('-');
                         $scope.data.checked_items.push(level3);
@@ -56,9 +46,11 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
         });
     };
 
-    $scope.toBack = function () {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
-            userId: $scope.data.user._id
-        });
+    $scope.remove = function() {
+        OfflineService.remove($scope.data.table.checkId);
+        OfflineService.remove($scope.data.table.uuid);
+        alert('删除成功');
+        $state.go('^.dashboard');
     };
+
 });

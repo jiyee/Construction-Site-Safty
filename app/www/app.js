@@ -11,6 +11,8 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         }
     });
 
+    $rootScope._data_ = {};
+
     $rootScope.$on("$stateChangeSuccess", function (event, current, previous, eventObj) {
         // console.log('stateChangeSuccess', current, previous, eventObj);
     });
@@ -27,7 +29,7 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
 // 注册全局变量
 // 121.40.202.109
 .constant('settings', {
-    'baseUrl': 'http://' + '10.171.40.8' + ':3000',
+    'baseUrl': 'http://' + '127.0.0.1' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',
@@ -236,6 +238,9 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         resolve: {
             projects: ["ProjectService", function (ProjectService) {
                 return ProjectService.find();
+            }],
+            units: ["UnitService", function (UnitService) {
+                return UnitService.find();
             }]
         }
     })
@@ -247,11 +252,7 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         controller: 'AdministratorDashboardCtrl',
         resolve: {
             resolveUser: ["AuthService", function (AuthService) {
-                return {
-                    _id: 0,
-                    name: '测试用户'
-                };
-                // return AuthService.getUser();
+                return AuthService.getUser();
             }]
         }
     })
@@ -290,6 +291,48 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         resolve: {
 
         }
+    })
+
+    // 离线首页
+    .state('offline.dashboard', {
+        url: '/',
+        templateUrl: 'templates/offline/dashboard.html',
+        controller: 'OfflineDashboardCtrl'
+    })
+
+    // 监督抽查
+    .state('offline.capture', {
+        url: '/capture/:captureId',
+        templateUrl: 'templates/offline/capture.html',
+        controller: 'OfflineCaptureCtrl'
+    })
+
+    // 安全检查
+    .state('offline.check', {
+        url: '/check/:checkId',
+        templateUrl: 'templates/offline/check.html',
+        controller: 'OfflineCheckCtrl'
+    })
+
+    // 考核评价
+    .state('offline.evaluation', {
+        url: '/evaluation/:evaluationId',
+        templateUrl: 'templates/offline/evaluation.html',
+        controller: 'OfflineEvaluationCtrl'
+    })
+
+    // 考核表单
+    .state('offline.table', {
+        url: '/table/:tableId',
+        templateUrl: 'templates/offline/table.html',
+        controller: 'OfflineTableCtrl'
+    })
+
+    // 考核单项
+    .state('offline.review', {
+        url: '/review/:tableId/:itemId/:subItemId',
+        templateUrl: 'templates/offline/review.html',
+        controller: 'OfflineReviewCtrl'
     })
     ;
 
@@ -373,7 +416,7 @@ app.factory('AuthService', ["$rootScope", "$http", "$q", "$window", "settings", 
 
     if ($window.sessionStorage["project"]) {
         project = JSON.parse($window.sessionStorage["project"]);
-        $rootScope._project = project;
+        $rootScope._data_.project = project;
     }
 
     if ($window.sessionStorage["user"]) {
@@ -393,7 +436,7 @@ app.factory('AuthService', ["$rootScope", "$http", "$q", "$window", "settings", 
                         deferred.reject(data.message);
                     } else {
                         user = data.user;
-                        $window.sessionStorage["project"] = JSON.stringify($rootScope._project);
+                        $window.sessionStorage["project"] = JSON.stringify($rootScope._data_.project);
                         $window.sessionStorage["user"] = JSON.stringify(data.user);
                         deferred.resolve(data.user);
                     }
@@ -444,7 +487,6 @@ app.factory('AuthService', ["$rootScope", "$http", "$q", "$window", "settings", 
             return deferred.promise;
         },
         getUser: function () {
-            console.log('session user', user);
             return user;
         }
     };
@@ -1062,6 +1104,97 @@ app.constant('files', [{
     "group": "9. 临建"
 }]);
 
+app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings", function($rootScope, $http, $q, $window, settings) {
+    return {
+        guid: (function() {
+            var counter = 0;
+
+            return function() {
+                var guid = new Date().getTime().toString(32),
+                    i;
+
+                for (i = 0; i < 5; i++) {
+                    guid += Math.floor(Math.random() * 65535).toString(32);
+                }
+
+                return 'o_' + guid + (counter++).toString(32);
+            };
+        }()),
+
+        saveCheck: function(opts) {
+            var deferred = $q.defer();
+
+            var checkId = opts.checkId,
+                file = opts.file,
+                check_target = opts.check_target;
+
+            if (!checkId || !file) {
+                deferred.reject('参数错误');
+                return;
+            }
+
+            var that = this,
+                table, check;
+
+            $http.get('/data/table/' + file + '.json')
+                .success(function(proto) {
+                    table = _.extend({
+                        uuid: that.guid(),
+                        file: file
+                    }, proto);
+
+                    // 单独保存table
+                    that.save(table.uuid, table);
+
+                    check = {
+                        uuid: checkId,
+                        check_date: Date.now(),
+                        check_target: check_target,
+                        file: file,
+                        table: table.uuid
+                    };
+
+                    // 保存到localstorage
+                    // 单独保存check
+                    that.save(check.uuid, check);
+
+                    deferred.resolve(check);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+
+        restoreTable: function (tableId) {
+            var deferred = $q.defer();
+            if (!tableId) {
+                deferred.reject('参数错误');
+                return;
+            }
+
+            deferred.resolve(this.restore(tableId));
+
+            return deferred.promise;
+        },
+
+        save: function(id, object) {
+            if (!id) return null;
+
+            $window.localStorage[id] = JSON.stringify(object);
+            return object;
+        },
+
+        restore: function(id) {
+            if (!id) return null;
+
+            var object = JSON.parse($window.localStorage[id]);
+            return object;
+        }
+    };
+}]);
+
 app.factory('ProjectService', ["$http", "$q", "settings", function($http, $q, settings) {
     return {
         find: function() {
@@ -1398,24 +1531,22 @@ app.constant('wbs', [{
 app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "UserService", "CheckService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, UserService, CheckService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
+    $scope.data.project = $rootScope._data_.project;
 
     // var extent = ol.proj.transform([111.56067, 30.50430, 111.24344, 30.29702],
     //     'EPSG:4326', 'EPSG:900913');
     // var center = ol.proj.transform([111.40068, 30.39583],
     //     'EPSG:4326', 'EPSG:900913');
 
-    $scope.map = {
-        center: {
-            latitude: 30.39583,
-            longitude: 111.40068
-        },
-        extent: [111.56067, 30.50430, 111.24344, 30.29702],
-        zoom: 12,
+    $scope.data.map = {
+        center: $scope.data.project.center,
+        extent: $scope.data.project.extent,
+        zoom: 12
     };
 
-    var extent = ol.proj.transform($scope.map.extent,
+    var extent = ol.proj.transform($scope.data.map.extent,
         'EPSG:4326', 'EPSG:900913');
-    var center = ol.proj.transform([$scope.map.center.longitude, $scope.map.center.latitude],
+    var center = ol.proj.transform($scope.data.map.center,
         'EPSG:4326', 'EPSG:900913');
 
     var elMap = document.getElementById("map");
@@ -1428,10 +1559,11 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
         center: center,
         minZoom: 10,
         maxZoom: 16,
-        zoom: 12
+        zoom: 10
     });
 
-    var server = "http://121.40.202.109:8080/";
+    var server = "";
+    // var server = "http://121.40.202.109:8080/";
 
     var map = new ol.Map({
         layers: [
@@ -1440,7 +1572,7 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
                 // url: '//{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 source: new ol.source.XYZ({
                     tileUrlFunction: function(coordinate) {
-                        if (coordinate === undefined) {
+                        if (coordinate === null) {
                             return "";
                         }
 
@@ -1448,7 +1580,7 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
                         var x = coordinate[1];
                         var y = coordinate[2];
 
-                        return 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
+                        return server + 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
                     },
                     extent: extent,
                     minZoom: 10,
@@ -1459,7 +1591,7 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
                     tileUrlFunction: function(coordinate) {
-                        if (coordinate === undefined) {
+                        if (coordinate === null) {
                             return "";
                         }
 
@@ -1467,7 +1599,7 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
                         var x = coordinate[1];
                         var y = coordinate[2];
 
-                        return 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
+                        return server + 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
                     },
                     extent: extent,
                     minZoom: 10,
@@ -1502,7 +1634,6 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
                 })
             })
         ],
-        // renderer: 'canvas',
         renderer: 'dom', // Android手机性能不行，只能采用DOM方式渲染
         target: 'map',
         logo: false,
@@ -1516,6 +1647,8 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
     // update the HTML page when the position changes.
     geolocation.on('change', function() {
         console.log(geolocation.getPosition());
+        map.getView().setCenter(geolocation.getPosition());
+        map.getView().setZoom(16);
     });
 
     // handle geolocation error.
@@ -1550,8 +1683,8 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
     };
 
     $scope.toEvaluationList = function () {
-        $state.go('evaluation.list', {
-        });
+        // $state.go('evaluation.list', {
+        // });
     };
 
     $scope.logout = function () {
@@ -1562,17 +1695,20 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
             $state.go('welcome');
         });
     };
-
-    // map.getView().fitExtent(extent, map.getSize());
 }]);
 
-app.controller('AdminitratorLoginCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "projects", "ProjectService", "SegmentService", "UnitService", "UserService", "AuthService", function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UnitService, UserService, AuthService) {
+app.controller('AdministratorLoginCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "projects", "units", "ProjectService", "SegmentService", "UnitService", "UserService", "AuthService", function($scope, $rootScope, $state, $stateParams, settings, projects, units, ProjectService, SegmentService, UnitService, UserService, AuthService) {
     $scope.data = {};
     $scope.data.projects = projects;
+    $scope.data.units = units;
 
-    $scope.changeProject = function (project) {
-        $scope.project = project;
-    };
+    $scope.$watch('data.unit', function (unit) {
+        if (unit && unit._id) {
+            UserService.findByUnitId(unit._id).then(function(users) {
+                $scope.data.users = users;
+            });
+        }
+    });
 
     $scope.login = function () {
         if (!$scope.data.username) {
@@ -1586,7 +1722,7 @@ app.controller('AdminitratorLoginCtrl', ["$scope", "$rootScope", "$state", "$sta
         }
 
         // 保存到$rootScopre, 并非特别好的方式
-        $rootScope._project = $scope.project;
+        $rootScope._data_.project = $scope.data.project;
 
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
             $state.go("^.dashboard", {
@@ -1601,18 +1737,34 @@ app.controller('AdminitratorLoginCtrl', ["$scope", "$rootScope", "$state", "$sta
 app.controller('CaptureCreateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "SegmentService", "UserService", "CaptureService", "AuthService", "files", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, files, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
-    // $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.project = $rootScope._data_.project;
     $scope.data.images = [];
+    $scope.data.center_x = 0;
+    $scope.data.center_y = 0;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
         alert('用户登录状态异常');
-        AuthService.logout().then(function () {
+        AuthService.logout().then(function() {
             $state.go('welcome');
         });
     }
 
-    $scope.capture = function () {
+    var onSuccess = function(position) {
+        $scope.data.center_x = position.coords.longitude;
+        $scope.data.center_y = position.coords.latitude;
+        $scope.$apply();
+    };
+
+    var onError = function(error) {
+        $scope.data.center_x = 0;
+        $scope.data.center_y = 0;
+        $scope.$apply();
+    };
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+    $scope.capture = function() {
         function onSuccess(imageURI) {
             $scope.data.images.push(imageURI);
             $scope.$apply();
@@ -1627,22 +1779,58 @@ app.controller('CaptureCreateCtrl', ["$scope", "$rootScope", "$state", "$statePa
         });
     };
 
-    $scope.save = function () {
+    $scope.save = function() {
+        if (!$scope.data.name) {
+            alert('请选择名称');
+            return;
+        }
+
+        if (!$scope.data.description) {
+            alert('请输入问题描述');
+            return;
+        }
+
         CaptureService.create({
             name: $scope.data.name,
             description: $scope.data.description,
             user: $scope.data.user._id,
-            // project: $scope.data.projectId,
+            project: $scope.data.project._id,
             images: $scope.data.images.join("|"),
-            px: $scope.data.px,
-            py: $scope.data.py
+            center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {
-        }, function (err) {
+            alert('保存成功');
+            // 还原状态
+            $scope.data.name = '';
+            $scope.data.description = '';
+            $scope.data.images = [];
+        }, function(err) {
             alert(err);
         });
     };
 
-    $scope.toBack = function () {
+    $scope.toBack = function() {
+        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            userId: $scope.data.user._id
+        });
+    };
+}]);
+
+app.controller('CaptureListCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "ProjectService", "UserService", "UnitService", "CaptureService", "AuthService", "resolveUser", function($scope, $rootScope, $state, $stateParams, settings, ProjectService, UserService, UnitService, CaptureService, AuthService, resolveUser) {
+    $scope.data = {};
+    $scope.data.user = resolveUser;
+    $scope.data.captures = [];
+
+    CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
+        $scope.data.captures = captures;
+    });
+
+    $scope.toDetail = function(item) {
+        $state.go('^.detail', {
+            captureId: item._id
+        });
+    };
+
+    $scope.toBack = function() {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });
@@ -1653,7 +1841,7 @@ app.controller('CheckCreateCtrl', ["$scope", "$rootScope", "$state", "$statePara
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.segments = [];
-    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._data_.project._id;
     $scope.data.files = files;
 
     // 用户登录状态异常控制
@@ -1999,7 +2187,6 @@ app.controller('CheckTableCtrl', ["$scope", "$stateParams", "$state", "settings"
                 });
             });
         });
-
     });
 
     $scope.toggle = function(index, item) {
@@ -2029,7 +2216,7 @@ app.controller('EvaluationCreateCtrl', ["$scope", "$rootScope", "$state", "$stat
     $scope.wbs = wbs;
     $scope.data = {};
     $scope.data.user = resolveUser;
-    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._project._id;
+    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._data_.project._id;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -2674,8 +2861,6 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
         });
 
         UnitService.findByProjectId(project._id).then(function (units) {
-            console.log(units); 
-
             $scope.data.units = units;
         });
     };
@@ -2724,7 +2909,7 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
         }
 
         // 保存到$rootScopre, 并非特别好的方式
-        $rootScope._project = $scope.project;
+        $rootScope._data_.project = $scope.project;
 
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
             $state.go("^.dashboard", {
@@ -2732,6 +2917,108 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
             });
         }, function (err) {
             alert(err);
+        });
+    };
+
+}]);
+app.controller('OfflineCheckCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "files", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, files, OfflineService) {
+    $scope.data = {};
+    $scope.data.files = files;
+    $scope.data.checkId = $stateParams.checkId;
+
+    $scope.newCheck = function () {
+        if (!$scope.data.file) {
+            alert('请选择检查用表');
+            return;
+        }
+
+        if (!$scope.data.check_target) {
+            alert('请填写检查对象');
+            return;
+        }
+
+        OfflineService.saveCheck({
+            checkId: $scope.data.checkId,
+            file: $scope.data.file,
+            check_target: $scope.data.check_target
+        }).then(function(check) {
+            console.log(check);
+            $state.go('^.table', {
+                tableId: check.table
+            });
+        }, function (err) {
+            alert(err);
+        });
+    };
+
+}]);
+app.controller('OfflineDashboardCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
+
+    $scope.toCapture = function () {
+        $state.go('^.capture', {
+            captureId: OfflineService.guid()
+        });
+    };
+
+    $scope.toCheck = function () {
+        $state.go('^.check', {
+            checkId: OfflineService.guid()
+        });
+    };
+
+    $scope.toEvaluation = function () {
+        $state.go('^.evaluation', {
+            evaluationId: OfflineService.guid()
+        });
+    };
+
+}]);
+app.controller('OfflineTableCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "files", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, files, OfflineService) {
+    $scope.data = {};
+    $scope.data.files = files;
+    $scope.data.tableId = $stateParams.tableId;
+
+    $scope.ifHideSubItems = {};
+
+    OfflineService.restoreTable($scope.data.tableId).then(function(table) {
+        $scope.data.table = table;
+
+        $scope.data.checked_items = [];
+        $scope.data.score = 0;
+
+        // 标识考核历史记录
+        _.each($scope.data.table.items, function(level1) {
+            _.each(level1.items, function(level2) {
+                level2.pass = level2.fail = level2.uncheck = 0;
+                _.each(level2.items, function(level3) {
+                    if (level3.status === 'FAIL') {
+                        level3.full_index = [level1.index, level2.index, level3.index].join('-');
+                        $scope.data.checked_items.push(level3);
+                        $scope.data.score += parseInt(level3.score, 10);
+                        level2.fail += 1;
+                    } else if (level3.status === 'PASS') {
+                        level2.pass += 1;
+                    } else if (level3.status === 'UNCHECK') {
+                        level2.uncheck += 1;
+                    }
+                });
+            });
+        });
+    });
+
+    $scope.toggle = function(index, item) {
+        if ($scope.ifHideSubItems[item.index] === undefined) {
+            $scope.ifHideSubItems[item.index] = true;
+        } else {
+            $scope.ifHideSubItems[item.index] = !$scope.ifHideSubItems[item.index];
+        }
+    };
+
+    $scope.review = function(index, item, subItem) {
+        $state.go("^.review", {
+            tableId: $scope.data.tableId,
+            itemId: item.index,
+            subItemId: subItem.index
         });
     };
 

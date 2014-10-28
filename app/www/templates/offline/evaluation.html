@@ -1,0 +1,24 @@
+<ion-view title="check">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <a class="button" ui-sref="^.dashboard">返回</a>
+        <h1 class="title">考核评价</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <h2>考核评价[离线]</h2>
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    工程进展：
+                </div>
+                <select ng-model="data.wbs" ng-options="item.name as (item.name) group by item.group for item in wbs">
+                    <option value="" selected>请选择分部、分项工程</option>
+                </select>
+            </label>
+
+            <button class="button button-block button-positive" ng-click="newEvaluation()">
+                开始检查
+            </button>
+    </ion-content>
+</ion-view>

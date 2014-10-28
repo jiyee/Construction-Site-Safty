@@ -1,11 +1,11 @@
-<ion-view title="create">
+<ion-view title="check">
     <ion-header-bar align-title="center" class="bar-calm">
-        <button class="button" ng-click="toBack()">返回</button>
+        <a class="button" ui-sref="^.dashboard">返回</a>
         <h1 class="title">安全检查</h1>
     </ion-header-bar>
 
     <ion-content padding="true">
-        <h2>现场检查对象</h2>
+        <h2>现场检查[离线]</h2>
 
         <div class="list">
             <label class="item item-input item-select">
@@ -16,25 +16,6 @@
                     <option value="" selected>--- 请选择表格 ---</option>
                 </select>
             </label>
-
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    合同段：
-                </div>
-                <select ng-model="section" ng-options="item as item.name for item in data.segments | filter: {type: '标段'}" ng-change="changeSection(section)">
-                    <option value="" selected>--- 请选择合同段 ---</option>
-                </select>
-            </label>
-
-            <label class="item item-input item-select">
-                <div class="input-label">
-                    分部：
-                </div>
-                <select ng-model="branch" ng-options="item as item.name for item in data.segments | filter: {type: '分部'}" ng-change="changeBranch(branch)">
-                    <option value="" selected>--- 请选择分部 ---</option>
-                </select>
-            </label>
-
             <label class="item item-input">
                 <div class="input-label">
                     对象：

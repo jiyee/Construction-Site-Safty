@@ -39,8 +39,6 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
         });
 
         UnitService.findByProjectId(project._id).then(function (units) {
-            console.log(units); 
-
             $scope.data.units = units;
         });
     };
@@ -89,7 +87,7 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
         }
 
         // 保存到$rootScopre, 并非特别好的方式
-        $rootScope._project = $scope.project;
+        $rootScope._data_.project = $scope.project;
 
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
             $state.go("^.dashboard", {

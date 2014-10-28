@@ -1,0 +1,40 @@
+<ion-view title="create">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <a class="button" ui-sref="^.dashboard">返回</a>
+        <h1 class="title">抽查标注</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <h2>抽查标注</h2>
+        <div class="list">
+            <label class="item item-input">
+                <div class="input-label">
+                    名称：
+                </div>
+                <input type="text" ng-model="data.name" placeholder="请填写检查对象">
+            </label>
+        </div>
+
+        <div class="list">
+            <label class="item item-input">
+                <div class="input-label">
+                    问题描述：
+                </div>
+                <textarea type="text" ng-model="data.description" rows="10"></textarea>
+            </label>
+        </div>
+
+        <div class="list">
+            <img ng-src="item" ng-repeat="item in data.images" width="64" height="64">
+        </div>
+
+        <div class="button-bar">
+            <button class="button button-block button-positive" ng-click="capture()">
+                拍照
+            </button>
+            <button class="button button-block button-positive" ng-click="save()">
+                保存
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
