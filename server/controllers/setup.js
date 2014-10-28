@@ -42,7 +42,11 @@ exports.mongo = function(req, res, next) {
     ep.after('remove', 8, function() {
         var project1 = {
             name: '宜张高速公路宜都至五峰段',
-            province: '湖北省'
+            province: '湖北省',
+            abbr: 'YZGS',
+            center: [111.40068, 30.39583],
+            extent: [111.56067, 30.50430, 111.24344, 30.29702],
+            zoom: 12
         };
 
         var unit1 = {

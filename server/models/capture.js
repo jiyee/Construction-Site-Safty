@@ -29,8 +29,7 @@ var CaptureSchema = new Schema({
 
     images: [{ type: String }], // 照片URI
 
-    px: { type: Number }, // 定位坐标X
-    py: { type: Number }  // 定位坐标Y
+    center: [{ type: Number }] // 定位坐标
 
 });
 

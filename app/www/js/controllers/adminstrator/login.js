@@ -1,10 +1,15 @@
-app.controller('AdminitratorLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UnitService, UserService, AuthService) {
+app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, units, ProjectService, SegmentService, UnitService, UserService, AuthService) {
     $scope.data = {};
     $scope.data.projects = projects;
+    $scope.data.units = units;
 
-    $scope.changeProject = function (project) {
-        $scope.project = project;
-    };
+    $scope.$watch('data.unit', function (unit) {
+        if (unit && unit._id) {
+            UserService.findByUnitId(unit._id).then(function(users) {
+                $scope.data.users = users;
+            });
+        }
+    });
 
     $scope.login = function () {
         if (!$scope.data.username) {
@@ -18,7 +23,7 @@ app.controller('AdminitratorLoginCtrl', function($scope, $rootScope, $state, $st
         }
 
         // 保存到$rootScopre, 并非特别好的方式
-        $rootScope._project = $scope.project;
+        $rootScope._data_.project = $scope.data.project;
 
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
             $state.go("^.dashboard", {

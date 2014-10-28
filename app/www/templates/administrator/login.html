@@ -19,9 +19,35 @@
                     <span class="input-label">
                         项目：
                     </span>
-                    <select ng-model="project" ng-options="item as item.name for item in data.projects" ng-change="changeProject(project)">
+                    <select ng-model="data.project" ng-options="item as item.name for item in data.projects">
                         <option value="" selected>--- 请选择项目 ---</option>
                     </select>
+                </label>
+            </div>
+            <br>
+            <div>
+                <label class="item item-input item-select">
+                    <span class="input-label">
+                        单位：
+                    </span>
+                    <select ng-model="data.unit" ng-options="item as item.name for item in data.units">
+                        <option value="" selected>--- 请选择单位 ---</option>
+                    </select>
+                </label>
+            </div>
+            <br>
+            <div>
+                <label class="item item-input item-select">
+                    <span class="input-label">
+                        用户：
+                    </span>
+                    <select ng-model="data.username" ng-options="item.username as item.name for item in data.users">
+                        <option value="" selected>--- 请选择用户 ---</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">密码：</span>
+                    <input type="password" ng-model="data.password" placeholder="请输入密码">
                 </label>
             </div>
 

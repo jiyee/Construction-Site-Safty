@@ -11,6 +11,8 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     });
 
+    $rootScope._data_ = {};
+
     $rootScope.$on("$stateChangeSuccess", function (event, current, previous, eventObj) {
         // console.log('stateChangeSuccess', current, previous, eventObj);
     });
@@ -27,7 +29,7 @@ app.run(function($rootScope, $ionicPlatform) {
 // 注册全局变量
 // 121.40.202.109
 .constant('settings', {
-    'baseUrl': 'http://' + '10.171.40.8' + ':3000',
+    'baseUrl': 'http://' + '127.0.0.1' + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'admin',
@@ -236,6 +238,9 @@ app.run(function($rootScope, $ionicPlatform) {
         resolve: {
             projects: function (ProjectService) {
                 return ProjectService.find();
+            },
+            units: function (UnitService) {
+                return UnitService.find();
             }
         }
     })
@@ -247,11 +252,7 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'AdministratorDashboardCtrl',
         resolve: {
             resolveUser: function (AuthService) {
-                return {
-                    _id: 0,
-                    name: '测试用户'
-                };
-                // return AuthService.getUser();
+                return AuthService.getUser();
             }
         }
     })
@@ -263,11 +264,7 @@ app.run(function($rootScope, $ionicPlatform) {
         template: "<ui-view></ui-view>",
         resolve: {
             resolveUser: function (AuthService) {
-                return {
-                    _id: 0,
-                    name: '测试用户'
-                };
-                // return AuthService.getUser();
+                return AuthService.getUser();
             }
         }
     })

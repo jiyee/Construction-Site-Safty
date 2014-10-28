@@ -14,6 +14,10 @@ var ProjectSchema = new Schema({
     description: { type: String }, // 项目描述
     province: { type: String, required: '{PATH}不能为空' }, // 省份
 
+    abbr: { type: String }, // 简称，如YZGS
+    center: [{ type: Number }], // 定位坐标X,Y
+    extent: [{ type: Number }], // 坐标范围
+
     createAt: { type: Date, default: Date.now }, // 创建条目时间
     updateAt: { type: Date, default: Date.now }, // 最近更新时间
 

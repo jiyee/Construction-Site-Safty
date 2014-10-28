@@ -1,24 +1,22 @@
 app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, settings, UserService, CheckService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
+    $scope.data.project = $rootScope._data_.project;
 
     // var extent = ol.proj.transform([111.56067, 30.50430, 111.24344, 30.29702],
     //     'EPSG:4326', 'EPSG:900913');
     // var center = ol.proj.transform([111.40068, 30.39583],
     //     'EPSG:4326', 'EPSG:900913');
 
-    $scope.map = {
-        center: {
-            latitude: 30.39583,
-            longitude: 111.40068
-        },
-        extent: [111.56067, 30.50430, 111.24344, 30.29702],
-        zoom: 12,
+    $scope.data.map = {
+        center: $scope.data.project.center,
+        extent: $scope.data.project.extent,
+        zoom: 12
     };
 
-    var extent = ol.proj.transform($scope.map.extent,
+    var extent = ol.proj.transform($scope.data.map.extent,
         'EPSG:4326', 'EPSG:900913');
-    var center = ol.proj.transform([$scope.map.center.longitude, $scope.map.center.latitude],
+    var center = ol.proj.transform($scope.data.map.center,
         'EPSG:4326', 'EPSG:900913');
 
     var elMap = document.getElementById("map");
@@ -31,10 +29,11 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         center: center,
         minZoom: 10,
         maxZoom: 16,
-        zoom: 12
+        zoom: 10
     });
 
-    var server = "http://121.40.202.109:8080/";
+    var server = "";
+    // var server = "http://121.40.202.109:8080/";
 
     var map = new ol.Map({
         layers: [
@@ -43,7 +42,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                 // url: '//{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 source: new ol.source.XYZ({
                     tileUrlFunction: function(coordinate) {
-                        if (coordinate === undefined) {
+                        if (coordinate === null) {
                             return "";
                         }
 
@@ -51,7 +50,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                         var x = coordinate[1];
                         var y = coordinate[2];
 
-                        return 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
+                        return server + 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
                     },
                     extent: extent,
                     minZoom: 10,
@@ -62,7 +61,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
                     tileUrlFunction: function(coordinate) {
-                        if (coordinate === undefined) {
+                        if (coordinate === null) {
                             return "";
                         }
 
@@ -70,7 +69,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                         var x = coordinate[1];
                         var y = coordinate[2];
 
-                        return 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
+                        return server + 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
                     },
                     extent: extent,
                     minZoom: 10,
@@ -105,7 +104,6 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                 })
             })
         ],
-        // renderer: 'canvas',
         renderer: 'dom', // Android手机性能不行，只能采用DOM方式渲染
         target: 'map',
         logo: false,
@@ -119,6 +117,8 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     // update the HTML page when the position changes.
     geolocation.on('change', function() {
         console.log(geolocation.getPosition());
+        map.getView().setCenter(geolocation.getPosition());
+        map.getView().setZoom(16);
     });
 
     // handle geolocation error.
@@ -153,8 +153,8 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     };
 
     $scope.toEvaluationList = function () {
-        $state.go('evaluation.list', {
-        });
+        // $state.go('evaluation.list', {
+        // });
     };
 
     $scope.logout = function () {
@@ -165,6 +165,4 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
             $state.go('welcome');
         });
     };
-
-    // map.getView().fitExtent(extent, map.getSize());
 });
