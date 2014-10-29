@@ -66,4 +66,10 @@ app.controller('OfflineCaptureCtrl', function($scope, $rootScope, $state, $state
             alert(err);
         });
     };
+
+    $scope.remove = function() {
+        OfflineService.remove($scope.data.captureId);
+        alert('删除成功');
+        $state.go('^.dashboard');
+    };
 });

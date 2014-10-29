@@ -321,6 +321,20 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'OfflineEvaluationCtrl'
     })
 
+    // 考核评价范围选择
+    .state('offline.evaluation-generate', {
+        url: '/evaluation/:evaluationId/generate',
+        templateUrl: 'templates/offline/evaluation-generate.html',
+        controller: 'OfflineEvaluationGenerateCtrl'
+    })
+
+    // 考核评价表格
+    .state('offline.evaluation-tables', {
+        url: '/evaluation/:evaluationId/tables',
+        templateUrl: 'templates/offline/evaluation-tables.html',
+        controller: 'OfflineEvaluationTablesCtrl'
+    })
+
     // 考核表单
     .state('offline.table', {
         url: '/table/:tableId',

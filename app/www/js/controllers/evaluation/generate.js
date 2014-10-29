@@ -24,9 +24,9 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
         CheckService.list(project, segment, start_date, end_date).then(function (checks) {
             $scope.data.checks = checks;
 
-            angular.forEach(checks, function (check) {
+            _.each(checks, function (check) {
                 if (check.checked_items && check.check_user.unit._id === current_unit._id) {
-                    angular.forEach(check.checked_items, function (item) {
+                    _.each(check.checked_items, function (item) {
                         if (item.status !== 'UNCHECK' && item.link !== '') {
                             matches = item.link.match(reLink);
 
@@ -45,7 +45,7 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
             });
 
             var table, level1, level2, level3;
-            angular.forEach(checked_items, function (item) {
+            _.each(checked_items, function (item) {
                 table = find($scope.data.evaluation.tables, {
                     key: 'file',
                     value: item.link.file
@@ -89,7 +89,7 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
         if (collections.length === 0) return;
 
         var found;
-        angular.forEach(collections, function(item) {
+        _.each(collections, function(item) {
             if (item[condition.key] === condition.value) {
                 found = item;
                 return found;
@@ -97,7 +97,7 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
         });
 
         return found;
-    } 
+    }
 
     $scope.toggleLinkScore = function(linkScore) {
         toggleLinkScore(linkScore);
@@ -113,22 +113,22 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
         EvaluationService.update($scope.data.evaluation._id, $scope.data.evaluation).then(function(table) {
             alert('确认成功');
             $state.go('^.table', {
-                evaluationId: $scope.data.evaluation._id 
+                evaluationId: $scope.data.evaluation._id
             });
         }, function(err) {
             alert(err);
         });
-        
+
     };
 
     function toggleLinkScore (bool) {
         if (bool) {
-            angular.forEach($scope.data.evaluation.tables, function (table) {
-                angular.forEach(table.items, function(level1) {
-                    angular.forEach(level1.items, function(level2) {
-                        angular.forEach(level2.items, function(level3) {
+            _.each($scope.data.evaluation.tables, function (table) {
+                _.each(table.items, function(level1) {
+                    _.each(level1.items, function(level2) {
+                        _.each(level2.items, function(level3) {
                             var pass = 0,
-                                fail = 0, 
+                                fail = 0,
                                 last_pass = true;
 
                             if (level3.is_checked && level3.checked_items) {
@@ -142,7 +142,7 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
                                     last_pass = false;
                                 }
 
-                                angular.forEach(level3.checked_items, function (item) {
+                                _.each(level3.checked_items, function (item) {
                                     if (item.score === '0') {
                                         pass += 1;
                                     } else if (item.score === '1') {
@@ -171,10 +171,10 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
                 });
             });
         } else {
-            angular.forEach($scope.data.evaluation.tables, function (table) {
-                angular.forEach(table.items, function(level1) {
-                    angular.forEach(level1.items, function(level2) {
-                        angular.forEach(level2.items, function(level3) {
+            _.each($scope.data.evaluation.tables, function (table) {
+                _.each(table.items, function(level1) {
+                    _.each(level1.items, function(level2) {
+                        _.each(level2.items, function(level3) {
                             level3.status = 'UNCHECK';
                             level3.score = null;
                         });

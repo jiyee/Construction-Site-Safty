@@ -321,6 +321,20 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         controller: 'OfflineEvaluationCtrl'
     })
 
+    // 考核评价范围选择
+    .state('offline.evaluation-generate', {
+        url: '/evaluation/:evaluationId/generate',
+        templateUrl: 'templates/offline/evaluation-generate.html',
+        controller: 'OfflineEvaluationGenerateCtrl'
+    })
+
+    // 考核评价表格
+    .state('offline.evaluation-tables', {
+        url: '/evaluation/:evaluationId/tables',
+        templateUrl: 'templates/offline/evaluation-tables.html',
+        controller: 'OfflineEvaluationTablesCtrl'
+    })
+
     // 考核表单
     .state('offline.table', {
         url: '/table/:tableId',
@@ -409,6 +423,19 @@ app.filter('score', function() {
         } else {
             return '不达标';
         }
+    };
+});
+app.filter('type', function() {
+    return function(input) {
+        if (input === 'capture') {
+            return '监督抽查';
+        } else if (input === 'check') {
+            return '安全检查';
+        } else if (input === 'evaluation') {
+            return '考核评价';
+        }
+
+        return '';
     };
 });
 app.factory('AuthService', ["$rootScope", "$http", "$q", "$window", "settings", function($rootScope, $http, $q, $window, settings) {
@@ -1121,7 +1148,7 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
             };
         }()),
 
-        saveCheck: function(opts) {
+        newCheck: function(opts) {
             var deferred = $q.defer();
 
             var checkId = opts.checkId,
@@ -1139,15 +1166,20 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
             $http.get('/data/table/' + file + '.json')
                 .success(function(proto) {
                     table = _.extend({
+                        _type_: 'table',
+                        checkId: checkId,
                         uuid: that.guid(),
+                        createAt: Date.now(),
                         file: file
                     }, proto);
 
                     // 单独保存table
-                    that.save(table.uuid, table);
+                    that._save(table.uuid, table);
 
                     check = {
+                        _type_: 'check',
                         uuid: checkId,
+                        createAt: Date.now(),
                         check_date: Date.now(),
                         check_target: check_target,
                         file: file,
@@ -1156,7 +1188,7 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
 
                     // 保存到localstorage
                     // 单独保存check
-                    that.save(check.uuid, check);
+                    that._save(check.uuid, check);
 
                     deferred.resolve(check);
                 })
@@ -1167,30 +1199,242 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
             return deferred.promise;
         },
 
-        restoreTable: function (tableId) {
+        newCapture: function(opts) {
             var deferred = $q.defer();
-            if (!tableId) {
+
+            var captureId = opts.captureId;
+
+            if (!captureId) {
                 deferred.reject('参数错误');
                 return;
             }
 
-            deferred.resolve(this.restore(tableId));
+            var that = this,
+                capture;
+
+            capture = _.extend({
+                _type_: 'capture',
+                uuid: captureId,
+                createAt: Date.now(),
+                check_date: Date.now()
+            }, opts);
+
+            that._save(capture.uuid, capture);
+
+            deferred.resolve(capture);
 
             return deferred.promise;
         },
 
-        save: function(id, object) {
-            if (!id) return null;
+        newEvaluation: function(opts) {
+            var deferred = $q.defer();
 
-            $window.localStorage[id] = JSON.stringify(object);
+            var evaluationId = opts.evaluationId;
+            var wbs = opts.wbs;
+
+            if (!evaluationId) {
+                deferred.reject('参数错误');
+                return;
+            }
+
+            var that = this,
+                t = Date.now(),
+                evaluation;
+            var links = [],
+                tables = [];
+            var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
+
+            $http.get('/data/table/wbs.json')
+                .success(function(wbs_list) {
+                    var wbs_item = _.find(wbs_list, {
+                        "name": wbs
+                    });
+                    var check_files = wbs_item.files;
+
+                    _.each(check_files, function(file) {
+                        $http.get('/data/table/' + file + '.json')
+                            .success(function(table) {
+                                _.each(table.items, function(item1) {
+                                    _.each(item1.items, function(item2) {
+                                        _.each(item2.items, function(item3) {
+                                            if (item3.link) {
+                                                links = links.concat(item3.link.split(','));
+                                            }
+                                        });
+                                    });
+                                });
+
+                                $rootScope.$emit('link' + t);
+                            });
+                    });
+
+                    var times = 0;
+                    $rootScope.$on('link' + t, function() {
+                        times += 1;
+
+                        if (times === check_files.length) {
+                            links = _.uniq(_.map(links, function(link) {
+                                return link.trim();
+                            }));
+
+                            $rootScope.$emit('links' + t, links);
+                        }
+                    });
+                });
+
+
+            $rootScope.$on('links' + t, function(evt, links) {
+                _.each(files, function(file) {
+                    $http.get('/data/table/' + file + '.json')
+                        .success(function(proto) {
+                            table = _.extend({
+                                _type_: 'table',
+                                evaluationId: evaluationId,
+                                uuid: that.guid(),
+                                createAt: Date.now(),
+                                file: file
+                            }, proto);
+
+                            _.each(table.items, function(item1) {
+                                _.each(item1.items, function(item2) {
+                                    _.each(item2.items, function(item3) {
+                                        var key = [file, item1.index, item2.index, item3.index].join('-');
+                                        if (!!~links.indexOf(key)) {
+                                            item2.is_selected = true;
+                                        }
+                                    });
+                                });
+                            });
+
+                            // 单独保存table
+                            that._save(table.uuid, table);
+
+                            $rootScope.$emit('table' + t, table);
+                        })
+                        .error(function(err) {
+                            deferred.reject(err);
+                        });
+                });
+            });
+
+            var times = 0;
+            $rootScope.$on('table' + t, function(evt, table) {
+                times += 1;
+                tables.push(table);
+                if (times === files.length) {
+                    $rootScope.$emit('tables' + t, tables);
+                }
+            });
+
+            $rootScope.$on('tables' + t, function(evt, tables) {
+                evaluation = {
+                    _type_: 'evaluation',
+                    uuid: evaluationId,
+                    createAt: Date.now(),
+                    wbs: wbs,
+                    evaluation_date: Date.now(),
+                    tables: _.pluck(tables, 'uuid')
+                };
+
+                // 保存到localstorage
+                // 单独保存evaluation
+                that._save(evaluation.uuid, evaluation);
+
+                deferred.resolve(evaluation);
+            });
+
+            return deferred.promise;
+        },
+
+        update: function(uuid, object) {
+            var deferred = $q.defer();
+            if (!uuid) {
+                deferred.reject('参数错误');
+                return;
+            }
+
+            var source = this._restore(uuid);
+            var dest = _.extend(source, object);
+            this._save(uuid, dest);
+
+            deferred.resolve(dest);
+
+            return deferred.promise;
+        },
+
+        remove: function(uuid) {
+            var deferred = $q.defer();
+            if (!uuid) {
+                deferred.reject('参数错误');
+                return;
+            }
+
+            this._remove(uuid);
+            deferred.resolve();
+
+            return deferred.promise;
+        },
+
+        findById: function(uuid) {
+            var deferred = $q.defer();
+            if (!uuid) {
+                deferred.reject('参数错误');
+                return;
+            }
+
+            if (this._restore(uuid)) {
+                deferred.resolve(this._restore(uuid));
+            } else {
+                deferred.reject();
+            }
+
+            return deferred.promise;
+        },
+
+        list: function() {
+            var deferred = $q.defer();
+
+            var list = [];
+            var len = $window.localStorage.length;
+            var key;
+            for (var i = 0; i < len; i++) {
+                key = $window.localStorage.key(i);
+                if ($window.localStorage[key].match(/"_type_":"capture"/) ||
+                    $window.localStorage[key].match(/"_type_":"check"/) ||
+                    $window.localStorage[key].match(/"_type_":"evaluation"/)) {
+                    list.push(this._restore(key));
+                }
+            }
+
+            deferred.resolve(list);
+
+            return deferred.promise;
+        },
+
+        _save: function(uuid, object) {
+            if (!uuid) return null;
+
+            $window.localStorage[uuid] = JSON.stringify(object);
             return object;
         },
 
-        restore: function(id) {
-            if (!id) return null;
+        _restore: function(uuid) {
+            if (!uuid) return null;
+            if (!$window.localStorage[uuid]) return null;
 
-            var object = JSON.parse($window.localStorage[id]);
+            var object;
+            try {
+                object = JSON.parse($window.localStorage[uuid]);
+            } catch (ex) {
+                return null;
+            }
+
             return object;
+        },
+
+        _remove: function(uuid) {
+            if (!uuid) return null;
+            delete $window.localStorage[uuid];
         }
     };
 }]);
@@ -2320,7 +2564,7 @@ app.controller('EvaluationCreateCtrl', ["$scope", "$rootScope", "$state", "$stat
             alert(err);
         });
     };
-    
+
     $scope.toBack = function () {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id
@@ -2345,7 +2589,7 @@ app.controller('EvaluationDetailCtrl', ["$scope", "$rootScope", "$state", "$stat
 
     $scope.toDetail = function (item) {
         $state.go('^.detail', {
-            evaluationId: item._id 
+            evaluationId: item._id
         });
     };
 
@@ -2376,9 +2620,9 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
         CheckService.list(project, segment, start_date, end_date).then(function (checks) {
             $scope.data.checks = checks;
 
-            angular.forEach(checks, function (check) {
+            _.each(checks, function (check) {
                 if (check.checked_items && check.check_user.unit._id === current_unit._id) {
-                    angular.forEach(check.checked_items, function (item) {
+                    _.each(check.checked_items, function (item) {
                         if (item.status !== 'UNCHECK' && item.link !== '') {
                             matches = item.link.match(reLink);
 
@@ -2397,7 +2641,7 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
             });
 
             var table, level1, level2, level3;
-            angular.forEach(checked_items, function (item) {
+            _.each(checked_items, function (item) {
                 table = find($scope.data.evaluation.tables, {
                     key: 'file',
                     value: item.link.file
@@ -2441,7 +2685,7 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
         if (collections.length === 0) return;
 
         var found;
-        angular.forEach(collections, function(item) {
+        _.each(collections, function(item) {
             if (item[condition.key] === condition.value) {
                 found = item;
                 return found;
@@ -2449,7 +2693,7 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
         });
 
         return found;
-    } 
+    }
 
     $scope.toggleLinkScore = function(linkScore) {
         toggleLinkScore(linkScore);
@@ -2465,22 +2709,22 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
         EvaluationService.update($scope.data.evaluation._id, $scope.data.evaluation).then(function(table) {
             alert('确认成功');
             $state.go('^.table', {
-                evaluationId: $scope.data.evaluation._id 
+                evaluationId: $scope.data.evaluation._id
             });
         }, function(err) {
             alert(err);
         });
-        
+
     };
 
     function toggleLinkScore (bool) {
         if (bool) {
-            angular.forEach($scope.data.evaluation.tables, function (table) {
-                angular.forEach(table.items, function(level1) {
-                    angular.forEach(level1.items, function(level2) {
-                        angular.forEach(level2.items, function(level3) {
+            _.each($scope.data.evaluation.tables, function (table) {
+                _.each(table.items, function(level1) {
+                    _.each(level1.items, function(level2) {
+                        _.each(level2.items, function(level3) {
                             var pass = 0,
-                                fail = 0, 
+                                fail = 0,
                                 last_pass = true;
 
                             if (level3.is_checked && level3.checked_items) {
@@ -2494,7 +2738,7 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
                                     last_pass = false;
                                 }
 
-                                angular.forEach(level3.checked_items, function (item) {
+                                _.each(level3.checked_items, function (item) {
                                     if (item.score === '0') {
                                         pass += 1;
                                     } else if (item.score === '1') {
@@ -2523,10 +2767,10 @@ app.controller('EvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$st
                 });
             });
         } else {
-            angular.forEach($scope.data.evaluation.tables, function (table) {
-                angular.forEach(table.items, function(level1) {
-                    angular.forEach(level1.items, function(level2) {
-                        angular.forEach(level2.items, function(level3) {
+            _.each($scope.data.evaluation.tables, function (table) {
+                _.each(table.items, function(level1) {
+                    _.each(level1.items, function(level2) {
+                        _.each(level2.items, function(level3) {
                             level3.status = 'UNCHECK';
                             level3.score = null;
                         });
@@ -2588,9 +2832,9 @@ app.controller('EvaluationReviewCtrl', ["$scope", "$stateParams", "$state", "set
     TableService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
-        angular.forEach(table.items, function(item, key) {
+        _.each(table.items, function(item, key) {
             if (item.index === $scope.data.itemId) {
-                angular.forEach(item.items, function(subitem, key) {
+                _.each(item.items, function(subitem, key) {
                     if (subitem.index === $scope.data.subItemId) {
                         $scope.data.review = subitem;
                         return;
@@ -2663,9 +2907,9 @@ app.controller('EvaluationSummaryCtrl', ["$scope", "$rootScope", "$state", "$sta
                 '建设单位': 0,
                 '政府部门': 0
             };
-            angular.forEach(checks, function (check) {
+            _.each(checks, function (check) {
                 if (check.checked_items) {
-                    angular.forEach(check.checked_items, function (item) {
+                    _.each(check.checked_items, function (item) {
                         if (item.status === 'FAIL') {
                             scores[check.check_user.unit.type] += parseInt(item.score, 10);
                         }
@@ -2758,7 +3002,7 @@ app.controller('EvaluationTableCtrl', ["$scope", "$stateParams", "$state", "sett
 
     $scope.filterFn = function (level1) {
         var filter = false;
-        angular.forEach(level1.items, function(level2) {
+        _.each(level1.items, function(level2) {
             if (level2.is_selected) filter = true;
         });
 
@@ -2921,6 +3165,82 @@ app.controller('ManagerLoginCtrl', ["$scope", "$rootScope", "$state", "$statePar
     };
 
 }]);
+app.controller('OfflineCaptureCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
+    $scope.data = {};
+    $scope.data.captureId = $stateParams.captureId;
+    $scope.data.images = [];
+    $scope.data.center_x = 0;
+    $scope.data.center_y = 0;
+
+    OfflineService.findById($scope.data.captureId).then(function (capture) {
+        $scope.data.name = capture.name;
+        $scope.data.description = capture.description;
+        $scope.data.images = capture.images;
+        $scope.data.center_x = capture.center_x;
+        $scope.data.center_y = capture.center_y;
+    });
+
+    var onSuccess = function(position) {
+        $scope.data.center_x = position.coords.longitude;
+        $scope.data.center_y = position.coords.latitude;
+        $scope.$apply();
+    };
+
+    var onError = function(error) {
+        $scope.data.center_x = 0;
+        $scope.data.center_y = 0;
+        $scope.$apply();
+    };
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+    $scope.capture = function() {
+        function onSuccess(imageURI) {
+            $scope.data.images.push(imageURI);
+            $scope.$apply();
+        }
+
+        function onFail(message) {}
+
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 75,
+            destinationType: Camera.DestinationType.FILE_URI,
+            saveToPhotoAlbum: true
+        });
+    };
+
+    $scope.save = function() {
+        if (!$scope.data.name) {
+            alert('请选择名称');
+            return;
+        }
+
+        if (!$scope.data.description) {
+            alert('请输入问题描述');
+            return;
+        }
+
+        OfflineService.newCapture({
+            captureId: $scope.data.captureId, // 这里不太一样，先生成id
+            name: $scope.data.name,
+            description: $scope.data.description,
+            images: $scope.data.images.join("|"),
+            center: [$scope.data.center_x, $scope.data.center_y]
+        }).then(function(check) {
+            alert('保存成功');
+            $state.go('^.dashboard');
+        }, function(err) {
+            alert(err);
+        });
+    };
+
+    $scope.remove = function() {
+        OfflineService.remove($scope.data.captureId);
+        alert('删除成功');
+        $state.go('^.dashboard');
+    };
+}]);
+
 app.controller('OfflineCheckCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "files", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, files, OfflineService) {
     $scope.data = {};
     $scope.data.files = files;
@@ -2937,7 +3257,7 @@ app.controller('OfflineCheckCtrl', ["$scope", "$rootScope", "$state", "$statePar
             return;
         }
 
-        OfflineService.saveCheck({
+        OfflineService.newCheck({
             checkId: $scope.data.checkId,
             file: $scope.data.file,
             check_target: $scope.data.check_target
@@ -2953,6 +3273,27 @@ app.controller('OfflineCheckCtrl', ["$scope", "$rootScope", "$state", "$statePar
 
 }]);
 app.controller('OfflineDashboardCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
+    $scope.data = {};
+
+    OfflineService.list().then(function (list) {
+        $scope.data.list = list;
+    });
+
+    $scope.toDetail = function (item) {
+        if (item._type_ === 'capture') {
+            $state.go('^.capture', {
+                captureId: item.uuid
+            });
+        } else if (item._type_ === 'check') {
+            $state.go('^.table', {
+                tableId: item.table
+            });
+        } else if (item._type_ === 'evaluation') {
+            $state.go('^.evaluation-tables', {
+                evaluationId: item.uuid
+            });
+        }
+    };
 
     $scope.toCapture = function () {
         $state.go('^.capture', {
@@ -2972,15 +3313,223 @@ app.controller('OfflineDashboardCtrl', ["$scope", "$rootScope", "$state", "$stat
         });
     };
 
+
 }]);
-app.controller('OfflineTableCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "files", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, files, OfflineService) {
+app.controller('OfflineEvaluationGenerateCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "wbs", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, wbs, OfflineService) {
     $scope.data = {};
-    $scope.data.files = files;
+    $scope.data.evaluation = {};
+    $scope.data.evaluationId = $stateParams.evaluationId;
+
+    OfflineService.findById($scope.data.evaluationId).then(function(evaluation) {
+        $scope.data.evaluation = evaluation;
+        var tables = [];
+        var counter = 0,
+            length = $scope.data.evaluation.tables.length;
+        _.each($scope.data.evaluation.tables, function(tableId) {
+            OfflineService.findById(tableId).then(function(table) {
+                counter += 1;
+                tables.push(table);
+
+                if (counter === length) {
+                    $scope.data.evaluation.tables = tables;
+                    return;
+                }
+            });
+        });
+    });
+
+    $scope.toTables = function() {
+        var counter = 0,
+            length = $scope.data.evaluation.tables.length;
+        _.each($scope.data.evaluation.tables, function(table) {
+            OfflineService.update(table.uuid, table).then(function() {
+                counter += 1;
+                if (counter === length) {
+                    alert('确认成功');
+                    $state.go('^.evaluation-tables', {
+                        evaluationId: $scope.data.evaluation.uuid
+                    });
+                }
+            });
+        });
+    };
+}]);
+
+app.controller('OfflineEvaluationTablesCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "wbs", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, wbs, OfflineService) {
+    $scope.data = {};
+    $scope.data.evaluation = {};
+    $scope.data.evaluationId = $stateParams.evaluationId;
+
+    OfflineService.findById($scope.data.evaluationId).then(function(evaluation) {
+        $scope.data.evaluation = evaluation;
+
+        $scope.data.checked_items = [];
+        $scope.data.score = 0;
+
+        var tables = [];
+        var counter = 0,
+            length = $scope.data.evaluation.tables.length;
+        _.each($scope.data.evaluation.tables, function(tableId) {
+            OfflineService.findById(tableId).then(function(table) {
+                counter += 1;
+                tables.push(table);
+
+                if (counter === length) {
+                    $scope.data.evaluation.tables = tables;
+
+                    // 标识考核历史记录
+                    _.each($scope.data.evaluation.tables, function (table) {
+                        _.each(table.items, function (level1) {
+                            _.each(level1.items, function (level2) {
+                                level2.pass = level2.fail = level2.uncheck = 0;
+                                _.each(level2.items, function (level3) {
+                                    if (level3.status === 'FAIL') {
+                                        level3.full_index = [table.file, level1.index, level2.index, level3.index].join('-');
+                                        $scope.data.checked_items.push(level3);
+                                        $scope.data.score += parseInt(level3.score, 10);
+                                        level2.fail += 1;
+                                    } else if (level3.status === 'PASS') {
+                                        level2.pass += 1;
+                                    } else if (level3.status === 'UNCHECK') {
+                                        level2.uncheck += 1;
+                                    }
+                                });
+                            });
+                        });
+                    });
+                }
+            });
+        });
+    });
+
+    $scope.ifHideLevel2 = {};
+    $scope.toggle = function(table, level1) {
+        if ($scope.ifHideLevel2[table.name + level1.index] === undefined) {
+            $scope.ifHideLevel2[table.name + level1.index] = true;
+        } else {
+            $scope.ifHideLevel2[table.name + level1.index] = !$scope.ifHideLevel2[table.name + level1.index];
+        }
+    };
+
+    $scope.review = function(table, index, level1, level2) {
+        $state.go("^.review", {
+            tableId: table.uuid,
+            itemId: level1.index,
+            subItemId: level2.index
+        });
+    };
+
+    $scope.filterFn = function (level1) {
+        var filter = false;
+        _.each(level1.items, function(level2) {
+            if (level2.is_selected) filter = true;
+        });
+
+        return filter;
+    };
+
+    $scope.remove = function() {
+        OfflineService.remove($scope.data.evaluationId);
+        OfflineService.remove($scope.data.table.uuid);
+        alert('删除成功');
+        $state.go('^.dashboard');
+    };
+}]);
+app.controller('OfflineEvaluationCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "wbs", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, wbs, OfflineService) {
+    $scope.wbs = wbs;
+    $scope.data = {};
+    $scope.data.evaluationId = $stateParams.evaluationId;
+
+    $scope.newEvaluation = function () {
+        if (!$scope.data.wbs) {
+            alert('请选择工程进展');
+            return;
+        }
+
+        OfflineService.newEvaluation({
+            evaluationId: $scope.data.evaluationId,
+            wbs: $scope.data.wbs
+        }).then(function(evaluation) {
+            console.log(evaluation);
+            $state.go('^.evaluation-generate', {
+                evaluationId: $scope.data.evaluationId
+            });
+        }, function (err) {
+            alert(err);
+        });
+    };
+
+}]);
+app.controller('OfflineReviewCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
+    $scope.data = {};
+    $scope.data.table = {};
+    $scope.data.tableId = $stateParams.tableId;
+    $scope.data.itemId = $stateParams.itemId;
+    $scope.data.subItemId = $stateParams.subItemId;
+
+    OfflineService.findById($scope.data.tableId).then(function(table) {
+        $scope.data.table = table;
+
+        _.each(table.items, function(item) {
+            if (item.index === $scope.data.itemId) {
+                _.each(item.items, function(subitem) {
+                    if (subitem.index === $scope.data.subItemId) {
+                        $scope.data.review = subitem;
+                        return;
+                    }
+                });
+            }
+        });
+    });
+
+    $scope.changeScore = function(item, score) {
+        if (score > 0) {
+            item.status = 'FAIL';
+        } else if (score === 0) {
+            item.status = 'PASS';
+        } else {
+            item.status = 'UNCHECK';
+        }
+    };
+
+    $scope.takePhoto = function(item) {
+        function onSuccess(imageURI) {
+            item.image_url = imageURI;
+            $scope.$apply();
+        }
+
+        function onFail(message) {}
+
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 75,
+            destinationType: Camera.DestinationType.FILE_URI,
+            saveToPhotoAlbum: true
+        });
+    };
+
+    $scope.saveAndReturn = function() {
+        OfflineService.update($scope.data.tableId, $scope.data.table).then(function(table) {
+            if ($scope.data.table.evaluationId) {
+                $state.go('^.evaluation-tables', {
+                    evaluationId: $scope.data.table.evaluationId
+                });
+            } else {
+                $state.go('^.table', {
+                    tableId: $scope.data.tableId
+                });
+            }
+        }, function(err) {
+            alert(err);
+        });
+    };
+}]);
+app.controller('OfflineTableCtrl', ["$scope", "$rootScope", "$state", "$stateParams", "settings", "OfflineService", function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
+    $scope.data = {};
     $scope.data.tableId = $stateParams.tableId;
 
     $scope.ifHideSubItems = {};
 
-    OfflineService.restoreTable($scope.data.tableId).then(function(table) {
+    OfflineService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
         $scope.data.checked_items = [];
@@ -3020,6 +3569,13 @@ app.controller('OfflineTableCtrl', ["$scope", "$rootScope", "$state", "$statePar
             itemId: item.index,
             subItemId: subItem.index
         });
+    };
+
+    $scope.remove = function() {
+        OfflineService.remove($scope.data.table.checkId);
+        OfflineService.remove($scope.data.table.uuid);
+        alert('删除成功');
+        $state.go('^.dashboard');
     };
 
 }]);

@@ -15,9 +15,9 @@ app.controller('OfflineDashboardCtrl', function($scope, $rootScope, $state, $sta
                 tableId: item.table
             });
         } else if (item._type_ === 'evaluation') {
-            // $state.go('^.table', {
-            //     tableId: item.table
-            // });
+            $state.go('^.evaluation-tables', {
+                evaluationId: item.uuid
+            });
         }
     };
 

@@ -66,7 +66,7 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
 
     $scope.filterFn = function (level1) {
         var filter = false;
-        angular.forEach(level1.items, function(level2) {
+        _.each(level1.items, function(level2) {
             if (level2.is_selected) filter = true;
         });
 

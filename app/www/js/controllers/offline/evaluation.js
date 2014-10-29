@@ -13,9 +13,10 @@ app.controller('OfflineEvaluationCtrl', function($scope, $rootScope, $state, $st
             evaluationId: $scope.data.evaluationId,
             wbs: $scope.data.wbs
         }).then(function(evaluation) {
-            // $state.go('^.table', {
-                // tableId: evaluation.table
-            // });
+            console.log(evaluation);
+            $state.go('^.evaluation-generate', {
+                evaluationId: $scope.data.evaluationId
+            });
         }, function (err) {
             alert(err);
         });

@@ -47,9 +47,15 @@ app.controller('OfflineReviewCtrl', function($scope, $rootScope, $state, $stateP
 
     $scope.saveAndReturn = function() {
         OfflineService.update($scope.data.tableId, $scope.data.table).then(function(table) {
-            $state.go('^.table', {
-                tableId: $scope.data.tableId
-            });
+            if ($scope.data.table.evaluationId) {
+                $state.go('^.evaluation-tables', {
+                    evaluationId: $scope.data.table.evaluationId
+                });
+            } else {
+                $state.go('^.table', {
+                    tableId: $scope.data.tableId
+                });
+            }
         }, function(err) {
             alert(err);
         });

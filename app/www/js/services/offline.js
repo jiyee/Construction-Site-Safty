@@ -249,7 +249,11 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 return;
             }
 
-            deferred.resolve(this._restore(uuid));
+            if (this._restore(uuid)) {
+                deferred.resolve(this._restore(uuid));
+            } else {
+                deferred.reject();
+            }
 
             return deferred.promise;
         },
@@ -283,8 +287,15 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
         _restore: function(uuid) {
             if (!uuid) return null;
+            if (!$window.localStorage[uuid]) return null;
 
-            var object = JSON.parse($window.localStorage[uuid]);
+            var object;
+            try {
+                object = JSON.parse($window.localStorage[uuid]);
+            } catch (ex) {
+                return null;
+            }
+
             return object;
         },
 

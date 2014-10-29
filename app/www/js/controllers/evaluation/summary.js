@@ -26,9 +26,9 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
                 '建设单位': 0,
                 '政府部门': 0
             };
-            angular.forEach(checks, function (check) {
+            _.each(checks, function (check) {
                 if (check.checked_items) {
-                    angular.forEach(check.checked_items, function (item) {
+                    _.each(check.checked_items, function (item) {
                         if (item.status === 'FAIL') {
                             scores[check.check_user.unit.type] += parseInt(item.score, 10);
                         }

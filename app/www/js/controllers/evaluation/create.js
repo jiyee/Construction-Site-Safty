@@ -106,7 +106,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
             alert(err);
         });
     };
-    
+
     $scope.toBack = function () {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id

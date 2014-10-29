@@ -18,9 +18,9 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
     TableService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
-        angular.forEach(table.items, function(item, key) {
+        _.each(table.items, function(item, key) {
             if (item.index === $scope.data.itemId) {
-                angular.forEach(item.items, function(subitem, key) {
+                _.each(item.items, function(subitem, key) {
                     if (subitem.index === $scope.data.subItemId) {
                         $scope.data.review = subitem;
                         return;
