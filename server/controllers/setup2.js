@@ -14,32 +14,32 @@ var UserModel = require('../models/').UserModel;
 exports.mongo = function(req, res, next) {
     var ep = new eventproxy();
 
-    ProjectModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
-    SegmentModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
-    CheckModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
-    TableModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
-    RoleModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
-    UnitModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
-    UserModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
-    EvaluationModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
+    // ProjectModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
+    // SegmentModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
+    // CheckModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
+    // TableModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
+    // RoleModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
+    // UnitModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
+    // UserModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
+    // EvaluationModel.remove({}, function(err) {
+    //     ep.emit('remove');
+    // });
 
-    ep.after('remove', 8, function() {
+    // ep.after('remove', 8, function() {
         var project1 = {
             name: '湖北监利至江陵高速公路',
             province: '湖北省',
@@ -1214,6 +1214,6 @@ exports.mongo = function(req, res, next) {
             });
         });
 
-    });
+    // });
 
 };
