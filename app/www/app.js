@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic']);
 
-var ipAddr = '127.0.0.1';
-// var ipAddr = '121.40.202.109';
+// var ipAddr = '127.0.0.1';
+var ipAddr = '121.40.202.109';
 var httpdAddr = 'localhost:8080';
 
 // 加载ionic和cordova
@@ -68,9 +68,7 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
  }])
 
 // 注册路由
-.config(["$httpProvider", "$stateProvider", "$urlRouterProvider", "$compileProvider", "$locationProvider", function($httpProvider, $stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
-
-    $httpProvider.defaults.withCredentials = false;
+.config(["$stateProvider", "$urlRouterProvider", "$compileProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
 
     // $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
