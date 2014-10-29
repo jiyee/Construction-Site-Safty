@@ -1,5 +1,8 @@
 var app = angular.module('app', ['ionic']);
 
+// var ipAddr = '127.0.0.1';
+var ipAddr = '121.40.202.109';
+
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -27,12 +30,11 @@ app.run(function($rootScope, $ionicPlatform) {
 })
 
 // 注册全局变量
-// 121.40.202.109
 .constant('settings', {
-    'baseUrl': 'http://' + '127.0.0.1' + ':3000',
+    'baseUrl': 'http://' + ipAddr + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
-        '行业主管': 'admin',
+        '行业主管': 'administrator',
         '安全管理': 'manager',
         '一线员工': 'normal'
     }
