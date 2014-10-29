@@ -10,6 +10,7 @@ var check = require('./controllers/check');
 var evaluation = require('./controllers/evaluation');
 var capture = require('./controllers/capture');
 var setup = require('./controllers/setup');
+var setup2 = require('./controllers/setup2');
 
 router.get('/', function(req, res) {
     res.render('index', {
@@ -98,5 +99,6 @@ router.post('/capture/create', capture.create);
 
 // 数据库测试接口
 router.get('/setup', setup.mongo);
+router.get('/setup2', setup2.mongo);
 
 module.exports = router;

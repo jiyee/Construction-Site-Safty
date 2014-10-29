@@ -32,8 +32,10 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         zoom: 10
     });
 
-    var server = "";
-    // var server = "http://121.40.202.109:8080/";
+    // var server = "http://127.0.0.1:8080/";
+    var server = "http://121.40.202.109:8080/";
+    // var server = httpdAddr;
+    console.log(server);
 
     var map = new ol.Map({
         layers: [
@@ -51,6 +53,25 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                         var y = coordinate[2];
 
                         return server + 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
+                    },
+                    extent: extent,
+                    minZoom: 10,
+                    maxZoom: 16,
+                    wrapx: false
+                })
+            }),
+            new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    tileUrlFunction: function(coordinate) {
+                        if (coordinate === null) {
+                            return "";
+                        }
+
+                        var z = coordinate[0];
+                        var x = coordinate[1];
+                        var y = coordinate[2];
+
+                        return server + 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
                     },
                     extent: extent,
                     minZoom: 10,

@@ -1,4 +1,9 @@
 app.factory('OfflineService', function($rootScope, $http, $q, $window, settings) {
+    // var server = "";
+    // var server = "http://127.0.0.1:8080";
+    var server = httpdAddr;
+    console.log(server);
+
     return {
         guid: (function() {
             var counter = 0;
@@ -30,7 +35,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var that = this,
                 table, check;
 
-            $http.get('/data/table/' + file + '.json')
+            $http.get(server + '/data/table/' + file + '.json')
                 .success(function(proto) {
                     table = _.extend({
                         _type_: 'table',
@@ -111,7 +116,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 tables = [];
             var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
-            $http.get('/data/table/wbs.json')
+            $http.get(server + '/data/table/wbs.json')
                 .success(function(wbs_list) {
                     var wbs_item = _.find(wbs_list, {
                         "name": wbs
@@ -119,7 +124,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                     var check_files = wbs_item.files;
 
                     _.each(check_files, function(file) {
-                        $http.get('/data/table/' + file + '.json')
+                        $http.get(server + '/data/table/' + file + '.json')
                             .success(function(table) {
                                 _.each(table.items, function(item1) {
                                     _.each(item1.items, function(item2) {
@@ -152,7 +157,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
             $rootScope.$on('links' + t, function(evt, links) {
                 _.each(files, function(file) {
-                    $http.get('/data/table/' + file + '.json')
+                    $http.get(server + '/data/table/' + file + '.json')
                         .success(function(proto) {
                             table = _.extend({
                                 _type_: 'table',

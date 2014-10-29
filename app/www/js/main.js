@@ -2,6 +2,7 @@ var app = angular.module('app', ['ionic']);
 
 // var ipAddr = '127.0.0.1';
 var ipAddr = '121.40.202.109';
+var httpdAddr = 'localhost:8080';
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
@@ -11,6 +12,28 @@ app.run(function($rootScope, $ionicPlatform) {
         }
         if (window.StatusBar) {
             StatusBar.hide();
+        }
+
+        httpd = ( window.cordova && window.cordova.plugins && window.cordova.plugins.CorHttpd ) ? window.cordova.plugins.CorHttpd : null;
+
+        if (httpd) {
+            httpd.getURL(function(url) {
+                if (url.length > 0) {
+                    httpdAddr = url;
+                    console.log(url);
+                } else {
+                    httpd.startServer({
+                        'www_root': '',
+                        'port': 8080
+                    }, function(url) {
+                        httpdAddr = url;
+                        console.log(url);
+                    }, function(error) {
+                        console.log(error);
+                    });
+                }
+
+            }, function() {});
         }
     });
 

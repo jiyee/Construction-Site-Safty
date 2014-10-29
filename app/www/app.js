@@ -1,5 +1,9 @@
 var app = angular.module('app', ['ionic']);
 
+// var ipAddr = '127.0.0.1';
+var ipAddr = '121.40.202.109';
+var httpdAddr = 'localhost:8080';
+
 // 加载ionic和cordova
 app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -8,6 +12,28 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
         }
         if (window.StatusBar) {
             StatusBar.hide();
+        }
+
+        httpd = ( window.cordova && window.cordova.plugins && window.cordova.plugins.CorHttpd ) ? window.cordova.plugins.CorHttpd : null;
+
+        if (httpd) {
+            httpd.getURL(function(url) {
+                if (url.length > 0) {
+                    httpdAddr = url;
+                    console.log(url);
+                } else {
+                    httpd.startServer({
+                        'www_root': '',
+                        'port': 8080
+                    }, function(url) {
+                        httpdAddr = url;
+                        console.log(url);
+                    }, function(error) {
+                        console.log(error);
+                    });
+                }
+
+            }, function() {});
         }
     });
 
@@ -27,12 +53,11 @@ app.run(["$rootScope", "$ionicPlatform", function($rootScope, $ionicPlatform) {
 }])
 
 // 注册全局变量
-// 121.40.202.109
 .constant('settings', {
-    'baseUrl': 'http://' + '127.0.0.1' + ':3000',
+    'baseUrl': 'http://' + ipAddr + ':3000',
     'project': '监利至江陵高速公路',
     'roles': {
-        '行业主管': 'admin',
+        '行业主管': 'administrator',
         '安全管理': 'manager',
         '一线员工': 'normal'
     }
@@ -1132,6 +1157,11 @@ app.constant('files', [{
 }]);
 
 app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings", function($rootScope, $http, $q, $window, settings) {
+    // var server = "";
+    // var server = "http://127.0.0.1:8080";
+    var server = httpdAddr;
+    console.log(server);
+
     return {
         guid: (function() {
             var counter = 0;
@@ -1163,7 +1193,7 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
             var that = this,
                 table, check;
 
-            $http.get('/data/table/' + file + '.json')
+            $http.get(server + '/data/table/' + file + '.json')
                 .success(function(proto) {
                     table = _.extend({
                         _type_: 'table',
@@ -1244,7 +1274,7 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
                 tables = [];
             var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
-            $http.get('/data/table/wbs.json')
+            $http.get(server + '/data/table/wbs.json')
                 .success(function(wbs_list) {
                     var wbs_item = _.find(wbs_list, {
                         "name": wbs
@@ -1252,7 +1282,7 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
                     var check_files = wbs_item.files;
 
                     _.each(check_files, function(file) {
-                        $http.get('/data/table/' + file + '.json')
+                        $http.get(server + '/data/table/' + file + '.json')
                             .success(function(table) {
                                 _.each(table.items, function(item1) {
                                     _.each(item1.items, function(item2) {
@@ -1285,7 +1315,7 @@ app.factory('OfflineService', ["$rootScope", "$http", "$q", "$window", "settings
 
             $rootScope.$on('links' + t, function(evt, links) {
                 _.each(files, function(file) {
-                    $http.get('/data/table/' + file + '.json')
+                    $http.get(server + '/data/table/' + file + '.json')
                         .success(function(proto) {
                             table = _.extend({
                                 _type_: 'table',
@@ -1806,8 +1836,10 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
         zoom: 10
     });
 
-    var server = "";
-    // var server = "http://121.40.202.109:8080/";
+    // var server = "http://127.0.0.1:8080/";
+    var server = "http://121.40.202.109:8080/";
+    // var server = httpdAddr;
+    console.log(server);
 
     var map = new ol.Map({
         layers: [
@@ -1825,6 +1857,25 @@ app.controller('AdministratorDashboardCtrl', ["$scope", "$rootScope", "$state", 
                         var y = coordinate[2];
 
                         return server + 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
+                    },
+                    extent: extent,
+                    minZoom: 10,
+                    maxZoom: 16,
+                    wrapx: false
+                })
+            }),
+            new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    tileUrlFunction: function(coordinate) {
+                        if (coordinate === null) {
+                            return "";
+                        }
+
+                        var z = coordinate[0];
+                        var x = coordinate[1];
+                        var y = coordinate[2];
+
+                        return server + 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
                     },
                     extent: extent,
                     minZoom: 10,
@@ -3429,8 +3480,11 @@ app.controller('OfflineEvaluationTablesCtrl', ["$scope", "$rootScope", "$state",
     };
 
     $scope.remove = function() {
+        _.each($scope.data.evaluation.tables, function (table) {
+            OfflineService.remove(table.uuid);
+        });
+
         OfflineService.remove($scope.data.evaluationId);
-        OfflineService.remove($scope.data.table.uuid);
         alert('删除成功');
         $state.go('^.dashboard');
     };
