@@ -7,6 +7,7 @@ app.factory('ProjectService', function($http, $q, settings) {
                     deferred.resolve(data.projects);
                 })
                 .error(function(err) {
+                    alert('服务器失去连接');
                     deferred.reject(err);
                 });
 

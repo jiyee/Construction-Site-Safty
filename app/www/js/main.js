@@ -2,7 +2,6 @@ var app = angular.module('app', ['ionic']);
 
 // var ipAddr = '127.0.0.1';
 var ipAddr = '121.40.202.109';
-var httpdAddr = 'localhost:8080';
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {

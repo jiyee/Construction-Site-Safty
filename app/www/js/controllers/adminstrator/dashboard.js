@@ -23,6 +23,9 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     var headerHeight = 44;
     var footerHeight = 0;
     elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
+    setTimeout(function() {
+        elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
+    }, 1000);
 
     var view = new ol.View({
         projection: 'EPSG:900913',
@@ -32,10 +35,8 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         zoom: 10
     });
 
-    // var server = "http://127.0.0.1:8080/";
     var server = "http://121.40.202.109:8080/";
-    // var server = httpdAddr;
-    console.log(server);
+    // var server = "";
 
     var map = new ol.Map({
         layers: [
