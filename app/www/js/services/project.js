@@ -2,7 +2,6 @@ app.factory('ProjectService', function($http, $q, settings) {
     return {
         find: function() {
             var deferred = $q.defer();
-
             $http.get(settings.baseUrl + '/projects/all')
                 .success(function(data) {
                     deferred.resolve(data.projects);
@@ -21,7 +20,7 @@ app.factory('ProjectService', function($http, $q, settings) {
                     if (data.error) {
                         deferred.reject(data.error);
                     } else {
-                        deferred.resolve(data.project);                    
+                        deferred.resolve(data.project);
                     }
                 })
                 .error(function(err) {

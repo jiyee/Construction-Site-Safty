@@ -13,28 +13,6 @@ app.run(function($rootScope, $ionicPlatform) {
         if (window.StatusBar) {
             StatusBar.hide();
         }
-
-        httpd = ( window.cordova && window.cordova.plugins && window.cordova.plugins.CorHttpd ) ? window.cordova.plugins.CorHttpd : null;
-
-        if (httpd) {
-            httpd.getURL(function(url) {
-                if (url.length > 0) {
-                    httpdAddr = url;
-                    console.log(url);
-                } else {
-                    httpd.startServer({
-                        'www_root': '',
-                        'port': 8080
-                    }, function(url) {
-                        httpdAddr = url;
-                        console.log(url);
-                    }, function(error) {
-                        console.log(error);
-                    });
-                }
-
-            }, function() {});
-        }
     });
 
     $rootScope._data_ = {};
@@ -55,7 +33,6 @@ app.run(function($rootScope, $ionicPlatform) {
 // 注册全局变量
 .constant('settings', {
     'baseUrl': 'http://' + ipAddr + ':3000',
-    'project': '监利至江陵高速公路',
     'roles': {
         '行业主管': 'administrator',
         '安全管理': 'manager',

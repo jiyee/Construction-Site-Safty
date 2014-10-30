@@ -31,16 +31,16 @@ gulp.task('watch', function() {
     gulp.watch(paths.sass, ['sass']);
 });
 
-gulp.task('js', function() {
-    gulp.src(['www/js/main.js', 'www/js/**/*.js', '!www/js/app.js'])
-        // .pipe(sourcemaps.init())
-        .pipe(concat('app.js'))
-        .pipe(ngAnnotate())
-        // .pipe(uglify())
-        // .pipe(sourcemaps.write())
-        .pipe(gulp.dest('www/'));
-});
+// gulp.task('js', function() {
+//     gulp.src(['www/js/main.js', 'www/js/**/*.js', '!www/js/app.js'])
+//         // .pipe(sourcemaps.init())
+//         .pipe(concat('app.js'))
+//         .pipe(ngAnnotate())
+//         // .pipe(uglify())
+//         // .pipe(sourcemaps.write())
+//         .pipe(gulp.dest('www/'));
+// });
 
-gulp.task('watch', ['js'], function() {
-    gulp.watch('www/js/**/*.js', ['js']);
-});
+// gulp.task('watch', ['js'], function() {
+//     gulp.watch('www/js/**/*.js', ['js']);
+// });
