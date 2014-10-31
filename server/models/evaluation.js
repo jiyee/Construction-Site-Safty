@@ -47,8 +47,6 @@ EvaluationSchema.pre('remove', function (next) {
                 return next(err);
             }
 
-            console.log(tables);
-
             next();
         });
     }

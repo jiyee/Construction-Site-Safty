@@ -1,18 +1,23 @@
-app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, wbs, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
-    $scope.wbs = wbs;
+app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, settings, wbs, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
     $scope.data = {};
+    $scope.data.resolveWbs = wbs;
     $scope.data.user = resolveUser;
     $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._data_.project._id;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
         alert('用户登录状态异常');
-        AuthService.logout().then(function () {
+        AuthService.logout().then(function() {
             $state.go('welcome');
         });
     }
 
-    ProjectService.findById($scope.data.projectId).then(function (project) {
+    // 初始化wbs列表状态
+    _.each($scope.data.resolveWbs, function (item) {
+        item.checked = false;
+    });
+
+    ProjectService.findById($scope.data.projectId).then(function(project) {
         $scope.data.project = project;
     });
 
@@ -23,8 +28,8 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
             $scope.data.unit = $scope.data.user.unit;
         } else {
             $scope.data.units = [];
-            UnitService.findByProjectId($scope.data.project._id).then(function (units) {
-                angular.forEach(units, function (value) {
+            UnitService.findByProjectId($scope.data.project._id).then(function(units) {
+                angular.forEach(units, function(value) {
                     if (value.type === '施工单位') {
                         $scope.data.units.push(value);
                     }
@@ -37,8 +42,8 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         if (!$scope.data.unit) return;
 
         $scope.data.sections = [];
-        SegmentService.findByUnitId($scope.data.unit._id).then(function (segments) {
-            angular.forEach(segments, function (value) {
+        SegmentService.findByUnitId($scope.data.unit._id).then(function(segments) {
+            angular.forEach(segments, function(value) {
                 if (value.type === '标段') {
                     $scope.data.sections.push(value);
                 }
@@ -50,8 +55,8 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         if (!$scope.data.section) return;
 
         $scope.data.branches = [];
-        SegmentService.findById($scope.data.section._id).then(function (segment) {
-            angular.forEach(segment.segments, function (value) {
+        SegmentService.findById($scope.data.section._id).then(function(segment) {
+            angular.forEach(segment.segments, function(value) {
                 if (value.type === '分部') {
                     $scope.data.branches.push(value);
                 }
@@ -59,20 +64,37 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         });
     });
 
-    $scope.changeProject = function (project) {
+    $ionicModal.fromTemplateUrl('wbs-modal.html', {
+        scope: $scope,
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function($event) {
+        $scope.modal.show($event);
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+
+        $scope.data.wbs = [];
+        _.each($scope.data.resolveWbs, function (item) {
+            if (item.checked) $scope.data.wbs.push(item.name);
+        });
+    };
+
+    $scope.changeProject = function(project) {
         $scope.data.project = project;
     };
-    $scope.changeUnit = function (unit) {
+    $scope.changeUnit = function(unit) {
         $scope.data.unit = unit;
     };
-    $scope.changeSection = function (section) {
+    $scope.changeSection = function(section) {
         $scope.data.section = section;
     };
-    $scope.changeBranch = function (branch) {
+    $scope.changeBranch = function(branch) {
         $scope.data.branch = branch;
     };
 
-    $scope.toCreate = function () {
+    $scope.toCreate = function() {
         if (!$scope.data.project) {
             alert('请选择考核项目');
             return;
@@ -97,7 +119,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
             project: $scope.data.projectId,
             segment: ($scope.data.branch || $scope.data.section)['_id'],
             unit: $scope.data.unit._id,
-            wbs: $scope.data.wbs
+            wbs: $scope.data.wbs.join("|")
         }).then(function(evaluation) {
             $state.go('^.summary', {
                 evaluationId: evaluation._id
@@ -107,7 +129,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         });
     };
 
-    $scope.toBack = function () {
+    $scope.toBack = function() {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });

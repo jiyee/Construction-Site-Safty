@@ -6,7 +6,6 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
 
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
-        console.log($scope.data.check.rectifications);
     });
 
     $scope.toBack = function() {

@@ -97,12 +97,19 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var deferred = $q.defer();
 
             var evaluationId = opts.evaluationId;
-            var wbs = opts.wbs;
+            var wbs = opts.wbs || "";
 
             if (!evaluationId) {
                 deferred.reject('参数错误');
                 return;
             }
+
+            if (!wbs) {
+                deferred.reject('参数错误');
+                return;
+            }
+
+            var wbs_checked = wbs.split('|');
 
             var that = this,
                 t = Date.now(),
@@ -112,11 +119,14 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
             $http.get('data/table/wbs.json')
-                .success(function(wbs_list) {
-                    var wbs_item = _.find(wbs_list, {
-                        "name": wbs
+                .success(function(wbs_names) {
+                    var check_files = [];
+                    _.each(wbs_checked, function(name) {
+                        var wbs_item = _.find(wbs_names, {
+                            "name": name
+                        });
+                        check_files = check_files.concat(wbs_item.files);
                     });
-                    var check_files = wbs_item.files;
 
                     _.each(check_files, function(file) {
                         $http.get('data/table/' + file + '.json')
@@ -144,6 +154,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                                 return link.trim();
                             }));
 
+                            console.log(links.length);
                             $rootScope.$emit('links' + t, links);
                         }
                     });

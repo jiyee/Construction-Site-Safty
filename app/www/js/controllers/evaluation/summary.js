@@ -6,7 +6,7 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
 
     EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
-        console.log(evaluation);
+
         var project = evaluation.project._id,
             segment = evaluation.segment._id,
             today = new Date(),

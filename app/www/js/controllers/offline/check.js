@@ -19,7 +19,6 @@ app.controller('OfflineCheckCtrl', function($scope, $rootScope, $state, $statePa
             file: $scope.data.file,
             check_target: $scope.data.check_target
         }).then(function(check) {
-            console.log(check);
             $state.go('^.table', {
                 tableId: check.table
             });

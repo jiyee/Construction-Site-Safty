@@ -34,26 +34,32 @@
                 <option value="" selected>请选择合同段</option>
             </select>
         </label>
-<!--         <label class="item item-input item-select">
+        <label class="item item-input item-select" ng-click="openModal($event)">
             <span class="input-label">
-                分部：
-            </span>
-            <span ng-show="data.branch">{{data.branch.name}}</span>
-            <select ng-model="branch" ng-options="item as item.name for item in data.branches" ng-change="changeBranch(branch)" ng-hide="data.branch">
-                <option value="" selected>请选择分部</option>
-            </select>
-        </label> -->
-        <label class="item item-input item-select">
-            <div class="input-label">
                 工程进展：
-            </div>
-            <select ng-model="data.wbs" ng-options="item.name as (item.name) group by item.group for item in wbs">
-                <option value="" selected>请选择分部、分项工程</option>
-            </select>
+            </span>
+            <span>{{ data.resolveWbs | checked }}</span>
         </label>
+
+        <script id="wbs-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
+                    <h1 class="title">分部、分项工程</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list">
+                        <ion-checkbox ng-repeat="item in data.resolveWbs" ng-model="item.checked" ng-checked="item.checked">
+                            {{ item.name }}
+                        </ion-checkbox>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
 
         <button class="button button-block button-positive" ng-click="toCreate()">
             开始考核
         </button>
+
     </ion-content>
 </ion-view>

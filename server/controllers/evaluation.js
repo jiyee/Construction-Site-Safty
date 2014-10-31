@@ -7,7 +7,7 @@ var TableModel = require('../models/').TableModel;
 var EvaluationModel = require('../models/').EvaluationModel;
 var UserModel = require('../models/').UserModel;
 
-exports.findAll = function (req, res, next) {
+exports.findAll = function(req, res, next) {
     var options = {};
     EvaluationModel.findBy(options, function(err, evaluations) {
         if (err) {
@@ -22,7 +22,7 @@ exports.findAll = function (req, res, next) {
     });
 };
 
-exports.findById = function (req, res, next) {
+exports.findById = function(req, res, next) {
     var evaluation_id = validator.trim(req.params.evaluation_id);
 
     if (!evaluation_id) {
@@ -36,7 +36,7 @@ exports.findById = function (req, res, next) {
         }
     };
 
-    EvaluationModel.findBy(options, function (err, evaluation) {
+    EvaluationModel.findBy(options, function(err, evaluation) {
         if (err) {
             return next(err);
         }
@@ -49,7 +49,7 @@ exports.findById = function (req, res, next) {
     });
 };
 
-exports.findByUserId = function (req, res, next) {
+exports.findByUserId = function(req, res, next) {
     var user_id = validator.trim(req.params.user_id);
 
     if (!user_id) {
@@ -62,7 +62,7 @@ exports.findByUserId = function (req, res, next) {
         }
     };
 
-    EvaluationModel.findBy(options, function (err, evaluations) {
+    EvaluationModel.findBy(options, function(err, evaluations) {
         if (err) {
             return next(err);
         }
@@ -75,7 +75,7 @@ exports.findByUserId = function (req, res, next) {
     });
 };
 
-exports.findBySessionUser = function (req, res, next) {
+exports.findBySessionUser = function(req, res, next) {
     if (!req.session.user) {
         return next(utils.getError(105));
     }
@@ -92,7 +92,7 @@ exports.findBySessionUser = function (req, res, next) {
         }
     };
 
-    EvaluationModel.findBy(options, function (err, evaluations) {
+    EvaluationModel.findBy(options, function(err, evaluations) {
         if (err) {
             return next(err);
         }
@@ -105,7 +105,7 @@ exports.findBySessionUser = function (req, res, next) {
     });
 };
 
-exports.findByProjectId = function (req, res, next) {
+exports.findByProjectId = function(req, res, next) {
     var project_id = validator.trim(req.params.project_id);
 
     if (!project_id) {
@@ -118,7 +118,7 @@ exports.findByProjectId = function (req, res, next) {
         }
     };
 
-    EvaluationModel.findBy(options, function (err, evaluations) {
+    EvaluationModel.findBy(options, function(err, evaluations) {
         if (err) {
             return next(err);
         }
@@ -131,7 +131,7 @@ exports.findByProjectId = function (req, res, next) {
     });
 };
 
-exports.update = function (req, res, next) {
+exports.update = function(req, res, next) {
     var evaluation_id = validator.trim(req.params.evaluation_id);
     var evaluation = validator.trim(req.body.evaluation);
 
@@ -162,7 +162,7 @@ exports.update = function (req, res, next) {
     }
 
     var ep = new eventproxy();
-    ep.after('table', evaluation.tables.length, function (tables) {
+    ep.after('table', evaluation.tables.length, function(tables) {
         res.send({
             'status': 'success',
             'code': 0,
@@ -170,7 +170,7 @@ exports.update = function (req, res, next) {
         });
     });
 
-    _.each(evaluation.tables, function (table) {
+    _.each(evaluation.tables, function(table) {
         var options = {
             findOne: true,
             conditions: {
@@ -300,7 +300,7 @@ exports.update = function (req, res, next) {
             // Mixed类型需要标记修改过的path
             root.markModified('items');
 
-            root.save(function (err) {
+            root.save(function(err) {
                 if (err) {
                     return next(err);
                 }
@@ -313,7 +313,7 @@ exports.update = function (req, res, next) {
 
 };
 
-exports.create = function (req, res, next) {
+exports.create = function(req, res, next) {
     if (!req.session.user) {
         return next(utils.getError(105));
     }
@@ -325,14 +325,14 @@ exports.create = function (req, res, next) {
             unit: req.session.user.unit._id
         }
     };
-    UserModel.findBy(options, function (err, users) {
+    UserModel.findBy(options, function(err, users) {
         ep.emit('users', users);
     });
 
-    ep.on('users', function (users) {
+    ep.on('users', function(users) {
         var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
-        ep.after('table', files.length, function (tables) {
+        ep.after('table', files.length, function(tables) {
             var evaluation = new EvaluationModel(req.body);
             evaluation.evaluation_users = _.pluck(users, '_id');
             evaluation.uuid = Date.now();
@@ -351,10 +351,10 @@ exports.create = function (req, res, next) {
             });
         });
 
-        ep.on('links', function (links) {
+        ep.on('links', function(links) {
 
             // 创建检查表
-            _.each(files, function (file) {
+            _.each(files, function(file) {
                 var table = new TableModel();
                 var proto = require('../data/' + file + '.json');
                 _.extend(table, proto);
@@ -371,7 +371,7 @@ exports.create = function (req, res, next) {
                     });
                 });
 
-                table.save(function (err, table) {
+                table.save(function(err, table) {
                     if (err) {
                         return next(err);
                     }
@@ -381,34 +381,39 @@ exports.create = function (req, res, next) {
             });
         });
 
-        var wbs = req.body.wbs;
+        var links = [];
+        var wbs = req.body.wbs || "";
         if (wbs) {
-           var wbs_list = require('../data/wbs.json');
-           var wbs_item = _.find(wbs_list, {"name": wbs});
-           var wbs_files = wbs_item.files;
+            wbs = wbs.split("|");
 
-           var links = [];
-           _.each(wbs_files, function (file) {
-                var table = require('../data/' + file + '.json');
+            _.each(wbs, function (name) {
+                var wbs_names = require('../data/wbs.json');
+                var wbs_item = _.find(wbs_names, {
+                    "name": name
+                });
+                var wbs_files = wbs_item.files;
 
-                _.each(table.items, function(item1) {
-                    _.each(item1.items, function(item2) {
-                        _.each(item2.items, function(item3) {
-                            if (item3.link) {
-                                links = links.concat(item3.link.split(','));
-                            }
+                _.each(wbs_files, function(file) {
+                    var table = require('../data/' + file + '.json');
+
+                    _.each(table.items, function(item1) {
+                        _.each(item1.items, function(item2) {
+                            _.each(item2.items, function(item3) {
+                                if (item3.link) {
+                                    links = links.concat(item3.link.split(','));
+                                }
+                            });
                         });
                     });
                 });
-           });
 
-           links = _.uniq(_.map(links, function (link) {
-                return link.trim();
-           }));
-
-           ep.emit('links', links);
+                links = _.uniq(_.map(links, function(link) {
+                    return link.trim();
+                }));
+            });
         }
-
+        console.log(links.length);
+        ep.emit('links', links);
 
     });
 

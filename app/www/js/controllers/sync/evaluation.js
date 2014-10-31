@@ -7,7 +7,6 @@ app.controller('SyncEvaluationCtrl', function($scope, $rootScope, $state, $state
     $scope.data.project = $rootScope._data_.project ? $rootScope._data_.project : null;
 
     OfflineService.findById($scope.data.evaluationId).then(function(evaluation) {
-        console.log(evaluation);
         $scope.data.wbs = evaluation.wbs;
         $scope.data.evaluation_date = evaluation.evaluation_date;
         $scope.data.createAt = evaluation.createAt;
