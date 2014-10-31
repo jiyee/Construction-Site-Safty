@@ -1,0 +1,49 @@
+<ion-view title="create">
+    <ion-header-bar align-title="center" class="bar-light">
+        <a class="button" ui-sref="^.dashboard">返回</a>
+        <h1 class="title">平安工地</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <label class="item item-input item-select">
+            <span class="input-label">
+                项目：
+            </span>
+            <span ng-show="data.project">{{data.project.name}}</span>
+            <select ng-model="data.project" ng-options="item as item.name for item in data.projects" ng-change="changeProject(data.project)" ng-hide="data.project">
+                <option value="" selected>请选择项目</option>
+            </select>
+        </label>
+        <label class="item item-input item-select">
+            <span class="input-label">
+                施工单位：
+            </span>
+            <select ng-model="data.unit" ng-options="item as item.name for item in data.units" ng-change="changeUnit(data.unit)">
+                <option value="" selected>请选择单位</option>
+            </select>
+        </label>
+        <label class="item item-input item-select">
+            <span class="input-label">
+                合同段：
+            </span>
+            <select ng-model="data.section" ng-options="item as item.name for item in data.sections" ng-change="changeSection(data.section)">
+                <option value="" selected>请选择合同段</option>
+            </select>
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                工程进展：
+            </div>
+            <span ng-show="data.wbs">{{data.wbs}}</span>
+        </label>
+
+        <div class="button-bar">
+            <button class="button button-block button-positive" ng-click="remove()">
+                删除
+            </button>
+            <button class="button button-block button-positive" ng-click="sync()">
+                同步
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

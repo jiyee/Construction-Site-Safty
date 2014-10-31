@@ -18,6 +18,8 @@ app.controller('OfflineReviewCtrl', function($scope, $rootScope, $state, $stateP
                 });
             }
         });
+
+        console.log(table);
     });
 
     $scope.changeScore = function(item, score) {

@@ -8,12 +8,12 @@
         <table>
             <tr>
                 <td>
-                    当前得分：{{-data.score}}分，扣分项如下：
+                    当前不合格项如下：
                 </td>
             </tr>
             <tr ng-repeat="item in data.checked_items">
                 <td>
-                    {{item.full_index}}. {{item.comments}} {{-item.score}}分
+                    {{item$index + 1}}. {{item.full_index}}. {{item.comments}}
                 </td>
             </tr>
         </table>
@@ -25,7 +25,7 @@
             </ion-item>
             <ion-item ng-hide="ifHideSubItems[item.index] == true" ng-repeat="level2 in item.items" class="item-icon-right item sub-item-{{item.index}}" ng-click="review($index, item, level2)" ng-repeat-end>
                 <i class="icon ion-chevron-right" style="font-size: 16px;"></i>
-                {{level2.index}}. {{level2.name}} 
+                {{level2.index}}. {{level2.name}}
                 <i class="ion-checkmark balanced" style="font-size: 16px;" ng-show="level2.status && level2.status != 'UNCHECK'"></i>
                 (<span style="color: green;">{{level2.pass}}</span>/<span style="color: red;">{{level2.fail}}</span>/<span style="color: gray;">{{level2.uncheck}}</span>)
             </ion-item>

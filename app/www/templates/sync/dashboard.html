@@ -1,0 +1,13 @@
+<ion-view title="dashboard">
+    <ion-header-bar align-title="center" class="bar-light">
+        <a class="button" ng-click="toBack()">返回</a>
+        <h1 class="title">数据同步</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="list">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>往期离线考核</div>
+            <div class="item item-icon-right" ng-repeat="item in data.list" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.createAt | date: 'yyyy年MM月dd日'}} {{item._type_|type}}</div>
+        </div>
+    </ion-content>
+</ion-view>

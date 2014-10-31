@@ -10,10 +10,7 @@
                 {{item.index}}. {{item.name}}
             </div>
 
-            <div class="item item-text-wrap row" style="padding: 12px;">
-                <!-- <label for="{{score}}" ng-repeat="score in item.range" style="padding-right: 16px; font-size: 16px; line-height: 2em;">
-                    <input type="radio" name="group-{{item.index}}" value="{{score}}" style="width: 16px; height: 16px;" ng-model="item.score" ng-click="changeScore(item, score)"> {{-score}}分
-                </label> -->
+            <div class="item item-text-wrap row" style="padding: 12px;" ng-if="data.type == '安全检查'">
                 <label class="col col-33 text-center">
                     <input type="radio" name="group-{{item.index}}" value="0" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, 0)">合格
                 </label>
@@ -21,9 +18,11 @@
                 <label class="col col-33 text-center">
                     <input type="radio" name="group-{{item.index}}" value="1" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, 1)">不合格
                 </label>
+            </div>
 
-                <label class="col col-33 text-center">
-                    <input type="radio" name="group-{{item.index}}" value="" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, null)">待定
+            <div class="item item-text-wrap row" style="padding: 12px;" ng-if="data.table.type == '考核评价'">
+                <label for="{{score}}" ng-repeat="score in item.range" style="padding-right: 16px; font-size: 16px; line-height: 2em;">
+                    <input type="radio" name="group-{{item.index}}" value="{{score}}" style="width: 16px; height: 16px;" ng-model="item.score" ng-click="changeScore(item, score)">{{-score}}分
                 </label>
             </div>
 

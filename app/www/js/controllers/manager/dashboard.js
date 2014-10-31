@@ -1,4 +1,4 @@
-app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, settings, UserService, CheckService, AuthService, resolveUser) {
+app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CheckService, AuthService, OfflineService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.group = {};
@@ -10,6 +10,38 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
             $state.go('welcome');
         });
     }
+
+    OfflineService.list().then(function (list) {
+        // 全部导入
+        list = _.filter(list, function(item) {
+            return item._type_ === 'capture' ||
+                item._type_ === 'check' ||
+                item._type_ === 'evaluation';
+        });
+
+        if (list.length === 0) return;
+
+        var popup = $ionicPopup.show({
+            template: '',
+            title: '您有' + list.length + '条离线记录，是否导入？',
+            scope: $scope,
+            buttons: [{
+                text: '取消'
+            }, {
+                text: '<b>确定</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return true;
+                }
+            }, ]
+        });
+
+        popup.then(function(bool) {
+            if (!bool) return;
+
+            $state.go("sync.dashboard");
+        });
+    });
 
     // 加载用户待办列表
     CheckService.findByUserId($scope.data.user._id).then(function(checks) {

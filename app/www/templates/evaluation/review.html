@@ -14,10 +14,6 @@
                 <label for="{{score}}" ng-repeat="score in item.range" style="width: 120px; padding: 5px; font-size: 16px; line-height: 2em;">
                     <input type="radio" name="group-{{item.index}}" value="{{score}}" style="width: 16px; height: 16px;" ng-model="item.score" ng-click="changeScore(item, score)"> {{-score}}分
                 </label>
-
-                <label class="col col-33 text-center" style="width: 140px; padding: 5px; font-size: 16px; line-height: 2em;">
-                    <input type="radio" name="group-{{item.index}}" value="" ng-model="item.score" ng-click="changeScore(item, null)">待定
-                </label>
             </div>
 
             <div class="item item-input-inset row" ng-show="item.status != 'UNCHECK' && item.score > 0" style="padding-top: 6px;">

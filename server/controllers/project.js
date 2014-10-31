@@ -29,7 +29,7 @@ exports.findById = function(req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: project_id
         }
     };
@@ -140,7 +140,7 @@ exports.push_array = function (req, res, next) {
 
     var options = {
         findOne: true,
-        conditions: {   
+        conditions: {
             _id: field_id
         }
     };

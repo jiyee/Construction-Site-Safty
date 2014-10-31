@@ -1,7 +1,38 @@
-app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, settings, UserService, CheckService, AuthService, resolveUser) {
+app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CheckService, AuthService, OfflineService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.project = $rootScope._data_.project;
+
+    OfflineService.list().then(function (list) {
+        // 只导入监督抽查和考核评价
+        list = _.filter(list, function(item) {
+            return item._type_ === 'capture' ||
+                item._type_ === 'evaluation';
+        });
+
+        if (list.length === 0) return;
+
+        var popup = $ionicPopup.show({
+            template: '',
+            title: '您有' + list.length + '条离线记录，是否数据同步？',
+            scope: $scope,
+            buttons: [{
+                text: '取消'
+            }, {
+                text: '<b>确定</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return true;
+                }
+            }, ]
+        });
+
+        popup.then(function(bool) {
+            if (!bool) return;
+
+            $state.go("sync.dashboard");
+        });
+    });
 
     // var extent = ol.proj.transform([111.56067, 30.50430, 111.24344, 30.29702],
     //     'EPSG:4326', 'EPSG:900913');

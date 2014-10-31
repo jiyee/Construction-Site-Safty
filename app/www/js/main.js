@@ -349,6 +349,73 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/offline/review.html',
         controller: 'OfflineReviewCtrl'
     })
+
+    // 数据同步
+    .state('sync', {
+        url: '/sync',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+
+        }
+    })
+
+    // 数据同步首页
+    .state('sync.dashboard', {
+        url: '/',
+        templateUrl: 'templates/sync/dashboard.html',
+        controller: 'SyncDashboardCtrl',
+        resolve: {
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
+
+    // 监督抽查
+    .state('sync.capture', {
+        url: '/capture/:captureId',
+        templateUrl: 'templates/sync/capture.html',
+        controller: 'SyncCaptureCtrl',
+        resolve: {
+            resolveProjects: function (ProjectService) {
+                return ProjectService.find();
+            },
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
+
+    // 安全检查
+    .state('sync.check', {
+        url: '/check/:checkId',
+        templateUrl: 'templates/sync/check.html',
+        controller: 'SyncCheckCtrl',
+        resolve: {
+            resolveProjects: function (ProjectService) {
+                return ProjectService.find();
+            },
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
+
+    // 考核评价
+    .state('sync.evaluation', {
+        url: '/evaluation/:evaluationId',
+        templateUrl: 'templates/sync/evaluation.html',
+        controller: 'SyncEvaluationCtrl',
+        resolve: {
+            resolveProjects: function (ProjectService) {
+                return ProjectService.find();
+            },
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
     ;
 
     // 设置image url白名单，否则AngularJS解析URL错误
