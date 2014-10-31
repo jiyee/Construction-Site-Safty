@@ -62,7 +62,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         projection: 'EPSG:900913',
         center: center,
         minZoom: 2,
-        maxZoom: 16,
+        maxZoom: 17,
         zoom: 10
     });
 
@@ -151,8 +151,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
 
     // update the HTML page when the position changes.
     geolocation.on('change', function() {
-        console.log(geolocation.getPosition());
-        console.log(geolocation.getAccuracyGeometry());
+        // console.log(geolocation.getPosition());
         map.getView().setCenter(geolocation.getPosition());
         // map.getView().setZoom(16);
     });
@@ -162,14 +161,28 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         console.log(error);
     });
 
-    var accuracyFeature = new ol.Feature();
-    accuracyFeature.bindTo('geometry', geolocation, 'accuracyGeometry');
+    // var accuracyFeature = new ol.Feature();
+    // accuracyFeature.bindTo('geometry', geolocation, 'accuracyGeometry');
 
-    var positionFeature = new ol.Feature();
-    positionFeature.bindTo('geometry', geolocation, 'position')
-        .transform(function() {}, function(coordinates) {
-            return coordinates ? new ol.geom.Point(coordinates) : null;
-        });
+    var positionFeature = new ol.Feature({
+          geometry: new ol.geom.Point([13358338.89519283, 3503549.843504374]),
+          style: new ol.style.Style({
+            image: new ol.style.Circle({
+                fill: new ol.style.Fill({
+                    color: 'rgba(255,255,0,0.5)'
+                }),
+                radius: 5,
+                stroke: new ol.style.Stroke({
+                    color: '#ff0',
+                    width: 1
+                })
+            })
+        })
+    });
+    // positionFeature.bindTo('geometry', geolocation, 'position')
+    // .transform(function() {}, function(coordinates) {
+    // return coordinates ? new ol.geom.Point(coordinates) : null;
+    // });
 
     var defaultStyle = {
         'Point': [new ol.style.Style({
@@ -239,13 +252,13 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     var featureLayer = new ol.layer.Image({
         source: new ol.source.ImageVector({
             source: new ol.source.Vector({
-                projection: view.getProjection(),
-                features: [accuracyFeature, positionFeature],
-                style: styleFunction
+                // projection: view.getProjection(),
+                features: [positionFeature]
+                // style: styleFunction
             })
         })
     });
-    map.addLayer(featureLayer);
+    // map.addLayer(featureLayer);
 
     $scope.geolocation = function() {
         geolocation.setTracking(true);
