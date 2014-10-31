@@ -53,7 +53,7 @@ app.controller('CheckCriterionCtrl', function($scope, $rootScope, $state, $state
                 userId: $scope.data.user._id
             });
         }, function(err) {
-            alert(err); 
+            alert(err);
         });
     };
 

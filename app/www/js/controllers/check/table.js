@@ -20,7 +20,7 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
         $scope.data.checked_items = [];
         $scope.data.score = 0;
 
-        // 标识考核历史记录
+        // 标识历史记录
         _.each($scope.data.table.items, function (level1) {
             _.each(level1.items, function (level2) {
                 level2.pass = level2.fail = level2.uncheck = 0;

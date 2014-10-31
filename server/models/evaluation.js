@@ -21,13 +21,13 @@ var EvaluationSchema = new Schema({
 
     wbs: { type: String }, // 分部、分享工程WBS分解阶段
 
-    // 考核表
+    // 考核评价表
     tables: [{ type: Schema.Types.ObjectId, ref: 'Table' }], // 考核表，一次考核评价直接创建4张表
 
     createAt: { type: Date, default: Date.now }, // 创建条目时间
     updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
-    // 考核信息
+    // 考核评价信息
     evaluation_date: { type: Date, default: Date.now }, // 考核日期
     evaluation_date_before: { type: Date }, // 上次考核日期
     evaluation_users: [{ type: Schema.Types.ObjectId, ref: 'User' }] // 考核人员，允许多人同时考核

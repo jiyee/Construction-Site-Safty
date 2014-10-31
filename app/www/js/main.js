@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ionic']);
 
-// var ipAddr = '127.0.0.1';
+// var ipAddr = 'localhost';
 var ipAddr = '121.40.202.109';
 
 // 加载ionic和cordova
@@ -100,7 +100,7 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
-    // 安全检查抽象页，用于数据共享
+    // 日常巡检抽象页，用于数据共享
     .state('check', {
         url: '/check',
         abstract: true,
@@ -112,28 +112,28 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
-    // 创建监督检查
+    // 创建日常巡检
     .state('check.create', {
         url: '/create',
         templateUrl: 'templates/check/create.html',
         controller: 'CheckCreateCtrl'
     })
 
-    // 监督检查详情
+    // 日常巡检详情
     .state('check.detail', {
         url: '/:checkId',
         templateUrl: 'templates/check/detail.html',
         controller: 'CheckDetailCtrl'
     })
 
-    // 考核列表页
+    // 日常巡检考核列表页
     .state('check.table', {
         url: "/table/:tableId",
         templateUrl: "templates/check/table.html",
         controller: 'CheckTableCtrl'
     })
 
-    // 考核单项页
+    // 日常巡检考核单项页
     .state('check.review', {
         url: "/table/:tableId/:itemId/:subItemId",
         templateUrl: "templates/check/review.html",
@@ -194,7 +194,7 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationDetailCtrl'
     })
 
-    // 日常安全检查汇总页
+    // 日常日常巡检汇总页
     .state('evaluation.summary', {
         url: '/:evaluationId/summary',
         templateUrl: 'templates/evaluation/summary.html',
@@ -258,7 +258,7 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
-    // 抽查监督抽象页，用于数据共享
+    // 安全检查抽象页，用于数据共享
     .state('capture', {
         url: '/capture',
         abstract: true,
@@ -270,14 +270,14 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
-    // 创建监督
+    // 创建安全检查
     .state('capture.create', {
         url: '/create',
         templateUrl: 'templates/capture/create.html',
         controller: 'CaptureCreateCtrl'
     })
 
-    // 监督检查
+    // 安全检查列表
     .state('capture.list', {
         url: '/:captureId',
         templateUrl: 'templates/capture/list.html',
@@ -301,14 +301,14 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'OfflineDashboardCtrl'
     })
 
-    // 监督抽查
+    // 安全检查
     .state('offline.capture', {
         url: '/capture/:captureId',
         templateUrl: 'templates/offline/capture.html',
         controller: 'OfflineCaptureCtrl'
     })
 
-    // 安全检查
+    // 日常巡检
     .state('offline.check', {
         url: '/check/:checkId',
         templateUrl: 'templates/offline/check.html',
@@ -372,7 +372,7 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
-    // 监督抽查
+    // 安全检查
     .state('sync.capture', {
         url: '/capture/:captureId',
         templateUrl: 'templates/sync/capture.html',
@@ -387,7 +387,7 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
-    // 安全检查
+    // 日常巡检
     .state('sync.check', {
         url: '/check/:checkId',
         templateUrl: 'templates/sync/check.html',

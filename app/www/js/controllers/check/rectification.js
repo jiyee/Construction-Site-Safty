@@ -44,7 +44,7 @@ app.controller('CheckRectificationCtrl', function($scope, $rootScope, $state, $s
                 userId: $scope.data.user._id
             });
         }, function(err) {
-            alert(err); 
+            alert(err);
         });
     };
 

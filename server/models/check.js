@@ -1,6 +1,6 @@
 /**
- * @name 安全检查
- * @description 记录日常安全检查相关信息，以及检查内容和结果
+ * @name 日常巡检
+ * @description 记录日常日常巡检相关信息，以及检查内容和结果
  * @author jiyee.sheng@gmail.com
  * @since 2014-10-03
  */

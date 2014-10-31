@@ -4,7 +4,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     $scope.data.project = $rootScope._data_.project;
 
     OfflineService.list().then(function (list) {
-        // 只导入监督抽查和考核评价
+        // 只导入安全检查和考核评价
         list = _.filter(list, function(item) {
             return item._type_ === 'capture' ||
                 item._type_ === 'evaluation';
@@ -170,8 +170,8 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     // update the HTML page when the position changes.
     geolocation.on('change', function() {
         console.log(geolocation.getPosition());
-        map.getView().setCenter(geolocation.getPosition());
-        map.getView().setZoom(16);
+        // map.getView().setCenter(geolocation.getPosition());
+        // map.getView().setZoom(16);
     });
 
     // handle geolocation error.

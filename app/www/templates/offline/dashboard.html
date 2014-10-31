@@ -10,11 +10,11 @@
         </div>
 
         <a ng-click="toCapture()" class="button button-block button-positive button-50">
-            监督抽查
+            安全检查
         </a>
 
         <a ng-click="toCheck()" class="button button-block button-positive button-50">
-            安全检查
+            日常巡检
         </a>
 
         <a ng-click="toEvaluation()" class="button button-block button-positive button-50">
@@ -22,7 +22,7 @@
         </a>
 
         <div class="list">
-            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>往期离线考核</div>
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>往期离线记录</div>
             <div class="item item-icon-right" ng-repeat="item in data.list" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.createAt | date: 'yyyy年MM月dd日'}} {{item._type_|type}}</div>
         </div>
     </ion-content>

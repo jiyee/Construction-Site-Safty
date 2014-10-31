@@ -61,7 +61,7 @@ app.factory('CheckService', function($http, $q, settings) {
 
             $http.post(settings.baseUrl + '/check/' + checkId + '/forward', {
                     next_user_id: nextUserId,
-                    rectification_criterion: rectificationCriterion  
+                    rectification_criterion: rectificationCriterion
                 })
                 .success(function(data) {
                     if (data.code > 0) {
@@ -80,7 +80,7 @@ app.factory('CheckService', function($http, $q, settings) {
             var deferred = $q.defer();
 
             $http.post(settings.baseUrl + '/check/' + checkId + '/backward', {
-                    rectification_result: rectificationResult  
+                    rectification_result: rectificationResult
                 })
                 .success(function(data) {
                     if (data.code > 0) {

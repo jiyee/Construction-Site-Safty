@@ -1,6 +1,6 @@
 /**
- * @name 安全检查表
- * @description 安全检查表单、安全考核评价表单
+ * @name 检查表
+ * @description 安全日常巡检、考核评价表单
  * @author jiyee.sheng@gmail.com
  * @since 2014-10-03
  */

@@ -580,7 +580,7 @@ exports.create = function (req, res, next) {
         });
     });
 
-    // 创建检查表
+    // 创建日常巡检表
     var table = new TableModel();
     var proto = require('../data/' + req.body.file + '.json');
     _.extend(table, proto);

@@ -1,5 +1,5 @@
 /**
- * @name 监督抽查拍照
+ * @name 安全检查(监督抽查)拍照
  * @description 通过拍照记录
  * @author jiyee.sheng@gmail.com
  * @since 2014-10-28

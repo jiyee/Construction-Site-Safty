@@ -1,16 +1,16 @@
 <ion-view title="create">
     <ion-header-bar align-title="center" class="bar-calm">
         <button class="button" ng-click="toBack()">返回</button>
-        <h1 class="title">安全检查</h1>
+        <h1 class="title">日常巡检</h1>
     </ion-header-bar>
 
     <ion-content padding="true">
-        <h2>现场检查对象</h2>
+        <h2>日常巡检</h2>
 
         <div class="list">
             <label class="item item-input item-select">
                 <div class="input-label">
-                    现场检查用表：
+                    检查用表：
                 </div>
                 <select ng-model="data.file" ng-options="item.file as (item.index + ' ' + item.name) group by item.group for item in data.files">
                     <option value="" selected>--- 请选择表格 ---</option>
