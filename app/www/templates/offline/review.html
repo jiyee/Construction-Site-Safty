@@ -10,7 +10,7 @@
                 {{item.index}}. {{item.name}}
             </div>
 
-            <div class="item item-text-wrap row" style="padding: 12px;" ng-if="data.type == '安全检查'">
+            <div class="item item-text-wrap row" style="padding: 12px;" ng-if="data.table.type == '安全检查'">
                 <label class="col col-33 text-center">
                     <input type="radio" name="group-{{item.index}}" value="0" ng-model="item.score" style="width: 16px; height: 16px;" ng-click="changeScore(item, 0)">合格
                 </label>

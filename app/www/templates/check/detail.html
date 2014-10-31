@@ -28,7 +28,7 @@
                     <div class="col">存在隐患：</div>
                 </div>
                 <div class="col assertive" ng-repeat="item in data.check.rectifications">
-                    {{$index + 1}}. ({{item.full_index}}) 扣{{-item.score}}分，{{item.comments}}
+                    {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
                     <div>
                         <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64">
                     </div>
@@ -64,7 +64,7 @@
                 </a>
                 <a class="tab-item" href="#" ng-click="backward()" ng-show="data.check.check_user._id != data.user._id && data.check.process_status == 'BACKWARD'">
                     <i class="icon ion-paper-airplane"></i>
-                    提交 
+                    提交
                 </a>
                 <a class="tab-item" href="#" ng-click="end()" ng-show="data.check.check_user._id == data.user._id && data.check.process_status == 'BACKWARD'">
                     <i class="icon ion-paper-airplane"></i>
