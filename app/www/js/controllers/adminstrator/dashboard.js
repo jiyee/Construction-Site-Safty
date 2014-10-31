@@ -3,7 +3,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     $scope.data.user = resolveUser;
     $scope.data.project = $rootScope._data_.project;
 
-    OfflineService.list().then(function (list) {
+    OfflineService.list().then(function(list) {
         // 只导入安全检查和考核评价
         list = _.filter(list, function(item) {
             return item._type_ === 'capture' ||
@@ -61,73 +61,55 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     var view = new ol.View({
         projection: 'EPSG:900913',
         center: center,
-        minZoom: 10,
+        minZoom: 2,
         maxZoom: 16,
         zoom: 10
     });
 
-    var server = "http://121.40.202.109:8080/";
+    // var server = "http://121.40.202.109:8080/";
     // var server = "";
-
     var map = new ol.Map({
         layers: [
             new ol.layer.Tile({
-                // crossOrigin: 'anonymous',
-                // url: '//{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 source: new ol.source.XYZ({
-                    tileUrlFunction: function(coordinate) {
-                        if (coordinate === null) {
-                            return "";
-                        }
+                    url: 'http://t{0-5}.tianditu.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
+                        //     tileUrlFunction: function(coordinate) {
+                        //         if (coordinate === null) {
+                        //             return "";
+                        //         }
 
-                        var z = coordinate[0];
-                        var x = coordinate[1];
-                        var y = coordinate[2];
+                    //         var z = coordinate[0];
+                    //         var x = coordinate[1];
+                    //         var y = coordinate[2];
 
-                        return server + 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
-                    },
-                    extent: extent,
-                    minZoom: 10,
-                    maxZoom: 16,
-                    wrapx: false
+                    //         return "http://t0.tianditu.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL=" + x + "&TILEROW=" + y + "&TILEMATRIX=" + z;
+                    //         // return server + 'data/' + 'tianditu' + '/' + 'satellite' + '/' + z + '/' + x + '/' + y + '.jpg';
+                    //     },
+                    //     extent: extent,
+                    //     minZoom: 10,
+                    //     maxZoom: 16,
+                    //     wrapx: false
                 })
             }),
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
-                    tileUrlFunction: function(coordinate) {
-                        if (coordinate === null) {
-                            return "";
-                        }
+                    url: 'http://t{0-5}.tianditu.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
+                        // tileUrlFunction: function(coordinate) {
+                        //     if (coordinate === null) {
+                        //         return "";
+                        //     }
 
-                        var z = coordinate[0];
-                        var x = coordinate[1];
-                        var y = coordinate[2];
+                    //     var z = coordinate[0];
+                    //     var x = coordinate[1];
+                    //     var y = coordinate[2];
 
-                        return server + 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
-                    },
-                    extent: extent,
-                    minZoom: 10,
-                    maxZoom: 16,
-                    wrapx: false
-                })
-            }),
-            new ol.layer.Tile({
-                source: new ol.source.XYZ({
-                    tileUrlFunction: function(coordinate) {
-                        if (coordinate === null) {
-                            return "";
-                        }
-
-                        var z = coordinate[0];
-                        var x = coordinate[1];
-                        var y = coordinate[2];
-
-                        return server + 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
-                    },
-                    extent: extent,
-                    minZoom: 10,
-                    maxZoom: 16,
-                    wrapx: false
+                    //     return "http://t1.tianditu.com/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL=" + x + "&TILEROW=" + y + "&TILEMATRIX=" + z;
+                    //     // return server + 'data/' + 'tianditu' + '/' + 'overlay_s' + '/' + z + '/' + x + '/' + y + '.png';
+                    // },
+                    // extent: extent,
+                    // minZoom: 10,
+                    // maxZoom: 16,
+                    // wrapx: false
                 })
             }),
             // new ol.layer.Vector({
@@ -170,7 +152,8 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     // update the HTML page when the position changes.
     geolocation.on('change', function() {
         console.log(geolocation.getPosition());
-        // map.getView().setCenter(geolocation.getPosition());
+        console.log(geolocation.getAccuracyGeometry());
+        map.getView().setCenter(geolocation.getPosition());
         // map.getView().setZoom(16);
     });
 
@@ -188,32 +171,103 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
             return coordinates ? new ol.geom.Point(coordinates) : null;
         });
 
-    var featuresOverlay = new ol.FeatureOverlay({
-        map: map,
-        features: [accuracyFeature, positionFeature]
+    var defaultStyle = {
+        'Point': [new ol.style.Style({
+            image: new ol.style.Circle({
+                fill: new ol.style.Fill({
+                    color: 'rgba(255,255,0,0.5)'
+                }),
+                radius: 5,
+                stroke: new ol.style.Stroke({
+                    color: '#ff0',
+                    width: 1
+                })
+            })
+        })],
+        'LineString': [new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: '#f00',
+                width: 3
+            })
+        })],
+        'Polygon': [new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(0,255,255,0.5)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#0ff',
+                width: 1
+            })
+        })],
+        'MultiPoint': [new ol.style.Style({
+            image: new ol.style.Circle({
+                fill: new ol.style.Fill({
+                    color: 'rgba(255,0,255,0.5)'
+                }),
+                radius: 5,
+                stroke: new ol.style.Stroke({
+                    color: '#f0f',
+                    width: 1
+                })
+            })
+        })],
+        'MultiLineString': [new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: '#0f0',
+                width: 3
+            })
+        })],
+        'MultiPolygon': [new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(0,0,255,0.5)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#00f',
+                width: 1
+            })
+        })]
+    };
+
+    var styleFunction = function(feature, resolution) {
+        var featureStyleFunction = feature.getStyleFunction();
+        if (featureStyleFunction) {
+            return featureStyleFunction.call(feature, resolution);
+        } else {
+            return defaultStyle[feature.getGeometry().getType()];
+        }
+    };
+    var featureLayer = new ol.layer.Image({
+        source: new ol.source.ImageVector({
+            source: new ol.source.Vector({
+                projection: view.getProjection(),
+                features: [accuracyFeature, positionFeature],
+                style: styleFunction
+            })
+        })
     });
+    map.addLayer(featureLayer);
 
-    geolocation.setTracking(true);
-
-    $scope.toCapture = function () {
-        $state.go('capture.create', {
-        });
+    $scope.geolocation = function() {
+        geolocation.setTracking(true);
     };
 
-    $scope.toCaptureList = function () {
-        $state.go('capture.list', {
-        });
+    $scope.toCapture = function() {
+        $state.go('capture.create', {});
     };
 
-    $scope.toEvaluationList = function () {
+    $scope.toCaptureList = function() {
+        $state.go('capture.list', {});
+    };
+
+    $scope.toEvaluationList = function() {
         // $state.go('evaluation.list', {
         // });
     };
 
-    $scope.logout = function () {
-        AuthService.logout().then(function () {
+    $scope.logout = function() {
+        AuthService.logout().then(function() {
             $state.go('welcome');
-        }, function (err) {
+        }, function(err) {
             alert(err);
             $state.go('welcome');
         });

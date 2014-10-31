@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic']);
 
-var ipAddr = 'localhost';
-// var ipAddr = '121.40.202.109';
+// var ipAddr = 'localhost';
+var ipAddr = '121.40.202.109';
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
@@ -35,7 +35,7 @@ app.run(function($rootScope, $ionicPlatform) {
     'roles': {
         '行业主管': 'administrator',
         '安全管理': 'manager',
-        '一线员工': 'normal'
+        '一线人员': 'normal'
     }
 })
 

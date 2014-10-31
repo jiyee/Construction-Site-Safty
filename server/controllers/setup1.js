@@ -98,204 +98,204 @@ exports.mongo = function(req, res, next) {
 
         var user_1_1 = {
             name: '徐志宏',
-            username: 'user11',
+            username: 'user_1_11',
             password: '123456',
             mobile: '15171888887'
         };
         var user_1_2 = {
             name: '周军',
-            username: 'user12',
+            username: 'user_1_12',
             password: '123456',
             mobile: '18601155772'
         };
         var user_1_3 = {
             name: '池工',
-            username: 'user13',
+            username: 'user_1_13',
             password: '123456',
             mobile: '13633313456'
         };
 
         var user_2_1 = {
             name: '张雄',
-            username: 'user21',
+            username: 'user_1_21',
             password: '123456',
             mobile: '15010758013'
         };
         var user_2_2 = {
             name: '王强',
-            username: 'user22',
+            username: 'user_1_22',
             password: '123456',
             mobile: '15801594438'
         };
         var user_2_3 = {
             name: '边军',
-            username: 'user23',
+            username: 'user_1_23',
             password: '123456',
             mobile: '15901099195'
         };
 
         var user_3_1 = {
             name: '王月',
-            username: 'user31',
+            username: 'user_1_31',
             password: '123456',
             mobile: '13910962871'
         };
         var user_3_2 = {
             name: '王伦吉',
-            username: 'user32',
+            username: 'user_1_32',
             password: '123456',
             mobile: '13811098725'
         };
         var user_3_3 = {
             name: '李泽荣',
-            username: 'user33',
+            username: 'user_1_33',
             password: '123456',
             mobile: '15687265514'
         };
 
         var user_4_1 = {
             name: '潘畅',
-            username: 'user41',
+            username: 'user_1_41',
             password: '123456',
             mobile: '15076541886'
         };
         var user_4_2 = {
             name: '甘军',
-            username: 'user42',
+            username: 'user_1_42',
             password: '123456',
             mobile: '18671442733'
         };
         var user_4_3 = {
             name: '王永亮',
-            username: 'user43',
+            username: 'user_1_43',
             password: '123456',
             mobile: '18371739061'
         };
         var user_4_4 = {
             name: '程甲甲',
-            username: 'user44',
+            username: 'user_1_44',
             password: '123456',
             mobile: '15176075800'
         };
         var user_4_5 = {
             name: '李爱民',
-            username: 'user45',
+            username: 'user_1_45',
             password: '123456',
             mobile: '18972552962'
         };
         var user_4_6 = {
             name: '陈厚望',
-            username: 'user46',
+            username: 'user_1_46',
             password: '123456',
             mobile: '18674204146'
         };
 
         var user_5_1 = {
             name: '李新波',
-            username: 'user51',
+            username: 'user_1_51',
             password: '123456',
             mobile: '18671728280'
         };
         var user_5_2 = {
             name: '陈登志',
-            username: 'user52',
+            username: 'user_1_52',
             password: '123456',
             mobile: '15100500583'
         };
         var user_5_3 = {
             name: '陈为忠',
-            username: 'user53',
+            username: 'user_1_53',
             password: '123456',
             mobile: '13887933901'
         };
         var user_5_4 = {
             name: '魏悦东',
-            username: 'user54',
+            username: 'user_1_54',
             password: '123456',
             mobile: '15100506068'
         };
         var user_5_5 = {
             name: '向国涛',
-            username: 'user55',
+            username: 'user_1_55',
             password: '123456',
             mobile: '18692584666'
         };
         var user_5_6 = {
             name: '金龙',
-            username: 'user56',
+            username: 'user_1_56',
             password: '123456',
             mobile: '18771773773'
         };
         var user_5_7 = {
             name: '张晓龙',
-            username: 'user57',
+            username: 'user_1_57',
             password: '123456',
             mobile: '15833469812'
         };
         var user_5_8 = {
             name: '冷浚',
-            username: 'user58',
+            username: 'user_1_58',
             password: '123456',
             mobile: '15572723789'
         };
         var user_5_9 = {
             name: '乐诚',
-            username: 'user59',
+            username: 'user_1_59',
             password: '123456',
             mobile: '18672105708'
         };
         var user_5_10 = {
             name: '张辉',
-            username: 'user510',
+            username: 'user_1_510',
             password: '123456',
             mobile: '15972198186'
         };
 
         var user_6_1 = {
             name: '张庆亮',
-            username: 'user61',
+            username: 'user_1_61',
             password: '123456',
             mobile: '15271455207'
         };
         var user_6_2 = {
             name: '彭文志',
-            username: 'user62',
+            username: 'user_1_62',
             password: '123456',
             mobile: '13872631250'
         };
         var user_6_3 = {
             name: '孔胜',
-            username: 'user63',
+            username: 'user_1_63',
             password: '123456',
             mobile: '15071739488'
         };
         var user_6_4 = {
             name: '孟培浩',
-            username: 'user64',
+            username: 'user_1_64',
             password: '123456',
             mobile: '15572723931'
         };
         var user_6_5 = {
             name: '孙朋朋',
-            username: 'user65',
+            username: 'user_1_65',
             password: '123456',
             mobile: '15271521653'
         };
         var user_6_6 = {
             name: '汪攀',
-            username: 'user66',
+            username: 'user_1_66',
             password: '123456',
             mobile: '18507202521'
         };
         var user_6_7 = {
             name: '李冲',
-            username: 'user67',
+            username: 'user_1_67',
             password: '123456',
             mobile: '13627228801'
         };
         var user_6_8 = {
             name: '齐超',
-            username: 'user68',
+            username: 'user_1_68',
             password: '123456',
             mobile: '15059562524'
         };

@@ -7,6 +7,52 @@
     <ion-content padding="true">
         <div>
             <div>
+                <label class="item item-input item-radio">
+                    <input type="radio" name="radio-group" ng-model="data.type" value="交通运输部">
+                    <div class="item-content">
+                        交通运输部
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </label>
+                <label class="item item-input item-radio">
+                    <input type="radio" name="radio-group" ng-model="data.type" value="地方主管部门">
+                    <div class="item-content">
+                        地方主管部门
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                </label>
+            </div>
+            <br>
+
+            <div>
+                <label class="item item-input item-select">
+                    <span class="input-label">
+                        单位：
+                    </span>
+                    <select ng-model="data.unit" ng-options="item as item.name for item in data.units">
+                        <option value="" selected>--- 请选择单位 ---</option>
+                    </select>
+                </label>
+            </div>
+            <br>
+
+            <div>
+                <label class="item item-input item-select">
+                    <span class="input-label">
+                        用户：
+                    </span>
+                    <select ng-model="data.username" ng-options="item.username as item.name for item in data.users">
+                        <option value="" selected>--- 请选择用户 ---</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">密码：</span>
+                    <input type="password" ng-model="data.password" placeholder="请输入密码">
+                </label>
+            </div>
+            <br>
+
+            <div>
                 <label class="item item-input item-select">
                     <span class="input-label">
                         省份：
@@ -25,31 +71,6 @@
                 </label>
             </div>
             <br>
-            <div>
-                <label class="item item-input item-select">
-                    <span class="input-label">
-                        单位：
-                    </span>
-                    <select ng-model="data.unit" ng-options="item as item.name for item in data.units">
-                        <option value="" selected>--- 请选择单位 ---</option>
-                    </select>
-                </label>
-            </div>
-            <br>
-            <div>
-                <label class="item item-input item-select">
-                    <span class="input-label">
-                        用户：
-                    </span>
-                    <select ng-model="data.username" ng-options="item.username as item.name for item in data.users">
-                        <option value="" selected>--- 请选择用户 ---</option>
-                    </select>
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">密码：</span>
-                    <input type="password" ng-model="data.password" placeholder="请输入密码">
-                </label>
-            </div>
 
             <button class="button button-block button-positive" ng-click="login()">
                 登 陆

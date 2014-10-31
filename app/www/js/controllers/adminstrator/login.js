@@ -1,13 +1,21 @@
 app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, units, ProjectService, SegmentService, UnitService, UserService, AuthService) {
     $scope.data = {};
     $scope.data.projects = projects;
-    $scope.data.units = units;
+    $scope.data.resolveUnits = units;
+    $scope.data.units = [];
+    $scope.data.users = [];
+
+    $scope.$watch('data.type', function (type) {
+        $scope.data.units = _.filter($scope.data.resolveUnits, {'type': type});
+    });
 
     $scope.$watch('data.unit', function (unit) {
         if (unit && unit._id) {
             UserService.findByUnitId(unit._id).then(function(users) {
                 $scope.data.users = users;
             });
+        } else {
+            $scope.data.users = [];
         }
     });
 
@@ -19,6 +27,11 @@ app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $s
 
         if (!$scope.data.password) {
             alert('请输入密码');
+            return;
+        }
+
+        if (!$scope.data.project) {
+            alert('请选择检查项目');
             return;
         }
 

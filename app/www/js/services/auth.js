@@ -2,12 +2,20 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
     var project, user;
 
     if ($window.sessionStorage["project"]) {
-        project = JSON.parse($window.sessionStorage["project"]);
+        try {
+            project = JSON.parse($window.sessionStorage["project"]);
+        } catch(ex) {
+            project = null;
+        }
         $rootScope._data_.project = project;
     }
 
     if ($window.sessionStorage["user"]) {
-        user = JSON.parse($window.sessionStorage["user"]);
+        try {
+            user = JSON.parse($window.sessionStorage["user"]);
+        } catch(ex) {
+            user = null;
+        }
     }
 
     return {

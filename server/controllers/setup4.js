@@ -20,13 +20,13 @@ exports.mongo = function(req, res, next) {
 
         var user_1_1 = {
             name: '张三',
-            username: 'user11',
+            username: 'user_4_11',
             password: '123456',
             mobile: '18888888888'
         };
         var user_1_2 = {
             name: '李四',
-            username: 'user12',
+            username: 'user_4_12',
             password: '123456',
             mobile: '18888888888'
         };

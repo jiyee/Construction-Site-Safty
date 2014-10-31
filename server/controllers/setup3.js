@@ -19,40 +19,40 @@ exports.mongo = function(req, res, next) {
         };
         var unit1 = {
             name: '交通运输部',
-            type: '部级主管部门'
+            type: '交通运输部'
         };
         var unit2 = {
             name: '湖北省交通运输厅',
-            type: '厅级主管部门'
+            type: '地方主管部门'
         };
 
         var user_1_1 = {
             name: '陈萍',
-            username: 'user11',
+            username: 'user_3_11',
             password: '123456',
             mobile: '18888888888'
         };
         var user_1_2 = {
             name: '桂志敬',
-            username: 'user12',
+            username: 'user_3_12',
             password: '123456',
             mobile: '18888888888'
         };
         var user_2_1 = {
             name: '李裕民',
-            username: 'user21',
+            username: 'user_3_21',
             password: '123456',
             mobile: '18888888888'
         };
         var user_2_2 = {
             name: '卢柯',
-            username: 'user22',
+            username: 'user_3_22',
             password: '123456',
             mobile: '18888888888'
         };
         var user_2_3 = {
             name: '张德军',
-            username: 'user23',
+            username: 'user_3_23',
             password: '123456',
             mobile: '18888888888'
         };
