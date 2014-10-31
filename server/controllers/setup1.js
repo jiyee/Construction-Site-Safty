@@ -66,14 +66,8 @@ exports.mongo = function(req, res, next) {
             type: '施工单位'
         };
 
-        var role1 = {
-            name: '行业主管'
-        };
         var role2 = {
             name: '安全管理'
-        };
-        var role3 = {
-            name: '一线人员'
         };
 
         var section1 = {
@@ -691,10 +685,8 @@ exports.mongo = function(req, res, next) {
                 b3.save();
             });
 
-            next({
-                code: 0,
-                message: "success"
-            });
+            console.log('setup 1');
+            next();
         });
 
     });

@@ -9,8 +9,10 @@ var table = require('./controllers/table');
 var check = require('./controllers/check');
 var evaluation = require('./controllers/evaluation');
 var capture = require('./controllers/capture');
-var setup = require('./controllers/setup');
+var setup1 = require('./controllers/setup1');
 var setup2 = require('./controllers/setup2');
+var setup3 = require('./controllers/setup3');
+var setup4 = require('./controllers/setup4');
 
 router.get('/', function(req, res) {
     res.render('index', {
@@ -98,7 +100,15 @@ router.get('/capture/:capture_id', capture.findById);
 router.post('/capture/create', capture.create);
 
 // 数据库测试接口
-router.get('/setup', setup.mongo);
+router.get('/setup1', setup1.mongo);
 router.get('/setup2', setup2.mongo);
+router.get('/setup3', setup3.mongo);
+router.get('/setup4', setup4.mongo);
+router.get('/setup', [setup1.mongo, setup2.mongo, setup3.mongo, setup4.mongo, function (req, res, next) {
+    next({
+        code: 100,
+        message: 'success'
+    });
+}]);
 
 module.exports = router;

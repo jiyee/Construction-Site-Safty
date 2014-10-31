@@ -8,7 +8,7 @@
 exports.SEGMENT_TYPES = ['项目', '标段', '分部', '工区', '班组'];
 
 // 单位类型
-exports.UNIT_TYPES = ['政府部门', '指挥部', '建设单位', '监理单位', '施工单位'];
+exports.UNIT_TYPES = ['部级主管部门', '厅级主管部门', '指挥部', '建设单位', '监理单位', '施工单位'];
 
 // 错误参数
 exports.ERROR_CODES = {
@@ -19,6 +19,6 @@ exports.ERROR_CODES = {
     105: '用户未登录'
 };
 
-exports.AUTHORITY_TYPES = ['安全检查', '考核评价'];
+exports.AUTHORITY_TYPES = ['日常巡检', '考核评价'];
 
 exports.STATUS_TYPES = ['UNCHECK', 'PASS', 'FAIL'];

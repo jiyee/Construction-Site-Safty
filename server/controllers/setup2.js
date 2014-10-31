@@ -1208,10 +1208,8 @@ exports.mongo = function(req, res, next) {
                 b23.save();
             });
 
-            next({
-                code: 0,
-                message: "success"
-            });
+            console.log('setup 2');
+            next();
         });
 
     // });
