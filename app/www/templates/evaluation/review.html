@@ -5,6 +5,11 @@
     </ion-header-bar>
 
     <ion-content padding="true">
+        <div class="list last-review">
+            <div class="item item-divider"><i class="icon ion-clipboard"></i>本周期内历次安全检查</div>
+            <div class="item" ng-repeat="item in data.captures">{{$index + 1}}. {{item.name}} {{item.description}} {{item.createAt | date: 'yyyy年MM月dd日'}}</div>
+        </div>
+
         <div class="card" ng-repeat="item in data.review.items" ng-class="{'FAIL': 'status-fail', 'PASS': 'status-pass', 'UNCHECK': 'status-uncheck'}[item.status]">
             <div class="item item-text-wrap">
                 {{item.index}}. {{item.name}}
@@ -16,12 +21,16 @@
                 </label>
             </div>
 
-            <div class="item item-input-inset row" ng-show="item.status != 'UNCHECK' && item.score > 0" style="padding-top: 6px;">
-                <label class="item-input col col-75" style="padding: 2px 0 0px 15px">
-                    <input type="text" ng-model="item.comments" placeholder="填写备注">
-                </label>
-                <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)" ng-hide="item.image_url">拍照存档</button>
-                <img ng-src="{{item.image_url}}" ng-show="item.image_url" class="col col-25">
+            <div ng-show="item.status != 'UNCHECK' && item.score > 0">
+                <div class="item item-input-inset row">
+                    <label class="item-input col col-75" style="padding: 2px 0 0px 15px">
+                        <input type="text" ng-model="item.comments" placeholder="填写备注">
+                    </label>
+                    <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)">拍照存档</button>
+                </div>
+                <div style="padding: 6px;">
+                    <img ng-src="{{image}}" ng-repeat="image in item.images" width="64" height="64">
+                </div>
             </div>
         </div>
     </ion-content>

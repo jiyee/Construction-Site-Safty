@@ -10,8 +10,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var CaptureSchema = new Schema({
+    type: { type: String, default: 'capture' }, // 数据类型
 
-    name: { type: String, required: '{PATH}不能为空' }, // 设施名称
+    uuid: { type: String, required: '{PATH}不能为空' }, // 考核编号, 自动生成
+
+    name: { type: String, required: '{PATH}不能为空' }, // 问题名称
     description: { type: String }, // 问题描述
 
     createAt: { type: Date, default: Date.now }, // 创建条目时间
@@ -26,6 +29,8 @@ var CaptureSchema = new Schema({
     unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 存在问题的建设单位
 
     status: { type: String, default: 'UNDO' }, // 整改状态
+
+    category: { type: String }, // 类别与细项
 
     images: [{ type: String }], // 照片URI
 

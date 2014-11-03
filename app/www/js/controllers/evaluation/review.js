@@ -1,7 +1,8 @@
-app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, settings, TableService, AuthService, resolveUser) {
+app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, settings, TableService, EvaluationService, CaptureService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.table = {};
+    $scope.data.evaluation = {};
     $scope.data.evaluationId = $stateParams.evaluationId;
     $scope.data.tableId = $stateParams.tableId;
     $scope.data.itemId = $stateParams.itemId;
@@ -14,6 +15,25 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
             $state.go('welcome');
         });
     }
+
+    EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
+        $scope.data.evaluation = evaluation;
+
+        var project = evaluation.project._id,
+            segment = evaluation.segment._id,
+            today = new Date(),
+            start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
+            end_date = new Date();
+            end_date.setDate(end_date.getDate() + 1);
+
+            start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
+            end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');
+
+        CaptureService.list(project, segment, start_date, end_date).then(function (captures) {
+            $scope.data.captures = captures;
+            console.log(captures);
+        });
+    });
 
     TableService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
@@ -42,7 +62,8 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
 
     $scope.takePhoto = function(item) {
         function onSuccess(imageURI) {
-            item.image_url = imageURI;
+            item.images = item.images || [];
+            item.images.push(imageURI);
             $scope.$apply();
         }
 

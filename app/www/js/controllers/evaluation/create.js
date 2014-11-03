@@ -2,7 +2,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     $scope.data = {};
     $scope.data.resolveWbs = wbs;
     $scope.data.user = resolveUser;
-    $scope.data.projectId = $scope.data.user.segment ? $scope.data.user.segment.project : $rootScope._data_.project._id;
+    $scope.data.projectId = $scope.data.user.project ? $scope.data.user.project._id : $rootScope._data_.project ? $rootScope._data_.project._id : null;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -17,9 +17,13 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         item.checked = false;
     });
 
-    ProjectService.findById($scope.data.projectId).then(function(project) {
-        $scope.data.project = project;
+    ProjectService.find().then(function (projects) {
+        $scope.data.projects = projects;
     });
+
+    if ($scope.data.projectId) {
+        $scope.data.project = $scope.data.user.project;
+    }
 
     $scope.$watch('data.project', function() {
         if (!$scope.data.project) return;
@@ -116,7 +120,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         }
 
         EvaluationService.create({
-            project: $scope.data.projectId,
+            project: $scope.data.projectId || $scope.data.project._id,
             segment: ($scope.data.branch || $scope.data.section)['_id'],
             unit: $scope.data.unit._id,
             wbs: $scope.data.wbs.join("|")

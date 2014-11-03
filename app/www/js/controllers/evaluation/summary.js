@@ -1,4 +1,4 @@
-app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
+app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, UnitService, CaptureService, CheckService, EvaluationService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.evaluation = {};
@@ -37,6 +37,11 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
             });
 
             $scope.data.scores = scores;
+        });
+
+        CaptureService.list(project, segment, start_date, end_date).then(function (captures) {
+            $scope.data.captures = captures;
+            console.log(captures);
         });
     });
 

@@ -27,6 +27,7 @@ var UserSchema = new Schema({
     // Which Model to use during population.
     role: { type: Schema.Types.ObjectId, ref: 'Role' }, // 角色
     unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 部门
+    project: { type: Schema.Types.ObjectId, ref: 'Project' }, // 部门
     segment: { type: Schema.Types.ObjectId, ref: 'Segment' }  // 隶属项目组成，标段、分部、工区、班组，其中之一
 });
 
@@ -47,7 +48,7 @@ UserSchema.statics = {
             query.select(select);
         }
 
-        query.populate('role unit segment')
+        query.populate('role unit project segment')
             .sort({
                 createAt: -1
             })

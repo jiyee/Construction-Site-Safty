@@ -1,0 +1,156 @@
+app.constant('categories', [{
+    "index": "1.1",
+    "name": "施工驻地",
+    "group": "施工现场布设",
+    "link":  "SGXCTY-A-A1"
+}, {
+    "index": "1.2",
+    "name": "拌和站、预制场、钢筋加工场、仓库",
+    "group": "施工现场布设"
+}, {
+    "index": "1.3",
+    "name": "临时用电",
+    "group": "施工现场布设",
+    "link":  "SGXCTY-A-A3"
+}, {
+    "index": "1.4",
+    "name": "消防安全",
+    "group": "施工现场布设",
+    "link":  "SGXCTY-A-A4"
+}, {
+    "index": "1.5",
+    "name": "施工便道便桥",
+    "group": "施工现场布设"
+}, {
+    "index": "2.1",
+    "name": "防护栏杆、安全网及其它防打击、防坠落措施",
+    "group": "安全防护",
+    "link":  "SGXCTY-B-B1"
+}, {
+    "index": "2.2",
+    "name": "文明施工、安全警示标志、标牌",
+    "group": "安全防护"
+}, {
+    "index": "2.3",
+    "name": "避雷设备",
+    "group": "安全防护"
+}, {
+    "index": "2.4",
+    "name": "个体防护",
+    "group": "安全防护"
+}, {
+    "index": "3.1",
+    "name": "高处作业",
+    "group": "施工作业",
+    "link":  "SGXCTY-C-C1"
+}, {
+    "index": "3.2",
+    "name": "支架脚手架",
+    "group": "施工作业",
+    "link":  "SGXCTY-C-C2"
+}, {
+    "index": "3.3",
+    "name": "模板",
+    "group": "施工作业",
+    "link":  "SGXCTY-C-C3"
+}, {
+    "index": "3.4",
+    "name": "特种设备",
+    "group": "施工作业",
+    "link":  "SGXCTY-C-C4"
+}, {
+    "index": "3.5",
+    "name": "基坑施工",
+    "group": "施工作业"
+}, {
+    "index": "4.1",
+    "name": "基础施工",
+    "group": "桥梁工程"
+}, {
+    "index": "4.2",
+    "name": "墩台",
+    "group": "桥梁工程",
+    "link":  "SGXCGL-A-A2"
+}, {
+    "index": "4.3",
+    "name": "桥梁上部结构施工",
+    "group": "桥梁工程"
+}, {
+    "index": "5.1",
+    "name": "施工基本要求及开挖",
+    "group": "隧道工程"
+}, {
+    "index": "5.2",
+    "name": "初期支护及二衬",
+    "group": "隧道工程"
+}, {
+    "index": "5.3",
+    "name": "监控量测，超前地质预报",
+    "group": "隧道工程",
+    "link":  "SGXCGL-B-B3"
+}, {
+    "index": "5.4",
+    "name": "逃生通道",
+    "group": "隧道工程",
+    "link":  "SGXCGL-B-B4"
+}, {
+    "index": "5.5",
+    "name": "通风防尘照明、排水及消防、应急管理",
+    "group": "隧道工程"
+}, {
+    "index": "5.6",
+    "name": "瓦斯隧道",
+    "group": "隧道工程",
+    "link":  "SGXCGL-B-B6"
+}, {
+    "index": "5.7",
+    "name": "信息管理",
+    "group": "隧道工程"
+}, {
+    "index": "6.1",
+    "name": "边坡施工",
+    "group": "路基工程",
+    "link":  "SGXCGL-C-C1"
+}, {
+    "index": "7.1",
+    "name": "路面施工",
+    "group": "路面工程"
+}, {
+    "index": "8.1",
+    "name": "施工船舶",
+    "group": "施工船舶及临时电缆"
+}, {
+    "index": "8.2",
+    "name": "临时电缆敷设",
+    "group": "施工船舶及临时电缆"
+}, {
+    "index": "9.1",
+    "name": "打入桩基施工",
+    "group": "码头工程或通航建筑物"
+}, {
+    "index": "9.2",
+    "name": "沉箱出运与安装",
+    "group": "码头工程或通航建筑物"
+}, {
+    "index": "9.3",
+    "name": "水上水下作业",
+    "group": "码头工程或通航建筑物"
+}, {
+    "index": "9.4",
+    "name": "水上构件吊装",
+    "group": "码头工程或通航建筑物",
+    "link":  "SGXCSY-B-B4"
+}, {
+    "index": "10.1",
+    "name": "爆破船作业",
+    "group": "航道工程",
+    "link":  "SGXCSY-B-B5"
+}, {
+    "index": "10.2",
+    "name": "水上抛石以及沉排铺排、充沙袋作业",
+    "group": "航道工程"
+}, {
+    "index": "10.3",
+    "name": "耙吸船及绞吸船放射源的管理",
+    "group": "航道工程"
+}]);

@@ -9,6 +9,17 @@
         <h2>安全检查[离线]</h2>
 
         <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    检查类别：
+                </div>
+                <select ng-model="data.category" ng-options="item.name as (item.index + ' ' + item.name) group by item.group for item in data.categories">
+                    <option value="" selected>--- 请选择类别和细项 ---</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="list">
             <label class="item item-input">
                 <div class="input-label">
                     名称：

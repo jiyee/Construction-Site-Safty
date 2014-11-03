@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic']);
 
-// var ipAddr = 'localhost';
-var ipAddr = '121.40.202.109';
+var ipAddr = 'localhost';
+// var ipAddr = '121.40.202.109';
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
@@ -35,7 +35,7 @@ app.run(function($rootScope, $ionicPlatform) {
     'roles': {
         '行业主管': 'administrator',
         '安全管理': 'manager',
-        '一线人员': 'normal'
+        '一线人员': 'worker'
     }
 })
 
@@ -411,6 +411,36 @@ app.run(function($rootScope, $ionicPlatform) {
             resolveProjects: function (ProjectService) {
                 return ProjectService.find();
             },
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
+
+    // 安全管理抽象页，用于数据共享
+    .state('worker', {
+        url: '/worker',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+        }
+    })
+
+    // 用户登录
+    .state('worker.login', {
+        url: '/login',
+        templateUrl: 'templates/worker/login.html',
+        controller: 'WorkerLoginCtrl',
+        resolve: {
+        }
+    })
+
+    // 用户主面板
+    .state('worker.dashboard', {
+        url: '/dashboard/:userId',
+        templateUrl: 'templates/worker/dashboard.html',
+        controller: 'WorkerDashboardCtrl',
+        resolve: {
             resolveUser: function (AuthService) {
                 return AuthService.getUser();
             }

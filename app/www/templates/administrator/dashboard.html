@@ -1,20 +1,44 @@
 <ion-view>
     <ion-header-bar align-title="center" class="bar-calm">
-        <h1 class="title">{{data.group.name}} [{{data.user.name}}]</h1>
+        <h1 class="title">[{{data.user.name}}]</h1>
         <button class="button icon ion-log-out" ng-click="logout()"></button>
     </ion-header-bar>
 
-    <ion-content class="hide-on-keyboard-open">
-        <div id="map" class="map">
-            <div id="geolocation" class="icon ion-pinpoint" style="width: 36px; height: 36px; position: absolute; bottom: 80px; left: 20px; z-index: 1000; font-size: 28px; line-height: 36px; text-align: center; background-color: white; color: darkcyan; border-radius: 4px;" ng-click="geolocation()"></div>
+    <ion-content>
+        <div class="list user-status">
+            <h2 class="item item-divider item-icon-left text-left"><i class="icon ion-home"></i>用户在线状态</h2>
+
+            <div class="item item-complex">
+                <div class="row">
+                    <div class="col col-20" ng-repeat="item in data.groupUsers">
+                        <a ui-sref="contact({userId: item._id})"><i class="user-online"></i>{{item.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>安全检查</div>
+            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.category}}-{{item.name}}</div>
+        </div>
+
+        <div class="list">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>日常巡查</div>
+            <div class="item item-icon-right" ng-repeat="item in data.checks" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.segment.name}}-{{item.table.name}}</div>
+        </div>
+
+        <div class="list">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>考核评价</div>
+            <div class="item item-icon-right" ng-repeat="item in data.evaluations" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.segment.name}}-{{item.unit.name}}</div>
         </div>
     </ion-content>
 
     <ion-footer-bar class="bar-positive">
         <div class="row" style="padding-top: 0; padding-bottom: 0;">
-            <button class="button col" ng-click="toCapture()">我要标注</button>
-            <button class="button col" ng-click="toCaptureList()">我的</button>
-            <button class="button col" ng-click="toEvaluationList()">考核评价</button>
+            <button class="button col" ng-click="toStandard()">标准查询</button>
+            <button class="button col" ng-click="toCapture()">安全检查</button>
+            <button class="button col" ng-click="toCheck()">日常巡查</button>
+            <button class="button col" ng-click="toEvaluation()">考核评价</button>
         </div>
     </ion-footer-bar>
 </ion-view>

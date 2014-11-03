@@ -1,6 +1,7 @@
-app.controller('OfflineCaptureCtrl', function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
+app.controller('OfflineCaptureCtrl', function($scope, $rootScope, $state, $stateParams, settings, categories, OfflineService) {
     $scope.data = {};
     $scope.data.captureId = $stateParams.captureId;
+    $scope.data.categories = categories;
     $scope.data.images = [];
     $scope.data.center_x = 0;
     $scope.data.center_y = 0;
@@ -43,6 +44,11 @@ app.controller('OfflineCaptureCtrl', function($scope, $rootScope, $state, $state
     };
 
     $scope.save = function() {
+        if (!$scope.data.category) {
+            alert('请选择类别与细项');
+            return;
+        }
+
         if (!$scope.data.name) {
             alert('请选择名称');
             return;
@@ -57,6 +63,7 @@ app.controller('OfflineCaptureCtrl', function($scope, $rootScope, $state, $state
             captureId: $scope.data.captureId, // 这里不太一样，先生成id
             name: $scope.data.name,
             description: $scope.data.description,
+            category: $scope.data.category,
             images: $scope.data.images.join("|"),
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {

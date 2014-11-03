@@ -11,8 +11,7 @@
             <span class="input-label">
                 项目：
             </span>
-            <span ng-show="data.project">{{data.project.name}}</span>
-            <select ng-model="project" ng-options="item as item.name for item in data.projects" ng-change="changeProject(project)" ng-hide="data.project">
+            <select ng-model="project" ng-options="item as item.name for item in data.projects" ng-change="changeProject(project)">
                 <option value="" selected>请选择项目</option>
             </select>
         </label>
@@ -20,8 +19,7 @@
             <span class="input-label">
                 施工单位：
             </span>
-            <span ng-show="data.unit">{{data.unit.name}}</span>
-            <select ng-model="unit" ng-options="item as item.name for item in data.units" ng-change="changeUnit(unit)" ng-hide="data.unit">
+            <select ng-model="unit" ng-options="item as item.name for item in data.units" ng-change="changeUnit(unit)">
                 <option value="" selected>请选择单位</option>
             </select>
         </label>
@@ -29,8 +27,7 @@
             <span class="input-label">
                 合同段：
             </span>
-            <span ng-show="data.section">{{data.section.name}}</span>
-            <select ng-model="section" ng-options="item as item.name for item in data.sections" ng-change="changeSection(section)" ng-hide="data.section">
+            <select ng-model="section" ng-options="item as item.name for item in data.sections" ng-change="changeSection(section)">
                 <option value="" selected>请选择合同段</option>
             </select>
         </label>

@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var EvaluationSchema = new Schema({
+    type: { type: String, default: 'evaluation' }, // 数据类型
 
     uuid: { type: String, required: '{PATH}不能为空' }, // 考核编号, 自动生成
 

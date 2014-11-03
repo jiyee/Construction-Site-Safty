@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var CheckSchema = new Schema({
+    type: { type: String, default: 'check' }, // 数据类型
 
     uuid: { type: String, required: '{PATH}不能为空' }, // 检查编号, 自动生成
 

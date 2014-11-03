@@ -1,7 +1,8 @@
-app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, files, resolveUser) {
+app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
-    $scope.data.project = $rootScope._data_.project;
+    $scope.data.projectId = $scope.data.user.project ? $scope.data.user.project._id : $rootScope._data_.project ? $rootScope._data_.project._id : null;
+    $scope.data.categories = categories;
     $scope.data.images = [];
     $scope.data.center_x = 0;
     $scope.data.center_y = 0;
@@ -13,6 +14,34 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             $state.go('welcome');
         });
     }
+
+    ProjectService.find().then(function (projects) {
+        $scope.data.projects = projects;
+    });
+
+    if ($scope.data.projectId) {
+        $scope.data.project = $scope.data.user.project;
+        SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
+            $scope.data.sections = segments;
+        });
+    } else {
+        $scope.$watch('data.project', function (project) {
+            if (!project) return;
+
+            SegmentService.findByProjectId($scope.data.project._id).then(function (segments) {
+                $scope.data.sections = segments;
+            });
+        });
+    }
+
+    $scope.$watch('data.section', function(section) {
+        if (!section) return;
+
+        SegmentService.findById(section._id).then(function (segment) {
+            $scope.data.branches = segment.segments;
+        });
+    });
+
 
     var onSuccess = function(position) {
         $scope.data.center_x = position.coords.longitude;
@@ -44,6 +73,11 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     };
 
     $scope.save = function() {
+        if (!$scope.data.category) {
+            alert('请选择类别与细项');
+            return;
+        }
+
         if (!$scope.data.name) {
             alert('请选择名称');
             return;
@@ -58,8 +92,10 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             name: $scope.data.name,
             description: $scope.data.description,
             user: $scope.data.user._id,
-            project: $scope.data.project._id,
+            project: $scope.data.projectId || $scope.data.project._id,
+            segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             images: $scope.data.images.join("|"),
+            category: $scope.data.category,
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {
             alert('保存成功');

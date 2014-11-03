@@ -13,6 +13,7 @@ var setup1 = require('./controllers/setup1');
 var setup2 = require('./controllers/setup2');
 var setup3 = require('./controllers/setup3');
 var setup4 = require('./controllers/setup4');
+var setup5 = require('./controllers/setup5');
 
 router.get('/', function(req, res) {
     res.render('index', {
@@ -96,6 +97,7 @@ router.post('/evaluation/:evaluation_id/update', evaluation.update);
 
 // 角色接口
 router.get('/captures/all', capture.findAll);
+router.get('/captures/list/:project_id/:segment_id/:start_date/:end_date', capture.findByDateInterval);
 router.get('/capture/:capture_id', capture.findById);
 router.post('/capture/create', capture.create);
 
@@ -104,7 +106,7 @@ router.get('/setup1', setup1.mongo);
 router.get('/setup2', setup2.mongo);
 router.get('/setup3', setup3.mongo);
 router.get('/setup4', setup4.mongo);
-router.get('/setup', [setup1.mongo, setup2.mongo, setup3.mongo, setup4.mongo, function (req, res, next) {
+router.get('/setup', [setup1.mongo, setup2.mongo, setup3.mongo, setup4.mongo, setup5.mongo, function (req, res, next) {
     next({
         code: 100,
         message: 'success'

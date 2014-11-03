@@ -1206,6 +1206,8 @@ exports.mongo = function(req, res, next) {
                 b21.save();
                 b22.save();
                 b23.save();
+
+                // UserModel.update({role: r._id}, {project: project._id}, { multi: true });
             });
 
             console.log('setup 2');

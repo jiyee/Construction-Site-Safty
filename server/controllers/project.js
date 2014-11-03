@@ -94,6 +94,15 @@ exports.list_array = function (req, res, next) {
             return next(err);
         }
 
+        if (!project) {
+            res.send({
+                'status': 'success',
+                'code': 0,
+                'projects': []
+            });
+            return;
+        }
+
         var __total = 0;
         var __done = 0;
         var deepPopulate = function(err, parent) {

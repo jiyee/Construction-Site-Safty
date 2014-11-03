@@ -17,9 +17,19 @@
             </div>
         </div>
 
-        <div class="list last-review">
-            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>待办事项</div>
-            <div class="item item-icon-right" ng-repeat="item in data.checks" ng-click="toCheckDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.table.name}}</div>
+        <div class="list">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>安全检查</div>
+            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.category}}-{{item.name}}</div>
+        </div>
+
+        <div class="list">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>日常巡查</div>
+            <div class="item item-icon-right" ng-repeat="item in data.checks" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.segment.name}}-{{item.table.name}}</div>
+        </div>
+
+        <div class="list">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>考核评价</div>
+            <div class="item item-icon-right" ng-repeat="item in data.evaluations" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.segment.name}}-{{item.unit.name}}</div>
         </div>
 
     </ion-content>
@@ -27,6 +37,7 @@
     <ion-footer-bar class="bar-positive">
         <div class="row" style="padding-top: 0; padding-bottom: 0;">
             <button class="button col">标准查询</button>
+            <button class="button col" ng-click="toCaptureCreate()">安全检查</button>
             <button class="button col" ng-click="toCheckCreate()">日常巡检</button>
             <button class="button col" ng-click="toEvaluationList()">考核评价</button>
         </div>

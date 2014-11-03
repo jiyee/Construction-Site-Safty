@@ -20,12 +20,16 @@
                 </label>
             </div>
 
-            <div class="item item-input-inset row" ng-show="item.status != 'UNCHECK' && item.score > 0" style="padding-top: 6px;">
-                <label class="item-input col col-75" style="padding: 2px 0 0px 15px">
-                    <input type="text" ng-model="item.comments" placeholder="填写备注">
-                </label>
-                <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)" ng-hide="item.image_url">拍照存档</button>
-                <img ng-src="{{item.image_url}}" ng-show="item.image_url" class="col col-25">
+            <div ng-show="item.status != 'UNCHECK' && item.score > 0">
+                <div class="item item-input-inset row">
+                    <label class="item-input col col-75" style="padding: 2px 0 0px 15px">
+                        <input type="text" ng-model="item.comments" placeholder="填写备注">
+                    </label>
+                    <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)">拍照存档</button>
+                </div>
+                <div style="padding: 6px;">
+                    <img ng-src="{{image}}" ng-repeat="image in item.images" width="64" height="64">
+                </div>
             </div>
         </div>
     </ion-content>

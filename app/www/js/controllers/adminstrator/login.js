@@ -1,6 +1,5 @@
-app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, units, ProjectService, SegmentService, UnitService, UserService, AuthService) {
+app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, units, UserService, AuthService) {
     $scope.data = {};
-    $scope.data.projects = projects;
     $scope.data.resolveUnits = units;
     $scope.data.units = [];
     $scope.data.users = [];
@@ -29,14 +28,6 @@ app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $s
             alert('请输入密码');
             return;
         }
-
-        if (!$scope.data.project) {
-            alert('请选择检查项目');
-            return;
-        }
-
-        // 保存到$rootScopre, 并非特别好的方式
-        $rootScope._data_.project = $scope.data.project;
 
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
             $state.go("^.dashboard", {

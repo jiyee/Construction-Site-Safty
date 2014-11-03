@@ -1,4 +1,4 @@
-app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CheckService, AuthService, OfflineService, resolveUser) {
+app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.group = {};
@@ -44,8 +44,16 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     });
 
     // 加载用户待办列表
+    CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
+        $scope.data.captures = captures;
+    });
+
     CheckService.findByUserId($scope.data.user._id).then(function(checks) {
         $scope.data.checks = checks;
+    });
+
+    EvaluationService.findByUserId($scope.data.user._id).then(function(evaluations) {
+        $scope.data.evaluations = evaluations;
     });
 
     // 加载用户所属组织的所有用户，供用户在线状态展示
@@ -61,9 +69,29 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         });
     }
 
+    $scope.toDetail = function(item) {
+        if (item.type === 'capture') {
+            $state.go('capture.detail', {
+                captureId: item._id
+            });
+        } else if (item.type === 'check') {
+            $state.go('check.detail', {
+                checkId: item._id
+            });
+        } else if (item.type === 'evaluation') {
+            $state.go('evaluation.summary', {
+                evaluationId: item._id
+            });
+        }
+    };
+
+
+    $scope.toCaptureCreate = function () {
+        $state.go('capture.create', {});
+    };
+
     $scope.toCheckCreate = function () {
-        $state.go('check.create', {
-        });
+        $state.go('check.create', {});
     };
 
     $scope.toCheckDetail = function (item) {
@@ -73,9 +101,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     };
 
     $scope.toEvaluationList = function (item) {
-        $state.go('evaluation.list', {
-
-        });
+        $state.go('evaluation.list', {});
     };
 
     $scope.logout = function () {

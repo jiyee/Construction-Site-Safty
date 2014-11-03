@@ -52,26 +52,6 @@
             </div>
             <br>
 
-            <div>
-                <label class="item item-input item-select">
-                    <span class="input-label">
-                        省份：
-                    </span>
-                    <select>
-                        <option value="湖北省" selected>湖北省</option>
-                    </select>
-                </label>
-                <label class="item item-input item-select">
-                    <span class="input-label">
-                        项目：
-                    </span>
-                    <select ng-model="data.project" ng-options="item as item.name for item in data.projects">
-                        <option value="" selected>--- 请选择项目 ---</option>
-                    </select>
-                </label>
-            </div>
-            <br>
-
             <button class="button button-block button-positive" ng-click="login()">
                 登 陆
             </button>

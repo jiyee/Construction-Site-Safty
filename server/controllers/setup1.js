@@ -4,6 +4,7 @@ var eventproxy = require('eventproxy');
 
 var ProjectModel = require('../models/').ProjectModel;
 var SegmentModel = require('../models/').SegmentModel;
+var CaptureModel = require('../models/').CaptureModel;
 var CheckModel = require('../models/').CheckModel;
 var EvaluationModel = require('../models/').EvaluationModel;
 var TableModel = require('../models/').TableModel;
@@ -38,8 +39,11 @@ exports.mongo = function(req, res, next) {
     EvaluationModel.remove({}, function(err) {
         ep.emit('remove');
     });
+    CaptureModel.remove({}, function(err) {
+        ep.emit('remove');
+    });
 
-    ep.after('remove', 8, function() {
+    ep.after('remove', 9, function() {
         var project1 = {
             name: '宜张高速公路宜都至五峰段',
             province: '湖北省',
@@ -683,6 +687,7 @@ exports.mongo = function(req, res, next) {
                 b1.save();
                 b2.save();
                 b3.save();
+
             });
 
             console.log('setup 1');
