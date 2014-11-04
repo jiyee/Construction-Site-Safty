@@ -14,6 +14,7 @@ var UserModel = require('../models/').UserModel;
 exports.mongo = function(req, res, next) {
     var ep = new eventproxy();
 
+
         var role1 = {
             name: '行业主管'
         };
@@ -23,6 +24,14 @@ exports.mongo = function(req, res, next) {
         };
         var unit2 = {
             name: '湖北省交通运输厅',
+            type: '地方主管部门'
+        };
+        var unit3 = {
+            name: '交通运输部科学研究院',
+            type: '交通运输部'
+        };
+        var unit4 = {
+            name: '湖北省交通运输厅工程质量监督局',
             type: '地方主管部门'
         };
 
@@ -38,36 +47,87 @@ exports.mongo = function(req, res, next) {
             password: '123456',
             mobile: '18888888888'
         };
+
         var user_2_1 = {
             name: '李裕民',
             username: 'user_3_21',
             password: '123456',
             mobile: '18888888888'
         };
-        var user_2_2 = {
-            name: '卢柯',
-            username: 'user_3_22',
+
+        var user_3_1 = {
+            name: '申瑞君',
+            username: 'user_3_31',
             password: '123456',
             mobile: '18888888888'
         };
-        var user_2_3 = {
-            name: '张德军',
-            username: 'user_3_23',
+        var user_3_2 = {
+            name: '王海燕',
+            username: 'user_3_32',
             password: '123456',
             mobile: '18888888888'
         };
 
-        ep.all('unit1', 'unit2', function(u1, u2) {
+        var user_4_1 = {
+            name: '章征春',
+            username: 'user_3_41',
+            password: '123456',
+            mobile: '18888888888'
+        };
+        var user_4_2 = {
+            name: '卢柯',
+            username: 'user_3_42',
+            password: '123456',
+            mobile: '18888888888'
+        };
+        var user_4_3 = {
+            name: '张德军',
+            username: 'user_3_43',
+            password: '123456',
+            mobile: '18888888888'
+        };
+        var user_4_4 = {
+            name: '黄军生',
+            username: 'user_3_44',
+            password: '123456',
+            mobile: '18888888888'
+        };
+        var user_4_5 = {
+            name: '张波',
+            username: 'user_3_45',
+            password: '123456',
+            mobile: '18888888888'
+        };
+        var user_4_6 = {
+            name: '王华仙',
+            username: 'user_3_46',
+            password: '123456',
+            mobile: '18888888888'
+        };
+        var user_4_7 = {
+            name: '吕瑞善',
+            username: 'user_3_47',
+            password: '123456',
+            mobile: '18888888888'
+        };
+        var user_4_8 = {
+            name: '谢功元',
+            username: 'user_3_48',
+            password: '123456',
+            mobile: '18888888888'
+        };
+
+        ep.all('unit1', 'unit2', 'unit3', 'unit4', function(u1, u2, u3, u4) {
             var r1 = new RoleModel();
             r1.name = role1.name;
-            r1.units = [u1._id, u2._id];
+            r1.units = [u1._id, u2._id, u3._id, u4._id];
             r1.save(function(err, role) {
                 console.log("Save role1");
                 ep.emit('role1', role);
             });
         });
 
-        ep.all('role1', 'unit1', 'unit2', function(r1, u1, u2) {
+        ep.all('role1', 'unit1', 'unit2', 'unit3', 'unit4', function(r1, u1, u2, u3, u4) {
             var ur_1_1 = new UserModel(user_1_1);
             ur_1_1.role = r1._id;
             ur_1_1.unit = u1._id;
@@ -75,7 +135,6 @@ exports.mongo = function(req, res, next) {
                 console.log("Save user_1_1");
                 ep.emit('user_1_1', user);
             });
-
             var ur_1_2 = new UserModel(user_1_2);
             ur_1_2.role = r1._id;
             ur_1_2.unit = u1._id;
@@ -92,19 +151,77 @@ exports.mongo = function(req, res, next) {
                 console.log("Save user_2_1");
                 ep.emit('user_2_1', user);
             });
-            var ur_2_2 = new UserModel(user_2_2);
-            ur_2_2.role = r1._id;
-            ur_2_2.unit = u2._id;
-            ur_2_2.save(function(err, user) {
-                console.log("Save user_2_2");
-                ep.emit('user_2_2', user);
+
+            var ur_3_1 = new UserModel(user_3_1);
+            ur_3_1.role = r1._id;
+            ur_3_1.unit = u3._id;
+            ur_3_1.save(function(err, user) {
+                console.log("Save user_3_1");
+                ep.emit('user_3_1', user);
             });
-            var ur_2_3 = new UserModel(user_2_3);
-            ur_2_3.role = r1._id;
-            ur_2_3.unit = u2._id;
-            ur_2_3.save(function(err, user) {
-                console.log("Save user_2_3");
-                ep.emit('user_2_3', user);
+            var ur_3_2 = new UserModel(user_3_2);
+            ur_3_2.role = r1._id;
+            ur_3_2.unit = u3._id;
+            ur_3_2.save(function(err, user) {
+                console.log("Save user_3_2");
+                ep.emit('user_3_2', user);
+            });
+
+            var ur_4_1 = new UserModel(user_4_1);
+            ur_4_1.role = r1._id;
+            ur_4_1.unit = u4._id;
+            ur_4_1.save(function(err, user) {
+                console.log("Save user_4_1");
+                ep.emit('user_4_1', user);
+            });
+            var ur_4_2 = new UserModel(user_4_2);
+            ur_4_2.role = r1._id;
+            ur_4_2.unit = u4._id;
+            ur_4_2.save(function(err, user) {
+                console.log("Save user_4_2");
+                ep.emit('user_4_2', user);
+            });
+            var ur_4_3 = new UserModel(user_4_3);
+            ur_4_3.role = r1._id;
+            ur_4_3.unit = u4._id;
+            ur_4_3.save(function(err, user) {
+                console.log("Save user_4_3");
+                ep.emit('user_4_3', user);
+            });
+            var ur_4_4 = new UserModel(user_4_4);
+            ur_4_4.role = r1._id;
+            ur_4_4.unit = u4._id;
+            ur_4_4.save(function(err, user) {
+                console.log("Save user_4_4");
+                ep.emit('user_4_4', user);
+            });
+            var ur_4_5 = new UserModel(user_4_5);
+            ur_4_5.role = r1._id;
+            ur_4_5.unit = u4._id;
+            ur_4_5.save(function(err, user) {
+                console.log("Save user_4_5");
+                ep.emit('user_4_5', user);
+            });
+            var ur_4_6 = new UserModel(user_4_6);
+            ur_4_6.role = r1._id;
+            ur_4_6.unit = u4._id;
+            ur_4_6.save(function(err, user) {
+                console.log("Save user_4_6");
+                ep.emit('user_4_6', user);
+            });
+            var ur_4_7 = new UserModel(user_4_7);
+            ur_4_7.role = r1._id;
+            ur_4_7.unit = u4._id;
+            ur_4_7.save(function(err, user) {
+                console.log("Save user_4_7");
+                ep.emit('user_4_7', user);
+            });
+            var ur_4_8 = new UserModel(user_4_8);
+            ur_4_8.role = r1._id;
+            ur_4_8.unit = u4._id;
+            ur_4_8.save(function(err, user) {
+                console.log("Save user_4_8");
+                ep.emit('user_4_8', user);
             });
 
             console.log('setup 3');
@@ -120,5 +237,15 @@ exports.mongo = function(req, res, next) {
         u2.save(function(err, unit) {
             console.log("Save Unit2");
             ep.emit('unit2', unit);
+        });
+        var u3 = new UnitModel(unit3);
+        u3.save(function(err, unit) {
+            console.log("Save Unit3");
+            ep.emit('unit3', unit);
+        });
+        var u4 = new UnitModel(unit4);
+        u4.save(function(err, unit) {
+            console.log("Save Unit4");
+            ep.emit('unit4', unit);
         });
 };

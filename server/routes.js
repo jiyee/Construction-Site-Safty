@@ -14,6 +14,7 @@ var setup2 = require('./controllers/setup2');
 var setup3 = require('./controllers/setup3');
 var setup4 = require('./controllers/setup4');
 var setup5 = require('./controllers/setup5');
+var setup6 = require('./controllers/setup6');
 
 router.get('/', function(req, res) {
     res.render('index', {
@@ -106,7 +107,9 @@ router.get('/setup1', setup1.mongo);
 router.get('/setup2', setup2.mongo);
 router.get('/setup3', setup3.mongo);
 router.get('/setup4', setup4.mongo);
-router.get('/setup', [setup1.mongo, setup2.mongo, setup3.mongo, setup4.mongo, setup5.mongo, function (req, res, next) {
+router.get('/setup5', setup5.mongo);
+router.get('/setup6', setup6.mongo);
+router.get('/setup', [setup1.mongo, setup2.mongo, setup3.mongo, setup4.mongo, setup5.mongo, setup6.mongo, function (req, res, next) {
     next({
         code: 100,
         message: 'success'
