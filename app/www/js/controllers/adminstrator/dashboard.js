@@ -75,7 +75,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     };
 
     $scope.toCapture = function() {
-        $state.go('capture.create', {});
+        $state.go('capture.dashboard', {});
     };
 
     $scope.toCheck = function() {

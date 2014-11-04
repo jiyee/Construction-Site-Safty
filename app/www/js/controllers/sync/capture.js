@@ -3,14 +3,42 @@ app.controller('SyncCaptureCtrl', function($scope, $rootScope, $state, $statePar
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
     $scope.data.captureId = $stateParams.captureId;
-    $scope.data.project = $rootScope._data_.project ? $rootScope._data_.project : null;
+    $scope.data.project = $scope.data.user.project ? $scope.data.user.project : $rootScope._data_.project ? $rootScope._data_.project : null;
 
     OfflineService.findById($scope.data.captureId).then(function (capture) {
         $scope.data.name = capture.name;
         $scope.data.description = capture.description;
+        $scope.data.category = capture.category;
         $scope.data.images = capture.images;
         $scope.data.center_x = capture.center_x;
         $scope.data.center_y = capture.center_y;
+    });
+
+    ProjectService.find().then(function (projects) {
+        $scope.data.projects = projects;
+    });
+
+    if ($scope.data.projectId) {
+        $scope.data.project = $scope.data.user.project;
+        SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
+            $scope.data.sections = segments;
+        });
+    } else {
+        $scope.$watch('data.project', function (project) {
+            if (!project) return;
+
+            SegmentService.findByProjectId($scope.data.project._id).then(function (segments) {
+                $scope.data.sections = segments;
+            });
+        });
+    }
+
+    $scope.$watch('data.section', function(section) {
+        if (!section) return;
+
+        SegmentService.findById(section._id).then(function (segment) {
+            $scope.data.branches = segment.segments;
+        });
     });
 
     $scope.remove = function() {
@@ -39,7 +67,9 @@ app.controller('SyncCaptureCtrl', function($scope, $rootScope, $state, $statePar
             name: $scope.data.name,
             description: $scope.data.description,
             user: $scope.data.user._id,
+            category: $scope.data.category,
             project: $scope.data.project._id,
+            segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             images: $scope.data.images ? $scope.data.images.join("|") : "",
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {

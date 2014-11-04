@@ -87,7 +87,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
 
 
     $scope.toCaptureCreate = function () {
-        $state.go('capture.create', {});
+        $state.go('capture.dashboard', {});
     };
 
     $scope.toCheckCreate = function () {

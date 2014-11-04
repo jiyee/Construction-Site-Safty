@@ -270,6 +270,18 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
+    // 行业主管主面板
+    .state('capture.dashboard', {
+        url: '/dashboard/:userId',
+        templateUrl: 'templates/capture/dashboard.html',
+        controller: 'CaptureDashboardCtrl',
+        resolve: {
+            resolveUser: function (AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
+
     // 创建安全检查
     .state('capture.create', {
         url: '/create',

@@ -9,6 +9,7 @@ app.controller('OfflineCaptureCtrl', function($scope, $rootScope, $state, $state
     OfflineService.findById($scope.data.captureId).then(function (capture) {
         $scope.data.name = capture.name;
         $scope.data.description = capture.description;
+        $scope.data.category = capture.category;
         $scope.data.images = capture.images;
         $scope.data.center_x = capture.center_x;
         $scope.data.center_y = capture.center_y;

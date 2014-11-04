@@ -92,10 +92,10 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             name: $scope.data.name,
             description: $scope.data.description,
             user: $scope.data.user._id,
+            category: $scope.data.category,
             project: $scope.data.projectId || $scope.data.project._id,
             segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             images: $scope.data.images.join("|"),
-            category: $scope.data.category,
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {
             alert('保存成功');
