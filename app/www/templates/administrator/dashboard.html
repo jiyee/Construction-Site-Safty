@@ -23,11 +23,6 @@
         </div>
 
         <div class="list">
-            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>日常巡查</div>
-            <div class="item item-icon-right" ng-repeat="item in data.checks" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.segment.name}}-{{item.table.name}}</div>
-        </div>
-
-        <div class="list">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>考核评价</div>
             <div class="item item-icon-right" ng-repeat="item in data.evaluations" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.segment.name}}-{{item.unit.name}}</div>
         </div>
@@ -36,8 +31,7 @@
     <ion-footer-bar class="bar-positive">
         <div class="row" style="padding-top: 0; padding-bottom: 0;">
             <button class="button col" ng-click="toStandard()">标准查询</button>
-            <button class="button col" ng-click="toCapture()">安全检查</button>
-            <button class="button col" ng-click="toCheck()">日常巡查</button>
+            <button class="button col" ng-click="toCaptureDashboard()">安全检查</button>
             <button class="button col" ng-click="toEvaluation()">考核评价</button>
         </div>
     </ion-footer-bar>

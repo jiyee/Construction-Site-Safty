@@ -289,9 +289,16 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'CaptureCreateCtrl'
     })
 
+    // 创建安全检查
+    .state('capture.detail', {
+        url: '/detail/:captureId',
+        templateUrl: 'templates/capture/detail.html',
+        controller: 'CaptureDetailCtrl'
+    })
+
     // 安全检查列表
     .state('capture.list', {
-        url: '/:captureId',
+        url: '/list',
         templateUrl: 'templates/capture/list.html',
         controller: 'CaptureListCtrl'
     })

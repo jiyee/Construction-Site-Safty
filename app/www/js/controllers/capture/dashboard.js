@@ -245,6 +245,16 @@ app.controller('CaptureDashboardCtrl', function($scope, $rootScope, $state, $sta
         geolocation.setTracking(true);
     };
 
+    $scope.toCaptureCreate = function(item) {
+        $state.go('^.create', {
+        });
+    };
+
+    $scope.toCaptureList = function(item) {
+        $state.go('^.list', {
+        });
+    };
+
     $scope.toBack = function () {
         $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
             userId: $scope.data.user._id

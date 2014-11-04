@@ -38,10 +38,6 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         $scope.data.captures = captures;
     });
 
-    CheckService.findByUserId($scope.data.user._id).then(function(checks) {
-        $scope.data.checks = checks;
-    });
-
     EvaluationService.findByUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = evaluations;
     });
@@ -74,12 +70,8 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
 
     };
 
-    $scope.toCapture = function() {
+    $scope.toCaptureDashboard = function() {
         $state.go('capture.dashboard', {});
-    };
-
-    $scope.toCheck = function() {
-        $state.go('check.create', {});
     };
 
     $scope.toEvaluation = function() {

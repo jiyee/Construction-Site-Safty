@@ -1,0 +1,40 @@
+<ion-view title="detail">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">日常巡检</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="list card">
+            <div class="item text-center">
+                <h2>检查编号：{{data.capture.uuid}}</h2>
+                <p>检查日期：{{data.capture.createAt | date: 'yyyy年MM月dd日'}}</p>
+                <p>检查人：{{data.capture.user.name}}【{{data.capture.user.unit.name}}】</p>
+            </div>
+
+            <div class="item item-body padding">
+                <div class="row">
+                    <div class="col">项目：{{data.capture.project.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">标段/分部：{{data.capture.segment.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">细项：{{data.capture.category}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">对象：{{data.capture.name}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col">存在隐患：</div>
+                    <div>{{data.capture.description}}</div>
+                </div>
+
+                <div class="row">
+                    <img ng-src="{{image}}" ng-repeat="image in data.capture.images" width="64" height="64">
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

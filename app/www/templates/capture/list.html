@@ -7,7 +7,7 @@
     <ion-content padding="true">
         <div class="list last-review">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>历次安全检查</div>
-            <div class="item item-icon-right" ng-repeat="item in data.captures"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.name}}</div>
+            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.name}}</div>
         </div>
     </ion-content>
 </ion-view>

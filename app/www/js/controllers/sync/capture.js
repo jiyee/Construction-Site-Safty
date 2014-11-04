@@ -1,7 +1,8 @@
-app.controller('SyncCaptureCtrl', function($scope, $rootScope, $state, $stateParams, settings, OfflineService, CaptureService, resolveProjects, resolveUser) {
+app.controller('SyncCaptureCtrl', function($scope, $rootScope, $state, $stateParams, settings, categories, OfflineService, ProjectService, SegmentService, CaptureService, resolveProjects, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
+    $scope.data.categories = categories;
     $scope.data.captureId = $stateParams.captureId;
     $scope.data.project = $scope.data.user.project ? $scope.data.user.project : $rootScope._data_.project ? $rootScope._data_.project : null;
 
