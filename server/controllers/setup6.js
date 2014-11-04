@@ -83,7 +83,7 @@ exports.mongo = function(req, res, next) {
         _.each(builders, function(builder) {
             var unit = UnitModel();
             unit.name = builder;
-            unit.type = '建设单位';
+            unit.type = '施工单位';
             unit.save(function(err, unit) {
             });
 
