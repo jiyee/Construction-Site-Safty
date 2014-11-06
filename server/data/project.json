@@ -88,7 +88,6 @@
     "province": "湖北省",
     "constructor": "湖北省保康至宜昌高速公路建设指挥部",
     "sections": [{
-        "name": "一标",
         "supervisor": "湖北高路工程监理咨询有限公司",
         "builder": "中交第一公路工程局有限公司"
     }, {
@@ -121,7 +120,6 @@
     "province": "湖北省",
     "constructor": "湖北省保康至宜昌高速公路建设指挥部",
     "sections": [{
-        "name": "一标",
         "supervisor": "湖北省公路水运工程咨询监理公司",
         "builder": "中交一公局桥隧工程有限公司"
     }, {
