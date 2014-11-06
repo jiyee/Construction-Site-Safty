@@ -1,0 +1,325 @@
+{
+    "file": "ZYGL-LJCK-01",
+    "name": "仓库专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "一般规定",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "易燃易爆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "仓库应选择平坦、宽敞、交通方便之处，设置完善的排水系统。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "油库",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "油库应远离生活区不小于50m的距离。氧气、乙炔瓶仓库应远离生活区不小于30m的距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "民爆物品",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "(3)民爆物品库的选址、设计图纸应由当地公安部门确认并且审核同意，建设完成经当地公安部门联合验收合格后方可投入使用。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "民爆物品仓库",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "民爆物品仓库四周应设密实围墙",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "库区安装视频监控系统及红外线报警装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "仓库顶部应设置隔热层，炸药、雷管堆放距离地面不得小于20cm",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "仓库内严禁使用电气照明",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "储存库区内应设置足够的灭口器、消防锹、消防桶等消防设施，并严格按照设计图纸设置消防水池、消防砂池",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-10"
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "每个库区须至少设置两名库管员，并至少配备两只警戒犬进行警戒。严格落实“双人双锁”制度",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-4"
+                        },
+                        {
+                            "index": "2",
+                            "name": "应及时清理库区及8m范围内的枯草等易燃物，在进入仓库前应手摸防静电设施，消除静电后方可进入仓库",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "应在储存库内墙面画1.6m的定高线，通道宽度不应小于0.6m，堆垛边缘与墙的距离不应小于0.2m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "油库",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "油库应采用地埋式或托架式设置，并设置围栏、防晒顶棚，围栏宜采用隔离栅。油库四周应设防火隔离带，排水沟",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "油库应在适当位置设置消防沙池，一个油罐配备一组（2个）4kg干粉灭火器、消防锹、消防桶等必要的消防器材，必要时还须配备1个35kg的手推式灭火器。油库醒目位置应设置安全警示警告标志",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-10"
+                        },
+                        {
+                            "index": "3",
+                            "name": "设置在地势较高或开阔地带的油库应加设避雷装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "油罐内壁应涂防锈漆，并定期进行清洗。夏季应对油罐进行降温",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "易燃易爆物品",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "仓库应采用防爆防溅开关和灯具，贮存大量易燃物品的仓库场地应设置独立的避雷装置",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "易燃易爆仓库应设置消防沙池，配备灭火器、消防锹、消防桶等必要的消防设施，",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-10"
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "管理要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "单独安装开关箱",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "氧气、乙炔瓶仓库应做到空、重瓶分开，竖立存放，氧气、乙炔储存间距不小于10m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "不同性质的易燃易爆物品须分间存放，严禁混存",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

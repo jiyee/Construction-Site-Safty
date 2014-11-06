@@ -1,0 +1,241 @@
+{
+    "file": "ZYGL-QLLC-04",
+    "name": "水上作业钻孔灌注桩专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备阶段",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "专项方案通过监理、业主单位审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "组织相关作业人员进行安全技术交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "机械",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钻孔机械就位后，钻机及配套设备进行全面检查。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "钻机安设要平稳、牢固，钻架加设斜撑或缆风绳。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "冲击钻孔，选用的钻锥、卷扬机和钢丝绳等，应配置适当。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "钢丝绳与钻锥用绳卡固接时，绳卡数量应与钢丝绳直径相匹配。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工阶段",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "水上作业者必须穿救生衣，搭设平台周围安装栏杆。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "临边或孔洞必须使用钢筋网等进行有效覆盖。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "钻孔",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钻进速度根据地质变化加以控制，以保证安全运转。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "采用冲抓或冲击钻孔当钻头提到接近护筒底缘时，应减速、平稳提升，不得碰撞护筒和钩挂护筒底缘。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "钻孔使用的泥浆，宜设置泥浆循环净化系统，并注意防止或减少环境污染。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "钻机停钻，必须将钻头提出孔外，置于钻架上，不得滞留孔内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "对于已埋设护筒未开钻或已成桩护筒尚未拔除的，应加设护筒顶盖或铺设安全网遮罩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        {
+                            "index": "6",
+                            "name": "吊装过程中严格按照安全操作规程操作。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-1"
+                        },
+                        {
+                            "index": "7",
+                            "name": "有专人指挥，同时主要施工管理人员必须在场。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "8",
+                            "name": "作业人员必须配备劳保用品，避免造成机械伤害。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

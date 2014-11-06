@@ -1,0 +1,361 @@
+{
+    "file": "ZYGL-LM-02",
+    "name": "沥青路面施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "一般要求",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "劳动防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "从事沥青作业人员皮肤外露部分涂抹防护药膏；工作服及防护用品应集中存放，严禁穿戴回家和进入集体宿舍。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "沥青搬运",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "块状沥青搬运应避免炎热季节；搬运时宜采用小型机械装卸，不宜用手直接装运。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "人工装卸",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "装卸桶装沥青时沥青桶不得漏油，否则应先堵漏后搬运；运送液态沥青，装油量不超过容器的2/3。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "吊耳吊装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "沥青桶吊索应绑扎牢固，吊起的沥青桶不得从车辆驾驶室上空越过，吊臂旋转半径范围内不得站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A5",
+                    "name": "明火熬制沥青",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "锅灶距建筑物至少30m，距电线垂直下方10m以上；熬油锅内不得有水和杂物，不得直接向锅内抛掷，严禁烈火加热空锅时加入沥青；临时堆放的沥青及燃料位置距锅炉应在5m以外。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "沥青洒布",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "作业场地",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "工作地段应有专人警戒；施工现场障碍物应清除干净，洒油时作业范围内不得有人；施工现场严禁使用明火。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "洒布车作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "行驶时严禁使用加热系统；作业时在喷洒沥青方向10m内不得有人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "拌和站",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "场地要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "宜设在人员较少、场地空旷的地段；产量较大的拌和设备应增设防尘设施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "机电检查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在运转前需由机工、电工、电脑操作人员进行检查，确认正常完好后才能合闸。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "清理要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "搅拌机运行中不得使用工具伸入滚筒内掏挖或清理，需要清理时应停机；人员进入搅拌鼓内工作时，鼓外要有人监护。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "料斗操作",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "料斗升起时严禁有人在斗下工作或通过；检查料斗时应将保险链挂好",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C5",
+                    "name": "爬梯、料仓防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机械设备需经常检查的部位应设置铁爬梯；采用皮带机上料时，储料仓应加防护。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "摊铺作业",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "驾驶要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "驾驶台及作业现场要视野开阔，清除一切障碍物；作业时无关人员不得在驾驶台上逗留；驾驶员不得擅离岗位。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "摊铺作业",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "运料车",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "向摊铺机卸料时应协调动作、同步行进，防止互撞。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "换档要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "换档在摊铺机完全停止时进行，严禁强行挂档和在坡道上换档或空档滑行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E3",
+                    "name": "熨平板加热",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "预热时应控制热量，防止因局部过热而变形；加热过程中有专人看管。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E4",
+                    "name": "弯道作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "驾驶不得急剧转向；熨平装置端头与路缘石间距不得小于10cm，以免碰撞。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E5",
+                    "name": "防火要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "用柴油清洗摊铺机时，不得接近明火。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

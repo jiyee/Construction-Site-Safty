@@ -1,0 +1,325 @@
+{
+    "file": "ZYGL-LJ-02",
+    "name": "路基石方工程专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工方案",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "审批手续",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "制定专项爆破施工组织设计，报总监办审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-C-C1-4"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "爆破准备",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "人员资质",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破施工队资质通过审核；取得资格证的人员可从事爆破作业，从事配合工作的辅助工不得从事装药、引爆等工作。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "爆破孔、线路",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破孔位置、数量、深度，炸药孔口塞实情况、雷管线路网络等均应达到设计要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "爆破器材",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "有出厂合格证、质量检验报告；每天剩余材料要当日退库；保管、加工、运输时严禁穿化纤衣服；炸药与雷管严禁由一人同时搬运；电雷管严禁与带电物品一起携带运送。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "炮位、炮孔",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "炮位选择",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "炮眼口应避开正对的电线、路口和构造物。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "凿打炮眼",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "坡面浮岩危石应予清理；严禁在残眼上打孔。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "机械扩眼",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "宜采用湿式凿岩或带有捕尘器的凿眼机；严禁用胸部和肩头紧顶把手。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "炮孔要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "超过5m的深孔不得使用导火索起爆。已装药的炮孔当班爆破，装填的炮孔数量以一次爆破的作业量为限。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "爆破作业",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "导火索",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "要采用一次点火法点火，长度保证点完导火索后人员能撤至安全地点，但不得短于1.2m。不得在同次爆破中使用不同燃速的导火索。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "引线连接",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "引线与雷管的连接必须使用雷管钳，严禁用牙咬。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "爆破量",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "已装药的炮孔必须当班爆破，装填的炮孔数量应以一次爆破的作业量为限。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "作业防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破有专人指挥；危险区边界有明显的标志，四周派设警戒人员；警戒区内的人、畜撤离；预告、起爆等信号应有明确的规定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D5",
+                    "name": "清理检查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "放炮后在清理检查中，发现有瞎炮、残药、雷管等应及时报告，由爆破人员处理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D6",
+                    "name": "解除警戒",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破后要确认已解除警戒，作业面上的悬石危石经处理后，作业人员方准进入现场。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "其他事项",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "强制条款",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "石方爆破要严格按《爆破安全规程》、《民用爆炸物品安全管理条例》等要求执行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "铁路旁作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在铁路行车线旁进行爆破，应遵守《铁路路基施工技术规则》以及铁道部、铁路局的有关规定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

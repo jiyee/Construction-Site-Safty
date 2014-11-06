@@ -1,0 +1,469 @@
+{
+    "file": "ZYGL-LJBP-03",
+    "name": "高边坡预应力锚索施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "锚索专项施工方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，经监理工程师批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "技术交底",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "项目部应对作业人员进行详细的安全技术交底。搭设排架的架子工，必须取得上岗证。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "排架架设及拆除方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位技术负责人签认、盖章，经监理工程师批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "排架",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "搭设",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "所使用材料应无损伤，变形等。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "锚索排架宽度一般不小于5m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "立杆位于坚硬的岩石上或混凝土表面，间距120~150cm，横杆间距不大于150cm。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "靠边坡处采用插筋将排架钢管与壁面连接牢固，并设剪刀撑。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "排架外侧设置爬梯，踏步距离不大于30cm，采用安全网封闭。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "作业平台",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "操作平台采用竹板或木板满膛辅设，用铁丝或马钉固定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "操作平台外侧设置防护栏杆，高度不小于120cm，外侧挂安全网封闭。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-C-C1-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "管理与维护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应定期对排架及作业平台进行检查和维护，并形成记录。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "拆除",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严格按照拆除方案进行拆除。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "钻孔",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "钻机",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应采用汽车吊机将锚索钻机吊至操作平台上，吊装程序必须符合有关安全操作规程。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "在岩壁面上打锚筋固定，并将钻机固定在枕木上，防止钻机在钻孔过程中摆动。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "编索",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "锚索支架按设计间距放置，进浆管、排气管位置误差在允许范围内，绑扎牢固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "锚索编成后做好标识，有序堆放，堆放层高不超过三层。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "人工抬运时支撑点间距不得大于2m，转弯半径不得小于3m，钢绞线不得与地面接触。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "穿索",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "穿索时由人工抬动送入孔内，操作平台应有足够的宽度和长度，平台不得有孔洞。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "索体平面转弯半径不小于2.5m，穿索过程中索体应旋转。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "孔位下方搭设临时平台用于穿索人员站立，穿索时防止夹手与碰撞。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "注浆",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "平台",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "操作平台高度适当，便于施工人员作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "制浆人员必须戴口罩，防止吸入水泥粉尘。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "灌浆时严禁将出浆管口对准施工人员。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安装工作锚、夹片、限位板、千斤顶及工具锚时，无粘结钢绞线夹持部位必须去皮并清洗，普通钢绞线夹持部位、工作锚也应进行清洗，防止滑脱。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "检查夹片、锚具及钢绞线外观质量，防止发生夹片飞出伤人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "注浆",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "预紧钢绞线时按设计预紧张拉力单根进行，对穿锚索双向预紧，对称预紧。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "张拉时千斤顶出力方向45度内严禁站人，以防夹片、锚具等飞出伤人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "张拉时检查油泵及油管是否漏油，及时紧固夹片。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "夜间张拉时须有充足的照明。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

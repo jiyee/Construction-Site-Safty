@@ -1,0 +1,187 @@
+{
+    "file": "TY-ZC-03",
+    "name": "承重支架(满堂支架、贝雷支架)拆除施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审批",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "支架工程应编制专项施工方案，经项目技术负责人审核报监理工程师批准后实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "技术、安全交底",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "支架拆除作业前须向作业人员进行施工技术交底，作业人员应持证上岗。。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "支架拆除",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "拆除顺序",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "由变形最大处向最小处过度，对称、少量、多次，从上到下逐渐完成、不得上下垂直作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "跨路拆除施工",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应设置警戒区、道路分流标志、现场专人指挥拆卸、转运。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "水上拆除施工",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应取得航道管理部门作业许可证，船机持证、封航后才能作业，作业人员必须佩带救生衣、安全帽、安全带。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B5",
+                    "name": "摆放要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "支架、扣件应分类堆放整齐、堆放高度宜2m以内，四周应支护围挡牢靠。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全防护",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "警示与围护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业区域设警示标志，并设围护。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-7"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "个人安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安全三宝。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

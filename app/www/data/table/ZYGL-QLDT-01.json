@@ -1,0 +1,241 @@
+{
+    "file": "ZYGL-QLDT-01",
+    "name": "墩柱、台帽施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备阶段",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "专项方案通过监理、业主单位审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "组织相关作业人员进行安全技术交底，特殊作业人员须持证上岗。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工阶段",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "墩身高度在2~10m时，须搭设作业平台。平台应采用5cm厚的木板，并须满铺、绑牢，无探头板",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "平台临边应设置防护栏、安全网。防护栏杆高度为1.2m，立杆间距不得大于3m，横杆与上下件之间距离不得大于60cm。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "施工时，应搭设供人员上下的之字形步行通道",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-3"
+                        },
+                        {
+                            "index": "4",
+                            "name": "上下通道应设置扶手护栏，脚手架外侧设密目安全网，内侧设防坠落安全网.",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-5"
+                        },
+                        {
+                            "index": "5",
+                            "name": "超过30m时宜采用附着式人员升降电梯",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-4"
+                        },
+                        {
+                            "index": "6",
+                            "name": "施工人员应系好安全带作业，凿除混凝土桩头时作业人员必须按规定佩戴防护用品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "模板安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "模板吊装前，对作业机械就位是否平稳、牢固，吊装所用的钢丝绳、卸扣要满足吊装的安全要求。吊点要合理、牢固，起吊时必须有专人指挥；不得超载。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "在架立高桥墩的墩身模板过程中，安装模板的作业人员必须系好安全带，并栓于牢固地点。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "穿模板拉杆应做到内外呼应。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "模板就位后，应立即用撑木等固定其位置，以防模板倾倒砸人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A2-7"
+                        },
+                        {
+                            "index": "5",
+                            "name": "每节模板支立完毕，就在安好边结紧固器，支好内撑后，方可继续作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "6",
+                            "name": "拆除模板，应划定禁行区，严禁行人通行；拆除水面上模板，应配有工作船、救护船。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "砼浇筑",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "用起重吊机浇注混凝土，施工过程，要有专人指挥，吊机提、下料时，下面不得站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "吊机扒干转动范围内，不得站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

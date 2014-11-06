@@ -1,0 +1,193 @@
+{
+    "file": "ZYGL-LJGJJG-01",
+    "name": "钢筋加工场专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "一般要求",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "选址",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁在泥石流区、爆破区、滑坡体、洪水位下等危险区域设置钢筋加工场，避开取土、弃土场地，无法回避时，应当进行必要的论证，制定相应的措施，编制应急预案并进行演练。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "布局",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工区域布置应合理，场地占地面积应满足施工需要",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钢筋加工厂宜采用封闭式管理",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "消防",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钢筋场在动火区按每50㎡设置磷酸铵盐干粉（ABC）4kg灭火器2个。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A2-10"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "安全防护",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "氧气、乙炔瓶安全使用距离",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "氧气瓶与乙炔瓶之间，氧气瓶、乙炔瓶与明火或易燃易爆物品之间距离不小于10m，使用时乙炔瓶与氧气瓶的距离应不小于5m，乙炔瓶应安装回火防止器",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "氧气、乙炔瓶应分开单独存放",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "氧气吊装栏最大储存量为9个，规格尺寸为：2米X1.5米X1.5米；乙炔吊装栏1.5米x1米X1.5米，最大储存6个。在吊装蓝上方设置4个吊耳。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机械设备外漏传动部位应设置安全防护罩",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全管理",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "安全管理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "氧气、乙炔气瓶发放时，不得随地滚动、撞击，严禁将不同的气瓶同车运输。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "使用氧气、乙炔气时，严禁将气瓶卧倒使用",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "夏季使用时，应把气瓶放置于通风阴凉处，严禁气瓶在强阳光下曝晒",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

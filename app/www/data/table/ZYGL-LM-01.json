@@ -1,0 +1,217 @@
+{
+    "file": "ZYGL-LM-01",
+    "name": "路面基层施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "粉状材料",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "石灰消解",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "不得在浸水的同时边投料边翻拌，人员应远避以防烫伤。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "劳动防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "装卸、洒铺及翻动粉状材料时操作人员应站在上风侧，轻拌轻翻减少粉尘。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "运输要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "散装粉状材料用普通车运输时，车厢上采用篷布遮盖。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "碎石机",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "进料、出料",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "碎石机作业时，进料要均匀，不得过大，严防金属块等混入；出料口上方应有挡板。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "违章检查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "不得从上方向碎石机日内窥视；若石料卡住进口，应用铁钩翻动，严禁用手搬动。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "稳定土拌和机",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "拌和作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "不能急转弯或原地转向，严禁使用倒挡进行拌和作业；遇到底层有障碍物时，应及时提起转子，并进行检查处理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "碎石撒布机",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "撒布作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "车速要稳定，不应在撒布过程中换档。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "转移要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁撒布机长途自行转移；在工地作短距离转移时应停止拨料辊及皮带运输机的传动。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "劳动保护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业时无关人员不得进入现场，以防碎石伤人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "洒水车",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "行驶要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在上下坡及弯道运行中不得高速行驶，并避免紧急制动；洒水车驾驶室外不得载人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

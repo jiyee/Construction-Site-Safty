@@ -1,0 +1,223 @@
+{
+    "file": "ZYGL-LM-04",
+    "name": "机械碾压专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "作业准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "启动检查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "必须在压路机前后、左右无障碍物和人员时才能启动。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "检修要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁在压路机没有熄火、下无支垫三角木的情况下进行机下检修。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "停放要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "压路机应停放在平坦、坚实并对交通及施工作业无妨碍的地方；停放在坡道上时前后轮要垫三角木。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-D-D1-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "碾压作业",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "刮板",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "压路机前后轮的刮板，应保持平整良好。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "刷油、洒水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "碾轮刷油、洒水人员应跟在碾轮行走的后方，并注意压路机转向。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "作业人员劳动保护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "不得疲劳和带病作业；高温摊铺、碾压作业中要防止中暑、突发疾病导致设备意外、人员烫伤。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "坡道行驶",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "上坡时变速换挡应在制动后进行，下坡时严禁脱档滑行。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B5",
+                    "name": "安全距离",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "多台压路机作业，前后间距不小于3m；在坡道上纵队行驶，其间距不小于20m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B6",
+                    "name": "牵引违章",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁用牵引法拖动压路机，也不得用压路机牵引其他机具。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "振动压路机",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "起振、停振",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "起振和停振必须在压路机行走时进行；不许在硬质路面上振动行驶。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "频率调节",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁在尚未起振情况下调节振动频率。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

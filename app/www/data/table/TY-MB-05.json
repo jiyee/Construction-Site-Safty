@@ -1,0 +1,265 @@
+{
+    "file": "TY-MB-05",
+    "name": "挂篮移篮专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "移篮前的准备工作及检查",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "参与移篮的作业人员要进行安全技术交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "人员撤离",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "底篮上不得站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "移篮前",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "移篮前的各工序要做好准备，底篮、侧模与混凝土面要完全脱离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "轨道及枕木",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "前支点处钢枕要满足施工方案要求，轨道与枕木间要支垫密实。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "轨道锚固数量满足施工方案要求，轨道上表要保持平顺，润滑。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "轨道要在同一水平位置，轨道中心线与设计位置相符。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A5",
+                    "name": "保险装置",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "保险绳要预紧，要做好移篮前各种机具检查。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A6",
+                    "name": "干扰物撤移",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "挂篮各部位不得有拉紧的电缆线等。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "翼板横隔梁不得挡住挂篮前移。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "挂篮各部位不得有杂物阻挡挂篮前移。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A7",
+                    "name": "油压箱及滚轮箱",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "液压油缸有效运转，滚轮箱要做到紧贴已浇块段。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "移篮过程检查",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "指挥配合",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "有专人统一指挥协调。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-5"
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "同步性",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "移篮时支腿要同步行走。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-5"
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "移篮速度控制",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "移篮速度控制在0.1m/min以内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-5"
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "移篮稳定性",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "移篮过程中挂篮要稳定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

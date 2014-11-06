@@ -1,0 +1,331 @@
+{
+    "file": "TY-ZY-02",
+    "name": "深基坑现场作业专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审批",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "编制的专项施工方案经施工单位技术负责人签字和总监办审查批准。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "结构物调查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "影响范围内建（构）筑物、道路、地下设施状况经调查核实和鉴定。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "监测准备",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "明确监测单位，完成监测准备工作。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-31"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "开挖作业",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "分层情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应分层开挖，每级平台的宽度不宜小于1.5m，分层厚度不宜超过2.5m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "开挖坡度",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "符合设计或审批的施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "排水与降水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应采取有效措施降低坑内水位和排除地表水，严禁地表水或基坑排出的水倒流渗入基坑。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "开挖顺序",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "分块、分层，对称开挖。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B5",
+                    "name": "作业空间",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "多台机械开挖，挖土间距应大于10m，人员不得进入挖土机作业半径内；人工开挖，操作人员之间应保持大于2.5m的安全距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B6",
+                    "name": "机械操作",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "除设计允许，挖运土机械不得直接在支撑上行走操作，严禁碰撞支撑、围护墙、井点管和工程桩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B7",
+                    "name": "弃土清运",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运土道路的坡度、转弯半径要符合有关安全规定；弃土应及时运出，不得在坡顶堆放。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-5"
+                        }
+                    ]
+                },
+                {
+                    "index": "B8",
+                    "name": "监测数据",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "超出报警值或控制值应告知监督机构。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全防护",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "基坑支护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "符合设计或审批的施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "临边防护及警示",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "1.开挖深度不超过2M时临边应采用至少1.2M高栏杆式防护，开挖深度超过2M时基坑施工还应采用密目式安全网做封闭式防护。2.临边防护栏杆离基坑边口的距离不得小于50cm。3、基坑周边应设置醒目的警示牌4、基坑位于现场通道或居民区附近时，设置隔离设施，并设警示红灯，",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-7"
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "上下通道",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "人员上下有专用通道，开挖达到5米以上时必须设专用爬梯，通道及爬梯的设置应符合审批的施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C5-6"
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "作业环境",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "1.基坑内作业人员应有安全立足点。2.垂直作业上下应有隔离防护措施。3.光线不足的场所应设置足够的照明设施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "应急措施",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "方案及现场记录",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "深基坑施工应编写专项应急预案，开挖深度达到3米前应进行应急预案演练。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "开挖过程中，如果基坑或周边出现严重沉陷、坍塌、变形或位移的，施工单位应及时暂停施工，采取有针对性的应急措施，并及时记录现场施工应急情况。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

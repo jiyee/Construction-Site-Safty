@@ -1,0 +1,348 @@
+  { "file": "ZYGL-LJ-05",
+    "name": "软基处理专项安全检查表",
+    "type": "日常巡检",
+
+    "items":[
+      {
+    "index": "A",
+    "name": "施工方案",
+    "items": [
+        {
+            "index": "A1",
+            "name": "审批手续",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "施工单位上报,总监办审批。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+},
+{
+    "index": "B",
+    "name": "一般要求",
+    "items": [
+        {
+            "index": "B1",
+            "name": "承载力",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "作业场地及行走范围应保持平整并满足相应承载力要求",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "B2",
+            "name": "安全标志",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "现场设置防护设施、安全警示标志。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "B3",
+            "name": "高处作业",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "作业人员登高检查或维修时应系安全带，并防止坠物伤人。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "B4",
+            "name": "机械检查",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "紧固螺栓松动时应立即停机，紧固后方可继续作业",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "B5",
+            "name": "劳动防护",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "使用有腐蚀性、有害的材料或掺合剂时，作业人员应佩戴防护用品",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+},
+{
+    "index": "C",
+    "name": "强夯施工",
+    "items": [
+        {
+            "index": "C1",
+            "name": "振动影响",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "振动对临近建（构）筑物和设备产生影响时应设监测点，必要时挖防振沟。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "C2",
+            "name": "夯锤作业",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "起吊、下落中，填筑和清土人员应撤离至安全地点，作业后夯锤放置在地面。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+},
+{
+    "index": "D",
+    "name": "静力压桩",
+    "items": [
+        {
+            "index": "D1",
+            "name": "堆放场地",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "桩的堆放场地应平整、坚实，并有防止滚动的安全措施。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "D2",
+            "name": "起重违章",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "起重机的吊臂下严禁站人。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+},
+{
+    "index": "E",
+    "name": "砂桩、碎石桩",
+    "items": [
+        {
+            "index": "E1",
+            "name": "施工顺序",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "以挤密作用为主的桩施工时，应从逐渐远离既有建筑物及设备的方向施工。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "E2",
+            "name": "振动",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "采用振动法施工时，重复压拔管与加料、挤压作业协调一致，加料时暂停振动。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+},
+{
+    "index": "F",
+    "name": "水泥粉煤灰碎石桩（CFG桩）",
+    "items": [
+        {
+            "index": "F1",
+            "name": "机械移位",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "根据行走装置的操作规程，由专人指挥、协调行动，防止机械倾覆；移位后应再次对机械各部位进行检查。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "index": "F2",
+            "name": "截桩机",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "处理桩头时应防止锯片伤人",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+
+},
+{
+    "index": "G",
+    "name": "粉（浆）体喷射搅拌桩",
+    "items": [
+        {
+            "index": "G1",
+            "name": "劳动防护",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "作业人员应佩戴口罩、防护镜等防护用品。废浆、废渣应及时处理。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+
+},
+{
+    "index": "H",
+    "name": "袋装砂井",
+    "items": [
+        {
+            "index": "F1",
+            "name": "打设要求",
+            "items": [
+                {
+                    "index": "1",
+                    "name": "锤击作业要先轻后重；砂袋投入套管严禁发生扭结、断裂；先启动激振器后提升套管，并连续慢慢提升，中途不得放松吊绳。",
+                    "status": "UNCHECK",
+                    "comments": "",
+                    "range": [
+                        0,
+                        1
+                    ],
+                    "score": null,
+                    "link": ""
+                }
+            ]
+        }
+    ]
+
+}
+
+]
+}
+

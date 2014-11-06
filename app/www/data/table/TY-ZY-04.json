@@ -1,0 +1,583 @@
+{
+    "file": "TY-ZY-04",
+    "name": "人工挖孔桩爆破作业专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "一般规定",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "准备工作",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "编制爆破方案，并按方案实施；有公安部门审批同意的相手关续；炸药运输有运输许可证。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "现场设爆破指挥员、专职安全员、爆破员等，人员持证人岗",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "防护及警戒",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员正确使用安全防护用品，作业人员不穿化纤衣物或使用容易产生静电及火花的工具、物品。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "爆破现场无无关人员。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "禁止大雾、雨天等不良天气进行爆破。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "周围设备、建筑、高压电线电塔有防护措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "爆破区域设置警戒区，并设置警示标志。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "6",
+                            "name": "不在工房以外的地点改制和加工爆破器材。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "爆破前检测",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破作业前对爆破现场及周围进行检查，确保无地下水管、煤气管、高压电线等。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "运输",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "有专业押运员押运。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "车辆选用",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "禁止使用翻斗车、自卸汽车、拖车和摩托车运送爆破器材。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "道况车速",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运输道平整，不坑坑洼洼；运输车速不应大于10km/h。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "现场存放",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "防火",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "不乱丢乱放，现场有严禁烟火标志、灭火设施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "爆破器材存放处20m内不使用220V照明灯。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "存放",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "炸药与雷管存放在保险柜内，保险柜放置稳固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "雷管与炸药分开存放，不得混存；临时存放地点设警戒区。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "钻孔",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "禁止边打眼边装药边放炮；不钻、打残眼。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "出现肓炮时，严禁在肓炮周边30cm内打孔。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "钻孔",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "钻孔防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钻孔前检查井下无有害气体或缺氧。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "钻孔时采用机械通风，人员戴防尘口罩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "装药",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "装药前",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "装药前对井壁及井下进行检查，井壁无开残无严重渗水。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "装药前进行检孔，对存在残渣进行清理，高温度的孔进行降温。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "F2",
+                    "name": "装药时",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "装药与钻孔不存在平行作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "装药时，作业人员使用木棍或竹棍进行装药。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "装药时，作业现场不使用电压高于36V照明灯。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "F3",
+                    "name": "装药后",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破器材严格管理，必须实施实销实报，剩余的爆破材料必须当日退库，严禁私自收藏。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "发现爆破器材丢失或被盗，必须立即报告。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "爆破",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "爆破前",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破作业前实行爆破告知；爆破前断开爆破区域的电源。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "爆破前作业前设置爆破警戒区，并有专人警戒。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "爆破作业前撤离周边人员到安全地点，人员撤离在爆破区的上风侧。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "进行爆破作业前，完成爆破审批、验收手续。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "爆破前，对既有管线、建筑物采取防护措施；爆破前对锁口进行覆盖防护。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "G2",
+                    "name": "爆破后",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "爆破后，通风排烟超过15分钟后方准许人员进入井下检查。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "爆破方法正确，碎石飞浅在设计范围内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "爆破完毕后半小时内，剩余的爆破器材必须退库存放；严禁在工地或宿舍存放。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "爆破后是否用高压风管进行通风；爆破后是否检查孔壁存在开裂或孔底出现塌方现象。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "5",
+                            "name": "爆破后检查桩孔有害气体、氧含量，是否超标或缺氧。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

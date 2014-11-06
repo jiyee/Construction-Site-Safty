@@ -1,0 +1,295 @@
+{
+    "file": "ZYGL-QLLC-01",
+    "name": "水上钢便桥、平台施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "准备阶段",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "专项方案通过到监理、业主单位审批，要取得海事、航道部门许可。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A5-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "组织相关作业人员进行安全技术交底，特殊工种必须持证上岗。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "施工阶段",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "警戒",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工区域设立安全警示牌，上下游设置安全作业警戒区。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "桥头两侧插设红旗，以引起行人及司机的注意",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "桥身设置警示灯、助航标志和救生设备。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        },
+                        {
+                            "index": "2",
+                            "name": "桥面两侧搭设防护栏杆，水上高空作业人员必须配戴安全带和救生衣等救生设备。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "天气",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "设专人收听气象预报，根据气象台提供的风向、风力等情况制定详细周密的施工计划",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "施工作业过程中应根据水流、潮汐等情况，合理安排作业。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "大雨、大雾等恶劣天气停止施工，信号不明，夜间施工照明不良停止施工。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "使用阶段",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "施工区域",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "做好车辆的限载管理工作，并设警示。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A5-3"
+                        },
+                        {
+                            "index": "2",
+                            "name": "汽车吊等大型机械设备在钢便桥上施工前必须进行承重验算。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-3"
+                        },
+                        {
+                            "index": "3",
+                            "name": "禁止在桥头会车，严禁车辆在桥上停留。引道应设置防滑、减速、防撞设施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A5-5"
+                        },
+                        {
+                            "index": "4",
+                            "name": "临时码头栈桥临水端应设置靠船的靠帮和系缆设施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A5-6"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "维护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "派专人进行维修、养护，经常检查便桥各部件的完损情况，确保无裂痕、拉短等情况。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "陆地便道",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在施工便道的急弯、陡坡及高路堤等危险地段应设置防撞设施。在醒目位置设置安全警示标志、指示标识、凸视镜等设施，便道的岔路口及工点的支便道设置指向牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A5-4"
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "安全管理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "便道处于傍山时，要注意边缘的危石处理，防止滑坡、塌方破坏便道",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "排水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "软土地基、低洼地段的便道要做好防排水措施，满足施工车辆通行需要",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-A-A5-2"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

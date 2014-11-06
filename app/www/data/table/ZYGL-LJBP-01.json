@@ -1,0 +1,433 @@
+{
+    "file": "ZYGL-LJBP-01",
+    "name": "高边坡施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "施工方案",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应编制安全专项施工方案，经项目技术负责人审核报监理工程师批准后严格实施",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "风险告知",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "单元工程（分部分项工程）应设置明显的风险告知牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-C-C1-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员须持有相应的上岗证。（电焊工证、架工证等）。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "项目技术负责人按施组织设计对作业人员进行技术交底、分管安全的负责人向作业人员进行安全交底。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "挖运",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "清表",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应清理边坡的风化岩块、堆积物、残积物和滑坡体。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "排水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "按方案要求施作截水、排水沟并验证排水效果。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-C-C1-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "开挖",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "按设计边坡坡比自上而下分层进行，开挖一级防护一级，坡面按设计要求做成一定的坡势，以利排水。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "在开挖范围内，两人之间的水平距离不得小于2.5m，作业人员应系安全带。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "运输",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "机械运转中人员不得上、下车。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "严禁施工机械(运输车辆)驾驶室内超载。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "出渣车车厢内严禁载人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "作业平台",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "地基与基础",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "承载力符合方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "支架底的混凝土厚度应不小于方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-C-C1-2"
+                        },
+                        {
+                            "index": "3",
+                            "name": "地面排水符合方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "4",
+                            "name": "螺丝紧固、无锈蚀、符合设计要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "钢管、扣件、托座",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "原材料检验有出厂合格证、无裂缝、结疤、分层、错位、硬弯和变形，锈蚀深度小于0.5mm、弯曲、裂纹。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "底座、底板",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "均应准确地放在定位线上，垫板宜采用长度不少于2跨，厚度不小于50mm的木垫板，也可采用槽钢。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C4",
+                    "name": "扫地杆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "离底座不大于20cm处设置纵、横向扫地杆。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C5",
+                    "name": "立杆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "立杆间距用尺按施工方案要求现场测量，两根相邻立杆的接头应错开50cm。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "垂直度偏差±H/200。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C6",
+                    "name": "水平杆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "水平度偏差±1/300。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "间距是否符合施工组织要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C7",
+                    "name": "设置斜撑剪刀撑",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "纵横向设置剪刀撑、每道剪刀撑宽度不应小于4跨，且不小于6m，搭接长度不应小于1m，且不小于2个旋转扣件固定，端部扣件离杆端不应小于100mm。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C8",
+                    "name": "扣件力矩",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "直角、对接螺栓紧固力距40～60N.m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C9",
+                    "name": "安全网架设和栏杆、档脚板",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "脚手架外侧要挂满安全网、立网的下口与立杆要牢固扎结。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "固定点的间距不大于500mm，栏杆高度不小于1.2m，挡脚板高度不应小于180mm。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,223 @@
+{
+    "file": "ZYGL-QLLC-02",
+    "name": "明挖基础施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审批",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "编制的施工方案经监理工程师审批。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "开挖作业",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "分层情况",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "深度超过4.0m的基坑应分层开挖，每级平台的宽度不宜小于1.5m，分层厚度不宜超过2.5m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "开挖坡度",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "符合设计或审批的施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "排水与降水",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应采取有效措施降低坑内水位和排除地表水，严禁地表水或基坑排出的水倒流渗入基坑。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "开挖顺序",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "分块、分层，对称开挖。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "B5",
+                    "name": "作业空间",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "多台机械开挖，挖土间距应大于10m，人员不得进入挖土机作业半径内；人工开挖，操作人员之间应保持大于2.5m的安全距离。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B6",
+                    "name": "机械操作",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "除设计允许，挖运土机械不得直接在支撑上行走操作，严禁碰撞支撑、围护墙、井点管和工程桩",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B7",
+                    "name": "弃土清运",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运土道路的坡度、转弯半径要符合有关安全规定；弃土应及时运出，不得在坡顶堆放。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全防护",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "基坑支护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "符合设计或审批的施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "上下通道",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "人员上下有专用通道，并符合审批的施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "防护警示",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "基坑四周应设防护栏杆；醒目的警示牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A1-2"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

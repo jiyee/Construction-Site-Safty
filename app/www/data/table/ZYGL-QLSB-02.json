@@ -1,0 +1,271 @@
+{
+    "file": "ZYGL-QLSB-02",
+    "name": "现浇箱梁混凝土浇筑施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审批",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "需编制安全专项施工方案时，应经项目技术负责人审核报监理工程师批准后严格实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "支架验收",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "支架架设、预压通过验收。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "技术、安全交底",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "对班组、作业人员交底并记录。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A4",
+                    "name": "模板安装",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "支护是否牢固，通过验收。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "现场环境",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "材料堆放",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "清理杂物、材料，集中堆放。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "照明",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "夜间作业准备充足、安全照明。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "安全防护",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "警示与围护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业区域设警示标志并围护。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "消防",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "操作平台应设置4kg的灭火器2个",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "高空作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业平台、临边防护、个人防护符合高空作业要求并经检查通过。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-A-A3-3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "施工设备",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "性能",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安全有效，采用安全开关，特种设备经审批备案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "砼泵送管",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安装、连接稳固。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "施工过程",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "施工监控",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "浇筑过程应对支架基础沉降、支架的变形情况进行观测、须对梁底及腹板设置吊垂线进行观测。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "安全指挥",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "安全员到位，放料指挥信号良好。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

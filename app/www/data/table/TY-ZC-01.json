@@ -1,0 +1,187 @@
+{
+    "file": "TY-ZC-01",
+    "name": "承重支架(满堂支架、贝雷支架)基础专项施工安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "地基处理",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "软基处理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "符合设计或审批的施工方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "A2",
+                    "name": "回填压实",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "符合设计或审批的施工方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "A3",
+                    "name": "承载力",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "经检测符合设计或施工方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "基础施工",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "基础垫层",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "材料、宽度、厚度、压实情况等符合审批的施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "基础混凝土",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "符合设计或审批的施工方案要求。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "基础宽度",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "大于翼板垂直投影外延线50cm。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "基础坡度",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "纵横向应有不大于5%的坡度、基础面不应有积水现象。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "其他",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "排水设施",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "基础外缘四周应砌筑不小于30cm×15cm的排水沟，不应有积水。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCTY-C-C2-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "临近河道、水塘",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应进行扩大基础施工、水面以下应进行抛石挤淤、水面以上进行浆砌或浇筑砼。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

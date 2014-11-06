@@ -1,0 +1,181 @@
+{
+    "file": "ZYGL-LM-05",
+    "name": "旧路面凿除施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "交通影响",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "施工方法",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "凿除宜分小段进行，以免妨碍交通。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "镐的使用",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "作业要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "开挖旧路面时，作业人员应并排前进，左右间距应不少于2m，不得面对面使镐。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "大锤的使用",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "作业要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "砸碎旧路面时周围不得有人站立或通行；锤击钢钎时，使锤人站在扶钎人侧面，且不得戴手套，锤柄端头有防滑措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "风动工具",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "管道检查",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "接头必须紧固，不漏气；胶皮管不得缠绕打结，不得用折弯风管的办法作断气之用，不得将风管置于胯下；风管通过过道要挖沟下埋。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "送气要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "风管联接风包后要试送气，检查风管内有无杂物堵塞；送气时要缓慢旋开阀门，不得猛开。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "作业配合",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "风搞操作人员应与空压机司机紧密配合，及时送气或闭气。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "钎子操作",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "钎子插入风动工具后不得空打。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "机械破碎",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "操作要点",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "破碎作业有专人统一指挥，操作范围内不得有人，铲刀切入地面不宜过深，推刀速度应缓慢。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

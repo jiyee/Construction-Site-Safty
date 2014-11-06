@@ -1,0 +1,433 @@
+{
+    "file": "ZYGL-LJ-01",
+    "name": "路基土方工程专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工方案",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "审批手续",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位上报总监办批准；对有潜在危险的土石方开挖、滑坡和高边坡处理等危险性较大工程有专项施工方案。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "土方开挖一般规定",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "人工挖土",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员应保持足够的安全距离，横向间距不小于2m，纵向不小于3m。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "明挖放坡",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "从上而下放坡开挖，禁止挖空底脚；明挖放坡宽度须大于土质自然破裂线宽度；开挖深度1.5m以上且无条件放坡的设置固壁支撑。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B3",
+                    "name": "安全防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "在靠近建筑物、设备基础、电杆及各种脚手架附近挖土时，必须采取安全防护措施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B4",
+                    "name": "电杆保护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "对拉线地垄及杆身应留出土台；土台半径：电杆为l～1.5m，拉线1.5～2.5m，视土质决定边坡坡度；土台周围插标杆示警。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "高边坡",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "劳动防护",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "栓安全绳、系安全带，严禁在同一安全桩上栓几根安全绳和在一根安全绳上栓几个人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "交叉作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "开挖与装运作业面相互错开，严禁上下双重作业；严禁在危石下方休息作业和存放机具。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "工棚违章",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁在高边坡危险地带搭建工棚。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "基坑开挖",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "坑边要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "边缘1m内不得堆放弃土、机械设备或杂物，并在距离边缘1m处设置截沟。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "坑口防护、高空作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "坑槽深度超2m时，周边设置不低于1.2m高的护身栏杆，设夜间警示灯；人员上下应走马道或梯子，严禁蹬踏固壁支撑上下。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "排水要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "要有良好的排水设施；当开挖深度超过邻近建筑物基础深度时应加固支撑并控制降水。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D4",
+                    "name": "通风条件",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "深井、深基、深沟内的开挖须具备良好通风条件，并经常检测有毒有害气体。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "特殊路基开挖",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "险情处置",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "发现山体有滑动、崩坍迹象等险情时应暂停施工，撤出人员和机具，并报上级处理。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "落石与岩堆地段",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工前应先清理危石和设置拦截设施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "岩溶地区",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "不得任意堵塞出水口或任意抽水，防止坍陷。泥沼地段应防止人机下陷。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "滑坡地段",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "开挖从滑坡体两侧向中部自上而下进行，严禁全面拉槽开挖，弃土不得堆在主滑区内。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "H",
+            "name": "土方填筑",
+            "items": [
+                {
+                    "index": "H1",
+                    "name": "填筑顺序",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "从硬实地面向软土地面逐步填筑，随填随压实。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "H2",
+                    "name": "区域要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应有回转车道，划定危险区域，并设专人指挥。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "H3",
+                    "name": "倒土要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "倾倒前先发出信号，检查倾倒位置是否有人或机械等物；严禁在坡脚下站人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "H4",
+                    "name": "照明要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "夜间或者视线不良条件下施工，应增加照明。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "H5",
+                    "name": "沟槽回填",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "回填时在构筑物两侧对称回填、夯实。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

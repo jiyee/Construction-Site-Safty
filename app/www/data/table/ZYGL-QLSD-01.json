@@ -1,0 +1,451 @@
+{
+    "file": "ZYGL-QLSD-01",
+    "name": "隧道施工专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工准备",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "方案审批落实",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "隧道工程应编制安全专项施工方案，经项目技术负责人审核报监理工程师批准后严格实施。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "作业人员管理",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "作业人员",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员经过安全教育和技术交底，且持证上岗。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "作业人员不追车不强行搭车，材料运输车辆料斗、铲车斗等不得载人。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-19"
+                        },
+                        {
+                            "index": "3",
+                            "name": "隧道开挖面作业人员不宜超过9人",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "B2",
+                    "name": "防护用品使用",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业人员戴安全帽，戴防护手套、身穿反光衣，不赤脚，不赤身，人员配带防尘口罩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "焊工和浇注混凝土工，穿好绝缘鞋、绝缘手套、戴防护面罩。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "门禁系统安全标识",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "人员进出",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "洞口设置门禁系统，有值班人员，有人员进出登记。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-1"
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "洞口标志",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "隧道外（洞口、斜井、竖井）设置各种操作规程牌、制度牌、洞口有限速度标志、防火标志。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-8"
+                        }
+                    ]
+                },
+                {
+                    "index": "C3",
+                    "name": "",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "单元工程（分部分项工程）应设置明显的风险告知牌。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B1-7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "临电",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "照明灯",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "运输道路未成洞地段每隔6m、成洞地段每隔10—20m，装设不低于60W照明灯一个",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B5-3"
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "应急灯",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应急照明灯宜不大于50m设置一个。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "电线布置",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "高压线、动力线、照明线安装在隧道的另一侧",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B5-7"
+                        },
+                        {
+                            "index": "2",
+                            "name": "动力、照明线分开架设，线间距10cm，离地面2.5m，高压线离地面3.5m以上，低压线路采用三相五线制",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B5-8"
+                        },
+                        {
+                            "index": "3",
+                            "name": "变电站应采用井下高压配电装置或相同电压等级的油开关柜，禁止使用跌落式熔断器。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "应急设施",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "逃生管道",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "逃生管直径60-80cm，且逃生管的连接能用手拆除。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B4-1"
+                        },
+                        {
+                            "index": "2",
+                            "name": "逃生管从成洞段设置到距离掌子面10-20m内",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B4-2"
+                        }
+                    ]
+                },
+                {
+                    "index": "E2",
+                    "name": "应急物资",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "掌子面附近设救生衣（圈）、应急箱、灭火器等。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B5-6"
+                        },
+                        {
+                            "index": "2",
+                            "name": "监控量测，超前地质预报",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "信息管理",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "信息管理",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "1km以上长大隧道须设置隧道人员电子管理系统，并有人员定位功能。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B7-1"
+                        },
+                        {
+                            "index": "2",
+                            "name": "2km以上长大隧道须设置隧道视频监控系统",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B7-1"
+                        },
+                        {
+                            "index": "3",
+                            "name": "隧道开挖超过100m后，隧道内外需安装通讯设备保证洞内外通讯畅通",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B7-2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "安全设施",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "安全设施",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "仰拱施工地段前后须设置警示锥形桶",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "在洞口、成洞地段设置15km限速牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "3",
+                            "name": "在未成洞地段等设置5km限速牌",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "H",
+            "name": "排水设施",
+            "items": [
+                {
+                    "index": "H1",
+                    "name": "排水设施",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "集水井、检查井等孔口应采用覆盖防护，并设置警示标志",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        },
+                        {
+                            "index": "2",
+                            "name": "离隧道20～30m处设置沉淀池一个，排水沉淀池周边应设置安全护栏，张挂密目式安全立网，并设置警示标志。",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": "SGXCGL-B-B5-4"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

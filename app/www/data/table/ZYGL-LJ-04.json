@@ -1,0 +1,247 @@
+{
+    "file": "ZYGL-LJ-04",
+    "name": "路基防护工程专项安全检查表",
+    "type": "日常巡检",
+    "items": [
+        {
+            "index": "A",
+            "name": "施工方案",
+            "items": [
+                {
+                    "index": "A1",
+                    "name": "审批手续",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "施工单位报总监办批准；锚杆(索)、抗滑桩及不良地质段支挡防护工程施工均应编制专项施工方案",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "B",
+            "name": "坡面挂网、喷护",
+            "items": [
+                {
+                    "index": "B1",
+                    "name": "作业平台",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "应设置牢固的脚手架，不得攀扶锚杆头上下",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "C",
+            "name": "砌石工程",
+            "items": [
+                {
+                    "index": "C1",
+                    "name": "作业顺序",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "自下而上砌筑；护墙砌筑时墙下严禁站人",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "C2",
+                    "name": "脚手架",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "片石改小不得在脚手架上进行；运石块上架，跳板应坚固，并设防滑条",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "D",
+            "name": "抹面、勾缝",
+            "items": [
+                {
+                    "index": "D1",
+                    "name": "施工顺序",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "作业时必须先上后下",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D2",
+                    "name": "爬梯使用",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "严禁在砌好的坡面上行走，攀登用爬梯",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "D3",
+                    "name": "交叉作业",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "架上作业时架下不准有人，不得上面砌筑、下面勾缝",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "E",
+            "name": "砂浆喷射",
+            "items": [
+                {
+                    "index": "E1",
+                    "name": "操作规程",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "砂浆拌和机、喷射机等施工机械按操作规程及国家有关规定进行",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "F",
+            "name": "挡墙基础",
+            "items": [
+                {
+                    "index": "F1",
+                    "name": "放坡要求",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "视土质、湿度和挖掘的深度设置安全边坡，否则应设置围壁支撑",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "index": "G",
+            "name": "人工挖基",
+            "items": [
+                {
+                    "index": "G1",
+                    "name": "运土规定",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "从基坑内抛上的土方应边挖边运；用土台分层抛掷传运出土时，台阶宽度不小于0.7m，高度不大于1.5m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                },
+                {
+                    "index": "G2",
+                    "name": "坑边土堆",
+                    "items": [
+                        {
+                            "index": "1",
+                            "name": "基坑上边缘土堆距坑边0.8m外，堆放高度不超过1.5m",
+                            "status": "UNCHECK",
+                            "comments": "",
+                            "range": [
+                                0,
+                                1
+                            ],
+                            "score": null,
+                            "link": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
