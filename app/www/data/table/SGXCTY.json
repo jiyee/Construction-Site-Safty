@@ -33,7 +33,7 @@
                 "comments": "",
                 "is_static": false
             }, {
-                "index": "1",
+                "index": "4",
                 "name": "装配式房屋无材料合格证或验收证明，发现一处扣1分。",
                 "range": [0, 1, 2, 3, 4, 5, 6],
                 "score": null,
