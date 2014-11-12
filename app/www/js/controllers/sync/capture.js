@@ -4,7 +4,7 @@ app.controller('SyncCaptureCtrl', function($scope, $rootScope, $state, $statePar
     $scope.data.projects = resolveProjects;
     $scope.data.categories = categories;
     $scope.data.captureId = $stateParams.captureId;
-    $scope.data.project = $scope.data.user.project ? $scope.data.user.project : $rootScope._data_.project ? $rootScope._data_.project : null;
+    $scope.data.project = $scope.data.user.project ? $scope.data.user.project : $rootScope.data.project ? $rootScope.data.project : null;
 
     OfflineService.findById($scope.data.captureId).then(function (capture) {
         $scope.data.name = capture.name;

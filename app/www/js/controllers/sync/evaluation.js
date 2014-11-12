@@ -4,7 +4,7 @@ app.controller('SyncEvaluationCtrl', function($scope, $rootScope, $state, $state
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
     $scope.data.evaluationId = $stateParams.evaluationId;
-    $scope.data.project = $rootScope._data_.project ? $rootScope._data_.project : null;
+    $scope.data.project = $rootScope.data.project ? $rootScope.data.project : null;
 
     OfflineService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.wbs = evaluation.wbs;

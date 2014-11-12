@@ -21,7 +21,7 @@
                 合同段：
             </div>
             <select ng-model="data.section" ng-options="item as item.name for item in data.sections | filter: {type: '标段'}">
-                <option value="" selected>--- 请选择合同段 ---</option>
+                <option value="" selected>请选择合同段</option>
             </select>
         </label>
 
@@ -30,7 +30,7 @@
                 分部：
             </div>
             <select ng-model="data.branch" ng-options="item as item.name for item in data.branches | filter: {type: '分部'}">
-                <option value="" selected>--- 请选择分部 ---</option>
+                <option value="" selected>请选择分部</option>
             </select>
         </label>
 
@@ -40,7 +40,7 @@
                     检查类别：
                 </div>
                 <select ng-model="data.category" ng-options="item.name as (item.index + ' ' + item.name) group by item.group for item in data.categories">
-                    <option value="" selected>--- 请选择类别和细项 ---</option>
+                    <option value="" selected>请选择类别和细项</option>
                 </select>
             </label>
         </div>
@@ -59,7 +59,7 @@
                 <div class="input-label">
                     问题描述：
                 </div>
-                <textarea type="text" ng-model="data.description" rows="10"></textarea>
+                <textarea ng-model="data.description"></textarea>
             </label>
         </div>
 

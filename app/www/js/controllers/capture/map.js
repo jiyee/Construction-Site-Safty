@@ -1,4 +1,4 @@
-app.controller('CaptureDashboardCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
+app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
 

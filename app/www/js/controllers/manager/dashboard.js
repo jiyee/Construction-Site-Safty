@@ -1,7 +1,8 @@
-app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, resolveUser) {
+app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, GeolocationService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.group = {};
+    $scope.data.position = [0, 0];
 
     // 用户登录状态异常控制
     if (!$scope.data.user || $stateParams.userId !== $scope.data.user._id) {
@@ -10,6 +11,15 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
             $state.go('welcome');
         });
     }
+
+    // 根据定位获取所在项目、标段和分部
+    GeolocationService.getGeolocation().then(function(position) {
+        $scope.data.position = position;
+        $rootScope.data.position = position;
+    }, function(error) {
+        $scope.data.position = [0, 0];
+        $rootScope.data.position = [0, 0];
+    });
 
     OfflineService.list().then(function (list) {
         // 全部导入
@@ -86,8 +96,8 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     };
 
 
-    $scope.toCaptureDashboard = function () {
-        $state.go('capture.dashboard', {});
+    $scope.toCaptureMap = function () {
+        $state.go('capture.map', {});
     };
 
     $scope.toCheckCreate = function () {

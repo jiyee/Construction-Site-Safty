@@ -14,7 +14,7 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
     };
 
     $scope.toBack = function() {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+        $state.go('^.map', {
             userId: $scope.data.user._id
         });
     };

@@ -1,7 +1,7 @@
 app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
-    $scope.data.projectId = $scope.data.user.project ? $scope.data.user.project._id : $rootScope._data_.project ? $rootScope._data_.project._id : null;
+    $scope.data.projectId = $scope.data.user.project ? $scope.data.user.project._id : $rootScope.data.project ? $rootScope.data.project._id : null;
     $scope.data.categories = categories;
     $scope.data.images = [];
     $scope.data.center_x = 0;
@@ -109,7 +109,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     };
 
     $scope.toBack = function() {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+        $state.go('^.map', {
             userId: $scope.data.user._id
         });
     };

@@ -1,14 +1,5 @@
 app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
-    var project, user;
-
-    if ($window.sessionStorage["project"]) {
-        try {
-            project = JSON.parse($window.sessionStorage["project"]);
-        } catch(ex) {
-            project = null;
-        }
-        $rootScope._data_.project = project;
-    }
+    var user;
 
     if ($window.sessionStorage["user"]) {
         try {
@@ -31,7 +22,6 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
                         deferred.reject(data.message);
                     } else {
                         user = data.user;
-                        $window.sessionStorage["project"] = JSON.stringify($rootScope._data_.project);
                         $window.sessionStorage["user"] = JSON.stringify(data.user);
                         deferred.resolve(data.user);
                     }
@@ -70,7 +60,6 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
                         deferred.reject(data.message);
                     } else {
                         user = null;
-                        $window.sessionStorage["project"] = null;
                         $window.sessionStorage["user"] = null;
                         deferred.resolve(data.user);
                     }

@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic']);
 
-// var ipAddr = 'localhost';
-var ipAddr = '121.40.202.109';
+var ipAddr = 'localhost';
+// var ipAddr = '121.40.202.109';
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
@@ -14,7 +14,7 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     });
 
-    $rootScope._data_ = {};
+    $rootScope.data = {};
 
     $rootScope.$on("$stateChangeSuccess", function (event, current, previous, eventObj) {
         // console.log('stateChangeSuccess', current, previous, eventObj);
@@ -271,10 +271,10 @@ app.run(function($rootScope, $ionicPlatform) {
     })
 
     // 行业主管主面板
-    .state('capture.dashboard', {
-        url: '/dashboard/:userId',
-        templateUrl: 'templates/capture/dashboard.html',
-        controller: 'CaptureDashboardCtrl',
+    .state('capture.map', {
+        url: '/map/:userId',
+        templateUrl: 'templates/capture/map.html',
+        controller: 'CaptureMapCtrl',
         resolve: {
             resolveUser: function (AuthService) {
                 return AuthService.getUser();

@@ -86,9 +86,6 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
             return;
         }
 
-        // 保存到$rootScopre, 并非特别好的方式
-        $rootScope._data_.project = $scope.project;
-
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
             $state.go("^.dashboard", {
                 userId: user._id,

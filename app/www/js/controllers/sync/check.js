@@ -3,7 +3,7 @@ app.controller('SyncCheckCtrl', function($scope, $rootScope, $state, $stateParam
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
     $scope.data.checkId = $stateParams.checkId;
-    $scope.data.project = $rootScope._data_.project ? $rootScope._data_.project : null;
+    $scope.data.project = $rootScope.data.project ? $rootScope.data.project : null;
 
     OfflineService.findById($scope.data.checkId).then(function (check) {
         $scope.data.file = check.file;

@@ -5,6 +5,7 @@
     </ion-header-bar>
 
     <ion-content padding="true">
+        <div>定位坐标：{{data.position[0] | number: 2}}, {{data.position[1] | number: 2}}</div>
         <div class="list user-status">
             <h2 class="item item-divider item-icon-left text-left"><i class="icon ion-home"></i>用户在线状态</h2>
 
@@ -37,7 +38,7 @@
     <ion-footer-bar class="bar-positive">
         <div class="row" style="padding-top: 0; padding-bottom: 0;">
             <button class="button col">标准查询</button>
-            <button class="button col" ng-click="toCaptureDashboard()">安全检查</button>
+            <button class="button col" ng-click="toCaptureMap()">安全检查</button>
             <button class="button col" ng-click="toCheckCreate()">日常巡检</button>
             <button class="button col" ng-click="toEvaluationList()">考核评价</button>
         </div>

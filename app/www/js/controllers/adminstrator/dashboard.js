@@ -1,6 +1,16 @@
-app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, resolveUser) {
+app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, GeolocationService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
+    $scope.data.position = [0, 0];
+
+    // 根据定位获取所在项目、标段和分部
+    GeolocationService.getGeolocation().then(function(position) {
+        $scope.data.position = position;
+        $rootScope.data.position = position;
+    }, function(error) {
+        $scope.data.position = [0, 0];
+        $rootScope.data.position = [0, 0];
+    });
 
     OfflineService.list().then(function(list) {
         // 只导入安全检查和考核评价
@@ -70,8 +80,8 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
 
     };
 
-    $scope.toCaptureDashboard = function() {
-        $state.go('capture.dashboard', {});
+    $scope.toCaptureMap = function() {
+        $state.go('capture.map', {});
     };
 
     $scope.toEvaluation = function() {
