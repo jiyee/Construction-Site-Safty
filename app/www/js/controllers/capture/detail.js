@@ -17,7 +17,7 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
     });
 
     $scope.toBack = function() {
-        $state.go('^.map', {
+        $state.go('^.list', {
             userId: $scope.data.user._id
         });
     };

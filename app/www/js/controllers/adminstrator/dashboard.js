@@ -1,4 +1,4 @@
-app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, GeolocationService, resolveUser) {
+app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, GeolocationService, SyncService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.position = [0, 0];
@@ -74,6 +74,14 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                 evaluationId: item._id
             });
         }
+    };
+
+    $scope.sync = function() {
+        SyncService.fullUpgrade().then(function() {
+            alert('离线数据同步成功');
+        }, function() {
+            alert('离线数据同步失败');
+        });
     };
 
     $scope.toStandard = function() {

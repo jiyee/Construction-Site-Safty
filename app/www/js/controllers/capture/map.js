@@ -1,6 +1,7 @@
 app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
+    console.log(resolveUser);
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -46,6 +47,10 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         maxZoom: 17,
         zoom: 10
     });
+
+    $scope.switchDataSource = function() {
+
+    };
 
     // var server = "http://121.40.202.109:8080/";
     // var server = "";

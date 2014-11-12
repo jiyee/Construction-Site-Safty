@@ -99,10 +99,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {
             alert('保存成功');
-            // 还原状态
-            $scope.data.name = '';
-            $scope.data.description = '';
-            $scope.data.images = [];
+            $scope.toBack();
         }, function(err) {
             alert(err);
         });

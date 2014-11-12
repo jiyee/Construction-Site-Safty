@@ -263,6 +263,7 @@ app.run(function($rootScope, $ionicPlatform) {
         url: '/capture',
         abstract: true,
         template: "<ui-view></ui-view>",
+        controller: 'CaptureAbstractCtrl',
         resolve: {
             resolveUser: function (AuthService) {
                 return AuthService.getUser();

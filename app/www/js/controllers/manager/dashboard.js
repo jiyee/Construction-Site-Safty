@@ -1,4 +1,4 @@
-app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, GeolocationService, resolveUser) {
+app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, GeolocationService, SyncService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.group = {};
@@ -95,6 +95,13 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         }
     };
 
+    $scope.sync = function() {
+        SyncService.fullUpgrade().then(function() {
+            alert('离线数据同步成功');
+        }, function() {
+            alert('离线数据同步失败');
+        });
+    };
 
     $scope.toCaptureMap = function () {
         $state.go('capture.map', {});
