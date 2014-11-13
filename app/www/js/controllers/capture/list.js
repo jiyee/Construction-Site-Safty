@@ -2,9 +2,14 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.captures = [];
+    $scope.data.categories = {};
 
     CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
         $scope.data.captures = captures;
+        console.log(captures);
+        _.each(captures, function(capture) {
+            $scope.data.categories[capture.project.name + capture.segment.name] = capture;
+        });
     });
 
     $scope.toDetail = function(item) {

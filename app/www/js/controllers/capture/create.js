@@ -94,7 +94,8 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             user: $scope.data.user._id,
             category: $scope.data.category,
             project: $scope.data.projectId || $scope.data.project._id,
-            segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
+            section: $scope.data.section._id,
+            branch: $scope.data.branch._id,
             images: $scope.data.images.join("|"),
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {

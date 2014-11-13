@@ -33,6 +33,10 @@ var CheckSchema = new Schema({
     check_target: { type: String }, // 检查对象, 手工填写
     check_result: { type: String }, // 检查结果, 存在隐患, 自动生成
 
+    // 责任单位以及责任人
+    responsible_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 存在问题的建设单位
+    responsible_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 存在问题的建设单位责任人
+
     // 处理流程
     process_active: { type: Boolean, default: true }, // 流程是否激活
     process_status: { type: String, enum: ['START', 'FORWARD', 'BACKWARD', 'END'] }, // 流程状态
