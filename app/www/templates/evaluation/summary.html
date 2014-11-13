@@ -15,24 +15,6 @@
             <div class="item item-icon-right" ng-repeat="item in data.checks"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.table.name}} {{item.check_date | date: 'yyyy年MM月dd日'}}</div>
         </div>
 
-<!--         <div>
-            <h3>扣分情况：</h3>
-            <table width="100%">
-                <tr>
-                    <td width="25%">施工单位</td>
-                    <td width="25%">监理单位</td>
-                    <td width="25%">建设单位</td>
-                    <td width="25%">政府部门</td>
-                </tr>
-                <tr>
-                    <td>{{data.scores['施工单位']}}</td>
-                    <td>{{data.scores['监理单位']}}</td>
-                    <td>{{data.scores['建设单位']}}</td>
-                    <td>{{data.scores['政府部门']}}</td>
-                </tr>
-            </table>
-        </div> -->
-
         <button class="button button-block button-positive" ng-click="toGenerate()">
             推荐内容
         </button>

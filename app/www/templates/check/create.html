@@ -13,7 +13,7 @@
                     检查用表：
                 </div>
                 <select ng-model="data.file" ng-options="item.file as (item.index + ' ' + item.name) group by item.group for item in data.files">
-                    <option value="" selected>--- 请选择表格 ---</option>
+                    <option value="" selected>请选择表格</option>
                 </select>
             </label>
 
@@ -31,7 +31,7 @@
                     合同段：
                 </div>
                 <select ng-model="data.section" ng-options="item as item.name for item in data.sections | filter: {type: '标段'}">
-                    <option value="" selected>--- 请选择合同段 ---</option>
+                    <option value="" selected>请选择合同段</option>
                 </select>
             </label>
 
@@ -40,7 +40,7 @@
                     分部：
                 </div>
                 <select ng-model="data.branch" ng-options="item as item.name for item in data.branches | filter: {type: '分部'}">
-                    <option value="" selected>--- 请选择分部 ---</option>
+                    <option value="" selected>请选择分部</option>
                 </select>
             </label>
 
@@ -48,7 +48,7 @@
                 <div class="input-label">
                     对象：
                 </div>
-                <input type="text" ng-model="data.check_target" placeholder="请填写检查对象">
+                <input type="text" ng-model="data.check_target">
             </label>
         </div>
 
