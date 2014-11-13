@@ -73,18 +73,23 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     };
 
     $scope.save = function() {
+        if (!$scope.data.project) {
+            alert('请选择检查项目');
+            return;
+        }
+
+        if (!$scope.data.section && !$scope.data.branch) {
+            alert('请选择合同段或分部');
+            return;
+        }
+
         if (!$scope.data.category) {
-            alert('请选择类别与细项');
+            alert('请选择类别和细项');
             return;
         }
 
-        if (!$scope.data.name) {
-            alert('请选择名称');
-            return;
-        }
-
-        if (!$scope.data.description) {
-            alert('请输入问题描述');
+        if (!$scope.data.name || !$scope.data.images) {
+            alert('请填写检查对象或拍照存档');
             return;
         }
 

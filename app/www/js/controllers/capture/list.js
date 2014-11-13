@@ -6,9 +6,10 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
 
     CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
         $scope.data.captures = captures;
-        console.log(captures);
+
         _.each(captures, function(capture) {
-            $scope.data.categories[capture.project.name + capture.segment.name] = capture;
+            $scope.data.categories[capture.project.name + " " + capture.section.name] = $scope.data.categories[capture.project.name + " " + capture.section.name] || [];
+            $scope.data.categories[capture.project.name + " " + capture.section.name].push(capture);
         });
     });
 

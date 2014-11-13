@@ -58,7 +58,7 @@ CaptureSchema.statics = {
             query = this.find(conditions);
         }
 
-        query.populate('user project segment unit')
+        query.populate('user project section branch')
             .sort({createAt: -1})
             .exec(callback);
     }
