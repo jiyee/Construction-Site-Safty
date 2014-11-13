@@ -8,7 +8,7 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
         $scope.data.evaluation = evaluation;
 
         var project = evaluation.project._id,
-            segment = evaluation.segment._id,
+            section = evaluation.section._id,
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
@@ -17,7 +17,7 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
             start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
             end_date = [end_date.getFullYear(), end_date.getMonth() + 1, end_date.getDate()].join('-');
 
-        CheckService.list(project, segment, start_date, end_date).then(function (checks) {
+        CheckService.list(project, section, start_date, end_date).then(function (checks) {
             $scope.data.checks = checks;
 
             var scores = {
@@ -39,7 +39,7 @@ app.controller('EvaluationSummaryCtrl', function($scope, $rootScope, $state, $st
             $scope.data.scores = scores;
         });
 
-        CaptureService.list(project, segment, start_date, end_date).then(function (captures) {
+        CaptureService.list(project, section, start_date, end_date).then(function (captures) {
             $scope.data.captures = captures;
             console.log(captures);
         });

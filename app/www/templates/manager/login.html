@@ -20,7 +20,7 @@
                         项目：
                     </span>
                     <select ng-model="project" ng-options="item as item.name for item in data.projects" ng-change="changeProject(project)">
-                        <option value="" selected>--- 请选择项目 ---</option>
+                        <option value="" selected>请选择项目</option>
                     </select>
                 </label>
             </div>
@@ -82,7 +82,7 @@
                 <label class="item item-input item-select">
                     <span class="input-label">用户名：</span>
                     <select ng-model="data.username" ng-options="item.username as item.name for item in data.users">
-                        <option value="" selected>--- 请选择用户 ---</option>
+                        <option value="" selected>请选择用户</option>
                     </select>
                 </label>
                 <label class="item item-input">

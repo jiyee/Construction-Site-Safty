@@ -30,7 +30,7 @@
                     合同段：
                 </div>
                 <select ng-model="data.section" ng-options="item as item.name for item in data.sections | filter: {type: '标段'}" ng-change="changeSection(data.section)">
-                    <option value="" selected>--- 请选择合同段 ---</option>
+                    <option value="" selected>请选择合同段</option>
                 </select>
             </label>
 
@@ -39,7 +39,7 @@
                     分部：
                 </div>
                 <select ng-model="data.branch" ng-options="item as item.name for item in data.branches | filter: {type: '分部'}" ng-change="changeBranch(data.branch)">
-                    <option value="" selected>--- 请选择分部 ---</option>
+                    <option value="" selected>请选择分部</option>
                 </select>
             </label>
 

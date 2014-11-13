@@ -8,7 +8,7 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
         $scope.data.evaluation = evaluation;
 
         var project = evaluation.project._id,
-            segment = evaluation.segment._id,
+            section = evaluation.section._id,
             today = new Date(),
             start_date = evaluation.evaluation_date_before ? new Date(evaluation.evaluation_date_before) : new Date(today.setMonth(today.getMonth() - 1)),
             end_date = new Date();
@@ -21,7 +21,8 @@ app.controller('EvaluationGenerateCtrl', function($scope, $rootScope, $state, $s
             checked_items = [],
             reLink = /(SGJC|SGXCTY|SGXCGL|SGXCSY)-([A-Z])-([A-Z][0-9]+)-([0-9])+/,
             matches = null;
-        CheckService.list(project, segment, start_date, end_date).then(function (checks) {
+            // TODO 这里原取标段或分部
+        CheckService.list(project, section, start_date, end_date).then(function (checks) {
             $scope.data.checks = checks;
 
             _.each(checks, function (check) {

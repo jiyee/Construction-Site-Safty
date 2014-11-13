@@ -54,8 +54,13 @@ app.controller('SyncCaptureCtrl', function($scope, $rootScope, $state, $statePar
             return;
         }
 
+        if (!$scope.data.section && !$scope.data.branch) {
+            alert('请选择合同段或分部');
+            return;
+        }
+
         if (!$scope.data.name) {
-            alert('请输入名称');
+            alert('请输入检查对象');
             return;
         }
 
@@ -70,7 +75,8 @@ app.controller('SyncCaptureCtrl', function($scope, $rootScope, $state, $statePar
             user: $scope.data.user._id,
             category: $scope.data.category,
             project: $scope.data.project._id,
-            segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
+            section: $scope.data.section._id,
+            branch: $scope.data.branch._id,
             images: $scope.data.images ? $scope.data.images.join("|") : "",
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {
