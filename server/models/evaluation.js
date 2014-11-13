@@ -15,7 +15,8 @@ var EvaluationSchema = new Schema({
     uuid: { type: String, required: '{PATH}不能为空' }, // 考核编号, 自动生成
 
     project: { type: Schema.Types.ObjectId, ref: 'Project', required: '{PATH}不能为空' }, // 考核项目
-    segment: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 考核项目组成，只能是标段或者分部
+    section: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 考核项目组成，标段
+    branch: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 考核项目组成，分部
     unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 考核单位
 
     status: { type: String, enum: ['START', 'END'] }, // 考核状态
@@ -32,7 +33,6 @@ var EvaluationSchema = new Schema({
     evaluation_date: { type: Date, default: Date.now }, // 考核日期
     evaluation_date_before: { type: Date }, // 上次考核日期
     evaluation_users: [{ type: Schema.Types.ObjectId, ref: 'User' }] // 考核人员，允许多人同时考核
-
 });
 
 EvaluationSchema.pre('save', function (next) {
@@ -72,7 +72,7 @@ EvaluationSchema.statics = {
             query.select(select);
         }
 
-        query.populate('project segment tables unit evaluation_users')
+        query.populate('project section branch tables unit evaluation_users')
             .sort({
                 createAt: -1
             })

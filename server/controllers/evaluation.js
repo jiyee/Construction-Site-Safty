@@ -412,9 +412,8 @@ exports.create = function(req, res, next) {
                 }));
             });
         }
-        console.log(links.length);
-        ep.emit('links', links);
 
+        ep.emit('links', links);
     });
 
 };
