@@ -1,32 +1,59 @@
-app.factory('ProjectService', function($http, $q, settings) {
+app.factory('ProjectService', function($http, $q, settings, WebSQLService) {
     return {
         find: function() {
             var deferred = $q.defer();
-            $http.get(settings.baseUrl + '/projects/all')
-                .success(function(data) {
-                    deferred.resolve(data.projects);
-                })
-                .error(function(err) {
-                    alert('服务器失去连接');
-                    deferred.reject(err);
-                });
+
+            WebSQLService.get('project').then(function(projects) {
+                deferred.resolve(projects);
+            }, function() {
+                $http.get(settings.baseUrl + '/projects/all')
+                    .success(function(data) {
+                        WebSQLService.set('project', data.projects);
+                        deferred.resolve(data.projects);
+                    })
+                    .error(function(err) {
+                        deferred.reject(err);
+                    });
+            });
 
             return deferred.promise;
         },
         findById: function(projectId) {
             var deferred = $q.defer();
 
-            $http.get(settings.baseUrl + '/project/' + projectId)
-                .success(function(data) {
-                    if (data.error) {
-                        deferred.reject(data.error);
-                    } else {
-                        deferred.resolve(data.project);
-                    }
-                })
-                .error(function(err) {
-                    deferred.reject(err);
-                });
+            WebSQLService.get('project').then(function(projects) {
+                var project = _.find(projects, {'_id': projectId});
+                if (project) {
+                    deferred.resolve(project);
+                    return;
+                }
+
+                WebSQLService.clear();
+
+                $http.get(settings.baseUrl + '/project/' + projectId)
+                    .success(function(data) {
+                        if (data.error) {
+                            deferred.reject(data.error);
+                        } else {
+                            deferred.resolve(data.project);
+                        }
+                    })
+                    .error(function(err) {
+                        deferred.reject(err);
+                    });
+            }, function() {
+                $http.get(settings.baseUrl + '/project/' + projectId)
+                    .success(function(data) {
+                        if (data.error) {
+                            deferred.reject(data.error);
+                        } else {
+                            deferred.resolve(data.project);
+                        }
+                    })
+                    .error(function(err) {
+                        deferred.reject(err);
+                    });
+            });
 
             return deferred.promise;
         }

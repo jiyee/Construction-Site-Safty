@@ -1,9 +1,9 @@
 app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
     var user;
 
-    if ($window.sessionStorage["user"]) {
+    if ($window.localStorage.getItem('current_user')) {
         try {
-            user = JSON.parse($window.sessionStorage["user"]);
+            user = JSON.parse($window.localStorage.getItem('current_user'));
         } catch(ex) {
             user = null;
         }
@@ -22,7 +22,7 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
                         deferred.reject(data.message);
                     } else {
                         user = data.user;
-                        $window.sessionStorage["user"] = JSON.stringify(data.user);
+                        $window.localStorage.setItem('current_user', JSON.stringify(data.user));
                         deferred.resolve(data.user);
                     }
                 })
@@ -41,7 +41,7 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
                         deferred.reject(data.message);
                     } else {
                         user = data.user;
-                        $window.sessionStorage["user"] = JSON.stringify(data.user);
+                        $window.localStorage.setItem('current_user', JSON.stringify(data.user));
                         deferred.resolve(data.user);
                     }
                 })
@@ -54,13 +54,14 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
         logout: function () {
             var deferred = $q.defer();
 
+            user = null;
+            $window.localStorage.removeItem('current_user');
+
             $http.post(settings.baseUrl + '/logout')
                 .success(function(data) {
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
-                        user = null;
-                        $window.sessionStorage["user"] = null;
                         deferred.resolve(data.user);
                     }
                 })

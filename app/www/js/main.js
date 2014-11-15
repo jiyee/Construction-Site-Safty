@@ -5,6 +5,7 @@ var ipAddr = 'localhost';
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
+
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -12,19 +13,32 @@ app.run(function($rootScope, $ionicPlatform) {
         if (window.StatusBar) {
             StatusBar.hide();
         }
+
+        document.addEventListener("online", toggleConnection, false);
+        document.addEventListener("offline", toggleConnection, false);
+
+        function toggleConnection() {
+            if (navigator.network.connection.type == Connection.NONE) {
+                app.constant('connection', 'offline');
+                navigator.notification.alert("Offline");
+            } else {
+                app.constant('connection', 'Online');
+                navigator.notification.alert("Online");
+            }
+        }
     });
 
     $rootScope.data = {};
 
-    $rootScope.$on("$stateChangeSuccess", function (event, current, previous, eventObj) {
+    $rootScope.$on("$stateChangeSuccess", function(event, current, previous, eventObj) {
         // console.log('stateChangeSuccess', current, previous, eventObj);
     });
 
-    $rootScope.$on("$stateChangeError", function (event, current, previous, eventObj) {
+    $rootScope.$on("$stateChangeError", function(event, current, previous, eventObj) {
         // console.log('stateChangeError', current, previous, eventObj);
     });
 
-    $rootScope.$on('$stateChangeStart', function (event, current, previous, eventObj) {
+    $rootScope.$on('$stateChangeStart', function(event, current, previous, eventObj) {
         // console.log('stateChangeStart', current, previous, eventObj);
     });
 })
@@ -39,9 +53,9 @@ app.run(function($rootScope, $ionicPlatform) {
     }
 })
 
-.config(['$httpProvider',function ($httpProvider) {
+.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
- }])
+}])
 
 // 注册路由
 .config(function($stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
@@ -56,12 +70,12 @@ app.run(function($rootScope, $ionicPlatform) {
     $stateProvider
 
     // 首页，用户类型
-    .state('welcome', {
+        .state('welcome', {
         url: '/welcome',
         templateUrl: 'templates/welcome.html',
         controller: 'WelcomeCtrl',
         resolve: {
-            user: function (AuthService) {
+            user: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -72,8 +86,7 @@ app.run(function($rootScope, $ionicPlatform) {
         url: '/manager',
         abstract: true,
         template: "<ui-view></ui-view>",
-        resolve: {
-        }
+        resolve: {}
     })
 
     // 用户登录
@@ -82,7 +95,7 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/manager/login.html',
         controller: 'ManagerLoginCtrl',
         resolve: {
-            projects: function (ProjectService) {
+            projects: function(ProjectService) {
                 return ProjectService.find();
             }
         }
@@ -94,7 +107,7 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/manager/dashboard.html',
         controller: 'ManagerDashboardCtrl',
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -106,7 +119,7 @@ app.run(function($rootScope, $ionicPlatform) {
         abstract: true,
         template: "<ui-view></ui-view>",
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -167,7 +180,7 @@ app.run(function($rootScope, $ionicPlatform) {
         abstract: true,
         template: "<ui-view></ui-view>",
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -227,8 +240,7 @@ app.run(function($rootScope, $ionicPlatform) {
         url: '/administrator',
         abstract: true,
         template: "<ui-view></ui-view>",
-        resolve: {
-        }
+        resolve: {}
     })
 
     // 用户登录
@@ -237,10 +249,10 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/administrator/login.html',
         controller: 'AdministratorLoginCtrl',
         resolve: {
-            projects: function (ProjectService) {
+            projects: function(ProjectService) {
                 return ProjectService.find();
             },
-            units: function (UnitService) {
+            units: function(UnitService) {
                 return UnitService.find();
             }
         }
@@ -252,7 +264,7 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/administrator/dashboard.html',
         controller: 'AdministratorDashboardCtrl',
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -265,7 +277,7 @@ app.run(function($rootScope, $ionicPlatform) {
         template: "<ui-view></ui-view>",
         controller: 'CaptureAbstractCtrl',
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -277,7 +289,7 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/capture/map.html',
         controller: 'CaptureMapCtrl',
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -386,7 +398,7 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/sync/dashboard.html',
         controller: 'SyncDashboardCtrl',
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -398,10 +410,10 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/sync/capture.html',
         controller: 'SyncCaptureCtrl',
         resolve: {
-            resolveProjects: function (ProjectService) {
+            resolveProjects: function(ProjectService) {
                 return ProjectService.find();
             },
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -413,10 +425,10 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/sync/check.html',
         controller: 'SyncCheckCtrl',
         resolve: {
-            resolveProjects: function (ProjectService) {
+            resolveProjects: function(ProjectService) {
                 return ProjectService.find();
             },
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -428,10 +440,10 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/sync/evaluation.html',
         controller: 'SyncEvaluationCtrl',
         resolve: {
-            resolveProjects: function (ProjectService) {
+            resolveProjects: function(ProjectService) {
                 return ProjectService.find();
             },
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
@@ -442,8 +454,7 @@ app.run(function($rootScope, $ionicPlatform) {
         url: '/worker',
         abstract: true,
         template: "<ui-view></ui-view>",
-        resolve: {
-        }
+        resolve: {}
     })
 
     // 用户登录
@@ -451,8 +462,7 @@ app.run(function($rootScope, $ionicPlatform) {
         url: '/login',
         templateUrl: 'templates/worker/login.html',
         controller: 'WorkerLoginCtrl',
-        resolve: {
-        }
+        resolve: {}
     })
 
     // 用户主面板
@@ -461,12 +471,11 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/worker/dashboard.html',
         controller: 'WorkerDashboardCtrl',
         resolve: {
-            resolveUser: function (AuthService) {
+            resolveUser: function(AuthService) {
                 return AuthService.getUser();
             }
         }
-    })
-    ;
+    });
 
     // 设置image url白名单，否则AngularJS解析URL错误
     $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile|content):|data:image\//);

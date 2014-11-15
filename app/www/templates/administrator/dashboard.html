@@ -6,11 +6,16 @@
     </ion-header-bar>
 
     <ion-content>
-        <div>定位坐标：{{data.position[0] | number: 2}}, {{data.position[1] | number: 2}}</div>
+        <div class="list">
+            <div class="item">
+                定位坐标：{{data.position[0] | number: 2}}, {{data.position[1] | number: 2}}
+            </div>
+        </div>
+
         <div class="list user-status">
             <h2 class="item item-divider item-icon-left text-left"><i class="icon ion-home"></i>用户在线状态</h2>
 
-            <div class="item item-complex">
+            <div class="item item-complex" ng-if="data.groupUsers">
                 <div class="row">
                     <div class="col col-20" ng-repeat="item in data.groupUsers">
                         <a ui-sref="contact({userId: item._id})"><i class="user-online"></i>{{item.name}}</a>
