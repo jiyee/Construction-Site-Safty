@@ -21,4 +21,6 @@ exports.ERROR_CODES = {
 
 exports.AUTHORITY_TYPES = ['日常巡检', '考核评价'];
 
+exports.ROLE_TYPES = ['administrator', 'manager', 'worker'];
+
 exports.STATUS_TYPES = ['UNCHECK', 'PASS', 'FAIL'];

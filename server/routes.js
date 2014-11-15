@@ -39,10 +39,10 @@ router.get('/user/:user_id/captures', capture.findByUserId);
 router.post('/user/create', user.create);
 
 // 角色接口
-router.get('/roles/all', role.findAll);
-router.get('/role/:role_id', role.findById);
-router.get('/role/:role_id/users', user.findByRoleId);
-router.post('/role/create', role.create);
+// router.get('/roles/all', role.findAll);
+// router.get('/role/:role_id', role.findById);
+// router.get('/role/:role_id/users', user.findByRoleId);
+// router.post('/role/create', role.create);
 
 // 部门接口
 router.get('/units/all', unit.findAll);
@@ -109,7 +109,7 @@ router.get('/setup3', setup3.mongo);
 router.get('/setup4', setup4.mongo);
 router.get('/setup5', setup5.mongo);
 router.get('/setup6', setup6.mongo);
-router.get('/setup', [setup1.mongo, setup2.mongo, setup3.mongo, setup4.mongo, setup5.mongo, setup6.mongo, function (req, res, next) {
+router.get('/setup', [setup1.mongo, setup3.mongo, setup4.mongo, setup6.mongo, function (req, res, next) {
     next({
         code: 100,
         message: 'success'

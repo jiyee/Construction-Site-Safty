@@ -12,7 +12,6 @@ mongoose.connect("mongodb://localhost/" + settings.db, function (err) {
 
 // include models
 require('./user');
-require('./role');
 require('./unit');
 require('./project');
 require('./segment');
@@ -23,7 +22,6 @@ require('./capture');
 
 // retrieve models
 exports.UserModel = mongoose.model('User');
-exports.RoleModel = mongoose.model('Role');
 exports.UnitModel = mongoose.model('Unit');
 exports.ProjectModel = mongoose.model('Project');
 exports.SegmentModel = mongoose.model('Segment');

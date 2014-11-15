@@ -25,10 +25,11 @@ var UserSchema = new Schema({
     authorities: [{ type: String, enum: constants.AUTHORITY_TYPES }], // 权限范围，相同角色的用户权限也可能不相同
 
     // Which Model to use during population.
-    role: { type: Schema.Types.ObjectId, ref: 'Role' }, // 角色
+    role: { type: String, enum: constants.ROLE_TYPES, default: 'manager' }, // 角色
     unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 部门
     project: { type: Schema.Types.ObjectId, ref: 'Project' }, // 部门
-    segment: { type: Schema.Types.ObjectId, ref: 'Segment' }  // 隶属项目组成，标段、分部、工区、班组，其中之一
+    section: { type: Schema.Types.ObjectId, ref: 'Segment' },  // 隶属项目组成，标段
+    branch: { type: Schema.Types.ObjectId, ref: 'Segment' }  // 隶属项目组成，分部
 });
 
 UserSchema.statics = {
@@ -48,7 +49,7 @@ UserSchema.statics = {
             query.select(select);
         }
 
-        query.populate('role unit project segment')
+        query.populate('unit project section branch')
             .sort({
                 createAt: -1
             })

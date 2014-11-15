@@ -45,12 +45,7 @@ app.run(function($rootScope, $ionicPlatform) {
 
 // 注册全局变量
 .constant('settings', {
-    'baseUrl': 'http://' + ipAddr + ':3000',
-    'roles': {
-        '行业主管': 'administrator',
-        '安全管理': 'manager',
-        '一线人员': 'worker'
-    }
+    'baseUrl': 'http://' + ipAddr + ':3000'
 })
 
 .config(['$httpProvider', function($httpProvider) {

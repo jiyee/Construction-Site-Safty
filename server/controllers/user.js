@@ -61,11 +61,11 @@ exports.findByName = function (req, res, next) {
     });
 };
 
-exports.findByRoleId = function (req, res, next) {
-    var role_id = validator.trim(req.params.role_id);
+exports.findByRole = function (req, res, next) {
+    var role = validator.trim(req.params.role);
     var options = {
         conditions: {
-            role: role_id
+            role: role
         }
     };
 

@@ -9,7 +9,7 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
     });
 
     $scope.toBack = function() {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });
     };
@@ -35,7 +35,7 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
     $scope.backward = function() {
         CheckService.backward($scope.data.checkId, $scope.data.check.rectification_result).then(function(check) {
             alert("整改提交完毕");
-            $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
                 userId: $scope.data.user._id
             });
         }, function(err) {
@@ -63,7 +63,7 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
             if (res) {
                 CheckService.end($scope.data.checkId).then(function(check) {
                     alert('整改验收完毕，本次安全检查结束。');
-                    $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+                    $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
                         userId: $scope.data.user._id
                     });
                 }, function (err) {

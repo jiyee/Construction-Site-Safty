@@ -8,7 +8,6 @@ var CaptureModel = require('../models/').CaptureModel;
 var CheckModel = require('../models/').CheckModel;
 var EvaluationModel = require('../models/').EvaluationModel;
 var TableModel = require('../models/').TableModel;
-var RoleModel = require('../models/').RoleModel;
 var UnitModel = require('../models/').UnitModel;
 var UserModel = require('../models/').UserModel;
 
@@ -27,9 +26,6 @@ exports.mongo = function(req, res, next) {
     TableModel.remove({}, function(err) {
         ep.emit('remove');
     });
-    RoleModel.remove({}, function(err) {
-        ep.emit('remove');
-    });
     UnitModel.remove({}, function(err) {
         ep.emit('remove');
     });
@@ -43,7 +39,11 @@ exports.mongo = function(req, res, next) {
         ep.emit('remove');
     });
 
-    ep.after('remove', 9, function() {
+    ep.after('remove', 8, function() {
+        console.log('remove all');
+        next();
+        return;
+
         var project1 = {
             name: '宜张高速公路宜都至五峰段',
             province: '湖北省',

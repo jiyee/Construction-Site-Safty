@@ -40,7 +40,7 @@ app.controller('CheckRectificationCtrl', function($scope, $rootScope, $state, $s
 
         CheckService.backward($scope.data.checkId, $scope.data.check.rectification_result).then(function(check) {
             alert("整改提交完毕");
-            $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
                 userId: $scope.data.user._id
             });
         }, function(err) {

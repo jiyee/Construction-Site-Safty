@@ -31,7 +31,7 @@ app.controller('CheckCriterionCtrl', function($scope, $rootScope, $state, $state
     });
 
     $scope.toBack = function() {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });
     };
@@ -49,7 +49,7 @@ app.controller('CheckCriterionCtrl', function($scope, $rootScope, $state, $state
 
         CheckService.forward($scope.data.checkId, $scope.data.nextUserId, $scope.data.check.rectification_criterion).then(function(check) {
             alert("下达完毕");
-            $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+            $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
                 userId: $scope.data.user._id
             });
         }, function(err) {

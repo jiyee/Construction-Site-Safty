@@ -7,7 +7,6 @@ var SegmentModel = require('../models/').SegmentModel;
 var CheckModel = require('../models/').CheckModel;
 var EvaluationModel = require('../models/').EvaluationModel;
 var TableModel = require('../models/').TableModel;
-var RoleModel = require('../models/').RoleModel;
 var UnitModel = require('../models/').UnitModel;
 var UserModel = require('../models/').UserModel;
 

@@ -8,20 +8,20 @@ app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $state
     });
 
     $scope.toBack = function () {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });
     };
 
     $scope.toDetail = function (item) {
         $state.go('^.detail', {
-            evaluationId: item._id 
+            evaluationId: item._id
         });
     };
 
     $scope.toSummary = function (item) {
         $state.go('^.summary', {
-            evaluationId: item._id 
+            evaluationId: item._id
         });
     };
 

@@ -7,7 +7,6 @@ var SegmentModel = require('../models/').SegmentModel;
 var CheckModel = require('../models/').CheckModel;
 var EvaluationModel = require('../models/').EvaluationModel;
 var TableModel = require('../models/').TableModel;
-var RoleModel = require('../models/').RoleModel;
 var UnitModel = require('../models/').UnitModel;
 var UserModel = require('../models/').UserModel;
 
@@ -37,9 +36,11 @@ exports.mongo = function(req, res, next) {
     var m_sections, m_constructors, m_supervisors, m_builders;
     _.each(projects, function(project) {
         sections = [];
+        branches = [];
         supervisors = [];
         builders = [];
         m_sections = [];
+        m_branches = [];
         m_constructors = [];
         m_supervisors = [];
         m_builders = [];
@@ -47,6 +48,9 @@ exports.mongo = function(req, res, next) {
         var m_project = new ProjectModel();
         m_project.name = project.name;
         m_project.province = project.province;
+        m_project.center = project.center;
+        m_project.extent = project.extent;
+        m_project.zoom = project.zoom;
 
         sections = project.sections;
 
@@ -59,6 +63,19 @@ exports.mongo = function(req, res, next) {
 
             m_constructors[unit.name] = unit;
             m_project.units.push(unit._id);
+
+            _.each(_.filter(project.users, {"type": "constructor"}), function(_user) {
+                var user = UserModel();
+                user.name = _user.name;
+                user.mobile = user.mobile;
+                user.password = '123456';
+                user.username = _user.name;
+                user.project = m_project._id;
+                user.unit = unit._id;
+                user.save(function(err, user) {
+
+                });
+            });
         });
 
         _.each(sections, function(section, index) {
@@ -94,18 +111,84 @@ exports.mongo = function(req, res, next) {
         var index = 0;
         _.each(sections, function(section) {
             var segment = SegmentModel();
+            var branches = [];
+            _.each(section.branches, function(branch) {
+                var m_branch = new SegmentModel();
+                m_branch.name = branch.name;
+                m_branch.type = '分部';
+                m_branch.project = m_project._id;
+                m_branch.units = [m_supervisors[section.supervisor]._id, m_builders[section.builder]._id];
+                m_branch.parent = segment._id;
+                m_branch.save(function(err) {
+
+                });
+
+                branches.push(m_branch._id);
+
+                _.each(_.filter(branch.users, {"type": "builder"}), function(_user) {
+                    var user = UserModel();
+                    user.name = _user.name;
+                    user.mobile = user.mobile;
+                    user.password = '123456';
+                    user.username = _user.name;
+                    user.project = m_project._id;
+                    user.unit = m_builders[section.builder]._id;
+                    user.section = segment._id;
+                    user.branch = m_branch._id;
+                    user.save(function(err, user) {
+
+                    });
+                });
+            });
+
+
             segment.name = (section.name || toWords(index++)) + '标段';
             segment.type = '标段';
             segment.units = [m_supervisors[section.supervisor]._id, m_builders[section.builder]._id];
+            segment.segments = branches;
             segment.save(function(err, segment) {
                 m_sections[segment.name] = segment;
             });
 
             m_project.segments.push(segment._id);
+
+            _.each(_.filter(section.users, {"type": "supervisor"}), function(_user) {
+                var user = UserModel();
+                user.name = _user.name;
+                user.mobile = user.mobile;
+                user.password = '123456';
+                user.username = _user.name;
+                user.project = m_project._id;
+                user.unit = m_supervisors[section.supervisor]._id;
+                user.section = segment._id;
+                user.save(function(err, user) {
+
+                });
+            });
+
+            _.each(_.filter(section.users, {"type": "builder"}), function(_user) {
+                var user = UserModel();
+                user.name = _user.name;
+                user.mobile = user.mobile;
+                user.password = '123456';
+                user.username = _user.name;
+                user.project = m_project._id;
+                user.unit = m_builders[section.builder]._id;
+                user.section = segment._id;
+                user.save(function(err, user) {
+
+                });
+            });
+
         });
 
         m_project.save(function(err, project) {
-            console.log('save project', project);
+            if (err) {
+                console.log(err);
+                next(err);
+            }
+
+            console.log('save project', project.name);
             ep.emit('project', project);
         });
     });

@@ -3,8 +3,8 @@ app.controller('WelcomeCtrl', function($scope, $ionicPopup, $state, $stateParams
     $scope.data.server = settings.baseUrl;
 
     // 用户session判断，自动跳转
-    if (user && user.role && user.role.name) {
-        $state.go([settings.roles[user.role.name], 'dashboard'].join('.'), {
+    if (user && user.role) {
+        $state.go([user.role, 'dashboard'].join('.'), {
             userId: user._id
         });
     }

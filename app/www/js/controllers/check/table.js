@@ -57,7 +57,7 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
     };
 
     $scope.toBack = function () {
-        $state.go([settings.roles[$scope.data.user.role.name], 'dashboard'].join('.'), {
+        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });
     };
