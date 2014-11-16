@@ -19,20 +19,21 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         $scope.data.projects = projects;
     });
 
+    console.log($scope.data.user);
     if ($scope.data.projectId) {
         $scope.data.project = $scope.data.user.project;
         SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
             $scope.data.sections = segments;
         });
-    } else {
-        $scope.$watch('data.project', function (project) {
-            if (!project) return;
-
-            SegmentService.findByProjectId($scope.data.project._id).then(function (segments) {
-                $scope.data.sections = segments;
-            });
-        });
     }
+
+    $scope.$watch('data.projectId', function (projectId) {
+        if (!projectId) return;
+
+        SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
+            $scope.data.sections = segments;
+        });
+    });
 
     $scope.$watch('data.section', function(section) {
         if (!section) return;

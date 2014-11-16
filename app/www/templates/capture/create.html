@@ -11,7 +11,7 @@
             <div class="input-label">
                 项目：
             </div>
-            <select ng-model="data.project" ng-options="item as item.name for item in data.projects">
+            <select ng-model="data.projectId" ng-options="item._id as item.name for item in data.projects">
                 <option value="" selected>请选择项目</option>
             </select>
         </label>

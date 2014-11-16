@@ -2,7 +2,7 @@ var validator = require('validator');
 var eventproxy = require('eventproxy');
 var UserModel = require('../models/').UserModel;
 
-exports.findAll = function (req, res, next) {
+exports.findAll = function(req, res, next) {
     var options = {};
     UserModel.findBy(options, function(err, users) {
         if (err) {
@@ -17,7 +17,7 @@ exports.findAll = function (req, res, next) {
     });
 };
 
-exports.findById = function (req, res, next) {
+exports.findById = function(req, res, next) {
     var user_id = validator.trim(req.params.user_id);
     var options = {
         findOne: true,
@@ -26,7 +26,7 @@ exports.findById = function (req, res, next) {
         }
     };
 
-    UserModel.findBy(options, function (err, user) {
+    UserModel.findBy(options, function(err, user) {
         if (err) {
             return next(err);
         }
@@ -39,7 +39,7 @@ exports.findById = function (req, res, next) {
     });
 };
 
-exports.findByName = function (req, res, next) {
+exports.findByName = function(req, res, next) {
     var user_name = validator.trim(req.params.user_name);
     var options = {
         findOne: true,
@@ -48,7 +48,7 @@ exports.findByName = function (req, res, next) {
         }
     };
 
-    UserModel.findBy(options, function (err, user) {
+    UserModel.findBy(options, function(err, user) {
         if (err) {
             return next(err);
         }
@@ -61,7 +61,7 @@ exports.findByName = function (req, res, next) {
     });
 };
 
-exports.findByRole = function (req, res, next) {
+exports.findByRole = function(req, res, next) {
     var role = validator.trim(req.params.role);
     var options = {
         conditions: {
@@ -69,7 +69,7 @@ exports.findByRole = function (req, res, next) {
         }
     };
 
-    UserModel.findBy(options, function (err, users) {
+    UserModel.findBy(options, function(err, users) {
         if (err) {
             return next(err);
         }
@@ -82,7 +82,7 @@ exports.findByRole = function (req, res, next) {
     });
 };
 
-exports.findByUnitId = function (req, res, next) {
+exports.findByUnitId = function(req, res, next) {
     var unit_id = validator.trim(req.params.unit_id);
     var options = {
         conditions: {
@@ -90,7 +90,7 @@ exports.findByUnitId = function (req, res, next) {
         }
     };
 
-    UserModel.findBy(options, function (err, users) {
+    UserModel.findBy(options, function(err, users) {
         if (err) {
             return next(err);
         }
@@ -103,28 +103,46 @@ exports.findByUnitId = function (req, res, next) {
     });
 };
 
-exports.findBySegmentId = function (req, res, next) {
+exports.findBySegmentId = function(req, res, next) {
     var segment_id = validator.trim(req.params.segment_id);
     var options = {
         conditions: {
-            segment: segment_id
+            section: segment_id
         }
     };
 
-    UserModel.findBy(options, function (err, users) {
+    UserModel.findBy(options, function(err, users) {
         if (err) {
             return next(err);
         }
 
-        res.send({
-            'status': 'success',
-            'code': 0,
-            'users': users
-        });
+        if (!users) {
+            options.conditions = {
+                branch: segment_id
+            };
+
+            UserModel.findBy(options, function(err, users) {
+                if (err) {
+                    return next(err);
+                }
+
+                res.send({
+                    'status': 'success',
+                    'code': 0,
+                    'users': users
+                });
+            });
+        } else {
+            res.send({
+                'status': 'success',
+                'code': 0,
+                'users': users
+            });
+        }
     });
 };
 
-exports.auth = function (req, res, next) {
+exports.auth = function(req, res, next) {
     if (!req.session.user) {
         return next({
             code: 105,
@@ -139,7 +157,7 @@ exports.auth = function (req, res, next) {
     });
 };
 
-exports.logout = function (req, res, next) {
+exports.logout = function(req, res, next) {
     if (!req.session.user) {
         return next({
             code: 0,
@@ -157,12 +175,12 @@ exports.logout = function (req, res, next) {
     });
 };
 
-exports.login = function (req, res, next) {
+exports.login = function(req, res, next) {
     var username = validator.trim(req.body.username).toLowerCase();
     var password = validator.trim(req.body.password);
 
     var ep = new eventproxy();
-    ep.on('error', function (msg) {
+    ep.on('error', function(msg) {
         res.send({
             code: 105,
             message: msg || '登录失败'
@@ -181,7 +199,7 @@ exports.login = function (req, res, next) {
         }
     };
 
-    UserModel.findBy(options, function (err, user) {
+    UserModel.findBy(options, function(err, user) {
         if (err) {
             ep.emit('error');
             return;
