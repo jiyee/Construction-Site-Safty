@@ -19,7 +19,6 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         $scope.data.projects = projects;
     });
 
-    console.log($scope.data.user);
     if ($scope.data.projectId) {
         $scope.data.project = $scope.data.user.project;
         SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
@@ -74,7 +73,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     };
 
     $scope.save = function() {
-        if (!$scope.data.project) {
+        if (!$scope.data.projectId) {
             alert('请选择检查项目');
             return;
         }
@@ -100,8 +99,8 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             user: $scope.data.user._id,
             category: $scope.data.category,
             project: $scope.data.projectId || $scope.data.project._id,
-            section: $scope.data.section._id,
-            branch: $scope.data.branch._id,
+            section: $scope.data.section ? $scope.data.section._id : null,
+            branch: $scope.data.branch ? $scope.data.branch._id : null,
             images: $scope.data.images.join("|"),
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {

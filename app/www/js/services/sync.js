@@ -1,4 +1,4 @@
-app.factory('SyncService', function($rootScope, $http, $window, $q, settings, ProjectService, SegmentService, UnitService, UserService) {
+app.factory('SyncService', function($rootScope, $http, $window, $q, settings, ProjectService, SegmentService, UnitService, UserService, WebSQLService) {
     var localStorage = $window.localStorage;
 
     return {
@@ -6,7 +6,7 @@ app.factory('SyncService', function($rootScope, $http, $window, $q, settings, Pr
 
         },
         fullUpgrade: function() {
-            // TODO 控制同步数据范围
+            WebSQLService.clear();
             var promise1 = this.project();
             var promise2 = this.segment();
             var promise3 = this.unit();
@@ -16,9 +16,9 @@ app.factory('SyncService', function($rootScope, $http, $window, $q, settings, Pr
         },
         project: function() {
             var deferred = $q.defer();
-            localStorage.removeItem('projects');
+            // localStorage.removeItem('projects');
             ProjectService.find().then(function(projects) {
-                localStorage.setItem('projects', JSON.stringify(projects));
+                // localStorage.setItem('projects', JSON.stringify(projects));
                 deferred.resolve(projects);
             }, function(err) {
                 deferred.reject(err);
@@ -27,9 +27,9 @@ app.factory('SyncService', function($rootScope, $http, $window, $q, settings, Pr
         },
         segment: function() {
             var deferred = $q.defer();
-            localStorage.removeItem('segments');
+            // localStorage.removeItem('segments');
             SegmentService.find().then(function(segments) {
-                localStorage.setItem('segments', JSON.stringify(segments));
+                // localStorage.setItem('segments', JSON.stringify(segments));
                 deferred.resolve(segments);
             }, function(err) {
                 deferred.reject(err);
@@ -38,9 +38,9 @@ app.factory('SyncService', function($rootScope, $http, $window, $q, settings, Pr
         },
         unit: function() {
             var deferred = $q.defer();
-            localStorage.removeItem('units');
+            // localStorage.removeItem('units');
             UnitService.find().then(function(units) {
-                localStorage.setItem('units', JSON.stringify(units));
+                // localStorage.setItem('units', JSON.stringify(units));
                 deferred.resolve(units);
             }, function(err) {
                 deferred.reject(err);
@@ -49,9 +49,9 @@ app.factory('SyncService', function($rootScope, $http, $window, $q, settings, Pr
         },
         user: function() {
             var deferred = $q.defer();
-            localStorage.removeItem('users');
+            // localStorage.removeItem('users');
             UserService.find().then(function(users) {
-                localStorage.setItem('users', JSON.stringify(users));
+                // localStorage.setItem('users', JSON.stringify(users));
                 deferred.resolve(users);
             }, function(err) {
                 deferred.reject(err);

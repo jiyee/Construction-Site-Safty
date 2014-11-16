@@ -21,26 +21,10 @@ app.factory('ProjectService', function($http, $q, settings, WebSQLService) {
         findById: function(projectId) {
             var deferred = $q.defer();
 
-            WebSQLService.get('project').then(function(projects) {
+            var promise = WebSQLService.get('project');
+            promise.then(function(projects) {
                 var project = _.find(projects, {'_id': projectId});
-                if (project) {
-                    deferred.resolve(project);
-                    return;
-                }
-
-                WebSQLService.clear();
-
-                $http.get(settings.baseUrl + '/project/' + projectId)
-                    .success(function(data) {
-                        if (data.error) {
-                            deferred.reject(data.error);
-                        } else {
-                            deferred.resolve(data.project);
-                        }
-                    })
-                    .error(function(err) {
-                        deferred.reject(err);
-                    });
+                deferred.resolve(project);
             }, function() {
                 $http.get(settings.baseUrl + '/project/' + projectId)
                     .success(function(data) {

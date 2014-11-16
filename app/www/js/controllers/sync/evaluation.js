@@ -86,10 +86,10 @@ app.controller('SyncEvaluationCtrl', function($scope, $rootScope, $state, $state
 
         EvaluationService.create({
             wbs: $scope.data.wbs,
-            project: $scope.data.project._id,
-            section: $scope.data.section._id,
-            branch: $scope.data.branch._id,
-            unit: $scope.data.unit._id,
+            project: $scope.data.project ? $scope.data.project._id : null,
+            section: $scope.data.section ? $scope.data.section._id : null,
+            branch: $scope.data.branch ? $scope.data.branch._id : null,
+            unit: $scope.data.unit ? $scope.data.unit._id : null,
             evaluation_date: $scope.data.evaluation_date
         }).then(function(evaluation) {
             var counter = 0,

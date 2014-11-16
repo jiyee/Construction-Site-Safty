@@ -75,6 +75,9 @@ app.factory('WebSQLService', function($window, $q, settings) {
             db.transaction(
                 function(tx) {
                     var sql = "DELETE FROM offline";
+                    if (name) {
+                        sql += " WHERE name = '" + name + "'";
+                    }
                     tx.executeSql(sql, []);
                 },
                 function(err) {

@@ -120,10 +120,10 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         }
 
         EvaluationService.create({
-            project: $scope.data.projectId,
-            section: $scope.data.section._id,
-            branch: $scope.data.branch._id,
-            unit: $scope.data.unit._id,
+            project: $scope.data.projectId || $scope.data.project._id,
+            section: $scope.data.section ? $scope.data.section._id : null,
+            branch: $scope.data.branch ? $scope.data.branch._id : null,
+            unit: $scope.data.unit ? $scope.data.unit._id : null,
             wbs: $scope.data.wbs.join("|")
         }).then(function(evaluation) {
             $state.go('^.summary', {
