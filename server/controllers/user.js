@@ -116,7 +116,7 @@ exports.findBySegmentId = function(req, res, next) {
             return next(err);
         }
 
-        if (!users) {
+        if (users.length === 0) {
             options.conditions = {
                 branch: segment_id
             };
