@@ -24,7 +24,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
             if (!checkId || !file) {
                 deferred.reject('参数错误');
-                return;
+                return deferred.promise;
             }
 
             var that = this,
@@ -69,11 +69,11 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
         newCapture: function(opts) {
             var deferred = $q.defer();
 
-            var captureId = opts.captureId;
+            var captureId = opts.captureId || this.guid();
 
             if (!captureId) {
                 deferred.reject('参数错误');
-                return;
+                return deferred.promise;
             }
 
             var that = this,
@@ -101,12 +101,12 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
             if (!evaluationId) {
                 deferred.reject('参数错误');
-                return;
+                return deferred.promise;
             }
 
             if (!wbs) {
                 deferred.reject('参数错误');
-                return;
+                return deferred.promise;
             }
 
             var wbs_checked = wbs.split('|');
@@ -154,7 +154,6 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                                 return link.trim();
                             }));
 
-                            console.log(links.length);
                             $rootScope.$emit('links' + t, links);
                         }
                     });
@@ -228,7 +227,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var deferred = $q.defer();
             if (!uuid) {
                 deferred.reject('参数错误');
-                return;
+                return deferred.promise;
             }
 
             var source = this._restore(uuid);
@@ -244,7 +243,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var deferred = $q.defer();
             if (!uuid) {
                 deferred.reject('参数错误');
-                return;
+                return deferred.promise;
             }
 
             this._remove(uuid);
@@ -257,7 +256,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var deferred = $q.defer();
             if (!uuid) {
                 deferred.reject('参数错误');
-                return;
+                return deferred.promise;
             }
 
             if (this._restore(uuid)) {
@@ -269,7 +268,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             return deferred.promise;
         },
 
-        list: function() {
+        list: function(type) {
             var deferred = $q.defer();
 
             var list = [];
@@ -280,6 +279,12 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 if ($window.localStorage[key].match(/"_type_":"capture"/) ||
                     $window.localStorage[key].match(/"_type_":"check"/) ||
                     $window.localStorage[key].match(/"_type_":"evaluation"/)) {
+
+                    if (type &&
+                        !$window.localStorage[key].match(new RegExp('"_type_":"' + type + '"'))) {
+                        continue;
+                    }
+
                     list.push(this._restore(key));
                 }
             }

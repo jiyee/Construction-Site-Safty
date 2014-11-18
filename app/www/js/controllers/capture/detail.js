@@ -1,4 +1,4 @@
-app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, categories, ProjectService, UserService, UnitService, CaptureService, AuthService, resolveUser) {
+app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, categories, CaptureService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.categories = categories;
@@ -12,7 +12,7 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
-    CaptureService.findById($scope.data.captureId).then(function(capture) {
+    OfflineService.findById($scope.data.captureId).then(function(capture) {
         $scope.data.capture = capture;
     });
 
@@ -20,5 +20,11 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
         $state.go('^.list', {
             userId: $scope.data.user._id
         });
+    };
+
+    $scope.remove = function() {
+        OfflineService.remove($scope.data.captureId);
+        alert('删除成功');
+        $scope.toBack();
     };
 });

@@ -6,7 +6,6 @@ app.factory('GeolocationService', function($rootScope, $http, $q, $window, setti
     });
 
     geolocation.on('change', function() {
-        console.log(geolocation.getPosition());
         deferred.resolve(geolocation.getPosition());
     });
 

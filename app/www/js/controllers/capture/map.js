@@ -1,7 +1,6 @@
 app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
-    console.log(resolveUser);
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {

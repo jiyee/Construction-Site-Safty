@@ -21,8 +21,7 @@ app.factory('ProjectService', function($http, $q, settings, WebSQLService) {
         findById: function(projectId) {
             var deferred = $q.defer();
 
-            var promise = WebSQLService.get('project');
-            promise.then(function(projects) {
+            WebSQLService.get('project').then(function(projects) {
                 var project = _.find(projects, {'_id': projectId});
                 deferred.resolve(project);
             }, function() {

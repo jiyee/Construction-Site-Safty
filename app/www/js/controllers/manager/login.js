@@ -1,4 +1,4 @@
-app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UnitService, UserService, AuthService) {
+app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UnitService, UserService, AuthService, SyncService) {
     $scope.data = {};
     $scope.data.projects = projects;
 

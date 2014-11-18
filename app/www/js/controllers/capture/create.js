@@ -1,7 +1,7 @@
-app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
+app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, ProjectService, SegmentService, CaptureService, AuthService, OfflineService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.user = resolveUser;
-    $scope.data.projectId = $scope.data.user.project ? $scope.data.user.project._id : $rootScope.data.project ? $rootScope.data.project._id : null;
+    $scope.data.projects = resolveProjects;
     $scope.data.categories = categories;
     $scope.data.images = [];
     $scope.data.center_x = 0;
@@ -15,21 +15,27 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
-    ProjectService.find().then(function (projects) {
-        $scope.data.projects = projects;
-    });
-
-    if ($scope.data.projectId) {
-        $scope.data.project = $scope.data.user.project;
-        SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
+    if ($scope.data.user.project) {
+        $scope.data.project = _.find($scope.data.projects, {_id: $scope.data.user.project._id});
+        SegmentService.findByProjectId($scope.data.user.project._id).then(function (segments) {
             $scope.data.sections = segments;
+
+            if ($scope.data.user.section) {
+                // BUG 只有延时才能解决默认选中问题
+                // TODO 分部默认选中
+                $timeout(function() {
+                    $scope.data.section = _.find($scope.data.sections, {
+                        _id: $scope.data.user.section._id
+                    });
+                }, 100);
+            }
         });
     }
 
-    $scope.$watch('data.projectId', function (projectId) {
-        if (!projectId) return;
+    $scope.$watch('data.project', function (project) {
+        if (!project) return;
 
-        SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
+        SegmentService.findByProjectId($scope.data.project._id).then(function (segments) {
             $scope.data.sections = segments;
         });
     });
@@ -73,7 +79,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     };
 
     $scope.save = function() {
-        if (!$scope.data.projectId) {
+        if (!$scope.data.project) {
             alert('请选择检查项目');
             return;
         }
@@ -93,15 +99,16 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             return;
         }
 
-        CaptureService.create({
+        // 离线重构, 离线保存均保持对象，等到同步时保存_id
+        OfflineService.newCapture({
             name: $scope.data.name,
             description: $scope.data.description,
-            user: $scope.data.user._id,
+            user: $scope.data.user,
             category: $scope.data.category,
-            project: $scope.data.projectId || $scope.data.project._id,
-            section: $scope.data.section ? $scope.data.section._id : null,
-            branch: $scope.data.branch ? $scope.data.branch._id : null,
-            images: $scope.data.images.join("|"),
+            project: $scope.data.project,
+            section: $scope.data.section,
+            branch: $scope.data.branch,
+            images: $scope.data.images,
             center: [$scope.data.center_x, $scope.data.center_y]
         }).then(function(check) {
             alert('保存成功');

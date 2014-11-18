@@ -2,6 +2,7 @@
     <ion-header-bar align-title="center" class="bar-calm">
         <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">安全检查</h1>
+        <button class="button icon ion-trash-a" ng-click="remove()"></button>
     </ion-header-bar>
 
     <ion-content padding="true">
@@ -16,8 +17,11 @@
                 <div class="row">
                     <div class="col">项目：{{data.capture.project.name}}</div>
                 </div>
-                <div class="row">
-                    <div class="col">标段/分部：{{data.capture.segment.name}}</div>
+                <div class="row" ng-if="data.capture.section">
+                    <div class="col">标段：{{data.capture.section.name}}</div>
+                </div>
+                <div class="row" ng-if="data.capture.branch">
+                    <div class="col">分部：{{data.capture.branch.name}}</div>
                 </div>
                 <div class="row">
                     <div class="col">细项：{{data.capture.category}}</div>
@@ -25,7 +29,6 @@
                 <div class="row">
                     <div class="col">对象：{{data.capture.name}}</div>
                 </div>
-
                 <div class="row">
                     <div class="col">存在隐患：{{data.capture.description}}</div>
                 </div>

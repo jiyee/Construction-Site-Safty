@@ -69,6 +69,8 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
                     deferred.reject(err);
                 });
 
+            deferred.resolve();
+
             return deferred.promise;
         },
         getUser: function () {

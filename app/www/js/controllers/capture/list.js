@@ -1,10 +1,18 @@
-app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, UserService, UnitService, CaptureService, AuthService, resolveUser) {
+app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, CaptureService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.captures = [];
     $scope.data.categories = {};
 
-    CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
+    // 用户登录状态异常控制
+    if (!$scope.data.user) {
+        alert('用户登录状态异常');
+        AuthService.logout().then(function() {
+            $state.go('welcome');
+        });
+    }
+
+    OfflineService.list('capture').then(function(captures) {
         $scope.data.captures = captures;
 
         _.each(captures, function(capture) {
@@ -14,8 +22,9 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
     });
 
     $scope.toDetail = function(item) {
+        // NOTICE 离线保存的key为uuid
         $state.go('^.detail', {
-            captureId: item._id
+            captureId: item.uuid
         });
     };
 

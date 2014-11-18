@@ -282,19 +282,19 @@ app.run(function($rootScope, $ionicPlatform) {
     .state('capture.map', {
         url: '/map/:userId',
         templateUrl: 'templates/capture/map.html',
-        controller: 'CaptureMapCtrl',
-        resolve: {
-            resolveUser: function(AuthService) {
-                return AuthService.getUser();
-            }
-        }
+        controller: 'CaptureMapCtrl'
     })
 
     // 创建安全检查
     .state('capture.create', {
         url: '/create',
         templateUrl: 'templates/capture/create.html',
-        controller: 'CaptureCreateCtrl'
+        controller: 'CaptureCreateCtrl',
+        resolve: {
+            resolveProjects: function(ProjectService) {
+                return ProjectService.find();
+            },
+        }
     })
 
     // 创建安全检查
