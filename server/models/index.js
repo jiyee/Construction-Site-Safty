@@ -1,14 +1,29 @@
 var mongoose = require('mongoose');
 var settings = require('../settings');
 
-mongoose.connect("mongodb://localhost/" + settings.db, function (err) {
-  if (err) {
-      console.error('connect to %s error: ', settings.db, err.message);
-      process.exit(1);
-  } else {
-      console.log('connect to %s server.', settings.db);
-  }
+var options = {
+    server: {
+        auto_reconnect: true,
+        poolSize: 10
+    }
+};
+
+mongoose.connect("mongodb://localhost/" + settings.db, options, function(err) {
+    if (err) {
+        console.error('connect to %s error: ', settings.db, err.message);
+        process.exit(1);
+    } else {
+        console.log('connect to %s server.', settings.db);
+    }
 });
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'mongoose connection error:'));
+db.once('open', function callback() {
+    console.log('mongoose open success');
+});
+
+// mongoose.set('debug', true);
 
 // include models
 require('./user');
