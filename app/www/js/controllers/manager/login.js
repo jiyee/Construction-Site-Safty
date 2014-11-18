@@ -87,6 +87,7 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
         }
 
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
+            SyncService.fullUpgrade();
             $state.go("^.dashboard", {
                 userId: user._id,
             });

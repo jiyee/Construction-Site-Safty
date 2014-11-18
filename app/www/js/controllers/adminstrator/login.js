@@ -1,4 +1,4 @@
-app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, units, UserService, AuthService) {
+app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, units, UserService, AuthService, SyncService) {
     $scope.data = {};
     $scope.data.resolveUnits = units;
     $scope.data.units = [];
@@ -30,6 +30,7 @@ app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $s
         }
 
         AuthService.login($scope.data.username, $scope.data.password).then(function (user) {
+            SyncService.fullUpgrade();
             $state.go("^.dashboard", {
                 userId: user._id,
             });
