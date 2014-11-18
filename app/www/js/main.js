@@ -124,7 +124,12 @@ app.run(function($rootScope, $ionicPlatform) {
     .state('check.create', {
         url: '/create',
         templateUrl: 'templates/check/create.html',
-        controller: 'CheckCreateCtrl'
+        controller: 'CheckCreateCtrl',
+        resolve: {
+            resolveProjects: function(ProjectService) {
+                return ProjectService.find();
+            },
+        }
     })
 
     // 日常巡检详情
@@ -192,7 +197,12 @@ app.run(function($rootScope, $ionicPlatform) {
     .state('evaluation.create', {
         url: '/create',
         templateUrl: 'templates/evaluation/create.html',
-        controller: 'EvaluationCreateCtrl'
+        controller: 'EvaluationCreateCtrl',
+        resolve: {
+            resolveProjects: function(ProjectService) {
+                return ProjectService.find();
+            },
+        }
     })
 
     // 创建建设单位选择页

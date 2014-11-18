@@ -1,4 +1,4 @@
-app.controller('OfflineReviewCtrl', function($scope, $rootScope, $state, $stateParams, settings, OfflineService) {
+app.controller('OfflineReviewCtrl', function($scope, $state, $stateParams, settings, OfflineService) {
     $scope.data = {};
     $scope.data.table = {};
     $scope.data.tableId = $stateParams.tableId;
@@ -32,7 +32,8 @@ app.controller('OfflineReviewCtrl', function($scope, $rootScope, $state, $stateP
 
     $scope.takePhoto = function(item) {
         function onSuccess(imageURI) {
-            item.image_url = imageURI;
+            item.images = item.images || [];
+            item.images.push(imageURI);
             $scope.$apply();
         }
 

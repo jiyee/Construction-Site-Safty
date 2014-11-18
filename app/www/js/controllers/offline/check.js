@@ -9,7 +9,7 @@ app.controller('OfflineCheckCtrl', function($scope, $rootScope, $state, $statePa
             return;
         }
 
-        if (!$scope.data.check_target) {
+        if (!$scope.data.target) {
             alert('请填写检查对象');
             return;
         }
@@ -17,7 +17,7 @@ app.controller('OfflineCheckCtrl', function($scope, $rootScope, $state, $statePa
         OfflineService.newCheck({
             checkId: $scope.data.checkId,
             file: $scope.data.file,
-            check_target: $scope.data.check_target
+            target: $scope.data.target
         }).then(function(check) {
             $state.go('^.table', {
                 tableId: check.table

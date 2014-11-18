@@ -137,7 +137,7 @@ exports.findByDateInterval = function (req, res, next) {
                 $lt: new Date(end_date)
             }
         },
-        select: 'table segment check_user check_date'
+        select: 'table section branch check_user check_date'
     };
 
     CheckModel.findBy(options, function (err, checks) {

@@ -7,7 +7,7 @@
     <ion-content padding="true">
         <div class="list card">
             <div class="item text-center">
-                <h2>检查编号：{{data.check.uuid}}</h2>
+                <p>检查编号：{{data.check.uuid}}</p>
                 <p>检查日期：{{data.check.check_date | date: 'yyyy年MM月dd日'}}</p>
                 <p>检查人：{{data.check.check_user.name}}【{{data.check.check_user.unit.name}}】</p>
                 <p>当前处理人：{{data.check.process_current_user.name}}</p>
@@ -21,7 +21,7 @@
                     <div class="col">项目：{{data.check.table.name}}</div>
                 </div>
                 <div class="row">
-                    <div class="col">对象：{{data.check.check_target}}</div>
+                    <div class="col">对象：{{data.check.target}}</div>
                 </div>
 
                 <div class="row">

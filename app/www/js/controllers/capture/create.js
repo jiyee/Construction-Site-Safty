@@ -1,7 +1,9 @@
-app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, ProjectService, SegmentService, CaptureService, AuthService, OfflineService, resolveUser, resolveProjects) {
+app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
+    $scope.data.sections = [];
+    $scope.data.branches = [];
     $scope.data.categories = categories;
     $scope.data.images = [];
     $scope.data.center_x = 0;
@@ -15,6 +17,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
+    // 自动选中默认项目、标段、分部
     if ($scope.data.user.project) {
         $scope.data.project = _.find($scope.data.projects, {_id: $scope.data.user.project._id});
         SegmentService.findByProjectId($scope.data.user.project._id).then(function (segments) {
@@ -35,7 +38,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     $scope.$watch('data.project', function (project) {
         if (!project) return;
 
-        SegmentService.findByProjectId($scope.data.project._id).then(function (segments) {
+        SegmentService.findByProjectId(project._id).then(function (segments) {
             $scope.data.sections = segments;
         });
     });
@@ -84,8 +87,8 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             return;
         }
 
-        if (!$scope.data.section && !$scope.data.branch) {
-            alert('请选择合同段或分部');
+        if (!$scope.data.section) {
+            alert('请选择合同段');
             return;
         }
 

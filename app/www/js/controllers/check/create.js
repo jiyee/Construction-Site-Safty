@@ -1,9 +1,9 @@
-app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CheckService, AuthService, files, resolveUser) {
+app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, files, SegmentService, CheckService, OfflineService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.user = resolveUser;
+    $scope.data.projects = resolveProjects;
     $scope.data.sections = [];
     $scope.data.branches = [];
-    $scope.data.projectId = $scope.data.user.project ? $scope.data.user.project._id : $rootScope.data.project ? $rootScope.data.project._id : null;
     $scope.data.files = files;
 
     // 用户登录状态异常控制
@@ -14,24 +14,31 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
         });
     }
 
-    ProjectService.find().then(function (projects) {
-        $scope.data.projects = projects;
-    });
-
-    if ($scope.data.projectId) {
-        $scope.data.project = $scope.data.user.project;
-        SegmentService.findByProjectId($scope.data.projectId).then(function (segments) {
+    // 自动选中默认项目、标段、分部
+    if ($scope.data.user.project) {
+        $scope.data.project = _.find($scope.data.projects, {_id: $scope.data.user.project._id});
+        SegmentService.findByProjectId($scope.data.user.project._id).then(function (segments) {
             $scope.data.sections = segments;
-        });
-    } else {
-        $scope.$watch('data.project', function (project) {
-            if (!project) return;
 
-            SegmentService.findByProjectId($scope.data.project._id).then(function (segments) {
-                $scope.data.sections = segments;
-            });
+            if ($scope.data.user.section) {
+                // BUG 只有延时才能解决默认选中问题
+                // TODO 分部默认选中
+                $timeout(function() {
+                    $scope.data.section = _.find($scope.data.sections, {
+                        _id: $scope.data.user.section._id
+                    });
+                }, 100);
+            }
         });
     }
+
+    $scope.$watch('data.project', function (project) {
+        if (!project) return;
+
+        SegmentService.findByProjectId(project._id).then(function (segments) {
+            $scope.data.sections = segments;
+        });
+    });
 
     $scope.$watch('data.section', function(section) {
         if (!section) return;
@@ -42,14 +49,35 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
     });
 
     $scope.newCheck = function () {
-        CheckService.create({
-            project: $scope.data.projectId || $scope.data.project._id,
-            segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
+        if (!$scope.data.project) {
+            alert('请选择检查项目');
+            return;
+        }
+
+        if (!$scope.data.section) {
+            alert('请选择合同段');
+            return;
+        }
+
+        if (!$scope.data.file) {
+            alert('请选择检查用表');
+            return;
+        }
+
+        if (!$scope.data.target) {
+            alert('请填写检查对象');
+            return;
+        }
+
+        OfflineService.newCheck({
+            project: $scope.data.project,
+            section: $scope.data.section,
+            branch: $scope.data.branch,
             file: $scope.data.file,
-            check_target: $scope.data.check_target
+            target: $scope.data.target
         }).then(function(check) {
             $state.go('^.table', {
-                tableId: check.table
+                tableId: check.table // 这里返回的table的uuid
             });
         }, function (err) {
             alert(err);

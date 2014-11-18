@@ -1,4 +1,4 @@
-app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings, TableService, AuthService, resolveUser) {
+app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings, TableService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.table = {};
@@ -14,7 +14,7 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
 
     $scope.ifHideSubItems = {};
 
-    TableService.findById($scope.data.tableId).then(function(table) {
+    OfflineService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
         $scope.data.checked_items = [];
@@ -54,6 +54,13 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
             itemId: item.index,
             subItemId: subItem.index
         });
+    };
+
+    $scope.remove = function() {
+        OfflineService.remove($scope.data.table.uuid);
+        OfflineService.remove($scope.data.table.checkId);
+        alert('删除成功');
+        $scope.toBack();
     };
 
     $scope.toBack = function () {

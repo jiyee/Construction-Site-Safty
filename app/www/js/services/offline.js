@@ -18,9 +18,9 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
         newCheck: function(opts) {
             var deferred = $q.defer();
 
-            var checkId = opts.checkId,
+            var checkId = opts.checkId || this.guid(),
                 file = opts.file,
-                check_target = opts.check_target;
+                target = opts.target;
 
             if (!checkId || !file) {
                 deferred.reject('参数错误');
@@ -48,7 +48,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                         uuid: checkId,
                         createAt: Date.now(),
                         check_date: Date.now(),
-                        check_target: check_target,
+                        target: target,
                         file: file,
                         table: table.uuid
                     };

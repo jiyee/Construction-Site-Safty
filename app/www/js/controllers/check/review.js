@@ -1,4 +1,4 @@
-app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, settings, TableService, AuthService, resolveUser) {
+app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, settings, TableService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.table = {};
@@ -14,12 +14,12 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
         });
     }
 
-    TableService.findById($scope.data.tableId).then(function(table) {
+    OfflineService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
-        angular.forEach(table.items, function(item, key) {
+        _.each(table.items, function(item, key) {
             if (item.index === $scope.data.itemId) {
-                angular.forEach(item.items, function(subitem, key) {
+                _.each(item.items, function(subitem, key) {
                     if (subitem.index === $scope.data.subItemId) {
                         $scope.data.review = subitem;
                         return;
@@ -56,7 +56,7 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
     };
 
     $scope.saveAndReturn = function() {
-        TableService.update($scope.data.tableId, $scope.data.table).then(function(table) {
+        OfflineService.update($scope.data.tableId, $scope.data.table).then(function(table) {
             $state.go('^.table', {
                 tableId: $scope.data.tableId
             });

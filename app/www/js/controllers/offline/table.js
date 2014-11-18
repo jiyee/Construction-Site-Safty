@@ -47,8 +47,8 @@ app.controller('OfflineTableCtrl', function($scope, $rootScope, $state, $statePa
     };
 
     $scope.remove = function() {
-        OfflineService.remove($scope.data.table.checkId);
         OfflineService.remove($scope.data.table.uuid);
+        OfflineService.remove($scope.data.table.checkId);
         alert('删除成功');
         $state.go('^.dashboard');
     };

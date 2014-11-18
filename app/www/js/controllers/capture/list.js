@@ -1,8 +1,8 @@
-app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, CaptureService, OfflineService, AuthService, resolveUser) {
+app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, settings, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.captures = [];
-    $scope.data.categories = {};
+    $scope.data.captures_divided_by_segment = {};
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -16,8 +16,8 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
         $scope.data.captures = captures;
 
         _.each(captures, function(capture) {
-            $scope.data.categories[capture.project.name + " " + capture.section.name] = $scope.data.categories[capture.project.name + " " + capture.section.name] || [];
-            $scope.data.categories[capture.project.name + " " + capture.section.name].push(capture);
+            $scope.data.captures_divided_by_segment[capture.project.name + " " + capture.section.name] = $scope.data.captures_divided_by_segment[capture.project.name + " " + capture.section.name] || [];
+            $scope.data.captures_divided_by_segment[capture.project.name + " " + capture.section.name].push(capture);
         });
     });
 

@@ -1,4 +1,4 @@
-app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, CaptureService, AuthService, categories, resolveUser) {
+app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, settings, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
 
@@ -14,11 +14,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         extent: [111.56067, 30.50430, 111.24344, 30.29702],
         center: [111.40068, 30.39583]
     };
-
-    // var extent = ol.proj.transform([111.56067, 30.50430, 111.24344, 30.29702],
-    //     'EPSG:4326', 'EPSG:900913');
-    // var center = ol.proj.transform([111.40068, 30.39583],
-    //     'EPSG:4326', 'EPSG:900913');
 
     $scope.data.map = {
         center: $scope.data.project.center,
@@ -136,18 +131,14 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
     // update the HTML page when the position changes.
     geolocation.on('change', function() {
-        // console.log(geolocation.getPosition());
         map.getView().setCenter(geolocation.getPosition());
-        // map.getView().setZoom(16);
+        map.getView().setZoom(16);
     });
 
     // handle geolocation error.
     geolocation.on('error', function(error) {
         console.log(error);
     });
-
-    // var accuracyFeature = new ol.Feature();
-    // accuracyFeature.bindTo('geometry', geolocation, 'accuracyGeometry');
 
     var positionFeature = new ol.Feature({
         geometry: new ol.geom.Point([13358338.89519283, 3503549.843504374]),
@@ -164,10 +155,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
             })
         })
     });
-    // positionFeature.bindTo('geometry', geolocation, 'position')
-    // .transform(function() {}, function(coordinates) {
-    // return coordinates ? new ol.geom.Point(coordinates) : null;
-    // });
 
     var defaultStyle = {
         'Point': [new ol.style.Style({
@@ -237,26 +224,21 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     var featureLayer = new ol.layer.Image({
         source: new ol.source.ImageVector({
             source: new ol.source.Vector({
-                // projection: view.getProjection(),
                 features: [positionFeature]
-                    // style: styleFunction
             })
         })
     });
-    // map.addLayer(featureLayer);
 
     $scope.geolocation = function() {
         geolocation.setTracking(true);
     };
 
     $scope.toCaptureCreate = function(item) {
-        $state.go('^.create', {
-        });
+        $state.go('^.create');
     };
 
     $scope.toCaptureList = function(item) {
-        $state.go('^.list', {
-        });
+        $state.go('^.list');
     };
 
     $scope.toBack = function () {

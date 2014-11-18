@@ -1,7 +1,6 @@
-app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, categories, CaptureService, OfflineService, AuthService, resolveUser) {
+app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
-    $scope.data.categories = categories;
     $scope.data.captureId = $stateParams.captureId;
 
     // 用户登录状态异常控制
@@ -12,6 +11,7 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
+    // TODO 同时处理离线数据和在线数据
     OfflineService.findById($scope.data.captureId).then(function(capture) {
         $scope.data.capture = capture;
     });

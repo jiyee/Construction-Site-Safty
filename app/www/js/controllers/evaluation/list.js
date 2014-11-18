@@ -1,4 +1,4 @@
-app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $stateParams, settings, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser) {
+app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $stateParams, settings, EvaluationService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.evaluations = [];
@@ -6,12 +6,6 @@ app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $state
     EvaluationService.findByUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = evaluations;
     });
-
-    $scope.toBack = function () {
-        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
-            userId: $scope.data.user._id
-        });
-    };
 
     $scope.toDetail = function (item) {
         $state.go('^.detail', {
@@ -27,6 +21,12 @@ app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $state
 
     $scope.toCreate = function () {
         $state.go('^.create');
+    };
+
+    $scope.toBack = function () {
+        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
+            userId: $scope.data.user._id
+        });
     };
 
 });

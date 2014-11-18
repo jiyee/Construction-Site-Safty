@@ -15,7 +15,8 @@ var CheckSchema = new Schema({
     uuid: { type: String, required: '{PATH}不能为空' }, // 检查编号, 自动生成
 
     project: { type: Schema.Types.ObjectId, ref: 'Project' }, // 检查项目
-    segment: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 检查项目组成，可以是任何级别，但只记录最小级别
+    section: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 检查项目组成，可以是任何级别，但只记录最小级别
+    branch: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 检查项目组成，可以是任何级别，但只记录最小级别
 
     // supervision_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 监理人员，在segment里已经包括
     // construction_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 施工单位，在segment里已经包括
@@ -28,9 +29,10 @@ var CheckSchema = new Schema({
     updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
     // 检查
+    // TODO 简化命名，对象拆分，或者创建子对象
     check_date: { type: Date, default: Date.now }, // 检查日期
     check_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 检查人员
-    check_target: { type: String }, // 检查对象, 手工填写
+    target: { type: String }, // 检查对象, 手工填写
     check_result: { type: String }, // 检查结果, 存在隐患, 自动生成
 
     // 责任单位以及责任人
@@ -134,7 +136,7 @@ CheckSchema.statics = {
             query.select(select);
         }
 
-        query.populate('project segment table check_user process_current_user process_previous_user process_flow_users process_history_users rectification_user review_user')
+        query.populate('project section branch table check_user process_current_user process_previous_user process_flow_users process_history_users rectification_user review_user')
             .sort({
                 createAt: -1
             })

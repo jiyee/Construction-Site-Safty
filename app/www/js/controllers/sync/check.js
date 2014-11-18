@@ -8,7 +8,7 @@ app.controller('SyncCheckCtrl', function($scope, $rootScope, $state, $stateParam
     OfflineService.findById($scope.data.checkId).then(function (check) {
         $scope.data.file = check.file;
         $scope.data.check_date = check.check_date;
-        $scope.data.check_target = check.check_target;
+        $scope.data.target = check.target;
         $scope.data.createAt = check.createAt;
 
         OfflineService.findById(check.table).then(function (table) {
@@ -61,7 +61,7 @@ app.controller('SyncCheckCtrl', function($scope, $rootScope, $state, $stateParam
             return;
         }
 
-        if (!$scope.data.check_target) {
+        if (!$scope.data.target) {
             alert('请输入检查对象');
             return;
         }
@@ -71,7 +71,7 @@ app.controller('SyncCheckCtrl', function($scope, $rootScope, $state, $stateParam
             project: $scope.data.project._id,
             segment: ($scope.data.place || $scope.data.branch || $scope.data.section)['_id'],
             check_date: $scope.data.check_date,
-            check_target: $scope.data.check_target
+            target: $scope.data.target
         }).then(function(check) {
             TableService.findById(check.table).then(function(table) {
                 table.items = $scope.data.table.items;

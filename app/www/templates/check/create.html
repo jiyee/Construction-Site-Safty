@@ -10,15 +10,6 @@
         <div class="list">
             <label class="item item-input item-select">
                 <div class="input-label">
-                    检查用表：
-                </div>
-                <select ng-model="data.file" ng-options="item.file as (item.index + ' ' + item.name) group by item.group for item in data.files">
-                    <option value="" selected>请选择表格</option>
-                </select>
-            </label>
-
-            <label class="item item-input item-select">
-                <div class="input-label">
                     项目：
                 </div>
                 <select ng-model="data.project" ng-options="item as item.name for item in data.projects">
@@ -44,11 +35,20 @@
                 </select>
             </label>
 
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    检查用表：
+                </div>
+                <select ng-model="data.file" ng-options="item.file as (item.index + ' ' + item.name) group by item.group for item in data.files">
+                    <option value="" selected>请选择表格</option>
+                </select>
+            </label>
+
             <label class="item item-input">
                 <div class="input-label">
                     对象：
                 </div>
-                <input type="text" ng-model="data.check_target">
+                <input type="text" ng-model="data.target">
             </label>
         </div>
 
