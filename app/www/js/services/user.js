@@ -39,9 +39,13 @@ app.factory('UserService', function($http, $q, settings, WebSQLService) {
         findBySegmentId: function(segmentId) {
             var deferred = $q.defer();
 
-            WebSQLService.get('segment').then(function(segments) {
-                var segment = _.find(segments, {'_id': segmentId});
-                deferred.resolve(segment.users);
+            WebSQLService.get('user').then(function(users) {
+                users = _.union(_.filter(users, function(user) {
+                    return user.section && user.section._id === segmentId;
+                }), _.filter(users, function(user) {
+                    return user.branch && user.branch._id === segmentId;
+                }));
+                deferred.resolve(users);
             }, function() {
                 $http.get(settings.baseUrl + '/segment/' + segmentId + '/users')
                     .success(function(data) {

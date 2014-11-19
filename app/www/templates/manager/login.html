@@ -5,7 +5,7 @@
     </ion-header-bar>
 
     <ion-content padding="true">
-        <div ng-hide="project || data.users">
+        <div ng-hide="data.project || data.users">
             <div>
                 <label class="item item-input item-select">
                     <span class="input-label">
@@ -19,14 +19,14 @@
                     <span class="input-label">
                         项目：
                     </span>
-                    <select ng-model="project" ng-options="item as item.name for item in data.projects" ng-change="changeProject(project)">
+                    <select ng-model="data.project" ng-options="item as item.name for item in data.projects">
                         <option value="" selected>请选择项目</option>
                     </select>
                 </label>
             </div>
         </div>
 
-        <div ng-show="project" ng-hide="unit">
+        <div ng-show="data.project" ng-hide="data.unit">
             <div class="padding" ng-show="data.units">
                 <span class="input-label">
                     建设单位：
@@ -64,18 +64,17 @@
             </div>
         </div>
 
-        <div ng-show="project && unit && unit.type === '施工单位'" ng-hide="segment || unit.type !== '施工单位'">
+        <div ng-show="data.project && data.unit && data.unit.type === '施工单位'" ng-hide="data.section || data.unit.type !== '施工单位'">
             <div class="list padding">
-                <div class="item item-complex" ng-repeat="segment in data.segments" style="padding-left: {{segment.level * 10}}px;">
-                    <div class="item-content item-icon-right" ng-click="changeSegment(segment)">
-                        <span ng-if="segment.level > 0">┗</span>{{segment.name}}
-                        <i class="icon ion-ios7-person-outline"></i>
+                <div class="item item-complex" ng-repeat="section in data.sections" style="padding-left: {{section.level * 10}}px;">
+                    <div class="item-content item-icon-right" ng-click="changeSection(section)">
+                        <i class="icon ion-ios7-person-outline"></i>{{section.name}}
                     </div>
                 </div>
             </div>
         </div>
 
-        <div ng-show="project && data.users">
+        <div ng-show="data.project && data.users">
             <h2>{{project.name}}</h2>
 
             <div class="list list-inset">

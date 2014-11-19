@@ -1,58 +1,16 @@
-app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, ProjectService, SegmentService, UnitService, UserService, AuthService, SyncService) {
+app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $stateParams, settings, projects, SegmentService, UnitService, UserService, AuthService, SyncService) {
     $scope.data = {};
     $scope.data.projects = projects;
 
-    AuthService.auth().then(function(user) {
-        $state.go("^.dashboard", {
-            userId: user._id,
-        });
-    });
-
-    $scope.changeProject = function (project) {
-        $scope.project = project;
-
-        SegmentService.findByProjectId(project._id).then(function(segments) {
-            var tree = [];
-            var roots = angular.copy(segments);
-
-            function deepLoop(root, level) {
-                tree.push({
-                    level: level,
-                    _id: root._id,
-                    name: root.name
-                });
-
-                // 只列出标段和分部
-                if (root.segments && root.type === '标段') {
-                    level += 1;
-                    angular.forEach(root.segments, function(child) {
-                        deepLoop(child, level);
-                    });
-                }
-            }
-
-            angular.forEach(roots, function (child) {
-                deepLoop(child, 0);
-            });
-
-            $scope.data.segments = tree;
-        });
+    $scope.$watch('data.project', function (project) {
+        if (!project) return;
 
         UnitService.findByProjectId(project._id).then(function (units) {
             $scope.data.units = units;
         });
-    };
+    });
 
-    $scope.changeUnit = function (unit) {
-        $scope.unit = unit;
-
-        if ($scope.unit.type !== '施工单位') {
-            UserService.findByUnitId($scope.unit._id).then(function(users) {
-                $scope.data.users = users;
-            });
-        }
-    };
-
+    // filter过滤函数
     $scope.filterUnitConstructor = function (unit, index) {
         return unit.type === '建设单位';
     };
@@ -65,10 +23,28 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
         return unit.type === '施工单位';
     };
 
-    $scope.changeSegment = function (segment) {
-        $scope.segment = segment;
+    $scope.changeUnit = function (unit) {
+        if (!unit) return;
 
-        UserService.findBySegmentId(segment._id).then(function(users) {
+        $scope.data.unit = unit;
+
+        if (unit.type === '施工单位') {
+            SegmentService.findByUnitId(unit._id).then(function(segments) {
+                $scope.data.sections = _.filter(segments, {type: '标段'});
+            });
+        } else {
+            UserService.findByUnitId(unit._id).then(function(users) {
+                $scope.data.users = users;
+            });
+        }
+    };
+
+    $scope.changeSection = function (section) {
+        if (!section) return;
+
+        $scope.data.section = section;
+
+        UserService.findBySegmentId(section._id).then(function(users) {
             $scope.data.users = _.filter(users, function (user) {
                 return user.unit.type === '施工单位';
             });

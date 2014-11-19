@@ -132,6 +132,13 @@ app.run(function($rootScope, $ionicPlatform) {
         }
     })
 
+    // 日常巡检列表
+    .state('check.list', {
+        url: '/list',
+        templateUrl: 'templates/check/list.html',
+        controller: 'CheckListCtrl'
+    })
+
     // 日常巡检详情
     .state('check.detail', {
         url: '/:checkId',
