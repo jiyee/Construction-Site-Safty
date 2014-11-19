@@ -50,6 +50,7 @@ UserSchema.statics = {
         }
 
         query.populate('unit project section branch')
+            .select('-password')
             .sort({
                 createAt: -1
             })
