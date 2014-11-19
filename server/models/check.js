@@ -8,7 +8,6 @@
 var _ = require('lodash');
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-var ProcessSchema = require('./process');
 
 var CheckSchema = new Schema({
     type: { type: String, default: 'check' }, // 数据类型
@@ -35,7 +34,7 @@ var CheckSchema = new Schema({
     // 责任建设单位以及责任人
     responsible_unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 存在问题的建设单位
     responsible_user: { type: Schema.Types.ObjectId, ref: 'User' }, // 存在问题的建设单位责任人
-    responsible_qrcode: { type: Schema.Types.String }, // 责任人确认二维码
+    responsible_qrcode: { type: String }, // 责任人确认二维码
 
     // 简化流程处理，形成闭环
     // 流程启动comment为整改要求，问题在comment已说明
