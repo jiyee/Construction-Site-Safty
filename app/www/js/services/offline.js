@@ -20,7 +20,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
             var checkId = opts.checkId || this.guid(),
                 file = opts.file,
-                target = opts.target;
+                object = opts.object;
 
             if (!checkId || !file) {
                 deferred.reject('参数错误');
@@ -34,28 +34,28 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 .success(function(proto) {
                     table = _.extend({
                         _type_: 'table',
+                        _id: that.guid(),
                         checkId: checkId,
-                        uuid: that.guid(),
                         createAt: Date.now(),
                         file: file
                     }, proto);
 
                     // 单独保存table
-                    that._save(table.uuid, table);
+                    that._save(table._id, table);
 
                     check = {
                         _type_: 'check',
-                        uuid: checkId,
+                        _id: checkId,
                         createAt: Date.now(),
                         check_date: Date.now(),
-                        target: target,
+                        object: object,
                         file: file,
-                        table: table.uuid
+                        table: table._id
                     };
 
                     // 保存到localstorage
                     // 单独保存check
-                    that._save(check.uuid, check);
+                    that._save(check._id, check);
 
                     deferred.resolve(check);
                 })
@@ -81,12 +81,12 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
             capture = _.extend({
                 _type_: 'capture',
-                uuid: captureId,
+                _id: captureId,
                 createAt: Date.now(),
                 check_date: Date.now()
             }, opts);
 
-            that._save(capture.uuid, capture);
+            that._save(capture._id, capture);
 
             deferred.resolve(capture);
 
@@ -166,8 +166,8 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                         .success(function(proto) {
                             table = _.extend({
                                 _type_: 'table',
+                                _id: that.guid(),
                                 evaluationId: evaluationId,
-                                uuid: that.guid(),
                                 createAt: Date.now(),
                                 file: file
                             }, proto);
@@ -184,7 +184,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                             });
 
                             // 单独保存table
-                            that._save(table.uuid, table);
+                            that._save(table._id, table);
 
                             $rootScope.$emit('table' + t, table);
                         })
@@ -206,16 +206,16 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             $rootScope.$on('tables' + t, function(evt, tables) {
                 evaluation = {
                     _type_: 'evaluation',
-                    uuid: evaluationId,
+                    _id: evaluationId,
                     createAt: Date.now(),
                     wbs: wbs,
                     evaluation_date: Date.now(),
-                    tables: _.pluck(tables, 'uuid')
+                    tables: _.pluck(tables, '_id')
                 };
 
                 // 保存到localstorage
                 // 单独保存evaluation
-                that._save(evaluation.uuid, evaluation);
+                that._save(evaluation._id, evaluation);
 
                 deferred.resolve(evaluation);
             });
