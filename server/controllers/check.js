@@ -80,7 +80,7 @@ exports.findByProcessCurrentUserId = function (req, res, next) {
     });
 };
 
-exports.findBySessionUser = function (req, res, next) {
+exports.findByUser = function (req, res, next) {
     if (!req.session.user) {
         return next(utils.getError(105));
     }
@@ -112,7 +112,7 @@ exports.findBySessionUser = function (req, res, next) {
 
 // TODO 递归查询项目-标段-分部管辖下的所有日常巡查记录
 // TODO 测试结果正确性
-exports.findByDateInterval = function (req, res, next) {
+exports.findByDate = function (req, res, next) {
     var projectId = validator.trim(req.params.project_id);
     var sectionId = validator.trim(req.params.section_id);
     var branchId = validator.trim(req.params.branch_id);

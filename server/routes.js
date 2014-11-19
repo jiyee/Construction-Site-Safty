@@ -77,9 +77,9 @@ router.post('/table/:table_id/delete', table.delete);
 router.post('/table/:table_id/update', table.update);
 
 // 安全检查接口
-router.get('/checks', check.findBySessionUser);
+router.get('/checks', check.findByUser);
 router.get('/checks/all', check.findAll);
-router.get('/checks/list/:project_id/:segment_id/:start_date/:end_date', check.findByDateInterval);
+router.get('/checks/list/:project_id/:segment_id/:start_date/:end_date', check.findByDate);
 router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
 router.post('/check/:check_id/delete', check.delete);
@@ -90,7 +90,7 @@ router.post('/check/:check_id/delete', check.delete);
 // router.post('/check/:check_id/end', check.end);
 
 // 考核评价接口
-router.get('/evaluations', evaluation.findBySessionUser);
+router.get('/evaluations', evaluation.findByUser);
 router.get('/evaluations/all', evaluation.findAll);
 router.get('/evaluation/:evaluation_id', evaluation.findById);
 router.post('/evaluation/create', evaluation.create);
@@ -98,7 +98,7 @@ router.post('/evaluation/:evaluation_id/update', evaluation.update);
 
 // 角色接口
 router.get('/captures/all', capture.findAll);
-router.get('/captures/list/:project_id/:segment_id/:start_date/:end_date', capture.findByDateInterval);
+router.get('/captures/list/:project_id/:segment_id/:start_date/:end_date', capture.findByDate);
 router.get('/capture/:capture_id', capture.findById);
 router.post('/capture/create', capture.create);
 

@@ -64,7 +64,7 @@ exports.findByUserId = function (req, res, next) {
     });
 };
 
-exports.findByDateInterval = function (req, res, next) {
+exports.findByDate = function (req, res, next) {
     var project_id = validator.trim(req.params.project_id);
     var segment_id = validator.trim(req.params.segment_id);
     var start_date = validator.trim(req.params.start_date);

@@ -75,7 +75,7 @@ exports.findByUserId = function(req, res, next) {
     });
 };
 
-exports.findBySessionUser = function(req, res, next) {
+exports.findByUser = function(req, res, next) {
     if (!req.session.user) {
         return next(utils.getError(105));
     }
