@@ -28,7 +28,7 @@ var CheckSchema = new Schema({
     // 检查
     user: { type: Schema.Types.ObjectId, ref: 'User' }, // 检查人员
     date: { type: Date, default: Date.now }, // 检查日期
-    target: { type: String }, // 检查对象, 手工填写
+    object: { type: String }, // 检查对象, 手工填写
     comment: { type: String }, // 检查结果, 存在隐患
 
     // 责任建设单位以及责任人

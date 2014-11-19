@@ -26,9 +26,9 @@ router.get('/', function(req, res) {
 // 列表添加用insert，移除用remove，元素创建用create，删除用delete
 
 // 权限接口
+router.get('/auth', user.auth);
 router.post('/login', user.login);
 router.post('/logout', user.logout);
-router.get('/auth', user.auth);
 
 // 用户接口
 router.get('/users/all', user.findAll);
@@ -83,11 +83,13 @@ router.get('/checks/list/:project_id/:segment_id/:start_date/:end_date', check.f
 router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
 router.post('/check/:check_id/delete', check.delete);
-// router.post('/check/:check_id/forward', check.forward);
-// router.post('/check/:check_id/backward', check.backward);
-// router.post('/check/:check_id/revert', check.revert);
-// router.post('/check/:check_id/restore', check.restore);
-// router.post('/check/:check_id/end', check.end);
+
+router.post('/check/:check_id/start', check.start);
+router.post('/check/:check_id/forward', check.forward);
+router.post('/check/:check_id/backward', check.backward);
+router.post('/check/:check_id/revert', check.revert);
+router.post('/check/:check_id/restore', check.restore);
+router.post('/check/:check_id/end', check.end);
 
 // 考核评价接口
 router.get('/evaluations', evaluation.findByUser);
