@@ -17,7 +17,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
-    // 自动选中默认项目、标段、分部
+    // 自动选中默认项目、标段
     if ($scope.data.user.project) {
         $scope.data.project = _.find($scope.data.projects, {_id: $scope.data.user.project._id});
         SegmentService.findByProjectId($scope.data.user.project._id).then(function (segments) {
@@ -25,7 +25,6 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
 
             if ($scope.data.user.section) {
                 // BUG 只有延时才能解决默认选中问题
-                // TODO 分部默认选中
                 $timeout(function() {
                     $scope.data.section = _.find($scope.data.sections, {
                         _id: $scope.data.user.section._id
@@ -48,6 +47,15 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
 
         SegmentService.findById(section._id).then(function (segment) {
             $scope.data.branches = segment.segments;
+
+            if ($scope.data.user.branch) {
+                // BUG 只有延时才能解决默认选中问题
+                $timeout(function() {
+                    $scope.data.branch = _.find($scope.data.branches, {
+                        _id: $scope.data.user.branch._id
+                    });
+                }, 100);
+            }
         });
     });
 
@@ -68,7 +76,11 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
 
     $scope.capture = function() {
         function onSuccess(imageURI) {
-            $scope.data.images.push(imageURI);
+            $scope.data.images.push({
+                uri: imageURI,
+                date: Date.now(),
+                center: [$scope.data.center_x, $scope.data.center_y]
+            });
             $scope.$apply();
         }
 
@@ -97,22 +109,21 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             return;
         }
 
-        if (!$scope.data.name || !$scope.data.images) {
+        if (!$scope.data.object || !$scope.data.images) {
             alert('请填写检查对象或拍照存档');
             return;
         }
 
         // 离线重构, 离线保存均保持对象，等到同步时保存_id
         OfflineService.newCapture({
-            name: $scope.data.name,
-            description: $scope.data.description,
+            object: $scope.data.object,
+            comment: $scope.data.comment,
             user: $scope.data.user,
             category: $scope.data.category,
             project: $scope.data.project,
             section: $scope.data.section,
             branch: $scope.data.branch,
-            images: $scope.data.images,
-            center: [$scope.data.center_x, $scope.data.center_y]
+            images: $scope.data.images
         }).then(function(check) {
             alert('保存成功');
             $scope.toBack();

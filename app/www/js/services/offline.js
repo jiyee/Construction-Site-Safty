@@ -83,8 +83,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 _type_: 'capture',
                 _id: captureId,
                 uuid: captureId,
-                createAt: Date.now(),
-                check_date: Date.now()
+                createAt: Date.now()
             }, opts);
 
             that._save(capture._id, capture);

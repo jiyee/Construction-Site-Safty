@@ -11,17 +11,17 @@ app.controller('CheckListCtrl', function($scope, $rootScope, $state, $stateParam
         $scope.data.offlineChecks = checks;
     });
 
-    $scope.toDetail = function (item) {
+    $scope.toDetail = function(item) {
         $state.go('^.detail', {
             checkId: item._id
         });
     };
 
-    $scope.toCreate = function () {
+    $scope.toCreate = function() {
         $state.go('^.create');
     };
 
-    $scope.toBack = function () {
+    $scope.toBack = function() {
         $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });

@@ -2,15 +2,38 @@
     <ion-header-bar align-title="center" class="bar-light">
         <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">安全检查</h1>
+        <button class="button" ng-click="openModal($event)">分类整理</button>
     </ion-header-bar>
 
     <ion-content padding="true">
+        <div class="list last-review">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>往期安全检查</div>
+            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{item.createAt | date: 'yyyy年MM月dd日'}}<br> {{item.project.name}}<br> {{item.section.name}} / {{item.branch.name}}</div>
+        </div>
+
         <div class="list last-review" ng-repeat="(name, items) in data.captures_divided_by_segment">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>{{name}}</div>
-            <div class="item item-icon-right" ng-repeat="item in items" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.name}}</div>
-            <button class="button button-block button-positive" ng-click="toSummary()">
-                分类整理
-            </button>
+            <div class="item item-icon-right" ng-repeat="item in items" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{item.createAt | date: 'yyyy年MM月dd日'}} / {{item.object}}</div>
         </div>
+
+        <script id="arrange-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
+                    <h1 class="title">分类整理</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <div class="list last-review" ng-repeat="(name, items) in data.captures_divided_by_segment">
+                        <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>{{name}}</div>
+                        <ion-checkbox ng-repeat="item in items" ng-model="item.checked" ng-checked="item.checked">
+                            {{item.createAt | date: 'yyyy年MM月dd日'}} / {{item.object}}
+                        </ion-checkbox>
+                    </div>
+                    <button class="button button-block button-positive" ng-click="arrange()">
+                        确认
+                    </button>
+                </ion-content>
+            </ion-modal-view>
+        </script>
     </ion-content>
 </ion-view>

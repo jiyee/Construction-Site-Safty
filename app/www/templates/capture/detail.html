@@ -2,7 +2,7 @@
     <ion-header-bar align-title="center" class="bar-calm">
         <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">安全检查</h1>
-        <button class="button icon ion-trash-a" ng-click="remove()"></button>
+        <button class="button icon ion-trash-a" ng-click="remove()" ng-if="data.isOffline"></button>
     </ion-header-bar>
 
     <ion-content padding="true">
@@ -10,7 +10,9 @@
             <div class="item text-center">
                 <p>检查编号：{{data.capture.uuid}}</p>
                 <p>检查日期：{{data.capture.createAt | date: 'yyyy年MM月dd日'}}</p>
-                <p>检查人：{{data.capture.user.name}}【{{data.capture.user.unit.name}}】</p>
+                <p>检查人：{{data.capture.user.name}}
+                    <span ng-if="data.capture.user.unit.name">【{{data.capture.user.unit.name}}】</span>
+                </p>
             </div>
 
             <div class="item item-body padding">
@@ -23,18 +25,36 @@
                 <div class="row" ng-if="data.capture.branch">
                     <div class="col">分部：{{data.capture.branch.name}}</div>
                 </div>
-                <div class="row">
-                    <div class="col">细项：{{data.capture.category}}</div>
-                </div>
-                <div class="row">
-                    <div class="col">对象：{{data.capture.name}}</div>
-                </div>
-                <div class="row">
-                    <div class="col">存在隐患：{{data.capture.description}}</div>
+
+                <div ng-if="data.isOffline">
+                    <div class="row">
+                        <div class="col">细项：{{data.capture.category}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">对象：{{data.capture.object}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">存在隐患：{{data.capture.comment}}</div>
+                    </div>
+                    <div class="row">
+                        <img ng-src="{{image.uri}}" ng-repeat="image in data.capture.images" width="64" height="64">
+                    </div>
                 </div>
 
-                <div class="row">
-                    <img ng-src="{{image}}" ng-repeat="image in data.capture.images" width="64" height="64">
+                <div ng-repeat="item in data.capture.archives" ng-if="!data.isOffline">
+                    <hr>
+                    <div class="row">
+                        <div class="col">细项：{{item.category}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">对象：{{item.object}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">存在隐患：{{item.comment}}</div>
+                    </div>
+                    <div class="row">
+                        <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64">
+                    </div>
                 </div>
             </div>
         </div>

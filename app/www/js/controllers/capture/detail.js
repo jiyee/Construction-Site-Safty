@@ -1,4 +1,4 @@
-app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, OfflineService, AuthService, resolveUser) {
+app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, CaptureService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.captureId = $stateParams.captureId;
@@ -11,10 +11,16 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
-    // TODO 同时处理离线数据和在线数据
-    OfflineService.findById($scope.data.captureId).then(function(capture) {
-        $scope.data.capture = capture;
-    });
+    if (OfflineService.isOffline($scope.data.captureId)) {
+        $scope.data.isOffline = true;
+        OfflineService.findById($scope.data.captureId).then(function(capture) {
+            $scope.data.capture = capture;
+        });
+    } else {
+        CaptureService.findById($scope.data.captureId).then(function(capture) {
+            $scope.data.capture = capture;
+        });
+    }
 
     $scope.toBack = function() {
         $state.go('^.list', {

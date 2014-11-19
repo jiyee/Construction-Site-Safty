@@ -161,16 +161,11 @@ exports.findByDate = function (req, res, next) {
 
 
 exports.create = function(req, res, next) {
-
-    // images数组采用|符号分割
-    if (validator.isNull(req.body.images)) {
-        req.body.images = [];
-    } else {
-        req.body.images = req.body.images.split('|');
-    }
-
     var capture = new CaptureModel(req.body);
     capture.uuid = Date.now();
+    capture.createAt = Date.now();
+    capture.updateAt = Date.now();
+
     capture.save(function(err, capture) {
         if (err) {
             return next(err);
