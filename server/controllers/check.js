@@ -24,16 +24,16 @@ exports.findAll = function (req, res, next) {
 };
 
 exports.findById = function (req, res, next) {
-    var check_id = validator.trim(req.params.check_id);
+    var checkId = validator.trim(req.params.check_id);
 
-    if (!check_id) {
+    if (!checkId) {
         return next(utils.getError(101));
     }
 
     var options = {
         findOne: true,
         conditions: {
-            _id: check_id
+            _id: checkId
         }
     };
 
@@ -46,33 +46,24 @@ exports.findById = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        var ep = new eventproxy();
-        ep.all('check_user.unit', function() {
-            res.send({
-                'code': 0,
-                'status': 'success',
-                'check': check
-            });
-        });
-
-        UnitModel.populate(check.check_user, {
-            path: 'unit'
-        }, function (err, user) {
-            ep.emit('check_user.unit');
+        res.send({
+            'code': 0,
+            'status': 'success',
+            'check': check
         });
     });
 };
 
 exports.findByProcessCurrentUserId = function (req, res, next) {
-    var user_id = validator.trim(req.params.user_id);
+    var userId = validator.trim(req.params.user_id);
 
-    if (!user_id) {
+    if (!userId) {
         return next(utils.getError(101));
     }
 
     var options = {
         conditions: {
-            process_current_user: user_id
+            'process.current.user': userId
         }
     };
 
@@ -94,15 +85,15 @@ exports.findBySessionUser = function (req, res, next) {
         return next(utils.getError(105));
     }
 
-    var user_id = req.session.user._id;
+    var userId = req.session.user._id;
 
-    if (!user_id) {
+    if (!userId) {
         return next(utils.getError(101));
     }
 
     var options = {
         conditions: {
-            process_current_user: user_id
+            'process.current.user': userId
         }
     };
 
@@ -119,423 +110,54 @@ exports.findBySessionUser = function (req, res, next) {
     });
 };
 
+// TODO 递归查询项目-标段-分部管辖下的所有日常巡查记录
+// TODO 测试结果正确性
 exports.findByDateInterval = function (req, res, next) {
-    var project_id = validator.trim(req.params.project_id);
-    var segment_id = validator.trim(req.params.segment_id);
-    var start_date = validator.trim(req.params.start_date);
-    var end_date = validator.trim(req.params.end_date);
+    var projectId = validator.trim(req.params.project_id);
+    var sectionId = validator.trim(req.params.section_id);
+    var branchId = validator.trim(req.params.branch_id);
+    var startDate = validator.trim(req.params.start_date);
+    var endDate = validator.trim(req.params.end_date);
 
-    if (!project_id || !segment_id || !start_date || !end_date) {
+    if (!projectId || !sectionId || !startDate || !endDate) {
         return next(utils.getError(101));
     }
 
     var options = {
         conditions: {
-            project: project_id,
-            check_date: {
-                $gte: new Date(start_date),
-                $lt: new Date(end_date)
+            project: projectId,
+            section: sectionId,
+            date: {
+                $gte: new Date(startDate),
+                $lt: new Date(endDate)
             }
         },
-        select: 'table section branch check_user check_date'
+        select: 'uuid project section branch table user date target comment'
     };
 
+    if (branchId) {
+        options.conditions.branch = branchId;
+    }
+
+    // 找出所在项目、标段、分部管辖下所有的日常巡查记录
     CheckModel.findBy(options, function (err, checks) {
         if (err) {
             return next(err);
         }
 
-        var ep = new eventproxy();
-        var lge_segment_checks = [];
-
-        ep.all('check_user', 'segment_tree', function () {
-            res.send({
-                'code': 0,
-                'status': 'success',
-                'checks': lge_segment_checks
-            });
-        });
-
-        // TODO 优化成循环模式
-        ep.after('segment.parent.parent', checks.length, function () {
-            _.each(checks, function (check) {
-                if (check.segment._id == segment_id) {
-                    lge_segment_checks.push(check);
-                }
-
-                var parent = check.segment.parent;
-                while (parent) {
-                    if (parent._id == segment_id) {
-                        lge_segment_checks.push(check);
-                        break;
-                    } else {
-                        parent = parent.parent;
-                    }
-                }
-            });
-
-            ep.emit('segment_tree');
-        });
-
-        ep.after('segment.parent', checks.length, function () {
-            _.each(checks, function (check) {
-                if (!check.segment.parent) {
-                    ep.emit('segment.parent.parent');
-                    return;
-                }
-
-                SegmentModel.populate(check.segment.parent, {
-                    path: 'parent'
-                }, function (err, segment) {
-                    ep.emit('segment.parent.parent');
-                });
-            });
-        });
-
-        _.each(checks, function (check) {
-            if (!check.segment.parent) {
-                ep.emit('segment.parent');
-                return;
-            }
-
-            SegmentModel.populate(check.segment, {
-                path: 'parent'
-            }, function (err, segment) {
-                ep.emit('segment.parent');
-            });
-
-            UnitModel.populate(check.check_user, {
-                path: 'unit'
-            }, function (err, check_user) {
-                ep.emit('check_user');
-            });
-        });
-
-
-
-    });
-};
-
-// 逐级向下指派，捕获状态
-exports.forward = function (req, res, next) {
-    var check_id = validator.trim(req.params.check_id);
-    var next_user_id = validator.trim(req.body.next_user_id);
-    var rectification_criterion = validator.trim(req.body.rectification_criterion);
-
-    if (!req.session.user) {
-        return next(utils.getError(105));
-    }
-
-    if (!check_id || !next_user_id) {
-        return next(utils.getError(101));
-    }
-
-    var options = {
-        findOne: true,
-        conditions: {
-            _id: next_user_id
-        }
-    };
-
-    // TODO 异步处理事件化，避免回调嵌套
-    UserModel.findBy(options, function (err, user) {
-        if (err) {
-            return next(err);
-        }
-
-        if (!user) {
-            return next(utils.getError(102));
-        }
-
-        options = {
-            findOne: true,
-            conditions: {
-                units: user.unit._id
-            }
-        };
-        SegmentModel.findBy(options, function (err, segment) {
-            if (err) {
-                return next(err);
-            }
-
-            if (!segment) {
-                return next(utils.getError(102));
-            }
-
-            if (segment && segment.is_leaf === true) {
-                return next(utils.getError(104));
-            }
-
-            options = {
-                findOne: true,
-                conditions: {
-                    _id: check_id
-                }
-            };
-            CheckModel.findBy(options, function(err, check) {
-                if (err) {
-                    return next(err);
-                }
-
-                if (!check) {
-                    return next(utils.getError(102));
-                }
-
-                if (check.process_active === false ||
-                    check.process_status === 'END') {
-                    return next(utils.getError(104));
-                }
-
-                check.process_active = true;
-                check.process_status = 'FORWARD';
-
-                if (rectification_criterion) {
-                    check.rectification_criterion = rectification_criterion;
-                }
-
-                var last_user_id = check.process_current_user;
-                check.process_previous_user = last_user_id;
-                check.process_current_user = next_user_id;
-                check.process_flow_users.push(last_user_id);
-                check.process_history_users.push(last_user_id);
-
-                check.save(function(err, check) {
-                    if (err) {
-                        return next(err);
-                    }
-
-                    res.send({
-                        'code': 0,
-                        'status': 'success',
-                        'check': check
-                    });
-                });
-            });
-        });
-    });
-};
-
-// 逐级向上审核，冒泡状态
-exports.backward = function (req, res, next) {
-    var check_id = validator.trim(req.params.check_id);
-    var rectification_result = validator.trim(req.body.rectification_result);
-
-    if (!req.session.user) {
-        return next(utils.getError(105));
-    }
-
-    if (!check_id) {
-        return next(utils.getError(101));
-    }
-
-    var options = {
-        findOne: true,
-        conditions: {
-            _id: check_id
-        }
-    };
-
-    CheckModel.findBy(options, function(err, check) {
-        if (err) {
-            return next(err);
-        }
-
-        if (!check) {
-            return next(utils.getError(102));
-        }
-
-        if (check.process_active === false ||
-            check.process_status === 'END') {
-            return next(utils.getError(104));
-        }
-
-        check.process_active = true;
-        check.process_status = 'BACKWARD';
-
-        if (rectification_result) {
-            check.rectification_result = rectification_result;
-        }
-
-        var last_user_id = check.process_current_user;
-        check.process_current_user = check.process_flow_users.pop();
-        check.process_previous_user = last_user_id;
-        // 采用A/B/C -> A/B -> A -> []
-        // check.process_flow_users.push(last_user_id);
-        check.process_history_users.push(last_user_id);
-
-        check.save(function(err, check) {
-            if (err) {
-                return next(err);
-            }
-
-            res.send({
-                'code': 0,
-                'status': 'success',
-                'check': check
-            });
-        });
-    });
-};
-
-// 流程打回，处于暂停状态
-exports.revert = function (req, res, next) {
-    var check_id = validator.trim(req.params.check_id);
-
-    if (!req.session.user) {
-        return next(utils.getError(105));
-    }
-
-    if (!check_id) {
-        return next(utils.getError(101));
-    }
-
-    var options = {
-        findOne: true,
-        conditions: {
-            _id: check_id
-        }
-    };
-
-    CheckModel.findBy(options, function(err, check) {
-        if (err) {
-            return next(err);
-        }
-
-        if (!check) {
-            return next(utils.getError(102));
-        }
-
-        if (check.process_active === false ||
-            check.process_status === 'END') {
-            return next(utils.getError(104));
-        }
-
-        check.process_active = true;
-        check.process_status = 'REVERT';
-
-        var last_user_id = check.process_current_user;
-        check.process_current_user = check.process_previous_user;
-        check.process_previous_user = last_user_id;
-        check.process_flow_users.pop();
-        check.process_history_users.push(last_user_id);
-
-        check.save(function(err, check) {
-            if (err) {
-                return next(err);
-            }
-
-            res.send({
-                'code': 0,
-                'status': 'success',
-                'check': check
-            });
-        });
-    });
-};
-
-// 流程恢复, 继续执行
-exports.restore = function (req, res, next) {
-    var check_id = validator.trim(req.params.check_id);
-
-    if (!req.session.user) {
-        return next(utils.getError(105));
-    }
-
-    if (!check_id) {
-        return next(utils.getError(101));
-    }
-
-    var options = {
-        findOne: true,
-        conditions: {
-            _id: check_id
-        }
-    };
-
-    CheckModel.findBy(options, function(err, check) {
-        if (err) {
-            return next(err);
-        }
-
-        if (!check) {
-            return next(utils.getError(102));
-        }
-
-        if (check.process_active === false ||
-            check.process_status === 'END') {
-            return next(utils.getError(104));
-        }
-
-        check.process_active = true;
-        check.process_status = 'FORWARD';
-
-        var last_user_id = check.process_current_user;
-        check.process_current_user = check.process_previous_user;
-        check.process_previous_user = last_user_id;
-        check.process_flow_users.push(last_user_id);
-        check.process_history_users.push(last_user_id);
-
-        check.save(function(err, check) {
-            if (err) {
-                return next(err);
-            }
-
-            res.send({
-                'code': 0,
-                'status': 'success',
-                'check': check
-            });
-        });
-    });
-};
-
-exports.end = function (req, res, next) {
-    var check_id = validator.trim(req.params.check_id);
-
-    var options = {
-        findOne: true,
-        conditions: {
-            _id: check_id
-        }
-    };
-
-    CheckModel.findBy(options, function(err, check) {
-        if (err) {
-            return next(err);
-        }
-
-        if (!check) {
-            return next(utils.getError(102));
-        }
-
-        check.process_active = false;
-        check.process_status = 'END';
-
-        var last_user_id = check.process_current_user;
-        check.process_current_user = null;
-        check.process_previous_user = null;
-        check.process_flow_users.push(last_user_id);
-        check.process_history_users.push(last_user_id);
-
-        check.save(function(err, check) {
-            if (err) {
-                return next(err);
-            }
-
-            res.send({
-                'code': 0,
-                'status': 'success',
-                'check': check
-            });
+        res.send({
+            'code': 0,
+            'status': 'success',
+            'checks': checks
         });
     });
 };
 
 exports.delete = function (req, res, next) {
-    var check_id = validator.trim(req.params.check_id);
+    var checkId = validator.trim(req.params.check_id);
 
     var conditions = {
-        _id: check_id
+        _id: checkId
     };
     CheckModel.findOneAndRemove(conditions, function (err, check) {
         if (err) {
@@ -562,10 +184,16 @@ exports.create = function (req, res, next) {
     var ep = new eventproxy();
     ep.on('table', function (table) {
         var check = new CheckModel(req.body);
-        check.check_user = req.session.user._id;
-        check.process_current_user = req.session.user._id;
+        check.user = req.session.user._id;
         check.uuid = Date.now();
         check.table = table._id;
+
+        // 初始化流程
+        check.process.createAt = Date.now();
+        check.process.updateAt = Date.now();
+        check.process.active = false;
+        check.process.status = '';
+        check.process.current.user = req.session.user._id;
 
         check.save(function(err, check) {
             if (err) {
