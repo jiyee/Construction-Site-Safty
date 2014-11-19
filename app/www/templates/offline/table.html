@@ -14,7 +14,7 @@
             </tr>
             <tr ng-repeat="item in data.checked_items">
                 <td>
-                    {{item$index + 1}}. {{item.full_index}}. {{item.comments}}
+                    {{$index + 1}}. {{item.full_index}}. {{item.comments}}
                 </td>
             </tr>
         </table>
@@ -27,7 +27,7 @@
             </tr>
             <tr ng-repeat="item in data.checked_items">
                 <td>
-                    {{item$index + 1}}. {{item.full_index}}. {{item.comments}} {{-item.score}}分
+                    {{$index + 1}}. {{item.full_index}}. {{item.comments}} {{-item.score}}分
                 </td>
             </tr>
         </table>

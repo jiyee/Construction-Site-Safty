@@ -2,18 +2,27 @@
     <ion-header-bar align-title="center" class="bar-calm">
         <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">日常巡检</h1>
+        <button class="button icon ion-trash-a" ng-click="remove()" ng-if="data.isOffline"></button>
     </ion-header-bar>
 
     <ion-content padding="true">
         <div class="list card">
             <div class="item text-center">
                 <p>检查编号：{{data.check.uuid}}</p>
-                <p>检查日期：{{data.check.check_date | date: 'yyyy年MM月dd日'}}</p>
-                <p>检查人：{{data.check.check_user.name}}【{{data.check.check_user.unit.name}}】</p>
-                <p>当前处理人：{{data.check.process_current_user.name}}</p>
+                <p>检查日期：{{data.check.date | date: 'yyyy年MM月dd日'}}</p>
+                <p>检查人：{{data.check.user.name}}【{{data.check.user.unit.name}}】</p>
             </div>
 
             <div class="item item-body padding">
+                <div class="row">
+                    <div class="col">项目：{{data.check.project.name}}</div>
+                </div>
+                <div class="row" ng-if="data.check.section">
+                    <div class="col">标段：{{data.check.section.name}}</div>
+                </div>
+                <div class="row" ng-if="data.check.branch">
+                    <div class="col">分部：{{data.check.branch.name}}</div>
+                </div>
                 <div class="row">
                     <div class="col">类型：{{data.check.table.type}}</div>
                 </div>
@@ -21,20 +30,25 @@
                     <div class="col">项目：{{data.check.table.name}}</div>
                 </div>
                 <div class="row">
-                    <div class="col">对象：{{data.check.target}}</div>
+                    <div class="col">对象：{{data.check.object}}</div>
                 </div>
 
                 <div class="row">
                     <div class="col">存在隐患：</div>
                 </div>
-                <div class="col assertive" ng-repeat="item in data.check.rectifications">
+                <div class="col assertive" ng-repeat="item in data.checked_items">
                     {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
                     <div>
                         <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64">
                     </div>
                 </div>
+            </div>
 
-                <div class="row" ng-if="data.check.rectification_criterion">
+            <button class="button button-block button-positive" ng-click="toTable()">
+                继续打分
+            </button>
+
+                <!-- <div class="row" ng-if="data.check.rectification_criterion">
                     <div class="col">整改要求：</div>
                 </div>
                 <div class="col positive" ng-if="data.check.rectification_criterion">
@@ -70,6 +84,6 @@
                     <i class="icon ion-paper-airplane"></i>
                     验收
                 </a>
-            </div>
+            </div> -->
     </ion-content>
 </ion-view>

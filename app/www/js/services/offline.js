@@ -18,9 +18,9 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
         newCheck: function(opts) {
             var deferred = $q.defer();
 
-            var checkId = opts.checkId || this.guid(),
-                file = opts.file,
-                object = opts.object;
+            var checkId = this.guid(),
+                tableId = this.guid(),
+                file = opts.file;
 
             if (!checkId || !file) {
                 deferred.reject('参数错误');
@@ -34,7 +34,8 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 .success(function(proto) {
                     table = _.extend({
                         _type_: 'table',
-                        _id: that.guid(),
+                        _id: tableId,
+                        uuid: tableId,
                         checkId: checkId,
                         createAt: Date.now(),
                         file: file
@@ -43,15 +44,14 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                     // 单独保存table
                     that._save(table._id, table);
 
-                    check = {
+                    check = _.extend({
                         _type_: 'check',
                         _id: checkId,
+                        uuid: checkId,
                         createAt: Date.now(),
-                        check_date: Date.now(),
-                        object: object,
-                        file: file,
+                        date: Date.now(),
                         table: table._id
-                    };
+                    }, opts);
 
                     // 保存到localstorage
                     // 单独保存check
@@ -82,6 +82,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             capture = _.extend({
                 _type_: 'capture',
                 _id: captureId,
+                uuid: captureId,
                 createAt: Date.now(),
                 check_date: Date.now()
             }, opts);
@@ -207,6 +208,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 evaluation = {
                     _type_: 'evaluation',
                     _id: evaluationId,
+                    uuid: evaluationId,
                     createAt: Date.now(),
                     wbs: wbs,
                     evaluation_date: Date.now(),
@@ -246,6 +248,16 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 return deferred.promise;
             }
 
+            var that = this;
+            var item = this._restore(uuid);
+            if (item) {
+                _.each(item, function(value) {
+                    if (that.isOffline(value)) {
+                        that._remove(value);
+                    }
+                });
+            }
+
             this._remove(uuid);
             deferred.resolve();
 
@@ -259,8 +271,15 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 return deferred.promise;
             }
 
-            if (this._restore(uuid)) {
-                deferred.resolve(this._restore(uuid));
+            var that = this;
+            var item = this._restore(uuid);
+            if (item) {
+                _.each(item, function(value, key) {
+                    if (that.isOffline(value) && key != 'uuid' && key != '_id') {
+                       item[key] = that._restore(value);
+                    }
+                });
+                deferred.resolve(item);
             } else {
                 deferred.reject();
             }
@@ -274,18 +293,17 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var list = [];
             var len = $window.localStorage.length;
             var key;
+            var item;
             for (var i = 0; i < len; i++) {
                 key = $window.localStorage.key(i);
                 if ($window.localStorage[key].match(/"_type_":"capture"/) ||
                     $window.localStorage[key].match(/"_type_":"check"/) ||
                     $window.localStorage[key].match(/"_type_":"evaluation"/)) {
 
-                    if (type &&
-                        !$window.localStorage[key].match(new RegExp('"_type_":"' + type + '"'))) {
-                        continue;
+                    item = this._restore(key);
+                    if (!type || item['_type_'] === type) {
+                        list.push(item);
                     }
-
-                    list.push(this._restore(key));
                 }
             }
 
@@ -318,6 +336,11 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
         _remove: function(uuid) {
             if (!uuid) return null;
             delete $window.localStorage[uuid];
+        },
+
+        isOffline: function(uuid) {
+            if (!uuid) return false;
+            return /o_[0-9a-zA-Z]+/.test(uuid);
         }
     };
 });

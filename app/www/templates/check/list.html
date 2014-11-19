@@ -7,7 +7,12 @@
     <ion-content padding="true">
         <div class="list last-review">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>往期巡查</div>
-            <div class="item item-icon-right" ng-repeat="item in data.checks" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.check_date | date: 'yyyy年MM月dd日'}}</div>
+            <div class="item item-icon-right" ng-repeat="item in data.checks" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.date | date: 'yyyy年MM月dd日'}} / {{item.object}}</div>
+        </div>
+
+        <div class="list last-review">
+            <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>离线数据</div>
+            <div class="item item-icon-right" ng-repeat="item in data.offlineChecks" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.date | date: 'yyyy年MM月dd日'}} / {{item.object}}</div>
         </div>
 
         <button class="button button-block button-positive" ng-click="toCreate()">

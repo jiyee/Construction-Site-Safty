@@ -14,7 +14,7 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
         });
     }
 
-    // 自动选中默认项目、标段、分部
+    // 自动选中项目、标段
     if ($scope.data.user.project) {
         $scope.data.project = _.find($scope.data.projects, {_id: $scope.data.user.project._id});
         SegmentService.findByProjectId($scope.data.user.project._id).then(function (segments) {
@@ -22,7 +22,6 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
 
             if ($scope.data.user.section) {
                 // BUG 只有延时才能解决默认选中问题
-                // TODO 分部默认选中
                 $timeout(function() {
                     $scope.data.section = _.find($scope.data.sections, {
                         _id: $scope.data.user.section._id
@@ -45,6 +44,16 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
 
         SegmentService.findById(section._id).then(function (segment) {
             $scope.data.branches = segment.segments;
+
+            // 自动选中分部
+            if ($scope.data.user.branch) {
+                // BUG 只有延时才能解决默认选中问题
+                $timeout(function() {
+                    $scope.data.branch = _.find($scope.data.branches, {
+                        _id: $scope.data.user.branch._id
+                    });
+                }, 100);
+            }
         });
     });
 
@@ -64,7 +73,7 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
             return;
         }
 
-        if (!$scope.data.target) {
+        if (!$scope.data.object) {
             alert('请填写检查对象');
             return;
         }
@@ -73,8 +82,9 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
             project: $scope.data.project,
             section: $scope.data.section,
             branch: $scope.data.branch,
+            user: $scope.data.user,
             file: $scope.data.file,
-            target: $scope.data.target
+            object: $scope.data.object
         }).then(function(check) {
             $state.go('^.table', {
                 tableId: check.table // 这里返回的table的uuid

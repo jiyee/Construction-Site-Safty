@@ -6,15 +6,15 @@
     </ion-header-bar>
 
     <ion-content padding="true">
-        <table>
+        <table style="margin: 10px 0;">
             <tr>
-                <td>
+                <td style="color: red;">
                     当前不合格项如下：
                 </td>
             </tr>
             <tr ng-repeat="item in data.checked_items">
                 <td>
-                    {{item$index + 1}}. {{item.full_index}}. {{item.comments}}
+                    {{$index + 1}}. {{item.full_index}}. {{item.comments}}
                 </td>
             </tr>
         </table>
