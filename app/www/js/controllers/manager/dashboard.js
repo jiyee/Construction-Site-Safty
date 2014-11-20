@@ -21,38 +21,6 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         $rootScope.data.position = [0, 0];
     });
 
-    // OfflineService.list().then(function (list) {
-    //     // 全部导入
-    //     list = _.filter(list, function(item) {
-    //         return item._type_ === 'capture' ||
-    //             item._type_ === 'check' ||
-    //             item._type_ === 'evaluation';
-    //     });
-
-    //     if (list.length === 0) return;
-
-    //     var popup = $ionicPopup.show({
-    //         template: '',
-    //         title: '您有' + list.length + '条离线记录，是否导入？',
-    //         scope: $scope,
-    //         buttons: [{
-    //             text: '取消'
-    //         }, {
-    //             text: '<b>确定</b>',
-    //             type: 'button-positive',
-    //             onTap: function(e) {
-    //                 return true;
-    //             }
-    //         }, ]
-    //     });
-
-    //     popup.then(function(bool) {
-    //         if (!bool) return;
-
-    //         $state.go("sync.dashboard");
-    //     });
-    // });
-
     // 加载用户所属组织的所有用户，供用户在线状态展示
     var segment = $scope.data.user.branch || $scope.data.user.section;
     if (segment) {
@@ -81,7 +49,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     });
 
     $scope.toDetail = function(item) {
-        // TODO 离线和在线状态转换
+        // 在detail里兼容处理离线和在线状态判断
         if (item.type === 'capture') {
             $state.go('capture.detail', {
                 captureId: item._id

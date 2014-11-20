@@ -12,37 +12,6 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         $rootScope.data.position = [0, 0];
     });
 
-    // OfflineService.list().then(function(list) {
-    //     // 只导入安全检查和考核评价
-    //     list = _.filter(list, function(item) {
-    //         return item._type_ === 'capture' ||
-    //             item._type_ === 'evaluation';
-    //     });
-
-    //     if (list.length === 0) return;
-
-    //     var popup = $ionicPopup.show({
-    //         template: '',
-    //         title: '您有' + list.length + '条离线记录，是否数据同步？',
-    //         scope: $scope,
-    //         buttons: [{
-    //             text: '取消'
-    //         }, {
-    //             text: '<b>确定</b>',
-    //             type: 'button-positive',
-    //             onTap: function(e) {
-    //                 return true;
-    //             }
-    //         }, ]
-    //     });
-
-    //     popup.then(function(bool) {
-    //         if (!bool) return;
-
-    //         $state.go("sync.dashboard");
-    //     });
-    // });
-
     // 加载用户所属组织的所有用户，供用户在线状态展示
     if ($scope.data.user.unit) {
         $scope.data.group = $scope.data.user.unit;
@@ -61,7 +30,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     });
 
     $scope.toDetail = function(item) {
-        // TODO 离线和在线状态转换
+        // 在detail里兼容处理离线和在线状态判断
         if (item.type === 'capture') {
             $state.go('capture.detail', {
                 captureId: item._id
