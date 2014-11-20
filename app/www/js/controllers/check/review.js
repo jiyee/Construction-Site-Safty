@@ -5,6 +5,7 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
     $scope.data.tableId = $stateParams.tableId;
     $scope.data.itemId = $stateParams.itemId;
     $scope.data.subItemId = $stateParams.subItemId;
+    $scope.data.isOffline = OfflineService.isOffline($scope.data.tableId) ? true : false;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -14,7 +15,8 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
         });
     }
 
-    OfflineService.findById($scope.data.tableId).then(function(table) {
+    var AutoService = $scope.data.isOffline ? OfflineService : TableService;
+    AutoService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
         _.each(table.items, function(item, key) {
@@ -56,7 +58,7 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
     };
 
     $scope.saveAndReturn = function() {
-        OfflineService.update($scope.data.tableId, $scope.data.table).then(function(table) {
+        AutoService.update($scope.data.tableId, $scope.data.table).then(function(table) {
             $state.go('^.table', {
                 tableId: $scope.data.tableId
             });

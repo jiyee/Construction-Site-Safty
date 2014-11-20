@@ -40,7 +40,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                 checkId: item._id
             });
         } else if (item.type === 'evaluation') {
-            $state.go('evaluation.summary', {
+            $state.go('evaluation.detail', {
                 evaluationId: item._id
             });
         }

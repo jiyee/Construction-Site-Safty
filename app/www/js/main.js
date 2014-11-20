@@ -160,11 +160,11 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'CheckReviewCtrl'
     })
 
-    // 下达整改通知书
-    .state('check.criterion', {
-        url: '/:checkId/criterion',
-        templateUrl: 'templates/check/criterion.html',
-        controller: 'CheckCriterionCtrl'
+    // 启动流程，填写整改要求
+    .state('check.start', {
+        url: '/:checkId/start',
+        templateUrl: 'templates/check/start.html',
+        controller: 'CheckStartCtrl'
     })
 
     // 整改提交
@@ -219,18 +219,11 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationDetailCtrl'
     })
 
-    // 日常日常巡检汇总页
-    .state('evaluation.summary', {
-        url: '/:evaluationId/summary',
-        templateUrl: 'templates/evaluation/summary.html',
-        controller: 'EvaluationSummaryCtrl'
-    })
-
     // 考核评价推荐内容
-    .state('evaluation.generate', {
-        url: '/:evaluationId/generate',
-        templateUrl: 'templates/evaluation/generate.html',
-        controller: 'EvaluationGenerateCtrl'
+    .state('evaluation.customize', {
+        url: '/:evaluationId/customize',
+        templateUrl: 'templates/evaluation/customize.html',
+        controller: 'EvaluationCustomizeCtrl'
     })
 
     // 考核评价表单
@@ -242,7 +235,7 @@ app.run(function($rootScope, $ionicPlatform) {
 
     // 考核评价单项页
     .state('evaluation.review', {
-        url: "/evaluation/:evaluationId/:tableId/:itemId/:subItemId",
+        url: "/:evaluationId/:tableId/:itemId/:subItemId",
         templateUrl: "templates/evaluation/review.html",
         controller: 'EvaluationReviewCtrl'
     })
@@ -367,10 +360,10 @@ app.run(function($rootScope, $ionicPlatform) {
     })
 
     // 考核评价范围选择
-    .state('offline.evaluation-generate', {
-        url: '/evaluation/:evaluationId/generate',
-        templateUrl: 'templates/offline/evaluation-generate.html',
-        controller: 'OfflineEvaluationGenerateCtrl'
+    .state('offline.evaluation-customize', {
+        url: '/evaluation/:evaluationId/customize',
+        templateUrl: 'templates/offline/evaluation-customize.html',
+        controller: 'OfflineEvaluationCustomizeCtrl'
     })
 
     // 考核评价表格

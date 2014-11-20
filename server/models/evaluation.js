@@ -17,11 +17,12 @@ var EvaluationSchema = new Schema({
     project: { type: Schema.Types.ObjectId, ref: 'Project', required: '{PATH}不能为空' }, // 考核项目
     section: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 考核项目组成，标段
     branch: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 考核项目组成，分部
-    unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 考核单位
+    unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 考核对象单位，考核评价涉及施工单位、监理单位、建设单位
+    object: { type: String, default: 'builder' }, // 考核对象类型，builder, supervisor, constructor
 
     status: { type: String, enum: ['START', 'END'] }, // 考核状态
 
-    wbs: { type: String }, // 分部、分享工程WBS分解阶段
+    wbs: [{ type: String }], // 分部、分享工程WBS分解阶段
 
     // 考核评价表
     tables: [{ type: Schema.Types.ObjectId, ref: 'Table' }], // 考核表，一次考核评价直接创建4张表
@@ -30,15 +31,13 @@ var EvaluationSchema = new Schema({
     updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
     // 考核评价信息
-    evaluation_date: { type: Date, default: Date.now }, // 考核日期
-    evaluation_date_before: { type: Date }, // 上次考核日期
-    evaluation_users: [{ type: Schema.Types.ObjectId, ref: 'User' }] // 考核人员，允许多人同时考核
+    user: { type: Schema.Types.ObjectId, ref: 'User' }, // 考核人员
+    date: { type: Date, default: Date.now }, // 考核日期
+    comment: { type: String } // 存在问题
+    // users: [{ type: Schema.Types.ObjectId, ref: 'User' }] // 考核人员，允许多人同时考核
 });
 
-EvaluationSchema.pre('save', function (next) {
-    next();
-});
-
+// 关联删除
 EvaluationSchema.pre('remove', function (next) {
     var TableModel = require('../models').TableModel;
 
@@ -72,7 +71,7 @@ EvaluationSchema.statics = {
             query.select(select);
         }
 
-        query.populate('project section branch tables unit evaluation_users')
+        query.populate('project section branch tables unit user')
             .sort({
                 createAt: -1
             })

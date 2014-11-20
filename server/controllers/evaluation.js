@@ -58,7 +58,7 @@ exports.findByUserId = function(req, res, next) {
 
     var options = {
         conditions: {
-            evaluation_users: user_id
+            user: user_id
         }
     };
 
@@ -88,7 +88,7 @@ exports.findByUser = function(req, res, next) {
 
     var options = {
         conditions: {
-            evaluation_users: user_id
+            user: user_id
         }
     };
 
@@ -319,101 +319,40 @@ exports.create = function(req, res, next) {
     }
 
     var ep = new eventproxy();
+    var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
-    var options = {
-        conditions: {
-            unit: req.session.user.unit._id
-        }
-    };
-    UserModel.findBy(options, function(err, users) {
-        ep.emit('users', users);
+    ep.after('table', files.length, function(tables) {
+        var evaluation = new EvaluationModel(_.omit(req.body, 'tables'));
+        evaluation.uuid = Date.now();
+        evaluation.tables = _.pluck(tables, '_id');
+        evaluation.user = req.session.user._id;
+
+        evaluation.save(function(err, evaluation) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'status': 'success',
+                'code': 0,
+                'evaluation': evaluation
+            });
+        });
     });
 
-    ep.on('users', function(users) {
-        var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
+    // 创建检查表，更新检查表内容
+    _.each(files, function(file) {
+        var table = new TableModel();
+        table.uuid = Date.now();
+        _.extend(table, _.find(req.body.tables, {'file': file}));
 
-        ep.after('table', files.length, function(tables) {
-            var evaluation = new EvaluationModel(req.body);
-            evaluation.evaluation_users = _.pluck(users, '_id');
-            evaluation.uuid = Date.now();
-            evaluation.tables = _.pluck(tables, '_id');
+        table.save(function(err, table) {
+            if (err) {
+                return next(err);
+            }
 
-            evaluation.save(function(err, evaluation) {
-                if (err) {
-                    return next(err);
-                }
-
-                res.send({
-                    'status': 'success',
-                    'code': 0,
-                    'evaluation': evaluation
-                });
-            });
+            ep.emit('table', table);
         });
-
-        ep.on('links', function(links) {
-
-            // 创建检查表
-            _.each(files, function(file) {
-                var table = new TableModel();
-                var proto = require('../data/' + file + '.json');
-                _.extend(table, proto);
-                table.uuid = Date.now();
-
-                _.each(table.items, function(item1) {
-                    _.each(item1.items, function(item2) {
-                        _.each(item2.items, function(item3) {
-                            var key = [file, item1.index, item2.index, item3.index].join('-');
-                            if (!!~links.indexOf(key)) {
-                                item2.is_selected = true;
-                            }
-                        });
-                    });
-                });
-
-                table.save(function(err, table) {
-                    if (err) {
-                        return next(err);
-                    }
-
-                    ep.emit('table', table);
-                });
-            });
-        });
-
-        var links = [];
-        var wbs = req.body.wbs || "";
-        if (wbs) {
-            wbs = wbs.split("|");
-
-            _.each(wbs, function (name) {
-                var wbs_names = require('../data/wbs.json');
-                var wbs_item = _.find(wbs_names, {
-                    "name": name
-                });
-                var wbs_files = wbs_item.files;
-
-                _.each(wbs_files, function(file) {
-                    var table = require('../data/' + file + '.json');
-
-                    _.each(table.items, function(item1) {
-                        _.each(item1.items, function(item2) {
-                            _.each(item2.items, function(item3) {
-                                if (item3.link) {
-                                    links = links.concat(item3.link.split(','));
-                                }
-                            });
-                        });
-                    });
-                });
-
-                links = _.uniq(_.map(links, function(link) {
-                    return link.trim();
-                }));
-            });
-        }
-
-        ep.emit('links', links);
     });
 
 };

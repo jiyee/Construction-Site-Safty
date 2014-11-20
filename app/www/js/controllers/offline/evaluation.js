@@ -35,7 +35,7 @@ app.controller('OfflineEvaluationCtrl', function($scope, $rootScope, $state, $st
             evaluationId: $scope.data.evaluationId,
             wbs: $scope.data.wbs.join("|")
         }).then(function(evaluation) {
-            $state.go('^.evaluation-generate', {
+            $state.go('^.evaluation-customize', {
                 evaluationId: $scope.data.evaluationId
             });
         }, function (err) {

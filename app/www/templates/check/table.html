@@ -2,7 +2,7 @@
     <ion-header-bar align-title="center" class="bar-calm">
         <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">{{data.table.name}}</h1>
-        <button class="button icon ion-trash-a" ng-click="remove()"></button>
+        <button class="button icon ion-trash-a" ng-click="remove()" ng-if="data.isOffline"></button>
     </ion-header-bar>
 
     <ion-content padding="true">

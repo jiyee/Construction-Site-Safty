@@ -1,4 +1,4 @@
-app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $stateParams, settings, EvaluationService, resolveUser) {
+app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $stateParams, settings, EvaluationService, OfflineService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.evaluations = [];
@@ -7,14 +7,12 @@ app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $state
         $scope.data.evaluations = evaluations;
     });
 
+    OfflineService.list('evaluation').then(function(evaluations) {
+        $scope.data.offlineEvaluations = evaluations;
+    });
+
     $scope.toDetail = function (item) {
         $state.go('^.detail', {
-            evaluationId: item._id
-        });
-    };
-
-    $scope.toSummary = function (item) {
-        $state.go('^.summary', {
             evaluationId: item._id
         });
     };

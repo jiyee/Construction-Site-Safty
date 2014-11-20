@@ -2,6 +2,7 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.captureId = $stateParams.captureId;
+    $scope.data.isOffline = OfflineService.isOffline($scope.data.captureId) ? true : false;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -11,16 +12,10 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
-    if (OfflineService.isOffline($scope.data.captureId)) {
-        $scope.data.isOffline = true;
-        OfflineService.findById($scope.data.captureId).then(function(capture) {
-            $scope.data.capture = capture;
-        });
-    } else {
-        CaptureService.findById($scope.data.captureId).then(function(capture) {
-            $scope.data.capture = capture;
-        });
-    }
+    var AutoService = $scope.data.isOffline ? OfflineService : CaptureService;
+    AutoService.findById($scope.data.captureId).then(function(capture) {
+        $scope.data.capture = capture;
+    });
 
     $scope.toBack = function() {
         $state.go('^.list', {

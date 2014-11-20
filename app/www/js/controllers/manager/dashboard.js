@@ -59,7 +59,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
                 checkId: item._id
             });
         } else if (item.type === 'evaluation') {
-            $state.go('evaluation.summary', {
+            $state.go('evaluation.detail', {
                 evaluationId: item._id
             });
         }

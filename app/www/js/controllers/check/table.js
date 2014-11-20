@@ -3,6 +3,7 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
     $scope.data.user = resolveUser;
     $scope.data.table = {};
     $scope.data.tableId = $stateParams.tableId;
+    $scope.data.isOffline = OfflineService.isOffline($scope.data.tableId) ? true : false;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -14,7 +15,8 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
 
     $scope.ifHideSubItems = {};
 
-    OfflineService.findById($scope.data.tableId).then(function(table) {
+    var AutoService = $scope.data.isOffline ? OfflineService : TableService;
+    AutoService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
         $scope.data.checked_items = [];
@@ -64,8 +66,6 @@ app.controller('CheckTableCtrl', function($scope, $stateParams, $state, settings
     };
 
     $scope.toBack = function () {
-        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
-            userId: $scope.data.user._id
-        });
+        $state.go('^.list');
     };
 });

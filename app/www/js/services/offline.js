@@ -36,7 +36,6 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                         _type_: 'table',
                         _id: tableId,
                         uuid: tableId,
-                        checkId: checkId,
                         createAt: Date.now(),
                         file: file
                     }, proto);
@@ -51,7 +50,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                         createAt: Date.now(),
                         date: Date.now(),
                         table: table._id
-                    }, opts);
+                    }, _.omit(opts, ['table']));
 
                     // 保存到localstorage
                     // 单独保存check
@@ -69,7 +68,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
         newCapture: function(opts) {
             var deferred = $q.defer();
 
-            var captureId = opts.captureId || this.guid();
+            var captureId = this.guid();
 
             if (!captureId) {
                 deferred.reject('参数错误');
@@ -96,20 +95,13 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
         newEvaluation: function(opts) {
             var deferred = $q.defer();
 
-            var evaluationId = opts.evaluationId;
+            var evaluationId = this.guid();
             var wbs = opts.wbs || "";
-
-            if (!evaluationId) {
-                deferred.reject('参数错误');
-                return deferred.promise;
-            }
 
             if (!wbs) {
                 deferred.reject('参数错误');
                 return deferred.promise;
             }
-
-            var wbs_checked = wbs.split('|');
 
             var that = this,
                 t = Date.now(),
@@ -121,7 +113,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             $http.get('data/table/wbs.json')
                 .success(function(wbs_names) {
                     var check_files = [];
-                    _.each(wbs_checked, function(name) {
+                    _.each(wbs, function(name) {
                         var wbs_item = _.find(wbs_names, {
                             "name": name
                         });
@@ -167,7 +159,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                             table = _.extend({
                                 _type_: 'table',
                                 _id: that.guid(),
-                                evaluationId: evaluationId,
+                                uuid: that.guid(),
                                 createAt: Date.now(),
                                 file: file
                             }, proto);
@@ -185,7 +177,6 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
                             // 单独保存table
                             that._save(table._id, table);
-
                             $rootScope.$emit('table' + t, table);
                         })
                         .error(function(err) {
@@ -204,15 +195,15 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             });
 
             $rootScope.$on('tables' + t, function(evt, tables) {
-                evaluation = {
+                evaluation = _.extend({
                     _type_: 'evaluation',
                     _id: evaluationId,
                     uuid: evaluationId,
                     createAt: Date.now(),
-                    wbs: wbs,
-                    evaluation_date: Date.now(),
+                    date: Date.now(),
                     tables: _.pluck(tables, '_id')
-                };
+                }, _.omit(opts, ['tables']));
+                console.log(evaluation);
 
                 // 保存到localstorage
                 // 单独保存evaluation
@@ -274,6 +265,13 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var item = this._restore(uuid);
             if (item) {
                 _.each(item, function(value, key) {
+                    if (_.isArray(value)) {
+                        _.each(value, function(subValue, subKey) {
+                            if (that.isOffline(subValue)) {
+                                item[key][subKey] = that._restore(subValue);
+                            }
+                        });
+                    }
                     if (that.isOffline(value) && key != 'uuid' && key != '_id') {
                        item[key] = that._restore(value);
                     }
@@ -339,7 +337,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
 
         isOffline: function(uuid) {
             if (!uuid) return false;
-            return /o_[0-9a-zA-Z]+/.test(uuid);
+            return _.isString(uuid) && /o_[0-9a-zA-Z]+/.test(uuid);
         }
     };
 });

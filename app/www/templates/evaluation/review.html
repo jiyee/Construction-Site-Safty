@@ -5,7 +5,7 @@
     </ion-header-bar>
 
     <ion-content padding="true">
-        <div class="list last-review">
+        <div class="list last-review" ng-if="!data.isOffline">
             <div class="item item-divider"><i class="icon ion-clipboard"></i>本周期内历次安全检查</div>
             <div class="item" ng-repeat="item in data.captures">{{$index + 1}}. {{item.name}} {{item.description}} {{item.createAt | date: 'yyyy年MM月dd日'}}</div>
         </div>

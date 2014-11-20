@@ -46,7 +46,7 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
     };
 
     // 分类整理，多条数据汇总成一条数据
-    $scope.arrange = function() {
+    $scope.save = function() {
         var selected = _.filter($scope.data.offlineCaptures, {
             checked: true
         });
@@ -81,6 +81,7 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
             capture.archives.push(_.pick(item, ['object', 'comment', 'category', 'images']));
         });
 
+        // 真正创建在线数据
         CaptureService.create(capture).then(function(capture) {
             alert('保存成功');
 

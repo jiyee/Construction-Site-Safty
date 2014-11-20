@@ -1,8 +1,9 @@
-app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, settings, TableService, EvaluationService, AuthService, resolveUser) {
+app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, settings, TableService, EvaluationService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.evaluation = {};
     $scope.data.evaluationId = $stateParams.evaluationId;
+    $scope.data.isOffline = OfflineService.isOffline($scope.data.evaluationId) ? true : false;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -12,8 +13,10 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
         });
     }
 
-    EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
+    var AutoService = $scope.data.isOffline ? OfflineService : EvaluationService;
+    AutoService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
+        console.log(evaluation);
 
         $scope.data.checked_items = [];
         $scope.data.score = 0;
@@ -59,8 +62,8 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
     };
 
     $scope.toBack = function () {
-        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
-            userId: $scope.data.user._id
+        $state.go('^.detail', {
+            evaluationId: $scope.data.evaluationId
         });
     };
 

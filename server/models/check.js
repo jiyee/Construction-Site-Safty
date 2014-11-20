@@ -32,7 +32,13 @@ var CheckSchema = new Schema({
     comment: { type: String }, // 检查结果, 存在隐患
 
     // 责任建设单位以及责任人
-    responsible: {
+    builder: {
+        unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 存在问题的建设单位
+        user: { type: Schema.Types.ObjectId, ref: 'User' }, // 存在问题的建设单位责任人
+        qrcode: { type: String }, // 责任人确认二维码
+    },
+
+    supervisor: {
         unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 存在问题的建设单位
         user: { type: Schema.Types.ObjectId, ref: 'User' }, // 存在问题的建设单位责任人
         qrcode: { type: String }, // 责任人确认二维码

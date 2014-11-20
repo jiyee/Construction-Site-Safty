@@ -1,4 +1,4 @@
-app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, settings, wbs, ProjectService, SegmentService, UserService, UnitService, CheckService, EvaluationService, AuthService, resolveUser, resolveProjects) {
+app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, wbs, SegmentService, UnitService, OfflineService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.resolveWbs = wbs;
     $scope.data.user = resolveUser;
@@ -27,6 +27,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
 
         UnitService.findByProjectId(project._id).then(function(units) {
             $scope.data.units = _.filter(units, {type: '施工单位'});
+
             // 自动选中默认施工单位
             if ($scope.data.user.unit && $scope.data.user.unit.type === '施工单位') {
                 $scope.data.unit = _.find($scope.data.units, {_id: $scope.data.user.unit._id});
@@ -39,14 +40,15 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
 
         SegmentService.findByUnitId(unit._id).then(function(segments) {
             $scope.data.sections = _.filter(segments, {type: '标段'});
-        });
-    });
 
-    $scope.$watch('data.section', function(section) {
-        if (!section) return;
-
-        SegmentService.findById(section._id).then(function(segment) {
-            $scope.data.branches = _.filter(segment.segments, {type: '分部'});
+            if ($scope.data.user.section) {
+                // BUG 只有延时才能解决默认选中问题
+                $timeout(function() {
+                    $scope.data.section = _.find($scope.data.sections, {
+                        _id: $scope.data.user.section._id
+                    });
+                }, 100);
+            }
         });
     });
 
@@ -91,11 +93,12 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         OfflineService.newEvaluation({
             project: $scope.data.project,
             section: $scope.data.section,
-            branch: $scope.data.branch,
             unit: $scope.data.unit,
-            wbs: $scope.data.wbs
+            user: $scope.data.user,
+            wbs: $scope.data.wbs,
+            object: 'builder' // TODO 目前仅有建设单位的考核评价，缺少监理单位和建设单位
         }).then(function(evaluation) {
-            $state.go('^.generate', {
+            $state.go('^.customize', {
                 evaluationId: evaluation.uuid
             });
         }, function(err) {
@@ -104,8 +107,6 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     };
 
     $scope.toBack = function() {
-        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
-            userId: $scope.data.user._id
-        });
+        $state.go('^.list');
     };
 });

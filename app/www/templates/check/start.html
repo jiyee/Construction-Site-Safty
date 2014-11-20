@@ -1,0 +1,81 @@
+<ion-view title="start">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">施工安全隐患整改通知书</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="list card">
+            <div class="item text-center">
+                <p>编号：{{data.check.uuid}}</p>
+                <p>检查日期：{{data.check.date | date: 'yyyy年MM月dd日'}}</p>
+                <p>检查人：{{data.check.user.name}}【{{data.check.user.unit.name}}】</p>
+            </div>
+
+            <div class="item item-body padding">
+                <div class="row">
+                    <div class="col">项目：{{data.check.project.name}}</div>
+                </div>
+                <div class="row" ng-if="data.check.section">
+                    <div class="col">标段：{{data.check.section.name}}</div>
+                </div>
+                <div class="row" ng-if="data.check.branch">
+                    <div class="col">分部：{{data.check.branch.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">用表：{{data.check.table.name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">对象：{{data.check.object}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">存在隐患：</div>
+                </div>
+                <div class="row">
+                    <div class="col assertive" ng-repeat="item in data.checked_items">
+                        {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
+                        <div>
+                            <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64">
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col">现场负责人：</div>
+                    <div class="col">
+                        <select style="max-width: 100%; padding: 5px 48px 5px 16px; border: 1px solid #eee;" ng-model="data.builder.user" ng-options="item as item.name for item in data.users">
+                            <option value="" selected>请选择现场负责人</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">监理负责人：</div>
+                    <div class="col">
+                        <select style="max-width: 100%; padding: 5px 48px 5px 16px; border: 1px solid #eee;" ng-model="data.supervisor.user" ng-options="item as item.name for item in data.users">
+                            <option value="" selected>请选择监理责任人</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">整改责任人：</div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 48px 5px 16px; border: 1px solid #eee;" ng-model="data.next.user" ng-options="item as item.name for item in data.users">
+                            <option value="" selected>请选择整改责任人</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">整改要求：</div>
+                </div>
+                <div class="row">
+                    <textarea ng-model="data.check.current.comment" rows="5" style="border: 1px solid #eee;"></textarea>
+                </div>
+            </div>
+
+            <button class="button button-block button-positive" ng-click="start()">
+                下 达
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
