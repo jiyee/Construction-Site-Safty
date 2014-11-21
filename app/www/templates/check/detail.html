@@ -43,9 +43,14 @@
                 </div>
             </div>
 
-            <button class="button button-block button-positive" ng-click="toTable()">
-                继续打分
-            </button>
+            <div class="button-bar">
+                <button class="button button-positive" ng-click="toTable()">
+                    继续打分
+                </button>
+                <button class="button button-positive" ng-click="save()">
+                    保存
+                </button>
+            </div>
 
                 <!-- <div class="row" ng-if="data.check.rectification_criterion">
                     <div class="col">整改要求：</div>
