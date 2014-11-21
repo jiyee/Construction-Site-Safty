@@ -184,13 +184,12 @@ exports.create = function (req, res, next) {
 
     var ep = new eventproxy();
     ep.on('table', function (table) {
-        var check = new CheckModel(req.body);
-        check.user = req.session.user._id;
+        var check = new CheckModel(_.omit(req.body, 'table'));
         check.uuid = Date.now();
         check.table = table._id;
+        check.user = req.session.user._id;
 
         // 初始化流程
-        check.process.createAt = Date.now();
         check.process.updateAt = Date.now();
         check.process.active = false;
         check.process.status = '';
@@ -210,9 +209,9 @@ exports.create = function (req, res, next) {
 
     // 创建日常巡检表
     var table = new TableModel();
-    var proto = require('../data/' + req.body.file + '.json');
-    _.extend(table, proto);
     table.uuid = Date.now();
+    _.extend(table, req.body.table);
+
     table.save(function (err, table) {
         if (err) {
             return next(err);
