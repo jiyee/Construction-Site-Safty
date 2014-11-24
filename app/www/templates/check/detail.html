@@ -10,7 +10,7 @@
             <div class="item text-center">
                 <p>检查编号：{{data.check.uuid}}</p>
                 <p>检查日期：{{data.check.date | date: 'yyyy年MM月dd日'}}</p>
-                <p>检查人：{{data.check.user.name}}【{{data.check.user.unit.name}}】</p>
+                <p>检查人：{{data.check.user.name}}【{{data.check.unit.name}}】</p>
             </div>
 
             <div class="item item-body padding">
@@ -42,15 +42,20 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="button-bar">
-                <button class="button button-positive" ng-click="toTable()">
-                    继续打分
-                </button>
-                <button class="button button-positive" ng-click="save()">
-                    保存
-                </button>
-            </div>
+        <div class="button-bar">
+            <button class="button button-positive" ng-click="toTable()" ng-if="!data.check.process.active">
+                继续打分
+            </button>
+            <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline">
+                整改通知
+            </button>
+            <button class="button button-positive" ng-click="save()" ng-if="data.isOffline">
+                保存同步
+            </button>
+        </div>
+
 
                 <!-- <div class="row" ng-if="data.check.rectification_criterion">
                     <div class="col">整改要求：</div>

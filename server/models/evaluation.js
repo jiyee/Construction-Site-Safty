@@ -20,7 +20,7 @@ var EvaluationSchema = new Schema({
     unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 考核对象单位，考核评价涉及施工单位、监理单位、建设单位
     object: { type: String, default: 'builder' }, // 考核对象类型，builder, supervisor, constructor
 
-    status: { type: String, enum: ['START', 'END'] }, // 考核状态
+    status: { type: String, enum: ['', 'START', 'END'] }, // 考核状态
 
     wbs: [{ type: String }], // 分部、分享工程WBS分解阶段
 

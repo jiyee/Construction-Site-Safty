@@ -1,63 +1,200 @@
-app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings,  OfflineService, AuthService, resolveUser) {
+app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, CheckService, UnitService, UserService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.check = {};
     $scope.data.user = resolveUser;
     $scope.data.checkId = $stateParams.checkId;
+    $scope.data.builder = {};
+    $scope.data.builder.unit = {};
+    $scope.data.supervisor = {};
+    $scope.data.supervisor.unit = {};
+    $scope.data.current = {};
+    $scope.data.next = {};
 
-    if (OfflineService.isOffline($scope.data.checkId)) {
-        $scope.data.isOffline = true;
-        OfflineService.findById($scope.data.checkId).then(function(check) {
-            $scope.data.check = check;
-            $scope.data.checked_items = [];
-            if ($scope.data.check.table) {
-                _.each($scope.data.check.table.items, function(level1) {
-                    _.each(level1.items, function(level2) {
-                        _.each(level2.items, function(level3) {
-                            if (level3.status != 'UNCHECK' && level3.score > 0) {
-                                level3.full_index = [level1.index, level2.index, level3.index].join('-');
-                                $scope.data.checked_items.push(level3);
-                            }
+    CheckService.findById($scope.data.checkId).then(function(check) {
+        $scope.data.check = check;
+        console.log(check.process);
+
+        if (check.process.archives.length === 0) {
+            var segment = ($scope.data.check.branch || $scope.data.check.section);
+            _.each(segment.units, function(unit) {
+                UnitService.findById(unit).then(function(unit) {
+                    if (!unit) return;
+
+                    if (unit.type === '监理单位') {
+                        $scope.data.supervisor.unit = unit;
+                        UserService.findByUnitId(unit._id).then(function(users) {
+                            $scope.data.supervisor.users = users;
                         });
-                    });
+                    } else if (unit.type === '施工单位') {
+                        $scope.data.builder.unit = unit;
+                        UserService.findByUnitId(unit._id).then(function(users) {
+                            $scope.data.builder.users = users;
+                        });
+                    }
                 });
-            }
+            });
+        } else {
+            _.each(check.process.archives, function(archive) {
+                UserService.findById(archive.user).then(function(user) {
+                    archive.user = user;
+                });
+            });
+        }
+
+        UserService.findBySegmentId($scope.data.check.section._id).then(function(users) {
+            $scope.data.next.users = users;
         });
-    }
+    });
 
     $scope.toBack = function() {
-        $state.go('^.list');
-    };
-
-    $scope.toTable = function() {
-        $state.go('^.table', {
-            tableId: $scope.data.check.table._id
+        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
+            userId: $scope.data.user._id
         });
     };
 
-    $scope.toCriterion = function() {
-        $state.go('^.criterion', {
-            checkId: $scope.data.check._id
-        });
-    };
+    $scope.forward = function() {
+        if (!$scope.data.next.user) {
+            alert('请选择整改责任人');
+            return;
+        }
 
-    $scope.toRectification = function () {
-        $state.go('^.rectification', {
-            checkId: $scope.data.check._id
-        });
-    };
+        if (!$scope.data.current.comment) {
+            alert('请填写整改要求');
+            return;
+        }
 
-    $scope.backward = function() {
-        CheckService.backward($scope.data.checkId, $scope.data.check.rectification_result).then(function(check) {
-            alert("整改提交完毕");
-            $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
-                userId: $scope.data.user._id
-            });
+        var opts = {
+            process: {
+                current: {
+                    unit: $scope.data.user.unit._id,
+                    user: $scope.data.user._id,
+                    comment: $scope.data.current.comment,
+                    action: 'FORWARD'
+                },
+                next: {
+                    unit: $scope.data.next.user.unit._id,
+                    user: $scope.data.next.user._id,
+                    comment: "",
+                    action: ""
+                }
+            }
+        };
+
+        CheckService.forward($scope.data.checkId, opts).then(function() {
+            alert("下达成功");
+            $scope.toBack();
         }, function(err) {
             alert(err);
         });
     };
 
+    $scope.reverse = function() {
+        if (!$scope.data.current.comment) {
+            alert('请填写整改情况说明');
+            return;
+        }
+
+        var opts = {
+            process: {
+                current: {
+                    unit: $scope.data.user.unit._id,
+                    user: $scope.data.user._id,
+                    comment: $scope.data.current.comment,
+                    action: 'REVERSE'
+                }
+            }
+        };
+
+        CheckService.backward($scope.data.checkId, opts).then(function() {
+            alert("提交成功");
+            $scope.toBack();
+        }, function(err) {
+            alert(err);
+        });
+    };
+
+    $scope.backward = function() {
+        if (!$scope.data.current.comment) {
+            alert('请填写整改意见');
+            return;
+        }
+
+        var opts = {
+            process: {
+                current: {
+                    unit: $scope.data.user.unit._id,
+                    user: $scope.data.user._id,
+                    comment: $scope.data.current.comment,
+                    action: 'BACKWARD'
+                }
+            }
+        };
+
+        CheckService.backward($scope.data.checkId, opts).then(function() {
+            alert("提交成功");
+            $scope.toBack();
+        }, function(err) {
+            alert(err);
+        });
+    };
+
+    $scope.revert = function() {
+        if (!$scope.data.current.comment) {
+            alert('请填写打回意见');
+            return;
+        }
+
+        var opts = {
+            process: {
+                current: {
+                    unit: $scope.data.user.unit._id,
+                    user: $scope.data.user._id,
+                    comment: $scope.data.current.comment,
+                    action: 'REVERT'
+                }
+            }
+        };
+
+        CheckService.revert($scope.data.checkId, opts).then(function() {
+            alert("提交成功");
+            $scope.toBack();
+        }, function(err) {
+            alert(err);
+        });
+    };
+
+    $scope.restore = function() {
+        if (!$scope.data.current.comment) {
+            alert('请填写整改情况说明');
+            return;
+        }
+
+        var opts = {
+            process: {
+                current: {
+                    unit: $scope.data.user.unit._id,
+                    user: $scope.data.user._id,
+                    comment: $scope.data.current.comment,
+                    action: 'RESTORE'
+                }
+            }
+        };
+
+        CheckService.restore($scope.data.checkId, opts).then(function() {
+            alert("提交成功");
+            $scope.toBack();
+        }, function(err) {
+            alert(err);
+        });
+    };
+
+
     $scope.end = function () {
+        if (!$scope.data.current.comment) {
+            alert('请填写整改意见');
+            return;
+        }
+
         var confirmPopup = $ionicPopup.confirm({
             title: '整改验收',
             template: '安全整改验收是否通过？',
@@ -75,7 +212,18 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
 
         confirmPopup.then(function(res) {
             if (res) {
-                CheckService.end($scope.data.checkId).then(function(check) {
+                var opts = {
+                    process: {
+                        current: {
+                            unit: $scope.data.user.unit._id,
+                            user: $scope.data.user._id,
+                            comment: $scope.data.current.comment,
+                            action: 'END'
+                        }
+                    }
+                };
+
+                CheckService.end($scope.data.checkId, opts).then(function(check) {
                     alert('整改验收完毕，本次安全检查结束。');
                     $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
                         userId: $scope.data.user._id

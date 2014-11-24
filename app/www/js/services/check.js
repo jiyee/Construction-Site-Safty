@@ -39,16 +39,12 @@ app.factory('CheckService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        create: function(form) {
+        findByProcessCurrentUserId: function(userId) {
             var deferred = $q.defer();
 
-            $http.post(settings.baseUrl + '/check/create', form)
+            $http.get(settings.baseUrl + '/process/' + userId + '/checks')
                 .success(function(data) {
-                    if (data.code > 0) {
-                        deferred.reject(data.message);
-                    } else {
-                        deferred.resolve(data.check);
-                    }
+                    deferred.resolve(data.checks);
                 })
                 .error(function(err) {
                     deferred.reject(err);
@@ -56,10 +52,10 @@ app.factory('CheckService', function($http, $q, settings) {
 
             return deferred.promise;
         },
-        start: function(checkId, opts) {
+        create: function(form) {
             var deferred = $q.defer();
 
-            $http.post(settings.baseUrl + '/check/' + checkId + '/start', opts)
+            $http.post(settings.baseUrl + '/check/create', form)
                 .success(function(data) {
                     if (data.code > 0) {
                         deferred.reject(data.message);
@@ -94,6 +90,40 @@ app.factory('CheckService', function($http, $q, settings) {
             var deferred = $q.defer();
 
             $http.post(settings.baseUrl + '/check/' + checkId + '/backward', opts)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve();
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        revert: function (checkId, opts) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/check/' + checkId + '/revert', opts)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve();
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        restore: function (checkId, opts) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/check/' + checkId + '/restore', opts)
                 .success(function(data) {
                     if (data.code > 0) {
                         deferred.reject(data.message);

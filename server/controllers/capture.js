@@ -44,10 +44,10 @@ exports.findById = function (req, res, next) {
 };
 
 exports.findByUserId = function (req, res, next) {
-    var user_id = validator.trim(req.params.user_id);
+    var userId = validator.trim(req.params.userId);
     var options = {
         conditions: {
-            user: user_id
+            user: userId
         }
     };
 

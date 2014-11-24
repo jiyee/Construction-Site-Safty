@@ -9,7 +9,7 @@
             <div class="item text-center">
                 <p>检查编号：{{data.check.uuid}}</p>
                 <p>检查日期：{{data.check.date | date: 'yyyy年MM月dd日'}}</p>
-                <p>检查人：{{data.check.user.name}}【{{data.check.user.unit.name}}】</p>
+                <p>检查人：{{data.check.user.name}}【{{data.check.unit.name}}】</p>
             </div>
 
             <div class="item item-body padding">
@@ -35,49 +35,76 @@
                 <div class="row">
                     <div class="col">存在隐患：</div>
                 </div>
-                <div class="col assertive" ng-repeat="item in data.checked_items">
+                <div class="col assertive" ng-repeat="item in data.check.checked_items">
                     {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
                     <div>
                         <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64">
                     </div>
                 </div>
 
-                <div class="row" ng-if="data.check.rectification_criterion">
+                <hr>
+                <div class="row" ng-if="data.check.process.archives.length == 0">
+                    <div class="col">现场负责人：</div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.builder.user" ng-options="item as item.name for item in data.builder.users">
+                            <option value="" selected>请选择现场负责人</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" ng-if="data.check.process.archives.length == 0">
+                    <div class="col">监理负责人：</div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.supervisor.user" ng-options="item as item.name for item in data.supervisor.users">
+                            <option value="" selected>请选择监理责任人</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="data.check.process.archives">
                     <div class="col">整改要求：</div>
                 </div>
-                <div class="col positive" ng-if="data.check.rectification_criterion">
-                    {{data.check.rectification_criterion}}
+                <div class="col positive" ng-if="data.check.process.archives">
+                    <div ng-repeat="item in data.check.process.archives">{{item.user.name}}: {{item.comment}}</div>
                 </div>
 
-                <div class="row" ng-if="data.check.rectification_result">
-                    <div class="col">整改情况：</div>
+                <div class="row" ng-if="data.check.process.archives.length == 0 || data.check.process.status == 'FORWARD'">
+                    <div class="col">整改责任人：</div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.next.user" ng-options="item as item.name for item in data.next.users">
+                            <option value="" selected>请选择整改责任人</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col positive" ng-if="data.check.rectification_result">
-                    {{data.check.rectification_result}}
+
+                <div class="row">
+                    <div class="col" ng-if="data.check.process.archives.length == 0 || data.check.process.status == 'FORWARD' || data.check.process.status == 'REVERT'">整改情况说明：</div>
+                    <div class="col" ng-if="data.check.process.status == 'BACKWARD'">意见：</div>
+                </div>
+                <div class="row">
+                    <textarea ng-model="data.current.comment" rows="5" style="border: 1px solid #eee;"></textarea>
                 </div>
             </div>
 
-            <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#" ng-click="toTable()" ng-show="data.check.check_user._id == data.user._id && !data.check.process_status">
-                    <i class="icon ion-compose"></i>
-                    打分
-                </a>
-                <a class="tab-item" href="#" ng-click="toCriterion()" ng-hide="data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
-                    <i class="icon ion-paper-airplane"></i>
+            <div class="button-bar">
+                <button class="button button-positive" ng-click="forward()" ng-show="data.check.process.archives.length == 0 || data.check.process.status == 'FORWARD'">
                     下达
-                </a>
-                <a class="tab-item" href="#" ng-click="toRectification()" ng-hide="data.check.process_status == 'BACKWARD' || data.check.process_status == 'END'">
-                    <i class="icon ion-paper-airplane"></i>
+                </button>
+                <button class="button button-positive" ng-click="reverse()" ng-show="data.check.process.status == 'FORWARD'">
                     整改
-                </a>
-                <a class="tab-item" href="#" ng-click="backward()" ng-show="data.check.check_user._id != data.user._id && data.check.process_status == 'BACKWARD'">
-                    <i class="icon ion-paper-airplane"></i>
+                </button>
+                <button class="button button-positive" ng-click="revert()" ng-show="data.check.process.status == 'BACKWARD'">
+                    打回
+                </button>
+                <button class="button button-positive" ng-click="restore()" ng-show="data.check.process.status == 'REVERT'">
+                    重新提交
+                </button>
+                <button class="button button-positive" ng-click="backward()" ng-show="data.check.process.status == 'BACKWARD' && data.check.process.sequences.length > 0">
                     提交
-                </a>
-                <a class="tab-item" href="#" ng-click="end()" ng-show="data.check.check_user._id == data.user._id && data.check.process_status == 'BACKWARD'">
-                    <i class="icon ion-paper-airplane"></i>
+                </button>
+                <button class="button button-positive" ng-click="end()" ng-show="data.check.process.status == 'BACKWARD' && data.check.process.sequences.length == 0">
                     验收
-                </a>
+                </button>
             </div>
+        </div>
     </ion-content>
 </ion-view>

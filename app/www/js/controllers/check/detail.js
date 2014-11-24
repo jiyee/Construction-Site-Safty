@@ -26,36 +26,55 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
 
     $scope.remove = function() {
         OfflineService.remove($scope.data.checkId);
-        OfflineService.remove($scope.data.table._id);
         alert('删除成功');
         $scope.toBack();
     };
 
     $scope.save = function() {
+       if (!$scope.data.check.project) {
+            alert('请选择检查项目');
+            return;
+        }
+
+        if (!$scope.data.check.section) {
+            alert('请选择合同段');
+            return;
+        }
+
+        if (!$scope.data.check.file) {
+            alert('请选择检查用表');
+            return;
+        }
+
+        if (!$scope.data.check.object) {
+            alert('请填写检查对象');
+            return;
+        }
+
         if ($scope.data.isOffline) {
             var check = {};
             check.project = $scope.data.check.project._id;
-            check.section = $scope.data.check.section._id;
-            check.branch = $scope.data.check.branch._id;
+            check.section = $scope.data.check.section ? $scope.data.check.section._id : null;
+            check.branch = $scope.data.check.branch ? $scope.data.check.branch._id : null;
+            check.unit = $scope.data.check.user.unit._id;
             check.user = $scope.data.check.user._id;
             check.file = $scope.data.check.file;
             check.object = $scope.data.check.object;
             check.table = _.omit($scope.data.check.table, ['_id', 'uuid', '_type_']);
 
             // 真正创建在线数据
-            CheckService.create(check).then(function(check) {
-                alert('保存成功');
-
+            CheckService.create(check).then(function() {
                 // 清空本地数据
                 OfflineService.remove($scope.data.check._id);
-                OfflineService.remove($scope.data.table._id);
+
+                alert('保存成功');
                 $scope.toBack();
             }, function(err) {
                 alert('保存失败');
             });
         } else {
             // 实际修改在线数据
-            CheckService.update($scope.data.checkId, $scope.data.check).then(function(check) {
+            CheckService.update($scope.data.checkId, $scope.data.check).then(function() {
                 alert('保存成功');
                 $scope.toBack();
             }, function(err) {
@@ -67,6 +86,12 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
     $scope.toTable = function() {
         $state.go('^.table', {
             tableId: $scope.data.check.table._id
+        });
+    };
+
+    $scope.toProcess = function() {
+        $state.go('^.process', {
+            checkId: $scope.data.check._id
         });
     };
 

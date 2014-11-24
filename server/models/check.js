@@ -26,6 +26,7 @@ var CheckSchema = new Schema({
     updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
     // 检查
+    unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 检查人员单位
     user: { type: Schema.Types.ObjectId, ref: 'User' }, // 检查人员
     date: { type: Date, default: Date.now }, // 检查日期
     object: { type: String }, // 检查对象, 手工填写
@@ -54,24 +55,28 @@ var CheckSchema = new Schema({
         updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
         active: { type: Boolean, default: false }, // 流程是否激活
-        status: { type: String, enum: ['START', 'STOP', 'FORWARD', 'BACKWARD', 'END'] }, // 流程状态
+        status: { type: String, enum: ['', 'START', 'STOP', 'FORWARD', 'REVERT', 'RESTORE', 'BACKWARD', 'END'] }, // 流程状态
 
         current: {
+            unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
             action: { type: String }
         },
         previous: {
+            unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
             action: { type: String }
         },
         sequences: [{
+            unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
             action: { type: String }
         }],
         archives: [{
+            unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
             action: { type: String }
@@ -157,7 +162,7 @@ CheckSchema.statics = {
             query.select(select);
         }
 
-        query.populate('project section branch table user responsible_unit responsible_user')
+        query.populate('project section branch table user unit')
             .sort({
                 createAt: -1
             })

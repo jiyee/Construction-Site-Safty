@@ -2,6 +2,7 @@ var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var utils = require('../utils');
+var mongoose = require('mongoose');
 var TableModel = require('../models/').TableModel;
 var CheckModel = require('../models/').CheckModel;
 var UserModel = require('../models/').UserModel;
@@ -55,7 +56,7 @@ exports.findById = function (req, res, next) {
 };
 
 exports.findByProcessCurrentUserId = function (req, res, next) {
-    var userId = validator.trim(req.params.user_id);
+    var userId = validator.trim(req.params.userId);
 
     if (!userId) {
         return next(utils.getError(101));
@@ -91,9 +92,11 @@ exports.findByUser = function (req, res, next) {
         return next(utils.getError(101));
     }
 
+    console.log(userId);
+
     var options = {
         conditions: {
-            'process.current.user': userId
+            'user': userId
         }
     };
 
@@ -194,7 +197,7 @@ exports.create = function (req, res, next) {
         check.process.active = false;
         check.process.status = '';
 
-        check.save(function(err, check) {
+        check.save(function(err, newCheck) {
             if (err) {
                 return next(err);
             }
@@ -202,7 +205,7 @@ exports.create = function (req, res, next) {
             res.send({
                 'status': 'success',
                 'code': 0,
-                'check': check
+                'check': newCheck
             });
         });
     });
@@ -212,90 +215,28 @@ exports.create = function (req, res, next) {
     table.uuid = Date.now();
     _.extend(table, req.body.table);
 
-    table.save(function (err, table) {
+    table.save(function (err, newTable) {
         if (err) {
             return next(err);
         }
 
-        ep.emit('table', table);
+        ep.emit('table', newTable);
     });
 
 };
 
 /////////////////////////////////////////////////////////////////
 
-// 流程启动
-// 更新responsible，责任人
-// 更新process.current, createAt, updateAt, active, status，流程状态和中间过程
-exports.start = function (req, res, next) {
-    var checkId = validator.trim(req.params.check_id);
-    var comment = validator.trim(req.body.comment);
-    var responsible = req.body.responsible;
-
-    if (!req.session.user) {
-        return next(utils.getError(105));
-    }
-
-    if (!id || !responsible) {
-        return next(utils.getError(101));
-    }
-
-    var options = {
-        findOne: true,
-        conditions: {
-            _id: checkId
-        }
-    };
-
-    CheckModel.findBy(options, function(err, check) {
-        if (err) {
-            return next(err);
-        }
-
-        if (!check) {
-            return next(utils.getError(102));
-        }
-
-        if (check.process.active === false) {
-            return next(utils.getError(104));
-        }
-
-        // 更新责任人
-        check.responsible = responsible;
-
-        check.process.active = true;
-        check.process.status = 'START';
-        check.process.createAt = Date.now();
-        check.process.updateAt = Date.now();
-        check.process.current.unit = req.session.user.unit._id;
-        check.process.current.user = req.session.user._id;
-
-        check.save(function(err, check) {
-            if (err) {
-                return next(err);
-            }
-
-            res.send({
-                'code': 0,
-                'status': 'success'
-            });
-        });
-    });
-};
-
 // 逐级向下指派，捕获状态
-// 更新process.current, sequences, archives, status
+// 更新process.current, next, sequences, archives, status
 exports.forward = function (req, res, next) {
     var checkId = validator.trim(req.params.check_id);
-    var nextUserId = validator.trim(req.body.next.user);
-    var nextUnitId = validator.trim(req.body.next.unit);
-    var comment = validator.trim(req.body.comment);
 
     if (!req.session.user) {
         return next(utils.getError(105));
     }
 
-    if (!checkId || !nextUserId || !nextUnitId) {
+    if (!checkId || !req.body.process.current || !req.body.process.next) {
         return next(utils.getError(101));
     }
 
@@ -315,23 +256,26 @@ exports.forward = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        if (check.process.active === false ||
-            check.process.status === 'END') {
+        if (check.process.status === 'END') {
             return next(utils.getError(104));
         }
 
+        // 设置已下达之后的状态
         check.process.active = true;
-        check.process.status = 'FORWARD';
+        check.process.status = 'FORWARD'; // TODO
         check.process.updateAt = Date.now();
+
+        if (req.body.process.current.action === 'START') {
+            check.builder = req.body.builder;
+            check.supervisor = req.body.supervisor;
+            check.process.archives = check.process.sequences = [];
+        }
+
         // 采用A->A/B->A/B/C
-        check.process.current.comment = comment;
-        check.process.previous = check.process.current;
-        check.process.archives.push(check.process.current);
-        check.process.sequences.push(check.process.current);
-        // 重写当前节点
-        check.precess.current.comment = "";
-        check.process.current.user = nextUserId;
-        check.process.current.unit = nextUnitId;
+        check.process.current = req.body.process.next;
+        check.process.previous = req.body.process.current;
+        check.process.archives.push(req.body.process.current);
+        check.process.sequences.push(req.body.process.current);
 
         check.save(function(err, check) {
             if (err) {
@@ -344,20 +288,18 @@ exports.forward = function (req, res, next) {
             });
         });
     });
-
 };
 
 // 逐级向上审核，冒泡状态
 // 更新process.current, sequences, archives, status
 exports.backward = function (req, res, next) {
     var checkId = validator.trim(req.params.check_id);
-    var comment = validator.trim(req.body.comment);
 
     if (!req.session.user) {
         return next(utils.getError(105));
     }
 
-    if (!check_id) {
+    if (!checkId) {
         return next(utils.getError(101));
     }
 
@@ -377,22 +319,22 @@ exports.backward = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        if (check.process.active === false ||
-            check.process.status === 'END') {
+        if (check.process.status === 'END') {
             return next(utils.getError(104));
         }
 
+        // 设置已反转或者已提交之后的状态
         check.process.active = true;
-        check.process.status = 'BACKWARD';
+        check.process.status = 'BACKWARD'; // TODO
         check.process.updateAt = Date.now();
 
+        if (req.body.process.current.action === 'REVERSE') {
+        }
+
         // 采用A/B/C -> A/B -> A -> []
-        check.process.current.comment = comment;
-        check.process.previous = check.process.current;
-        check.process.archives.push(check.process.current);
-        // 重写当前节点
         check.process.current = check.process.sequences.pop();
-        check.precess.current.comment = "";
+        check.process.previous = req.body.process.current;
+        check.process.archives.push(req.body.process.current);
 
         check.save(function(err, check) {
             if (err) {
@@ -411,7 +353,6 @@ exports.backward = function (req, res, next) {
 // 更新process.current, archives, status
 exports.revert = function (req, res, next) {
     var checkId = validator.trim(req.params.check_id);
-    var comment = validator.trim(req.body.comment);
 
     if (!req.session.user) {
         return next(utils.getError(105));
@@ -437,21 +378,19 @@ exports.revert = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        if (check.process.active === false ||
-            check.process.status === 'END') {
+        if (check.process.status === 'END') {
             return next(utils.getError(104));
         }
 
+        // 设置已打回之后的状态
         check.process.active = true;
         check.process.status = 'REVERT';
         check.process.updateAt = Date.now();
 
-        // 采用A/B/C -> A/B -> A -> []
-        check.process.current.comment = comment;
-        check.process.previous = check.process.current;
-        check.process.archives.push(check.process.current);
-        // 重写当前节点
-        check.process.current = check.process.sequences.pop();
+        check.process.current = check.process.previous;
+        check.process.previous = req.body.process.current;
+        check.process.archives.push(req.body.process.current);
+        check.process.sequences.push(req.body.process.current);
 
         check.save(function(err, check) {
             if (err) {
@@ -470,7 +409,6 @@ exports.revert = function (req, res, next) {
 // 更新process.current, archives, status
 exports.restore = function (req, res, next) {
     var checkId = validator.trim(req.params.check_id);
-    var comment = validator.trim(req.body.comment);
 
     if (!req.session.user) {
         return next(utils.getError(105));
@@ -496,23 +434,18 @@ exports.restore = function (req, res, next) {
             return next(utils.getError(102));
         }
 
-        if (check.process.active === false ||
-            check.process.status === 'END') {
+        if (check.process.status === 'END') {
             return next(utils.getError(104));
         }
 
+        // 设置已打回之后的状态
         check.process.active = true;
-        check.process.status = 'FORWARD';
+        check.process.status = 'BACKWARD';
+        check.process.updateAt = Date.now();
 
-        // 采用A/B/C -> A/B -> A -> []
-        var previous = _.clone(check.process.previous);
-        check.process.current.comment = comment;
-        check.process.previous = check.process.current;
-        check.process.archives.push(check.process.current);
-        check.process.sequences.push(check.process.current);
-        // 重写当前节点
-        check.process.current = previous;
-        check.process.current.comment = "";
+        check.process.current = check.process.sequences.pop();
+        check.process.previous = req.body.process.current;
+        check.process.archives.push(req.body.process.current);
 
         check.save(function(err, check) {
             if (err) {
@@ -531,7 +464,14 @@ exports.restore = function (req, res, next) {
 // 更新process.current, sequences, archives, active, status
 exports.end = function (req, res, next) {
     var checkId = validator.trim(req.params.check_id);
-    var comment = validator.trim(req.body.comment);
+
+    if (!req.session.user) {
+        return next(utils.getError(105));
+    }
+
+    if (!checkId) {
+        return next(utils.getError(101));
+    }
 
     var options = {
         findOne: true,
@@ -552,10 +492,10 @@ exports.end = function (req, res, next) {
         check.process.active = false;
         check.process.status = 'END';
         check.process.updateAt = Date.now();
+
         // 采用A/B/C -> A/B -> A -> []
-        check.process.current.comment = comment;
-        check.process.archives.push(check.process.current);
-        check.process.sequences.push(check.process.current);
+        check.process.archives.push(req.body.process.current);
+        check.process.sequences.pop();
         check.process.current = null;
         check.process.previous = null;
 

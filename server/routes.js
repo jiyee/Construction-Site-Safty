@@ -32,11 +32,13 @@ router.post('/logout', user.logout);
 
 // 用户接口
 router.get('/users/all', user.findAll);
-router.get('/user/:user_id', user.findById);
-router.get('/user/:user_id/checks', check.findByProcessCurrentUserId);
-router.get('/user/:user_id/evaluations', evaluation.findByUserId);
-router.get('/user/:user_id/captures', capture.findByUserId);
+router.get('/user/:userId', user.findById);
+router.get('/user/:userId/checks', check.findByUser);
+router.get('/user/:userId/evaluations', evaluation.findByUserId);
+router.get('/user/:userId/captures', capture.findByUserId);
 router.post('/user/create', user.create);
+
+router.get('/process/:userId/checks', check.findByProcessCurrentUserId);
 
 // 角色接口
 // router.get('/roles/all', role.findAll);
@@ -84,7 +86,6 @@ router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
 router.post('/check/:check_id/delete', check.delete);
 
-router.post('/check/:check_id/start', check.start);
 router.post('/check/:check_id/forward', check.forward);
 router.post('/check/:check_id/backward', check.backward);
 router.post('/check/:check_id/revert', check.revert);

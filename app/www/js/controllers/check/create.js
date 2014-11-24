@@ -82,6 +82,7 @@ app.controller('CheckCreateCtrl', function($scope, $rootScope, $state, $statePar
             project: $scope.data.project,
             section: $scope.data.section,
             branch: $scope.data.branch,
+            unit: $scope.data.user.unit,
             user: $scope.data.user,
             file: $scope.data.file,
             object: $scope.data.object

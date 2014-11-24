@@ -18,11 +18,11 @@ exports.findAll = function(req, res, next) {
 };
 
 exports.findById = function(req, res, next) {
-    var user_id = validator.trim(req.params.user_id);
+    var userId = validator.trim(req.params.userId);
     var options = {
         findOne: true,
         conditions: {
-            _id: user_id
+            _id: userId
         }
     };
 

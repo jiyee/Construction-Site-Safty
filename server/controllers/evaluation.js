@@ -50,15 +50,15 @@ exports.findById = function(req, res, next) {
 };
 
 exports.findByUserId = function(req, res, next) {
-    var user_id = validator.trim(req.params.user_id);
+    var userId = validator.trim(req.params.userId);
 
-    if (!user_id) {
+    if (!userId) {
         return next(utils.getError(101));
     }
 
     var options = {
         conditions: {
-            user: user_id
+            user: userId
         }
     };
 
@@ -80,15 +80,15 @@ exports.findByUser = function(req, res, next) {
         return next(utils.getError(105));
     }
 
-    var user_id = req.session.user._id;
+    var userId = req.session.user._id;
 
-    if (!user_id) {
+    if (!userId) {
         return next(utils.getError(101));
     }
 
     var options = {
         conditions: {
-            user: user_id
+            user: userId
         }
     };
 

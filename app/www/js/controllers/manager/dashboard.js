@@ -40,7 +40,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         $scope.data.captures = captures;
     });
 
-    CheckService.findByUserId($scope.data.user._id).then(function(checks) {
+    CheckService.findByProcessCurrentUserId($scope.data.user._id).then(function(checks) {
         $scope.data.checks = checks;
     });
 
@@ -55,7 +55,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
                 captureId: item._id
             });
         } else if (item.type === 'check') {
-            $state.go('check.detail', {
+            $state.go('check.process', {
                 checkId: item._id
             });
         } else if (item.type === 'evaluation') {

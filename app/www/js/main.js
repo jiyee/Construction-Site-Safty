@@ -160,18 +160,11 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'CheckReviewCtrl'
     })
 
-    // 启动流程，填写整改要求
-    .state('check.start', {
-        url: '/:checkId/start',
-        templateUrl: 'templates/check/start.html',
-        controller: 'CheckStartCtrl'
-    })
-
-    // 整改提交
-    .state('check.rectification', {
-        url: '/:checkId/rectification',
-        templateUrl: 'templates/check/rectification.html',
-        controller: 'CheckRectificationCtrl'
+    // 日常巡查流程一体化
+    .state('check.process', {
+        url: '/:checkId/process',
+        templateUrl: 'templates/check/process.html',
+        controller: 'CheckProcessCtrl'
     })
 
     // 用户联系方式
