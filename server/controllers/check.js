@@ -207,7 +207,7 @@ exports.create = function (req, res, next) {
         });
     });
 
-    // 创建日常巡检表
+    // 创建日常巡检表，更新检查表内容
     var table = new TableModel();
     table.uuid = Date.now();
     _.extend(table, req.body.table);

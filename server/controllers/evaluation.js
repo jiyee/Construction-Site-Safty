@@ -340,7 +340,7 @@ exports.create = function(req, res, next) {
         });
     });
 
-    // 创建检查表，更新检查表内容
+    // 创建检查表，更新表内容
     _.each(files, function(file) {
         var table = new TableModel();
         table.uuid = Date.now();
