@@ -1,4 +1,4 @@
-app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, CaptureService, OfflineService, AuthService, resolveUser) {
+app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, CaptureService, OfflineService, UserService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.captureId = $stateParams.captureId;
@@ -15,7 +15,21 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
     var AutoService = $scope.data.isOffline ? OfflineService : CaptureService;
     AutoService.findById($scope.data.captureId).then(function(capture) {
         $scope.data.capture = capture;
+
+        if (capture.process.archives.length > 0) {
+            _.each(capture.process.archives, function(archive) {
+                UserService.findById(archive.user).then(function(user) {
+                    archive.user = user;
+                });
+            });
+        }
     });
+
+    $scope.toProcess = function() {
+        $state.go('^.process', {
+            captureId: $scope.data.capture._id
+        });
+    };
 
     $scope.toBack = function() {
         $state.go('^.list', {

@@ -56,6 +56,19 @@
                         <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64">
                     </div>
                 </div>
+
+                <div class="row" ng-if="data.capture.process.archives">
+                    <div class="col">整改处理意见：</div>
+                </div>
+                <div class="col positive" ng-if="data.capture.process.archives">
+                    <div ng-repeat="item in data.capture.process.archives">{{item.user.name}}: {{item.comment}}</div>
+                </div>
+            </div>
+
+            <div class="button-bar" ng-if="data.capture.process.active == false && data.capture.process.status == ''">
+                <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline">
+                    整改通知
+                </button>
             </div>
         </div>
     </ion-content>

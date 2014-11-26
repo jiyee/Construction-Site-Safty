@@ -1,4 +1,4 @@
-app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, OfflineService, CheckService, AuthService, resolveUser) {
+app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, OfflineService, CheckService, UserService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.check = {};
     $scope.data.user = resolveUser;
@@ -19,6 +19,14 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
                             $scope.data.checked_items.push(level3);
                         }
                     });
+                });
+            });
+        }
+
+        if (check.process.archives.length > 0) {
+            _.each(check.process.archives, function(archive) {
+                UserService.findById(archive.user).then(function(user) {
+                    archive.user = user;
                 });
             });
         }

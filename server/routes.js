@@ -35,16 +35,12 @@ router.get('/users/all', user.findAll);
 router.get('/user/:userId', user.findById);
 router.get('/user/:userId/checks', check.findByUser);
 router.get('/user/:userId/evaluations', evaluation.findByUserId);
-router.get('/user/:userId/captures', capture.findByUserId);
+router.get('/user/:userId/captures', capture.findByUser);
 router.post('/user/create', user.create);
 
+// 用户待办事项接口
+router.get('/process/:userId/captures', capture.findByProcessCurrentUserId);
 router.get('/process/:userId/checks', check.findByProcessCurrentUserId);
-
-// 角色接口
-// router.get('/roles/all', role.findAll);
-// router.get('/role/:role_id', role.findById);
-// router.get('/role/:role_id/users', user.findByRoleId);
-// router.post('/role/create', role.create);
 
 // 部门接口
 router.get('/units/all', unit.findAll);
@@ -62,7 +58,7 @@ router.get('/project/:project_id/:fields', project.list_array);
 router.post('/project/:project_id/:field/insert', project.push_array);
 router.post('/project/:project_id/:field/remove', project.slice_array);
 
-// 项目组成接口
+// 标段、分部接口
 router.get('/segments/all', segment.findAll);
 router.post('/segment/create', segment.create);
 router.get('/segment/:segment_id', segment.findById);
@@ -71,14 +67,14 @@ router.get('/segment/:segment_id/:fields', segment.list_array);
 router.post('/segment/:segment_id/:field/insert', segment.push_array);
 router.post('/segment/:segment_id/:field/remove', segment.slice_array);
 
-// 安全检查表接口
+// 检查表接口
 router.get('/tables/all', table.findAll);
 router.get('/table/:table_id', table.findById);
 router.post('/table/create', table.create);
 router.post('/table/:table_id/delete', table.delete);
 router.post('/table/:table_id/update', table.update);
 
-// 安全检查接口
+// 日常检查接口
 router.get('/checks', check.findByUser);
 router.get('/checks/all', check.findAll);
 router.get('/checks/list/:project_id/:segment_id/:start_date/:end_date', check.findByDate);
@@ -99,11 +95,18 @@ router.get('/evaluation/:evaluation_id', evaluation.findById);
 router.post('/evaluation/create', evaluation.create);
 router.post('/evaluation/:evaluation_id/update', evaluation.update);
 
-// 角色接口
+// 安全检查接口
 router.get('/captures/all', capture.findAll);
 router.get('/captures/list/:project_id/:segment_id/:start_date/:end_date', capture.findByDate);
 router.get('/capture/:capture_id', capture.findById);
 router.post('/capture/create', capture.create);
+router.post('/capture/:capture_id/delete', capture.delete);
+
+router.post('/capture/:capture_id/forward', capture.forward);
+router.post('/capture/:capture_id/backward', capture.backward);
+router.post('/capture/:capture_id/revert', capture.revert);
+router.post('/capture/:capture_id/restore', capture.restore);
+router.post('/capture/:capture_id/end', capture.end);
 
 // 数据库测试接口
 router.get('/setup1', setup1.mongo);

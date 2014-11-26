@@ -2,7 +2,6 @@ var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var utils = require('../utils');
-var mongoose = require('mongoose');
 var TableModel = require('../models/').TableModel;
 var CheckModel = require('../models/').CheckModel;
 var UserModel = require('../models/').UserModel;
@@ -91,8 +90,6 @@ exports.findByUser = function (req, res, next) {
     if (!userId) {
         return next(utils.getError(101));
     }
-
-    console.log(userId);
 
     var options = {
         conditions: {

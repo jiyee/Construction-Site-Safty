@@ -41,14 +41,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row" ng-if="data.check.process.archives">
+                    <div class="col">整改处理意见：</div>
+                </div>
+                <div class="col positive" ng-if="data.check.process.archives">
+                    <div ng-repeat="item in data.check.process.archives">{{item.user.name}}: {{item.comment}}</div>
+                </div>
             </div>
         </div>
 
         <div class="button-bar">
-            <button class="button button-positive" ng-click="toTable()" ng-if="!data.check.process.active">
+            <button class="button button-positive" ng-click="toTable()" ng-if="data.check.process.active == false && data.check.process.status == ''">
                 继续打分
             </button>
-            <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline">
+            <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline && data.check.process.active == false && data.check.process.status == ''">
                 整改通知
             </button>
             <button class="button button-positive" ng-click="save()" ng-if="data.isOffline">

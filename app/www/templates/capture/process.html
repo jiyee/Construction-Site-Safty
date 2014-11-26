@@ -1,0 +1,108 @@
+<ion-view title="detail">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">安全检查</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <div class="list card">
+            <div class="item text-center">
+                <p>检查编号：{{data.capture.uuid}}</p>
+                <p>检查日期：{{data.capture.date | date: 'yyyy年MM月dd日'}}</p>
+                <p>检查人：{{data.capture.user.name}}
+                    <span ng-if="data.capture.user.unit.name">【{{data.capture.user.unit.name}}】</span>
+                </p>
+            </div>
+
+            <div class="item item-body padding">
+                <div class="row">
+                    <div class="col">项目：{{data.capture.project.name}}</div>
+                </div>
+                <div class="row" ng-if="data.capture.section">
+                    <div class="col">标段：{{data.capture.section.name}}</div>
+                </div>
+                <div class="row" ng-if="data.capture.branch">
+                    <div class="col">分部：{{data.capture.branch.name}}</div>
+                </div>
+                <div ng-repeat="item in data.capture.archives">
+                    <hr>
+                    <div class="row">
+                        <div class="col">细项：{{item.category}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">对象：{{item.object}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">存在隐患：{{item.comment}}</div>
+                    </div>
+                    <div class="row">
+                        <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64">
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row" ng-if="data.capture.process.archives.length == 0">
+                    <div class="col">现场负责人：</div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.builder.user" ng-options="item as item.name for item in data.builder.users">
+                            <option value="" selected>请选择现场负责人</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" ng-if="data.capture.process.archives.length == 0">
+                    <div class="col">监理负责人：</div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.supervisor.user" ng-options="item as item.name for item in data.supervisor.users">
+                            <option value="" selected>请选择监理责任人</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" ng-if="data.capture.process.archives">
+                    <div class="col">整改要求：</div>
+                </div>
+                <div class="col positive" ng-if="data.capture.process.archives">
+                    <div ng-repeat="item in data.capture.process.archives">{{item.user.name}}: {{item.comment}}</div>
+                </div>
+
+                <div class="row" ng-if="data.capture.process.archives.length == 0 || data.capture.process.status == 'FORWARD'">
+                    <div class="col">整改责任人：</div>
+                    <div class="col item-select">
+                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.next.user" ng-options="item as item.name for item in data.next.users">
+                            <option value="" selected>请选择整改责任人</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col" ng-if="data.capture.process.archives.length == 0 || data.capture.process.status == 'FORWARD' || data.capture.process.status == 'REVERT'">整改情况说明：</div>
+                    <div class="col" ng-if="data.capture.process.status == 'BACKWARD'">意见：</div>
+                </div>
+                <div class="row">
+                    <textarea ng-model="data.current.comment" rows="5" style="border: 1px solid #eee;"></textarea>
+                </div>
+            </div>
+
+            <div class="button-bar">
+                <button class="button button-positive" ng-click="forward()" ng-show="data.capture.process.archives.length == 0 || data.capture.process.status == 'FORWARD'">
+                    下达
+                </button>
+                <button class="button button-positive" ng-click="reverse()" ng-show="data.capture.process.status == 'FORWARD'">
+                    整改
+                </button>
+                <button class="button button-positive" ng-click="revert()" ng-show="data.capture.process.status == 'BACKWARD'">
+                    打回
+                </button>
+                <button class="button button-positive" ng-click="restore()" ng-show="data.capture.process.status == 'REVERT'">
+                    重新提交
+                </button>
+                <button class="button button-positive" ng-click="backward()" ng-show="data.capture.process.status == 'BACKWARD' && data.capture.process.sequences.length > 0">
+                    提交
+                </button>
+                <button class="button button-positive" ng-click="end()" ng-show="data.capture.process.status == 'BACKWARD' && data.capture.process.sequences.length == 0">
+                    验收
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

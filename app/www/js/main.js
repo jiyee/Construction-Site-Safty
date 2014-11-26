@@ -314,6 +314,13 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'CaptureListCtrl'
     })
 
+    // 日常巡查流程一体化
+    .state('capture.process', {
+        url: '/:captureId/process',
+        templateUrl: 'templates/capture/process.html',
+        controller: 'CaptureProcessCtrl'
+    })
+
     // 离线
     .state('offline', {
         url: '/offline',

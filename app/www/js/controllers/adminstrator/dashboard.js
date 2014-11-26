@@ -21,7 +21,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     }
 
     // 加载用户待办列表
-    CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
+    CaptureService.findByProcessCurrentUserId($scope.data.user._id).then(function(captures) {
         $scope.data.captures = captures;
     });
 
@@ -32,11 +32,11 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     $scope.toDetail = function(item) {
         // 在detail里兼容处理离线和在线状态判断
         if (item.type === 'capture') {
-            $state.go('capture.detail', {
+            $state.go('capture.process', {
                 captureId: item._id
             });
         } else if (item.type === 'check') {
-            $state.go('check.detail', {
+            $state.go('check.process', {
                 checkId: item._id
             });
         } else if (item.type === 'evaluation') {
