@@ -16,7 +16,7 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
     AutoService.findById($scope.data.captureId).then(function(capture) {
         $scope.data.capture = capture;
 
-        if (capture.process.archives.length > 0) {
+        if (capture.process.archives && capture.process.archives.length > 0) {
             _.each(capture.process.archives, function(archive) {
                 UserService.findById(archive.user).then(function(user) {
                     archive.user = user;

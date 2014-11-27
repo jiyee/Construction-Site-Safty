@@ -23,7 +23,7 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
             });
         }
 
-        if (check.process.archives.length > 0) {
+        if (check.process.archives && check.process.archives.length > 0) {
             _.each(check.process.archives, function(archive) {
                 UserService.findById(archive.user).then(function(user) {
                     archive.user = user;

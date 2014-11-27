@@ -13,13 +13,13 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     }
 
     // 根据定位获取所在项目、标段和分部
-    GeolocationService.getGeolocation().then(function(position) {
-        $scope.data.position = position;
-        $rootScope.data.position = position;
-    }, function(error) {
-        $scope.data.position = [0, 0];
-        $rootScope.data.position = [0, 0];
-    });
+    // GeolocationService.getGeolocation().then(function(position) {
+    //     $scope.data.position = position;
+    //     $rootScope.data.position = position;
+    // }, function(error) {
+    //     $scope.data.position = [0, 0];
+    //     $rootScope.data.position = [0, 0];
+    // });
 
     // 加载用户所属组织的所有用户，供用户在线状态展示
     var segment = $scope.data.user.branch || $scope.data.user.section;

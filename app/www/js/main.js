@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic']);
 
-var ipAddr = 'localhost';
-// var ipAddr = '121.40.202.109';
+// var ipAddr = 'localhost';
+var ipAddr = '121.40.202.109';
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
@@ -285,7 +285,15 @@ app.run(function($rootScope, $ionicPlatform) {
     .state('capture.map', {
         url: '/map/:userId',
         templateUrl: 'templates/capture/map.html',
-        controller: 'CaptureMapCtrl'
+        controller: 'CaptureMapCtrl',
+        resolve: {
+            resolveProjects: function(ProjectService) {
+                return ProjectService.find();
+            },
+            resolveSegments: function(SegmentService) {
+                return SegmentService.find();
+            },
+        }
     })
 
     // 创建安全检查

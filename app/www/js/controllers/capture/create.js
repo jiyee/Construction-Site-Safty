@@ -17,17 +17,22 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         });
     }
 
-    // 自动选中默认项目、标段
-    if ($scope.data.user.project) {
-        $scope.data.project = _.find($scope.data.projects, {_id: $scope.data.user.project._id});
-        SegmentService.findByProjectId($scope.data.user.project._id).then(function (segments) {
+    // 自动选中默认项目、标段、分部
+    // 优先选择预先设定的项目、标段、分部
+    var project = $scope.$parent.data.project || $scope.data.user.project;
+    var section = $scope.$parent.data.section || $scope.data.user.section;
+    var branch = $scope.$parent.data.branch || $scope.data.user.branch;
+
+    if (project) {
+        $scope.data.project = _.find($scope.data.projects, {_id: project._id});
+        SegmentService.findByProjectId(project._id).then(function (segments) {
             $scope.data.sections = segments;
 
-            if ($scope.data.user.section) {
+            if (section) {
                 // BUG 只有延时才能解决默认选中问题
                 $timeout(function() {
                     $scope.data.section = _.find($scope.data.sections, {
-                        _id: $scope.data.user.section._id
+                        _id: section._id
                     });
                 }, 100);
             }
@@ -48,11 +53,11 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         SegmentService.findById(section._id).then(function (segment) {
             $scope.data.branches = segment.segments;
 
-            if ($scope.data.user.branch) {
+            if (branch) {
                 // BUG 只有延时才能解决默认选中问题
                 $timeout(function() {
                     $scope.data.branch = _.find($scope.data.branches, {
-                        _id: $scope.data.user.branch._id
+                        _id: branch._id
                     });
                 }, 100);
             }

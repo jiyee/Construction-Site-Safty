@@ -2,15 +2,54 @@
     <ion-header-bar align-title="center" class="bar-calm">
         <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">[{{data.user.name}}]</h1>
-        <button class="button" ng-click="switchDataSource()">切换</button>
+        <button class="button" ng-click="openModal()">设定</button>
     </ion-header-bar>
 
-    <ion-content class="hide-on-keyboard-open">
-        <div id="map" class="map">
+    <ion-content class="hide-on-keyboard-open" padding="false" scroll="false">
+        <div id="map">
             <div id="geolocation" class="icon ion-pinpoint" style="width: 36px; height: 36px; position: absolute; bottom: 80px; left: 20px; z-index: 1000; font-size: 28px; line-height: 36px; text-align: center; background-color: white; color: darkcyan; border-radius: 4px;" ng-click="geolocation()"></div>
             <button class="button col" style="position: absolute; bottom: 130px; right: 16px; z-index: 1000; width: 100px; min-height: 31px; height: 31px; line-height: 31px; border-color: #145fd7; background-color: #4a87ee; color: #fff;padding: 0 8px; min-width: initial; min-height: 31px; font-weight: 400; font-size: 13px; line-height: 32px; " ng-click="">标准查询</button>
             <button class="button col" style="position: absolute; bottom: 80px; right: 16px; z-index: 1000; width: 100px; min-height: 31px; height: 31px; line-height: 31px; border-color: #145fd7; background-color: #4a87ee; color: #fff;padding: 0 8px; min-width: initial; min-height: 31px; font-weight: 400; font-size: 13px; line-height: 32px; " ng-click="">内业查询</button>
         </div>
+        <script id="setup-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
+                    <h1 class="title">设定项目与标段</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            项目：
+                        </div>
+                        <select ng-model="data.project" ng-options="item as item.name for item in data.projects">
+                            <option value="" selected>请选择项目</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            合同段：
+                        </div>
+                        <select ng-model="data.section" ng-options="item as item.name for item in data.sections | filter: {type: '标段'}">
+                            <option value="" selected>请选择合同段</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            分部：
+                        </div>
+                        <select ng-model="data.branch" ng-options="item as item.name for item in data.branches | filter: {type: '分部'}">
+                            <option value="" selected>请选择分部</option>
+                        </select>
+                    </label>
+                    <button class="button button-block button-positive" ng-click="submit()">
+                        确认
+                    </button>
+                </ion-content>
+            </ion-modal-view>
+        </script>
     </ion-content>
 
     <ion-footer-bar class="bar-positive">

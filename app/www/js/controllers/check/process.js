@@ -14,7 +14,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
         $scope.data.check = check;
         console.log(check.process);
 
-        if (check.process.archives.length === 0) {
+        if (check.process.archives && check.process.archives.length === 0) {
             var segment = ($scope.data.check.branch || $scope.data.check.section);
             _.each(segment.units, function(unit) {
                 UnitService.findById(unit).then(function(unit) {

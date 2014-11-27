@@ -14,7 +14,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
         $scope.data.capture = capture;
         console.log(capture.process);
 
-        if (capture.process.archives.length === 0) {
+        if (capture.process.archives && capture.process.archives.length === 0) {
             var segment = ($scope.data.capture.branch || $scope.data.capture.section);
             _.each(segment.units, function(unit) {
                 UnitService.findById(unit).then(function(unit) {
