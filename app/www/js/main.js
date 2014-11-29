@@ -3,6 +3,11 @@ var app = angular.module('app', ['ionic']);
 // var ipAddr = 'localhost';
 var ipAddr = '121.40.202.109';
 
+if (navigator.notification) {
+    window.alert = navigator.notification.alert;
+    window.prompt = navigator.notification.prompt;
+}
+
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
 

@@ -52,7 +52,7 @@
         </div>
 
         <div class="button-bar">
-            <button class="button button-positive" ng-click="toTable()" ng-if="data.check.process.active == false && data.check.process.status == ''">
+            <button class="button button-positive" ng-click="toTable()" ng-if="data.isOffline || (data.check.process.active == false && data.check.process.status == '')">
                 继续打分
             </button>
             <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline && data.check.process.active == false && data.check.process.status == ''">
