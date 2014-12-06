@@ -1,7 +1,7 @@
 {
 "type": "FeatureCollection",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                                                                                
+
 "features": [
 { "type": "Feature", "properties": { "Color": 4, "RefName": null, "section": "一标", "branch": "二分部", "name": "一标 二分部" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 112.923485767789685, 29.851123556694063, 0.0 ], [ 112.923494443231647, 29.850318708889901, 0.0 ] ] ] } },
 { "type": "Feature", "properties": { "Color": 4, "RefName": null, "section": "一标", "branch": "二分部", "name": "一标 二分部" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 112.923476044325881, 29.852025626452779, 0.0 ], [ 112.923485767789685, 29.851123556694063, 0.0 ] ] ] } },

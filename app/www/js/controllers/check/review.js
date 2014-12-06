@@ -48,11 +48,13 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
             $scope.$apply();
         }
 
-        function onFail(message) {}
+        function onFail(message) {
+            alert(message);
+        }
 
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 75,
-            destinationType: Camera.DestinationType.FILE_URI,
+            destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true
         });
     };

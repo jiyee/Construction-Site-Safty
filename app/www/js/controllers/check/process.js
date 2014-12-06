@@ -9,31 +9,13 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
     $scope.data.supervisor.unit = {};
     $scope.data.current = {};
     $scope.data.next = {};
+    $scope.data.images = [];
 
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
-        console.log(check.process);
+        console.log(check);
 
-        if (check.process.archives && check.process.archives.length === 0) {
-            var segment = ($scope.data.check.branch || $scope.data.check.section);
-            _.each(segment.units, function(unit) {
-                UnitService.findById(unit).then(function(unit) {
-                    if (!unit) return;
-
-                    if (unit.type === '监理单位') {
-                        $scope.data.supervisor.unit = unit;
-                        UserService.findByUnitId(unit._id).then(function(users) {
-                            $scope.data.supervisor.users = users;
-                        });
-                    } else if (unit.type === '施工单位') {
-                        $scope.data.builder.unit = unit;
-                        UserService.findByUnitId(unit._id).then(function(users) {
-                            $scope.data.builder.users = users;
-                        });
-                    }
-                });
-            });
-        } else {
+        if (check.process.archives) {
             _.each(check.process.archives, function(archive) {
                 UserService.findById(archive.user).then(function(user) {
                     archive.user = user;
@@ -41,14 +23,80 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
             });
         }
 
-        UserService.findBySegmentId($scope.data.check.section._id).then(function(users) {
-            $scope.data.next.users = users;
+        UserService.findByUnitId($scope.data.user.unit._id).then(function(users) {
+            $scope.data.otherUsers = users;
         });
+
+        // 行业主管部门，则显示指挥部安全管理人员
+        if ($scope.data.user.role === 'administrator') {
+            UserService.find().then(function(users) {
+                $scope.data.next.users = _.filter(users, function(user) {
+                    return user.project &&
+                        user.project._id === check.project._id &&
+                        user.section &&
+                        user.section._id === check.section._id &&
+                        user.branch &&
+                        (user.branch.name === '指挥部' || user.branch.name === '项目部');
+                });
+            });
+        } else if ($scope.data.user.role === 'manager') {
+            UserService.find().then(function(users) {
+                $scope.data.next.users = _.filter(users, function(user) {
+                    return user.project &&
+                        user.project._id === check.project._id &&
+                        user.section &&
+                        user.section._id === check.section._id &&
+                        user.branch &&
+                        (user.branch.name !== '指挥部' && user.branch.name !== '项目部');
+                });
+            });
+        } else {
+            UserService.findByUnitId($scope.data.user.unit._id).then(function(users) {
+                $scope.data.next.users = users;
+            });
+        }
     });
+
+    $ionicModal.fromTemplateUrl('others-modal.html', {
+        scope: $scope,
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function($event) {
+        $scope.modal.show($event);
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+
+        $scope.data.others = [];
+        _.each($scope.data.otherUsers, function (item) {
+            if (item.checked) $scope.data.others.push(item);
+        });
+    };
 
     $scope.toBack = function() {
         $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
+        });
+    };
+
+    $scope.capture = function() {
+        function onSuccess(imageURI) {
+            $scope.data.images.push({
+                uri: imageURI,
+                date: Date.now()
+            });
+            $scope.$apply();
+        }
+
+        function onFail(message) {
+            alert(message);
+        }
+
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            saveToPhotoAlbum: true
         });
     };
 
@@ -197,12 +245,12 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
 
         var confirmPopup = $ionicPopup.confirm({
             title: '整改验收',
-            template: '安全整改验收是否通过？',
+            template: '安全整改验收是否确认通过？',
             buttons: [{
-                text: '不通过',
+                text: '取消',
                 type: 'button-default'
             }, {
-                text: '通过',
+                text: '确定',
                 type: 'button-positive',
                 onTap: function(e) {
                     return true;

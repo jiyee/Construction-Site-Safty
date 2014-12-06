@@ -1,4 +1,4 @@
-app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, CaptureService, UnitService, UserService, AuthService, resolveUser) {
+app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CaptureService, UnitService, UserService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.capture = {};
     $scope.data.user = resolveUser;
@@ -9,31 +9,13 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
     $scope.data.supervisor.unit = {};
     $scope.data.current = {};
     $scope.data.next = {};
+    $scope.data.images = [];
 
     CaptureService.findById($scope.data.captureId).then(function(capture) {
         $scope.data.capture = capture;
-        console.log(capture.process);
+        console.log(capture);
 
-        if (capture.process.archives && capture.process.archives.length === 0) {
-            var segment = ($scope.data.capture.branch || $scope.data.capture.section);
-            _.each(segment.units, function(unit) {
-                UnitService.findById(unit).then(function(unit) {
-                    if (!unit) return;
-
-                    if (unit.type === '监理单位') {
-                        $scope.data.supervisor.unit = unit;
-                        UserService.findByUnitId(unit._id).then(function(users) {
-                            $scope.data.supervisor.users = users;
-                        });
-                    } else if (unit.type === '施工单位') {
-                        $scope.data.builder.unit = unit;
-                        UserService.findByUnitId(unit._id).then(function(users) {
-                            $scope.data.builder.users = users;
-                        });
-                    }
-                });
-            });
-        } else {
+        if (capture.process.archives) {
             _.each(capture.process.archives, function(archive) {
                 UserService.findById(archive.user).then(function(user) {
                     archive.user = user;
@@ -41,14 +23,80 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
             });
         }
 
-        UserService.findBySegmentId($scope.data.capture.section._id).then(function(users) {
-            $scope.data.next.users = users;
+        UserService.findByUnitId($scope.data.user.unit._id).then(function(users) {
+            $scope.data.otherUsers = users;
         });
+
+        // 行业主管部门，则显示指挥部安全管理人员
+        if ($scope.data.user.role === 'administrator') {
+            UserService.find().then(function(users) {
+                $scope.data.next.users = _.filter(users, function(user) {
+                    return user.project &&
+                        user.project._id === capture.project._id &&
+                        user.section &&
+                        user.section._id === capture.section._id &&
+                        user.branch &&
+                        (user.branch.name === '指挥部' || user.branch.name === '项目部');
+                });
+            });
+        } else if ($scope.data.user.role === 'manager') {
+            UserService.find().then(function(users) {
+                $scope.data.next.users = _.filter(users, function(user) {
+                    return user.project &&
+                        user.project._id === capture.project._id &&
+                        user.section &&
+                        user.section._id === capture.section._id &&
+                        user.branch &&
+                        (user.branch.name !== '指挥部' && user.branch.name !== '项目部');
+                });
+            });
+        } else {
+            UserService.findByUnitId($scope.data.user.unit._id).then(function(users) {
+                $scope.data.next.users = users;
+            });
+        }
     });
+
+    $ionicModal.fromTemplateUrl('others-modal.html', {
+        scope: $scope,
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function($event) {
+        $scope.modal.show($event);
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+
+        $scope.data.others = [];
+        _.each($scope.data.otherUsers, function (item) {
+            if (item.checked) $scope.data.others.push(item);
+        });
+    };
 
     $scope.toBack = function() {
         $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
+        });
+    };
+
+    $scope.capture = function() {
+        function onSuccess(imageURI) {
+            $scope.data.images.push({
+                uri: imageURI,
+                date: Date.now()
+            });
+            $scope.$apply();
+        }
+
+        function onFail(message) {
+            alert(message);
+        }
+
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            saveToPhotoAlbum: true
         });
     };
 
@@ -90,7 +138,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
 
     $scope.reverse = function() {
         if (!$scope.data.current.comment) {
-            alert('请填写整改情况说明');
+            alert('请填写整改情况');
             return;
         }
 
@@ -100,6 +148,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'REVERSE'
                 }
             }
@@ -125,6 +174,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'BACKWARD'
                 }
             }
@@ -175,6 +225,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'RESTORE'
                 }
             }
@@ -197,12 +248,12 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
 
         var confirmPopup = $ionicPopup.confirm({
             title: '整改验收',
-            template: '安全整改验收是否通过？',
+            template: '安全整改验收是否确认通过？',
             buttons: [{
-                text: '不通过',
+                text: '取消',
                 type: 'button-default'
             }, {
-                text: '通过',
+                text: '确定',
                 type: 'button-positive',
                 onTap: function(e) {
                     return true;

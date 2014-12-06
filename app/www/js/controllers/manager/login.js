@@ -28,25 +28,9 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
 
         $scope.data.unit = unit;
 
-        if (unit.type === '施工单位') {
-            SegmentService.findByUnitId(unit._id).then(function(segments) {
-                $scope.data.sections = _.filter(segments, {type: '标段'});
-            });
-        } else {
-            UserService.findByUnitId(unit._id).then(function(users) {
-                $scope.data.users = users;
-            });
-        }
-    };
-
-    $scope.changeSection = function (section) {
-        if (!section) return;
-
-        $scope.data.section = section;
-
-        UserService.findBySegmentId(section._id).then(function(users) {
+        UserService.findByUnitId(unit._id).then(function(users) {
             $scope.data.users = _.filter(users, function (user) {
-                return user.unit.type === '施工单位';
+                return user.unit.type === unit.type;
             });
         });
     };

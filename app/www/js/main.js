@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic']);
 
-// var ipAddr = 'localhost';
-var ipAddr = '121.40.202.109';
+var ipAddr = 'localhost';
+// var ipAddr = '121.40.202.109';
 
 if (navigator.notification) {
     window.alert = navigator.notification.alert;
@@ -25,10 +25,8 @@ app.run(function($rootScope, $ionicPlatform) {
         function toggleConnection() {
             if (navigator.network.connection.type == Connection.NONE) {
                 app.constant('connection', 'offline');
-                navigator.notification.alert("Offline");
             } else {
                 app.constant('connection', 'Online');
-                navigator.notification.alert("Online");
             }
         }
     });

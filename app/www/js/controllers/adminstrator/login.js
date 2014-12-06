@@ -6,6 +6,8 @@ app.controller('AdministratorLoginCtrl', function($scope, $rootScope, $state, $s
 
     $scope.$watch('data.type', function (type) {
         $scope.data.units = _.filter($scope.data.resolveUnits, {'type': type});
+        $scope.data.unit = null;
+        $scope.data.users = [];
     });
 
     $scope.$watch('data.unit', function (unit) {

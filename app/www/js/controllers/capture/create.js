@@ -1,10 +1,11 @@
-app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
+app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, groups, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
     $scope.data.sections = [];
     $scope.data.branches = [];
-    $scope.data.categories = categories;
+    $scope.data.categories = _.uniq(categories, 'group');
+    $scope.data.groups = groups;
     $scope.data.images = [];
     $scope.data.center_x = 0;
     $scope.data.center_y = 0;
@@ -64,6 +65,13 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         });
     });
 
+    $scope.$watch('data.category', function (category) {
+        if (!category) return;
+
+        $scope.data.group = _.find($scope.data.groups, {name: category});
+        console.log($scope.data.group);
+    });
+
 
     var onSuccess = function(position) {
         $scope.data.center_x = position.coords.longitude;
@@ -89,11 +97,13 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             $scope.$apply();
         }
 
-        function onFail(message) {}
+        function onFail(message) {
+            alert(message);
+        }
 
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 75,
-            destinationType: Camera.DestinationType.FILE_URI,
+            destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true
         });
     };

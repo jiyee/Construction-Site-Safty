@@ -42,23 +42,13 @@
                     </div>
                 </div>
 
+                <div class="row" ng-if="data.capture.process.archives.length == 0" ng-click="openModal($event)">
+                    <hr>
+                    <div>检查人员：</div>
+                    <br>
+                    <div>{{ data.others | checked }}</div>
+                </div>
                 <hr>
-                <div class="row" ng-if="data.check.process.archives.length == 0">
-                    <div class="col">现场负责人：</div>
-                    <div class="col item-select">
-                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.builder.user" ng-options="item as item.name for item in data.builder.users">
-                            <option value="" selected>请选择现场负责人</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row" ng-if="data.check.process.archives.length == 0">
-                    <div class="col">监理负责人：</div>
-                    <div class="col item-select">
-                        <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.supervisor.user" ng-options="item as item.name for item in data.supervisor.users">
-                            <option value="" selected>请选择监理责任人</option>
-                        </select>
-                    </div>
-                </div>
 
                 <div class="row" ng-if="data.check.process.archives">
                     <div class="col">整改要求：</div>
@@ -71,18 +61,26 @@
                     <div class="col">整改责任人：</div>
                     <div class="col item-select">
                         <select style="max-width: 100%; padding: 5px 24px 5px 16px; border: 1px solid #eee;" ng-model="data.next.user" ng-options="item as item.name for item in data.next.users">
-                            <option value="" selected>请选择整改责任人</option>
+                            <option value="" selected></option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col" ng-if="data.check.process.archives.length == 0 || data.check.process.status == 'FORWARD' || data.check.process.status == 'REVERT'">整改情况说明：</div>
+                    <div class="col" ng-if="data.check.process.archives.length == 0 || data.check.process.status == 'FORWARD' || data.check.process.status == 'REVERT'">整改情况：</div>
                     <div class="col" ng-if="data.check.process.status == 'BACKWARD'">意见：</div>
                 </div>
                 <div class="row">
                     <textarea ng-model="data.current.comment" rows="5" style="border: 1px solid #eee;"></textarea>
                 </div>
+
+                <div class="list" ng-repeat="image in data.images">
+                    <img ng-src="{{image.uri}}" width="64" height="64">
+                </div>
+
+                <button class="button button-block button-positive" ng-click="capture()" ng-if="data.capture.process.status == 'BACKWARD' || data.capture.process.status == 'REVERT'">
+                    拍照
+                </button>
             </div>
 
             <div class="button-bar">
@@ -105,6 +103,22 @@
                     验收
                 </button>
             </div>
+
+            <script id="others-modal.html" type="text/ng-template">
+                <ion-modal-view>
+                    <ion-header-bar>
+                        <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
+                        <h1 class="title">其他检查人员</h1>
+                    </ion-header-bar>
+                    <ion-content>
+                        <div class="list">
+                            <ion-checkbox ng-repeat="item in data.otherUsers" ng-model="item.checked" ng-checked="item.checked">
+                                {{ item.name }}
+                            </ion-checkbox>
+                        </div>
+                    </ion-content>
+                </ion-modal-view>
+            </script>
         </div>
     </ion-content>
 </ion-view>

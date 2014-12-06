@@ -5,18 +5,18 @@
         <button class="button icon ion-cloud" ng-click="fullUpgrade()"></button>
     </ion-header-bar>
 
-    <ion-content>
-        <div class="list">
+    <ion-content padding="true">
+        <!-- <div class="list">
             <div class="item">
                 定位坐标：{{data.position[0] | number: 2}}, {{data.position[1] | number: 2}}
             </div>
-        </div>
+        </div> -->
 
         <div class="list user-status">
             <h2 class="item item-divider item-icon-left text-left"><i class="icon ion-home"></i>用户在线状态</h2>
 
             <div class="item item-complex" ng-if="data.usersAtSameGroup">
-                <div class="row">
+                <div class="row" style="overflow-y: scroll">
                     <div class="col col-20" ng-repeat="item in data.usersAtSameGroup">
                         <a ui-sref="contact({userId: item._id})"><i class="user-online"></i>{{item.name}}</a>
                     </div>
@@ -26,7 +26,7 @@
 
         <div class="list">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>安全检查</div>
-            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.category}}-{{item.name}}</div>
+            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.user.name}}-{{item.date | date: 'yyyy年MM月dd日'}}</div>
         </div>
 
         <div class="list">

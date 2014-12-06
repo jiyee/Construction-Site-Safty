@@ -64,16 +64,6 @@
             </div>
         </div>
 
-        <div ng-show="data.project && data.unit && data.unit.type === '施工单位'" ng-hide="data.section || data.unit.type !== '施工单位'">
-            <div class="list padding">
-                <div class="item item-complex" ng-repeat="section in data.sections" style="padding-left: {{section.level * 10}}px;">
-                    <div class="item-content item-icon-right" ng-click="changeSection(section)">
-                        <i class="icon ion-ios7-person-outline"></i>{{section.name}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div ng-show="data.project && data.users">
             <h2>{{project.name}}</h2>
 

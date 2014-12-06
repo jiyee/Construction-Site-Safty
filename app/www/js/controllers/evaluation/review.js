@@ -74,7 +74,9 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
             $scope.$apply();
         }
 
-        function onFail(message) {}
+        function onFail(message) {
+            alert(message);
+        }
 
         navigator.camera.getPicture(onSuccess, onFail, {
             quality: 75,

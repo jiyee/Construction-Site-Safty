@@ -39,18 +39,20 @@
                 <div class="input-label">
                     检查类别：
                 </div>
-                <select ng-model="data.category" ng-options="item.name as (item.index + ' ' + item.name) group by item.group for item in data.categories">
-                    <option value="" selected>请选择类别和细项</option>
+                <select ng-model="data.category" ng-options="item.group as item.group for item in data.categories">
+                    <option value="" selected>请选择类别</option>
                 </select>
             </label>
         </div>
 
         <div class="list">
-            <label class="item item-input">
+            <label class="item item-input item-select">
                 <div class="input-label">
-                    检查对象：
+                    存在问题：
                 </div>
-                <input type="text" ng-model="data.object">
+                <select ng-model="data.object" ng-options="item.name as item.name for item in data.group.items">
+                    <option value="" selected>请选择存在问题</option>
+                </select>
             </label>
         </div>
 
@@ -63,8 +65,8 @@
             </label>
         </div>
 
-        <div class="list" ng-repeat="image_url in data.images">
-            <img ng-src="{{image_url}}" width="64" height="64">
+        <div class="list" ng-repeat="image in data.images">
+            <img ng-src="{{image.uri}}" width="64" height="64">
         </div>
 
         <div class="button-bar">
