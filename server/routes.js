@@ -77,7 +77,7 @@ router.post('/table/:table_id/update', table.update);
 // 日常检查接口
 router.get('/checks', check.findByUser);
 router.get('/checks/all', check.findAll);
-router.get('/checks/list/:project_id/:segment_id/:start_date/:end_date', check.findByDate);
+router.get('/checks/list/:project_id/:section_id/:start_date/:end_date', check.findByDate);
 router.get('/check/:check_id', check.findById);
 router.post('/check/create', check.create);
 router.post('/check/:check_id/delete', check.delete);
@@ -97,7 +97,7 @@ router.post('/evaluation/:evaluation_id/update', evaluation.update);
 
 // 安全检查接口
 router.get('/captures/all', capture.findAll);
-router.get('/captures/list/:project_id/:segment_id/:start_date/:end_date', capture.findByDate);
+router.get('/captures/list/:project_id/:section_id/:start_date/:end_date', capture.findByDate);
 router.get('/capture/:capture_id', capture.findById);
 router.post('/capture/create', capture.create);
 router.post('/capture/:capture_id/delete', capture.delete);

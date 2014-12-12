@@ -5,23 +5,26 @@
     </ion-header-bar>
 
     <ion-content padding="true">
-        <h3>
-            隐藏：
+        <ul class="list">
+          <li class="item item-toggle">
+            关联安全检查：
             <label class="toggle">
-                <input type="checkbox" ng-init="hideUnselected = false" ng-model="hideUnselected">
+                <input type="checkbox" ng-init="isCaptures = false" ng-model="isCaptures" ng-change="syncCaptures(isCaptures)" ng-disabled="!allowSyncCaptures">
                 <div class="track">
                     <div class="handle"></div>
                 </div>
             </label>
-            <br>
+          </li>
+          <li class="item item-toggle">
             关联日常巡查：
             <label class="toggle">
-                <input type="checkbox" ng-init="syncCheck = false" ng-model="syncCheck" ng-change="toggleSync(syncCheck)">
+                <input type="checkbox" ng-init="isChecks = false" ng-model="isChecks" ng-change="syncChecks(isChecks)" ng-disabled="!allowSyncChecks">
                 <div class="track">
                     <div class="handle"></div>
                 </div>
             </label>
-        </h3>
+          </li>
+        </ul>
         <div ng-repeat="table in data.evaluation.tables">
             <h4>表{{$index + 1}}. {{table.name}}</h4>
             <ion-list>

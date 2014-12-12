@@ -36,7 +36,6 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
             // TODO 这里原取标段或分部
             CaptureService.list(project, section, start_date, end_date).then(function(captures) {
                 $scope.data.captures = captures;
-                console.log(captures);
             });
         });
     }
@@ -45,11 +44,11 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
     AutoService.findById($scope.data.tableId).then(function(table) {
         $scope.data.table = table;
 
-        _.each(table.items, function(item, key) {
-            if (item.index === $scope.data.itemId) {
-                _.each(item.items, function(subitem, key) {
-                    if (subitem.index === $scope.data.subItemId) {
-                        $scope.data.review = subitem;
+        _.each(table.items, function(level1) {
+            if (level1.index === $scope.data.itemId) {
+                _.each(level1.items, function(level2) {
+                    if (level2.index === $scope.data.subItemId) {
+                        $scope.data.review = level2;
                         return;
                     }
                 });

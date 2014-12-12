@@ -39,8 +39,7 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
             var evaluation = {};
             evaluation.project = $scope.data.evaluation.project._id;
             evaluation.section = $scope.data.evaluation.section._id;
-            evaluation.unit = $scope.data.evaluation.unit._id;
-            evaluation.wbs = $scope.data.evaluation.wbs;
+            evaluation.progress = $scope.data.evaluation.progress;
             evaluation.tables = [];
             _.each($scope.data.evaluation.tables, function(table) {
                 evaluation.tables.push(_.omit(table, ['_id', 'uuid', '_type_']));

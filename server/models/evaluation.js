@@ -22,7 +22,7 @@ var EvaluationSchema = new Schema({
 
     status: { type: String, enum: ['', 'START', 'END'] }, // 考核状态
 
-    wbs: [{ type: String }], // 分部、分享工程WBS分解阶段
+    progress: [{ type: String }], // progress分解阶段
 
     // 考核评价表
     tables: [{ type: Schema.Types.ObjectId, ref: 'Table' }], // 考核表，一次考核评价直接创建4张表
@@ -31,10 +31,10 @@ var EvaluationSchema = new Schema({
     updateAt: { type: Date, default: Date.now }, // 最近更新时间
 
     // 考核评价信息
+    users: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 考核人员，允许多人同时考核
     user: { type: Schema.Types.ObjectId, ref: 'User' }, // 考核人员
     date: { type: Date, default: Date.now }, // 考核日期
     comment: { type: String } // 存在问题
-    // users: [{ type: Schema.Types.ObjectId, ref: 'User' }] // 考核人员，允许多人同时考核
 });
 
 // 关联删除

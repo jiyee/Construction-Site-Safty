@@ -96,9 +96,9 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var deferred = $q.defer();
 
             var evaluationId = this.guid();
-            var wbs = opts.wbs || "";
+            var progress = opts.progress || "";
 
-            if (!wbs) {
+            if (!progress) {
                 deferred.reject('参数错误');
                 return deferred.promise;
             }
@@ -110,86 +110,50 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 tables = [];
             var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
-            $http.get('data/table/wbs.json')
-                .success(function(wbs_names) {
-                    var check_files = [];
-                    _.each(wbs, function(name) {
-                        var wbs_item = _.find(wbs_names, {
-                            "name": name
-                        });
-                        check_files = check_files.concat(wbs_item.files);
-                    });
+            var link_files = ['SGJC', 'SGXCTY'];
+            if (!!~progress.indexOf("桥梁工程") ||
+                !!~progress.indexOf("隧道工程") ||
+                !!~progress.indexOf("路基路面工程")) {
+                link_files.push('SGXCGL');
+            }
 
-                    _.each(check_files, function(file) {
-                        $http.get('data/table/' + file + '.json')
-                            .success(function(table) {
-                                _.each(table.items, function(item1) {
-                                    _.each(item1.items, function(item2) {
-                                        _.each(item2.items, function(item3) {
-                                            if (item3.link) {
-                                                links = links.concat(item3.link.split(','));
-                                            }
-                                        });
-                                    });
-                                });
+            if (!!~progress.indexOf("水运工程")) {
+                link_files.push('SGXCSY');
+            }
 
-                                $rootScope.$emit('link' + t);
-                            });
-                    });
+            _.each(link_files, function(file) {
+                $http.get('data/table/' + file + '.json')
+                    .success(function(proto) {
+                        table = _.extend({
+                            _type_: 'table',
+                            _id: that.guid(),
+                            uuid: that.guid(),
+                            createAt: Date.now(),
+                            file: file
+                        }, proto);
 
-                    var times = 0;
-                    $rootScope.$on('link' + t, function() {
-                        times += 1;
-
-                        if (times === check_files.length) {
-                            links = _.uniq(_.map(links, function(link) {
-                                return link.trim();
-                            }));
-
-                            $rootScope.$emit('links' + t, links);
-                        }
-                    });
-                });
-
-
-            $rootScope.$on('links' + t, function(evt, links) {
-                _.each(files, function(file) {
-                    $http.get('data/table/' + file + '.json')
-                        .success(function(proto) {
-                            table = _.extend({
-                                _type_: 'table',
-                                _id: that.guid(),
-                                uuid: that.guid(),
-                                createAt: Date.now(),
-                                file: file
-                            }, proto);
-
-                            _.each(table.items, function(item1) {
-                                _.each(item1.items, function(item2) {
-                                    _.each(item2.items, function(item3) {
-                                        var key = [file, item1.index, item2.index, item3.index].join('-');
-                                        if (!!~links.indexOf(key)) {
-                                            item2.is_selected = true;
-                                        }
-                                    });
+                        _.each(table.items, function(item1) {
+                            _.each(item1.items, function(item2) {
+                                _.each(item2.items, function(item3) {
+                                    item2.is_selected = true;
                                 });
                             });
-
-                            // 单独保存table
-                            that._save(table._id, table);
-                            $rootScope.$emit('table' + t, table);
-                        })
-                        .error(function(err) {
-                            deferred.reject(err);
                         });
-                });
+
+                        // 单独保存table
+                        that._save(table._id, table);
+                        $rootScope.$emit('table' + t, table);
+                    })
+                    .error(function(err) {
+                        deferred.reject(err);
+                    });
             });
 
             var times = 0;
             $rootScope.$on('table' + t, function(evt, table) {
                 times += 1;
                 tables.push(table);
-                if (times === files.length) {
+                if (times === link_files.length) {
                     $rootScope.$emit('tables' + t, tables);
                 }
             });
@@ -203,7 +167,6 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                     date: Date.now(),
                     tables: _.pluck(tables, '_id')
                 }, _.omit(opts, ['tables']));
-                console.log(evaluation);
 
                 // 保存到localstorage
                 // 单独保存evaluation
@@ -273,7 +236,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                         });
                     }
                     if (that.isOffline(value) && key != 'uuid' && key != '_id') {
-                       item[key] = that._restore(value);
+                        item[key] = that._restore(value);
                     }
                 });
                 deferred.resolve(item);

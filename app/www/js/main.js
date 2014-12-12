@@ -215,6 +215,13 @@ app.run(function($rootScope, $ionicPlatform) {
         controller: 'EvaluationDetailCtrl'
     })
 
+    // 创建评价数据同步页
+    .state('evaluation.sync', {
+        url: '/:evaluationId/sync',
+        templateUrl: 'templates/evaluation/sync.html',
+        controller: 'EvaluationSyncCtrl'
+    })
+
     // 考核评价推荐内容
     .state('evaluation.customize', {
         url: '/:evaluationId/customize',

@@ -19,6 +19,8 @@ var CaptureSchema = new Schema({
 
     unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 检查人员单位
     user: { type: Schema.Types.ObjectId, ref: 'User' }, // 检查人员
+    others: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 其他检查人员
+
     date: { type: Date, default: Date.now }, // 检查日期
     project: { type: Schema.Types.ObjectId, ref: 'Project'}, // 隶属项目，便于信息展示
     section: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 隶属的项目组成，标段

@@ -1,8 +1,8 @@
-app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, wbs, SegmentService, UnitService, OfflineService, AuthService, resolveUser, resolveProjects) {
+app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, SegmentService, OfflineService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
-    $scope.data.resolveWbs = wbs;
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
+    $scope.data.progress = [];
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -12,11 +12,6 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         });
     }
 
-    // 初始化wbs列表状态
-    _.each($scope.data.resolveWbs, function (item) {
-        item.checked = false;
-    });
-
     // 自动选中默认项目、标段、分部
     if ($scope.data.user.project) {
         $scope.data.project = _.find($scope.data.projects, {_id: $scope.data.user.project._id});
@@ -25,20 +20,7 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     $scope.$watch('data.project', function (project) {
         if (!project) return;
 
-        UnitService.findByProjectId(project._id).then(function(units) {
-            $scope.data.units = _.filter(units, {type: '施工单位'});
-
-            // 自动选中默认施工单位
-            if ($scope.data.user.unit && $scope.data.user.unit.type === '施工单位') {
-                $scope.data.unit = _.find($scope.data.units, {_id: $scope.data.user.unit._id});
-            }
-        });
-    });
-
-    $scope.$watch('data.unit', function(unit) {
-        if (!unit) return;
-
-        SegmentService.findByUnitId(unit._id).then(function(segments) {
+        SegmentService.findByProjectId(project._id).then(function(segments) {
             $scope.data.sections = _.filter(segments, {type: '标段'});
 
             if ($scope.data.user.section) {
@@ -52,7 +34,18 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         });
     });
 
-    $ionicModal.fromTemplateUrl('wbs-modal.html', {
+    // 默认进展
+    $scope.progress = [{
+        "name": '桥梁工程'
+    }, {
+        "name": '隧道工程'
+    }, {
+        "name": '路基路面工程'
+    }, {
+        "name": '水运工程'
+    }];
+
+    $ionicModal.fromTemplateUrl('progress-modal.html', {
         scope: $scope,
     }).then(function(modal) {
         $scope.modal = modal;
@@ -63,9 +56,9 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     $scope.closeModal = function() {
         $scope.modal.hide();
 
-        $scope.data.wbs = [];
-        _.each($scope.data.resolveWbs, function (item) {
-            if (item.checked) $scope.data.wbs.push(item.name);
+        $scope.data.progress = [];
+        _.each($scope.progress, function (item) {
+            if (item.checked) $scope.data.progress.push(item.name);
         });
     };
 
@@ -75,17 +68,12 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
             return;
         }
 
-        if (!$scope.data.unit) {
-            alert('请选择考核单位');
-            return;
-        }
-
         if (!$scope.data.section) {
             alert('请选择合同段');
             return;
         }
 
-        if (!$scope.data.wbs) {
+        if (!$scope.data.progress || $scope.data.progress.length === 0) {
             alert('请选择工程进展');
             return;
         }
@@ -93,12 +81,11 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
         OfflineService.newEvaluation({
             project: $scope.data.project,
             section: $scope.data.section,
-            unit: $scope.data.unit,
             user: $scope.data.user,
-            wbs: $scope.data.wbs,
+            progress: $scope.data.progress,
             object: 'builder' // TODO 目前仅有建设单位的考核评价，缺少监理单位和建设单位
         }).then(function(evaluation) {
-            $state.go('^.customize', {
+            $state.go('^.sync', {
                 evaluationId: evaluation.uuid
             });
         }, function(err) {

@@ -17,14 +17,6 @@
         </label>
         <label class="item item-input item-select">
             <span class="input-label">
-                施工单位：
-            </span>
-            <select ng-model="data.unit" ng-options="item as item.name for item in data.units">
-                <option value="" selected>请选择单位</option>
-            </select>
-        </label>
-        <label class="item item-input item-select">
-            <span class="input-label">
                 合同段：
             </span>
             <select ng-model="data.section" ng-options="item as item.name for item in data.sections">
@@ -35,18 +27,18 @@
             <span class="input-label">
                 工程进展：
             </span>
-            <span>{{ data.resolveWbs | checked }}</span>
+            <span>{{ data.progress.join(", ") }}</span>
         </label>
 
-        <script id="wbs-modal.html" type="text/ng-template">
+        <script id="progress-modal.html" type="text/ng-template">
             <ion-modal-view>
                 <ion-header-bar>
                     <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
-                    <h1 class="title">分部、分项工程</h1>
+                    <h1 class="title">工程进展</h1>
                 </ion-header-bar>
                 <ion-content>
                     <div class="list">
-                        <ion-checkbox ng-repeat="item in data.resolveWbs" ng-model="item.checked" ng-checked="item.checked">
+                        <ion-checkbox ng-repeat="item in progress" ng-model="item.checked" ng-checked="item.checked">
                             {{ item.name }}
                         </ion-checkbox>
                     </div>

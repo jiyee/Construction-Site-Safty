@@ -1,0 +1,49 @@
+<ion-view title="list">
+    <ion-header-bar align-title="center" class="bar-light">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">数据同步</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <ul class="list">
+            <li class="item item-input item-select" ng-click="openModal($event)">
+                <div class="input-label">
+                    关联人员：
+                </div>
+                <span>{{ data.usernames.join("、") }}</span>
+                <script id="users-modal.html" type="text/ng-template">
+                    <ion-modal-view>
+                        <ion-header-bar>
+                            <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
+                            <h1 class="title">关联人员</h1>
+                        </ion-header-bar>
+                        <ion-content>
+                            <div class="list">
+                                <ion-checkbox ng-repeat="item in users" ng-model="item.checked" ng-checked="item.checked">
+                                    {{ item.name }}
+                                </ion-checkbox>
+                            </div>
+                        </ion-content>
+                    </ion-modal-view>
+                </script>
+            </li>
+
+            <li class="item item-input item-select">
+                <div class="input-label">
+                    关联起始日期：
+                </div>
+                 <input type="date" ng-model="data.start_date">
+            </li>
+            <li class="item item-input item-select">
+                <div class="input-label">
+                    关联终止日期：
+                </div>
+                 <input type="date" ng-model="data.end_date">
+            </li>
+        </ul>
+
+        <button class="button button-block button-positive" ng-click="sync()">
+            同步数据
+        </button>
+    </ion-content>
+</ion-view>

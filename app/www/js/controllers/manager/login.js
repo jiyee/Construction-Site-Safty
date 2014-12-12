@@ -35,6 +35,19 @@ app.controller('ManagerLoginCtrl', function($scope, $rootScope, $state, $statePa
         });
     };
 
+    $scope.toBack = function () {
+        if ($scope.data.users && $scope.data.users.length > 0) {
+            $scope.data.unit = null;
+            $scope.data.users = [];
+        } else if ($scope.data.units && $scope.data.units.length > 0) {
+            $scope.data.project = null;
+            $scope.data.units = [];
+            $scope.data.users = [];
+        } else {
+            $state.go('welcome');
+        }
+    };
+
     $scope.login = function () {
         if (!$scope.data.username) {
             alert('请选择用户');

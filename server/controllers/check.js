@@ -115,7 +115,6 @@ exports.findByUser = function (req, res, next) {
 exports.findByDate = function (req, res, next) {
     var projectId = validator.trim(req.params.project_id);
     var sectionId = validator.trim(req.params.section_id);
-    var branchId = validator.trim(req.params.branch_id);
     var startDate = validator.trim(req.params.start_date);
     var endDate = validator.trim(req.params.end_date);
 
@@ -131,13 +130,8 @@ exports.findByDate = function (req, res, next) {
                 $gte: new Date(startDate),
                 $lt: new Date(endDate)
             }
-        },
-        select: 'uuid project section branch table user date target comment'
+        }
     };
-
-    if (branchId) {
-        options.conditions.branch = branchId;
-    }
 
     // 找出所在项目、标段、分部管辖下所有的日常巡查记录
     CheckModel.findBy(options, function (err, checks) {
