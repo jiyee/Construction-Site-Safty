@@ -10,7 +10,7 @@
             <div class="item text-center">
                 <p>检查编号：{{data.evaluation.uuid}}</p>
                 <p>检查日期：{{data.evaluation.date | date: 'yyyy年MM月dd日'}}</p>
-                <p>检查人：{{data.evaluation.user.name}}【{{data.evaluation.user.unit.name}}】</p>
+                <p>检查人：{{data.evaluation.user.name}}</p>
             </div>
 
             <div class="item item-body padding">
@@ -27,7 +27,7 @@
                     <div class="col">单位：{{data.evaluation.unit.name}}</div>
                 </div>
                 <div class="row">
-                    <div class="col">分部分项工程：{{data.evaluation.wbs.join("、")}}</div>
+                    <div class="col">工程进展：{{data.evaluation.progress.join("、")}}</div>
                 </div>
                 <div class="row">
                     <div class="col">存在隐患：</div>

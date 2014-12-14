@@ -41,6 +41,7 @@ router.post('/user/create', user.create);
 // 用户待办事项接口
 router.get('/process/:userId/captures', capture.findByProcessCurrentUserId);
 router.get('/process/:userId/checks', check.findByProcessCurrentUserId);
+router.get('/process/:userId/evaluations', evaluation.findByProcessCurrentUserId);
 
 // 部门接口
 router.get('/units/all', unit.findAll);

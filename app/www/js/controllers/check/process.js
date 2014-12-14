@@ -1,4 +1,4 @@
-app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, CheckService, UnitService, UserService, AuthService, resolveUser) {
+app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CheckService, UnitService, UserService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.check = {};
     $scope.data.user = resolveUser;

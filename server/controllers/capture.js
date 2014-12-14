@@ -155,10 +155,20 @@ exports.delete = function (req, res, next) {
 };
 
 exports.create = function(req, res, next) {
+    if (!req.session.user) {
+        return next(utils.getError(105));
+    }
+
     var capture = new CaptureModel(req.body);
     capture.uuid = Date.now();
     capture.createAt = Date.now();
     capture.updateAt = Date.now();
+
+    // 初始化流程
+    capture.process.updateAt = Date.now();
+    capture.process.active = false;
+    capture.process.status = '';
+    capture.process.current.user = req.session.user._id;
 
     capture.save(function(err, capture) {
         if (err) {

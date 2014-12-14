@@ -8,6 +8,7 @@
     <ion-content class="hide-on-keyboard-open" padding="false" scroll="false">
         <div id="map">
             <div id="geolocation" class="icon ion-pinpoint" style="width: 36px; height: 36px; position: absolute; bottom: 80px; left: 20px; z-index: 1000; font-size: 28px; line-height: 36px; text-align: center; background-color: white; color: darkcyan; border-radius: 4px;" ng-click="geolocation()"></div>
+            <p style="position: absolute; bottom: 10px; left: 50%; z-index: 1000; width: 96%; margin-left: -48%; min-height: 31px; height: 31px; line-height: 31px; border: 1px solid #145fd7; background-color: #fff; color: #000; padding: 0 8px;">{{data.properties.project}}-{{data.properties.section}}-{{data.properties.branch}}</p>
             <button class="button col" style="position: absolute; bottom: 130px; right: 16px; z-index: 1000; width: 100px; min-height: 31px; height: 31px; line-height: 31px; border-color: #145fd7; background-color: #4a87ee; color: #fff;padding: 0 8px; min-width: initial; min-height: 31px; font-weight: 400; font-size: 13px; line-height: 32px; " ng-click="">标准查询</button>
             <button class="button col" style="position: absolute; bottom: 80px; right: 16px; z-index: 1000; width: 100px; min-height: 31px; height: 31px; line-height: 31px; border-color: #145fd7; background-color: #4a87ee; color: #fff;padding: 0 8px; min-width: initial; min-height: 31px; font-weight: 400; font-size: 13px; line-height: 32px; " ng-click="">内业查询</button>
         </div>

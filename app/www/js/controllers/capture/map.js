@@ -1,7 +1,8 @@
-app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, SegmentService, CaptureService, AuthService, resolveUser, resolveProjects) {
+app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, ProjectService, SegmentService, CaptureService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.location = {};
     $scope.data.user = resolveUser;
+    $scope.data.properties = $scope.$parent.properties;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -12,11 +13,12 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     }
 
     $scope.data.map = {
-        center: [111.40068, 30.39583],
+        center: [112.71543299448, 29.996487271664],
         zoom: 12
     };
 
-    var center = ol.proj.transform($scope.data.map.center,
+
+    var center = ol.proj.transform($scope.$parent.location ? $scope.$parent.location : $scope.data.map.center,
        'EPSG:4326', 'EPSG:900913');
 
     var elMap = document.getElementById("map");
@@ -32,7 +34,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
        center: center,
        minZoom: 2,
        maxZoom: 16,
-       zoom: 10
+       zoom: $scope.$parent.zoom ? $scope.$parent.zoom : 10
     });
 
     function zeroPad(num, len, radix) {
@@ -47,17 +49,19 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         layers: [
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
-                    url: 'http://t{0-5}.tianditu.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
+                    url: 'data/map/tianditu/satellite/{z}/{x}/{y}.jpg'
+                    // url: 'http://t{0-5}.tianditu.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
                 })
             }),
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
-                    url: 'http://t{0-5}.tianditu.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
+                    url: 'data/map/tianditu/overlay_s/{z}/{x}/{y}.png'
+                    // url: 'http://t{0-5}.tianditu.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
                 })
             }),
             new ol.layer.Tile({
                 source: new ol.source.XYZ({
-                    url: 'data/map/YZ/tms/{z}/{x}/{y}.png'
+                    url: 'data/map/tms/{z}/{x}/{y}.png'
                })
             }),
         ],
@@ -67,9 +71,81 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         view: view
     });
 
+    var hiddenMap = new ol.Map({
+        layers: [
+            new ol.layer.Vector({
+                project: '宜张高速公路宜都至五峰段',
+                source: new ol.source.GeoJSON({
+                    projection : 'EPSG:4326',
+                    url: 'data/geojson/YZ-ROAD.geojson'
+                })
+            }),
+            new ol.layer.Vector({
+                project: '湖北监利至江陵高速公路',
+                source: new ol.source.GeoJSON({
+                    projection : 'EPSG:4326',
+                    url: 'data/geojson/JB-ROAD.geojson'
+                })
+            })
+        ],
+        // renderer: 'canvas',
+        // target: 'map',
+        logo: false,
+        view: view
+    });
+
     $scope.geolocation = function() {
-        geolocation.setTracking(true);
+        $scope.$parent.location = $scope.location = ol.proj.transform(map.getView().getCenter(),
+       'EPSG:900913', 'EPSG:4326');
+        $scope.$parent.zoom = map.getView().getZoom();
+        // geolocation.setTracking(true);
     };
+
+    $scope.$watch('location', function(location) {
+        var feature, properties, delta = Number.POSITIVE_INFINITY;
+        _.each(hiddenMap.getLayers().getArray(), function(layer) {
+            if (!ol.extent.containsCoordinate(layer.getSource().getExtent(), location)) return;
+
+            feature = layer.getSource().getClosestFeatureToCoordinate(location);
+
+            if (!feature || !feature.getProperties()) return;
+
+            $scope.data.properties = feature.getProperties();
+            $scope.data.properties.project = layer.getProperties().project;
+            if ($scope.data.properties && $scope.data.properties.name) {
+                $scope.data.properties.name = $scope.data.properties.name.replace('；', ';');
+                $scope.data.properties.object = $scope.data.properties.name.substr(0, $scope.data.properties.name.indexOf(';'));
+            }
+
+            $scope.$parent.properties = $scope.data.properties;
+
+
+            if ($scope.data.properties.project) {
+                ProjectService.find().then(function(projects) {
+                    $scope.$parent.data.project = _.find(projects, {
+                        name: $scope.data.properties.project
+                    });
+                    $scope.$parent.data.section = $scope.$parent.data.branch = null;
+
+                    if ($scope.data.properties.section) {
+                        SegmentService.findByProjectId($scope.$parent.data.project._id).then(function(segments) {
+                            $scope.$parent.data.section = _.find(segments, {
+                                name: $scope.data.properties.section + '段'
+                            });
+
+                            if ($scope.data.properties.branch) {
+                                SegmentService.findById($scope.$parent.data.section._id).then(function(segment) {
+                                    $scope.$parent.data.branch = _.find(segment.segments, {
+                                        name: $scope.data.properties.branch
+                                    });
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }, true);
 
     // var geolocation = new ol.Geolocation({
     //     projection: view.getProjection()
@@ -80,158 +156,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     //     map.getView().setZoom(16);
     // });
 
-    // var map = L.map('map', {
-    //     minZoom: 1,
-    //     maxZoom: 16
-    // }).setView($scope.data.map.center, $scope.data.map.zoom);
-
-    // // 底图图层，采用天地图数据
-    // L.tileLayer('data/map/YZ/tianditu/satellite/{z}/{x}/{y}.jpg', {
-    //     maxZoom: 16
-    // }).addTo(map);
-
-    // // 标注图层
-    // L.tileLayer('data/map/YZ/tianditu/overlay_s/{z}/{x}/{y}.png', {
-    //     maxZoom: 16
-    // }).addTo(map);
-
-    // // // 底图图层，采用天地图数据
-    // // L.tileLayer('http://t{s}.tianditu.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}', {
-    // //     subdomains: [0],
-    // //     maxZoom: 16
-    // // }).addTo(map);
-
-    // // // 标注图层
-    // // L.tileLayer('http://t{s}.tianditu.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}', {
-    // //     subdomains: [0],
-    // //     maxZoom: 16
-    // // }).addTo(map);
-
-    // // 道路线图层
-    // var YZGS_Polyline_Layer;
-    // L.Util.ajax("data/geojson/YZ-ROAD.geojson").then(function(data) {
-    //     function onEachFeature(feature, layer) {
-    //         if (feature.properties) {
-    //             layer.bindPopup([feature.properties.section, feature.properties.branch, feature.properties.name].join('-'));
-    //         }
-    //     }
-
-    //     YZGS_Polyline_Layer = L.geoJson(data, {
-    //         style: function (feature) {
-    //             if (!feature.properties.RefName) {
-    //                 return {
-    //                     "color": "#FFFF00",
-    //                     "weight": 5
-    //                 };
-    //             } else if (feature.properties.RefName === '路基') {
-    //                 return {
-    //                     "color": "#FFFF00",
-    //                     "weight": 5
-    //                 };
-    //             } else if (!!~feature.properties.RefName.indexOf('桥')) {
-    //                 return {
-    //                     "color": "#FF0000",
-    //                     "weight": 5
-    //                 };
-    //             } else if (!!~feature.properties.RefName.indexOf('隧道')) {
-    //                 return {
-    //                     "color": "#0000FF",
-    //                     "weight": 5
-    //                 };
-    //             } else {
-    //                 return {
-    //                     "color": "#FFFF00",
-    //                     "weight": 5
-    //                 };
-    //             }
-    //         },
-    //         onEachFeature: onEachFeature
-    //     }).addTo(map);
-    // });
-
-    // // L.Util.ajax("data/geojson/YZ-POINT.geojson").then(function(data) {
-    // //     L.geoJson(data, {
-    // //         pointToLayer: function(feature, latlng) {
-    // //             return L.circleMarker(latlng, {
-    // //                 radius: 4,
-    // //                 fillColor: "#FFFFFF",
-    // //                 color: "#000",
-    // //                 weight: 1,
-    // //                 opacity: 1,
-    // //                 fillOpacity: 0.8
-    // //             }).bindLabel(feature.properties.name, {
-    // //                 // noHide: true
-    // //             });
-    // //         }
-    // //     }).addTo(map);
-    // // });
-
-    // // 道路线图层
-    // var JBGS_Polyline_Layer;
-    // L.Util.ajax("data/geojson/JB-ROAD.geojson").then(function(data) {
-    //     function onEachFeature(feature, layer) {
-    //         if (feature.properties) {
-    //             layer.bindPopup([feature.properties.section, feature.properties.branch, feature.properties.name].join('-'));
-    //         }
-    //     }
-
-    //     JBGS_Polyline_Layer = L.geoJson(data, {
-    //         style: function (feature) {
-    //             if (!feature.properties.RefName) {
-    //                 return {
-    //                     "color": "#FFFF00",
-    //                     "weight": 5
-    //                 };
-    //             } else if (feature.properties.RefName === '路基') {
-    //                 return {
-    //                     "color": "#FFFF00",
-    //                     "weight": 5
-    //                 };
-    //             } else if (!!~feature.properties.RefName.indexOf('桥')) {
-    //                 return {
-    //                     "color": "#FF0000",
-    //                     "weight": 5
-    //                 };
-    //             } else if (!!~feature.properties.RefName.indexOf('隧道')) {
-    //                 return {
-    //                     "color": "#0000FF",
-    //                     "weight": 5
-    //                 };
-    //             } else {
-    //                 return {
-    //                     "color": "#FFFF00",
-    //                     "weight": 5
-    //                 };
-    //             }
-    //         },
-    //         onEachFeature: onEachFeature
-    //     }).addTo(map);
-    // });
-
-    // L.Util.ajax("data/geojson/JB-POINT.geojson").then(function(data) {
-    //     L.geoJson(data, {
-    //         pointToLayer: function(feature, latlng) {
-    //             return L.circleMarker(latlng, {
-    //                 radius: 4,
-    //                 fillColor: "#FFFFFF",
-    //                 color: "#000",
-    //                 weight: 1,
-    //                 opacity: 1,
-    //                 fillOpacity: 0.8
-    //             }).bindLabel(feature.properties.name, {
-    //                 // noHide: true
-    //             });
-    //         }
-    //     }).addTo(map);
-    // });
-
-
-    // 开启定位
-    // map.locate({setView: true, maxZoom: 16});
-
-    // map.setView([30.1855, 111.1790], 16);
-
-    // var locateMarker, locateCircle;
 
     // function onLocationFound(e) {
     //     var radius = e.accuracy / 2;
@@ -253,7 +177,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
     //     var tolerance = 1000,
     //         latlons = [],
-    //         closestDistance = Number.POSITIVE_INFINITY,
+    //         minDistance = Number.POSITIVE_INFINITY,
     //         layers = YZGS_Polyline_Layer.getLayers(),
     //         feature;
     //     _.each(layers, function(layer) {
@@ -261,15 +185,15 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     //         _.each(layer.feature.geometry.coordinates[0], function(coord) {
     //             latlons.push(L.latLng(coord[1], coord[0]));
     //             var distance = L.GeometryUtil.closest(map, latlons, e.latlng, true).distance;
-    //             if (distance < closestDistance) {
-    //                 closestDistance = distance;
+    //             if (distance < minDistance) {
+    //                 minDistance = distance;
     //                 feature = layer.feature;
     //             }
     //         });
     //     });
 
     //     var project, section, branch;
-    //     if (closestDistance < tolerance) {
+    //     if (minDistance < tolerance) {
     //         project = _.find(resolveProjects, {name: '湖北监利至江陵高速公路'});
     //         if (project) {
     //             section = _.find(_.filter(project.segments, {type: '标段'}), {name: feature.properties.section + '段'});

@@ -187,6 +187,7 @@ exports.create = function (req, res, next) {
         check.process.updateAt = Date.now();
         check.process.active = false;
         check.process.status = '';
+        check.process.current.user = req.session.user._id;
 
         check.save(function(err, newCheck) {
             if (err) {

@@ -9,6 +9,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     $scope.data.images = [];
     $scope.data.center_x = 0;
     $scope.data.center_y = 0;
+    $scope.data.object = $scope.$parent.properties ? $scope.$parent.properties.object : null;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -124,7 +125,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             return;
         }
 
-        if (!$scope.data.object || !$scope.data.images) {
+        if (!$scope.data.comment || !$scope.data.images) {
             alert('请填写检查对象或拍照存档');
             return;
         }

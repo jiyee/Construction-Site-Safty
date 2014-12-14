@@ -167,7 +167,7 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
 
             // 挂接所有的安全检查到对应表单的level3
             _.each(archives, function(item) {
-                if (!item.object) return;
+                if (!item.comment) return;
 
                 _.each($scope.data.evaluation.tables, function(table) {
                     _.each(table.items, function(level1) {
@@ -175,7 +175,7 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
 
                         _.each(level1.items, function(level2) {
                             _.each(level2.items, function(level3) {
-                                if (!!~level3.name.indexOf(item.object)) {
+                                if (!!~level3.name.indexOf(item.comment)) {
                                     level3.archives = level3.archives || [];
                                     level3.archives.push(item);
                                 }

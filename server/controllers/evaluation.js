@@ -75,6 +75,32 @@ exports.findByUserId = function(req, res, next) {
     });
 };
 
+exports.findByProcessCurrentUserId = function (req, res, next) {
+    var userId = validator.trim(req.params.userId);
+
+    if (!userId) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        conditions: {
+            'process.current.user': userId
+        }
+    };
+
+    EvaluationModel.findBy(options, function (err, evaluations) {
+        if (err) {
+            return next(err);
+        }
+
+        res.send({
+            'code': 0,
+            'status': 'success',
+            'evaluations': evaluations
+        });
+    });
+};
+
 exports.findByUser = function(req, res, next) {
     if (!req.session.user) {
         return next(utils.getError(105));
@@ -264,6 +290,12 @@ exports.create = function(req, res, next) {
         evaluation.uuid = Date.now();
         evaluation.tables = _.pluck(tables, '_id');
         evaluation.user = req.session.user._id;
+
+        // 初始化流程
+        evaluation.process.updateAt = Date.now();
+        evaluation.process.active = false;
+        evaluation.process.status = '';
+        evaluation.process.process.user = req.session.user._id;
 
         evaluation.save(function(err, evaluation) {
             if (err) {
