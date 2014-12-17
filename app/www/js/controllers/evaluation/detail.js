@@ -1,4 +1,4 @@
-app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $stateParams, settings, EvaluationService, OfflineService, AuthService, resolveUser) {
+app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, EvaluationService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.evaluation = {};
@@ -35,38 +35,72 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
     };
 
     $scope.save = function() {
-        if ($scope.data.isOffline) {
-            var evaluation = {};
-            evaluation.project = $scope.data.evaluation.project._id;
-            evaluation.section = $scope.data.evaluation.section._id;
-            evaluation.progress = $scope.data.evaluation.progress;
-            evaluation.tables = [];
-            _.each($scope.data.evaluation.tables, function(table) {
-                evaluation.tables.push(_.omit(table, ['_id', 'uuid', '_type_']));
-            });
-
-            // 真正创建在线数据
-            EvaluationService.create(evaluation).then(function(evaluation) {
-                alert('保存成功');
-
-                // 清空本地数据
-                OfflineService.remove($scope.data.evaluation._id);
-                _.each($scope.data.evaluation.tables, function(table) {
-                    OfflineService.remove(table._id);
-                });
-                $scope.toBack();
-            }, function(err) {
-                alert('保存失败');
-            });
-        } else {
-            // 实际修改在线数据
-            EvaluationService.update($scope.data.evaluationId, $scope.data.evaluation).then(function(evaluation) {
-                alert('保存成功');
-                $scope.toBack();
-            }, function(err) {
-                alert('保存失败');
-            });
+        if (!$scope.data.evaluation.project) {
+            alert('请选择检查项目');
+            return;
         }
+
+        if (!$scope.data.evaluation.section) {
+            alert('请选择合同段');
+            return;
+        }
+
+        if (!$scope.data.evaluation.progress) {
+            alert('请选择项目进度');
+            return;
+        }
+
+        var confirmPopup = $ionicPopup.confirm({
+            title: '保存同步提醒',
+            template: '保存同步将结束本次考评，进入流程环节，是否确认保存？',
+            buttons: [{
+                text: '取消',
+                type: 'button-default'
+            }, {
+                text: '确定',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return true;
+                }
+            }]
+        });
+
+        confirmPopup.then(function(res) {
+            if (res) {
+                if ($scope.data.isOffline) {
+                    var evaluation = {};
+                    evaluation.project = $scope.data.evaluation.project._id;
+                    evaluation.section = $scope.data.evaluation.section._id;
+                    evaluation.progress = $scope.data.evaluation.progress;
+                    evaluation.tables = [];
+                    _.each($scope.data.evaluation.tables, function(table) {
+                        evaluation.tables.push(_.omit(table, ['_id', 'uuid', '_type_']));
+                    });
+
+                    // 真正创建在线数据
+                    EvaluationService.create(evaluation).then(function(evaluation) {
+                        alert('保存成功');
+
+                        // 清空本地数据
+                        OfflineService.remove($scope.data.evaluation._id);
+                        _.each($scope.data.evaluation.tables, function(table) {
+                            OfflineService.remove(table._id);
+                        });
+                        $scope.toBack();
+                    }, function(err) {
+                        alert('保存失败');
+                    });
+                } else {
+                    // 实际修改在线数据
+                    EvaluationService.update($scope.data.evaluationId, $scope.data.evaluation).then(function(evaluation) {
+                        alert('保存成功');
+                        $scope.toBack();
+                    }, function(err) {
+                        alert('保存失败');
+                    });
+                }
+            }
+        });
     };
 
     $scope.toTable = function() {

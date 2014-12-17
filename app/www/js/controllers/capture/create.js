@@ -4,8 +4,8 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     $scope.data.projects = resolveProjects;
     $scope.data.sections = [];
     $scope.data.branches = [];
-    $scope.data.categories = _.uniq(categories, 'group');
-    $scope.data.groups = groups;
+    $scope.data.level1s = _.uniq(categories, 'group');
+    $scope.data.level2s = groups;
     $scope.data.images = [];
     $scope.data.center_x = 0;
     $scope.data.center_y = 0;
@@ -66,12 +66,11 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         });
     });
 
-    $scope.$watch('data.category', function (category) {
-        if (!category) return;
+    $scope.$watch('data.level1', function (level1) {
+        if (!level1) return;
 
-        $scope.data.group = _.find($scope.data.groups, {name: category});
+        $scope.data.level2 = _.find($scope.data.level2s, {name: level1});
     });
-
 
     var onSuccess = function(position) {
         $scope.data.center_x = position.coords.longitude;
@@ -119,25 +118,27 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             return;
         }
 
-        if (!$scope.data.category) {
-            alert('请选择类别和细项');
+        if (!$scope.data.level1) {
+            alert('请选择检查类别');
             return;
         }
 
-        if (!$scope.data.comment || !$scope.data.images) {
-            alert('请填写检查对象或拍照存档');
+        if (!$scope.data.level3 || !$scope.data.images) {
+            alert('请选择存在问题或拍照存档');
             return;
         }
 
         // 离线重构, 离线保存均保持对象，等到同步时保存_id
         OfflineService.newCapture({
-            object: $scope.data.object,
-            comment: $scope.data.comment,
             user: $scope.data.user,
-            category: $scope.data.category,
             project: $scope.data.project,
             section: $scope.data.section,
             branch: $scope.data.branch,
+            object: $scope.data.object,
+            level1: $scope.data.level1,
+            // level2: $scope.data.level2,
+            level3: $scope.data.level3,
+            comment: $scope.data.comment,
             images: $scope.data.images
         }).then(function(check) {
             alert('保存成功');

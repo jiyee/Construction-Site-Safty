@@ -82,7 +82,8 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                 _type_: 'capture',
                 _id: captureId,
                 uuid: captureId,
-                createAt: Date.now()
+                createAt: Date.now(),
+                date: Date.now()
             }, opts);
 
             that._save(capture._id, capture);
@@ -129,6 +130,7 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                             _id: that.guid(),
                             uuid: that.guid(),
                             createAt: Date.now(),
+                            date: Date.now(),
                             file: file
                         }, proto);
 

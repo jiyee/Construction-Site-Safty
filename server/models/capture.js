@@ -21,16 +21,19 @@ var CaptureSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' }, // 检查人员
     others: [{ type: Schema.Types.ObjectId, ref: 'User' }], // 其他检查人员
 
-    date: { type: Date, default: Date.now }, // 检查日期
+    date: { type: Date, default: Date.now }, // 检查汇总日期
     project: { type: Schema.Types.ObjectId, ref: 'Project'}, // 隶属项目，便于信息展示
     section: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 隶属的项目组成，标段
     branch: { type: Schema.Types.ObjectId, ref: 'Segment' }, // 隶属的项目组成，分部
 
     // 问题汇总
     archives: [{
-        object: { type: String, required: '{PATH}不能为空' }, // 检查对象
-        comment: { type: String }, // 检查问题
-        category: { type: String }, // 类别与细项
+        date: { type: Date, default: Date.now }, // 分项检查时间
+        object: { type: String }, // 检查对象
+        level1: { type: String }, // level1
+        level2: { type: String }, // level2
+        level3: { type: String }, // level3
+        comment: { type: String }, // 检查问题(手写)
         image: {
             uri: { type: String }, // 照片URI
             url: { type: String }, // 照片URL

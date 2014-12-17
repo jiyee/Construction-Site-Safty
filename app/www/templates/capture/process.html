@@ -27,13 +27,16 @@
                 <div ng-repeat="item in data.capture.archives">
                     <hr>
                     <div class="row">
-                        <div class="col">细项：{{item.category}}</div>
+                        <div class="col">日期：{{item.date | date: 'yyyy年MM月dd日'}}</div>
                     </div>
                     <div class="row">
                         <div class="col">对象：{{item.object}}</div>
                     </div>
                     <div class="row">
-                        <div class="col">存在隐患：{{item.comment}}</div>
+                        <div class="col">类别：{{item.level1}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">存在隐患：{{item.level3}} {{item.comment}}</div>
                     </div>
                     <div class="row">
                         <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64">
@@ -41,7 +44,6 @@
                 </div>
 
                 <div class="row" ng-if="data.capture.process.archives.length == 0" ng-click="openModal($event)">
-                    <hr>
                     <div>检查人员：</div>
                     <br>
                     <div>{{ data.others | checked }}</div>

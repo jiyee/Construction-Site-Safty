@@ -48,7 +48,7 @@
                 <div class="input-label">
                     检查类别：
                 </div>
-                <select ng-model="data.category" ng-options="item.group as item.group for item in data.categories">
+                <select ng-model="data.level1" ng-options="item.group as item.group for item in data.level1s">
                     <option value="" selected>请选择类别</option>
                 </select>
             </label>
@@ -56,7 +56,7 @@
                 <div class="input-label">
                     存在问题：
                 </div>
-                <select ng-model="data.comment" ng-options="item.name as item.name for item in data.group.items">
+                <select ng-model="data.level3" ng-options="item.name as item.name for item in data.level2.items">
                     <option value="" selected>请选择存在问题</option>
                 </select>
             </label>

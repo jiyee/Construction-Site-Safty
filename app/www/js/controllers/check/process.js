@@ -34,9 +34,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
                     return user.project &&
                         user.project._id === check.project._id &&
                         user.section &&
-                        user.section._id === check.section._id &&
-                        user.branch &&
-                        (user.branch.name === '指挥部' || user.branch.name === '项目部');
+                        user.section._id === check.section._id;
                 });
             });
         } else if ($scope.data.user.role === 'manager') {
@@ -45,9 +43,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
                     return user.project &&
                         user.project._id === check.project._id &&
                         user.section &&
-                        user.section._id === check.section._id &&
-                        user.branch &&
-                        (user.branch.name !== '指挥部' && user.branch.name !== '项目部');
+                        user.section._id === check.section._id;
                 });
             });
         } else {

@@ -38,7 +38,6 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
             var reLink = /(SGJC|SGXCTY|SGXCGL|SGXCSY)-([A-Z])-([A-Z][0-9]+)-([0-9])+/;
             var table, matches, file, level1, level2, level3;
             var checked_items = _.flatten(_.pluck($scope.data.syncData.checks, 'checked_items'));
-            // console.log(checked_items);
 
             // 挂接所有的日常巡查到对应表单的level3
             _.each(checked_items, function(item) {
@@ -82,101 +81,78 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
 
                 if (!level3) return;
 
-                console.log(item);
-
                 delete item._link;
 
-                level2.is_checked = true; // 标识是否已检查过
-                level2.is_selected = true; // 标识是否选中
+                item._type = 'check';
+
+                // level2.is_checked = true; // 标识是否已检查过
+                // level2.is_selected = true; // 标识是否选中
                 level3.is_checked = true;
                 level3.checked_items = level3.checked_items || [];
                 level3.checked_items.push(item);
-            });
-
-            // 同步计算得分
-            _.each($scope.data.evaluation.tables, function(table) {
-                _.each(table.items, function(level1) {
-                    _.each(level1.items, function(level2) {
-                        _.each(level2.items, function(level3) {
-                            var pass = 0,
-                                fail = 0,
-                                last_pass = true;
-
-                            if (level3.is_checked && level3.checked_items) {
-                                level3.checked_items.sort(function compareDate(a, b) {
-                                    return a.date - b.date;
-                                });
-
-                                if (level3.checked_items[0].score === '0') { // 最近一次合格
-                                    last_pass = true;
-                                } else if (level3.checked_items[0].score === '1') { // 最近一次不合格
-                                    last_pass = false;
-                                }
-
-                                _.each(level3.checked_items, function(item) {
-                                    if (item.score === '0') {
-                                        pass += 1;
-                                    } else if (item.score === '1') {
-                                        fail += 1;
-                                    }
-                                });
-
-                                if (last_pass) {
-                                    level3.score = Math.floor(level3.range[level3.range.length - 1] * pass / (pass + fail));
-                                } else {
-                                    level3.score = level3.range[level3.range.length - 1];
-                                }
-
-                                if (level3.score === 0) {
-                                    level3.status = 'PASS';
-                                } else {
-                                    level3.status = 'FAIL';
-                                }
-
-                                console.log(last_pass, pass, fail);
-                                console.log(level3.range);
-                                console.log(level3.score);
-                            }
-                        });
-                    });
-                });
+                console.log(item);
             });
         } else {
             _.each($scope.data.evaluation.tables, function(table) {
                 _.each(table.items, function(level1) {
                     _.each(level1.items, function(level2) {
                         _.each(level2.items, function(level3) {
-                            level3.status = 'UNCHECK';
-                            level3.score = null;
-                            level3.checked_items = [];
+                            _.each(level3.checked_items, function(item) {
+                                if (item._type === 'capture') {
+                                    item.is_checked = false;
+                                    item.score = null;
+                                    item.status = 'UNCHECK';
+                                }
+                            });
+
+                            level3.checked_items = _.filter(level3.checked_items, function(item) {
+                                return !item._type || item._type !== 'check';
+                            });
+
+                            if (_.isEmpty(level3.checked_items)) {
+                                // level2.is_checked = false;
+                                // level2.is_selected = false;
+                            }
+
+                            // level3.status = 'UNCHECK';
+                            // console.log(level3.checked_items);
                         });
                     });
                 });
             });
         }
+
+        calculateSyncScore();
     };
 
     $scope.syncCaptures = function (bool) {
         if (bool) {
             var archives = _.flatten(_.pluck($scope.data.syncData.captures, 'archives'));
-            console.log(archives);
 
             var reLink = /(SGJC|SGXCTY|SGXCGL|SGXCSY)-([A-Z])-([A-Z][0-9]+)-([0-9])+/;
             var table, file, level1, level2, level3;
 
             // 挂接所有的安全检查到对应表单的level3
             _.each(archives, function(item) {
-                if (!item.comment) return;
+                if (!item.level3) return;
 
                 _.each($scope.data.evaluation.tables, function(table) {
                     _.each(table.items, function(level1) {
-                        if (level1.name !== item.category) return;
+                        if (level1.name !== item.level1) return;
 
                         _.each(level1.items, function(level2) {
                             _.each(level2.items, function(level3) {
-                                if (!!~level3.name.indexOf(item.comment)) {
-                                    level3.archives = level3.archives || [];
-                                    level3.archives.push(item);
+                                if (!!~level3.name.indexOf(item.level3)) {
+                                    // level2.is_checked = true; // 标识是否已检查过
+                                    // level2.is_selected = true; // 标识是否选中
+                                    level3.is_checked = true;
+                                    level3.checked_items = level3.archives || [];
+                                    level3.checked_items.push({
+                                        date: item.date,
+                                        score: '1',
+                                        _type: 'capture'
+                                    });
+                                    console.log(item);
                                 }
                             });
                         });
@@ -188,13 +164,99 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
                 _.each(table.items, function(level1) {
                     _.each(level1.items, function(level2) {
                         _.each(level2.items, function(level3) {
-                            level3.archives = [];
+                            _.each(level3.checked_items, function(item) {
+                                if (item._type === 'capture') {
+                                    item.is_checked = false;
+                                    item.score = null;
+                                    item.status = 'UNCHECK';
+                                }
+                            });
+
+                            level3.checked_items = _.filter(level3.checked_items, function(item) {
+                                return !item._type || item._type !== 'capture';
+                            });
+
+                            if (_.isEmpty(level3.checked_items)) {
+                                // level2.is_checked = false;
+                                // level2.is_selected = false;
+                            } else {
+                                console.log(level3.checked_items);
+                            }
                         });
                     });
                 });
             });
         }
+
+        calculateSyncScore();
     };
+
+    // 同步计算得分
+    function calculateSyncScore() {
+        _.each($scope.data.evaluation.tables, function(table) {
+            _.each(table.items, function(level1) {
+                _.each(level1.items, function(level2) {
+                    _.each(level2.items, function(level3) {
+                        var pass = 0,
+                            fail = 0,
+                            last_pass = true;
+
+                        if (level3.is_checked && !_.isEmpty(level3.checked_items)) {
+                            level3.checked_items.sort(function compareDate(a, b) {
+                                return a.date - b.date;
+                            });
+
+                            if (level3.checked_items[0].score === '0') { // 最近一次合格
+                                last_pass = true;
+                            } else if (level3.checked_items[0].score === '1') { // 最近一次不合格
+                                last_pass = false;
+                            }
+
+                            _.each(level3.checked_items, function(item) {
+                                if (item.status === 'UNCHECK') {
+                                    return;
+                                }
+
+                                if (item.score === '0') {
+                                    pass += 1;
+                                } else if (item.score === '1') {
+                                    fail += 1;
+                                }
+                            });
+
+                            if (last_pass) {
+                                level3.score = Math.floor(level3.range[level3.range.length - 1] * fail / (pass + fail));
+
+                                if (!_.contains(level3.range, level3.score)) {
+                                    console.log(level3.score);
+                                    _.each(level3.range, function(score) {
+                                        if (score > level3.score) {
+                                            level3.score = score;
+                                            return;
+                                        }
+                                    });
+                                    console.log(level3.score);
+                                }
+                            } else {
+                                level3.score = level3.range[level3.range.length - 1];
+                            }
+
+                            if (level3.score === 0) {
+                                level3.status = 'PASS';
+                            } else {
+                                level3.status = 'FAIL';
+                            }
+
+                            console.log(last_pass, pass, fail);
+                            console.log(level3.range);
+                            console.log(level3.score);
+                            console.log(level3.status);
+                        }
+                    });
+                });
+            });
+        });
+    }
 
     $scope.toTable = function() {
         var counter = 0,

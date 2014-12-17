@@ -39,7 +39,7 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
     };
 
     $scope.save = function() {
-       if (!$scope.data.check.project) {
+        if (!$scope.data.check.project) {
             alert('请选择检查项目');
             return;
         }
@@ -59,36 +59,55 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
             return;
         }
 
-        if ($scope.data.isOffline) {
-            var check = {};
-            check.project = $scope.data.check.project._id;
-            check.section = $scope.data.check.section ? $scope.data.check.section._id : null;
-            check.branch = $scope.data.check.branch ? $scope.data.check.branch._id : null;
-            check.unit = $scope.data.check.user.unit._id;
-            check.user = $scope.data.check.user._id;
-            check.file = $scope.data.check.file;
-            check.object = $scope.data.check.object;
-            check.table = _.omit($scope.data.check.table, ['_id', 'uuid', '_type_']);
+        var confirmPopup = $ionicPopup.confirm({
+            title: '保存同步提醒',
+            template: '保存同步将结束本次考评，进入流程环节，是否确认保存？',
+            buttons: [{
+                text: '取消',
+                type: 'button-default'
+            }, {
+                text: '确定',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return true;
+                }
+            }]
+        });
 
-            // 真正创建在线数据
-            CheckService.create(check).then(function() {
-                // 清空本地数据
-                OfflineService.remove($scope.data.check._id);
+        confirmPopup.then(function(res) {
+            if (res) {
+                if ($scope.data.isOffline) {
+                    var check = {};
+                    check.project = $scope.data.check.project._id;
+                    check.section = $scope.data.check.section ? $scope.data.check.section._id : null;
+                    check.branch = $scope.data.check.branch ? $scope.data.check.branch._id : null;
+                    check.unit = $scope.data.check.user.unit._id;
+                    check.user = $scope.data.check.user._id;
+                    check.file = $scope.data.check.file;
+                    check.object = $scope.data.check.object;
+                    check.table = _.omit($scope.data.check.table, ['_id', 'uuid', '_type_']);
 
-                alert('保存成功');
-                $scope.toBack();
-            }, function(err) {
-                alert('保存失败');
-            });
-        } else {
-            // 实际修改在线数据
-            CheckService.update($scope.data.checkId, $scope.data.check).then(function() {
-                alert('保存成功');
-                $scope.toBack();
-            }, function(err) {
-                alert('保存失败');
-            });
-        }
+                    // 真正创建在线数据
+                    CheckService.create(check).then(function() {
+                        // 清空本地数据
+                        OfflineService.remove($scope.data.check._id);
+
+                        alert('保存成功');
+                        $scope.toBack();
+                    }, function(err) {
+                        alert('保存失败');
+                    });
+                } else {
+                    // 实际修改在线数据
+                    CheckService.update($scope.data.checkId, $scope.data.check).then(function() {
+                        alert('保存成功');
+                        $scope.toBack();
+                    }, function(err) {
+                        alert('保存失败');
+                    });
+                }
+            }
+        });
     };
 
     $scope.toTable = function() {

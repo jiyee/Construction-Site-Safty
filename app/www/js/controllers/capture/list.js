@@ -1,4 +1,4 @@
-app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, $ionicModal, settings, CaptureService, OfflineService, AuthService, resolveUser) {
+app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CaptureService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
 
@@ -75,29 +75,48 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
             return;
         }
 
-        var capture = {};
-        capture.project = _.first(_.keys(projectAt));
-        capture.section = _.first(_.keys(sectionAt));
-        capture.user = $scope.data.user._id;
-        capture.archives = [];
-        _.each(selected, function(item) {
-            capture.archives.push(_.pick(item, ['object', 'comment', 'category', 'images']));
+        var confirmPopup = $ionicPopup.confirm({
+            title: '汇总保存提醒',
+            template: '汇总保存将结束本次安全检查，进入流程环节，是否确认保存？',
+            buttons: [{
+                text: '取消',
+                type: 'button-default'
+            }, {
+                text: '确定',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return true;
+                }
+            }]
         });
 
-        // 真正创建在线数据
-        CaptureService.create(capture).then(function(capture) {
-            alert('保存成功');
+        confirmPopup.then(function(res) {
+            if (res) {
+                var capture = {};
+                capture.project = _.first(_.keys(projectAt));
+                capture.section = _.first(_.keys(sectionAt));
+                capture.user = $scope.data.user._id;
+                capture.archives = [];
+                _.each(selected, function(item) {
+                    capture.archives.push(_.pick(item, ['date', 'object', 'level1', 'level3', 'comment', 'images']));
+                });
 
-            // 清空本地数据
-            _.each(selected, function(item) {
-                OfflineService.remove(item._id);
-            });
-            // 重新加载服务器数据
-            $scope.load();
-            // 关闭弹窗
-            $scope.closeModal();
-        }, function(err) {
-            alert('保存失败');
+                // 真正创建在线数据
+                CaptureService.create(capture).then(function(capture) {
+                    alert('保存成功');
+
+                    // 清空本地数据
+                    _.each(selected, function(item) {
+                        OfflineService.remove(item._id);
+                    });
+                    // 重新加载服务器数据
+                    $scope.load();
+                    // 关闭弹窗
+                    $scope.closeModal();
+                }, function(err) {
+                    alert('保存失败');
+                });
+            }
         });
     };
 

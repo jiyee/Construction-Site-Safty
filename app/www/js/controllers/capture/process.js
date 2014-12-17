@@ -34,9 +34,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     return user.project &&
                         user.project._id === capture.project._id &&
                         user.section &&
-                        user.section._id === capture.section._id &&
-                        user.branch &&
-                        (user.branch.name === '指挥部' || user.branch.name === '项目部');
+                        user.section._id === capture.section._id;
                 });
             });
         } else if ($scope.data.user.role === 'manager') {
@@ -45,9 +43,9 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     return user.project &&
                         user.project._id === capture.project._id &&
                         user.section &&
-                        user.section._id === capture.section._id &&
-                        user.branch &&
-                        (user.branch.name !== '指挥部' && user.branch.name !== '项目部');
+                        user.section._id === capture.section._id;
+                        // user.branch &&
+                        // (user.branch.name !== '指挥部' && user.branch.name !== '项目部')
                 });
             });
         } else {

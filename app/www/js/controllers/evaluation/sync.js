@@ -11,6 +11,9 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
 
     UserService.findByUnitId($scope.data.user.unit._id).then(function(users) {
         $scope.users = users;
+        $scope.data.users = [_.find($scope.users, {name: $scope.data.user.name})];
+        $scope.data.users[0].checked = true;
+        $scope.data.usernames = [$scope.data.user.name];
     });
 
     $ionicModal.fromTemplateUrl('users-modal.html', {
@@ -42,18 +45,8 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
     $scope.data.start_date = [start_date.getFullYear(), start_date.getMonth() + 1, start_date.getDate()].join('-');
 
     $scope.sync = function() {
-        if (!$scope.data.evaluation) {
-            alert('参数错误');
-            return;
-        }
-
-        if (!$scope.data.evaluation.project) {
-            alert('请选择考核项目');
-            return;
-        }
-
-        if (!$scope.data.evaluation.section) {
-            alert('请选择合同段');
+        if (_.isEmpty($scope.data.users)) {
+            alert('请选择关联人员');
             return;
         }
 
@@ -75,12 +68,16 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
         $scope.$emit('sync', 'users');
 
         CaptureService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date, $scope.data.end_date).then(function(captures) {
-            $rootScope.data.evaluation[$scope.data.evaluationId].captures = captures;
+            $rootScope.data.evaluation[$scope.data.evaluationId].captures = _.filter(captures, function(capture) {
+                return capture.user && _.find($scope.data.users, {name: capture.user.name});
+            });
             $scope.$emit('sync', 'captures');
         });
 
         CheckService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date, $scope.data.end_date).then(function(checks) {
-            $rootScope.data.evaluation[$scope.data.evaluationId].checks = checks;
+            $rootScope.data.evaluation[$scope.data.evaluationId].checks = _.filter(checks, function(check) {
+                return check.user && _.find($scope.data.users, {name: check.user.name});
+            });
             $scope.$emit('sync', 'checks');
         });
     };

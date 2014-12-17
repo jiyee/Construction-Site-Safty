@@ -28,13 +28,13 @@
 
                 <div ng-if="data.isOffline">
                     <div class="row">
-                        <div class="col">细项：{{data.capture.category}}</div>
+                        <div class="col">类别：{{data.capture.level1}}</div>
                     </div>
                     <div class="row">
                         <div class="col">对象：{{data.capture.object}}</div>
                     </div>
                     <div class="row">
-                        <div class="col">存在隐患：{{data.capture.comment}}</div>
+                        <div class="col">存在隐患：{{data.capture.level3}} {{data.capture.comment}}</div>
                     </div>
                     <div class="row">
                         <img ng-src="{{image.uri}}" ng-repeat="image in data.capture.images" width="64" height="64">
@@ -44,13 +44,13 @@
                 <div ng-repeat="item in data.capture.archives" ng-if="!data.isOffline">
                     <hr>
                     <div class="row">
-                        <div class="col">细项：{{item.category}}</div>
+                        <div class="col">类别：{{item.level1}}</div>
                     </div>
                     <div class="row">
                         <div class="col">对象：{{item.object}}</div>
                     </div>
                     <div class="row">
-                        <div class="col">存在隐患：{{item.comment}}</div>
+                        <div class="col">存在隐患：{{item.level3}} {{item.comment}}</div>
                     </div>
                     <div class="row">
                         <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64">
