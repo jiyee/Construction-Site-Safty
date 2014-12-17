@@ -78,7 +78,7 @@
                     <img ng-src="{{image.uri}}" width="64" height="64">
                 </div>
 
-                <button class="button button-block button-positive" ng-click="capture()" ng-if="data.capture.process.status == 'BACKWARD' || data.capture.process.status == 'REVERT'">
+                <button class="button button-block button-positive" ng-click="capture()" ng-if="data.check.process.status == 'FORWARD' || data.check.process.status == 'BACKWARD' || data.check.process.status == 'REVERT'">
                     拍照
                 </button>
             </div>

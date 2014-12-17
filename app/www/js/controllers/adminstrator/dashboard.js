@@ -68,8 +68,27 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
     };
 
     $scope.logout = function() {
-        AuthService.logout().then(function() {
-            $state.go('welcome');
+        var confirmPopup = $ionicPopup.confirm({
+            title: '退出提醒',
+            template: '是否确认退出，再次登录需要联网？',
+            buttons: [{
+                text: '取消',
+                type: 'button-default'
+            }, {
+                text: '确定',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return true;
+                }
+            }]
+        });
+
+        confirmPopup.then(function(res) {
+            if (res) {
+                AuthService.logout().then(function() {
+                    $state.go('welcome');
+                });
+            }
         });
     };
 });

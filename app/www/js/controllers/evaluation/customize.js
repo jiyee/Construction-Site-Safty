@@ -17,7 +17,6 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
 
     OfflineService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
-        console.log(evaluation);
     });
 
     function find(collections, condition) {

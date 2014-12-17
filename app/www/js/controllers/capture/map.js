@@ -88,10 +88,10 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
                 })
             })
         ],
-        // renderer: 'canvas',
         // target: 'map',
-        logo: false,
-        view: view
+        renderer: 'svg',
+        logo: false
+        // view: view
     });
 
     $scope.geolocation = function() {

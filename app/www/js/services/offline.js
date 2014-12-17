@@ -133,6 +133,13 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                         }, proto);
 
                         _.each(table.items, function(item1) {
+                            // 表3对应桥梁、隧道、路基路面只选择对应的, 不是整表
+                            if (file === 'SGXCGL' &&
+                                ((item1.name === '桥梁工程' && !~progress.indexOf("桥梁工程")) ||
+                                (item1.name === '隧道工程' && !~progress.indexOf("隧道工程")) ||
+                                (item1.name === '边坡工程' && !~progress.indexOf("路基路面工程")) ||
+                                (item1.name === '路面工程' && !~progress.indexOf("路基路面工程")))
+                                ) return;
                             _.each(item1.items, function(item2) {
                                 _.each(item2.items, function(item3) {
                                     item2.is_selected = true;

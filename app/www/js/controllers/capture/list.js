@@ -12,7 +12,10 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
 
     $scope.load = function() {
         CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
-            $scope.data.captures = captures;
+            // 只显示已经处理完的
+            $scope.data.captures = _.filter(captures, function(capture) {
+                return capture.process && capture.process.status === 'END';
+            });
         });
 
         OfflineService.list('capture').then(function(captures) {

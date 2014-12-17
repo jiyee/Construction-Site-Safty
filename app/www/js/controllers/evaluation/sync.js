@@ -83,8 +83,6 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
             $rootScope.data.evaluation[$scope.data.evaluationId].checks = checks;
             $scope.$emit('sync', 'checks');
         });
-
-        console.log($rootScope.data.evaluation);
     };
 
     $scope.$on('sync', function(evt, type) {

@@ -7,7 +7,7 @@
     <ion-content padding="true">
         <ul class="list">
           <li class="item item-toggle">
-            关联安全检查：
+            关联安全检查 [{{data.syncData.captures.length || 0}}条]：
             <label class="toggle">
                 <input type="checkbox" ng-init="isCaptures = false" ng-model="isCaptures" ng-change="syncCaptures(isCaptures)" ng-disabled="!allowSyncCaptures">
                 <div class="track">
@@ -16,7 +16,7 @@
             </label>
           </li>
           <li class="item item-toggle">
-            关联日常巡查：
+            关联日常巡查 [{{data.syncData.checks.length || 0}}条]：
             <label class="toggle">
                 <input type="checkbox" ng-init="isChecks = false" ng-model="isChecks" ng-change="syncChecks(isChecks)" ng-disabled="!allowSyncChecks">
                 <div class="track">

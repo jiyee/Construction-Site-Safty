@@ -4,7 +4,9 @@ app.controller('CheckListCtrl', function($scope, $rootScope, $state, $stateParam
     $scope.data.checks = [];
 
     CheckService.findByUserId($scope.data.user._id).then(function(checks) {
-        $scope.data.checks = checks;
+        $scope.data.checks = _.filter(checks, function(check) {
+            return check.process && check.process.status === 'END';
+        });
     });
 
     OfflineService.list('check').then(function(checks) {

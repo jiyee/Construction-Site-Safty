@@ -70,7 +70,6 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         if (!category) return;
 
         $scope.data.group = _.find($scope.data.groups, {name: category});
-        console.log($scope.data.group);
     });
 
 

@@ -110,13 +110,17 @@ exports.findByDate = function (req, res, next) {
         return next(utils.getError(101));
     }
 
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+    endDate = endDate.setDate(endDate.getDate() + 1);
+
     var options = {
         conditions: {
             project: projectId,
             section: sectionId,
             createAt: {
-                $gte: new Date(startDate),
-                $lt: new Date(endDate)
+                $gte: startDate,
+                $lt: endDate
             }
         }
     };

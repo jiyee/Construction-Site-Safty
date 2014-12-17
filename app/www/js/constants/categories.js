@@ -121,12 +121,12 @@ app.constant('categories', [{
 }, {
     "index": "6.1",
     "name": "边坡施工",
-    "group": "路面路基工程",
+    "group": "路基路面工程",
     "linked": true
 }, {
     "index": "7.1",
     "name": "路面施工",
-    "group": "路面工程",
+    "group": "路基路面工程",
     "linked": false
 }, {
     "index": "8.1",

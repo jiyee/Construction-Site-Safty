@@ -60,6 +60,12 @@
                     <option value="" selected>请选择存在问题</option>
                 </select>
             </label>
+            <label class="item item-input">
+                <div class="input-label">
+                    存在问题(手写)：
+                </div>
+            </label>
+            <textarea ng-model="data.comment" rows="5" style="border: 1px solid #eee; padding: 15px;"></textarea>
         </div>
 
         <div class="list" ng-repeat="image in data.images">

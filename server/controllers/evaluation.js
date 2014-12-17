@@ -295,7 +295,7 @@ exports.create = function(req, res, next) {
         evaluation.process.updateAt = Date.now();
         evaluation.process.active = false;
         evaluation.process.status = '';
-        evaluation.process.process.user = req.session.user._id;
+        evaluation.process.current.user = req.session.user._id;
 
         evaluation.save(function(err, evaluation) {
             if (err) {
