@@ -69,14 +69,14 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
 
         CaptureService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date, $scope.data.end_date).then(function(captures) {
             $rootScope.data.evaluation[$scope.data.evaluationId].captures = _.filter(captures, function(capture) {
-                return capture.user && _.find($scope.data.users, {name: capture.user.name});
+                return capture.process && capture.process.status !== 'END' && capture.user && _.find($scope.data.users, {name: capture.user.name}); // 过滤选择用户，且流程已走完，表示整改完成
             });
             $scope.$emit('sync', 'captures');
         });
 
         CheckService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date, $scope.data.end_date).then(function(checks) {
             $rootScope.data.evaluation[$scope.data.evaluationId].checks = _.filter(checks, function(check) {
-                return check.user && _.find($scope.data.users, {name: check.user.name});
+                return check.process &&  check.process.status !== 'END' && check.user && _.find($scope.data.users, {name: check.user.name});
             });
             $scope.$emit('sync', 'checks');
         });

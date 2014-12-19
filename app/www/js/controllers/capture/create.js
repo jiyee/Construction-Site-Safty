@@ -1,11 +1,11 @@
-app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, groups, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
+app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
     $scope.data.sections = [];
     $scope.data.branches = [];
-    $scope.data.level1s = _.uniq(categories, 'group');
-    $scope.data.level2s = groups;
+    $scope.data.level1s = _.uniq(categories, 'name');
+    $scope.data.level2s = categories;
     $scope.data.images = [];
     $scope.data.center_x = 0;
     $scope.data.center_y = 0;

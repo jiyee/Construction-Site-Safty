@@ -40,7 +40,9 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     }, {
         "name": '隧道工程'
     }, {
-        "name": '路基路面工程'
+        "name": '路基工程'
+    }, {
+        "name": '路面工程'
     }, {
         "name": '水运工程'
     }];

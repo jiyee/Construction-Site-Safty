@@ -152,10 +152,12 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     // });
 
     // geolocation.on('change', function() {
+    //     $scope.$parent.location = $scope.location = ol.proj.transform(geolocation.getPosition(), 'EPSG:900913', 'EPSG:4326');
     //     map.getView().setCenter(geolocation.getPosition());
-    //     map.getView().setZoom(16);
+    //     map.getView().setZoom(14);
     // });
 
+    // geolocation.setTracking(true);
 
     // function onLocationFound(e) {
     //     var radius = e.accuracy / 2;

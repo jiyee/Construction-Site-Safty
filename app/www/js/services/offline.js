@@ -114,7 +114,8 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
             var link_files = ['SGJC', 'SGXCTY'];
             if (!!~progress.indexOf("桥梁工程") ||
                 !!~progress.indexOf("隧道工程") ||
-                !!~progress.indexOf("路基路面工程")) {
+                !!~progress.indexOf("路基工程") ||
+                !!~progress.indexOf("路面工程")) {
                 link_files.push('SGXCGL');
             }
 
@@ -139,8 +140,8 @@ app.factory('OfflineService', function($rootScope, $http, $q, $window, settings)
                             if (file === 'SGXCGL' &&
                                 ((item1.name === '桥梁工程' && !~progress.indexOf("桥梁工程")) ||
                                 (item1.name === '隧道工程' && !~progress.indexOf("隧道工程")) ||
-                                (item1.name === '边坡工程' && !~progress.indexOf("路基路面工程")) ||
-                                (item1.name === '路面工程' && !~progress.indexOf("路基路面工程")))
+                                (item1.name === '边坡工程' && !~progress.indexOf("路基工程")) ||
+                                (item1.name === '路面工程' && !~progress.indexOf("路面工程")))
                                 ) return;
                             _.each(item1.items, function(item2) {
                                 _.each(item2.items, function(item3) {
