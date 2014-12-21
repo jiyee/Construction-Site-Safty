@@ -1,11 +1,11 @@
-app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, settings, categories, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
+app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, categories, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
     $scope.data.sections = [];
     $scope.data.branches = [];
     $scope.data.level1s = _.uniq(categories, 'name');
-    $scope.data.level2s = categories;
+    $scope.data.categories = categories;
     $scope.data.images = [];
     $scope.data.center_x = 0;
     $scope.data.center_y = 0;
@@ -66,10 +66,29 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         });
     });
 
-    $scope.$watch('data.level1', function (level1) {
-        if (!level1) return;
+    $scope.$watch('data.level1', function (name) {
+        if (!name) return;
 
-        $scope.data.level2 = _.find($scope.data.level2s, {name: level1});
+        var category = _.find($scope.data.categories, {name: name});
+        $scope.level1 = {
+            "name": name,
+            "items": []
+        };
+        var groups = _.uniq(_.pluck(category.items, 'group'));
+        _.each(groups, function(item) {
+            $scope.level1.items.push({
+                "name": item,
+                "items": []
+            });
+        });
+
+        _.each(category.items, function(item) {
+            if (!_.contains(groups, item.group)) return;
+
+            _.find($scope.level1.items, {"name": item.group}).items.push({
+                "name": item.name
+            });
+        });
     });
 
     var onSuccess = function(position) {
@@ -88,12 +107,34 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
 
     $scope.capture = function() {
         function onSuccess(imageURI) {
-            $scope.data.images.push({
+            var image = {
                 uri: imageURI,
                 date: Date.now(),
                 center: [$scope.data.center_x, $scope.data.center_y]
-            });
+            };
+            $scope.data.images.push(image);
             $scope.$apply();
+
+            // Specify transfer options
+            // var options = new FileUploadOptions();
+            // options.fileKey = "file";
+            // options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+            // options.mimeType = "image/jpeg";
+            // options.chunkedMode = false;
+
+            // // Transfer picture to server
+            // var ft = new FileTransfer();
+            // ft.upload(imageURI, settings.baseUrl + '/upload/image', function(res) {
+            //     if (res && res.response) {
+            //         try {
+            //             var response =JSON.parse(res.response);
+            //             image.url = response.imageURL;
+            //             alert(image.url);
+            //         } catch(ex) {}
+            //     }
+            // },
+            // function(err) {
+            // }, options);
         }
 
         function onFail(message) {
@@ -105,6 +146,46 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true
         });
+    };
+
+    $ionicModal.fromTemplateUrl('level3-modal.html', {
+        scope: $scope,
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function($event) {
+        if (!$scope.data.level1) return;
+        $scope.modal.show($event);
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+
+        $scope.data.level3 = '';
+        _.each($scope.level1.items, function(level2) {
+            _.each(level2.items, function(level3) {
+                if (level3.selected) $scope.data.level3 = level3.name;
+            });
+        });
+    };
+
+    $scope.ifHideSubItems = {};
+    $scope.toggle = function(index, item) {
+        if ($scope.ifHideSubItems[item.name] === undefined) {
+            $scope.ifHideSubItems[item.name] = true;
+        } else {
+            $scope.ifHideSubItems[item.name] = !$scope.ifHideSubItems[item.name];
+        }
+    };
+    $scope.select = function(index, level2, level3) {
+        if (!$scope.level1) return;
+
+        _.each($scope.level1.items, function(level2) {
+            _.each(level2.items, function(level3) {
+                level3.selected = false;
+            });
+        });
+
+        level3.selected = true;
     };
 
     $scope.save = function() {

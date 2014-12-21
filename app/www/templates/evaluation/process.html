@@ -33,8 +33,8 @@
                 </div>
                 <div class="col assertive" ng-repeat="item in data.evaluation.fails">
                     {{$index + 1}}. ({{item.index}}) {{item.comments}}
-                    <div>
-                        <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64">
+                    <div style="padding: 6px;">
+                        <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64" style="margin-right: 12px;">
                     </div>
                 </div>
 

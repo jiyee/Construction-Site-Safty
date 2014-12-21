@@ -1,41 +1,30 @@
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var fs = require('fs');
+var path = require("path");
 var formidable = require('formidable');
 
 exports.image = function(req, res, next) {
     var form = new formidable.IncomingForm();
 
-    form.parse(req, function(err, fields, files) {
-        console.log('start form');
-        if (err) {
-            console.log(err);
-            res.send(err);
-            return;
-        }
+    form.uploadDir = './public/upload/';
 
-        //logs the file information
-        console.log(JSON.stringify(files));
-
-        console.log(files.file);
-
-        console.log('end');
-
-        fs.rename(files.file.path, "/images/a.jpg", function(err) {
-            if (err) {
-                fs.unlink("/images/a.jpg");
-                fs.rename(files.file.path, "/images/a.jpg");
-            }
+    var fileName;
+    form.on('file', function(field, file) {
+            fileName = file.name;
+            fs.rename(file.path, form.uploadDir + "/" + file.name);
+        })
+        .on('error', function(err) {
+            next(err);
+        })
+        .on('aborted', function(err) {})
+        .on('end', function() {
+            res.send({
+                "status": 200,
+                'code': 0,
+                "imageURL": 'http://121.40.202.109:3000/upload/' + fileName
+            });
         });
 
-        res.send({
-            imageURL: '/images/a.jpg'
-        });
-    });
-
-    form.onPart = function(part) {
-        part.addListener('data', function() {
-            console.log('ondata');
-        });
-    };
+    form.parse(req, function() {});
 };

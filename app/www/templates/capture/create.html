@@ -52,13 +52,11 @@
                     <option value="" selected>请选择类别</option>
                 </select>
             </label>
-            <label class="item item-input item-select">
+            <label class="item item-input item-select" ng-click="openModal($event)">
                 <div class="input-label">
                     存在问题：
                 </div>
-                <select ng-model="data.level3" ng-options="item.name as item.name group by item.group for item in data.level2.items">
-                    <option value="" selected>请选择存在问题</option>
-                </select>
+                <span>{{ data.level3 }}</span>
             </label>
             <label class="item item-input">
                 <div class="input-label">
@@ -68,9 +66,32 @@
             <textarea ng-model="data.comment" rows="5" style="border: 1px solid #eee; padding: 15px;"></textarea>
         </div>
 
-        <div class="list" ng-repeat="image in data.images">
-            <img ng-src="{{image.uri}}" width="64" height="64">
+        <div style="padding: 6px;">
+            <img ng-src="{{image.uri}}" ng-repeat="image in data.images" width="64" height="64" style="margin-right: 12px;">
         </div>
+
+        <!-- <div style="padding: 6px;">
+            <img ng-src="{{image.url}}" ng-repeat="image in data.images" width="64" height="64" style="margin-right: 12px;">
+        </div> -->
+
+        <script id="level3-modal.html" type="text/ng-template">
+            <ion-modal-view>
+                <ion-header-bar>
+                    <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
+                    <h1 class="title">存在问题</h1>
+                </ion-header-bar>
+                <ion-content>
+                    <ion-item ng-repeat-start="level2 in level1.items" class="item-icon-right item" style="background-color: #eee; font-weight: bold;" ng-click="toggle($index, level2)">
+                        <i class="icon ion-chevron-right" style="font-size: 16px; -webkit-transform: rotate({{ifHideSubItems[level2.name]|rotate}});"></i>
+                        {{$index + 1}}. {{level2.name}}
+                    </ion-item>
+                    <ion-item ng-hide="ifHideSubItems[level2.name] == true" ng-repeat="level3 in level2.items" class="item-icon-right item sub-item-{{level2.name}}" ng-click="select($index, level2, level3)" ng-repeat-end>
+                        <i class="ion-checkmark balanced" style="font-size: 16px;" ng-show="level3.selected"></i>
+                        {{level3.name}}
+                    </ion-item>
+                </ion-content>
+            </ion-modal-view>
+        </script>
 
         <div class="button-bar">
             <button class="button button-block button-positive" ng-click="capture()">

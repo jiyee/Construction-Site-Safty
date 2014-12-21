@@ -141,10 +141,10 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         layersGroup.JB = data;
         layersGroup.JB.project = '湖北监利至江陵高速公路';
     });
-    // L.Util.ajax("data/geojson/YZ-ROAD.geojson").then(function(data) {
-    //     layersGroup.YZ = data;
-    //     layersGroup.YZ.project = '宜张高速公路宜都至五峰段';
-    // });
+    L.Util.ajax("data/geojson/YZ-ROAD.geojson").then(function(data) {
+        layersGroup.YZ = data;
+        layersGroup.YZ.project = '宜张高速公路宜都至五峰段';
+    });
 
     $scope.$watch('location', function(location) {
         var feature, properties, tolerance = 1000, delta = Number.POSITIVE_INFINITY;
