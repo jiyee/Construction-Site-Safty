@@ -1,4 +1,4 @@
-{
+var MapJB = {
     "type": "FeatureCollection",
     "crs": {
         "type": "name",
@@ -24558,4 +24558,4 @@
             ]
         }
     }]
-}
+};

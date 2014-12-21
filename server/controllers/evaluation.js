@@ -206,61 +206,6 @@ exports.update = function(req, res, next) {
 
         TableModel.findBy(options, function(err, root) {
 
-            // extend: table -> root
-            // 直接复制存在问题, 需要逐条复制
-            var src1 = table.items,
-                src2,
-                src3,
-                dest1 = root.items,
-                dest2,
-                dest3,
-                key2,
-                key3,
-                ret = {};
-
-            // 提取出所有item3条目
-            // TODO 这里的key取值可能是有问题的
-            _.each(src1, function(item1) {
-                src2 = item1.items;
-                _.each(src2, function(item2) {
-                    src3 = item2.items;
-                    key2 = [item1.index, item2.index].join('-');
-
-                    ret[key2] = {
-                        is_checked: item2.is_checked,
-                        is_selected: item2.is_selected,
-                    };
-                    _.each(src3, function(item3) {
-                        key3 = [item1.index, item2.index, item3.index].join('-');
-
-                        ret[key3] = {
-                            status: item3.status,
-                            score: item3.score,
-                            comments: item3.comments,
-                            image_url: item3.image_url,
-                            is_checked: item3.is_checked,
-                            checked_items: item3.checked_items
-                        };
-                    });
-                });
-            });
-
-            // 逐条复制给root
-            _.each(dest1, function(item1) {
-                dest2 = item1.items;
-                _.each(dest2, function(item2) {
-                    dest3 = item2.items;
-                    key2 = [item1.index, item2.index].join('-');
-
-                    _.extend(item2, ret[key2]);
-                    _.each(dest3, function(item3) {
-                        key3 = [item1.index, item2.index, item3.index].join('-');
-
-                        _.extend(item3, ret[key3]);
-                    });
-                });
-            });
-
             // Mixed类型需要标记修改过的path
             root.markModified('items');
 
@@ -329,4 +274,292 @@ exports.create = function(req, res, next) {
         });
     });
 
+};
+
+
+/////////////////////////////////////////////////////////////////
+
+// 逐级向下指派，捕获状态
+// 更新process.current, next, sequences, archives, status
+exports.forward = function (req, res, next) {
+    var evaluationId = validator.trim(req.params.evaluation_id);
+
+    if (!req.session.user) {
+        return next(utils.getError(105));
+    }
+
+    if (!evaluationId || !req.body.process.current || !req.body.process.next) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            _id: evaluationId
+        }
+    };
+
+    EvaluationModel.findBy(options, function(err, evaluation) {
+        if (err) {
+            return next(err);
+        }
+
+        if (!evaluation) {
+            return next(utils.getError(102));
+        }
+
+        if (evaluation.process.status === 'END') {
+            return next(utils.getError(104));
+        }
+
+        // 设置已下达之后的状态
+        evaluation.process.active = true;
+        evaluation.process.status = 'FORWARD'; // TODO
+        evaluation.process.updateAt = Date.now();
+
+        if (req.body.process.current.action === 'START') {
+            evaluation.builder = req.body.builder;
+            evaluation.supervisor = req.body.supervisor;
+            evaluation.process.archives = evaluation.process.sequences = [];
+        }
+
+        // 采用A->A/B->A/B/C
+        evaluation.process.current = req.body.process.next;
+        evaluation.process.previous = req.body.process.current;
+        evaluation.process.archives.push(req.body.process.current);
+        evaluation.process.sequences.push(req.body.process.current);
+
+        evaluation.save(function(err, evaluation) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'code': 0,
+                'status': 'success'
+            });
+        });
+    });
+};
+
+// 逐级向上审核，冒泡状态
+// 更新process.current, sequences, archives, status
+exports.backward = function (req, res, next) {
+    var evaluationId = validator.trim(req.params.evaluation_id);
+
+    if (!req.session.user) {
+        return next(utils.getError(105));
+    }
+
+    if (!evaluationId) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            _id: evaluationId
+        }
+    };
+
+    EvaluationModel.findBy(options, function(err, evaluation) {
+        if (err) {
+            return next(err);
+        }
+
+        if (!evaluation) {
+            return next(utils.getError(102));
+        }
+
+        if (evaluation.process.status === 'END') {
+            return next(utils.getError(104));
+        }
+
+        // 设置已反转或者已提交之后的状态
+        evaluation.process.active = true;
+        evaluation.process.status = 'BACKWARD'; // TODO
+        evaluation.process.updateAt = Date.now();
+
+        if (req.body.process.current.action === 'REVERSE') {
+        }
+
+        // 采用A/B/C -> A/B -> A -> []
+        evaluation.process.current = evaluation.process.sequences.pop();
+        evaluation.process.previous = req.body.process.current;
+        evaluation.process.archives.push(req.body.process.current);
+
+        evaluation.save(function(err, evaluation) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'code': 0,
+                'status': 'success'
+            });
+        });
+    });
+};
+
+// 流程打回，处于暂停状态
+// 更新process.current, archives, status
+exports.revert = function (req, res, next) {
+    var evaluationId = validator.trim(req.params.evaluation_id);
+
+    if (!req.session.user) {
+        return next(utils.getError(105));
+    }
+
+    if (!evaluationId) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            _id: evaluationId
+        }
+    };
+
+    EvaluationModel.findBy(options, function(err, evaluation) {
+        if (err) {
+            return next(err);
+        }
+
+        if (!evaluation) {
+            return next(utils.getError(102));
+        }
+
+        if (evaluation.process.status === 'END') {
+            return next(utils.getError(104));
+        }
+
+        // 设置已打回之后的状态
+        evaluation.process.active = true;
+        evaluation.process.status = 'REVERT';
+        evaluation.process.updateAt = Date.now();
+
+        evaluation.process.current = evaluation.process.previous;
+        evaluation.process.previous = req.body.process.current;
+        evaluation.process.archives.push(req.body.process.current);
+        evaluation.process.sequences.push(req.body.process.current);
+
+        evaluation.save(function(err, evaluation) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'code': 0,
+                'status': 'success'
+            });
+        });
+    });
+};
+
+// 流程恢复, 继续执行
+// 更新process.current, archives, status
+exports.restore = function (req, res, next) {
+    var evaluationId = validator.trim(req.params.evaluation_id);
+
+    if (!req.session.user) {
+        return next(utils.getError(105));
+    }
+
+    if (!evaluationId) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            _id: evaluationId
+        }
+    };
+
+    EvaluationModel.findBy(options, function(err, evaluation) {
+        if (err) {
+            return next(err);
+        }
+
+        if (!evaluation) {
+            return next(utils.getError(102));
+        }
+
+        if (evaluation.process.status === 'END') {
+            return next(utils.getError(104));
+        }
+
+        // 设置已打回之后的状态
+        evaluation.process.active = true;
+        evaluation.process.status = 'BACKWARD';
+        evaluation.process.updateAt = Date.now();
+
+        evaluation.process.current = evaluation.process.sequences.pop();
+        evaluation.process.previous = req.body.process.current;
+        evaluation.process.archives.push(req.body.process.current);
+
+        evaluation.save(function(err, evaluation) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'code': 0,
+                'status': 'success'
+            });
+        });
+    });
+};
+
+// 流程结束
+// 更新process.current, sequences, archives, active, status
+exports.end = function (req, res, next) {
+    var evaluationId = validator.trim(req.params.evaluation_id);
+
+    if (!req.session.user) {
+        return next(utils.getError(105));
+    }
+
+    if (!evaluationId) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            _id: evaluationId
+        }
+    };
+
+    EvaluationModel.findBy(options, function(err, evaluation) {
+        if (err) {
+            return next(err);
+        }
+
+        if (!evaluation) {
+            return next(utils.getError(102));
+        }
+
+        evaluation.process.active = false;
+        evaluation.process.status = 'END';
+        evaluation.process.updateAt = Date.now();
+
+        // 采用A/B/C -> A/B -> A -> []
+        evaluation.process.archives.push(req.body.process.current);
+        evaluation.process.sequences.pop();
+        evaluation.process.current = null;
+        evaluation.process.previous = null;
+
+        evaluation.save(function(err, evaluation) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'code': 0,
+                'status': 'success'
+            });
+        });
+    });
 };

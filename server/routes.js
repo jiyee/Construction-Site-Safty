@@ -96,6 +96,12 @@ router.get('/evaluation/:evaluation_id', evaluation.findById);
 router.post('/evaluation/create', evaluation.create);
 router.post('/evaluation/:evaluation_id/update', evaluation.update);
 
+router.post('/evaluation/:evaluation_id/forward', evaluation.forward);
+router.post('/evaluation/:evaluation_id/backward', evaluation.backward);
+router.post('/evaluation/:evaluation_id/revert', evaluation.revert);
+router.post('/evaluation/:evaluation_id/restore', evaluation.restore);
+router.post('/evaluation/:evaluation_id/end', evaluation.end);
+
 // 安全检查接口
 router.get('/captures/all', capture.findAll);
 router.get('/captures/list/:project_id/:section_id/:start_date/:end_date', capture.findByDate);

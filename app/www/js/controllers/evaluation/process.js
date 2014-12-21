@@ -1,8 +1,8 @@
-app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CheckService, UnitService, UserService, AuthService, resolveUser) {
+app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, EvaluationService, UnitService, UserService, AuthService, resolveUser) {
     $scope.data = {};
-    $scope.data.check = {};
+    $scope.data.evaluation = {};
     $scope.data.user = resolveUser;
-    $scope.data.checkId = $stateParams.checkId;
+    $scope.data.evaluationId = $stateParams.evaluationId;
     $scope.data.builder = {};
     $scope.data.builder.unit = {};
     $scope.data.supervisor = {};
@@ -11,12 +11,14 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
     $scope.data.next = {};
     $scope.data.images = [];
 
-    CheckService.findById($scope.data.checkId).then(function(check) {
-        $scope.data.check = check;
-        console.log(check);
+    EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
+        $scope.data.evaluation = evaluation;
+        console.log(evaluation);
 
-        if (check.process.archives) {
-            _.each(check.process.archives, function(archive) {
+        $scope.data.evaluation.fails = _.filter($scope.data.evaluation.archives, {linked: false});
+
+        if (evaluation.process.archives) {
+            _.each(evaluation.process.archives, function(archive) {
                 UserService.findById(archive.user).then(function(user) {
                     archive.user = user;
                 });
@@ -32,18 +34,18 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
             UserService.find().then(function(users) {
                 $scope.data.next.users = _.filter(users, function(user) {
                     return user.project &&
-                        user.project._id === check.project._id &&
+                        user.project._id === evaluation.project._id &&
                         user.section &&
-                        user.section._id === check.section._id;
+                        user.section._id === evaluation.section._id;
                 });
             });
         } else if ($scope.data.user.role === 'manager') {
             UserService.find().then(function(users) {
                 $scope.data.next.users = _.filter(users, function(user) {
                     return user.project &&
-                        user.project._id === check.project._id &&
+                        user.project._id === evaluation.project._id &&
                         user.section &&
-                        user.section._id === check.section._id;
+                        user.section._id === evaluation.section._id;
                 });
             });
         } else {
@@ -124,7 +126,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
             }
         };
 
-        CheckService.forward($scope.data.checkId, opts).then(function() {
+        EvaluationService.forward($scope.data.evaluationId, opts).then(function() {
             alert("下达成功");
             $scope.toBack();
         }, function(err) {
@@ -149,7 +151,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
             }
         };
 
-        CheckService.backward($scope.data.checkId, opts).then(function() {
+        EvaluationService.backward($scope.data.evaluationId, opts).then(function() {
             alert("提交成功");
             $scope.toBack();
         }, function(err) {
@@ -174,7 +176,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
             }
         };
 
-        CheckService.backward($scope.data.checkId, opts).then(function() {
+        EvaluationService.backward($scope.data.evaluationId, opts).then(function() {
             alert("提交成功");
             $scope.toBack();
         }, function(err) {
@@ -199,7 +201,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
             }
         };
 
-        CheckService.revert($scope.data.checkId, opts).then(function() {
+        EvaluationService.revert($scope.data.evaluationId, opts).then(function() {
             alert("提交成功");
             $scope.toBack();
         }, function(err) {
@@ -224,7 +226,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
             }
         };
 
-        CheckService.restore($scope.data.checkId, opts).then(function() {
+        EvaluationService.restore($scope.data.evaluationId, opts).then(function() {
             alert("提交成功");
             $scope.toBack();
         }, function(err) {
@@ -267,7 +269,7 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
                     }
                 };
 
-                CheckService.end($scope.data.checkId, opts).then(function(check) {
+                EvaluationService.end($scope.data.evaluationId, opts).then(function(evaluation) {
                     alert('整改验收完毕，本次安全检查结束。');
                     $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
                         userId: $scope.data.user._id

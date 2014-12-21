@@ -86,6 +86,7 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
                 item._type = 'check';
 
                 level3.is_checked = true;
+                level3.linked = true; // 是否属于关联结果，走流程时去除
                 level3.checked_items = level3.checked_items || [];
                 level3.checked_items.push(item);
             });
@@ -97,6 +98,7 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
                             _.each(level3.checked_items, function(item) {
                                 if (item._type === 'capture') {
                                     item.is_checked = false;
+                                    level3.linked = false;
                                     item.score = null;
                                     item.status = 'UNCHECK';
                                 }
@@ -117,7 +119,6 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
     $scope.syncCaptures = function (bool) {
         if (bool) {
             var archives = _.flatten(_.pluck($scope.data.syncData.captures, 'archives'));
-            console.log(archives);
 
             var reLink = /(SGJC|SGXCTY|SGXCGL|SGXCSY)-([A-Z])-([A-Z][0-9]+)-([0-9])+/;
             var table, file, level1, level2, level3;
@@ -132,6 +133,7 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
                             _.each(level2.items, function(level3) {
                                 if (!!~level3.name.indexOf(item.level3)) {
                                     level3.is_checked = true;
+                                    level3.linked = true;
                                     level3.checked_items = level3.checked_items || [];
                                     level3.checked_items.push({
                                         status: 'FAIL',
@@ -152,6 +154,7 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
                             _.each(level3.checked_items, function(item) {
                                 if (item._type === 'capture') {
                                     item.is_checked = false;
+                                    level3.linked = false;
                                     item.score = null;
                                     item.status = 'UNCHECK';
                                 }

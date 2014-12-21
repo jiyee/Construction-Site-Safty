@@ -240,7 +240,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
 
     $scope.end = function () {
         if (!$scope.data.current.comment) {
-            alert('请填写整改意见');
+            alert('请填写意见');
             return;
         }
 

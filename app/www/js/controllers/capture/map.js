@@ -13,209 +13,233 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     }
 
     $scope.data.map = {
-        center: [112.71543299448, 29.996487271664],
-        zoom: 12
+        latlng: [29.996487271664, 112.71543299448],
+        zoom: 10
     };
 
+    // var elMap = document.getElementById("map");
+    // var headerHeight = 44;
+    // var footerHeight = 0;
+    // elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
+    // setTimeout(function() {
+    //    elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
+    // }, 1000);
 
-    var center = ol.proj.transform($scope.$parent.location ? $scope.$parent.location : $scope.data.map.center,
-       'EPSG:4326', 'EPSG:900913');
-
-    var elMap = document.getElementById("map");
-    var headerHeight = 44;
-    var footerHeight = 0;
-    elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
-    setTimeout(function() {
-       elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
-    }, 1000);
-
-    var view = new ol.View({
-       projection: 'EPSG:900913',
-       center: center,
-       minZoom: 2,
-       maxZoom: 16,
-       zoom: $scope.$parent.zoom ? $scope.$parent.zoom : 10
+    var map = L.map('map', {
+        attributionControl: false
     });
 
-    function zeroPad(num, len, radix) {
-        var str = num.toString(radix || 10);
-        while (str.length < len) {
-            str = "0" + str;
-        }
-        return str;
+    var locateMarker, locateCircle;
+
+    if ($scope.$parent.location && $scope.$parent.location.latlng && $scope.$parent.location.accuracy) {
+        var latlng = $scope.$parent.location.latlng,
+            radius = $scope.$parent.location.accuracy / 2;
+        locateMarker = L.marker(latlng).addTo(map)
+            .bindPopup("定位成功，定位半径" + radius + "米").openPopup();
+        locateCircle = L.circle(latlng, radius).addTo(map);
+        map.setView($scope.$parent.location.latlng, $scope.$parent.location.zoom || 16);
+    } else {
+        $scope.$parent.location = {};
+        map.setView($scope.data.map.latlng, $scope.data.map.zoom);
+        map.locate({setView: true, maxZoom: 16});
     }
 
-    var map = new ol.Map({
-        layers: [
-            new ol.layer.Tile({
-                source: new ol.source.XYZ({
-                    url: 'data/map/tianditu/satellite/{z}/{x}/{y}.jpg'
-                    // url: 'http://t{0-5}.tianditu.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
-                })
-            }),
-            new ol.layer.Tile({
-                source: new ol.source.XYZ({
-                    url: 'data/map/tianditu/overlay_s/{z}/{x}/{y}.png'
-                    // url: 'http://t{0-5}.tianditu.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}'
-                })
-            }),
-            new ol.layer.Tile({
-                source: new ol.source.XYZ({
-                    url: 'data/map/tms/{z}/{x}/{y}.png'
-               })
-            }),
-        ],
-        renderer: 'dom', // Android手机性能不行，只能采用DOM方式渲染
-        target: 'map',
-        logo: false,
-        view: view
+    map.on('click', function(e) {
+        if (e.originalEvent.target.id === 'mocklocation') {
+            $scope.mocklocation();
+            e.originalEvent.preventDefault();
+            e.originalEvent.stopPropagation();
+        }
+
+        if (e.originalEvent.target.id === 'geolocation') {
+            $scope.geolocation();
+            e.originalEvent.preventDefault();
+            e.originalEvent.stopPropagation();
+        }
     });
 
-    var hiddenMap = new ol.Map({
-        layers: [
-            new ol.layer.Vector({
-                project: '宜张高速公路宜都至五峰段',
-                source: new ol.source.GeoJSON({
-                    projection : 'EPSG:4326',
-                    url: 'data/geojson/YZ-ROAD.geojson'
-                })
-            }),
-            new ol.layer.Vector({
-                project: '湖北监利至江陵高速公路',
-                source: new ol.source.GeoJSON({
-                    projection : 'EPSG:4326',
-                    url: 'data/geojson/JB-ROAD.geojson'
-                })
-            })
-        ],
-        // target: 'map',
-        renderer: 'svg',
-        logo: false
-        // view: view
+    map.on('moveend', function() {
+        $scope.$parent.location.latlng = map.getCenter();
     });
 
-    $scope.geolocation = function() {
-        $scope.$parent.location = $scope.location = ol.proj.transform(map.getView().getCenter(),
-       'EPSG:900913', 'EPSG:4326');
-        $scope.$parent.zoom = map.getView().getZoom();
-        // geolocation.setTracking(true);
-    };
+    map.on('zoomend', function() {
+        $scope.$parent.location.zoom = map.getZoom();
+    });
+
+    var satellite = 'data/map/tianditu/satellite/{z}/{x}/{y}.jpg';
+    var satellite_online = 'http://t{s}.tianditu.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}';
+
+    var overlay_s = 'data/map/tianditu/overlay_s/{z}/{x}/{y}.png';
+    var overlay_s_online = 'http://t{s}.tianditu.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}';
+
+    if (navigator.network &&
+        navigator.network.connection &&
+        navigator.network.connection.type === Connection.WIFI) {
+    L.tileLayer(satellite_online, {
+        subdomains: [0, 1, 2, 3, 4, 5],
+        maxZoom: 16,
+        id: 'map.satellite_online'
+    }).addTo(map);
+    }
+
+    L.tileLayer(satellite, {
+        maxZoom: 16,
+        id: 'map.satellite'
+    }).addTo(map);
+
+    if (navigator.network &&
+        navigator.network.connection &&
+        navigator.network.connection.type === Connection.WIFI) {
+    L.tileLayer(overlay_s_online, {
+        subdomains: [0, 1, 2, 3, 4, 5],
+        maxZoom: 16,
+        id: 'map.overlay_s_online'
+    }).addTo(map);
+    }
+
+    L.tileLayer(overlay_s, {
+        maxZoom: 16,
+        id: 'map.overlay_s'
+    }).addTo(map);
+
+
+    L.tileLayer('data/map/tms/{z}/{x}/{y}.png', {
+        maxZoom: 16,
+        id: 'map.tms'
+    }).addTo(map);
+
+    function onLocationFound(location) {
+        location.zoom = 16;
+
+        $scope.$apply(function() {
+            $scope.$parent.location = $scope.location = location;
+        });
+
+        var radius = location.accuracy / 2;
+
+        if (locateMarker) {
+             map.removeLayer(locateMarker);
+        }
+        if (locateCircle) {
+            map.removeLayer(locateCircle);
+        }
+
+        locateMarker = L.marker(location.latlng).addTo(map)
+            .bindPopup("定位成功，定位半径" + radius + "米").openPopup();
+        locateCircle = L.circle(location.latlng, radius).addTo(map);
+    }
+
+    function onLocationError(err) {
+        // alert("定位失败");
+    }
+
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+
+    var layersGroup = {};
+    L.Util.ajax("data/geojson/JB-ROAD.geojson").then(function(data) {
+        layersGroup.JB = data;
+        layersGroup.JB.project = '湖北监利至江陵高速公路';
+    });
+    // L.Util.ajax("data/geojson/YZ-ROAD.geojson").then(function(data) {
+    //     layersGroup.YZ = data;
+    //     layersGroup.YZ.project = '宜张高速公路宜都至五峰段';
+    // });
 
     $scope.$watch('location', function(location) {
-        var feature, properties, delta = Number.POSITIVE_INFINITY;
-        _.each(hiddenMap.getLayers().getArray(), function(layer) {
-            if (!ol.extent.containsCoordinate(layer.getSource().getExtent(), location)) return;
+        var feature, properties, tolerance = 1000, delta = Number.POSITIVE_INFINITY;
 
-            feature = layer.getSource().getClosestFeatureToCoordinate(location);
+        if (_.isEmpty(location)) return;
 
-            if (!feature || !feature.getProperties()) return;
-
-            $scope.data.properties = feature.getProperties();
-            $scope.data.properties.project = layer.getProperties().project;
-            if ($scope.data.properties && $scope.data.properties.name) {
-                $scope.data.properties.name = $scope.data.properties.name.replace('；', ';');
-                $scope.data.properties.object = $scope.data.properties.name.substr(0, $scope.data.properties.name.indexOf(';'));
-            }
-
-            $scope.$parent.properties = $scope.data.properties;
-
-
-            if ($scope.data.properties.project) {
-                ProjectService.find().then(function(projects) {
-                    $scope.$parent.data.project = _.find(projects, {
-                        name: $scope.data.properties.project
-                    });
-                    $scope.$parent.data.section = $scope.$parent.data.branch = null;
-
-                    if ($scope.data.properties.section) {
-                        SegmentService.findByProjectId($scope.$parent.data.project._id).then(function(segments) {
-                            $scope.$parent.data.section = _.find(segments, {
-                                name: $scope.data.properties.section + '段'
-                            });
-
-                            if ($scope.data.properties.branch) {
-                                SegmentService.findById($scope.$parent.data.section._id).then(function(segment) {
-                                    $scope.$parent.data.branch = _.find(segment.segments, {
-                                        name: $scope.data.properties.branch
-                                    });
-                                });
-                            }
-                        });
+        _.each(layersGroup, function(layer, key) {
+            _.each(layer.features, function(_feature) {
+                latlons = [];
+                if (_.isEmpty(_feature.geometry)) return;
+                _.each(_feature.geometry.coordinates[0], function(coord) {
+                    latlons.push(L.latLng(coord[1], coord[0]));
+                    var distance = L.GeometryUtil.closest(map, latlons, location.latlng, true).distance;
+                    if (distance < delta) {
+                        delta = distance;
+                        feature = _feature;
+                        feature.properties.project = layer.project;
                     }
                 });
-            }
+            });
         });
-    }, true);
 
-    // var geolocation = new ol.Geolocation({
-    //     projection: view.getProjection()
-    // });
+        if (!feature || delta > tolerance) return;
 
-    // geolocation.on('change', function() {
-    //     $scope.$parent.location = $scope.location = ol.proj.transform(geolocation.getPosition(), 'EPSG:900913', 'EPSG:4326');
-    //     map.getView().setCenter(geolocation.getPosition());
-    //     map.getView().setZoom(14);
-    // });
+        $scope.data.properties = feature.properties;
+        $scope.data.properties.project = feature.properties.project;
+        if ($scope.data.properties && $scope.data.properties.name) {
+            $scope.data.properties.name = $scope.data.properties.name;
 
-    // geolocation.setTracking(true);
+            if (!~$scope.data.properties.name.indexOf('路基')) {
+                $scope.data.properties.object = $scope.data.properties.name;
+            }
+        }
 
-    // function onLocationFound(e) {
-    //     var radius = e.accuracy / 2;
-    //     e.latlng = L.latLng(30.1855, 111.1790);
-    //     map.setView([30.1855, 111.1790], 16);
+        $scope.$parent.properties = $scope.data.properties;
 
-    //     if (locateCircle) {
-    //         map.removeLayer(locateCircle);
-    //     }
+        if ($scope.data.properties.project) {
+            ProjectService.find().then(function(projects) {
+                $scope.$parent.data.project = _.find(projects, {
+                    name: $scope.data.properties.project
+                });
+                $scope.$parent.data.section = $scope.$parent.data.branch = null;
 
-    //     if (locateMarker) {
-    //         map.removeLayer(locateMarker);
-    //     }
+                if ($scope.data.properties.section) {
+                    SegmentService.findByProjectId($scope.$parent.data.project._id).then(function(segments) {
+                        $scope.$parent.data.section = _.find(segments, {
+                            name: $scope.data.properties.section + '段'
+                        });
 
-    //     locateMarker = L.marker(e.latlng).addTo(map);
+                        if ($scope.data.properties.branch) {
+                            SegmentService.findById($scope.$parent.data.section._id).then(function(segment) {
+                                $scope.$parent.data.branch = _.find(segment.segments, {
+                                    name: $scope.data.properties.branch
+                                });
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
 
-    //     locateCircle = L.circle(e.latlng, radius).addTo(map);
+    $scope.mocklocation = function() {
+        var location = {
+            latlng: map.getCenter(),
+            accuracy: 0,
+            zoom: 16
+        };
+        map.setView(location.latlng, location.zoom);
 
+        $scope.$apply(function() {
+            $scope.$parent.location = $scope.location = location;
+        });
 
-    //     var tolerance = 1000,
-    //         latlons = [],
-    //         minDistance = Number.POSITIVE_INFINITY,
-    //         layers = YZGS_Polyline_Layer.getLayers(),
-    //         feature;
-    //     _.each(layers, function(layer) {
-    //         latlons = [];
-    //         _.each(layer.feature.geometry.coordinates[0], function(coord) {
-    //             latlons.push(L.latLng(coord[1], coord[0]));
-    //             var distance = L.GeometryUtil.closest(map, latlons, e.latlng, true).distance;
-    //             if (distance < minDistance) {
-    //                 minDistance = distance;
-    //                 feature = layer.feature;
-    //             }
-    //         });
-    //     });
+        if (locateMarker) {
+             map.removeLayer(locateMarker);
+        }
+        if (locateCircle) {
+            map.removeLayer(locateCircle);
+        }
 
-    //     var project, section, branch;
-    //     if (minDistance < tolerance) {
-    //         project = _.find(resolveProjects, {name: '湖北监利至江陵高速公路'});
-    //         if (project) {
-    //             section = _.find(_.filter(project.segments, {type: '标段'}), {name: feature.properties.section + '段'});
-    //             if (section) {
-    //                 branch = _.find(section.segments, {name: feature.properties.branch});
-    //             }
-    //         }
+        var radius = location.accuracy / 2;
+        locateMarker = L.marker(location.latlng).addTo(map)
+            .bindPopup("模拟定位成功").openPopup();
+        locateCircle = L.circle(location.latlng, radius).addTo(map);
+    };
 
-    //         $scope.$apply(function() {
-    //             $scope.data.project = project;
-    //             $scope.data.section = section;
-    //             $scope.data.branch = branch;
-    //             $scope.$parent.data.project = project;
-    //             $scope.$parent.data.section = section;
-    //             $scope.$parent.data.branch = branch;
-    //         });
-    //     }
-    // }
-
-    // map.on('locationfound', onLocationFound);
+    $scope.geolocation = function() {
+        map.stopLocate();
+        map.locate({
+            enableHighAccuracy: true,
+            setView: true,
+            maxZoom: 16
+        });
+    };
 
     $scope.toCaptureCreate = function(item) {
         $state.go('^.create');
@@ -230,6 +254,11 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
             userId: $scope.data.user._id
         });
     };
+
+    $scope.$on('$destroy', function() {
+        map.stopLocate();
+        map.remove();
+    });
 
     $ionicModal.fromTemplateUrl('setup-modal.html', {
         scope: $scope,

@@ -32,6 +32,7 @@ app.use(session({
         db: 'sessions'
     }),
     cookie: {
+        // maxAge: 2628000000,
         httpOnly: false
     }
 }));

@@ -3,10 +3,10 @@ var app = angular.module('app', ['ionic']);
 // var ipAddr = 'localhost';
 var ipAddr = '121.40.202.109';
 
-if (navigator.notification) {
-    window.alert = navigator.notification.alert;
-    window.prompt = navigator.notification.prompt;
-}
+// if (navigator.notification) {
+//     window.alert = navigator.notification.alert;
+//     window.prompt = navigator.notification.prompt;
+// }
 
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
@@ -241,6 +241,13 @@ app.run(function($rootScope, $ionicPlatform) {
         url: "/:evaluationId/:tableId/:itemId/:subItemId",
         templateUrl: "templates/evaluation/review.html",
         controller: 'EvaluationReviewCtrl'
+    })
+
+    // 考核评价流程一体化
+    .state('evaluation.process', {
+        url: '/:evaluationId/process',
+        templateUrl: 'templates/evaluation/process.html',
+        controller: 'EvaluationProcessCtrl'
     })
 
     // 行业主管抽象页，用于数据共享

@@ -36,9 +36,10 @@ var EvaluationSchema = new Schema({
 
     // 问题汇总
     archives: [{
-        object: { type: String, required: '{PATH}不能为空' }, // 检查对象
+        index: { type: String }, // 索引
+        name: { type: String, required: '{PATH}不能为空' }, // 检查对象
         comment: { type: String }, // 检查问题
-        category: { type: String }, // 类别与细项
+        linked: { type: Boolean, default: false }, // 是否属于关联条目
         image: {
             uri: { type: String }, // 照片URI
             url: { type: String }, // 照片URL
@@ -91,6 +92,7 @@ var EvaluationSchema = new Schema({
             action: { type: String }
         }],
         archives: [{
+            date: { type: Date, default: Date.now },
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },

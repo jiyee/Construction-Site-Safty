@@ -75,6 +75,117 @@ app.factory('EvaluationService', function($http, $q, settings) {
                 });
 
             return deferred.promise;
-        }
+        },
+        findByProcessCurrentUserId: function(userId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/process/' + userId + '/evaluations')
+                .success(function(data) {
+                    deferred.resolve(data.evaluations);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        forward: function(evaluationId, opts) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/evaluation/' + evaluationId + '/forward', opts)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve();
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        backward: function (evaluationId, opts) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/evaluation/' + evaluationId + '/backward', opts)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve();
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        revert: function (evaluationId, opts) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/evaluation/' + evaluationId + '/revert', opts)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve();
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        restore: function (evaluationId, opts) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/evaluation/' + evaluationId + '/restore', opts)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve();
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        end: function (evaluationId, opts) {
+            var deferred = $q.defer();
+
+            $http.post(settings.baseUrl + '/evaluation/' + evaluationId + '/end', opts)
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve();
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
+        list: function(projectId, segmentId, startDate, endDate) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/evaluations/list/' + projectId + '/' + segmentId + '/' + startDate + '/' + endDate)
+                .success(function(data) {
+                    deferred.resolve(data.evaluations);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
     };
 });

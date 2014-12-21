@@ -44,7 +44,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         $scope.data.checks = checks;
     });
 
-    EvaluationService.findByUserId($scope.data.user._id).then(function(evaluations) {
+    EvaluationService.findByProcessCurrentUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = evaluations;
     });
 
@@ -59,7 +59,7 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
                 checkId: item._id
             });
         } else if (item.type === 'evaluation') {
-            $state.go('evaluation.detail', {
+            $state.go('evaluation.process', {
                 evaluationId: item._id
             });
         }

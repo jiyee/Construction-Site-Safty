@@ -86,6 +86,7 @@ var CaptureSchema = new Schema({
             action: { type: String }
         }],
         archives: [{
+            date: { type: Date, default: Date.now },
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },

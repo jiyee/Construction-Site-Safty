@@ -32,13 +32,20 @@
                 <div class="row">
                     <div class="col">存在隐患：</div>
                 </div>
-                <div class="row" ng-repeat="item in data.checked_items">
+                <div class="row" ng-repeat="item in data.fails track by item.name">
                     <div class="col assertive">
-                        {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
+                        {{$index + 1}}. ({{item.index}}) {{item.comments}}
                         <div style="padding: 6px;" ng-show="item.images">
                             <img ng-src="{{image}}" ng-repeat="image in item.images" width="64" height="64">
                         </div>
                     </div>
+                </div>
+
+                <div class="row" ng-if="data.evaluation.process.archives">
+                    <div class="col">整改处理意见：</div>
+                </div>
+                <div class="col positive" ng-if="data.evaluation.process.archives">
+                    <div ng-repeat="item in data.evaluation.process.archives">{{item.user.name}}: {{item.comment}}</div>
                 </div>
             </div>
 
@@ -46,6 +53,9 @@
             <div class="button-bar">
                 <button class="button button-positive" ng-click="toTable()" ng-if="data.isOffline">
                     继续打分
+                </button>
+                <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline && data.evaluation.process.active == false && data.evaluation.process.status == ''">
+                    整改通知
                 </button>
                 <button class="button button-positive" ng-click="save()" ng-if="data.isOffline">
                     保存同步

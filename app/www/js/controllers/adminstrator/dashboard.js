@@ -25,7 +25,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         $scope.data.captures = captures;
     });
 
-    EvaluationService.findByUserId($scope.data.user._id).then(function(evaluations) {
+    EvaluationService.findByProcessCurrentUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = evaluations;
     });
 
@@ -40,7 +40,7 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
                 checkId: item._id
             });
         } else if (item.type === 'evaluation') {
-            $state.go('evaluation.detail', {
+            $state.go('evaluation.process', {
                 evaluationId: item._id
             });
         }

@@ -5,14 +5,22 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>平安工地</title>
 
+    <!-- geojson -->
+    <!-- <script src="js/constants/map/jb.js"></script> -->
+
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="lib/ol3/ol.css" rel="stylesheet">
+    <link href="lib/leaflet/leaflet.css" rel="stylesheet">
+
     <link href="css/style.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
+    <script>L_PREFER_CANVAS = true;</script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/lodash/lodash.min.js"></script>
-    <script src="lib/ol3/ol-debug.js"></script>
+    <script src="lib/leaflet/leaflet.js"></script>
+    <script src="lib/leaflet/leaflet.ajax.js"></script>
+    <script src="lib/leaflet/leaflet.geometryutil.js"></script>
+
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -66,6 +74,7 @@
     <script src="js/controllers/evaluation/customize.js"></script>
     <script src="js/controllers/evaluation/table.js"></script>
     <script src="js/controllers/evaluation/review.js"></script>
+    <script src="js/controllers/evaluation/process.js"></script>
 
     <script src="js/controllers/capture/abstract.js"></script>
     <script src="js/controllers/capture/map.js"></script>

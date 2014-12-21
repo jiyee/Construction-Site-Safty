@@ -8,12 +8,12 @@
         <table>
             <tr>
                 <td>
-                    当前得分：{{-data.score}}分，扣分项如下：
+                    最终得分：{{data.final}}分 （{{data.score['SGJC'].final}} * 0.5 + {{data.score['SGXC'].final}} * 0.5），扣分细项：
                 </td>
             </tr>
-            <tr ng-repeat="item in data.checked_items">
+            <tr ng-repeat="item in data.fails track by item.name">
                 <td>
-                    {{item.full_index}}. {{item.comments}} {{-item.score}}分
+                    {{item.full_index}}. {{item.comments}}
                 </td>
             </tr>
         </table>
