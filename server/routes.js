@@ -15,6 +15,7 @@ var setup3 = require('./controllers/setup3');
 var setup4 = require('./controllers/setup4');
 var setup5 = require('./controllers/setup5');
 var setup6 = require('./controllers/setup6');
+var reset = require('./controllers/reset');
 
 router.get('/', function(req, res) {
     res.render('index', {
@@ -128,5 +129,12 @@ router.get('/setup', [setup1.mongo, setup3.mongo, setup4.mongo, setup6.mongo, fu
         message: 'success'
     });
 }]);
+
+router.get('/reset', reset.mongo, function (req, res, next) {
+    next({
+        code: 100,
+        message: 'success'
+    });
+});
 
 module.exports = router;
