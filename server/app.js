@@ -5,6 +5,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var getRawBody = require('raw-body');
 
 var routes = require('./routes');
 var settings = require('./settings');
@@ -24,6 +25,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(bodyParser({limit: '50mb'}));
 
 app.use(session({
     secret: 'css',

@@ -16,6 +16,7 @@ var setup4 = require('./controllers/setup4');
 var setup5 = require('./controllers/setup5');
 var setup6 = require('./controllers/setup6');
 var reset = require('./controllers/reset');
+var upload = require('./controllers/upload');
 
 router.get('/', function(req, res) {
     res.render('index', {
@@ -115,6 +116,8 @@ router.post('/capture/:capture_id/backward', capture.backward);
 router.post('/capture/:capture_id/revert', capture.revert);
 router.post('/capture/:capture_id/restore', capture.restore);
 router.post('/capture/:capture_id/end', capture.end);
+
+router.post('/upload/image', upload.image);
 
 // 数据库测试接口
 router.get('/setup1', setup1.mongo);
