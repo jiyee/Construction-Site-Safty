@@ -32,6 +32,20 @@ var CheckSchema = new Schema({
     object: { type: String }, // 检查对象, 手工填写
     comment: { type: String }, // 检查结果, 存在隐患
 
+    // 问题汇总
+    archives: [{
+        index: { type: String }, // 索引
+        name: { type: String, required: '{PATH}不能为空' }, // 检查对象
+        comment: { type: String }, // 检查问题
+        linked: { type: Boolean, default: false }, // 是否属于关联条目
+        images: [{
+            uri: { type: String }, // 照片URI
+            url: { type: String }, // 照片URL
+            date: { type: Date }, // 拍摄日期
+            center: [{ type: Number }] // 定位坐标
+        }]
+    }],
+
     // 责任建设单位以及责任人
     builder: {
         unit: { type: Schema.Types.ObjectId, ref: 'Unit' }, // 存在问题的建设单位
@@ -80,7 +94,13 @@ var CheckSchema = new Schema({
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
-            action: { type: String }
+            action: { type: String },
+            images: [{
+                uri: { type: String }, // 照片URI
+                url: { type: String }, // 照片URL
+                date: { type: Date }, // 拍摄日期
+                center: [{ type: Number }] // 定位坐标
+            }]
         }]
 
     }

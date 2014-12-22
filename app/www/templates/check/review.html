@@ -28,7 +28,7 @@
                     <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)">拍照存档</button>
                 </div>
                 <div style="padding: 6px;">
-                    <img ng-src="{{image}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
+                    <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
                 </div>
             </div>
         </div>

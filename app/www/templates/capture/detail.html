@@ -61,13 +61,22 @@
                     <div class="col">整改处理意见：</div>
                 </div>
                 <div class="col positive" ng-if="data.capture.process.archives">
-                    <div ng-repeat="item in data.capture.process.archives">{{item.user.name}}: {{item.comment}}</div>
+                    <div ng-repeat="item in data.capture.process.archives">
+                        {{item.user.name}}: {{item.comment}}
+                        <br>
+                        <div class="row">
+                            <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="button-bar" ng-if="data.capture.process.active == false">
-                <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline">
+                <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline && data.capture.process.active == false && data.capture.process.status == ''">
                     整改通知
+                </button>
+                <button class="button button-positive" ng-if="!data.isOffline && data.capture.process.active == false && data.capture.process.status == 'END'">
+                    生成报告
                 </button>
             </div>
         </div>

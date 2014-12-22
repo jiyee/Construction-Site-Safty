@@ -39,7 +39,7 @@
                         <div class="col">存在隐患：{{item.level3}} {{item.comment}}</div>
                     </div>
                     <div class="row">
-                        <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64">
+                        <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
                     </div>
                 </div>
 
@@ -54,7 +54,13 @@
                     <div class="col">整改要求：</div>
                 </div>
                 <div class="col positive" ng-if="data.capture.process.archives">
-                    <div ng-repeat="item in data.capture.process.archives">{{item.user.name}}: {{item.comment}}</div>
+                    <div ng-repeat="item in data.capture.process.archives">
+                        {{item.user.name}}: {{item.comment}}
+                        <br>
+                        <div class="row">
+                            <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row" ng-if="data.capture.process.archives.length == 0 || data.capture.process.status == 'FORWARD'">
@@ -74,8 +80,8 @@
                     <textarea ng-model="data.current.comment" rows="5" style="border: 1px solid #eee;"></textarea>
                 </div>
 
-                <div class="list" ng-repeat="image in data.images">
-                    <img ng-src="{{image.uri}}" width="64" height="64">
+                <div class="row">
+                    <img ng-src="{{image.uri}}" ng-repeat="image in data.images" width="64" height="64" style="margin-right: 12px;">
                 </div>
 
                 <button class="button button-block button-positive" ng-click="capture()" ng-if="data.capture.process.status == 'FORWARD' || data.capture.process.status == 'BACKWARD' || data.capture.process.status == 'REVERT'">

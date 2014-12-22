@@ -195,7 +195,8 @@ exports.login = function(req, res, next) {
     var options = {
         findOne: true,
         conditions: {
-            username: username
+            username: username,
+            password: password
         }
     };
 
@@ -206,7 +207,7 @@ exports.login = function(req, res, next) {
         }
 
         if (!user) {
-            ep.emit('error', '用户不存在');
+            ep.emit('error', '用户名或者密码错误');
             return;
         }
 

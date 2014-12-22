@@ -10,10 +10,7 @@ var check = require('./controllers/check');
 var evaluation = require('./controllers/evaluation');
 var capture = require('./controllers/capture');
 var setup1 = require('./controllers/setup1');
-var setup2 = require('./controllers/setup2');
 var setup3 = require('./controllers/setup3');
-var setup4 = require('./controllers/setup4');
-var setup5 = require('./controllers/setup5');
 var setup6 = require('./controllers/setup6');
 var reset = require('./controllers/reset');
 var upload = require('./controllers/upload');
@@ -120,13 +117,7 @@ router.post('/capture/:capture_id/end', capture.end);
 router.post('/upload/image', upload.image);
 
 // 数据库测试接口
-router.get('/setup1', setup1.mongo);
-router.get('/setup2', setup2.mongo);
-router.get('/setup3', setup3.mongo);
-router.get('/setup4', setup4.mongo);
-router.get('/setup5', setup5.mongo);
-router.get('/setup6', setup6.mongo);
-router.get('/setup', [setup1.mongo, setup3.mongo, setup4.mongo, setup6.mongo, function (req, res, next) {
+router.get('/setup', [setup1.mongo, setup3.mongo, setup6.mongo, function (req, res, next) {
     next({
         code: 100,
         message: 'success'

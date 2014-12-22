@@ -35,8 +35,8 @@
                 <div class="row" ng-repeat="item in data.fails track by item.name">
                     <div class="col assertive">
                         {{$index + 1}}. ({{item.index}}) {{item.comments}}
-                        <div style="padding: 6px;" ng-show="item.images">
-                            <img ng-src="{{image}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
+                        <div style="padding: 6px;">
+                            <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,13 @@
                     <div class="col">整改处理意见：</div>
                 </div>
                 <div class="col positive" ng-if="data.evaluation.process.archives">
-                    <div ng-repeat="item in data.evaluation.process.archives">{{item.user.name}}: {{item.comment}}</div>
+                    <div ng-repeat="item in data.evaluation.process.archives">
+                        {{item.user.name}}: {{item.comment}}
+                        <br>
+                        <div class="row">
+                            <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -54,11 +60,15 @@
                 <button class="button button-positive" ng-click="toTable()" ng-if="data.isOffline">
                     继续打分
                 </button>
+                <button class="button button-positive" ng-click="save()" ng-if="data.isOffline">
+                    保存同步
+                </button>
+
                 <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline && data.evaluation.process.active == false && data.evaluation.process.status == ''">
                     整改通知
                 </button>
-                <button class="button button-positive" ng-click="save()" ng-if="data.isOffline">
-                    保存同步
+                <button class="button button-positive" ng-if="!data.isOffline && data.evaluation.process.active == false && data.evaluation.process.status == 'END'">
+                    生成报告
                 </button>
             </div>
         </div>

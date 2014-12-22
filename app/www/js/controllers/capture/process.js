@@ -115,6 +115,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'FORWARD'
                 },
                 next: {
@@ -198,6 +199,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'REVERT'
                 }
             }
@@ -267,6 +269,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                             unit: $scope.data.user.unit._id,
                             user: $scope.data.user._id,
                             comment: $scope.data.current.comment,
+                            images: $scope.data.images,
                             action: 'END'
                         }
                     }

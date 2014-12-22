@@ -40,12 +40,12 @@ var EvaluationSchema = new Schema({
         name: { type: String, required: '{PATH}不能为空' }, // 检查对象
         comment: { type: String }, // 检查问题
         linked: { type: Boolean, default: false }, // 是否属于关联条目
-        image: {
+        images: [{
             uri: { type: String }, // 照片URI
             url: { type: String }, // 照片URL
             date: { type: Date }, // 拍摄日期
             center: [{ type: Number }] // 定位坐标
-        }
+        }]
     }],
 
     // 责任建设单位以及责任人
@@ -96,7 +96,13 @@ var EvaluationSchema = new Schema({
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
-            action: { type: String }
+            action: { type: String },
+            images: [{
+                uri: { type: String }, // 照片URI
+                url: { type: String }, // 照片URL
+                date: { type: Date }, // 拍摄日期
+                center: [{ type: Number }] // 定位坐标
+            }]
         }]
 
     }

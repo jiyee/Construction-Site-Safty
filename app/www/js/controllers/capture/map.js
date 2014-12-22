@@ -74,7 +74,9 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
     if (navigator.network &&
         navigator.network.connection &&
-        navigator.network.connection.type === Connection.WIFI) {
+        (navigator.network.connection.type === Connection.WIFI ||
+         navigator.network.connection.type === Connection.CELL_2G ||
+         navigator.network.connection.type === Connection.CELL_3G)) {
     L.tileLayer(satellite_online, {
         subdomains: [0, 1, 2, 3, 4, 5],
         maxZoom: 16,
@@ -89,7 +91,9 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
     if (navigator.network &&
         navigator.network.connection &&
-        navigator.network.connection.type === Connection.WIFI) {
+        (navigator.network.connection.type === Connection.WIFI ||
+         navigator.network.connection.type === Connection.CELL_2G ||
+         navigator.network.connection.type === Connection.CELL_3G)) {
     L.tileLayer(overlay_s_online, {
         subdomains: [0, 1, 2, 3, 4, 5],
         maxZoom: 16,
@@ -136,22 +140,28 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
 
-    var layersGroup = {};
+    var ROADS = {}, POINTS = {};
     L.Util.ajax("data/geojson/JB-ROAD.geojson").then(function(data) {
-        layersGroup.JB = data;
-        layersGroup.JB.project = '湖北监利至江陵高速公路';
+        ROADS.JB = data;
+        ROADS.JB.project = '湖北监利至江陵高速公路';
     });
     L.Util.ajax("data/geojson/YZ-ROAD.geojson").then(function(data) {
-        layersGroup.YZ = data;
-        layersGroup.YZ.project = '宜张高速公路宜都至五峰段';
+        ROADS.YZ = data;
+        ROADS.YZ.project = '宜张高速公路宜都至五峰段';
+    });
+    L.Util.ajax("data/geojson/JB-POINT.geojson").then(function(data) {
+        POINTS.JB = data;
+    });
+    L.Util.ajax("data/geojson/YZ-POINT.geojson").then(function(data) {
+        POINTS.YZ = data;
     });
 
     $scope.$watch('location', function(location) {
-        var feature, properties, tolerance = 1000, delta = Number.POSITIVE_INFINITY;
-
         if (_.isEmpty(location)) return;
 
-        _.each(layersGroup, function(layer, key) {
+        var feature, properties, tolerance = 1000, delta = Number.POSITIVE_INFINITY;
+
+        _.each(ROADS, function(layer, key) {
             _.each(layer.features, function(_feature) {
                 latlons = [];
                 if (_.isEmpty(_feature.geometry)) return;
@@ -176,6 +186,27 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
             if (!~$scope.data.properties.name.indexOf('路基')) {
                 $scope.data.properties.object = $scope.data.properties.name;
+            } else {
+                feature = null;
+                delta = Number.POSITIVE_INFINITY;
+                _.each(POINTS, function(layer, key) {
+                    _.each(layer.features, function(_feature) {
+                        latlons = [];
+                        if (_.isEmpty(_feature.geometry)) return;
+                        latlons.push(L.latLng(_feature.geometry.coordinates[0][1], _feature.geometry.coordinates[0][0]));
+                        var distance = L.GeometryUtil.closest(map, latlons, location.latlng, true).distance;
+                        if (distance < delta) {
+                            delta = distance;
+                            feature = _feature;
+                            feature.properties.project = layer.project;
+                        }
+                    });
+                });
+
+                if (feature && delta < tolerance) {
+                    $scope.data.properties.name += feature.properties.name;
+                    $scope.data.properties.object += feature.properties.name;
+                }
             }
         }
 

@@ -44,7 +44,11 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
     $scope.takePhoto = function(item) {
         function onSuccess(imageURI) {
             item.images = item.images || [];
-            item.images.push(imageURI);
+            var image = {
+                uri: imageURI,
+                date: Date.now()
+            };
+            item.images.push(image);
             $scope.$apply();
         }
 

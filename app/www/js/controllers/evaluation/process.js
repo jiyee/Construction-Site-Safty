@@ -115,6 +115,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'FORWARD'
                 },
                 next: {
@@ -146,6 +147,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'REVERSE'
                 }
             }
@@ -171,6 +173,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'BACKWARD'
                 }
             }
@@ -196,6 +199,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'REVERT'
                 }
             }
@@ -221,6 +225,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
                     unit: $scope.data.user.unit._id,
                     user: $scope.data.user._id,
                     comment: $scope.data.current.comment,
+                    images: $scope.data.images,
                     action: 'RESTORE'
                 }
             }
@@ -264,6 +269,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
                             unit: $scope.data.user.unit._id,
                             user: $scope.data.user._id,
                             comment: $scope.data.current.comment,
+                            images: $scope.data.images,
                             action: 'END'
                         }
                     }

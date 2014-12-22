@@ -317,7 +317,11 @@
     "zoom": 12,
     "constructor": "湖北交投宜张公路建设指挥部",
     "users": [{
-        "name": "徐志宏",
+        "name": "王宇云",
+        "type": "constructor",
+        "mobile": "13633313456"
+    }, {
+        "name": "徐志红",
         "type": "constructor",
         "mobile": "15171888887"
     }, {
@@ -325,27 +329,15 @@
         "type": "constructor",
         "mobile": "18601155772"
     }, {
-        "name": "池工",
+        "name": "池红坤",
         "type": "constructor",
         "mobile": "13633313456"
     }],
     "sections": [{
         "name": "二",
-        "supervisor": "湖北公路水运工程咨询监理公司",
-        "builder": "中交二公局",
+        "supervisor": "湖北公路水运工程咨询监理公司宜张第二驻地办",
+        "builder": "中交二公局二标项目经理部",
         "users": [{
-            "name": "张雄",
-            "type": "supervisor",
-            "mobile": "15010758013"
-        }, {
-            "name": "王强",
-            "type": "supervisor",
-            "mobile": "15801594438"
-        }, {
-            "name": "边军",
-            "type": "supervisor",
-            "mobile": "15901099195"
-        }, {
             "name": "王月",
             "type": "builder",
             "mobile": "13910962871"
@@ -360,11 +352,31 @@
         }]
     }, {
         "name": "三",
-        "supervisor": "湖北公路水运工程咨询监理公司",
-        "builder": "中国葛洲坝集团股份有限公司",
+        "supervisor": "湖北公路水运工程咨询监理公司宜张第二驻地办",
+        "builder": "中国葛洲坝集团股份有限公司三标项目经理部",
         "branches": [{
             "name": "项目部",
             "users": [{
+                "name": "王晓阳",
+                "type": "builder",
+                "mobile": "18537267160"
+            }, {
+                "name": "董远江",
+                "type": "builder",
+                "mobile": "13972577303"
+            }, {
+                "name": "王涛",
+                "type": "builder",
+                "mobile": "15984961145"
+            }, {
+                "name": "刘奇奇",
+                "type": "builder",
+                "mobile": "13487011818"
+            }, {
+                "name": "陈军",
+                "type": "builder",
+                "mobile": "15071721108"
+            }, {
                 "name": "潘畅",
                 "type": "builder",
                 "mobile": "15076541886"
@@ -469,15 +481,15 @@
             }]
         }],
         "users": [{
-            "name": "张雄",
+            "name": "何凯",
             "type": "supervisor",
             "mobile": "15010758013"
         }, {
-            "name": "王强",
+            "name": "张官程",
             "type": "supervisor",
             "mobile": "15801594438"
         }, {
-            "name": "边军",
+            "name": "陈三明",
             "type": "supervisor",
             "mobile": "15901099195"
         }]
@@ -492,23 +504,31 @@
     "users": [{
         "name": "王永红",
         "type": "constructor",
-        "mobile": "13789112223"
+        "mobile": "18888888888"
     }, {
         "name": "王金甲",
         "type": "constructor",
-        "mobile": "13789112223"
+        "mobile": "18888888888"
     }, {
         "name": "曾建军",
         "type": "constructor",
-        "mobile": "13789112223"
+        "mobile": "18888888888"
+    }, {
+        "name": "胡亚平",
+        "type": "constructor",
+        "mobile": "18888888888"
+    }, {
+        "name": "章俊",
+        "type": "constructor",
+        "mobile": "18888888888"
     }],
     "sections": [{
         "price": 5801,
-        "supervisor": "湖北高路公路工程监理咨询有限公司",
-        "builder": "中铁二局",
+        "supervisor": "湖北高路公路工程监理咨询有限公司江北第一驻地办",
+        "builder": "中铁十五局一标项目经理部",
         "branches": [{
             "price": 5801,
-            "name": "项目部",
+            "name": "一标项目经理部",
             "users": [{
                 "name": "赵东辉",
                 "type": "builder",
@@ -614,11 +634,11 @@
         }]
     }, {
         "price": 13088,
-        "supervisor": "湖北高路公路工程监理咨询有限公司",
-        "builder": "中交一局",
+        "supervisor": "湖北高路公路工程监理咨询有限公司江北第一驻地办",
+        "builder": "中交一局二标项目经理部",
         "branches": [{
             "price": 13088,
-            "name": "项目部",
+            "name": "二标项目经理部",
             "users": [{
                 "name": "田雪健",
                 "type": "builder",
@@ -669,150 +689,131 @@
                 "mobile": "13541745431"
             }]
         }],
-        "users": [{
-            "name": "龙海生",
-            "type": "supervisor",
-            "mobile": "13997892861"
-        }, {
-            "name": "宋敏",
-            "type": "supervisor",
-            "mobile": "18627278747"
-        }, {
-            "name": "夏道君",
-            "type": "supervisor",
-            "mobile": "13451239950"
-        }, {
-            "name": "时坚",
-            "type": "supervisor",
-            "mobile": "13886990903"
-        }, {
-            "name": "魏伟华",
-            "type": "supervisor",
-            "mobile": "18986050168"
-        }]
+        "users": []
     }, {
         "price": 80747.6,
-        "supervisor": "湖北顺达公路工程咨询监理有限公司",
-        "builder": "中铁二十局",
+        "supervisor": "湖北顺达公路工程咨询监理有限公司江北第二驻地办",
+        "builder": "中铁二十局三标项目经理部",
         "users": [{
-                "name": "刘勇",
-                "type": "supervisor",
-                "mobile": "13607118311"
-            }, {
-                "name": "代柯",
-                "type": "supervisor",
-                "mobile": "18672861619"
-            }, {
-                "name": "戴愈赟",
-                "type": "supervisor",
-                "mobile": "15871549928"
-            }, {
-                "name": "陈耀华",
-                "type": "supervisor",
-                "mobile": "15171920768"
-            }, {
-                "name": "万志伟",
-                "type": "supervisor",
-                "mobile": "18972879596"
-            }, {
-                "name": "李天明",
-                "type": "builder",
-                "mobile": "15272569699"
-            }, {
-                "name": "魏阳",
-                "type": "builder",
-                "mobile": "18660727617"
-            }, {
-                "name": "郭晋",
-                "type": "builder",
-                "mobile": "15272569556"
-            }, {
-                "name": "雷云晖",
-                "type": "builder",
-                "mobile": "15272569606"
-            }, {
-                "name": "王安军",
-                "type": "builder",
-                "mobile": "15272569616"
-            }, {
-                "name": "马富强",
-                "type": "builder",
-                "mobile": "15272569522"
-            }, {
-                "name": "曹义",
-                "type": "builder",
-                "mobile": "15272569688"
-            }, {
-                "name": "许伟",
-                "type": "builder",
-                "mobile": "15272569600"
-            }, {
-                "name": "盛琦",
-                "type": "builder",
-                "mobile": "15272569533"
-            }
-        ]
+            "name": "王安军",
+            "type": "builder",
+            "mobile": "15272569616"
+
+        }, {
+            "name": "马富强",
+            "type": "builder",
+            "mobile": "15272569522"
+
+        }, {
+            "name": "许伟",
+            "type": "builder",
+            "mobile": "15272569600"
+
+        }, {
+            "name": "杨高亮",
+            "type": "builder",
+            "mobile": "15272569658"
+
+        }, {
+            "name": "蔡鹏",
+            "type": "builder",
+            "mobile": "15272569550"
+
+        }, {
+            "name": "赵甲启",
+            "type": "builder",
+            "mobile": "15272569679"
+
+        }, {
+            "name": "佘芳君",
+            "type": "builder",
+            "mobile": "18625386262"
+
+        }, {
+            "name": "盛琦",
+            "type": "builder",
+            "mobile": "15272569533"
+
+        }, {
+            "name": "郭建鹏",
+            "type": "builder",
+            "mobile": "15272569661"
+
+        }, {
+            "name": "赵金华",
+            "type": "builder",
+            "mobile": "15272569606"
+
+        }, {
+            "name": "温勇",
+            "type": "builder",
+            "mobile": "15272569608"
+
+        }, {
+            "name": "杨坤",
+            "type": "builder",
+            "mobile": "15272567125"
+        }]
     }, {
         "price": 93576.068,
-        "supervisor": "湖北顺达公路工程咨询监理有限公司",
-        "builder": "中铁十四局",
+        "supervisor": "湖北顺达公路工程咨询监理有限公司江北第二驻地办",
+        "builder": "中铁十四局四标项目经理部",
         "users": [{
-                "name": "刘勇",
-                "type": "supervisor",
-                "mobile": "13607118311"
-            }, {
-                "name": "代柯",
-                "type": "supervisor",
-                "mobile": "18672861619"
-            }, {
-                "name": "戴愈赟",
-                "type": "supervisor",
-                "mobile": "15871549928"
-            }, {
-                "name": "陈耀华",
-                "type": "supervisor",
-                "mobile": "15171920768"
-            }, {
-                "name": "万志伟",
-                "type": "supervisor",
-                "mobile": "18972879596"
-            }, {
-                "name": "徐计新",
-                "type": "builder",
-                "mobile": "18986669777"
-            }, {
-                "name": "马超",
-                "type": "builder",
-                "mobile": "18162381039"
-            }, {
-                "name": "石秀军",
-                "type": "builder",
-                "mobile": "18186563388"
-            }, {
-                "name": "董旭",
-                "type": "builder",
-                "mobile": "18162381049"
-            }, {
-                "name": "纪信军",
-                "type": "builder",
-                "mobile": "18972130999"
-            }, {
-                "name": "王晓杰",
-                "type": "builder",
-                "mobile": "18162381036"
-            }, {
-                "name": "王开明",
-                "type": "builder",
-                "mobile": "18162388798"
-            }, {
-                "name": "张恒",
-                "type": "builder",
-                "mobile": "18162381019"
-            }, {
-                "name": "赵巨斌",
-                "type": "builder",
-                "mobile": "18162381085"
-            }
-        ]
+            "name": "刘勇",
+            "type": "supervisor",
+            "mobile": "13607118311"
+        }, {
+            "name": "代柯",
+            "type": "supervisor",
+            "mobile": "18672861619"
+        }, {
+            "name": "戴愈赟",
+            "type": "supervisor",
+            "mobile": "15871549928"
+        }, {
+            "name": "陈耀华",
+            "type": "supervisor",
+            "mobile": "15171920768"
+        }, {
+            "name": "万志伟",
+            "type": "supervisor",
+            "mobile": "18972879596"
+        }, {
+            "name": "徐计新",
+            "type": "builder",
+            "mobile": "18986669777"
+        }, {
+            "name": "马超",
+            "type": "builder",
+            "mobile": "18162381039"
+        }, {
+            "name": "石秀军",
+            "type": "builder",
+            "mobile": "18186563388"
+        }, {
+            "name": "董旭",
+            "type": "builder",
+            "mobile": "18162381049"
+        }, {
+            "name": "纪信军",
+            "type": "builder",
+            "mobile": "18972130999"
+        }, {
+            "name": "王晓杰",
+            "type": "builder",
+            "mobile": "18162381036"
+        }, {
+            "name": "王开明",
+            "type": "builder",
+            "mobile": "18162388798"
+        }, {
+            "name": "张恒",
+            "type": "builder",
+            "mobile": "18162381019"
+        }, {
+            "name": "赵巨斌",
+            "type": "builder",
+            "mobile": "18162381085"
+        }]
     }]
 }]

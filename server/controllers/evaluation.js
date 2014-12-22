@@ -93,6 +93,11 @@ exports.findByProcessCurrentUserId = function (req, res, next) {
             return next(err);
         }
 
+        // 不展示未扣分的考核评价
+        evaluations = _.filter(evaluations, function(evaluation) {
+            return _.filter(evaluation.archives, {linked: false}).length > 0;
+        });
+
         res.send({
             'code': 0,
             'status': 'success',
@@ -236,11 +241,20 @@ exports.create = function(req, res, next) {
         evaluation.tables = _.pluck(tables, '_id');
         evaluation.user = req.session.user._id;
 
-        // 初始化流程
-        evaluation.process.updateAt = Date.now();
-        evaluation.process.active = false;
-        evaluation.process.status = '';
-        evaluation.process.current.user = req.session.user._id;
+        // 未扣分的考核评价直接终止流程
+        if (evaluation.archives &&
+            _.filter(evaluation.archives, {linked: false}).length === 0) {
+            // 终止流程
+            evaluation.process.updateAt = Date.now();
+            evaluation.process.active = false;
+            evaluation.process.status = 'END';
+        } else {
+            // 初始化流程
+            evaluation.process.updateAt = Date.now();
+            evaluation.process.active = false;
+            evaluation.process.status = '';
+            evaluation.process.current.user = req.session.user._id;
+        }
 
         evaluation.save(function(err, evaluation) {
             if (err) {

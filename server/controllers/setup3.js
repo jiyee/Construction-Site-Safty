@@ -37,7 +37,7 @@ exports.mongo = function(req, res, next) {
             mobile: '18888888888'
         };
         var user_1_2 = {
-            name: '桂志敬',
+            name: '黄宏宝',
             username: 'user_3_12',
             password: '123456',
             mobile: '18888888888'

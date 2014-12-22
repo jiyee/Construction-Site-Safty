@@ -38,7 +38,7 @@
                 <div class="col assertive" ng-repeat="item in data.check.checked_items">
                     {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
                     <div>
-                        <img ng-src="{{item.image_url}}" ng-show="item.image_url" width="64" height="64" style="margin-right: 12px;">
+                        <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
                     </div>
                 </div>
 
@@ -53,7 +53,13 @@
                     <div class="col">整改要求：</div>
                 </div>
                 <div class="col positive" ng-if="data.check.process.archives">
-                    <div ng-repeat="item in data.check.process.archives">{{item.user.name}}: {{item.comment}}</div>
+                    <div ng-repeat="item in data.check.process.archives">
+                        {{item.user.name}}: {{item.comment}}
+                        <br>
+                        <div class="row">
+                            <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row" ng-if="data.check.process.archives.length == 0 || data.check.process.status == 'FORWARD'">
@@ -73,8 +79,8 @@
                     <textarea ng-model="data.current.comment" rows="5" style="border: 1px solid #eee;"></textarea>
                 </div>
 
-                <div class="list" ng-repeat="image in data.images">
-                    <img ng-src="{{image.uri}}" width="64" height="64">
+                <div class="row">
+                    <img ng-src="{{image.uri}}" ng-repeat="image in data.images" width="64" height="64" style="margin-right: 12px;">
                 </div>
 
                 <button class="button button-block button-positive" ng-click="capture()" ng-if="data.check.process.status == 'FORWARD' || data.check.process.status == 'BACKWARD' || data.check.process.status == 'REVERT'">

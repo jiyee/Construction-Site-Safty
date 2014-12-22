@@ -141,7 +141,6 @@ exports.mongo = function(req, res, next) {
                 });
             });
 
-
             segment.name = (section.name || toWords(index++)) + '标段';
             segment.type = '标段';
             segment.units = [m_supervisors[section.supervisor]._id, m_builders[section.builder]._id];
@@ -152,6 +151,8 @@ exports.mongo = function(req, res, next) {
 
             m_project.segments.push(segment._id);
 
+            // 存在一个监理单位负责两个标段的问题，project.json里通过重复编制处理
+            // TODO 解决supervisor多个section的问题
             _.each(_.filter(section.users, {"type": "supervisor"}), function(_user) {
                 var user = UserModel();
                 user.name = _user.name;

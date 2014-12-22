@@ -69,7 +69,11 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
     $scope.takePhoto = function(item) {
         function onSuccess(imageURI) {
             item.images = item.images || [];
-            item.images.push(imageURI);
+            var image = {
+                uri: imageURI,
+                date: Date.now()
+            };
+            item.images.push(image);
             $scope.$apply();
         }
 
