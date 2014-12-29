@@ -17,14 +17,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         zoom: 10
     };
 
-    // var elMap = document.getElementById("map");
-    // var headerHeight = 44;
-    // var footerHeight = 0;
-    // elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
-    // setTimeout(function() {
-    //    elMap.style.height = (window.innerHeight - headerHeight - footerHeight) + 'px';
-    // }, 1000);
-
     var map = L.map('map', {
         attributionControl: false
     });
@@ -297,28 +289,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         $scope.modal = modal;
 
         $scope.data.projects = resolveProjects;
-
-        // 自动选中默认项目、标段
-        // if ($scope.data.user.project) {
-        //     $scope.data.project = _.find($scope.data.projects, {
-        //         _id: $scope.data.user.project._id
-        //     });
-        // }
-
-        // if ($scope.data.project) {
-        //     SegmentService.findByProjectId($scope.data.project._id).then(function(segments) {
-        //         $scope.data.sections = segments;
-
-        //         if ($scope.data.user.section && !$scope.data.section) {
-        //             // BUG 只有延时才能解决默认选中问题
-        //             $timeout(function() {
-        //                 $scope.data.section = _.find($scope.data.sections, {
-        //                     _id: $scope.data.user.section._id
-        //                 });
-        //             }, 100);
-        //         }
-        //     });
-        // }
 
         $scope.$watch('data.project', function(project) {
             if (!project) return;

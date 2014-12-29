@@ -34,7 +34,7 @@
                 </div>
                 <div class="row" ng-repeat="item in data.fails track by item.name">
                     <div class="col assertive">
-                        {{$index + 1}}. ({{item.index}}) {{item.comments}}
+                        {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
                         <div style="padding: 6px;">
                             <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
                         </div>

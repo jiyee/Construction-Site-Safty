@@ -6,6 +6,7 @@ var constants = require('../constants');
 var TableModel = require('../models/').TableModel;
 var EvaluationModel = require('../models/').EvaluationModel;
 var UserModel = require('../models/').UserModel;
+var DocxGen = require('docxtemplater');
 
 exports.findAll = function(req, res, next) {
     var options = {};
@@ -575,5 +576,94 @@ exports.end = function (req, res, next) {
                 'status': 'success'
             });
         });
+    });
+};
+
+exports.docxgen = function(req, res, next) {
+    var evaluation_id = validator.trim(req.params.evaluation_id);
+
+    if (!evaluation_id) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            _id: evaluation_id
+        }
+    };
+
+    EvaluationModel.findBy(options, function(err, evaluation) {
+        if (err) {
+            return next(err);
+        }
+
+        var ep = new eventproxy();
+        var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
+
+        ep.after('file', files.length, function(files) {
+           res.send({
+               'code': 0,
+               'status': 'success',
+               'files': files,
+               'evaluation': evaluation
+           });
+        });
+
+        var table;
+        var data;
+
+        // 创建检查表，更新表内容
+        _.each(files, function(file) {
+            table = _.find(evaluation.tables, {'file': file});
+
+            if (_.isEmpty(table)) {
+                ep.emit('file', {});
+                return;
+            }
+
+            data = {
+                'PROJECT': evaluation.project.name,
+                'SECTION': evaluation.section.name,
+                'BUILDER': ''
+            };
+
+            _.each(table.items, function (level1) {
+                selected = false;
+                _.each(level1.items, function (level2) {
+                    if (level2.is_selected) selected = true;
+                    level2.score = 0;
+                    _.each(level2.items, function (level3) {
+                        if (level3.status === 'FAIL') {
+                            level2.score += parseInt(level3.score, 10);
+                            data[[file, level1.index, level2.index, level3.index].join('-')] = parseInt(level3.score, 10);
+                        } else if (level3.status === 'PASS') {
+                            data[[file, level1.index, level2.index, level3.index].join('-')] = '-';
+                        } else if (level3.status === 'UNCHECK') {
+                            data[[file, level1.index, level2.index, level3.index].join('-')] = '-';
+                        }
+                    });
+
+                    level2.score = Math.min(level2.score, level2.maximum);
+                    data[[file, level1.index, level2.index].join('-')] = Math.min(level2.score, level2.maximum);
+                });
+
+                // 计算应得分
+                if (selected) {
+                    // $scope.data.score[type].total += level1.maximum;
+                }
+            });
+
+            var docx = new DocxGen().loadFromFile(process.cwd() + '/templates/' + file + '.docx');
+
+            docx.setTags(data);
+            docx.applyTags();
+            docx.output({
+                name: '/docx/' + evaluation._id + '_' + file + '.docx'
+            });
+
+            ep.emit('file', data);
+        });
+
     });
 };

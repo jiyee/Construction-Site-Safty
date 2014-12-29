@@ -37,7 +37,13 @@
                         <div class="col">存在隐患：{{data.capture.level3}} {{data.capture.comment}}</div>
                     </div>
                     <div class="row">
-                        <img ng-src="{{image.uri}}" ng-repeat="image in data.capture.images" width="64" height="64">
+                        <ul style="display: block; padding: 6px; list-style: none;">
+                            <li ng-repeat="image in data.capture.images" style="display: inline-block; position: relative; list-style: none; margin-right: 12px;">
+                                <img ng-if="!image.url" ng-src="{{image.uri}}" width="64">
+                                <img ng-show="image.url" ng-src="{{baseUrl}}{{image.url}}" width="64">
+                                <i ng-show="image.url" class="icon ion-checkmark-circled" style="color: #58AA89;display: block;position: absolute;bottom: 6px;right: 4px;font-size: 20px;"></i>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -53,7 +59,13 @@
                         <div class="col">存在隐患：{{item.level3}} {{item.comment}}</div>
                     </div>
                     <div class="row">
-                        <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64">
+                        <ul style="display: block; padding: 6px; list-style: none;">
+                            <li ng-repeat="image in item.images" style="display: inline-block; position: relative; list-style: none; margin-right: 12px;">
+                                <img ng-if="!image.url" ng-src="{{image.uri}}" width="64">
+                                <img ng-show="image.url" ng-src="{{baseUrl}}{{image.url}}" width="64">
+                                <i ng-show="image.url" class="icon ion-checkmark-circled" style="color: #58AA89;display: block;position: absolute;bottom: 6px;right: 4px;font-size: 20px;"></i>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -65,7 +77,13 @@
                         {{item.user.name}}: {{item.comment}}
                         <br>
                         <div class="row">
-                            <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
+                            <ul style="display: block; padding: 6px; list-style: none;">
+                                <li ng-repeat="image in item.images" style="display: inline-block; position: relative; list-style: none; margin-right: 12px;">
+                                    <img ng-if="!image.url" ng-src="{{image.uri}}" width="64">
+                                    <img ng-show="image.url" ng-src="{{baseUrl}}{{image.url}}" width="64">
+                                    <i ng-show="image.url" class="icon ion-checkmark-circled" style="color: #58AA89;display: block;position: absolute;bottom: 6px;right: 4px;font-size: 20px;"></i>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

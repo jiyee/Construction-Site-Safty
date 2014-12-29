@@ -1,4 +1,4 @@
-app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, categories, SegmentService, CaptureService, OfflineService, AuthService, resolveUser, resolveProjects) {
+app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, categories, SegmentService, CaptureService, OfflineService, AuthService, UploadService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.projects = resolveProjects;
@@ -115,26 +115,11 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             $scope.data.images.push(image);
             $scope.$apply();
 
-            // Specify transfer options
-            // var options = new FileUploadOptions();
-            // options.fileKey = "file";
-            // options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-            // options.mimeType = "image/jpeg";
-            // options.chunkedMode = false;
-
-            // // Transfer picture to server
-            // var ft = new FileTransfer();
-            // ft.upload(imageURI, settings.baseUrl + '/upload/image', function(res) {
-            //     if (res && res.response) {
-            //         try {
-            //             var response =JSON.parse(res.response);
-            //             image.url = response.imageURL;
-            //             alert(image.url);
-            //         } catch(ex) {}
-            //     }
-            // },
-            // function(err) {
-            // }, options);
+            UploadService.upload(image.uri).then(function(res) {
+                image.url = res.url;
+            }, function(err) {
+                console.log(err);
+            });
         }
 
         function onFail(message) {

@@ -1,4 +1,4 @@
-app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CaptureService, UnitService, UserService, AuthService, resolveUser) {
+app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CaptureService, UnitService, UserService, AuthService, UploadService, resolveUser) {
     $scope.data = {};
     $scope.data.capture = {};
     $scope.data.user = resolveUser;
@@ -13,7 +13,6 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
 
     CaptureService.findById($scope.data.captureId).then(function(capture) {
         $scope.data.capture = capture;
-        console.log(capture);
 
         if (capture.process.archives) {
             _.each(capture.process.archives, function(archive) {
@@ -85,6 +84,12 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                 date: Date.now()
             });
             $scope.$apply();
+
+            UploadService.upload(image.uri).then(function(res) {
+                image.url = res.url;
+            }, function(err) {
+                console.log(err);
+            });
         }
 
         function onFail(message) {

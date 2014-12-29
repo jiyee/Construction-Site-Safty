@@ -18,7 +18,7 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
                     _.each(level1.items, function(level2) {
                         _.each(level2.items, function(level3) {
                             if (level3.status != 'UNCHECK' && level3.score > 0) {
-                                level3.index = [table.file, level1.index, level2.index, level3.index].join('-');
+                                level3.full_index = [table.file, level1.index, level2.index, level3.index].join('-');
                                 $scope.data.fails.push(level3);
                             }
                         });

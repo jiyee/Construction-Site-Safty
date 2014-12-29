@@ -33,3 +33,6 @@ mongo
 .tags*
 
 data/*.js
+
+public/upload/*
+public/docx/*

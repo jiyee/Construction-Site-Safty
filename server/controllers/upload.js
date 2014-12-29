@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require("path");
 var formidable = require('formidable');
 
-exports.image = function(req, res, next) {
+exports.upload = function(req, res, next) {
     var form = new formidable.IncomingForm();
 
     form.uploadDir = './public/upload/';
@@ -22,7 +22,7 @@ exports.image = function(req, res, next) {
             res.send({
                 "status": 200,
                 'code': 0,
-                "imageURL": 'http://121.40.202.109:3000/upload/' + fileName
+                "url": '/upload/' + fileName
             });
         });
 

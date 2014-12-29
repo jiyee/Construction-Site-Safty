@@ -1,4 +1,4 @@
-app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CaptureService, OfflineService, AuthService, resolveUser) {
+app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CaptureService, OfflineService, AuthService, UploadService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
 
@@ -99,6 +99,24 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
                 capture.archives = [];
                 _.each(selected, function(item) {
                     capture.archives.push(_.pick(item, ['date', 'object', 'level1', 'level3', 'comment', 'images']));
+                });
+
+                // 处理未上传的图片
+                _.each(capture.archives, function(item) {
+                    if (_.isEmpty(item.images)) return;
+
+                    _.each(item.images, function(image) {
+                        if (!image.url && image.uri) {
+                            // 设定预设值, 避免出现同步完成数据仍在上传的情况
+                            image.url = '/upload/' + image.uri.substr(image.uri.lastIndexOf('/') + 1);
+
+                            UploadService.upload(image.uri).then(function(res) {
+                                image.url = res.url;
+                            }, function(err) {
+                                console.log(err);
+                            });
+                        }
+                    });
                 });
 
                 // 真正创建在线数据

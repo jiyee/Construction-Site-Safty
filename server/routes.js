@@ -100,6 +100,7 @@ router.post('/evaluation/:evaluation_id/backward', evaluation.backward);
 router.post('/evaluation/:evaluation_id/revert', evaluation.revert);
 router.post('/evaluation/:evaluation_id/restore', evaluation.restore);
 router.post('/evaluation/:evaluation_id/end', evaluation.end);
+router.get('/evaluation/:evaluation_id/docxgen', evaluation.docxgen);
 
 // 安全检查接口
 router.get('/captures/all', capture.findAll);
@@ -114,7 +115,7 @@ router.post('/capture/:capture_id/revert', capture.revert);
 router.post('/capture/:capture_id/restore', capture.restore);
 router.post('/capture/:capture_id/end', capture.end);
 
-router.post('/upload/image', upload.image);
+router.post('/upload', upload.upload);
 
 // 数据库测试接口
 router.get('/setup', [setup1.mongo, setup3.mongo, setup6.mongo, function (req, res, next) {
