@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ionic']);
+var app = angular.module('app', ['ionic', 'ui.bootstrap.datetimepicker']);
 
 var ipAddr = 'localhost';
 var ipAddr = '10.171.40.9';

@@ -104,6 +104,15 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         id: 'map.tms'
     }).addTo(map);
 
+    omnivore.kml('data/map/gps.kml', null, L.geoJson(null, {
+        style: function (feature) {
+            return {color: '#000'};
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.name);
+        }
+    })).addTo(map);
+
     function onLocationFound(location) {
         location.zoom = 16;
 
@@ -175,6 +184,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         $scope.data.properties.project = feature.properties.project;
         if ($scope.data.properties && $scope.data.properties.name) {
             $scope.data.properties.name = $scope.data.properties.name;
+            $scope.data.properties.object = '';
 
             if (!~$scope.data.properties.name.indexOf('路基')) {
                 $scope.data.properties.object = $scope.data.properties.name;
@@ -197,7 +207,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
                 if (feature && delta < tolerance) {
                     $scope.data.properties.name += feature.properties.name;
-                    $scope.data.properties.object += feature.properties.name;
+                    $scope.data.properties.object = $scope.data.properties.name;
                 }
             }
         }

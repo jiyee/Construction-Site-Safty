@@ -93,3 +93,11 @@ h3 {
 .leaflet-control-attribution {
     display: none;
 }
+
+.popup-body .datetimepicker {
+    min-height: 221px;
+    width: 100%;
+}
+.popup-body .datetimepicker table {
+    width: 100%;
+}
