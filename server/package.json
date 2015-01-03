@@ -15,6 +15,7 @@
     "express": "~4.9.0",
     "express-session": "^1.8.2",
     "formidable": "^1.0.16",
+    "geojson": "^0.2.0",
     "hbs": "~2.7.0",
     "less-middleware": "1.0.x",
     "lodash": "^2.4.1",

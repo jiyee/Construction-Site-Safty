@@ -34,6 +34,7 @@ require('./table');
 require('./check');
 require('./evaluation');
 require('./capture');
+require('./gps');
 
 // retrieve models
 exports.UserModel = mongoose.model('User');
@@ -44,3 +45,4 @@ exports.TableModel = mongoose.model('Table');
 exports.CheckModel = mongoose.model('Check');
 exports.EvaluationModel = mongoose.model('Evaluation');
 exports.CaptureModel = mongoose.model('Capture');
+exports.GpsModel = mongoose.model('Gps');

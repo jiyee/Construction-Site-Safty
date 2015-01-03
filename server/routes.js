@@ -14,6 +14,7 @@ var setup3 = require('./controllers/setup3');
 var setup6 = require('./controllers/setup6');
 var reset = require('./controllers/reset');
 var upload = require('./controllers/upload');
+var gps = require('./controllers/gps');
 
 router.get('/', function(req, res) {
     res.render('index', {
@@ -116,6 +117,11 @@ router.post('/capture/:capture_id/restore', capture.restore);
 router.post('/capture/:capture_id/end', capture.end);
 
 router.post('/upload', upload.upload);
+
+// GPS接口
+router.get('/gps/all', gps.findAll);
+router.get('/gps/:gps_id', gps.findById);
+router.post('/gps/create', gps.create);
 
 // 数据库测试接口
 router.get('/setup', [setup1.mongo, setup3.mongo, setup6.mongo, function (req, res, next) {

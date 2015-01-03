@@ -1,4 +1,4 @@
-app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, settings, ProjectService, SegmentService, CaptureService, AuthService, resolveUser, resolveProjects) {
+app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, $ionicPopup, settings, ProjectService, SegmentService, CaptureService, AuthService, GpsService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.location = {};
     $scope.data.user = resolveUser;
@@ -64,11 +64,11 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     var overlay_s = 'data/map/tianditu/overlay_s/{z}/{x}/{y}.png';
     var overlay_s_online = 'http://t{s}.tianditu.cn/cia_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cia&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}';
 
-    if (navigator.network &&
+    if (!navigator.network || (navigator.network &&
         navigator.network.connection &&
         (navigator.network.connection.type === Connection.WIFI ||
          navigator.network.connection.type === Connection.CELL_2G ||
-         navigator.network.connection.type === Connection.CELL_3G)) {
+         navigator.network.connection.type === Connection.CELL_3G))) {
     L.tileLayer(satellite_online, {
         subdomains: [0, 1, 2, 3, 4, 5],
         maxZoom: 16,
@@ -81,11 +81,11 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         id: 'map.satellite'
     }).addTo(map);
 
-    if (navigator.network &&
+    if (!navigator.network || (navigator.network &&
         navigator.network.connection &&
         (navigator.network.connection.type === Connection.WIFI ||
          navigator.network.connection.type === Connection.CELL_2G ||
-         navigator.network.connection.type === Connection.CELL_3G)) {
+         navigator.network.connection.type === Connection.CELL_3G))) {
     L.tileLayer(overlay_s_online, {
         subdomains: [0, 1, 2, 3, 4, 5],
         maxZoom: 16,
@@ -104,6 +104,15 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         id: 'map.tms'
     }).addTo(map);
 
+    omnivore.geojson($rootScope.baseUrl + '/gps/all', null, L.geoJson(null, {
+        style: function (feature) {
+            return {color: '#FF0000'};
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.name);
+        }
+    })).addTo(map);
+
     omnivore.kml('data/map/gps.kml', null, L.geoJson(null, {
         style: function (feature) {
             return {color: '#000'};
@@ -112,6 +121,69 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
             layer.bindPopup(feature.properties.name);
         }
     })).addTo(map);
+
+    // Initialise the FeatureGroup to store editable layers
+    var drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    // Initialise the draw control and pass it the FeatureGroup of editable layers
+    var drawControl = new L.Control.Draw({
+        draw: {
+            polyline: false,
+            polygon: false,
+            rectangle: false,
+            circle: false
+        },
+        edit: {
+            featureGroup: drawnItems,
+            edit: false,
+            remove: false
+        }
+    });
+    map.addControl(drawControl);
+
+    $scope.data.gps = {};
+
+    map.on('draw:created', function (e) {
+        var type = e.layerType,
+            layer = e.layer;
+
+        $scope.data.gps = _.clone(e);
+
+        var gpsPopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="data.gps.name">',
+            title: '请输入标注点名称：',
+            scope: $scope,
+            buttons: [{
+                text: '取消'
+            }, {
+                text: '<b>保存</b>',
+                type: 'button-positive',
+                onTap: function(evt) {
+                    if (!$scope.data.gps.name) {
+                        evt.preventDefault();
+                    } else {
+                        return $scope.data.gps.name;
+                    }
+                }
+            }]
+        });
+
+        gpsPopup.then(function(res) {
+            GpsService.create({
+                name: $scope.data.gps.name,
+                lat: $scope.data.gps.layer.getLatLng().lat,
+                lng: $scope.data.gps.layer.getLatLng().lng
+            }).then(function(gps) {
+                alert('保存成功！');
+                layer.bindPopup($scope.data.gps.name);
+                drawnItems.addLayer(layer);
+            }, function(err) {
+                alert('保存失败！' + err);
+            });
+        });
+
+    });
 
     function onLocationFound(location) {
         location.zoom = 16;
@@ -272,6 +344,10 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
             setView: true,
             maxZoom: 16
         });
+    };
+
+    $scope.toRuleIndex = function(item) {
+        $state.go('rule.index');
     };
 
     $scope.toCaptureCreate = function(item) {
