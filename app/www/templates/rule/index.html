@@ -22,7 +22,7 @@
                 <tr ng-repeat="item in data.rule.items">
                     <td>{{item.name}}</td>
                     <td>{{item.content}}</td>
-                    <td style="vertical-align: middle;"><img ng-src="/img/rules/60/{{data.rule.name}}_{{item.name}}.jpg" witdh="60" onerror="this.setAttribute('src', '');"></td>
+                    <td style="vertical-align: middle;"><img ng-if="item.image_uri" ng-src="/img/rules/60/{{item.image_uri}}" witdh="60" onerror="this.setAttribute('src', '');"></td>
                 </tr>
             </tbody>
         </table>

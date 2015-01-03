@@ -1,16 +1,7 @@
-app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, ProjectService, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService, GeolocationService, SyncService, resolveUser) {
+app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, ProjectService, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService,  SyncService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.position = [0, 0];
-
-    // 根据定位获取所在项目、标段和分部
-    // GeolocationService.getGeolocation().then(function(position) {
-    //     $scope.data.position = position;
-    //     $rootScope.data.position = position;
-    // }, function(error) {
-    //     $scope.data.position = [0, 0];
-    //     $rootScope.data.position = [0, 0];
-    // });
 
     // 加载用户所属组织的所有用户，供用户在线状态展示
     if ($scope.data.user.unit) {
