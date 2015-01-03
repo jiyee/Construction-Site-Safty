@@ -1,0 +1,31 @@
+<ion-view>
+    <ion-header-bar align-title="center" class="bar-calm">
+        <button class="button" ng-click="toBack()">返回</button>
+        <h1 class="title">[{{data.user.name}}]</h1>
+    </ion-header-bar>
+
+    <ion-content padding="true">
+        <h2>施工安全标准化查询</h2>
+
+        <div class="list" style="line-height: 40px;">
+            <button class="button button-small button-calm" ng-repeat="item in data.rules" ng-class="{'button-outline': !item.selected}" ng-click="select(item)">{{item.name}}</button>
+        </div>
+
+        <h4 class="text-center">{{data.rule.name}}</h4>
+        <table class="list">
+            <thead>
+                <td width="20%">内容</td>
+                <td width="60%">标准</td>
+                <td width="20%">案例图片</td>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data.rule.items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.content}}</td>
+                    <td style="vertical-align: middle;"><img ng-src="/img/rules/60/{{data.rule.name}}_{{item.name}}.jpg" witdh="60" onerror="this.setAttribute('src', '');"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </ion-content>
+</ion-view>

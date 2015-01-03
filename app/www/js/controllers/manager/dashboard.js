@@ -74,8 +74,8 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     };
 
     // 底部按钮
-    $scope.toStandard = function() {
-
+    $scope.toRuleIndex = function() {
+        $state.go('rule.index');
     };
 
     $scope.toCaptureMap = function () {

@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ionic', 'ui.bootstrap.datetimepicker']);
 
 var ipAddr = 'localhost';
-var ipAddr = '10.171.40.9';
+// var ipAddr = '10.171.40.9';
 // var ipAddr = '121.40.202.109';
 
 // if (navigator.notification) {
@@ -348,6 +348,26 @@ app.run(function($rootScope, $ionicPlatform) {
         templateUrl: 'templates/capture/process.html',
         controller: 'CaptureProcessCtrl'
     })
+
+    // 我要查询
+    .state('rule', {
+        url: '/rule',
+        abstract: true,
+        template: "<ui-view></ui-view>",
+        resolve: {
+            resolveUser: function(AuthService) {
+                return AuthService.getUser();
+            }
+        }
+    })
+
+    // 首页
+    .state('rule.index', {
+        url: '/',
+        templateUrl: 'templates/rule/index.html',
+        controller: 'RuleIndexCtrl'
+    })
+
 
     // 离线
     .state('offline', {
