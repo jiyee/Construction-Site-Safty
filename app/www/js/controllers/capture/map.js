@@ -23,7 +23,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
     var locateMarker, locateCircle;
 
-    if ($scope.$parent.location && $scope.$parent.location.latlng && $scope.$parent.location.accuracy) {
+    if ($scope.$parent.location && $scope.$parent.location.latlng) {
         var latlng = $scope.$parent.location.latlng,
             radius = $scope.$parent.location.accuracy / 2;
         locateMarker = L.marker(latlng).addTo(map)
@@ -122,68 +122,118 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         }
     })).addTo(map);
 
-    // Initialise the FeatureGroup to store editable layers
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
 
-    // Initialise the draw control and pass it the FeatureGroup of editable layers
-    var drawControl = new L.Control.Draw({
-        draw: {
-            polyline: false,
-            polygon: false,
-            rectangle: false,
-            circle: false
-        },
-        edit: {
-            featureGroup: drawnItems,
-            edit: false,
-            remove: false
-        }
-    });
-    map.addControl(drawControl);
+    // var drawControl = new L.Control.Draw({
+    //     position: 'topright',
+    //     draw: {
+    //         polyline: false,
+    //         polygon: false,
+    //         rectangle: false,
+    //         circle: false
+    //     },
+    //     edit: {
+    //         featureGroup: drawnItems,
+    //         edit: false,
+    //         remove: false
+    //     }
+    // });
+    // map.addControl(drawControl);
 
     $scope.data.gps = {};
 
-    map.on('draw:created', function (e) {
-        var type = e.layerType,
-            layer = e.layer;
+    $scope.addGPSPoint = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
 
-        $scope.data.gps = _.clone(e);
+        $scope.data.gps = {};
 
-        var gpsPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="data.gps.name">',
-            title: '请输入标注点名称：',
-            scope: $scope,
-            buttons: [{
-                text: '取消'
-            }, {
-                text: '<b>保存</b>',
-                type: 'button-positive',
-                onTap: function(evt) {
-                    if (!$scope.data.gps.name) {
-                        evt.preventDefault();
-                    } else {
-                        return $scope.data.gps.name;
+        alert('开始标注，请点击地图上某一点');
+
+        map.off('click');
+        map.on('click', function(e) {
+            var marker = new L.Marker(e.latlng);
+
+            $scope.data.gps = marker;
+
+            var gpsPopup = $ionicPopup.show({
+                template: '<input type="text" ng-model="data.gps.name">',
+                title: '请输入标注点名称：',
+                scope: $scope,
+                buttons: [{
+                    text: '取消'
+                }, {
+                    text: '<b>保存</b>',
+                    type: 'button-positive',
+                    onTap: function(evt) {
+                        if (!$scope.data.gps.name) {
+                            evt.preventDefault();
+                        } else {
+                            return $scope.data.gps.name;
+                        }
                     }
-                }
-            }]
-        });
-
-        gpsPopup.then(function(res) {
-            GpsService.create({
-                name: $scope.data.gps.name,
-                lat: $scope.data.gps.layer.getLatLng().lat,
-                lng: $scope.data.gps.layer.getLatLng().lng
-            }).then(function(gps) {
-                alert('保存成功！');
-                layer.bindPopup($scope.data.gps.name);
-                drawnItems.addLayer(layer);
-            }, function(err) {
-                alert('保存失败！' + err);
+                }]
             });
-        });
 
-    });
+            gpsPopup.then(function(res) {
+                GpsService.create({
+                    name: $scope.data.gps.name,
+                    lat: $scope.data.gps.getLatLng().lat,
+                    lng: $scope.data.gps.getLatLng().lng
+                }).then(function(gps) {
+                    alert('保存成功！');
+                    marker.bindPopup($scope.data.gps.name);
+                    drawnItems.addLayer(marker);
+                }, function(err) {
+                    alert('保存失败！' + err);
+                });
+            });
+
+            map.off('click');
+        });
+    };
+
+    // map.on('draw:created', function (e) {
+    //     var type = e.layerType,
+    //         layer = e.layer;
+
+    //     $scope.data.gps = _.clone(e);
+
+    //     var gpsPopup = $ionicPopup.show({
+    //         template: '<input type="text" ng-model="data.gps.name">',
+    //         title: '请输入标注点名称：',
+    //         scope: $scope,
+    //         buttons: [{
+    //             text: '取消'
+    //         }, {
+    //             text: '<b>保存</b>',
+    //             type: 'button-positive',
+    //             onTap: function(evt) {
+    //                 if (!$scope.data.gps.name) {
+    //                     evt.preventDefault();
+    //                 } else {
+    //                     return $scope.data.gps.name;
+    //                 }
+    //             }
+    //         }]
+    //     });
+
+    //     gpsPopup.then(function(res) {
+    //         GpsService.create({
+    //             name: $scope.data.gps.name,
+    //             lat: $scope.data.gps.layer.getLatLng().lat,
+    //             lng: $scope.data.gps.layer.getLatLng().lng
+    //         }).then(function(gps) {
+    //             alert('保存成功！');
+    //             layer.bindPopup($scope.data.gps.name);
+    //             drawnItems.addLayer(layer);
+    //         }, function(err) {
+    //             alert('保存失败！' + err);
+    //         });
+    //     });
+
+    // });
 
     function onLocationFound(location) {
         location.zoom = 16;
@@ -228,16 +278,26 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     L.Util.ajax("data/geojson/YZ-POINT.geojson").then(function(data) {
         POINTS.YZ = data;
     });
+    L.Util.ajax("data/geojson/gps.geojson").then(function(data) {
+        POINTS.GPS = data;
+    });
 
     $scope.$watch('location', function(location) {
         if (_.isEmpty(location)) return;
 
-        var feature, properties, tolerance = 1000, delta = Number.POSITIVE_INFINITY;
+        var feature, properties, coordinates, tolerance = 1000, delta = Number.POSITIVE_INFINITY;
 
         _.each(ROADS, function(layer, key) {
             _.each(layer.features, function(_feature) {
                 latlons = [];
                 if (_.isEmpty(_feature.geometry)) return;
+
+                if (_.isArray(_feature.geometry.coordinates[0])) { // MultiPoints
+                    coordinates = _feature.geometry.coordinates[0];
+                } else { // Points
+                    coordinates = _feature.geometry.coordinates;
+                }
+
                 _.each(_feature.geometry.coordinates[0], function(coord) {
                     latlons.push(L.latLng(coord[1], coord[0]));
                     var distance = L.GeometryUtil.closest(map, latlons, location.latlng, true).distance;
@@ -255,7 +315,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         $scope.data.properties = feature.properties;
         $scope.data.properties.project = feature.properties.project;
         if ($scope.data.properties && $scope.data.properties.name) {
-            $scope.data.properties.name = $scope.data.properties.name;
             $scope.data.properties.object = '';
 
             if (!~$scope.data.properties.name.indexOf('路基')) {
@@ -267,18 +326,25 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
                     _.each(layer.features, function(_feature) {
                         latlons = [];
                         if (_.isEmpty(_feature.geometry)) return;
-                        latlons.push(L.latLng(_feature.geometry.coordinates[0][1], _feature.geometry.coordinates[0][0]));
+                        if (_.isArray(_feature.geometry.coordinates[0])) { // MultiPoints
+                            coordinates = _feature.geometry.coordinates[0];
+                        } else { // Points
+                            coordinates = _feature.geometry.coordinates;
+                        }
+
+                        latlons.push(L.latLng(coordinates[1], coordinates[0]));
                         var distance = L.GeometryUtil.closest(map, latlons, location.latlng, true).distance;
                         if (distance < delta) {
                             delta = distance;
                             feature = _feature;
                             feature.properties.project = layer.project;
+                            feature.properties.key = key;
                         }
                     });
                 });
 
                 if (feature && delta < tolerance) {
-                    $scope.data.properties.name += feature.properties.name;
+                    $scope.data.properties.name = (feature.properties.key === 'GPS' ? "" : "路基") + feature.properties.name;
                     $scope.data.properties.object = $scope.data.properties.name;
                 }
             }
@@ -365,6 +431,14 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     };
 
     $scope.$on('$destroy', function() {
+        var location = {
+            latlng: map.getCenter(),
+            accuracy: 0,
+            zoom: map.getZoom()
+        };
+
+        $scope.$parent.location = location;
+
         map.stopLocate();
         map.remove();
     });

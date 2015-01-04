@@ -17,7 +17,7 @@ app.controller('RuleIndexCtrl', function($scope, $rootScope, $state, $stateParam
     $scope.select($scope.data.rules[0]);
 
     $scope.toBack = function() {
-        $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
+        $state.go($rootScope.$previousState.name || [$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
         });
     };

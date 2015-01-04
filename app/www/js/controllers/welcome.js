@@ -1,4 +1,4 @@
-app.controller('WelcomeCtrl', function($scope, $ionicPopup, $state, $stateParams, settings, user, SyncService) {
+app.controller('WelcomeCtrl', function($scope, $ionicPopup, $state, $stateParams, $ionicPlatform, settings, user, SyncService) {
     $scope.data = {};
     $scope.data.server = settings.baseUrl;
 
@@ -15,31 +15,20 @@ app.controller('WelcomeCtrl', function($scope, $ionicPopup, $state, $stateParams
         }, function() {
             alert('离线包下载失败');
         });
-
-        // var popup = $ionicPopup.show({
-        //     template: '<input type="text" ng-model="data.server">',
-        //     title: '输入服务器地址：',
-        //     scope: $scope,
-        //     buttons: [{
-        //         text: '取消'
-        //     }, {
-        //         text: '<b>保存</b>',
-        //         type: 'button-positive',
-        //         onTap: function(e) {
-        //             if (!$scope.data.server) {
-        //                 e.preventDefault();
-        //             } else {
-        //                 return $scope.data.server;
-        //             }
-        //         }
-        //     }, ]
-        // });
-
-        // popup.then(function(server) {
-        //     if (!server) return;
-
-        //     settings.baseUrl = server;
-        // });
     };
+
+    function exitApp() {
+        if (navigator.app) {
+            navigator.app.exitApp();
+        } else if (navigator.device) {
+            navigator.device.exitApp();
+        }
+    }
+
+    $ionicPlatform.onHardwareBackButton(exitApp);
+
+    $scope.$on('$destroy', function() {
+        $ionicPlatform.offHardwareBackButton(exitApp);
+    });
 
 });

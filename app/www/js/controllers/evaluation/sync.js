@@ -185,4 +185,9 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
         }
     });
 
+    $scope.skip = function() {
+        $state.go('^.customize', {
+            evaluationId: $scope.data.evaluationId
+        });
+    };
 });

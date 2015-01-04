@@ -36,17 +36,16 @@ app.run(function($rootScope, $ionicPlatform) {
 
     $rootScope.data = {};
 
-    $rootScope.$on("$stateChangeSuccess", function(event, current, previous, eventObj) {
-        // console.log('stateChangeSuccess', current, previous, eventObj);
+    $rootScope.$on("$stateChangeSuccess", function(event, to, toParams, from, fromParams) {
+        $rootScope.$previousState = from;
     });
 
-    $rootScope.$on("$stateChangeError", function(event, current, previous, eventObj) {
-        // console.log('stateChangeError', current, previous, eventObj);
+    $rootScope.$on("$stateChangeError", function(event, to, toParams, from, fromParams) {
     });
 
-    $rootScope.$on('$stateChangeStart', function(event, current, previous, eventObj) {
-        // console.log('stateChangeStart', current, previous, eventObj);
+    $rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
     });
+
 })
 
 // 注册全局变量

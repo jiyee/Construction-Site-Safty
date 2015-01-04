@@ -1,0 +1,182 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "name": "1号拌和站，钢筋加工场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.24460196, 30.184171, 158.263489]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "1号梁场拌和站加工场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [112.61222103, 30.04710099, 20.74164]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "2号拌和站、钢筋加工场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.15094299, 30.18330499, 152.199738]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "2号梁场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.17459396, 30.18346198, 252.934723]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "2号梁场拌和站钢筋建工场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [112.52997302, 30.06901497, 38.214699]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "3号梁场，钢筋加工场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.11828098, 30.18474097, 262.430817]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "3号钢筋加工场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [112.56354103, 30.06224298, 33.444138]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "4号梁场拌和站钢筋建工场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [112.55392397, 30.06555802, 30.559505]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "K85+881毛湖淌大桥某墩"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.21392403, 30.19783996, 279.26123]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "YK81+851.8白马溪大桥6号墩"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.23479798, 30.20016904, 208.786057]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "YK90+510全福河大桥2号墩"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.15206701, 30.18755402, 162.965332]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "ZK82+675金竹湾大桥"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.22487599, 30.19770702, 246.2565]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "ZK88+850绿竹子溪大桥2号桥0号台"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.16845002, 30.18372802, 241.784424]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "一分部驻地"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.22167201, 30.195359, 251.490173]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "一工区驻地"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [112.60278602, 30.05275902, 26.040447]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "三标项目部"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [112.62900998, 30.06435304, 24.422333]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "二工区驻地"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [112.52449997, 30.06905797, 27.41276]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "1号梁场"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.21743202, 30.19797198, 299.507416]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "name": "宜五三标项目部（二分部驻地）"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [111.14540398, 30.18005298, 198.232574]
+        }
+    }]
+}
