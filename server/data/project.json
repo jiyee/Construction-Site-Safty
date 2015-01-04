@@ -639,19 +639,7 @@
         "branches": [{
             "price": 13088,
             "name": "二标项目经理部",
-            "users": [{
-                "name": "田雪健",
-                "type": "builder",
-                "mobile": "18766656234"
-            }, {
-                "name": "瑜伽同",
-                "type": "builder",
-                "mobile": "15166687981"
-            }, {
-                "name": "乔晓琳",
-                "type": "builder",
-                "mobile": "13877656112"
-            }]
+            "users": []
         }, {
             "price": 7088,
             "name": "一分部",
