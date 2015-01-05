@@ -1,4 +1,4 @@
-app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, ProjectService, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService,  SyncService, resolveUser) {
+app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, ProjectService, UserService, CaptureService, CheckService, EvaluationService, AuthService, OfflineService,  SyncService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.position = [0, 0];
@@ -37,11 +37,23 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         }
     };
 
-    $scope.fullUpgrade = function() {
-        SyncService.fullUpgrade().then(function() {
-            alert('离线包下载成功');
-        }, function() {
-            alert('离线包下载失败');
+    $ionicModal.fromTemplateUrl('password-modal.html', {
+        scope: $scope,
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function($event) {
+        $scope.modal.show($event);
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+    $scope.submit = function() {
+        AuthService.changePassword($scope.data.user.name, $scope.data.old_password, $scope.data.new_password).then(function(user) {
+            alert('密码修改成功！');
+            $scope.closeModal();
+        }, function(err) {
+            alert(err);
         });
     };
 

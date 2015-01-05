@@ -89,11 +89,19 @@
                 </div>
             </div>
 
+            <br>
+            <div class="list" ng-if="data.files">
+                <h4>生成报告下载地址：</h4>
+                <div class="item" ng-repeat="item in data.files">
+                    <a href="{{baseUrl}}/docx/{{data.captureId}}_{{item}}.docx">{{baseUrl}}/docx/{{data.captureId}}_{{item}}.docx/</a>
+                </div>
+            </div>
+
             <div class="button-bar" ng-if="data.capture.process.active == false">
                 <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline && data.capture.process.active == false && data.capture.process.status == ''">
                     整改通知
                 </button>
-                <button class="button button-positive" ng-if="!data.isOffline && data.capture.process.active == false && data.capture.process.status == 'END'">
+                <button class="button button-positive" ng-click="docxgen()" ng-if="!data.isOffline && data.capture.process.active == false && data.capture.process.status == 'END'">
                     生成报告
                 </button>
             </div>

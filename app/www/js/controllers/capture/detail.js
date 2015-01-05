@@ -25,6 +25,14 @@ app.controller('CaptureDetailCtrl', function($scope, $rootScope, $state, $stateP
         }
     });
 
+    $scope.docxgen = function() {
+        CaptureService.docxgen($scope.data.captureId).then(function(files) {
+            $scope.data.files = files;
+        }, function(err) {
+            alert(err);
+        });
+    };
+
     $scope.toProcess = function() {
         $state.go('^.process', {
             captureId: $scope.data.capture._id

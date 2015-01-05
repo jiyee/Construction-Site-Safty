@@ -1,3 +1,4 @@
+var fs = require('fs');
 var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
@@ -5,6 +6,7 @@ var utils = require('../utils');
 var constants = require('../constants');
 var TableModel = require('../models/').TableModel;
 var EvaluationModel = require('../models/').EvaluationModel;
+var UnitModel = require('../models/').UnitModel;
 var UserModel = require('../models/').UserModel;
 var DocxGen = require('docxtemplater');
 
@@ -601,68 +603,87 @@ exports.docxgen = function(req, res, next) {
         var ep = new eventproxy();
         var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
-        ep.after('file', files.length, function(files) {
-           res.send({
-               'code': 0,
-               'status': 'success',
-               'files': files,
-               'evaluation': evaluation
-           });
-        });
+        ep.after('unit', evaluation.section.units.length, function(units) {
+            ep.after('file', files.length, function(files) {
+               res.send({
+                   'code': 0,
+                   'status': 'success',
+                   'files': _.filter(files, function(item) {return !_.isEmpty(item);})
+               });
+            });
 
-        var table;
-        var data;
+            var table;
+            var data;
 
-        // 创建检查表，更新表内容
-        _.each(files, function(file) {
-            table = _.find(evaluation.tables, {'file': file});
+            // 创建检查表，更新表内容
+            _.each(files, function(file) {
+                table = _.find(evaluation.tables, {'file': file});
 
-            if (_.isEmpty(table)) {
-                ep.emit('file', {});
-                return;
-            }
+                if (_.isEmpty(table)) {
+                    ep.emit('file', {});
+                    return;
+                }
 
-            data = {
-                'PROJECT': evaluation.project.name,
-                'SECTION': evaluation.section.name,
-                'BUILDER': ''
-            };
+                data = {
+                    'PROJECT': evaluation.project.name,
+                    'SECTION': evaluation.section.name,
+                    'BUILDER': _.find(units, {type: '施工单位'}) ? _.find(units, {type: '施工单位'}).name : ""
+                };
 
-            _.each(table.items, function (level1) {
-                selected = false;
-                _.each(level1.items, function (level2) {
-                    if (level2.is_selected) selected = true;
-                    level2.score = 0;
-                    _.each(level2.items, function (level3) {
-                        if (level3.status === 'FAIL') {
-                            level2.score += parseInt(level3.score, 10);
-                            data[[file, level1.index, level2.index, level3.index].join('-')] = parseInt(level3.score, 10);
-                        } else if (level3.status === 'PASS') {
-                            data[[file, level1.index, level2.index, level3.index].join('-')] = '-';
-                        } else if (level3.status === 'UNCHECK') {
-                            data[[file, level1.index, level2.index, level3.index].join('-')] = '-';
-                        }
+                _.each(table.items, function (level1) {
+                    selected = false;
+                    _.each(level1.items, function (level2) {
+                        if (level2.is_selected) selected = true;
+                        level2.score = 0;
+                        _.each(level2.items, function (level3) {
+                            if (level3.status === 'FAIL') {
+                                level2.score += parseInt(level3.score, 10);
+                                data[[file, level1.index, level2.index, level3.index].join('-')] = parseInt(level3.score, 10);
+                            } else if (level3.status === 'PASS') {
+                                data[[file, level1.index, level2.index, level3.index].join('-')] = '-';
+                            } else if (level3.status === 'UNCHECK') {
+                                data[[file, level1.index, level2.index, level3.index].join('-')] = '-';
+                            }
+                        });
+
+                        level2.score = Math.min(level2.score, level2.maximum);
+                        data[[file, level1.index, level2.index].join('-')] = Math.min(level2.score, level2.maximum);
                     });
 
-                    level2.score = Math.min(level2.score, level2.maximum);
-                    data[[file, level1.index, level2.index].join('-')] = Math.min(level2.score, level2.maximum);
+                    // 计算应得分
+                    if (selected) {
+                        // $scope.data.score[type].total += level1.maximum;
+                    }
                 });
 
-                // 计算应得分
-                if (selected) {
-                    // $scope.data.score[type].total += level1.maximum;
+                var content = fs.readFileSync(process.cwd() + '/templates/' + file + '.docx', "binary");
+                var docx = new DocxGen(content);
+
+                docx.setData(data);
+                docx.render();
+
+                var buffer = docx.getZip().generate({
+                    type: "nodebuffer"
+                });
+                fs.writeFile(process.cwd() + '/public/docx/' + evaluation._id + '_' + file + '.docx', buffer);
+
+                ep.emit('file', file);
+            });
+        });
+
+        _.each(evaluation.section.units, function(unitId) {
+            UnitModel.findBy({
+                findOne: true,
+                conditions: {
+                    _id: unitId
                 }
+            }, function(err, unit) {
+                if (err) {
+                    ep.emit('unit', null);
+                }
+
+                ep.emit('unit', unit);
             });
-
-            var docx = new DocxGen().loadFromFile(process.cwd() + '/templates/' + file + '.docx');
-
-            docx.setTags(data);
-            docx.applyTags();
-            docx.output({
-                name: '/docx/' + evaluation._id + '_' + file + '.docx'
-            });
-
-            ep.emit('file', data);
         });
 
     });

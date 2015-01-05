@@ -236,3 +236,55 @@ exports.create = function(req, res, next) {
         });
     });
 };
+
+exports.changePassword = function(req, res, next) {
+    var username = validator.trim(req.body.username).toLowerCase();
+    var old_password = validator.trim(req.body.old_password);
+    var new_password = validator.trim(req.body.new_password);
+
+    var ep = new eventproxy();
+    ep.on('error', function(msg) {
+        res.send({
+            code: 105,
+            message: msg || '登录失败'
+        });
+    });
+
+    if (!username || !old_password || !new_password) {
+        ep.emit('error', '信息不完整');
+        return;
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            username: username,
+            password: old_password
+        }
+    };
+
+    UserModel.findBy(options, function(err, user) {
+        if (err) {
+            ep.emit('error');
+            return;
+        }
+
+        if (!user) {
+            ep.emit('error', '用户名或者密码错误');
+            return;
+        }
+
+        user.password = new_password;
+        user.save(function(err, user) {
+            if (err) {
+                return next(err);
+            }
+
+            res.send({
+                'status': 'success',
+                'code': 0,
+                'user': user
+            });
+        });
+    });
+};

@@ -12,14 +12,78 @@
             "maximum": 8,
             "items": [{
                 "index": "1",
-                "name": "扩大基础、挖孔桩或钻孔桩未严格按方案实施，扣4-6分。",
-                "range": [0, 4, 5, 6],
+                "name": "其中未设置围挡，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
                 "score": null,
                 "status": "UNCHECK",
                 "comments": "",
                 "static": false
             }, {
                 "index": "2",
+                "name": "停止施工时，孔口无罩盖，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "3",
+                "name": "孔口堆载安全间距不符合相关技术规程要求，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "4",
+                "name": "夜间作业孔口未悬挂警示红灯，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "5",
+                "name": "水上钻机平台搭设不坚固牢靠，扣2分。",
+                "range": [0, 2],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "6",
+                "name": "挖孔桩孔口护壁高出地面不符合要求，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "7",
+                "name": "作业人员出入时，无常备的梯子，采用机械提升出入时，使用吊篮不符合要求，发现一处扣1分。",
+                "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "8",
+                "name": "挖孔作业未采取通风或换班作业，扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "9",
+                "name": "违规作业，发现一次扣1分。",
+                "range": [0, 1],
+                "score": null,
+                "status": "UNCHECK",
+                "comments": "",
+                "static": false
+            }, {
+                "index": "10",
                 "step": true,
                 "name": "在城市、村镇等人口密集区域未设置警戒设施或警示灯，发现一处扣1分。",
                 "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -28,7 +92,7 @@
                 "comments": "",
                 "static": false
             }, {
-                "index": "3",
+                "index": "11",
                 "step": true,
                 "name": "扩大基础、挖孔桩或钻孔桩施工未严格悬挂设置安全告知牌的，发现一处扣1分。",
                 "range": [0, 1, 2, 3, 4, 5, 6, 7, 8],

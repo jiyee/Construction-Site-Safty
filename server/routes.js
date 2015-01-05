@@ -29,6 +29,7 @@ router.get('/', function(req, res) {
 router.get('/auth', user.auth);
 router.post('/login', user.login);
 router.post('/logout', user.logout);
+router.post('/password', user.changePassword);
 
 // 用户接口
 router.get('/users/all', user.findAll);
@@ -115,6 +116,7 @@ router.post('/capture/:capture_id/backward', capture.backward);
 router.post('/capture/:capture_id/revert', capture.revert);
 router.post('/capture/:capture_id/restore', capture.restore);
 router.post('/capture/:capture_id/end', capture.end);
+router.get('/capture/:capture_id/docxgen', capture.docxgen);
 
 router.post('/upload', upload.upload);
 

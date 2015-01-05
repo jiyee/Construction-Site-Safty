@@ -123,6 +123,14 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
         });
     };
 
+    $scope.docxgen = function() {
+        EvaluationService.docxgen($scope.data.evaluationId).then(function(files) {
+            $scope.data.files = files;
+        }, function(err) {
+            alert(err);
+        });
+    };
+
     $scope.toTable = function() {
         $state.go('^.table', {
             evaluationId: $scope.data.evaluationId

@@ -187,5 +187,18 @@ app.factory('EvaluationService', function($http, $q, settings) {
 
             return deferred.promise;
         },
+        docxgen: function(evaluationId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/evaluation/' + evaluationId + '/docxgen')
+                .success(function(data) {
+                    deferred.resolve(data.files);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
     };
 });

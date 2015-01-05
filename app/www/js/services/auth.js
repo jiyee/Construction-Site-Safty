@@ -73,6 +73,42 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
 
             return deferred.promise;
         },
+        changePassword: function(username, old_password, new_password) {
+            var deferred = $q.defer();
+
+            if (!username) {
+                deferred.reject('用户信息错误');
+                return deferred.promise;
+            }
+
+            if (!old_password) {
+                deferred.reject('原密码为空');
+                return deferred.promise;
+            }
+
+            if (!new_password) {
+                deferred.reject('新密码为空');
+                return deferred.promise;
+            }
+
+            $http.post(settings.baseUrl + '/password', {
+                    username: username,
+                    old_password: old_password,
+                    new_password: new_password
+                })
+                .success(function(data) {
+                    if (data.code > 0) {
+                        deferred.reject(data.message);
+                    } else {
+                        deferred.resolve(data.user);
+                    }
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
         getUser: function () {
             return user;
         }

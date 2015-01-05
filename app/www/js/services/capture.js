@@ -167,5 +167,18 @@ app.factory('CaptureService', function($http, $q, settings) {
 
             return deferred.promise;
         },
+        docxgen: function(captureId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/capture/' + captureId + '/docxgen')
+                .success(function(data) {
+                    deferred.resolve(data.files);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
     };
 });

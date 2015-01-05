@@ -56,6 +56,14 @@
             </div>
 
             <br>
+            <div class="list" ng-if="data.files">
+                <h4>生成报告下载地址：</h4>
+                <div class="item" ng-repeat="item in data.files">
+                    <a href="{{baseUrl}}/docx/{{data.evaluationId}}_{{item}}.docx">{{baseUrl}}/docx/{{data.evaluationId}}_{{item}}.docx/</a>
+                </div>
+            </div>
+
+            <br>
             <div class="button-bar">
                 <button class="button button-positive" ng-click="toTable()" ng-if="data.isOffline">
                     继续打分
@@ -67,7 +75,7 @@
                 <button class="button button-positive" ng-click="toProcess()" ng-if="!data.isOffline && data.evaluation.process.active == false && data.evaluation.process.status == ''">
                     整改通知
                 </button>
-                <button class="button button-positive" ng-if="!data.isOffline && data.evaluation.process.active == false && data.evaluation.process.status == 'END'">
+                <button class="button button-positive" ng-click="docxgen()" ng-if="!data.isOffline && data.evaluation.process.active == false && data.evaluation.process.status == 'END'">
                     生成报告
                 </button>
             </div>
