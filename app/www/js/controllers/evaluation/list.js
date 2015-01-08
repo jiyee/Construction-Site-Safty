@@ -6,7 +6,7 @@ app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $state
     EvaluationService.findByUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = _.filter(evaluations, function(evaluation) {
             return evaluation.process && evaluation.process.status === 'END';
-        });;
+        });
     });
 
     OfflineService.list('evaluation').then(function(evaluations) {

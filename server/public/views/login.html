@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>平安工地信息管理系统</h1>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">单位：</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.unit" ng-options="item as item.name for item in data.units">
+                    <option value="" selected>请选择单位</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">用户：</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="data.user" ng-options="item as item.name for item in data.users">
+                    <option value="" selected>请选择用户</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">密码：</label>
+            <div class="col-sm-3">
+                <input type="password" ng-model="data.password" class="form-control" placeholder="请输入密码">
+            </div>
+        </div>
+
+        <button type="submit" ng-click="login()" class="col-sm-offset-1 btn btn-default">登录</button>
+    </form>
+</div>

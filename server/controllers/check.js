@@ -598,8 +598,8 @@ exports.docxgen = function(req, res, next) {
                 };
             });
 
-            data.first_process_comment = data.process ? data.process[0].comment : "";
-            data.last_process_comment = data.process ? data.process[data.process.length - 1].comment : "";
+            data.first_process_comment = data.process && data.process.length > 0 ? data.process[0].comment : "";
+            data.last_process_comment = data.process && data.process.length > 0 ? data.process[data.process.length - 1].comment : "";
 
             data.process = _.filter(data.process, function(item, index) {
                 if (index === 0 || index === data.process.length - 1) return false;

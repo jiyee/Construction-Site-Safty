@@ -1,0 +1,23 @@
+<label class="col-md-2 control-label">{{title}} <button id="{{id}}" type="button" class="btn btn-default btn-info">单选文件</button></label>
+
+<div class="form-inline" style="height: 100px; margin-bottom: 10px;">
+    <div class="col-md-2" style="border-right: 1px solid black; height: 100px;"><img ng-src="{{data}}?imageView2/2/w/100/h/100" ng-show="data"></div>
+    <div class="col-md-4">
+        <p>文件名： {{temp['name']}}</p>
+    </div>
+    <div class="col-md-4">
+        <div class="progress" style="margin-bottom: 20px;">
+          <div class="progress-bar" role="progressbar" aria-valuenow="{{temp['percent'] || 0}}" aria-valuemin="0" aria-valuemax="100" style="width: {{temp['percent'] || 0}}%;">
+            {{temp['percent'] || 0}}%
+          </div>
+        </div>
+
+        <button ng-click="remove($index)" class="btn btn-danger">删除</button>
+    </div>
+    <div class="col-md-2" ng-if="temp">
+        <label class="text-info" ng-show="temp['sending']">({{temp['bytesPerSecond'] / 1024 | number:0}}Kb/s)
+        {{temp['size'] / 1024 | number:0}}Kb  上传中...</label>
+        <label class="text-success" ng-hide="temp['sending']">上传成功</label>
+        <label class="text-error" ng-show="temp['errTip']">{{temp['errTip']}}</label>
+    </div>
+</div>
