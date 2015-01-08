@@ -32,7 +32,7 @@ UnitSchema.statics = {
         }
 
         query.sort({
-                createAt: -1
+                createAt: 1
             })
             .exec(callback);
     }
