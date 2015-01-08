@@ -73,10 +73,10 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
 
             return deferred.promise;
         },
-        changePassword: function(username, old_password, new_password) {
+        changePassword: function(name, old_password, new_password) {
             var deferred = $q.defer();
 
-            if (!username) {
+            if (!name) {
                 deferred.reject('用户信息错误');
                 return deferred.promise;
             }
@@ -92,7 +92,7 @@ app.factory('AuthService', function($rootScope, $http, $q, $window, settings) {
             }
 
             $http.post(settings.baseUrl + '/password', {
-                    username: username,
+                    name: name,
                     old_password: old_password,
                     new_password: new_password
                 })

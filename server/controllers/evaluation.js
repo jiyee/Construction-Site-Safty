@@ -9,6 +9,8 @@ var EvaluationModel = require('../models/').EvaluationModel;
 var UnitModel = require('../models/').UnitModel;
 var UserModel = require('../models/').UserModel;
 var DocxGen = require('docxtemplater');
+var ImageModule = require('docxtemplater-image-module');
+var sizeOf = require('image-size');
 
 exports.findAll = function(req, res, next) {
     var options = {};
@@ -604,12 +606,13 @@ exports.docxgen = function(req, res, next) {
         var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
         ep.after('unit', evaluation.section.units.length, function(units) {
-            ep.after('file', files.length, function(files) {
-               res.send({
-                   'code': 0,
-                   'status': 'success',
-                   'files': _.filter(files, function(item) {return !_.isEmpty(item);})
-               });
+            // 最终回调出口
+            ep.after('file', files.length + 1, function(files) {
+                res.send({
+                    'code': 0,
+                    'status': 'success',
+                    'files': _.filter(files, function(item) {return !_.isEmpty(item);})
+                });
             });
 
             var table;
@@ -669,6 +672,82 @@ exports.docxgen = function(req, res, next) {
 
                 ep.emit('file', file);
             });
+
+            // 创建整改通知书
+            ///////////////////////////
+            var file = 'KHPJ';
+            var content = fs.readFileSync(process.cwd() + '/templates/' + file + '.docx', "binary");
+            var docx = new DocxGen(content);
+
+            var imageModule = new ImageModule({
+                centered: true
+            });
+            imageModule.getSizeFromData = function(imgData) {
+                sizeObj = sizeOf(imgData);
+                var ratio = sizeObj.width / sizeObj.height;
+                var maxWidth = Math.min(sizeObj.width, 480);
+                var maxHeight = maxWidth / ratio;
+                return [maxWidth, maxHeight];
+            };
+
+            docx.attachModule(imageModule);
+
+            data = {
+                "index": evaluation.uuid,
+                "project": evaluation.project.name,
+                "section": evaluation.section.name,
+                "user": evaluation.user.name,
+                "builder_user": evaluation.builder.user ? evaluation.builder.user.name : "",
+                "builder_unit": _.find(units, {type: '施工单位'}) ? _.find(units, {type: '施工单位'}).name : "",
+                "supervisor_user": evaluation.supervisor.user ? evaluation.supervisor.user.name : "",
+                "supervisor_unit": _.find(units, {type: '监理单位'}) ? _.find(units, {type: '监理单位'}).name : ""
+            };
+
+            data.archives = _.map(evaluation.archives, function(item) {
+                return {
+                    index: item.index,
+                    name: item.name,
+                    comment: item.comment || ""
+                };
+            });
+
+            data.process = _.map(evaluation.process.archives, function(item) {
+                return {
+                    date: item.date,
+                    user: item.user,
+                    comment: item.comment || ""
+                };
+            });
+
+            data.first_process_comment = data.process ? data.process[0].comment : "";
+            data.last_process_comment = data.process ? data.process[data.process.length - 1].comment : "";
+
+            data.process = _.filter(data.process, function(item, index) {
+                if (index === 0 || index === data.process.length - 1) return false;
+                return true;
+            });
+
+            data.images = [];
+            _.each(evaluation.archives, function(item) {
+                _.each(item.images, function(image) {
+                    data.images.push({
+                        image: process.cwd() + '/public' + image.url,
+                        name: item.name,
+                        comment: item.comment || ""
+                    });
+                });
+            });
+            // res.send(data);return;
+
+            docx.setData(data);
+            docx.render();
+
+            var buffer = docx.getZip().generate({
+                type: "nodebuffer"
+            });
+            fs.writeFile(process.cwd() + '/public/docx/' + evaluation._id + '_' + file + '.docx', buffer);
+
+            ep.emit('file', file);
         });
 
         _.each(evaluation.section.units, function(unitId) {

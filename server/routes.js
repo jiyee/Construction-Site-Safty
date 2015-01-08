@@ -89,6 +89,7 @@ router.post('/check/:check_id/backward', check.backward);
 router.post('/check/:check_id/revert', check.revert);
 router.post('/check/:check_id/restore', check.restore);
 router.post('/check/:check_id/end', check.end);
+router.get('/check/:check_id/docxgen', check.docxgen);
 
 // 考核评价接口
 router.get('/evaluations', evaluation.findByUser);

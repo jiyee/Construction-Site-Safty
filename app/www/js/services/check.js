@@ -167,5 +167,18 @@ app.factory('CheckService', function($http, $q, settings) {
 
             return deferred.promise;
         },
+        docxgen: function(checkId) {
+            var deferred = $q.defer();
+
+            $http.get(settings.baseUrl + '/check/' + checkId + '/docxgen')
+                .success(function(data) {
+                    deferred.resolve(data.files);
+                })
+                .error(function(err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
+        },
     };
 });

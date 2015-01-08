@@ -238,7 +238,7 @@ exports.create = function(req, res, next) {
 };
 
 exports.changePassword = function(req, res, next) {
-    var username = validator.trim(req.body.username).toLowerCase();
+    var name = validator.trim(req.body.name).toLowerCase();
     var old_password = validator.trim(req.body.old_password);
     var new_password = validator.trim(req.body.new_password);
 
@@ -250,7 +250,7 @@ exports.changePassword = function(req, res, next) {
         });
     });
 
-    if (!username || !old_password || !new_password) {
+    if (!name || !old_password || !new_password) {
         ep.emit('error', '信息不完整');
         return;
     }
@@ -258,7 +258,7 @@ exports.changePassword = function(req, res, next) {
     var options = {
         findOne: true,
         conditions: {
-            username: username,
+            name: name,
             password: old_password
         }
     };

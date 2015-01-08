@@ -1,3 +1,4 @@
+var fs = require('fs');
 var _ = require('lodash');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
@@ -7,6 +8,9 @@ var CheckModel = require('../models/').CheckModel;
 var UserModel = require('../models/').UserModel;
 var UnitModel = require('../models/').UnitModel;
 var SegmentModel = require('../models/').SegmentModel;
+var DocxGen = require('docxtemplater');
+var ImageModule = require('docxtemplater-image-module');
+var sizeOf = require('image-size');
 
 exports.findAll = function (req, res, next) {
     var options = {};
@@ -505,5 +509,140 @@ exports.end = function (req, res, next) {
                 'status': 'success'
             });
         });
+    });
+};
+
+exports.docxgen = function(req, res, next) {
+    var check_id = validator.trim(req.params.check_id);
+
+    if (!check_id) {
+        return next(utils.getError(101));
+    }
+
+    var options = {
+        findOne: true,
+        conditions: {
+            _id: check_id
+        }
+    };
+
+    CheckModel.findBy(options, function(err, check) {
+        if (err) {
+            return next(err);
+        }
+
+        var ep = new eventproxy();
+        ep.after('unit', check.section.units.length, function(units) {
+            // 最终回调出口
+            ep.all('file', function(file) {
+                res.send({
+                    'code': 0,
+                    'status': 'success',
+                    'files': [file]
+                });
+            });
+
+            var data;
+
+            // 创建整改通知书
+            ///////////////////////////
+            var file = 'RCXJ';
+            var content = fs.readFileSync(process.cwd() + '/templates/' + file + '.docx', "binary");
+            var docx = new DocxGen(content);
+
+            var imageModule = new ImageModule({
+                centered: true
+            });
+            imageModule.getSizeFromData = function(imgData) {
+                sizeObj = sizeOf(imgData);
+                var ratio = sizeObj.width / sizeObj.height;
+                var maxWidth = Math.min(sizeObj.width, 480);
+                var maxHeight = maxWidth / ratio;
+                return [maxWidth, maxHeight];
+            };
+
+            docx.attachModule(imageModule);
+
+            data = {
+                "index": check.uuid,
+                "project": check.project.name,
+                "section": check.section.name,
+                "user": check.user.name,
+                "builder_user": check.builder.user ? check.builder.user.name : "",
+                "builder_unit": _.find(units, {type: '施工单位'}) ? _.find(units, {type: '施工单位'}).name : "",
+                "supervisor_user": check.supervisor.user ? check.supervisor.user.name : "",
+                "supervisor_unit": _.find(units, {type: '监理单位'}) ? _.find(units, {type: '监理单位'}).name : ""
+            };
+
+            data.archives = [];
+            _.each(check.table.items, function(level1) {
+                _.each(level1.items, function(level2) {
+                    _.each(level2.items, function(level3) {
+                        if (level3.status != 'UNCHECK' && level3.score > 0) {
+                            data.archives.push({
+                                index: level3.index,
+                                name: level3.name,
+                                comment: level3.comments || "",
+                                images: level3.images
+                            });
+                        }
+                    });
+                });
+            });
+
+            data.process = _.map(check.process.archives, function(item) {
+                return {
+                    date: item.date,
+                    user: item.user,
+                    comment: item.comment || ""
+                };
+            });
+
+            data.first_process_comment = data.process ? data.process[0].comment : "";
+            data.last_process_comment = data.process ? data.process[data.process.length - 1].comment : "";
+
+            data.process = _.filter(data.process, function(item, index) {
+                if (index === 0 || index === data.process.length - 1) return false;
+                return true;
+            });
+
+            data.images = [];
+            _.each(check.archives, function(item) {
+                _.each(item.images, function(image) {
+                    data.images.push({
+                        image: process.cwd() + '/public' + image.url,
+                        name: item.name,
+                        comment: item.comment || ""
+                    });
+                });
+            });
+            // res.send(data);return;
+
+            docx.setData(data);
+            docx.render();
+
+            var buffer = docx.getZip().generate({
+                type: "nodebuffer"
+            });
+            fs.writeFile(process.cwd() + '/public/docx/' + check._id + '_' + file + '.docx', buffer);
+
+            ep.emit('file', file);
+        });
+
+        _.each(check.section.units, function(unitId) {
+            UnitModel.findBy({
+                findOne: true,
+                conditions: {
+                    _id: unitId
+                }
+            }, function(err, unit) {
+                if (err) {
+                    ep.emit('unit', null);
+                }
+
+                ep.emit('unit', unit);
+            });
+        });
+
     });
 };

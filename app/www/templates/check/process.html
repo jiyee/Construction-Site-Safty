@@ -36,7 +36,7 @@
                     <div class="col">存在隐患：</div>
                 </div>
                 <div class="col assertive" ng-repeat="item in data.check.checked_items">
-                    {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
+                    {{$index + 1}}. ({{item.full_index}}) {{item.name}} {{item.comments}}
                     <div>
                         <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
                     </div>

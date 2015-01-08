@@ -104,22 +104,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         id: 'map.tms'
     }).addTo(map);
 
-
-    // 从本地缓存添加自定义标注图层
-    var raw = $window.localStorage.getItem('gps');
-    var data = JSON.parse(raw);
-    if (_.isArray(data)) {
-        data = GeoJSON.parse(data, {Point: ['lat', 'lng'], include: ['name']});
-        L.geoJson(data, {
-            style: function (feature) {
-                return {color: '#FF0000'};
-            },
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.name);
-            }
-        }).addTo(map);
-    }
-
     omnivore.kml('data/map/gps.kml', null, L.geoJson(null, {
         style: function (feature) {
             return {color: '#000'};
@@ -128,6 +112,47 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
             layer.bindPopup(feature.properties.name);
         }
     })).addTo(map);
+
+
+    // 从本地缓存添加自定义标注图层
+    var gpsLayer;
+    var raw = $window.localStorage.getItem('gps');
+    var data = JSON.parse(raw);
+    if (!_.isEmpty(data) && _.isArray(data)) {
+        data = GeoJSON.parse(data, {Point: ['lat', 'lng'], include: ['uid', 'name']});
+    } else {
+        data = null;
+    }
+
+    gpsLayer = L.geoJson(data, {
+        style: function (feature) {
+            return {color: '#FF0000'};
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("<p>" + feature.properties.name + "</p><p style='color:red;text-align:center;border:1px solid red;' onclick='deletePoint(event)' uid='" + feature.properties.uid + "'>删除</p>");
+        }
+    }).addTo(map);
+
+    $window.deletePoint = function(evt) {
+        var uid = angular.element(evt.target).attr('uid');
+
+        var raw = $window.localStorage.getItem('gps');
+        var data = JSON.parse(raw);
+        if (_.isArray(data)) {
+            data = _.remove(data, function(item) {
+                return item.uid === uid;
+            });
+
+            $window.localStorage.setItem('gps', JSON.stringify(data));
+
+            _.each(gpsLayer.getLayers(), function(layer) {
+                if (layer.feature.properties.uid == uid) {
+                    gpsLayer.removeLayer(layer);
+                }
+            });
+
+        }
+    };
 
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
@@ -169,6 +194,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
             gpsPopup.then(function(res) {
                 var point = {
+                    uid: Math.random(),
                     name: $scope.data.gps.name,
                     lat: $scope.data.gps.getLatLng().lat,
                     lng: $scope.data.gps.getLatLng().lng
@@ -184,8 +210,15 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
                 $window.localStorage.setItem('gps', JSON.stringify(data));
 
-                marker.bindPopup($scope.data.gps.name);
-                drawnItems.addLayer(marker);
+                // 模拟layer的feature属性
+                marker.feature = {
+                    properties: {
+                        uid: point.uid,
+                        name: point.name
+                    }
+                };
+                marker.bindPopup("<p>" + point.name + "</p><p style='color:red;text-align:center;border:1px solid red;' onclick='deletePoint(event)' uid='" + point.uid + "'>删除</p>");
+                gpsLayer.addLayer(marker);
 
                 // GpsService.create({
                 //     name: $scope.data.gps.name,
@@ -194,7 +227,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
                 // }).then(function(gps) {
                 //     alert('保存成功！');
                 //     marker.bindPopup($scope.data.gps.name);
-                //     drawnItems.addLayer(marker);
+                //     gpsLayer.addLayer(marker);
                 // }, function(err) {
                 //     alert('保存失败！' + err);
                 // });

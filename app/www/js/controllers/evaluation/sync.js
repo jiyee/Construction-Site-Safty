@@ -5,6 +5,8 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
     $scope.data.users2 = [];
     $scope.data.evaluation = {};
     $scope.data.evaluationId = $stateParams.evaluationId;
+    $scope.data.isCaptures = true;
+    $scope.data.isChecks = true;
 
     OfflineService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
@@ -155,30 +157,41 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
         $rootScope.data.evaluation[$scope.data.evaluationId].users = $scope.data.users;
         $scope.$emit('sync', 'users');
 
-        CaptureService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date, $scope.data.end_date).then(function(captures) {
-            $rootScope.data.evaluation[$scope.data.evaluationId].captures = _.filter(captures, function(capture) {
-                return capture.process && capture.process.status !== 'END' && capture.user && _.find($scope.data.users, {
-                    name: capture.user.name
-                }); // 过滤选择用户，且流程已走完，表示整改完成
-            });
-            $scope.$emit('sync', 'captures');
-        });
-
-        CheckService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date2, $scope.data.end_date2).then(function(checks) {
-            $rootScope.data.evaluation[$scope.data.evaluationId].checks = _.filter(checks, function(check) {
-                return check.process && check.process.status !== 'END' && check.user && _.find($scope.data.users2, {
-                    name: check.user.name
+        if ($scope.data.isCaptures) {
+            CaptureService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date, $scope.data.end_date).then(function(captures) {
+                $rootScope.data.evaluation[$scope.data.evaluationId].captures = _.filter(captures, function(capture) {
+                    return capture.process && capture.process.status !== 'END' && capture.user && _.find($scope.data.users, {
+                        name: capture.user.name
+                    }); // 过滤选择用户，且流程已走完，表示整改完成
                 });
+                $scope.$emit('sync', 'captures');
             });
+        } else {
+            $scope.$emit('sync', 'captures');
+        }
+
+        if ($scope.data.isChecks) {
+            CheckService.list($scope.data.evaluation.project._id, $scope.data.evaluation.section._id, $scope.data.start_date2, $scope.data.end_date2).then(function(checks) {
+                $rootScope.data.evaluation[$scope.data.evaluationId].checks = _.filter(checks, function(check) {
+                    return check.process && check.process.status !== 'END' && check.user && _.find($scope.data.users2, {
+                        name: check.user.name
+                    });
+                });
+                $scope.$emit('sync', 'checks');
+            });
+        } else {
             $scope.$emit('sync', 'checks');
-        });
+        }
     };
 
     $scope.$on('sync', function(evt, type) {
         $scope.data.sync = _.without($scope.data.sync, type);
 
         if (_.isEmpty($scope.data.sync)) {
-            alert('同步成功');
+            if ($scope.data.isChecks || $scope.data.isCaptures) {
+                alert('同步成功');
+            }
+
             $state.go('^.customize', {
                 evaluationId: $scope.data.evaluationId
             });
