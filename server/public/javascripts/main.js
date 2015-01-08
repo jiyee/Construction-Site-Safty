@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ui.router']);
 
-var ipAddr = 'localhost';
-// var ipAddr = '121.40.202.109';
+// var ipAddr = 'localhost';
+var ipAddr = '121.40.202.109';
 
 // 注册全局变量
 app.constant('settings', {
