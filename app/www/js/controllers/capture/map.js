@@ -1,4 +1,4 @@
-app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $ionicModal, $ionicPopup, settings, ProjectService, SegmentService, CaptureService, AuthService, GpsService, resolveUser, resolveProjects) {
+app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $stateParams, $timeout, $window, $ionicModal, $ionicPopup, settings, ProjectService, SegmentService, CaptureService, AuthService, GpsService, resolveUser, resolveProjects) {
     $scope.data = {};
     $scope.location = {};
     $scope.data.user = resolveUser;
@@ -104,14 +104,21 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         id: 'map.tms'
     }).addTo(map);
 
-    omnivore.geojson($rootScope.baseUrl + '/gps/all', null, L.geoJson(null, {
-        style: function (feature) {
-            return {color: '#FF0000'};
-        },
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup(feature.properties.name);
-        }
-    })).addTo(map);
+
+    // 从本地缓存添加自定义标注图层
+    var raw = $window.localStorage.getItem('gps');
+    var data = JSON.parse(raw);
+    if (_.isArray(data)) {
+        data = GeoJSON.parse(data, {Point: ['lat', 'lng'], include: ['name']});
+        L.geoJson(data, {
+            style: function (feature) {
+                return {color: '#FF0000'};
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }
+        }).addTo(map);
+    }
 
     omnivore.kml('data/map/gps.kml', null, L.geoJson(null, {
         style: function (feature) {
@@ -124,22 +131,6 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
 
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
-
-    // var drawControl = new L.Control.Draw({
-    //     position: 'topright',
-    //     draw: {
-    //         polyline: false,
-    //         polygon: false,
-    //         rectangle: false,
-    //         circle: false
-    //     },
-    //     edit: {
-    //         featureGroup: drawnItems,
-    //         edit: false,
-    //         remove: false
-    //     }
-    // });
-    // map.addControl(drawControl);
 
     $scope.data.gps = {};
 
@@ -177,17 +168,36 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
             });
 
             gpsPopup.then(function(res) {
-                GpsService.create({
+                var point = {
                     name: $scope.data.gps.name,
                     lat: $scope.data.gps.getLatLng().lat,
                     lng: $scope.data.gps.getLatLng().lng
-                }).then(function(gps) {
-                    alert('保存成功！');
-                    marker.bindPopup($scope.data.gps.name);
-                    drawnItems.addLayer(marker);
-                }, function(err) {
-                    alert('保存失败！' + err);
-                });
+                };
+
+                var raw = $window.localStorage.getItem('gps');
+                var data = JSON.parse(raw);
+                if (!_.isArray(data)) {
+                    data = [];
+                }
+
+                data.push(point);
+
+                $window.localStorage.setItem('gps', JSON.stringify(data));
+
+                marker.bindPopup($scope.data.gps.name);
+                drawnItems.addLayer(marker);
+
+                // GpsService.create({
+                //     name: $scope.data.gps.name,
+                //     lat: $scope.data.gps.getLatLng().lat,
+                //     lng: $scope.data.gps.getLatLng().lng
+                // }).then(function(gps) {
+                //     alert('保存成功！');
+                //     marker.bindPopup($scope.data.gps.name);
+                //     drawnItems.addLayer(marker);
+                // }, function(err) {
+                //     alert('保存失败！' + err);
+                // });
             });
 
             map.off('click');

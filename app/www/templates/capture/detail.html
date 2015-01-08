@@ -92,8 +92,8 @@
             <br>
             <div class="list" ng-if="data.files">
                 <h4>生成报告下载地址：</h4>
-                <div class="item" ng-repeat="item in data.files">
-                    <a href="{{baseUrl}}/docx/{{data.captureId}}_{{item}}.docx">{{baseUrl}}/docx/{{data.captureId}}_{{item}}.docx/</a>
+                <div ng-repeat="item in data.files">
+                    <textarea style="-moz-user-select: text;-webkit-user-select: text;-ms-user-select: text;">{{baseUrl}}/docx/{{data.captureId}}_{{item}}.docx</textarea>
                 </div>
             </div>
 

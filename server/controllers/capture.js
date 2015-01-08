@@ -515,7 +515,10 @@ exports.docxgen = function(req, res, next) {
             });
             imageModule.getSizeFromData = function(imgData) {
                 sizeObj = sizeOf(imgData);
-                return [sizeObj.width, sizeObj.height];
+                var ratio = sizeObj.width / sizeObj.height;
+                var maxWidth = Math.min(sizeObj.width, 480);
+                var maxHeight = maxWidth / ratio;
+                return [maxWidth, maxHeight];
             };
 
             docx.attachModule(imageModule);

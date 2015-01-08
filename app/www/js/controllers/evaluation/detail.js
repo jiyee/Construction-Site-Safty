@@ -1,4 +1,4 @@
-app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, EvaluationService, UserService, OfflineService, AuthService, resolveUser) {
+app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, settings, EvaluationService, UserService, UnitService, OfflineService, AuthService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.evaluation = {};
@@ -35,6 +35,82 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
                     });
                 });
             }
+
+            $scope.data.evaluation.section.unit = {};
+            _.each($scope.data.evaluation.section.units, function(unitId) {
+                UnitService.findById(unitId).then(function(unit) {
+                    if (unit.type === '施工单位') {
+                        $scope.data.evaluation.section.unit.builder = unit;
+                    } else if (unit.type === '监理单位') {
+                        $scope.data.evaluation.section.unit.supervisor = unit;
+                    }
+                });
+            });
+
+            // 初始化, 计算得分
+            $scope.data.fails = [];
+            $scope.data.score = {};
+            _.each(['SGJC', 'SGXC', 'SGXCTY', 'SGXCGL', 'SGXCSY'], function(file) {
+                $scope.data.score[file] = {
+                    final: 0,
+                    pass: 0,
+                    fail: 0,
+                    total: 0
+                };
+            });
+
+            var file, selected;
+            _.each($scope.data.evaluation.tables, function (table) {
+                file = table.file;
+
+                _.each(table.items, function (level1) {
+                    selected = false;
+                    _.each(level1.items, function (level2) {
+                        if (level2.is_selected) selected = true;
+                        level2.pass = level2.fail = level2.uncheck = 0;
+                        level2.score = 0;
+                        _.each(level2.items, function (level3) {
+                            if (level3.status === 'FAIL') {
+                                level3.full_index = [table.file, level1.index, level2.index, level3.index].join('-');
+                                level2.score += parseInt(level3.score, 10);
+                                level2.fail += 1;
+                                $scope.data.fails.push(level3);
+                            } else if (level3.status === 'PASS') {
+                                level2.pass += 1;
+                            } else if (level3.status === 'UNCHECK') {
+                                level2.uncheck += 1;
+                            }
+                        });
+
+                        level2.score = Math.min(level2.score, level2.maximum);
+                        $scope.data.score[file].fail += level2.score;
+                    });
+
+                    // 计算应得分
+                    if (selected) {
+                        $scope.data.score[file].total += level1.maximum;
+                    }
+                });
+            });
+
+            $scope.data.score['SGJC'].pass = $scope.data.score['SGJC'].total - $scope.data.score['SGJC'].fail;
+            _.each(['SGXCTY', 'SGXCGL', 'SGXCSY'], function(file) {
+                if (isNaN($scope.data.score[file].final)) return;
+
+                $scope.data.score[file].pass = $scope.data.score[file].total - $scope.data.score[file].fail;
+                $scope.data.score['SGXC'].fail += $scope.data.score[file].fail;
+                $scope.data.score['SGXC'].pass += $scope.data.score[file].pass;
+                $scope.data.score['SGXC'].total += $scope.data.score[file].total;
+            });
+
+            _.each(['SGJC', 'SGXC'], function(file) {
+                $scope.data.score[file].final = parseInt(100 * $scope.data.score[file].pass / $scope.data.score[file].total * 100) / 100;
+            });
+
+            $scope.data.final = parseInt(100 * ($scope.data.score['SGJC'].final * 0.5 + $scope.data.score['SGXC'].final * 0.5)) / 100;
+
+            $scope.data.grade = $scope.data.final >= 90 ? '优' : $scope.data.final >= 70 ? '达标' : '不达标';
+
         }
     });
 
@@ -125,7 +201,17 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
 
     $scope.docxgen = function() {
         EvaluationService.docxgen($scope.data.evaluationId).then(function(files) {
+            alert('报告生成成功，下载地址已自动复制到剪贴板');
             $scope.data.files = files;
+
+            var text = "";
+            _.each(files, function(file) {
+                text += $rootScope.baseUrl + '/docx/' + $scope.data.evaluationId + '_' + file + '.docx\n';
+            });
+
+            if (cordova.plugins && cordova.plugins.clipboard) {
+                cordova.plugins.clipboard.copy(text);
+            }
         }, function(err) {
             alert(err);
         });

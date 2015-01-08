@@ -20,8 +20,8 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
 
         $scope.data.fails = [];
         $scope.data.score = {};
-        _.each(['SGJC', 'SGXC', 'SGXCTY', 'SGXCGL', 'SGXCSY'], function(type) {
-            $scope.data.score[type] = {
+        _.each(['SGJC', 'SGXC', 'SGXCTY', 'SGXCGL', 'SGXCSY'], function(file) {
+            $scope.data.score[file] = {
                 final: 0,
                 pass: 0,
                 fail: 0,
@@ -31,9 +31,9 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
 
 
         // 标识考核历史记录
-        var type, selected;
+        var file, selected;
         _.each($scope.data.evaluation.tables, function (table) {
-            type = table.file;
+            file = table.file;
 
             _.each(table.items, function (level1) {
                 selected = false;
@@ -55,28 +55,28 @@ app.controller('EvaluationTableCtrl', function($scope, $stateParams, $state, set
                     });
 
                     level2.score = Math.min(level2.score, level2.maximum);
-                    $scope.data.score[type].fail += level2.score;
+                    $scope.data.score[file].fail += level2.score;
                 });
 
                 // 计算应得分
                 if (selected) {
-                    $scope.data.score[type].total += level1.maximum;
+                    $scope.data.score[file].total += level1.maximum;
                 }
             });
         });
 
         $scope.data.score['SGJC'].pass = $scope.data.score['SGJC'].total - $scope.data.score['SGJC'].fail;
-        _.each(['SGXCTY', 'SGXCGL', 'SGXCSY'], function(type) {
-            if (isNaN($scope.data.score[type].final)) return;
+        _.each(['SGXCTY', 'SGXCGL', 'SGXCSY'], function(file) {
+            if (isNaN($scope.data.score[file].final)) return;
 
-            $scope.data.score[type].pass = $scope.data.score[type].total - $scope.data.score[type].fail;
-            $scope.data.score['SGXC'].fail += $scope.data.score[type].fail;
-            $scope.data.score['SGXC'].pass += $scope.data.score[type].pass;
-            $scope.data.score['SGXC'].total += $scope.data.score[type].total;
+            $scope.data.score[file].pass = $scope.data.score[file].total - $scope.data.score[file].fail;
+            $scope.data.score['SGXC'].fail += $scope.data.score[file].fail;
+            $scope.data.score['SGXC'].pass += $scope.data.score[file].pass;
+            $scope.data.score['SGXC'].total += $scope.data.score[file].total;
         });
 
-        _.each(['SGJC', 'SGXC'], function(type) {
-            $scope.data.score[type].final = parseInt(100 * $scope.data.score[type].pass / $scope.data.score[type].total * 100) / 100;
+        _.each(['SGJC', 'SGXC'], function(file) {
+            $scope.data.score[file].final = parseInt(100 * $scope.data.score[file].pass / $scope.data.score[file].total * 100) / 100;
         });
 
         $scope.data.final = parseInt(100 * ($scope.data.score['SGJC'].final * 0.5 + $scope.data.score['SGXC'].final * 0.5)) / 100;

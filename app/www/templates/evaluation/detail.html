@@ -8,33 +8,46 @@
     <ion-content padding="true">
         <div class="list card">
             <div class="item text-center">
-                <p>检查编号：{{data.evaluation.uuid}}</p>
-                <p>检查日期：{{data.evaluation.date | date: 'yyyy年MM月dd日'}}</p>
-                <p>检查人：{{data.evaluation.user.name}}</p>
+                <p>考评编号：{{data.evaluation.uuid}}</p>
             </div>
 
             <div class="item item-body padding">
                 <div class="row">
                     <div class="col">项目：{{data.evaluation.project.name}}</div>
                 </div>
+                <div class="row">
+                    <div class="col">考评日期：{{data.evaluation.date | date: 'yyyy年MM月dd日'}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">考评人员：{{data.evaluation.user.name}}</div>
+                </div>
                 <div class="row" ng-if="data.evaluation.section">
-                    <div class="col">标段：{{data.evaluation.section.name}}</div>
+                    <div class="col">施工合同段：{{data.evaluation.section.name}}</div>
                 </div>
-                <div class="row" ng-if="data.evaluation.branch">
-                    <div class="col">分部：{{data.evaluation.branch.name}}</div>
-                </div>
-                <div class="row" ng-if="data.evaluation.unit">
-                    <div class="col">单位：{{data.evaluation.unit.name}}</div>
+                <div class="row" ng-if="data.evaluation.section.unit.builder">
+                    <div class="col">施工单位名称：{{data.evaluation.section.unit.builder.name}}</div>
                 </div>
                 <div class="row">
                     <div class="col">工程进展：{{data.evaluation.progress.join("、")}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">施工单位基础管理得分：{{data.score.SGJC.final}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">施工单位现场得分：{{data.score.SGXC.final}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">施工单位得分：{{data.final}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">达标等级：{{data.grade}}</div>
                 </div>
                 <div class="row">
                     <div class="col">存在隐患：</div>
                 </div>
                 <div class="row" ng-repeat="item in data.fails track by item.name">
                     <div class="col assertive">
-                        {{$index + 1}}. ({{item.full_index}}) {{item.comments}}
+                        {{$index + 1}}. ({{item.full_index}}) {{item.name}} {{item.comments}}
                         <div style="padding: 6px;">
                             <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
                         </div>
@@ -58,8 +71,8 @@
             <br>
             <div class="list" ng-if="data.files">
                 <h4>生成报告下载地址：</h4>
-                <div class="item" ng-repeat="item in data.files">
-                    <a href="{{baseUrl}}/docx/{{data.evaluationId}}_{{item}}.docx">{{baseUrl}}/docx/{{data.evaluationId}}_{{item}}.docx/</a>
+                <div ng-repeat="item in data.files">
+                    <textarea style="-moz-user-select: text;-webkit-user-select: text;-ms-user-select: text;">{{baseUrl}}/docx/{{data.evaluationId}}_{{item}}.docx</textarea>
                 </div>
             </div>
 
@@ -79,6 +92,7 @@
                     生成报告
                 </button>
             </div>
+
         </div>
     </ion-content>
 </ion-view>
