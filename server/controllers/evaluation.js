@@ -630,7 +630,17 @@ exports.docxgen = function(req, res, next) {
                 data = {
                     'PROJECT': evaluation.project.name,
                     'SECTION': evaluation.section.name,
-                    'BUILDER': _.find(units, {type: '施工单位'}) ? _.find(units, {type: '施工单位'}).name : ""
+                    'BUILDER': _.find(units, {type: '施工单位'}) ? _.find(units, {type: '施工单位'}).name : "",
+                    "USER": evaluation.user.name,
+                    "UNIT": evaluation.unit.name,
+                    "DATE": evaluation.date.getFullYear() + '年' + (evaluation.date.getMonth() + 1) + '月' + (evaluation.date.getDate()) + '日'
+                };
+
+                var score = {
+                    'final': 0,
+                    'pass': 0,
+                    'fail': 0,
+                    'total': 0
                 };
 
                 _.each(table.items, function (level1) {
@@ -642,6 +652,7 @@ exports.docxgen = function(req, res, next) {
                             if (level3.status === 'FAIL') {
                                 level2.score += parseInt(level3.score, 10);
                                 data[[file, level1.index, level2.index, level3.index].join('-')] = parseInt(level3.score, 10);
+                                level2.score += parseInt(level3.score, 10);
                             } else if (level3.status === 'PASS') {
                                 data[[file, level1.index, level2.index, level3.index].join('-')] = '-';
                             } else if (level3.status === 'UNCHECK') {
@@ -651,13 +662,22 @@ exports.docxgen = function(req, res, next) {
 
                         level2.score = Math.min(level2.score, level2.maximum);
                         data[[file, level1.index, level2.index].join('-')] = Math.min(level2.score, level2.maximum);
+                        score.fail += level2.score;
                     });
 
                     // 计算应得分
                     if (selected) {
-                        // $scope.data.score[type].total += level1.maximum;
+                        score.total += level1.maximum;
                     }
                 });
+
+                score.pass = score.total - score.fail;
+
+                score.final = parseInt(100 * score.pass / score.total * 100) / 100;
+
+                data[[file, 'PASS'].join('-')] = score.pass;
+                data[[file, 'TOTAL'].join('-')] = score.total;
+                data[[file, 'FINAL'].join('-')] = score.final;
 
                 var content = fs.readFileSync(process.cwd() + '/templates/' + file + '.docx', "binary");
                 var docx = new DocxGen(content);
