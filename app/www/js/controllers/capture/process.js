@@ -79,10 +79,11 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
 
     $scope.capture = function() {
         function onSuccess(imageURI) {
-            $scope.data.images.push({
+            var image = {
                 uri: imageURI,
                 date: Date.now()
-            });
+            };
+            $scope.data.images.push(image);
             $scope.$apply();
 
             UploadService.upload(image.uri).then(function(res) {

@@ -538,6 +538,7 @@ exports.docxgen = function(req, res, next) {
                 return {
                     level1: item.level1,
                     level3: item.level3,
+                    comment: item.comment,
                     object: item.object
                 };
             });
@@ -566,6 +567,17 @@ exports.docxgen = function(req, res, next) {
                         object: item.object,
                         comment: item.comment || ""
                     });
+                });
+            });
+
+            data.process_images = [];
+            _.each(capture.process.archives, function(item) {
+                _.each(item.images, function(image) {
+                    if (image) {
+                        data.process_images.push({
+                            image: process.cwd() + '/public' + image.url
+                        });
+                    }
                 });
             });
             // res.send(data);return;

@@ -1,4 +1,4 @@
-app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, settings, TableService, EvaluationService, CaptureService, OfflineService, AuthService, resolveUser) {
+app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, settings, TableService, EvaluationService, CaptureService, OfflineService, AuthService, UploadService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.table = {};
@@ -75,6 +75,12 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
             };
             item.images.push(image);
             $scope.$apply();
+
+            UploadService.upload(image.uri).then(function(res) {
+                image.url = res.url;
+            }, function(err) {
+                console.log(err);
+            });
         }
 
         function onFail(message) {

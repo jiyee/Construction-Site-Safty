@@ -616,6 +616,17 @@ exports.docxgen = function(req, res, next) {
                     });
                 });
             });
+
+            data.process_images = [];
+            _.each(check.process.archives, function(item) {
+                _.each(item.images, function(image) {
+                    if (image) {
+                        data.process_images.push({
+                            image: process.cwd() + '/public' + image.url
+                        });
+                    }
+                });
+            });
             // res.send(data);return;
 
             docx.setData(data);

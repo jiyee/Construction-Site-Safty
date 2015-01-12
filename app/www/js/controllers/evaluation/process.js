@@ -1,4 +1,4 @@
-app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, EvaluationService, UnitService, UserService, AuthService, resolveUser) {
+app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, EvaluationService, UnitService, UserService, AuthService, UploadService, resolveUser) {
     $scope.data = {};
     $scope.data.evaluation = {};
     $scope.data.user = resolveUser;
@@ -13,7 +13,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
 
     EvaluationService.findById($scope.data.evaluationId).then(function(evaluation) {
         $scope.data.evaluation = evaluation;
-        console.log(evaluation);
+        // console.log(evaluation);
 
         $scope.data.evaluation.fails = _.filter($scope.data.evaluation.archives, {linked: false});
 
@@ -80,11 +80,18 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
 
     $scope.capture = function() {
         function onSuccess(imageURI) {
-            $scope.data.images.push({
+            var image = {
                 uri: imageURI,
                 date: Date.now()
-            });
+            };
+            $scope.data.images.push(image);
             $scope.$apply();
+
+            UploadService.upload(image.uri).then(function(res) {
+                image.url = res.url;
+            }, function(err) {
+                console.log(err);
+            });
         }
 
         function onFail(message) {

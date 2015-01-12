@@ -1,4 +1,4 @@
-app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, settings, TableService, OfflineService, AuthService, resolveUser) {
+app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, settings, TableService, OfflineService, AuthService, UploadService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.table = {};
@@ -50,6 +50,12 @@ app.controller('CheckReviewCtrl', function($scope, $stateParams, $state, setting
             };
             item.images.push(image);
             $scope.$apply();
+
+            UploadService.upload(image.uri).then(function(res) {
+                image.url = res.url;
+            }, function(err) {
+                console.log(err);
+            });
         }
 
         function onFail(message) {

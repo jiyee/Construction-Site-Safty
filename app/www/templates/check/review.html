@@ -27,9 +27,12 @@
                     </label>
                     <button class="button button-small button-positive col col-25" ng-click="takePhoto(item)">拍照存档</button>
                 </div>
-                <div style="padding: 6px;">
-                    <img ng-src="{{image.uri}}" ng-repeat="image in item.images" width="64" height="64" style="margin-right: 12px;">
-                </div>
+                <ul style="display: block; padding: 6px; list-style: none;">
+                    <li ng-repeat="image in item.images" style="display: inline-block; position: relative; list-style: none; margin-right: 12px;">
+                        <img ng-src="{{image.uri}}" width="64">
+                        <i ng-show="image.url" class="icon ion-checkmark-circled" style="color: #58AA89;display: block;position: absolute;bottom: 6px;right: 4px;font-size: 20px;"></i>
+                    </li>
+                </ul>
             </div>
         </div>
     </ion-content>

@@ -808,8 +808,22 @@
     "name": "武汉沌口长江公路大桥",
     "province": "湖北省",
     "constructor": "武汉中交沌口长江大桥投资有限公司",
+    "users": [{
+        "name": "甲",
+        "type": "constructor",
+        "mobile": "18888888888"
+    }],
     "sections": [{
         "supervisor": "武汉大通公路桥梁工程咨询监理有限责任公司",
-        "builder": "二航局"
+        "builder": "二航局",
+        "users": [{
+            "name": "乙",
+            "type": "supervisor",
+            "mobile": "18888888888"
+        }, {
+            "name": "丙",
+            "type": "builder",
+            "mobile": "18888888888"
+        }]
     }]
 }]

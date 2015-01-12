@@ -1,4 +1,4 @@
-app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CheckService, UnitService, UserService, AuthService, resolveUser) {
+app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $stateParams, $ionicPopup, $ionicModal, settings, CheckService, UnitService, UserService, AuthService, UploadService, resolveUser) {
     $scope.data = {};
     $scope.data.check = {};
     $scope.data.user = resolveUser;
@@ -13,7 +13,6 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
 
     CheckService.findById($scope.data.checkId).then(function(check) {
         $scope.data.check = check;
-        console.log(check);
 
         if (check.process.archives) {
             _.each(check.process.archives, function(archive) {
@@ -78,11 +77,18 @@ app.controller('CheckProcessCtrl', function($scope, $rootScope, $state, $statePa
 
     $scope.capture = function() {
         function onSuccess(imageURI) {
-            $scope.data.images.push({
+            var image = {
                 uri: imageURI,
                 date: Date.now()
-            });
+            };
+            $scope.data.images.push(image);
             $scope.$apply();
+
+            UploadService.upload(image.uri).then(function(res) {
+                image.url = res.url;
+            }, function(err) {
+                console.log(err);
+            });
         }
 
         function onFail(message) {
