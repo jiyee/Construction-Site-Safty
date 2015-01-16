@@ -13,7 +13,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     }
 
     $scope.data.map = {
-        latlng: [29.996487271664, 112.71543299448],
+        latlng: [30.42783, 114.20219],
         zoom: 10
     };
 
@@ -315,11 +315,18 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
         ROADS.YZ = data;
         ROADS.YZ.project = '宜张高速公路宜都至五峰段';
     });
+    L.Util.ajax("data/geojson/DH-ROAD.geojson").then(function(data) {
+        ROADS.DH = data;
+        ROADS.DH.project = '武汉沌口长江公路大桥';
+    });
     L.Util.ajax("data/geojson/JB-POINT.geojson").then(function(data) {
         POINTS.JB = data;
     });
     L.Util.ajax("data/geojson/YZ-POINT.geojson").then(function(data) {
         POINTS.YZ = data;
+    });
+    L.Util.ajax("data/geojson/DH-POINT.geojson").then(function(data) {
+        POINTS.DH = data;
     });
     L.Util.ajax("data/geojson/gps.geojson").then(function(data) {
         POINTS.GPS = data;
@@ -402,7 +409,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
                 });
                 $scope.$parent.data.section = $scope.$parent.data.branch = null;
 
-                if ($scope.data.properties.section) {
+                if ($scope.data.properties.section && $scope.$parent.data.project) {
                     SegmentService.findByProjectId($scope.$parent.data.project._id).then(function(segments) {
                         $scope.$parent.data.section = _.find(segments, {
                             name: $scope.data.properties.section + '段'

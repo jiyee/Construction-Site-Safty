@@ -30,10 +30,10 @@ app.run(function($rootScope, $ionicPlatform) {
                 app.constant('connection', 'Online');
             }
         }
-    });
+    // });
 
     $rootScope.baseUrl = 'http://' + ipAddr + ':3000';
-
+//
     $rootScope.data = {};
 
     $rootScope.$on("$stateChangeSuccess", function(event, to, toParams, from, fromParams) {
