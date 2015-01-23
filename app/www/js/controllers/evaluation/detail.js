@@ -156,6 +156,8 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
 
         confirmPopup.then(function(res) {
             if (res) {
+                ActivityIndicator.show('正在提交中...');
+
                 if ($scope.data.isOffline) {
                     var evaluation = {};
                     evaluation.project = $scope.data.evaluation.project._id;
@@ -175,23 +177,27 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
 
                     // 真正创建在线数据
                     EvaluationService.create(evaluation).then(function(evaluation) {
-                        alert('保存成功');
-
-                        // 清空本地数据
+                        // 清空本地数据,
                         OfflineService.remove($scope.data.evaluation._id);
                         _.each($scope.data.evaluation.tables, function(table) {
                             OfflineService.remove(table._id);
                         });
+
+                        ActivityIndicator.hide();
+                        alert('保存成功');
                         $scope.toBack();
                     }, function(err) {
+                        ActivityIndicator.hide();
                         alert('保存失败');
                     });
                 } else {
                     // 实际修改在线数据
                     EvaluationService.update($scope.data.evaluationId, $scope.data.evaluation).then(function(evaluation) {
+                        ActivityIndicator.hide();
                         alert('保存成功');
                         $scope.toBack();
                     }, function(err) {
+                        ActivityIndicator.hide();
                         alert('保存失败');
                     });
                 }

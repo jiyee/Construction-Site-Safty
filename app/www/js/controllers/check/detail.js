@@ -77,6 +77,8 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
 
         confirmPopup.then(function(res) {
             if (res) {
+                ActivityIndicator.show('正在提交中...');
+
                 if ($scope.data.isOffline) {
                     var check = {};
                     check.project = $scope.data.check.project._id;
@@ -92,18 +94,22 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
                     CheckService.create(check).then(function() {
                         // 清空本地数据
                         OfflineService.remove($scope.data.check._id);
-
+                        ActivityIndicator.hide();
                         alert('保存成功');
                         $scope.toBack();
                     }, function(err) {
+                        ActivityIndicator.hide();
+
                         alert('保存失败');
                     });
                 } else {
                     // 实际修改在线数据
                     CheckService.update($scope.data.checkId, $scope.data.check).then(function() {
+                        ActivityIndicator.hide();
                         alert('保存成功');
                         $scope.toBack();
                     }, function(err) {
+                        ActivityIndicator.hide();
                         alert('保存失败');
                     });
                 }

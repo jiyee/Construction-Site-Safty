@@ -11,13 +11,18 @@ app.controller('AdministratorDashboardCtrl', function($scope, $rootScope, $state
         });
     }
 
+    ActivityIndicator.show('正在加载中...');
+    var length = 2, counter = 0;
+
     // 加载用户待办列表
     CaptureService.findByProcessCurrentUserId($scope.data.user._id).then(function(captures) {
         $scope.data.captures = captures;
+        if (++counter >= length) ActivityIndicator.hide();
     });
 
     EvaluationService.findByProcessCurrentUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = evaluations;
+        if (++counter >= length) ActivityIndicator.hide();
     });
 
     $scope.toDetail = function(item) {

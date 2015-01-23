@@ -55,8 +55,10 @@ app.factory('CaptureService', function($http, $q, settings) {
         create: function(form) {
             var deferred = $q.defer();
 
+            ActivityIndicator.show('正在提交中...');
             $http.post(settings.baseUrl + '/capture/create', form)
                 .success(function(data) {
+                    ActivityIndicator.hide();
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
@@ -64,6 +66,7 @@ app.factory('CaptureService', function($http, $q, settings) {
                     }
                 })
                 .error(function(err) {
+                    ActivityIndicator.hide();
                     deferred.reject(err);
                 });
 
@@ -72,8 +75,10 @@ app.factory('CaptureService', function($http, $q, settings) {
         forward: function(captureId, opts) {
             var deferred = $q.defer();
 
+            ActivityIndicator.show('正在提交中...');
             $http.post(settings.baseUrl + '/capture/' + captureId + '/forward', opts)
                 .success(function(data) {
+                    ActivityIndicator.hide();
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
@@ -81,6 +86,7 @@ app.factory('CaptureService', function($http, $q, settings) {
                     }
                 })
                 .error(function(err) {
+                    ActivityIndicator.hide();
                     deferred.reject(err);
                 });
 
@@ -89,8 +95,10 @@ app.factory('CaptureService', function($http, $q, settings) {
         backward: function (captureId, opts) {
             var deferred = $q.defer();
 
+            ActivityIndicator.show('正在提交中...');
             $http.post(settings.baseUrl + '/capture/' + captureId + '/backward', opts)
                 .success(function(data) {
+                    ActivityIndicator.hide();
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
@@ -98,6 +106,7 @@ app.factory('CaptureService', function($http, $q, settings) {
                     }
                 })
                 .error(function(err) {
+                    ActivityIndicator.hide();
                     deferred.reject(err);
                 });
 
@@ -106,8 +115,10 @@ app.factory('CaptureService', function($http, $q, settings) {
         revert: function (captureId, opts) {
             var deferred = $q.defer();
 
+            ActivityIndicator.show('正在提交中...');
             $http.post(settings.baseUrl + '/capture/' + captureId + '/revert', opts)
                 .success(function(data) {
+                    ActivityIndicator.hide();
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
@@ -115,6 +126,7 @@ app.factory('CaptureService', function($http, $q, settings) {
                     }
                 })
                 .error(function(err) {
+                    ActivityIndicator.hide();
                     deferred.reject(err);
                 });
 
@@ -123,8 +135,10 @@ app.factory('CaptureService', function($http, $q, settings) {
         restore: function (captureId, opts) {
             var deferred = $q.defer();
 
+            ActivityIndicator.show('正在提交中...');
             $http.post(settings.baseUrl + '/capture/' + captureId + '/restore', opts)
                 .success(function(data) {
+                    ActivityIndicator.hide();
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
@@ -132,6 +146,7 @@ app.factory('CaptureService', function($http, $q, settings) {
                     }
                 })
                 .error(function(err) {
+                    ActivityIndicator.hide();
                     deferred.reject(err);
                 });
 
@@ -140,8 +155,10 @@ app.factory('CaptureService', function($http, $q, settings) {
         end: function (captureId, opts) {
             var deferred = $q.defer();
 
+            ActivityIndicator.show('正在提交中...');
             $http.post(settings.baseUrl + '/capture/' + captureId + '/end', opts)
                 .success(function(data) {
+                    ActivityIndicator.hide();
                     if (data.code > 0) {
                         deferred.reject(data.message);
                     } else {
@@ -149,6 +166,7 @@ app.factory('CaptureService', function($http, $q, settings) {
                     }
                 })
                 .error(function(err) {
+                    ActivityIndicator.hide();
                     deferred.reject(err);
                 });
 

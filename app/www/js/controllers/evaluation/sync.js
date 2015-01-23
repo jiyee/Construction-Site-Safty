@@ -150,6 +150,8 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
             return;
         }
 
+        ActivityIndicator.show('正在同步中...');
+
         $scope.data.sync = ['users', 'captures', 'checks'];
 
         $rootScope.data.evaluation = $rootScope.data.evaluation || {};
@@ -189,6 +191,7 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
 
         if (_.isEmpty($scope.data.sync)) {
             if ($scope.data.isChecks || $scope.data.isCaptures) {
+                ActivityIndicator.hide();
                 alert('同步成功');
             }
 

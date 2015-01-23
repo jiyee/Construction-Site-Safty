@@ -12,6 +12,9 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
         });
     }
 
+    ActivityIndicator.show('正在加载中...');
+    var length = 3, counter = 0;
+
     // 加载用户所属组织的所有用户，供用户在线状态展示
     var segment = $scope.data.user.branch || $scope.data.user.section;
     if (segment) {
@@ -29,14 +32,17 @@ app.controller('ManagerDashboardCtrl', function($scope, $rootScope, $state, $sta
     // 加载用户待办列表
     CaptureService.findByProcessCurrentUserId($scope.data.user._id).then(function(captures) {
         $scope.data.captures = captures;
+        if (++counter >= length) ActivityIndicator.hide();
     });
 
     CheckService.findByProcessCurrentUserId($scope.data.user._id).then(function(checks) {
         $scope.data.checks = checks;
+        if (++counter >= length) ActivityIndicator.hide();
     });
 
     EvaluationService.findByProcessCurrentUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = evaluations;
+        if (++counter >= length) ActivityIndicator.hide();
     });
 
     $scope.toDetail = function(item) {

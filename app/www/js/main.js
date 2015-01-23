@@ -2,7 +2,7 @@ var app = angular.module('app', ['ionic', 'ui.bootstrap.datetimepicker']);
 
 var ipAddr = 'localhost';
 // var ipAddr = '10.171.40.9';
-// var ipAddr = '121.40.202.109';
+var ipAddr = '121.40.202.109';
 
 // if (navigator.notification) {
 //     window.alert = navigator.notification.alert;
@@ -18,6 +18,12 @@ app.run(function($rootScope, $ionicPlatform) {
         }
         if (window.StatusBar) {
             StatusBar.hide();
+        }
+        if (!window.ActivityIndicator) {
+            window.ActivityIndicator = {
+                show: function() {console.log("show indicator.");},
+                hide: function() {console.log("hide indicator.");}
+            };
         }
 
         document.addEventListener("online", toggleConnection, false);
