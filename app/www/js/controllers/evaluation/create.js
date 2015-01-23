@@ -57,6 +57,12 @@ app.controller('EvaluationCreateCtrl', function($scope, $rootScope, $state, $sta
     };
     $scope.closeModal = function() {
         $scope.modal.hide();
+        _.each($scope.progress, function (item) {
+            item.checked = false;
+        });
+    };
+    $scope.saveAndCloseModal = function() {
+        $scope.modal.hide();
 
         $scope.data.progress = [];
         _.each($scope.progress, function (item) {

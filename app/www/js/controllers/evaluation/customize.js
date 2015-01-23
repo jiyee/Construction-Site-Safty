@@ -238,6 +238,8 @@ app.controller('EvaluationCustomizeCtrl', function($scope, $rootScope, $state, $
     };
 
     $scope.toBack = function() {
-        $state.go('^.list');
+        $state.go('^.sync', {
+            evaluationId: $scope.data.evaluation.uuid
+        });
     };
 });

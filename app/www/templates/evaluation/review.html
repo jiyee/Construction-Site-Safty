@@ -1,7 +1,8 @@
 <ion-view title="review">
     <ion-header-bar align-title="center" class="bar-calm">
-        <button class="button" ng-click="saveAndReturn(data)">返回</button>
+        <button class="button" ng-click="toBack()">返回</button>
         <h1 class="title">{{data.review.name}}</h1>
+        <button class="button" ng-click="save()">保存</button>
     </ion-header-bar>
 
     <ion-content padding="true">
@@ -30,7 +31,9 @@
                 <ul style="display: block; padding: 6px; list-style: none;">
                     <li ng-repeat="image in item.images" style="display: inline-block; position: relative; list-style: none; margin-right: 12px;">
                         <img ng-src="{{image.uri}}" width="64">
+                        <i ng-show="image.uri" class="icon ion-close-circled" style="color: #970219;display: block;position: absolute;top: -8px;right: 2px;font-size: 20px;" ng-click="removePhoto(item, image)"></i>
                         <i ng-show="image.url" class="icon ion-checkmark-circled" style="color: #58AA89;display: block;position: absolute;bottom: 6px;right: 4px;font-size: 20px;"></i>
+                        <p>{{image.date | date: 'yyyy-MM-dd'}}</p>
                     </li>
                 </ul>
             </div>

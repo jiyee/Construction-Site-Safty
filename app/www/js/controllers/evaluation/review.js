@@ -1,4 +1,4 @@
-app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, settings, TableService, EvaluationService, CaptureService, OfflineService, AuthService, UploadService, resolveUser) {
+app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, settings, $ionicPopup, TableService, EvaluationService, CaptureService, OfflineService, AuthService, UploadService, resolveUser) {
     $scope.data = {};
     $scope.data.user = resolveUser;
     $scope.data.table = {};
@@ -8,6 +8,7 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
     $scope.data.itemId = $stateParams.itemId;
     $scope.data.subItemId = $stateParams.subItemId;
     $scope.data.isOffline = OfflineService.isOffline($scope.data.evaluationId) ? true : false;
+    $scope.data.isDirty = false;
 
     // 用户登录状态异常控制
     if (!$scope.data.user) {
@@ -64,6 +65,8 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
         } else {
             item.status = 'UNCHECK';
         }
+
+        $scope.data.isDirty = true;
     };
 
     $scope.takePhoto = function(item) {
@@ -75,6 +78,8 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
             };
             item.images.push(image);
             $scope.$apply();
+
+            $scope.data.isDirty = true;
 
             UploadService.upload(image.uri).then(function(res) {
                 image.url = res.url;
@@ -91,6 +96,64 @@ app.controller('EvaluationReviewCtrl', function($scope, $stateParams, $state, se
             quality: 75,
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true
+        });
+    };
+
+    $scope.removePhoto = function(item, image) {
+        if (_.find(item.images, image)) {
+            item.images = _.without(item.images, image);
+        }
+
+        $scope.data.isDirty = true;
+    };
+
+    $scope.toBack = function() {
+        if (!$scope.data.isDirty) {
+            $state.go('^.table', {
+                evaluationId: $scope.data.evaluationId
+            });
+
+            return;
+        }
+
+        var confirmPopup = $ionicPopup.confirm({
+            title: '退出提醒',
+            template: '评价打分是否确定保存？',
+            buttons: [{
+                text: '取消',
+                type: 'button-default'
+            }, {
+                text: '确定',
+                type: 'button-positive',
+                onTap: function(e) {
+                    return true;
+                }
+            }]
+        });
+
+        confirmPopup.then(function(res) {
+            if (res) {
+                AutoService.update($scope.data.tableId, $scope.data.table).then(function(table) {
+                    $state.go('^.table', {
+                        evaluationId: $scope.data.evaluationId
+                    });
+                }, function(err) {
+                    alert(err);
+                });
+            } else {
+                $state.go('^.table', {
+                    evaluationId: $scope.data.evaluationId
+                });
+            }
+        });
+    };
+
+    $scope.save = function() {
+        AutoService.update($scope.data.tableId, $scope.data.table).then(function(table) {
+            $scope.data.isDirty = false;
+            alert('保存成功');
+        }, function(err) {
+            alert(err);
         });
     };
 

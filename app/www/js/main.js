@@ -1,8 +1,8 @@
 var app = angular.module('app', ['ionic', 'ui.bootstrap.datetimepicker']);
 
-// var ipAddr = 'localhost';
+var ipAddr = 'localhost';
 // var ipAddr = '10.171.40.9';
-var ipAddr = '121.40.202.109';
+// var ipAddr = '121.40.202.109';
 
 // if (navigator.notification) {
 //     window.alert = navigator.notification.alert;
@@ -365,140 +365,6 @@ app.run(function($rootScope, $ionicPlatform) {
         url: '/',
         templateUrl: 'templates/rule/index.html',
         controller: 'RuleIndexCtrl'
-    })
-
-
-    // 离线
-    .state('offline', {
-        url: '/offline',
-        abstract: true,
-        template: "<ui-view></ui-view>",
-        resolve: {
-
-        }
-    })
-
-    // 离线首页
-    .state('offline.dashboard', {
-        url: '/',
-        templateUrl: 'templates/offline/dashboard.html',
-        controller: 'OfflineDashboardCtrl'
-    })
-
-    // 安全检查
-    .state('offline.capture', {
-        url: '/capture/:captureId',
-        templateUrl: 'templates/offline/capture.html',
-        controller: 'OfflineCaptureCtrl'
-    })
-
-    // 日常巡检
-    .state('offline.check', {
-        url: '/check/:checkId',
-        templateUrl: 'templates/offline/check.html',
-        controller: 'OfflineCheckCtrl'
-    })
-
-    // 考核评价
-    .state('offline.evaluation', {
-        url: '/evaluation/:evaluationId',
-        templateUrl: 'templates/offline/evaluation.html',
-        controller: 'OfflineEvaluationCtrl'
-    })
-
-    // 考核评价范围选择
-    .state('offline.evaluation-customize', {
-        url: '/evaluation/:evaluationId/customize',
-        templateUrl: 'templates/offline/evaluation-customize.html',
-        controller: 'OfflineEvaluationCustomizeCtrl'
-    })
-
-    // 考核评价表格
-    .state('offline.evaluation-tables', {
-        url: '/evaluation/:evaluationId/tables',
-        templateUrl: 'templates/offline/evaluation-tables.html',
-        controller: 'OfflineEvaluationTablesCtrl'
-    })
-
-    // 考核表单
-    .state('offline.table', {
-        url: '/table/:tableId',
-        templateUrl: 'templates/offline/table.html',
-        controller: 'OfflineTableCtrl'
-    })
-
-    // 考核单项
-    .state('offline.review', {
-        url: '/review/:tableId/:itemId/:subItemId',
-        templateUrl: 'templates/offline/review.html',
-        controller: 'OfflineReviewCtrl'
-    })
-
-    // 数据同步
-    .state('sync', {
-        url: '/sync',
-        abstract: true,
-        template: "<ui-view></ui-view>",
-        resolve: {
-
-        }
-    })
-
-    // 数据同步首页
-    .state('sync.dashboard', {
-        url: '/',
-        templateUrl: 'templates/sync/dashboard.html',
-        controller: 'SyncDashboardCtrl',
-        resolve: {
-            resolveUser: function(AuthService) {
-                return AuthService.getUser();
-            }
-        }
-    })
-
-    // 安全检查
-    .state('sync.capture', {
-        url: '/capture/:captureId',
-        templateUrl: 'templates/sync/capture.html',
-        controller: 'SyncCaptureCtrl',
-        resolve: {
-            resolveProjects: function(ProjectService) {
-                return ProjectService.find();
-            },
-            resolveUser: function(AuthService) {
-                return AuthService.getUser();
-            }
-        }
-    })
-
-    // 日常巡检
-    .state('sync.check', {
-        url: '/check/:checkId',
-        templateUrl: 'templates/sync/check.html',
-        controller: 'SyncCheckCtrl',
-        resolve: {
-            resolveProjects: function(ProjectService) {
-                return ProjectService.find();
-            },
-            resolveUser: function(AuthService) {
-                return AuthService.getUser();
-            }
-        }
-    })
-
-    // 考核评价
-    .state('sync.evaluation', {
-        url: '/evaluation/:evaluationId',
-        templateUrl: 'templates/sync/evaluation.html',
-        controller: 'SyncEvaluationCtrl',
-        resolve: {
-            resolveProjects: function(ProjectService) {
-                return ProjectService.find();
-            },
-            resolveUser: function(AuthService) {
-                return AuthService.getUser();
-            }
-        }
     })
 
     // 安全管理抽象页，用于数据共享

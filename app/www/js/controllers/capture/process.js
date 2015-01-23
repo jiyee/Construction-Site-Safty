@@ -77,7 +77,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
         });
     };
 
-    $scope.capture = function() {
+    $scope.takePhoto = function() {
         function onSuccess(imageURI) {
             var image = {
                 uri: imageURI,

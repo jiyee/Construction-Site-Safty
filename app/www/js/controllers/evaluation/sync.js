@@ -203,4 +203,8 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
             evaluationId: $scope.data.evaluationId
         });
     };
+
+    $scope.toBack = function() {
+        $state.go('^.list');
+    };
 });

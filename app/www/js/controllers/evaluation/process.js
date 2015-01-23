@@ -78,7 +78,7 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
         });
     };
 
-    $scope.capture = function() {
+    $scope.takePhoto = function() {
         function onSuccess(imageURI) {
             var image = {
                 uri: imageURI,

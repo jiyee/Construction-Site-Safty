@@ -105,7 +105,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
 
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-    $scope.capture = function() {
+    $scope.takePhoto = function() {
         function onSuccess(imageURI) {
             var image = {
                 uri: imageURI,
@@ -131,6 +131,12 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true
         });
+    };
+
+    $scope.removePhoto = function(image) {
+        if (_.find($scope.data.images, image)) {
+            $scope.data.images = _.without($scope.data.images, image);
+        }
     };
 
     $ionicModal.fromTemplateUrl('level3-modal.html', {
@@ -189,7 +195,7 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
             return;
         }
 
-        if (!$scope.data.level3 || !$scope.data.images) {
+        if (!$scope.data.level3 && !$scope.data.images) {
             alert('请选择存在问题或拍照存档');
             return;
         }
