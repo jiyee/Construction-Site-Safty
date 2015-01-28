@@ -13,8 +13,13 @@ app.controller('CaptureListCtrl', function($scope, $rootScope, $state, $statePar
     $scope.load = function() {
         CaptureService.findByUserId($scope.data.user._id).then(function(captures) {
             // 只显示已经处理完的
-            $scope.data.captures = _.filter(captures, function(capture) {
-                return capture.process && capture.process.status === 'END';
+            $scope.data.captures = _.map(captures, function(capture) {
+                if (capture.process && capture.process.status === 'END') {
+                    capture.isCompleted = true;
+                } else {
+                    capture.isCompleted = false;
+                }
+                return capture;
             });
         });
 

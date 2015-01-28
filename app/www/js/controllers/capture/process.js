@@ -71,6 +71,26 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
         });
     };
 
+    $scope.openDatePicker = function() {
+        $scope.tmp = {};
+        $scope.tmp.newDate = $scope.data.next.due;
+
+        $ionicPopup.show({
+            template: '<datetimepicker ng-model="tmp.newDate" data-datetimepicker-config="{ minView: \'day\' }"></datetimepicker>',
+            title: "日期选择",
+            scope: $scope,
+            buttons: [{
+                text: '取消'
+            }, {
+                text: '<b>确定</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    $scope.data.next.due = $scope.tmp.newDate;
+                }
+            }]
+        });
+    };
+
     $scope.toBack = function() {
         $state.go([$scope.data.user.role, 'dashboard'].join('.'), {
             userId: $scope.data.user._id
@@ -110,6 +130,11 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
             return;
         }
 
+        if (!$scope.data.next.due) {
+            alert('请选择整改截止时间');
+            return;
+        }
+
         if (!$scope.data.current.comment) {
             alert('请填写整改要求');
             return;
@@ -125,6 +150,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
                     action: 'FORWARD'
                 },
                 next: {
+                    due: $scope.data.next.due,
                     unit: $scope.data.next.user.unit._id,
                     user: $scope.data.next.user._id,
                     comment: "",

@@ -72,24 +72,28 @@ var CheckSchema = new Schema({
         status: { type: String, enum: ['', 'START', 'STOP', 'FORWARD', 'REVERT', 'RESTORE', 'BACKWARD', 'END'] }, // 流程状态
 
         current: {
+            due: { type: Date },
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
             action: { type: String }
         },
         previous: {
+            due: { type: Date },
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
             action: { type: String }
         },
         sequences: [{
+            due: { type: Date },
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },
             comment: { type: String },
             action: { type: String }
         }],
         archives: [{
+            due: { type: Date },
             date: { type: Date, default: Date.now },
             unit: { type: Schema.Types.ObjectId, ref: 'Unit' },
             user: { type: Schema.Types.ObjectId, ref: 'User' },

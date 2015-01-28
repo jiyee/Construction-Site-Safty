@@ -5,7 +5,12 @@ app.controller('EvaluationListCtrl', function($scope, $rootScope, $state, $state
 
     EvaluationService.findByUserId($scope.data.user._id).then(function(evaluations) {
         $scope.data.evaluations = _.filter(evaluations, function(evaluation) {
-            return evaluation.process && evaluation.process.status === 'END';
+            if (evaluation.process && evaluation.process.status === 'END') {
+                evaluation.isCompleted = true;
+            } else {
+                evaluation.isCompleted = false;
+            }
+            return evaluation;
         });
     });
 

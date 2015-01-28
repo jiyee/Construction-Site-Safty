@@ -22,7 +22,7 @@
 
         <div class="list">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>安全检查</div>
-            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.user.name}}-{{item.date | date: 'yyyy年MM月dd日'}}</div>
+            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{$index + 1}}. {{item.user.name}} <span ng-if="item.process.current.due">[{{item.process.current.due | date: 'yyyy年MM月dd日'}}截止]</span></div>
         </div>
 
         <div class="list">

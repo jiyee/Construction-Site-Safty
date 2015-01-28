@@ -4,8 +4,13 @@ app.controller('CheckListCtrl', function($scope, $rootScope, $state, $stateParam
     $scope.data.checks = [];
 
     CheckService.findByUserId($scope.data.user._id).then(function(checks) {
-        $scope.data.checks = _.filter(checks, function(check) {
-            return check.process && check.process.status === 'END';
+        $scope.data.checks = _.map(checks, function(check) {
+            if (check.process && check.process.status === 'END') {
+                check.isCompleted = true;
+            } else {
+                check.isCompleted = false;
+            }
+            return check;
         });
     });
 

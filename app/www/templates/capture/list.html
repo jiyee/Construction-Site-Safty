@@ -8,7 +8,7 @@
     <ion-content padding="true">
         <div class="list last-review">
             <div class="item item-divider item-icon-left"><i class="icon ion-clipboard"></i>往期安全检查</div>
-            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"></i>{{item.createAt | date: 'yyyy年MM月dd日'}}<br> {{item.project.name}}<br> {{item.section.name}} / {{item.branch.name}}</div>
+            <div class="item item-icon-right" ng-repeat="item in data.captures" ng-click="toDetail(item)"><i class="icon ion-chevron-right"><i class="icon ion-checkmark-circled" style="right: 24px; color: green;" ng-if="item.isCompleted"></i></i>{{item.createAt | date: 'yyyy年MM月dd日'}}<br> {{item.project.name}}<br> {{item.section.name}} / {{item.branch.name}}</div>
         </div>
 
         <div class="list last-review" ng-repeat="(name, items) in data.captures_divided_by_segment">
