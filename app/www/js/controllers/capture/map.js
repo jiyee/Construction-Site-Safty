@@ -306,7 +306,7 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     map.on('locationfound', onLocationFound);
     map.on('locationerror', onLocationError);
 
-    var ROADS = {}, POINTS = {};
+    var ROADS = {}, POINTS = {}, PIERS = {};
     L.Util.ajax("data/geojson/JB-ROAD.geojson").then(function(data) {
         ROADS.JB = data;
         ROADS.JB.project = '湖北监利至江陵高速公路';
@@ -327,6 +327,9 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
     });
     L.Util.ajax("data/geojson/DH-POINT.geojson").then(function(data) {
         POINTS.DH = data;
+    });
+    L.Util.ajax("data/geojson/DH-PIER.geojson").then(function(data) {
+        PIERS.DH = data;
     });
     L.Util.ajax("data/geojson/gps.geojson").then(function(data) {
         POINTS.GPS = data;
@@ -360,16 +363,20 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
             });
         });
 
-        if (!feature || delta > tolerance) return;
+        if (!feature || delta > tolerance) {
+            $scope.$parent.properties = $scope.data.properties = null;
+            return;
+        }
 
         $scope.data.properties = feature.properties;
         $scope.data.properties.project = feature.properties.project;
         if ($scope.data.properties && $scope.data.properties.name) {
             $scope.data.properties.object = '';
 
-            if (!~$scope.data.properties.name.indexOf('路基')) {
+            if (!~$scope.data.properties.name.indexOf('路基') && !~$scope.data.properties.name.indexOf('桥梁')) {
                 $scope.data.properties.object = $scope.data.properties.name;
             } else {
+                // 查询桩号
                 feature = null;
                 delta = Number.POSITIVE_INFINITY;
                 _.each(POINTS, function(layer, key) {
@@ -394,8 +401,40 @@ app.controller('CaptureMapCtrl', function($scope, $rootScope, $state, $statePara
                 });
 
                 if (feature && delta < tolerance) {
-                    $scope.data.properties.name = (feature.properties.key === 'GPS' ? "" : "路基") + feature.properties.name;
+                    $scope.data.properties.name = (feature.properties.key === 'GPS' ? "" : $scope.data.properties.name) + feature.properties.name;
                     $scope.data.properties.object = $scope.data.properties.name;
+                } else {
+                    $scope.data.properties.name = "";
+                    $scope.data.properties.object = "";
+                }
+
+                // 查询墩号
+                feature = null;
+                delta = Number.POSITIVE_INFINITY;
+                _.each(PIERS, function(layer, key) {
+                    _.each(layer.features, function(_feature) {
+                        latlons = [];
+                        if (_.isEmpty(_feature.geometry)) return;
+                        if (_.isArray(_feature.geometry.coordinates[0])) { // MultiPoints
+                            coordinates = _feature.geometry.coordinates[0];
+                        } else { // Points
+                            coordinates = _feature.geometry.coordinates;
+                        }
+
+                        latlons.push(L.latLng(coordinates[1], coordinates[0]));
+                        var distance = L.GeometryUtil.closest(map, latlons, location.latlng, true).distance;
+                        if (distance < delta) {
+                            delta = distance;
+                            feature = _feature;
+                            feature.properties.project = layer.project;
+                            feature.properties.key = key;
+                        }
+                    });
+                });
+
+                if (feature && delta < tolerance) {
+                    $scope.data.properties.name += "-" + feature.properties.name;
+                    $scope.data.properties.object += "-" + feature.properties.name;
                 }
             }
         }
