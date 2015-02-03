@@ -207,17 +207,12 @@ app.controller('EvaluationDetailCtrl', function($scope, $rootScope, $state, $sta
 
     $scope.docxgen = function() {
         EvaluationService.docxgen($scope.data.evaluationId).then(function(files) {
-            alert('报告生成成功，下载地址已自动复制到剪贴板');
             $scope.data.files = files;
 
             var text = "";
             _.each(files, function(file) {
                 text += $rootScope.baseUrl + '/docx/' + $scope.data.evaluationId + '_' + file + '.docx\n';
             });
-
-            if (cordova.plugins && cordova.plugins.clipboard) {
-                cordova.plugins.clipboard.copy(text);
-            }
         }, function(err) {
             alert(err);
         });

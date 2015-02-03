@@ -119,17 +119,12 @@ app.controller('CheckDetailCtrl', function($scope, $rootScope, $state, $statePar
 
     $scope.docxgen = function() {
         CheckService.docxgen($scope.data.checkId).then(function(files) {
-            alert('报告生成成功，下载地址已自动复制到剪贴板');
             $scope.data.files = files;
 
             var text = "";
             _.each(files, function(file) {
                 text += $rootScope.baseUrl + '/docx/' + $scope.data.checkId + '_' + file + '.docx\n';
             });
-
-            if (cordova.plugins && cordova.plugins.clipboard) {
-                cordova.plugins.clipboard.copy(text);
-            }
         }, function(err) {
             alert(err);
         });

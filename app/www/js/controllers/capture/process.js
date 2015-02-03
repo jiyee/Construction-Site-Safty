@@ -159,6 +159,18 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
             }
         };
 
+        // 发送用户短信
+        if ($scope.data.next.user.mobile) {
+            sms.sendMessage({
+                phoneNumber: $scope.data.next.user.mobile,
+                textMessage: "您有一项安全检查整改待处理。"
+            }, function(message) {
+                console.log("success: " + message);
+            }, function(error) {
+                console.log("code: " + error.code + ", message: " + error.message);
+            });
+        }
+
         CaptureService.forward($scope.data.captureId, opts).then(function() {
             alert("下达成功");
             $scope.toBack();
