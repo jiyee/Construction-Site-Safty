@@ -25,6 +25,13 @@ app.run(function($rootScope, $ionicPlatform) {
                 hide: function() {console.log("hide indicator.");}
             };
         }
+        if (!window.sms) {
+            window.sms = {
+                sendMessage: function (message) {
+                    console.log(message);
+                }
+            };
+        }
 
         document.addEventListener("online", toggleConnection, false);
         document.addEventListener("offline", toggleConnection, false);
