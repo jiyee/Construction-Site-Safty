@@ -32,6 +32,8 @@
     "org.apache.cordova.network-information",
     "https://github.com/Initsogar/cordova-activityindicator.git",
     "https://github.com/shaithana/cordova-plugin-wezka-nativecamera.git",
-    "https://github.com/hazems/cordova-sms-plugin.git"
+    "https://github.com/hazems/cordova-sms-plugin.git",
+    "https://github.com/Initsogar/cordova-activityindicator",
+    "org.pbernasconi.progressindicator"
   ]
 }

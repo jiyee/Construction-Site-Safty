@@ -12,19 +12,30 @@ var ipAddr = '121.40.202.109';
 // 加载ionic和cordova
 app.run(function($rootScope, $ionicPlatform) {
 
+    if (!window.ActivityIndicator) {
+        ActivityIndicator = {
+            show: function(text) {
+                if (window.ProgressIndicator && window.ProgressIndicator.show) {
+                    ProgressIndicator.show(text);
+                }
+            },
+            hide: function() {
+                if (window.ProgressIndicator && window.ProgressIndicator.hide) {
+                    ProgressIndicator.hide();
+                }
+            }
+        };
+    }
+
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         }
+
         if (window.StatusBar) {
             StatusBar.hide();
         }
-        if (!window.ActivityIndicator) {
-            window.ActivityIndicator = {
-                show: function() {console.log("show indicator.");},
-                hide: function() {console.log("hide indicator.");}
-            };
-        }
+
         if (!window.sms) {
             window.sms = {
                 sendMessage: function (message) {

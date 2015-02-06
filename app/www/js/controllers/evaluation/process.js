@@ -160,6 +160,18 @@ app.controller('EvaluationProcessCtrl', function($scope, $rootScope, $state, $st
             }
         };
 
+        // 发送用户短信
+        if ($scope.data.next.user.mobile) {
+            sms.sendMessage({
+                phoneNumber: $scope.data.next.user.mobile,
+                textMessage: "您有考核评价的任务，编号为：" + $scope.data.evaluationId + "，请尽快登陆系统查收。"
+            }, function(message) {
+                console.log("success: " + message);
+            }, function(error) {
+                console.log("code: " + error.code + ", message: " + error.message);
+            });
+        }
+
         EvaluationService.forward($scope.data.evaluationId, opts).then(function() {
             alert("下达成功");
             $scope.toBack();

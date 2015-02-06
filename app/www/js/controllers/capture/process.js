@@ -163,7 +163,7 @@ app.controller('CaptureProcessCtrl', function($scope, $rootScope, $state, $state
         if ($scope.data.next.user.mobile) {
             sms.sendMessage({
                 phoneNumber: $scope.data.next.user.mobile,
-                textMessage: "您有一项安全检查整改待处理。"
+                textMessage: "您有安全检查的任务，编号为：" + $scope.data.captureId + "，请尽快登陆系统查收。"
             }, function(message) {
                 console.log("success: " + message);
             }, function(error) {
