@@ -605,7 +605,7 @@ exports.docxgen = function(req, res, next) {
         var ep = new eventproxy();
         var files = ['SGJC', 'SGXCTY', 'SGXCGL', 'SGXCSY'];
 
-        ep.after('unit', evaluation.section.units.length, function(units) {
+        ep.after('unit', evaluation.section.units.length + 1, function(units) {
             // 最终回调出口
             ep.after('file', files.length + 1, function(files) {
                 res.send({
@@ -662,6 +662,7 @@ exports.docxgen = function(req, res, next) {
 
                         level2.score = Math.min(level2.score, level2.maximum);
                         data[[file, level1.index, level2.index].join('-')] = Math.min(level2.score, level2.maximum);
+                        data[[file, level1.index, level2.index, 'COMMENT'].join('-')] = "";
                         score.fail += level2.score;
                     });
 
@@ -678,6 +679,8 @@ exports.docxgen = function(req, res, next) {
                 data[[file, 'PASS'].join('-')] = score.pass;
                 data[[file, 'TOTAL'].join('-')] = score.total;
                 data[[file, 'FINAL'].join('-')] = score.final;
+
+                console.log('rendering evaluation' + evaluation_id + ' for file' + file);
 
                 var content = fs.readFileSync(process.cwd() + '/templates/' + file + '.docx', "binary");
                 var docx = new DocxGen(content);
@@ -716,11 +719,13 @@ exports.docxgen = function(req, res, next) {
                 "index": evaluation.uuid,
                 "project": evaluation.project.name,
                 "section": evaluation.section.name,
+                "date": evaluation.date.getFullYear() + '年' + (evaluation.date.getMonth() + 1) + '月' + (evaluation.date.getDate()) + '日',
                 "user": evaluation.user.name,
+                "unit": evaluation.unit.name,
                 "builder_user": evaluation.builder.user ? evaluation.builder.user.name : "",
                 "builder_unit": _.find(units, {type: '施工单位'}) ? _.find(units, {type: '施工单位'}).name : "",
-                "supervisor_user": evaluation.supervisor.user ? evaluation.supervisor.user.name : "",
-                "supervisor_unit": _.find(units, {type: '监理单位'}) ? _.find(units, {type: '监理单位'}).name : ""
+                "supervisor_unit": _.find(units, {type: '监理单位'}) ? _.find(units, {type: '监理单位'}).name : "",
+                "constructor_unit": _.find(units, {type: '建设单位'}) ? _.find(units, {type: '建设单位'}).name : ""
             };
 
             data.archives = _.map(evaluation.archives, function(item) {
@@ -793,6 +798,23 @@ exports.docxgen = function(req, res, next) {
                 }
 
                 ep.emit('unit', unit);
+            });
+        });
+
+        _.each(evaluation.project.units, function(unitId) {
+            UnitModel.findBy({
+                findOne: true,
+                conditions: {
+                    _id: unitId
+                }
+            }, function(err, unit) {
+                if (err) {
+                    // ep.emit('unit', null);
+                }
+
+                if (unit.type === '建设单位') {
+                    ep.emit('unit', unit);
+                }
             });
         });
 

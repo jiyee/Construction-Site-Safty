@@ -62,6 +62,10 @@ app.controller('EvaluationSyncCtrl', function($scope, $rootScope, $state, $state
         });
     };
 
+    $scope.removeRange = function (item) {
+        $scope.data.ranges = _.without($scope.data.ranges, item);
+    };
+
     $scope.sync = function() {
         var isValid = true;
         var start_date, end_date;

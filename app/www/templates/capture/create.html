@@ -49,7 +49,7 @@
                     检查类别：
                 </div>
                 <select ng-model="data.level1" ng-options="item.name as item.name for item in data.level1s">
-                    <option value="" selected>请选择类别</option>
+                    <option value="" selected></option>
                 </select>
             </label>
             <label class="item item-input item-select" ng-click="openModal($event)">
@@ -80,6 +80,7 @@
                 <ion-header-bar>
                     <button class="button icon ion-arrow-left-a" ng-click="closeModal()"></button>
                     <h1 class="title">存在问题</h1>
+                    <button class="button icon ion-trash-b" ng-click="clearModal()"></button>
                 </ion-header-bar>
                 <ion-content>
                     <ion-item ng-repeat-start="level2 in level1.items" class="item-icon-right item" style="background-color: #eee; font-weight: bold;" ng-click="toggle($index, level2)">

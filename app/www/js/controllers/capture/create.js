@@ -67,7 +67,14 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
     });
 
     $scope.$watch('data.level1', function (name) {
-        if (!name) return;
+        if (!name) {
+            $scope.level1 = {
+                "name": name,
+                "items": []
+            };
+            $scope.data.level3 = '';
+            return;
+        }
 
         var category = _.find($scope.data.categories, {name: name});
         $scope.level1 = {
@@ -155,6 +162,14 @@ app.controller('CaptureCreateCtrl', function($scope, $rootScope, $state, $stateP
         _.each($scope.level1.items, function(level2) {
             _.each(level2.items, function(level3) {
                 if (level3.selected) $scope.data.level3 = level3.name;
+            });
+        });
+    };
+    $scope.clearModal = function () {
+        $scope.data.level3 = '';
+        _.each($scope.level1.items, function(level2) {
+            _.each(level2.items, function(level3) {
+                level3.selected = false;
             });
         });
     };

@@ -13,7 +13,7 @@
                 <td class="col-md-1">{{item.type}}</td>
                 <td class="col-md-1">{{item.createAt | date: 'yyyy-MM-dd'}}</td>
                 <td class="col-md-2">{{item.status}}</td>
-                <td class="col-md-1"><button class="btn btn-primary btn-sm" ng-if="item.status === '已整改'" ng-click="docxgen(item)">生成文档</button></td>
+                <td class="col-md-1"><button class="btn btn-primary btn-sm" ng-click="docxgen(item)">生成文档</button></td>
             </tr>
         </tbody>
     </table>

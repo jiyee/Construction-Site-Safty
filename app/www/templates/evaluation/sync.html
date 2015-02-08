@@ -16,6 +16,7 @@
 
         <ul class="card" ng-repeat="item in data.ranges">
             <div class="item item-divider item-icon-right">
+                <i class="icon ion-close" style="font-size: 20px;" ng-click="removeRange(item);"></i>
                 {{item.name}}
             </div>
 
